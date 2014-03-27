@@ -7,13 +7,23 @@ Project was completed by a 11 person team.
 Team Members:
 
 Davis Treybig
+
 Chad Coviel
+
 Parker Hegstrom
+
 Sanmay Jain
+
 Jacob Lettie
+
 Lee Weisberger
+
 Richard Cao
+
 Peter Yom
+
 Brandon Chao
+
 Benson Tran
+
 Pritam Mathivanan
