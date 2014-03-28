@@ -1,0 +1,29 @@
+What feature/design problem are you most excited to work on?
+
+Jacob is most excited on working with the Grid editing structure because it will be an enjoyable challenge and will definitely look awesome when it's done. 
+
+Richard is excited about Grid object management because of the immediate satisfaction of seeing something work.
+
+What feature/design problem are you most worried about working on?
+
+The User building the battle system is something that we anticipate will create many issues. It will require lots of communication between our subteam and the Player and Engine subteams.
+
+What is your API designed to be flexible about?
+
+Our API is designed to be flexible about adding new features. For example, when a new feature is added, the Data module doesn't need to know anything about the new feature. Our subteam and the Player subteam do have to communicate in regards to implementation, but beyond that, adding new features does not disrupt the other subteams.
+
+How is your API encapsulating your design considerations?
+
+One benefit of your API is that the other subteams do not need to know how the Authoring Environment is interfacing with the user. It's our job to process User input and pass it along in the correct form to Data. This is a benefit to the other subteams because they don't need to worry about user input errors and other common GUI issues.
+
+How is your API linked to other parts of the project?
+
+The most important relationship for our Authoring Environment is the data that we pass to the Data subteam that can be stored and loaded later by the Player. The game that the user creates is based off this data, and therefore the data is a crucial aspect of the project. The Authoring Environment would ideally be linked to the Player in a way that the user can test their game while they're creating it. This makes the process much more efficient for testing/debugging purposes. 
+
+Briefly justify why you think your API design is good (you should also define what you measure of good is).
+
+We're defining good API design as allowing each subteam to work mostly independently from one another, with minimal communication for crucial implementation features. In our case, as long as the Authoring environment passes along the correct information to Data, their team doesn't need to know how new feature are implemented.
+
+What is the first thing you plan to implement?
+
+The first thing we need to implement is the main GUI and world/grid building editor. Once this has been implemented, we'll begin implementing basic tiles that could be added to a game. In addition, by the first deadline, we'll have the communication between Authoring Environment and Data established. 
