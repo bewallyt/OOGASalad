@@ -4,11 +4,12 @@ public class Tile {
 
 	private double myX;
 	private double myY;
+	
 
 	/**
 	 * Instantiates a new tile.
 	 *
-	 * @param x the width of the tile
+	 * @param x the width of the tile.
 	 * @param y the height of the tile
 	 */
 	public Tile(double x, double y) {
