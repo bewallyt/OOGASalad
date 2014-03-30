@@ -1,8 +1,9 @@
 package engine;
 
-public class CollisionHandler {
+public abstract class CollisionHandler {
 	
 	public CollisionHandler() {
-		
 	}
+	
+	public abstract void doCollision();
 }
