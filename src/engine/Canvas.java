@@ -59,6 +59,6 @@ public class Canvas {
 	public void makeCanvas(){
 		double height = myNumTileHeight * myTileHeight;
 		double width = myNumTileWidth * myTileWidth;
-		Image background = getBackgroundImage()
+		Image background = getBackgroundImage();
 	}
 }
