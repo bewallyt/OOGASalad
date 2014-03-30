@@ -1,9 +1,9 @@
-package engine;
+package engine.world;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Canvas {
+public class World {
 
 	private int myNumTileWidth;
 	private int myNumTileHeight;
@@ -17,7 +17,7 @@ public class Canvas {
 	 * @param numTiles
 	 *            the number of tiles
 	 */
-	public Canvas(int numTileWidth, int numTileHeight, double tileWidth,
+	public World(int numTileWidth, int numTileHeight, double tileWidth,
 			double tileHeight) {
 		myNumTileWidth = numTileWidth;
 		myNumTileHeight = numTileHeight;
