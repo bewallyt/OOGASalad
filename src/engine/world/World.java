@@ -11,8 +11,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-import engine.BackgroundPanel;
-
 public class World extends JFrame implements KeyListener{
 	private int myNumTileWidth;
 	private int myNumTileHeight;

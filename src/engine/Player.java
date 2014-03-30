@@ -6,9 +6,10 @@ import java.util.List;
 
 public class Player extends RuleFollower {
 
-	public Player(double x, double y, double dx, double dy, double speed) {
-		super(x, y, dx, dy, speed);
+	public Player(double x, double y,double speed) {
+		super(x, y, speed);
 		myItems = null;
+	
 	}
 
 	public void keyPressed(KeyEvent e) {

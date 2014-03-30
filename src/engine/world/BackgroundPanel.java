@@ -1,4 +1,4 @@
-package engine;
+package engine.world;
 
 import java.awt.*;
 import java.awt.image.*;

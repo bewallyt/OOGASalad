@@ -7,15 +7,14 @@ public class RuleFollower extends GridObject {
 	List<Statistic> myStats;
 	List<Item> myItems;
 	double mySpeed;
-	double myDX;
-	double myDY;
-
-	public RuleFollower(double x, double y, double dx, double dy, double speed) {
+	double myDX=0;
+	double myDY=0;
+	List<String> myDialogue;
+	public RuleFollower(double x, double y, double speed) {
 		super(x,y);
 		myStats = null;
 		mySpeed = speed;
-		myDX = dx;
-		myDY = dy;
+		myDialogue=null;
 	}
 	
 	@Override
@@ -23,6 +22,7 @@ public class RuleFollower extends GridObject {
 		myX+=myDX;
 		myY+=myDY;
 	}
+	
 	
 	public void addStatistic(Statistic stat) {
 		myStats.add(stat);
@@ -40,6 +40,12 @@ public class RuleFollower extends GridObject {
 		}
 	}
 	
+	public void addDialogue(String dialogue){
+		myDialogue.add(dialogue);
+	}
+	public List<String> getDialogueList(){
+		return myDialogue;
+	}
 	
 	
 
