@@ -1,8 +1,14 @@
 package engine;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Canvas extends JFrame{
@@ -12,6 +18,7 @@ public class Canvas extends JFrame{
 	private double myTileWidth;
 	private double myTileHeight;
 	private Tile[][] myTileMatrix;
+	//private BufferedImage backgroundImage;
 
 	/**
 	 * Instantiates a new canvas.
@@ -50,18 +57,52 @@ public class Canvas extends JFrame{
 	 *            the image name
 	 * @return the background image
 	 */
-	private Image getBackgroundImage(String imageName) {
+//	private Image getBackgroundImage(String imageName) {
+//
+//	}
 
-	}
+//	public void setTileSprite(Sprite sprite, int xTile, int yTile) {
+//		myTileMatrix[xTile][yTile].setTileObject(sprite);
+//	}
 
-	public void setTileSprite(Sprite sprite, int xTile, int yTile) {
-		myTileMatrix[xTile][yTile].setTileObject(sprite);
-	}
-
+	/**
+	 * Puts everything onto the content pane of a JFrame.
+	 * Preparation for display.
+	 */
 	public void makeCanvas(){
 		double height = myNumTileHeight * myTileHeight;
 		double width = myNumTileWidth * myTileWidth;
-		Image background = getBackgroundImage();
-		getContentPane().setSize(width, height);
+		//Image background = getBackgroundImage();
+		Image background;
+		try {
+			background = ImageIO.read(this.getClass().getResource("/black_bg.jpg"));
+			BackgroundPanel bgPanel = new BackgroundPanel(background);
+			bgPanel.setPreferredSize(new Dimension((int)width,(int)height));
+			bgPanel.repaint();
+			getContentPane().add(bgPanel);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+	//static?
+	/**
+	 * Dislays the canvas.
+	 */
+	public void initCanvas(){
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Canvas");
+		pack();
+		validate();
+	}
+	
+	public static void main(String [ ] args)
+	{
+		Canvas c = new Canvas(1,1,1,1);
+		c.makeCanvas();
+		c.initCanvas();
+	}
+	
 }
