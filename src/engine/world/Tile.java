@@ -1,11 +1,13 @@
 package engine.world;
 
+import engine.gridobject.GridObject;
+
 public class Tile {
 
 
 	private double myWidth;
 	private double myHeight;
-	private Sprite mySprite;
+	private GridObject myObject;
 
 
 	/**
@@ -25,8 +27,9 @@ public class Tile {
 	 *
 	 * @param sprite the new tile object
 	 */
-	public void setTileObject(Sprite sprite){
-		mySprite = sprite;
+	public void setTileObject(GridObject obj){
+		myObject = obj;
+		
 	}
 	
 	

@@ -9,7 +9,7 @@ import java.io.File;
 
 import javax.swing.JPanel;
 
-import engine.Player;
+import engine.gridobject.Player;
 import engine.world.World;
 
 

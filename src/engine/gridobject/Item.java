@@ -1,4 +1,7 @@
-package engine;
+package engine.gridobject;
+
+import engine.Listable;
+import engine.Statistic;
 
 public abstract class Item extends GridObject implements Listable {
 

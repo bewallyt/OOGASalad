@@ -1,5 +1,6 @@
-package engine;
+package engine.gridobject;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -32,4 +33,6 @@ public class Player extends RuleFollower {
 				|| e.getKeyCode() == KeyEvent.VK_LEFT)
 			myDX = 0;
 	}
+	
+	
 }

@@ -4,12 +4,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
+import engine.gridobject.GridObject;
+import engine.gridobject.Player;
 
 public class World extends JFrame{
 	private int myNumTileWidth;
@@ -39,9 +40,10 @@ public class World extends JFrame{
 	 * @return the tile matrix
 	 */
 	private Tile[][] makeTileMatrix() {
+		System.out.println(myNumTileWidth + " " + myNumTileHeight);
 		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
 		for (int i = 0; i < myNumTileWidth; i++) {
-			for (int j = 0; j < myNumTileHeight; i++) {
+			for (int j = 0; j < myNumTileHeight; j++) {
 				tileMatrix[i][j] = new Tile(myTileWidth, myTileHeight);
 			}
 		}
@@ -60,9 +62,9 @@ public class World extends JFrame{
 //
 //	}
 
-//	public void setTileSprite(Sprite sprite, int xTile, int yTile) {
-//		myTileMatrix[xTile][yTile].setTileObject(sprite);
-//	}
+	public void setTileObject(GridObject obj, int xTile, int yTile) {
+		myTileMatrix[xTile][yTile].setTileObject(obj);
+	}
 
 	/**
 	 * Puts everything onto the content pane of a JFrame.
@@ -101,6 +103,8 @@ public class World extends JFrame{
 		World c = new World(20,20,20,20);
 		c.makeCanvas();
 		c.initCanvas();
+		
+		
 		System.out.println(c.getSize());
 	}
 	

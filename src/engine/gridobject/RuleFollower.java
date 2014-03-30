@@ -1,6 +1,8 @@
-package engine;
+package engine.gridobject;
 
 import java.util.List;
+
+import engine.Statistic;
 
 public class RuleFollower extends GridObject {
 	
@@ -10,6 +12,7 @@ public class RuleFollower extends GridObject {
 	double myDX=0;
 	double myDY=0;
 	List<String> myDialogue;
+	List<Statistic> statList;
 	public RuleFollower(int x, int y, double speed) {
 		super(x,y);
 		myStats = null;
@@ -45,6 +48,10 @@ public class RuleFollower extends GridObject {
 	}
 	public List<String> getDialogueList(){
 		return myDialogue;
+	}
+	
+	public void addStat(String name, int value, int maxValue){
+		myStats.add(new Statistic(name,value,maxValue));
 	}
 	
 	

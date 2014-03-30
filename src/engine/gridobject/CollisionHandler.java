@@ -1,4 +1,4 @@
-package engine;
+package engine.gridobject;
 
 public abstract class CollisionHandler {
 	
