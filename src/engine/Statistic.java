@@ -12,5 +12,12 @@ public class Statistic {
 		myMaxValue = maxValue;
 	}
 	
+	public void increaseValue(double inc) {
+		myValue += inc;
+	}
+	
+	public void decreaseValue(double dec) {
+		myValue -= dec;
+	}
 
 }
