@@ -3,7 +3,13 @@ package engine.world;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD:src/engine/world/World.java
 public class World {
+=======
+import javax.swing.JFrame;
+
+public class Canvas extends JFrame{
+>>>>>>> 957af7ab172f0b5ad1e3ee1aabf1bb8119d433a0:src/engine/Canvas.java
 
 	private int myNumTileWidth;
 	private int myNumTileHeight;
@@ -59,6 +65,7 @@ public class World {
 	public void makeCanvas(){
 		double height = myNumTileHeight * myTileHeight;
 		double width = myNumTileWidth * myTileWidth;
-		Image background = getBackgroundImage()
+		Image background = getBackgroundImage();
+		getContentPane().setSize(width, height);
 	}
 }
