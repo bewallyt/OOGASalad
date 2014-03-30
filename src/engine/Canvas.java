@@ -1,7 +1,9 @@
 package engine;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Canvas extends JFrame{
@@ -74,16 +77,14 @@ public class Canvas extends JFrame{
 		double width = myNumTileWidth * myTileWidth;
 		//Image background = getBackgroundImage();
 		Image background;
-		try {
-			background = ImageIO.read(this.getClass().getResource("/black_bg.jpg"));
-			BackgroundPanel bgPanel = new BackgroundPanel(background);
-			bgPanel.setPreferredSize(new Dimension((int)width,(int)height));
-			bgPanel.repaint();
-			getContentPane().add(bgPanel);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//this.getClass().getResource("black_bg.jpg")
+		background = scaleImage((int)width,(int)height, "background_earth.jpg");
+		BackgroundPanel bgPanel = new BackgroundPanel(background);
+		bgPanel.setSize(new Dimension((int)width,(int)height));
+		getContentPane().add(bgPanel);
+		System.out.println(bgPanel.getPreferredSize());
+		getContentPane().setSize(new Dimension((int)width,(int)height));
+		System.out.println(getContentPane().getSize());
 	}
 	
 	//static?
@@ -91,6 +92,7 @@ public class Canvas extends JFrame{
 	 * Dislays the canvas.
 	 */
 	public void initCanvas(){
+		setSize(getContentPane().getSize());
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Canvas");
@@ -100,9 +102,33 @@ public class Canvas extends JFrame{
 	
 	public static void main(String [ ] args)
 	{
-		Canvas c = new Canvas(1,1,1,1);
+		Canvas c = new Canvas(20,20,20,20);
 		c.makeCanvas();
 		c.initCanvas();
+		System.out.println(c.getSize());
+	}
+	
+	/**
+	 * Scales an image to the desired dimensions.
+	 * 
+	 * @param WIDTH
+	 * @param HEIGHT
+	 * @param filename
+	 * @return
+	 */
+	public BufferedImage scaleImage(int WIDTH, int HEIGHT, String filename) {
+	    BufferedImage bi = null;
+	    try {
+	        ImageIcon ii = new ImageIcon(filename);//path to image
+	        bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	        Graphics2D g2d = (Graphics2D) bi.createGraphics();
+	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
+	        g2d.drawImage(ii.getImage(), 0, 0, WIDTH, HEIGHT, null);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	    return bi;
 	}
 	
 }
