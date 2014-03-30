@@ -3,7 +3,9 @@ package engine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Canvas {
+import javax.swing.JFrame;
+
+public class Canvas extends JFrame{
 
 	private int myNumTileWidth;
 	private int myNumTileHeight;
@@ -60,5 +62,6 @@ public class Canvas {
 		double height = myNumTileHeight * myTileHeight;
 		double width = myNumTileWidth * myTileWidth;
 		Image background = getBackgroundImage();
+		getContentPane().setSize(width, height);
 	}
 }
