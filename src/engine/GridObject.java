@@ -6,16 +6,13 @@ public abstract class GridObject {
 
 	protected double myX;
 	protected double myY;
-	protected double myDX;
-	protected double myDY;
 	protected CollisionHandler myCollisionHandler;
 	protected Image myImage;
 	
-	public GridObject(double x, double y, double dx, double dy) {
+	public GridObject(double x, double y) {
 		myX = x;
 		myY = y;
-		myDX = dx;
-		myDY = dy;
+		
 		myCollisionHandler = null;
 	}
 	

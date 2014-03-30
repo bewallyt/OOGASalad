@@ -1,21 +1,19 @@
-package engine;
+package engine.world;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-public class Canvas extends JFrame{
+import engine.BackgroundPanel;
 
+public class World extends JFrame implements KeyListener{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private double myTileWidth;
@@ -29,7 +27,7 @@ public class Canvas extends JFrame{
 	 * @param numTiles
 	 *            the number of tiles
 	 */
-	public Canvas(int numTileWidth, int numTileHeight, double tileWidth,
+	public World(int numTileWidth, int numTileHeight, double tileWidth,
 			double tileHeight) {
 		myNumTileWidth = numTileWidth;
 		myNumTileHeight = numTileHeight;
@@ -102,7 +100,7 @@ public class Canvas extends JFrame{
 	
 	public static void main(String [ ] args)
 	{
-		Canvas c = new Canvas(20,20,20,20);
+		World c = new World(20,20,20,20);
 		c.makeCanvas();
 		c.initCanvas();
 		System.out.println(c.getSize());
@@ -129,6 +127,24 @@ public class Canvas extends JFrame{
 	        return null;
 	    }
 	    return bi;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

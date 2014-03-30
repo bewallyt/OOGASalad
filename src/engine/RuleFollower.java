@@ -6,10 +6,22 @@ public class RuleFollower extends GridObject {
 	
 	List<Statistic> myStats;
 	List<Item> myItems;
+	double mySpeed;
+	double myDX;
+	double myDY;
 
-	public RuleFollower(double x, double y, double dx, double dy) {
-		super(x,y,dx,dy);
+	public RuleFollower(double x, double y, double dx, double dy, double speed) {
+		super(x,y);
 		myStats = null;
+		mySpeed = speed;
+		myDX = dx;
+		myDY = dy;
+	}
+	
+	@Override
+	public void move() {
+		myX+=myDX;
+		myY+=myDY;
 	}
 	
 	public void addStatistic(Statistic stat) {

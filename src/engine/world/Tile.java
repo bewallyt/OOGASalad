@@ -1,10 +1,12 @@
-package engine;
+package engine.world;
 
 public class Tile {
 
-	private double myX;
-	private double myY;
-	
+
+	private double myWidth;
+	private double myHeight;
+	private Sprite mySprite;
+
 
 	/**
 	 * Instantiates a new tile.
@@ -13,8 +15,8 @@ public class Tile {
 	 * @param y the height of the tile
 	 */
 	public Tile(double x, double y) {
-		myX = x;
-		myY = y;
+		myWidth = x;
+		myHeight = y;
 	}
 	
 	
@@ -24,7 +26,7 @@ public class Tile {
 	 * @param sprite the new tile object
 	 */
 	public void setTileObject(Sprite sprite){
-		
+		mySprite = sprite;
 	}
 	
 	
