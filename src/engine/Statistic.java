@@ -1,6 +1,6 @@
 package engine;
 
-public class Statistic {
+public abstract class Statistic implements Listable {
 	
 	String myName;
 	double myValue;
@@ -19,5 +19,8 @@ public class Statistic {
 	public void decreaseValue(double dec) {
 		myValue -= dec;
 	}
+
+	@Override
+	public abstract void display(); // write a method that will display it in a list fashion
 
 }

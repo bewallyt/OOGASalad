@@ -1,6 +1,6 @@
 package engine;
 
-public class Item extends GridObject {
+public abstract class Item extends GridObject implements Listable {
 
 	private String myName;
 	
@@ -11,6 +11,14 @@ public class Item extends GridObject {
 
 	public String getName() {
 		return myName;
+	}
+
+	public abstract void useItem();
+	
+	@Override
+	public void display() {
+		// write method to write name / picture to a Menu
+		
 	}
 	
 }
