@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Player extends RuleFollower {
 
-	public Player(double x, double y,double speed) {
+	public Player(int x, int y,double speed) {
 		super(x, y, speed);
 		myItems = null;
 	

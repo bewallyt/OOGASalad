@@ -1,23 +1,45 @@
 package engine;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public abstract class GridObject {
+import javax.imageio.ImageIO;
 
-	protected double myX;
-	protected double myY;
+public abstract class GridObject{
+
+	protected int myX;
+	protected int myY;
 	protected CollisionHandler myCollisionHandler;
 	protected Image myImage;
 	
-	public GridObject(double x, double y) {
+	public GridObject(int x, int y) {
 		myX = x;
 		myY = y;
 		
 		myCollisionHandler = null;
 	}
 	
-	public void setImage(Image i) {
-		myImage = i;
+	public void setImage(String file) {
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File(file));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		myImage = img;
+		
+	}
+	
+	public void paint(Graphics2D g) {
+		System.out.println("pained");
+		g.drawImage(myImage, myX, myY, null);
+		
+		
+
 	}
 	
 	public void setCollisionHandler(CollisionHandler handler) {

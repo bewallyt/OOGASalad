@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-public class World extends JFrame implements KeyListener{
+public class World extends JFrame{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private double myTileWidth;
@@ -127,22 +127,5 @@ public class World extends JFrame implements KeyListener{
 	    return bi;
 	}
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

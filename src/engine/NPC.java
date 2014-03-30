@@ -2,7 +2,7 @@ package engine;
 
 public class NPC extends RuleFollower {
 
-	public NPC(double x, double y,double speed) {
+	public NPC(int x, int y,double speed) {
 		super(x,y,speed);
 	}
 
@@ -15,7 +15,7 @@ public class NPC extends RuleFollower {
 	 * @param yStart the y starting pos
 	 * @param yEnd the y ending pos
 	 */
-	public void moveBackAndForth(double xStart, double xEnd, double yStart, double yEnd){
+	public void moveBackAndForth(int xStart, int xEnd, int yStart, int yEnd){
 		if(myX==xEnd)
 			mySpeed *=-1;
 		if(myX==xStart)

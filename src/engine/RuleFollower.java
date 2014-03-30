@@ -10,7 +10,7 @@ public class RuleFollower extends GridObject {
 	double myDX=0;
 	double myDY=0;
 	List<String> myDialogue;
-	public RuleFollower(double x, double y, double speed) {
+	public RuleFollower(int x, int y, double speed) {
 		super(x,y);
 		myStats = null;
 		mySpeed = speed;
