@@ -1,21 +1,30 @@
 package engine.world;
 
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD:src/engine/world/World.java
-public class World {
-=======
+
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-public class Canvas extends JFrame{
->>>>>>> 957af7ab172f0b5ad1e3ee1aabf1bb8119d433a0:src/engine/Canvas.java
+import engine.BackgroundPanel;
 
+public class World extends JFrame{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private double myTileWidth;
 	private double myTileHeight;
 	private Tile[][] myTileMatrix;
+	//private BufferedImage backgroundImage;
 
 	/**
 	 * Instantiates a new canvas.
@@ -54,18 +63,75 @@ public class Canvas extends JFrame{
 	 *            the image name
 	 * @return the background image
 	 */
-	private Image getBackgroundImage(String imageName) {
+//	private Image getBackgroundImage(String imageName) {
+//
+//	}
 
-	}
+//	public void setTileSprite(Sprite sprite, int xTile, int yTile) {
+//		myTileMatrix[xTile][yTile].setTileObject(sprite);
+//	}
 
-	public void setTileSprite(Sprite sprite, int xTile, int yTile) {
-		myTileMatrix[xTile][yTile].setTileObject(sprite);
-	}
-
+	/**
+	 * Puts everything onto the content pane of a JFrame.
+	 * Preparation for display.
+	 */
 	public void makeCanvas(){
 		double height = myNumTileHeight * myTileHeight;
 		double width = myNumTileWidth * myTileWidth;
-		Image background = getBackgroundImage();
-		getContentPane().setSize(width, height);
+		//Image background = getBackgroundImage();
+		Image background;
+		//this.getClass().getResource("black_bg.jpg")
+		background = scaleImage((int)width,(int)height, "background_earth.jpg");
+		BackgroundPanel bgPanel = new BackgroundPanel(background);
+		bgPanel.setSize(new Dimension((int)width,(int)height));
+		getContentPane().add(bgPanel);
+		System.out.println(bgPanel.getPreferredSize());
+		getContentPane().setSize(new Dimension((int)width,(int)height));
+		System.out.println(getContentPane().getSize());
 	}
+	
+	//static?
+	/**
+	 * Dislays the canvas.
+	 */
+	public void initCanvas(){
+		setSize(getContentPane().getSize());
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Canvas");
+		pack();
+		validate();
+	}
+	
+	public static void main(String [ ] args)
+	{
+		World c = new World(20,20,20,20);
+		c.makeCanvas();
+		c.initCanvas();
+		System.out.println(c.getSize());
+	}
+	
+	/**
+	 * Scales an image to the desired dimensions.
+	 * 
+	 * @param WIDTH
+	 * @param HEIGHT
+	 * @param filename
+	 * @return
+	 */
+	public BufferedImage scaleImage(int WIDTH, int HEIGHT, String filename) {
+	    BufferedImage bi = null;
+	    try {
+	        ImageIcon ii = new ImageIcon(filename);//path to image
+	        bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	        Graphics2D g2d = (Graphics2D) bi.createGraphics();
+	        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
+	        g2d.drawImage(ii.getImage(), 0, 0, WIDTH, HEIGHT, null);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	    return bi;
+	}
+	
 }

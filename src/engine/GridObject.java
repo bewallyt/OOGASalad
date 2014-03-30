@@ -27,7 +27,7 @@ public abstract class GridObject {
 		myCollisionHandler = handler;
 	}
 	
-	public void move() {};
+	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
 	
 }
