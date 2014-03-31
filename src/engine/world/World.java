@@ -51,7 +51,7 @@ public class World extends JPanel{
 	 * 
 	 * @return the tile matrix
 	 */
-	private Tile[][] makeTileMatrix() {
+	public Tile[][] makeTileMatrix() {
 		System.out.println(myNumTileWidth + " " + myNumTileHeight);
 		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
 		for (int i = 0; i < myNumTileWidth; i++) {
@@ -107,28 +107,6 @@ public class World extends JPanel{
 		
 		for(GridObject go : myGridObjectList){
 			go.paint(g2d);
-		}
-	}
-
-	public static void main(String[] args) {
-		World world = new World(40, 40, 20, 20);
-		world.initCanvas();
-		world.makeTileMatrix();
-		System.out.println(world.myTileMatrix.length);
-		world.setTileObject(new Player("grass.jpg", 2),10,10);
-		//world.setTileObject(new RuleFollower("cabinets.jpg",0), 0, 0);
-		CollisionMatrix cm = new CollisionMatrix(world.myGridObjectList);
-		while (true) {
-			world.repaint();
-			for(GridObject go : world.myGridObjectList){
-				go.move();
-			}
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 
