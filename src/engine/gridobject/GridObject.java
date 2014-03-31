@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import engine.Statistic;
+import engine.collision.CollisionHandler;
 
 public abstract class GridObject{
 

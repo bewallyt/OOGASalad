@@ -28,6 +28,8 @@ public class NPC extends RuleFollower {
 			mySpeed *=-1;
 		myDY=mySpeed;
 	}
+	
+	
 
 }
 
