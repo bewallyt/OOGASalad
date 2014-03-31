@@ -8,18 +8,19 @@ import engine.gridobject.item.Weapon;
 public abstract class CollisionHandler {
 	
 	List<GridObject> gridObjectList;
+	protected boolean harm=false;
 	
 	public CollisionHandler() {
 	}
 	
-	public void makeCollisionMatrix(){
+	public CollisionHandler[][] makeCollisionMatrix(){
 		CollisionHandler[][] collisionMatrix = new CollisionHandler[gridObjectList.size()][gridObjectList.size()];
 		for (int i=0; i<gridObjectList.size() ; i++){
 			for(int j=0; j<gridObjectList.size(); j++){
-				if(gridObjectList.get(i) instanceof Weapon && !(gridObjectList.get(j) instanceof Weapon)){
+				if(gridObjectList.get(i).getDoesHarm() && !(gridObjectList.get(j).getDoesHarm())){
 					collisionMatrix[i][j]= new HurtCollision();
 				}
-				else if (gridObjectList.get(j) instanceof Weapon && !(gridObjectList.get(i) instanceof Weapon))
+				else if (gridObjectList.get(j).getDoesHarm() && !(gridObjectList.get(i).getDoesHarm()))
 					collisionMatrix[i][j]= new HurtCollision();
 				else if (i==j){
 					collisionMatrix[i][j]=null;
@@ -27,10 +28,10 @@ public abstract class CollisionHandler {
 				else{
 					collisionMatrix[i][j]= new BumpCollision();
 				}
-				gridObjectMatrix[i][j]= 
 			}
 			
 		}
+		return collisionMatrix;
 	}
 	
 	public abstract void doCollision();

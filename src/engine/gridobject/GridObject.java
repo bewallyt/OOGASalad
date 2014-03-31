@@ -22,6 +22,7 @@ public abstract class GridObject{
 	protected CollisionHandler myCollisionHandler;
 	protected Image myImage;
 	private Map<String,Statistic> myStatsMap;
+	private boolean doesHarm = false;
 	
 	public GridObject(int x, int y) {
 		myX = x;
@@ -64,6 +65,12 @@ public abstract class GridObject{
 	
 	public Rectangle getBounds() {
 		return new Rectangle(myX, myY-HEIGHT, WIDTH, HEIGHT);	
+	}
+	public boolean getDoesHarm(){
+		return doesHarm;
+	}
+	public void setDoesHarm(boolean harm){
+		doesHarm=harm;
 	}
 	
 	public void move() {}; // default is to do nothing
