@@ -3,12 +3,14 @@ package engine.gridobject;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import engine.Statistic;
 import engine.collision.CollisionHandler;
@@ -24,27 +26,21 @@ public abstract class GridObject{
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	
-	public GridObject(int x, int y) {
+	public GridObject(int x, int y, String image) {
 		myX = x;
 		myY = y;
 		myStatsMap = null;
 		myCollisionHandler = null;
+		setImage(image);
 	}
 	
 	public void setImage(String file) {
-		BufferedImage img = null;
-		try {
-			img = ImageIO.read(new File(file));
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		Image img = scaleImage(10,10,file);
 		myImage = img;
 		
 	}
 	
 	public void paint(Graphics2D g) {
-		System.out.println("paitned");
 		g.drawImage(myImage, myX, myY, null);
 	}
 	
@@ -71,6 +67,24 @@ public abstract class GridObject{
 	}
 	public void setDoesHarm(boolean harm){
 		doesHarm=harm;
+	}
+	public Image scaleImage(int WIDTH, int HEIGHT, String filename) {
+		BufferedImage bi = null;
+		try {
+			ImageIcon ii = new ImageIcon(this.getClass().getResource(filename));
+			bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+			Graphics2D g2d = (Graphics2D) bi.createGraphics();
+			g2d.addRenderingHints(new RenderingHints(
+					RenderingHints.KEY_RENDERING,
+					RenderingHints.VALUE_RENDER_QUALITY));
+			g2d.drawImage(ii.getImage(), 0, 0, WIDTH, HEIGHT, null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return bi;
+
 	}
 	
 	public void move() {}; // default is to do nothing

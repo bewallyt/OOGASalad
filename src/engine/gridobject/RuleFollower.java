@@ -17,8 +17,8 @@ public class RuleFollower extends GridObject {
 	protected List<String> myDialogue;
 	protected Weapon myWeapon;
 	
-	public RuleFollower(int x, int y, double speed) {
-		super(x,y);
+	public RuleFollower(int x, int y, String image, double speed) {
+		super(x,y,image);
 		mySpeed = speed;
 		myDialogue=null;
 		

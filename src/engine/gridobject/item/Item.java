@@ -8,8 +8,8 @@ public abstract class Item extends GridObject implements Listable {
 
 	private String myName;
 	
-	public Item(int x, int y, String name) {
-		super(x, y);
+	public Item(int x, int y, String image, String name) {
+		super(x, y, image);
 		myName = name;
 	}
 

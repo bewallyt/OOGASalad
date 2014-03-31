@@ -12,15 +12,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import engine.Control;
 import engine.gridobject.GridObject;
+import engine.gridobject.Player;
 
-public class World extends JPanel {
+public class World extends JPanel{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileWidth;
 	private int myTileHeight;
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
+	
 
 	// private BufferedImage backgroundImage;
 
@@ -37,6 +40,8 @@ public class World extends JPanel {
 		myTileHeight = tileHeight;
 		myTileWidth = tileWidth;
 		myGridObjectList = new ArrayList<GridObject>();
+		
+		
 	}
 
 	/**
@@ -56,6 +61,10 @@ public class World extends JPanel {
 		return tileMatrix;
 	}
 
+	public List<GridObject> getGridObjectList(){
+		return myGridObjectList;
+	}
+	
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
@@ -75,6 +84,11 @@ public class World extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
+		frame.addKeyListener(new Control(this));
+		this.setFocusable(true);
+		
+		
+
 	}
 
 	@Override
@@ -86,17 +100,25 @@ public class World extends JPanel {
 		int height = myNumTileHeight * myTileHeight;
 		int width = myNumTileWidth * myTileWidth;
 
-		g2d.drawImage(scaleImage(width, height, "background_earth.jpg"), 0, 0, null);
+		g2d.drawImage(scaleImage(width, height, "background_earth.jpg"), 0, 0,
+				null);
+		
+		for(GridObject go : myGridObjectList){
+			go.paint(g2d);
+		}
 	}
 
-
-
 	public static void main(String[] args) {
-		World world = new World(20,20,20,20);
+		World world = new World(40, 40, 20, 20);
 		world.initCanvas();
+		world.makeTileMatrix();
+		Player p = new Player(10,10,"grass.jpg",2);
+		world.setTileObject(p,1,1);
 		while (true) {
-
 			world.repaint();
+			for(GridObject go : world.myGridObjectList){
+				go.move();
+			}
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
@@ -116,7 +138,6 @@ public class World extends JPanel {
 	 */
 	public Image scaleImage(int WIDTH, int HEIGHT, String filename) {
 		BufferedImage bi = null;
-		Image i = null;
 		try {
 			ImageIcon ii = new ImageIcon(this.getClass().getResource(filename));
 			bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
