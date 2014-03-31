@@ -13,8 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import engine.Control;
+import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.Player;
+import engine.gridobject.RuleFollower;
 
 public class World extends JPanel{
 	private int myNumTileWidth;
@@ -114,6 +116,8 @@ public class World extends JPanel{
 		world.makeTileMatrix();
 		System.out.println(world.myTileMatrix.length);
 		world.setTileObject(new Player("grass.jpg", 2),10,10);
+		//world.setTileObject(new RuleFollower("cabinets.jpg",0), 0, 0);
+		CollisionMatrix cm = new CollisionMatrix(world.myGridObjectList);
 		while (true) {
 			world.repaint();
 			for(GridObject go : world.myGridObjectList){

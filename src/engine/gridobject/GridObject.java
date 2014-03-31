@@ -18,11 +18,12 @@ import engine.world.Tile;
 
 public abstract class GridObject{
 
-	private static final int WIDTH = 6;
-	private static final int HEIGHT = 5;
+	private int myWidth;
+	private int myHeight;
 	protected int myX;
 	protected int myY;
 	protected CollisionHandler myCollisionHandler;
+	protected String myImageFile;
 	protected Image myImage;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
@@ -31,15 +32,23 @@ public abstract class GridObject{
 	public GridObject(String image) {
 		myStatsMap = null;
 		myCollisionHandler = null;
-		setImage(image);
+		myImageFile=image;
 	}
 	
+	public String getImageFile(){
+		return myImageFile;
+	}
+	public void setSize(int width, int height){
+		myWidth=width;
+		myHeight=height;
+	}
 	public void setPosition(int x, int y){
 		myX=x;
 		myY=y;
+		System.out.println("x " + myX);
 	}
 	public void setImage(String file) {
-		Image img = scaleImage(10,10,file);
+		Image img = scaleImage(myWidth,myHeight,file);
 		myImage = img;
 		
 	}
@@ -64,7 +73,7 @@ public abstract class GridObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(myX, myY-HEIGHT, WIDTH, HEIGHT);	
+		return new Rectangle(myX, myY-myHeight, myWidth, myHeight);	
 	}
 	public boolean getDoesHarm(){
 		return doesHarm;

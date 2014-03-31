@@ -34,6 +34,9 @@ public class Tile {
 	public void setTileObject(GridObject obj){
 		myObject = obj;
 		obj.setPosition(myX, myY);
+		obj.setSize(myWidth, myHeight);
+		obj.setImage(obj.getImageFile());
+		
 	}
 	
 	public int[] getPosition(){
