@@ -10,12 +10,12 @@ import engine.gridobject.item.Weapon;
 
 public class RuleFollower extends GridObject {
 
-	private List<Item> myItems;
-	private double mySpeed;
-	private double myDX=0;
-	private double myDY=0;
-	private List<String> myDialogue;
-	private Weapon myWeapon;
+	protected List<Item> myItems;
+	protected double mySpeed;
+	protected double myDX=0;
+	protected double myDY=0;
+	protected List<String> myDialogue;
+	protected Weapon myWeapon;
 	
 	public RuleFollower(int x, int y, double speed) {
 		super(x,y);
