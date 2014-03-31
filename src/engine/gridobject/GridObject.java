@@ -47,6 +47,10 @@ public abstract class GridObject{
 		myY=y;
 		System.out.println("x " + myX);
 	}
+	
+	public int[] getPosition(){
+		return new int[] {myX,myY};
+	}
 	public void setImage(String file) {
 		Image img = scaleImage(myWidth,myHeight,file);
 		myImage = img;
