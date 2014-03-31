@@ -3,8 +3,8 @@ package engine;
 public class Statistic implements Listable {
 
 	String myName;
-	double myValue;
-	double myMaxValue;
+	int myValue;
+	int myMaxValue;
 
 	public Statistic(String name, int maxValue, int value) {
 		myName = name;
@@ -16,18 +16,22 @@ public class Statistic implements Listable {
 		myValue += amountToChange;
 	}
 
-	public double getValue() {
+	public int getValue() {
 		return myValue;
 	}
 
+	public String getName(){
+		return myName;
+	}
+	
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-//	@Override
-//	public abstract void display(); // write a method that will display it in a
-//									// list fashion
+	//	@Override
+	//	public abstract void display(); // write a method that will display it in a
+	//									// list fashion
 
 }

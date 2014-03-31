@@ -1,7 +1,8 @@
-package engine.gridobject;
+package engine.gridobject.item;
 
 import engine.Listable;
 import engine.Statistic;
+import engine.gridobject.GridObject;
 
 public abstract class Item extends GridObject implements Listable {
 

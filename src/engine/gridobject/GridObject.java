@@ -6,8 +6,11 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
+
+import engine.Statistic;
 
 public abstract class GridObject{
 
@@ -17,11 +20,12 @@ public abstract class GridObject{
 	protected int myY;
 	protected CollisionHandler myCollisionHandler;
 	protected Image myImage;
+	private Map<String,Statistic> myStatsMap;
 	
 	public GridObject(int x, int y) {
 		myX = x;
 		myY = y;
-		
+		myStatsMap = null;
 		myCollisionHandler = null;
 	}
 	
@@ -44,6 +48,17 @@ public abstract class GridObject{
 	
 	public void setCollisionHandler(CollisionHandler handler) {
 		myCollisionHandler = handler;
+	}
+	public void addStatistic(Statistic stat) {
+		myStatsMap.put(stat.getName(), stat);
+	}
+	
+	public void addStatistic(String name, int value, int maxValue){
+		myStatsMap.put(name,new Statistic(name,value,maxValue));
+	}
+	
+	public Map<String,Statistic> getStatsMap(){
+		return myStatsMap;
 	}
 	
 	public Rectangle getBounds() {

@@ -1,23 +1,28 @@
 package engine.gridobject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import engine.Statistic;
+import engine.gridobject.item.Item;
+import engine.gridobject.item.Weapon;
 
 public class RuleFollower extends GridObject {
+
+	private List<Item> myItems;
+	private double mySpeed;
+	private double myDX=0;
+	private double myDY=0;
+	private List<String> myDialogue;
+	private Weapon myWeapon;
 	
-	List<Statistic> myStats;
-	List<Item> myItems;
-	double mySpeed;
-	double myDX=0;
-	double myDY=0;
-	List<String> myDialogue;
-	List<Statistic> statList;
 	public RuleFollower(int x, int y, double speed) {
 		super(x,y);
-		myStats = null;
 		mySpeed = speed;
 		myDialogue=null;
+		
+		myWeapon = null;
 	}
 	
 	@Override
@@ -26,11 +31,10 @@ public class RuleFollower extends GridObject {
 		myY+=myDY;
 	}
 	
-	
-	public void addStatistic(Statistic stat) {
-		myStats.add(stat);
+	public void addWeapon(Weapon weapon){
+		
 	}
-	
+
 	public void addItem(Item it) {
 		myItems.add(it);
 	}
@@ -49,11 +53,5 @@ public class RuleFollower extends GridObject {
 	public List<String> getDialogueList(){
 		return myDialogue;
 	}
-	
-	public void addStat(String name, int value, int maxValue){
-		myStats.add(new Statistic(name,value,maxValue));
-	}
-	
-	
 
 }
