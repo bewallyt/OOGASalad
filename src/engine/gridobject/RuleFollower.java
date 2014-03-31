@@ -1,12 +1,10 @@
 package engine.gridobject;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import engine.Statistic;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
+import engine.world.Tile;
 
 public class RuleFollower extends GridObject {
 
@@ -17,8 +15,8 @@ public class RuleFollower extends GridObject {
 	protected List<String> myDialogue;
 	protected Weapon myWeapon;
 	
-	public RuleFollower(int x, int y, String image, double speed) {
-		super(x,y,image);
+	public RuleFollower(String image, double speed) {
+		super(image);
 		mySpeed = speed;
 		myDialogue=null;
 		
@@ -27,6 +25,10 @@ public class RuleFollower extends GridObject {
 	
 	@Override
 	public void move() {
+		if(myDX>0)facing="right";
+		else if(myDX<0)facing="left";
+		else if(myDY>0)facing="down";
+		else if(myDY<0)facing="up";
 		myX+=myDX;
 		myY+=myDY;
 	}

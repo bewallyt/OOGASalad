@@ -54,7 +54,7 @@ public class World extends JPanel{
 		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
 		for (int i = 0; i < myNumTileWidth; i++) {
 			for (int j = 0; j < myNumTileHeight; j++) {
-				tileMatrix[i][j] = new Tile(myTileWidth, myTileHeight);
+				tileMatrix[i][j] = new Tile(myTileWidth, myTileHeight,i*myTileWidth,j*myTileHeight);
 			}
 		}
 		myTileMatrix = tileMatrix;
@@ -112,8 +112,8 @@ public class World extends JPanel{
 		World world = new World(40, 40, 20, 20);
 		world.initCanvas();
 		world.makeTileMatrix();
-		Player p = new Player(10,10,"grass.jpg",2);
-		world.setTileObject(p,1,1);
+		System.out.println(world.myTileMatrix.length);
+		world.setTileObject(new Player("grass.jpg", 2),10,10);
 		while (true) {
 			world.repaint();
 			for(GridObject go : world.myGridObjectList){

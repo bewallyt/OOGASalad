@@ -1,9 +1,11 @@
 package engine.gridobject;
 
+import engine.world.Tile;
+
 public class Enemy extends RuleFollower {
 
-	public Enemy(int x, int y, String image, double speed) {
-		super(x,y,image,speed);
+	public Enemy(String image, double speed) {
+		super(image,speed);
 	}
 
 }

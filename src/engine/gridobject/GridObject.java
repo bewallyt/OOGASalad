@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 
 import engine.Statistic;
 import engine.collision.CollisionHandler;
+import engine.world.Tile;
 
 public abstract class GridObject{
 
@@ -25,15 +26,18 @@ public abstract class GridObject{
 	protected Image myImage;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
+	String facing = "down";
 	
-	public GridObject(int x, int y, String image) {
-		myX = x;
-		myY = y;
+	public GridObject(String image) {
 		myStatsMap = null;
 		myCollisionHandler = null;
 		setImage(image);
 	}
 	
+	public void setPosition(int x, int y){
+		myX=x;
+		myY=y;
+	}
 	public void setImage(String file) {
 		Image img = scaleImage(10,10,file);
 		myImage = img;

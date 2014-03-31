@@ -1,14 +1,13 @@
 package engine.gridobject;
 
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.List;
+
+import engine.world.Tile;
 
 public class Player extends RuleFollower {
 
-	public Player(int x, int y, String image, double speed) {
-		super(x, y, image, speed);
+	public Player(String image, double speed) {
+		super(image, speed);
 		myItems = null;
 	
 	}

@@ -1,9 +1,11 @@
 package engine.gridobject;
 
+import engine.world.Tile;
+
 public class NPC extends RuleFollower {
 
-	public NPC(int x, int y, String image, double speed) {
-		super(x,y,image, speed);
+	public NPC(String image, double speed) {
+		super(image, speed);
 	}
 
 	/**

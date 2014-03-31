@@ -5,20 +5,24 @@ import engine.gridobject.GridObject;
 public class Tile {
 
 
-	private double myWidth;
-	private double myHeight;
+	private int myWidth;
+	private int myHeight;
+	private int myX;
+	private int myY;
 	private GridObject myObject;
 
 
 	/**
 	 * Instantiates a new tile.
 	 *
-	 * @param x the width of the tile.
-	 * @param y the height of the tile
+	 * @param width the width
+	 * @param height the height
 	 */
-	public Tile(double x, double y) {
-		myWidth = x;
-		myHeight = y;
+	public Tile(int width, int height, int x, int y) {
+		myWidth = width;
+		myHeight = height;
+		myX = x;
+		myY=y;
 	}
 	
 	
@@ -29,7 +33,11 @@ public class Tile {
 	 */
 	public void setTileObject(GridObject obj){
 		myObject = obj;
-		
+		obj.setPosition(myX, myY);
+	}
+	
+	public int[] getPosition(){
+		return new int[] {myX,myY};
 	}
 	
 	

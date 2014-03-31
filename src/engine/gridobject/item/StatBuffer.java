@@ -1,17 +1,16 @@
 package engine.gridobject.item;
 
-import java.util.List;
-
 import engine.Statistic;
+import engine.world.Tile;
 
 public class StatBuffer extends Item {
 
 	private Statistic myStatistic;
 	private int myAmountToChange;
 
-	public StatBuffer(int x, int y,String image, String name, Statistic statistic,
+	public StatBuffer(String image, String name, Statistic statistic,
 			int amountToChange) {
-		super(x, y, image, name);
+		super(image, name);
 		myStatistic = statistic;
 		myAmountToChange = amountToChange;
 	}
