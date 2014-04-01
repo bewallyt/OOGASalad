@@ -1,5 +1,6 @@
 package engine.world;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -59,7 +60,9 @@ public class World extends JPanel{
 				tileMatrix[i][j] = new Tile(myTileWidth, myTileHeight,i*myTileWidth,j*myTileHeight);
 			}
 		}
+		
 		myTileMatrix = tileMatrix;
+		
 		return tileMatrix;
 	}
 
@@ -97,12 +100,14 @@ public class World extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
+		setOpaque(false);
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		int height = myNumTileHeight * myTileHeight;
 		int width = myNumTileWidth * myTileWidth;
 
-		g2d.drawImage(scaleImage(width, height, "background_earth.jpg"), 0, 0,
+		g2d.drawImage(scaleImage(width, height, "PalletTown.png"), 0, 0,
 				null);
 		
 		for(GridObject go : myGridObjectList){

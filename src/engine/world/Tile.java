@@ -35,6 +35,7 @@ public class Tile {
 		myObject = obj;
 		obj.setPosition(myX, myY);
 		obj.setSize(myWidth, myHeight);
+		System.out.println("width" + myWidth);
 		obj.setImage(obj.getImageFile());
 		
 	}

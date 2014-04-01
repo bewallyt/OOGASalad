@@ -15,33 +15,37 @@ import engine.gridobject.NPC;
 import engine.gridobject.Player;
 import engine.world.World;
 
+public class Engine extends JPanel {
 
-
-public class Engine extends JPanel{
-	
-	public World initializeWorld(){
-		World world = new World(40, 40, 20, 20);
+	public World initializeWorld(int numTileWidth, int numTileHeight,
+			int tileWidth, int tileHeight) {
+		World world = new World(numTileWidth, numTileHeight, tileWidth,
+				tileHeight);
 		world.initCanvas();
 		world.makeTileMatrix();
 		return world;
 	}
-	
-	public void checkCollisions(World world, CollisionMatrix cm){
-		for(int i=0; i<world.getGridObjectList().size(); i++){
-			for(int j=0; j<world.getGridObjectList().size(); j++){
-				if(world.getGridObjectList().get(i).getBounds().intersects
-						(world.getGridObjectList().get(j).getBounds())){
+
+	public void checkCollisions(World world, CollisionMatrix cm) {
+		for (int i = 0; i < world.getGridObjectList().size(); i++) {
+			for (int j = 0; j < world.getGridObjectList().size(); j++) {
+				if (world
+						.getGridObjectList()
+						.get(i)
+						.getBounds()
+						.intersects(
+								world.getGridObjectList().get(j).getBounds())) {
 					cm.getMatrix()[i][j].doCollision();
 				}
 			}
 		}
 	}
-	
+
 	public void doGameLoop(World world, CollisionMatrix cm) {
 		while (true) {
 			world.repaint();
-			checkCollisions(world,cm);
-			for(GridObject go : world.getGridObjectList()){
+			checkCollisions(world, cm);
+			for (GridObject go : world.getGridObjectList()) {
 				go.move();
 			}
 			try {
@@ -52,14 +56,15 @@ public class Engine extends JPanel{
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Engine engine = new Engine();
-		World world = engine.initializeWorld();
-		world.setTileObject(new Player("grass.jpg", 2),10,10);
-		world.setTileObject(new NPC("cabinets.jpg",2), 20, 20);
+		World world = engine.initializeWorld(20,20,40,40);
+		
+		world.setTileObject(new Player("p.png", 2), 3, 3);
+		world.setTileObject(new NPC("cabinets.jpg", 2), 4, 4);
 		CollisionMatrix cm = new CollisionMatrix(world.getGridObjectList());
 		engine.doGameLoop(world, cm);
 	}
-	
+
 }

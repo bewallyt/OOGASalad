@@ -1,20 +1,22 @@
 package engine.gridobject;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.image.FilteredImageSource;
+import java.awt.image.ImageFilter;
+import java.awt.image.ImageProducer;
+import java.awt.image.RGBImageFilter;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import engine.Statistic;
 import engine.collision.CollisionHandler;
-import engine.world.Tile;
 
 public abstract class GridObject{
 
@@ -58,8 +60,31 @@ public abstract class GridObject{
 	}
 	
 	public void paint(Graphics2D g) {
+//		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+//                0.1f));
+//		g.setBackground(C?olor.red);
+		
+		//g.setBackground(Color.red);
+		//g.clearRect(myX, myY, myWidth, myHeight);
+       // g.setBackground(Color.WHITE);
+		//myImage = TransformGrayToTransparency(myImage);
+		
 		g.drawImage(myImage, myX, myY, null);
 	}
+	private Image TransformGrayToTransparency(Image myImage2)
+	  {
+	    ImageFilter filter = new RGBImageFilter()
+	    {
+	      public final int filterRGB(int x, int y, int rgb)
+	      {
+	        return (rgb << 8) & 0xFF000000;
+	    	  
+	      }
+	    };
+
+	    ImageProducer ip = new FilteredImageSource(myImage2.getSource(), filter);
+	    return Toolkit.getDefaultToolkit().createImage(ip);
+	  }
 	
 	public void setCollisionHandler(CollisionHandler handler) {
 		myCollisionHandler = handler;
@@ -89,7 +114,7 @@ public abstract class GridObject{
 		BufferedImage bi = null;
 		try {
 			ImageIcon ii = new ImageIcon(this.getClass().getResource(filename));
-			bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+			bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
 			Graphics2D g2d = (Graphics2D) bi.createGraphics();
 			g2d.addRenderingHints(new RenderingHints(
 					RenderingHints.KEY_RENDERING,
