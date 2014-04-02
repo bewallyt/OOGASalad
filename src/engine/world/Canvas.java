@@ -30,6 +30,7 @@ public class Canvas extends JPanel{
 		this.setFocusable(true);
 	}
 	
+
 	public void setWorld(World world){
 		myFrame.add(world);
 		myFrame.addKeyListener(new Control(world));

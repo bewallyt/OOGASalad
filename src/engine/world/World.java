@@ -33,15 +33,19 @@ public abstract class World extends JPanel{
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, int width, int height) {
-		myNumTileWidth = width/tileSize;
-		myNumTileHeight = width/tileSize;
+	public World(int tileSize) {
 		System.out.println("width " + tileSize);
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
-		this.makeTileMatrix();
 	}
 	
+
+	
+	public void setDimensions(int width, int height){
+		myNumTileWidth = width/myTileSize;
+		myNumTileHeight = height/myTileSize;
+		makeTileMatrix();
+	}
 	public int[] getTileSize(){
 		return new int[] {myNumTileWidth, myNumTileHeight};
 	}
@@ -90,8 +94,8 @@ public abstract class World extends JPanel{
 		g2d.drawImage(scaleImage(width, height, "grass.jpg"), 0, 0,
 				null);
 		
-		for(GridObject go : myGridObjectList){
-			go.paint(g2d);
+		for(int i=0; i<myGridObjectList.size(); i++){
+			myGridObjectList.get(i).paint(g2d);
 		}
 	}
 
