@@ -5,7 +5,7 @@ public class Main {
 		Set myFeatures = new HashSet<Feature>();
 		// add features here! HelpPageFeature included as an example.
 		//myFeatures.add(new HelpPageFeature());
-		
+		//myFeatures.add(new GridEditor());
 		AuthoringView view = new AuthoringView(myFeatures);
 	}
 }
