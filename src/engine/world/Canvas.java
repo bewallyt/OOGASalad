@@ -22,7 +22,6 @@ public class Canvas extends JPanel{
 		myFrame = frame;
 		myHeight=height;
 		myWidth=width;
-		//frame.add(this);
 		frame.setSize((int) width, (int) height);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

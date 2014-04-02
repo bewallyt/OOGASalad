@@ -13,16 +13,6 @@ import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Main extends JPanel {
-	
-	
-		
-	
-//	public World initializeWorld(int tileWidth, int tileHeight, int numTileSize ) {
-//		World world = new World(tileWidth, tileHeight, numTileSize);
-//		world.initCanvas();
-//		world.makeTileMatrix();
-//		return world;
-//	}
 
 	public void checkCollisions(World world, CollisionMatrix cm) {
 		for (int i = 0; i < world.getGridObjectList().size(); i++) {
