@@ -14,13 +14,25 @@ public class GridObjectCreation extends Feature{
 	}
 	private class GridObjectWindowAction implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			frame = new JFrame();
+			frame = new JFrame("Create a GridObject");
     		frame.add(new GridObjectWindow());
             frame.pack();
             frame.setVisible(true);
 		}	
 	}
 	private class GridObjectWindow extends JPanel{
-		
+		private JCheckBox steppableCheck;
+		private JCheckBox encounterableCheck;
+		private JTextArea encounterRate;
+		private JScrollPane encounterRateWrapper;
+		public GridObjectWindow(){
+			steppableCheck = new JCheckBox("Steppable?");
+			add(steppableCheck);
+			encounterableCheck = new JCheckBox("Encounterable?");
+			add(encounterableCheck);
+			encounterRate = new JTextArea(1,3);
+			encounterRateWrapper = new JScrollPane(encounterRate);
+			add(encounterRateWrapper);
+		}
 	}
 }

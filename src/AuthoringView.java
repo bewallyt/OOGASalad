@@ -21,7 +21,7 @@ public class AuthoringView {
 		addWorkspaceObjects();
 	}
 	private void addWorkspaceObjects(){
-		myFrame = new JFrame("Frame Title");
+		myFrame = new JFrame("OOGASalad Authoring");
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myPanels=new HashMap<String, JComponent>();
 		myFrame.setJMenuBar((JMenuBar)myPanels.get(MENU_BAR));
