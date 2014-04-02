@@ -22,8 +22,7 @@ import engine.gridobject.RuleFollower;
 public class World extends JPanel{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
-	private int myTileWidth;
-	private int myTileHeight;
+	private int myTileSize;
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	
@@ -32,19 +31,21 @@ public class World extends JPanel{
 
 	/**
 	 * Instantiates a new canvas.
-	 * 
-	 * @param numTiles
-	 *            the number of tiles
+	 *
+	 * @param numTileWidth the num tile width
+	 * @param numTileHeight the num tile height
+	 * @param tileSize the tile size
 	 */
-	public World(int numTileWidth, int numTileHeight, int tileWidth,
-			int tileHeight) {
+	public World(int numTileWidth, int numTileHeight, int tileSize) {
 		myNumTileWidth = numTileWidth;
 		myNumTileHeight = numTileHeight;
-		myTileHeight = tileHeight;
-		myTileWidth = tileWidth;
+		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
-		
-		
+
+	}
+	
+	public int[] getTileSize(){
+		return new int[] {myNumTileWidth, myNumTileHeight};
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class World extends JPanel{
 		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
 		for (int i = 0; i < myNumTileWidth; i++) {
 			for (int j = 0; j < myNumTileHeight; j++) {
-				tileMatrix[i][j] = new Tile(myTileWidth, myTileHeight,i*myTileWidth,j*myTileHeight);
+				tileMatrix[i][j] = new Tile(myTileSize,i*myTileSize,j*myTileSize);
 			}
 		}
 		
@@ -81,8 +82,8 @@ public class World extends JPanel{
 	 */
 	public void initCanvas() {
 		JFrame frame = new JFrame("SuPeR Heads");
-		double height = myNumTileHeight * myTileHeight;
-		double width = myNumTileWidth * myTileWidth;
+		double height = myNumTileHeight * myTileSize;
+		double width = myNumTileWidth * myTileSize;
 		frame.add(this);
 		frame.setSize((int) width, (int) height);
 		frame.setVisible(true);
@@ -104,10 +105,10 @@ public class World extends JPanel{
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		int height = myNumTileHeight * myTileHeight;
-		int width = myNumTileWidth * myTileWidth;
+		int height = myNumTileHeight * myTileSize;
+		int width = myNumTileWidth * myTileSize;
 
-		g2d.drawImage(scaleImage(width, height, "PalletTown.png"), 0, 0,
+		g2d.drawImage(scaleImage(width, height, "grass.jpg"), 0, 0,
 				null);
 		
 		for(GridObject go : myGridObjectList){

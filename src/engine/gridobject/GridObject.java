@@ -24,6 +24,8 @@ public abstract class GridObject{
 	protected int myHeight;
 	protected int myX;
 	protected int myY;
+	protected int myStartX;
+	protected int myStartY;
 	
 	protected CollisionHandler myCollisionHandler;
 	protected String myImageFile;
@@ -31,11 +33,16 @@ public abstract class GridObject{
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	String facing = "down";
+	private int myNumTiles;
 	
-	public GridObject(String image) {
+	public GridObject(String image, int numTiles) {
 		myStatsMap = null;
 		myCollisionHandler = null;
 		myImageFile=image;
+		myNumTiles=numTiles;
+	}
+	public int getNumTiles(){
+		return myNumTiles;
 	}
 	
 	public String getImageFile(){
@@ -49,8 +56,9 @@ public abstract class GridObject{
 		return new int[] {myWidth,myHeight};
 	}
 	public void setPosition(int x, int y){
-		myX=x;
-		myY=y;
+		myX=myStartX=x;
+		myY=myStartY=y;
+		
 	}
 	
 	public int[] getPosition(){
@@ -113,5 +121,6 @@ public abstract class GridObject{
 	
 	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
+	public void uniqueMove(){};
 	
 }

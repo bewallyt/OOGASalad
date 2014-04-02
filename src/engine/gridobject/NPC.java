@@ -3,33 +3,13 @@ package engine.gridobject;
 import engine.world.Tile;
 
 public class NPC extends RuleFollower {
-
-	public NPC(String image, double speed) {
-		super(image, speed);
-	}
-
-	/**
-	 * Move back and forth from xStart to xEnd and yStart to yEnd. 
-	 * The starting positions must be less than the ending positions.
-	 *
-	 * @param xStart the x starting pos
-	 * @param xEnd the x ending pos
-	 * @param yStart the y starting pos
-	 * @param yEnd the y ending pos
-	 */
-	public void moveBackAndForth(int xStart, int xEnd, int yStart, int yEnd){
-		if(myX==xEnd)
-			mySpeed *=-1;
-		if(myX==xStart)
-			mySpeed *=-1;
-		myDX=mySpeed;
+	
+	public NPC(String image, double speed, int numTiles) {
+		super(image, speed, numTiles);
 		
-		if(myY==yEnd)
-			mySpeed *=-1;
-		if(myY==yStart)
-			mySpeed *=-1;
-		myDY=mySpeed;
 	}
+
+	
 	
 	
 

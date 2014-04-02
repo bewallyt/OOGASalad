@@ -3,7 +3,9 @@ package engine.main;
 import javax.swing.JPanel;
 
 import engine.collision.CollisionMatrix;
+import engine.gridobject.BackAndForthMover;
 import engine.gridobject.Barrier;
+import engine.gridobject.Enemy;
 import engine.gridobject.GridObject;
 import engine.gridobject.Player;
 import engine.world.World;
@@ -13,11 +15,8 @@ public class Main extends JPanel {
 	
 		
 	
-
-	public World initializeWorld(int numTileWidth, int numTileHeight,
-			int tileWidth, int tileHeight) {
-		World world = new World(numTileWidth, numTileHeight, tileWidth,
-				tileHeight);
+	public World initializeWorld(int tileWidth, int tileHeight, int numTileSize ) {
+		World world = new World(tileWidth, tileHeight, numTileSize);
 		world.initCanvas();
 		world.makeTileMatrix();
 		return world;
@@ -53,13 +52,27 @@ public class Main extends JPanel {
 			}
 		}
 	}
+	
+	public void addObjects(World world){
+		world.setTileObject(new Player("p.png", 2,1), 3, 3);
+		world.setTileObject(new BackAndForthMover("rival.png",1,1, 150, 300, 0, 0),5,5);
+		for(int i=0; i<world.getTileSize()[0]; i++){
+			world.setTileObject(new Barrier("tree.png",2), i, 0);
+			world.setTileObject(new Barrier("tree.png",2), i, world.getTileSize()[1]-1-1);
+		}
+		for(int i=0; i<world.getTileSize()[1]; i++){
+			world.setTileObject(new Barrier("tree.png",2), 0, i);
+			world.setTileObject(new Barrier("tree.png",2), world.getTileSize()[0]-1,i );
+		}
+		
+		world.setTileObject(new Barrier("cabinets.jpg",2), 4, 3);
+	}
 
 	public static void main(String[] args) {
 		Main engine = new Main();
-		World world = engine.initializeWorld(20,20,40,40);
-		
-		world.setTileObject(new Player("p.png", 2), 3, 3);
-		world.setTileObject(new Barrier("cabinets.jpg"), 10, 4);
+		World world = engine.initializeWorld(20,20,40);
+		engine.addObjects(world);
+		engine.addObjects(world);
 		CollisionMatrix cm = new CollisionMatrix(world.getGridObjectList());
 		engine.doGameLoop(world, cm);
 	}

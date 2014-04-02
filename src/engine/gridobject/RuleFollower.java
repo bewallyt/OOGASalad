@@ -20,8 +20,8 @@ public class RuleFollower extends GridObject {
 	protected List<String> myDialogue;
 	protected Weapon myWeapon;
 	
-	public RuleFollower(String image, double speed) {
-		super(image);
+	public RuleFollower(String image, double speed, int numTiles) {
+		super(image, numTiles);
 		mySpeed = speed;
 		myDialogue=null;
 		resetMax();
@@ -52,6 +52,7 @@ public class RuleFollower extends GridObject {
 		if(!(myY+myDY+myHeight>myMaxY) && !(myY+myDY<myMinY))
 			myY+=myDY;
 		resetMax();
+		uniqueMove();
 		
 	}
 

@@ -4,8 +4,8 @@ import engine.world.Tile;
 
 public class Weapon extends Item{
 
-	public Weapon(Tile tile, String image, String name) {
-		super(image, name);	
+	public Weapon(Tile tile, String image, String name, int numTiles) {
+		super(image, name, numTiles);	
 		super.setDoesHarm(true);
 	}
 

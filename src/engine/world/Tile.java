@@ -5,8 +5,7 @@ import engine.gridobject.GridObject;
 public class Tile {
 
 
-	private int myWidth;
-	private int myHeight;
+	private int mySize;
 	private int myX;
 	private int myY;
 	private GridObject myObject;
@@ -18,9 +17,8 @@ public class Tile {
 	 * @param width the width
 	 * @param height the height
 	 */
-	public Tile(int width, int height, int x, int y) {
-		myWidth = width;
-		myHeight = height;
+	public Tile(int size, int x, int y) {
+		mySize = size;
 		myX = x;
 		myY=y;
 	}
@@ -34,8 +32,7 @@ public class Tile {
 	public void setTileObject(GridObject obj){
 		myObject = obj;
 		obj.setPosition(myX, myY);
-		obj.setSize(myWidth, myHeight);
-		System.out.println("width" + myWidth);
+		obj.setSize(mySize*obj.getNumTiles(), mySize*obj.getNumTiles());
 		obj.setImage(obj.getImageFile());
 		
 	}
