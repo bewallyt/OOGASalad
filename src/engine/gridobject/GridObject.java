@@ -20,10 +20,11 @@ import engine.collision.CollisionHandler;
 
 public abstract class GridObject{
 
-	private int myWidth;
-	private int myHeight;
+	protected int myWidth;
+	protected int myHeight;
 	protected int myX;
 	protected int myY;
+	
 	protected CollisionHandler myCollisionHandler;
 	protected String myImageFile;
 	protected Image myImage;
@@ -44,10 +45,12 @@ public abstract class GridObject{
 		myWidth=width;
 		myHeight=height;
 	}
+	public int[] getSize(){
+		return new int[] {myWidth,myHeight};
+	}
 	public void setPosition(int x, int y){
 		myX=x;
 		myY=y;
-		System.out.println("x " + myX);
 	}
 	
 	public int[] getPosition(){
@@ -60,31 +63,9 @@ public abstract class GridObject{
 	}
 	
 	public void paint(Graphics2D g) {
-//		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
-//                0.1f));
-//		g.setBackground(C?olor.red);
-		
-		//g.setBackground(Color.red);
-		//g.clearRect(myX, myY, myWidth, myHeight);
-       // g.setBackground(Color.WHITE);
-		//myImage = TransformGrayToTransparency(myImage);
-		
 		g.drawImage(myImage, myX, myY, null);
 	}
-	private Image TransformGrayToTransparency(Image myImage2)
-	  {
-	    ImageFilter filter = new RGBImageFilter()
-	    {
-	      public final int filterRGB(int x, int y, int rgb)
-	      {
-	        return (rgb << 8) & 0xFF000000;
-	    	  
-	      }
-	    };
-
-	    ImageProducer ip = new FilteredImageSource(myImage2.getSource(), filter);
-	    return Toolkit.getDefaultToolkit().createImage(ip);
-	  }
+	
 	
 	public void setCollisionHandler(CollisionHandler handler) {
 		myCollisionHandler = handler;
@@ -102,8 +83,9 @@ public abstract class GridObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(myX, myY-myHeight, myWidth, myHeight);	
+		return new Rectangle(myX, myY, myWidth, myHeight);	
 	}
+	
 	public boolean getDoesHarm(){
 		return doesHarm;
 	}

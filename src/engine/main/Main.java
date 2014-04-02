@@ -1,21 +1,18 @@
 package engine.main;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.io.File;
-
 import javax.swing.JPanel;
 
 import engine.collision.CollisionMatrix;
+import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
-import engine.gridobject.NPC;
 import engine.gridobject.Player;
 import engine.world.World;
 
-public class Engine extends JPanel {
+public class Main extends JPanel {
+	
+	
+		
+	
 
 	public World initializeWorld(int numTileWidth, int numTileHeight,
 			int tileWidth, int tileHeight) {
@@ -58,11 +55,11 @@ public class Engine extends JPanel {
 	}
 
 	public static void main(String[] args) {
-		Engine engine = new Engine();
+		Main engine = new Main();
 		World world = engine.initializeWorld(20,20,40,40);
 		
 		world.setTileObject(new Player("p.png", 2), 3, 3);
-		world.setTileObject(new NPC("cabinets.jpg", 2), 4, 4);
+		world.setTileObject(new Barrier("cabinets.jpg"), 10, 4);
 		CollisionMatrix cm = new CollisionMatrix(world.getGridObjectList());
 		engine.doGameLoop(world, cm);
 	}

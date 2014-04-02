@@ -19,7 +19,6 @@ public class Control implements KeyListener{
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyCode());
 		for (GridObject gridObject : myWorld.getGridObjectList()){
 			if (gridObject instanceof Player){
 				((Player) gridObject).keyPressed(e);
