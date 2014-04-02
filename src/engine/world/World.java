@@ -19,29 +19,27 @@ import engine.gridobject.GridObject;
 import engine.gridobject.Player;
 import engine.gridobject.RuleFollower;
 
-public class World extends JPanel{
+public abstract class World extends JPanel{
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
-	
-
-	// private BufferedImage backgroundImage;
 
 	/**
-	 * Instantiates a new canvas.
+	 * Instantiates a new World.
 	 *
 	 * @param numTileWidth the num tile width
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int numTileWidth, int numTileHeight, int tileSize) {
-		myNumTileWidth = numTileWidth;
-		myNumTileHeight = numTileHeight;
+	public World(int tileSize, int width, int height) {
+		myNumTileWidth = width/tileSize;
+		myNumTileHeight = width/tileSize;
+		System.out.println("width " + tileSize);
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
-
+		this.makeTileMatrix();
 	}
 	
 	public int[] getTileSize(){
@@ -76,26 +74,7 @@ public class World extends JPanel{
 		myGridObjectList.add(obj);
 	}
 
-	// static?
-	/**
-	 * Dislays the canvas.
-	 */
-	public void initCanvas() {
-		JFrame frame = new JFrame("SuPeR Heads");
-		double height = myNumTileHeight * myTileSize;
-		double width = myNumTileWidth * myTileSize;
-		frame.add(this);
-		frame.setSize((int) width, (int) height);
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.addKeyListener(new Control(this));
-		this.setFocusable(true);
-		
-		
 
-	}
 
 	@Override
 	protected void paintComponent(Graphics g) {

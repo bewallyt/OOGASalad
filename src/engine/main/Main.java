@@ -8,6 +8,8 @@ import engine.gridobject.Barrier;
 import engine.gridobject.Enemy;
 import engine.gridobject.GridObject;
 import engine.gridobject.Player;
+import engine.world.Canvas;
+import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Main extends JPanel {
@@ -15,12 +17,12 @@ public class Main extends JPanel {
 	
 		
 	
-	public World initializeWorld(int tileWidth, int tileHeight, int numTileSize ) {
-		World world = new World(tileWidth, tileHeight, numTileSize);
-		world.initCanvas();
-		world.makeTileMatrix();
-		return world;
-	}
+//	public World initializeWorld(int tileWidth, int tileHeight, int numTileSize ) {
+//		World world = new World(tileWidth, tileHeight, numTileSize);
+//		world.initCanvas();
+//		world.makeTileMatrix();
+//		return world;
+//	}
 
 	public void checkCollisions(World world, CollisionMatrix cm) {
 		for (int i = 0; i < world.getGridObjectList().size(); i++) {
@@ -70,11 +72,12 @@ public class Main extends JPanel {
 
 	public static void main(String[] args) {
 		Main engine = new Main();
-		World world = engine.initializeWorld(20,20,40);
-		engine.addObjects(world);
-		engine.addObjects(world);
-		CollisionMatrix cm = new CollisionMatrix(world.getGridObjectList());
-		engine.doGameLoop(world, cm);
+		Canvas canvas = new Canvas (800,800);
+		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
+		canvas.setWorld(waWorld);
+		engine.addObjects(waWorld);
+		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
+		engine.doGameLoop(waWorld, cm);
 	}
 
 }
