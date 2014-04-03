@@ -1,4 +1,4 @@
-package engine.gridobject;
+package engine.gridobject.person;
 
 
 public class Enemy extends NPC {

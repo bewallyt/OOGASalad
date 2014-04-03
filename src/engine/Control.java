@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import engine.gridobject.GridObject;
-import engine.gridobject.Player;
+import engine.gridobject.person.Player;
 import engine.world.World;
 
 public class Control implements KeyListener{

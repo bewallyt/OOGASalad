@@ -1,4 +1,4 @@
-package engine.gridobject;
+package engine.gridobject.person;
 
 public class BackAndForthMover extends Enemy {
 	private int myXStart;
