@@ -6,8 +6,8 @@ public class BackAndForthMover extends Enemy {
 	private int myXEnd;
 	private int myYEnd;
 	public BackAndForthMover(String image, double speed, int numTiles,
-			int xStart, int xEnd, int yStart, int yEnd) {
-		super(image, speed, numTiles);
+			int xStart, int xEnd, int yStart, int yEnd, Player player) {
+		super(image, speed, numTiles,player);
 		myXStart=xStart;
 		myYStart=yStart;
 		myXEnd=xEnd;
@@ -15,9 +15,9 @@ public class BackAndForthMover extends Enemy {
 	}
 	@Override
 	public void uniqueMove(){
-		moveBackAndForth();
+			moveBackAndForth();
 	}
-	
+
 	/**
 	 * Move back and forth from xStart to xEnd and yStart to yEnd. 
 	 * The starting positions must be less than the ending positions.
@@ -33,7 +33,7 @@ public class BackAndForthMover extends Enemy {
 		if(myX==myXStart)
 			mySpeed *=-1;
 		if(myXStart!=0 && myXEnd!=0)myDX=mySpeed;
-		
+
 		if(myY==myYEnd)
 			mySpeed *=-1;
 		if(myY==myYStart)

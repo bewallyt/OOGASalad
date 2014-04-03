@@ -13,8 +13,9 @@ public class Main extends RPGEngine {
 
 	
 	public void addObjects(World world){
-		addGridObject(new Player("p.png", 2,1), 3, 3);
-		addGridObject(new BackAndForthMover("rival.png",1,1, 350, 550, 0, 0),10,10);
+		Player player = new Player("p.png",2,1);
+		addGridObject(player, 3, 3);
+		addGridObject(new BackAndForthMover("rival.png",1,1, 350, 550, 0, 0,player),10,10);
 		addGridObject(new Barrier("pokecenter.png",4), 4, 3);
 		for(int i=0; i<world.getTileSize()[0]; i++){
 			addGridObject(new Barrier("tree.png",2), i, 0);
