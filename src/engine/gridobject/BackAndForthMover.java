@@ -15,7 +15,6 @@ public class BackAndForthMover extends Enemy {
 	}
 	@Override
 	public void uniqueMove(){
-		System.out.println(myX);
 		moveBackAndForth();
 	}
 	

@@ -99,7 +99,6 @@ public abstract class RPGEngine{
 			for (int j = 0; j < myCurrentWorld.getGridObjectList().size(); j++) {
 				if (myCurrentWorld.getGridObjectList().get(i).getBounds().intersects(
 						myCurrentWorld.getGridObjectList().get(j).getBounds())) {
-					System.out.println(i);
 					cm.getMatrix()[i][j].doCollision();
 				}
 			}

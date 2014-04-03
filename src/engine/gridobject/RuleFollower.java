@@ -65,7 +65,7 @@ public class RuleFollower extends GridObject {
 	
 	public Rectangle getNextBounds(){
 		
-		return new Rectangle((int)(myX+myDX), (int)(myY-myHeight+myDY), myWidth, myHeight);
+		return new Rectangle((int)(myX+myDX), (int)(myY+myDY), myWidth, myHeight);
 	}
 	
 	public void addWeapon(Weapon weapon){
