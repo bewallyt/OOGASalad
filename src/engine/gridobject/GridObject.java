@@ -33,16 +33,18 @@ public abstract class GridObject{
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	String facing = "down";
-	private int myNumTiles;
+	private int myNumTilesWidth;
+	private int myNumTilesHeight;
 	
-	public GridObject(String image, int numTiles) {
+	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
 		myCollisionHandler = null;
 		myImageFile=image;
-		myNumTiles=numTiles;
+		myNumTilesWidth=numTilesWidth;
+		myNumTilesHeight = numTilesHeight;
 	}
-	public int getNumTiles(){
-		return myNumTiles;
+	public int[] getNumTiles(){
+		return new int[] {myNumTilesWidth, myNumTilesHeight};
 	}
 	
 	public String getImageFile(){

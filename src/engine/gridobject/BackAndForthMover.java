@@ -5,9 +5,9 @@ public class BackAndForthMover extends Enemy {
 	private int myYStart;
 	private int myXEnd;
 	private int myYEnd;
-	public BackAndForthMover(String image, double speed, int numTiles,
+	public BackAndForthMover(String image, double speed, int numTilesWidth, int numTilesHeight,
 			int xStart, int xEnd, int yStart, int yEnd, Player player) {
-		super(image, speed, numTiles,player);
+		super(image, speed, numTilesWidth, numTilesHeight,player);
 		myXStart=xStart;
 		myYStart=yStart;
 		myXEnd=xEnd;

@@ -20,8 +20,8 @@ public class RuleFollower extends GridObject {
 	protected List<String> myDialogue;
 	protected Weapon myWeapon;
 	
-	public RuleFollower(String image, double speed, int numTiles) {
-		super(image, numTiles);
+	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight) {
+		super(image, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		myDialogue=null;
 		resetMax();

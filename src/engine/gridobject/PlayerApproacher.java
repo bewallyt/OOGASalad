@@ -3,9 +3,9 @@ package engine.gridobject;
 public class PlayerApproacher extends Enemy{
 
 	private Player myPlayer;
-	public PlayerApproacher(String image, double speed, int numTiles,
+	public PlayerApproacher(String image, double speed, int numTilesWidth, int numTilesHeight,
 			Player player) {
-		super(image, speed, numTiles, player);
+		super(image, speed, numTilesWidth, numTilesHeight, player);
 		myPlayer = player;
 	}
 	

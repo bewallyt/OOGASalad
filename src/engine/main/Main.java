@@ -3,6 +3,7 @@ package engine.main;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.BackAndForthMover;
 import engine.gridobject.Barrier;
+import engine.gridobject.DialogueBox;
 import engine.gridobject.Player;
 import engine.world.Canvas;
 import engine.world.WalkAroundWorld;
@@ -13,18 +14,20 @@ public class Main extends RPGEngine {
 
 	
 	public void addObjects(World world){
-		Player player = new Player("p.png",2,1);
+		Player player = new Player("p.png",2,1, 1);
 		addGridObject(player, 3, 3);
-		addGridObject(new BackAndForthMover("rival.png",1,1, 350, 550, 0, 0,player),10,10);
-		addGridObject(new Barrier("pokecenter.png",4), 4, 3);
+		addGridObject(new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player),10,10);
+		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
+		
 		for(int i=0; i<world.getTileSize()[0]; i++){
-			addGridObject(new Barrier("tree.png",2), i, 0);
-			addGridObject(new Barrier("tree.png",2), i, world.getTileSize()[1]-1-1);
+			addGridObject(new Barrier("tree.png",1,2), i, 0);
+			addGridObject(new Barrier("tree.png",1,2), i, world.getTileSize()[1]-1-1);
 		}
 		for(int i=0; i<world.getTileSize()[1]; i++){
-			addGridObject(new Barrier("tree.png",2), 0, i);
-			addGridObject(new Barrier("tree.png",2), world.getTileSize()[0]-1,i );
+			addGridObject(new Barrier("tree.png",1,2), 0, i);
+			addGridObject(new Barrier("tree.png",1,2), world.getTileSize()[0]-1,i );
 		}
+		addGridObject(new DialogueBox("Dialogue.png",16,4),2,15);
 		
 		
 	}
