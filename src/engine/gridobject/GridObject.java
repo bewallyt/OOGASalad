@@ -59,8 +59,7 @@ public abstract class GridObject{
 	}
 	public void setImage(String file) {
 		Image img = new ScaledImage(myWidth,myHeight,file).scaleImage();
-		myImage = img;
-		
+		myImage = img;	
 	}
 	
 	public void paint(Graphics2D g) {

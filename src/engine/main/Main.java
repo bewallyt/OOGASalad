@@ -1,8 +1,8 @@
 package engine.main;
 
+import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
-import engine.gridobject.DialogueBox;
 import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
@@ -11,11 +11,14 @@ import engine.world.World;
 
 public class Main extends RPGEngine {
 
+	Player myPlayer;
+	BackAndForthMover myEnemy;
 	public void addObjects(World world){
-		Player player = new Player("player.png",2,1, 1);
+		Player player = myPlayer = new Player("player.png",2,1, 1);
 		addGridObject(player, 3, 3);
-		BackAndForthMover bafm = new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
+		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
 		addGridObject(bafm,10,10);
+		bafm.addDialogue("Hey Bitch. Fight Me!");
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 		
 		for(int i=0; i<world.getTileSize()[0]; i++){
@@ -26,7 +29,8 @@ public class Main extends RPGEngine {
 			addGridObject(new Barrier("tree.png",1,2), 0, i);
 			addGridObject(new Barrier("tree.png",1,2), world.getTileSize()[0]-1,i );
 		}
-		//addGridObject(new DialogueBox("Dialogue.png",16,4),2,15);
+
+	//	addGridObject(new DialogueBox("Dialogue.png","hello"),2,15);
 		
 		
 	}
@@ -40,7 +44,9 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void run() {
-		
+		if(myPlayer.getAClick())
+			myEnemy.doNextDialogue();
+			
 		
 	}
 

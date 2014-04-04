@@ -13,6 +13,7 @@ public class Control implements KeyListener{
 	public static int DOWN = 40;
 	public static int LEFT = 37;
 	public static int RIGHT = 39;
+	public static int A = 65;
 	
 	public Control (World world){
 		myWorld = world;
