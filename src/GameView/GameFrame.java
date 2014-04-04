@@ -35,8 +35,6 @@ public class GameFrame extends RPGEngine {
 		Player player = myPlayer = initPlayer();
 		addGridObject(player, 3, 3);
 		
-		
-		
 		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey Bitch. Fight Me!");
@@ -69,7 +67,7 @@ public class GameFrame extends RPGEngine {
 	
 	private Player initPlayer() {
 		
-		GridObjectData myPlayer = myWorldData.getPlayerData();
+//		GridObjectData myPlayer = myWorldData.getPlayerData();
 		
 		String[] animImages = new String[12];
 		animImages[0] = "fs.png";
