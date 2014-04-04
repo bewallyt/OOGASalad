@@ -9,9 +9,16 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * This class handles the loading and usage of images, specifically for the authoring environment so that
+ * users can load in their own images and use them for specific objects or tiles. 
+ * @author Davis Treybig
+ *
+ */
 public class ImageManager {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_IMAGE_PACKAGE="ImageFiles/";
+	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
 	private String imagePath;
 	
 	public ImageManager() {
@@ -20,14 +27,44 @@ public class ImageManager {
 	}
 	/**
 	 * Loads a specified image file into the project directory to be used in the authoring environment
-	 * @param fileName Name of the image file that will be created in the project directory
+	 * @param fileName Name of the image file that will be created in the project directory (without an extension)
 	 * @param imageFile File that is to be copied into the project directory
 	 * @throws IOException
 	 */
 	public void storeImage(String fileName, File imageFile) throws IOException{
-		Path source=Paths.get(imageFile.getAbsolutePath());
-		Path newDirectory=Paths.get(imagePath+fileName);
-		Files.copy(source, newDirectory);	
+		String extension=getFileExtension(imageFile);
+		if(checkImageExtension(extension)){
+			Path source=Paths.get(imageFile.getAbsolutePath());
+			Path newDirectory=Paths.get(imagePath+fileName+extension);
+			Files.copy(source, newDirectory);	
+		}
+		
+	}
+	/**
+	 * Returns the file extension of a given file. For instance, "tester.txt" would return ".txt"
+	 * @param f File to be analyzed
+	 * @return Extension of the file
+	 */
+	private String getFileExtension(File f){
+		String extension="";
+		int i=f.getName().lastIndexOf('.');
+		if(i>0){
+			extension=f.getName().substring(i);
+		}
+		return extension;
+	}
+	/**
+	 * Checks the extension of the loaded image file to ensure it is an image. 
+	 * @param s String version of the file extension
+	 * @return Returns true if the extension is a valid image extension
+	 */
+	private boolean checkImageExtension(String s){
+		for(String validExtension: VALID_IMAGE_EXTENSIONS){
+			if(s.equals(validExtension)){
+				return true;
+			}
+		}
+		return false;
 	}
 	public static void main(String[] args){
 		ImageManager image=new ImageManager();
@@ -37,7 +74,7 @@ public class ImageManager {
 		int returnVal=chooser.showOpenDialog(null);
 		File f=chooser.getSelectedFile();
 		try {
-			image.storeImage("TestImage.JPG", f);
+			image.storeImage("TestImage2", f);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
