@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -66,7 +67,14 @@ public class ImageManager {
 		}
 		return false;
 	}
-	
+	/**
+	 * Returns a list of all the names of currently saved images in the default image
+	 * folder. 
+	 * @return List of names of images
+	 */
+	public List<String> getSavedImageList(){
+		return new FileLister().getFileList(imagePath);
+	}
 	public static void main(String[] args){
 		ImageManager image=new ImageManager();
 		JFileChooser chooser=new JFileChooser();

@@ -91,14 +91,7 @@ public class FileStorer {
 	 * @return List of names of the saved game files. 
 	 */
 	public List<String> getSavedGameList(){
-		File folder=new File(savedGamesPath);
-		File[] listOfFiles=folder.listFiles();
-		List<String> fileNameList=new ArrayList<String>();
-		for(File f: listOfFiles){
-			fileNameList.add(f.getName());
-		}
-		return fileNameList;
-		
+		return new FileLister().getFileList(savedGamesPath);
 	}
 	public static void main(String[] args){
 		FileStorer f=new FileStorer();

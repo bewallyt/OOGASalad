@@ -23,5 +23,14 @@ public class DataTester {
 		List<String> list=f.getSavedGameList();
 		assertTrue(list.contains("test.txt"));
 		assertTrue(list.contains("TestWorld.txt"));
+		assertFalse(list.contains("BlahBloo.jpg"));
+	}
+	@Test
+	public void imageListTest() throws Exception{
+		ImageManager m=new ImageManager();
+		List<String> list=m.getSavedImageList();
+		assertTrue(list.contains("TestImage.JPG"));
+		assertTrue(list.contains("TestImage2.jpg"));
+		assertFalse(list.contains("bloobloo"));
 	}
 }
