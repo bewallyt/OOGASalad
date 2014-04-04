@@ -28,6 +28,13 @@ public class RuleFollower extends GridObject {
 		myWeapon = null;
 	}
 	
+//	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+//		super(animImages, numTilesWidth, numTilesHeight);
+//		mySpeed = speed;
+//		resetMax();
+//		myWeapon = null;
+//	}
+	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}

@@ -36,19 +36,17 @@ public abstract class World extends JPanel{
 	 * @param tileSize the tile size
 	 */
 	public World(int tileSize, String background) {
-		System.out.println("width " + tileSize);
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
 	}
-	
-
 	
 	public void setDimensions(int width, int height){
 		myNumTileWidth = width/myTileSize;
 		myNumTileHeight = height/myTileSize;
 		makeTileMatrix();
 	}
+	
 	public int[] getTileSize(){
 		return new int[] {myNumTileWidth, myNumTileHeight};
 	}
