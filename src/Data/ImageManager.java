@@ -66,6 +66,7 @@ public class ImageManager {
 		}
 		return false;
 	}
+	
 	public static void main(String[] args){
 		ImageManager image=new ImageManager();
 		JFileChooser chooser=new JFileChooser();
