@@ -22,11 +22,14 @@ public class FileStorer {
 	 */
 	public void storeWorldData(String name, WorldData world){
 		Gson gson=new Gson();
-		String json=gson.toJson(world);
-		
-		
-		
+		String json=gson.toJson(world);	
+		writeFile(name, json);
 	}
+	/**
+	 * Writes a JSON String to a file
+	 * @param fileName String to name the file
+	 * @param jsonString jsonString to be saved
+	 */
 	private void writeFile(String fileName, String jsonString){
 		BufferedWriter writer=null;
 		try{
@@ -43,6 +46,7 @@ public class FileStorer {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void main(String[] args){
 		FileStorer f=new FileStorer();
 		f.writeFile("test.txt", "Hi");
