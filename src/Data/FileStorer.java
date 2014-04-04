@@ -1,8 +1,13 @@
 package Data;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
 import authoring.WorldData;
 
@@ -11,8 +16,11 @@ import com.google.gson.Gson;
 public class FileStorer {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_SAVED_GAME_PACKAGE="SavedGames/";
+	private String savedGamesPath;
+	//private Gson gson=new Gson();
 	public FileStorer() {
-		// TODO Auto-generated constructor stub
+		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
+		savedGamesPath = path.replaceAll("\\\\", "/");
 	}
 	/**
 	 * Method used to store an instance of the WorldData class into a JSON data file. This allows
@@ -21,22 +29,26 @@ public class FileStorer {
 	 * @param world WorldData class that is to be saved
 	 */
 	public void storeWorldData(String name, WorldData world){
-		Gson gson=new Gson();
-		String json=gson.toJson(world);	
-		writeFile(name, json);
+		File folder = new File(savedGamesPath);
+		File jsonFile=new File(folder, name);
+		try(Writer writer=new FileWriter(jsonFile);){
+			Gson gson=new Gson();
+			gson.toJson(world, writer);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	/**
-	 * Writes a JSON String to a file
+	 * Writes a String to a file
 	 * @param fileName String to name the file
 	 * @param jsonString jsonString to be saved
 	 */
 	private void writeFile(String fileName, String jsonString){
 		BufferedWriter writer=null;
 		try{
-			String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
-			path = path.replaceAll("\\\\", "/");
-			File folder = new File(path);
-			
+			File folder = new File(savedGamesPath);
+
 			File jsonFile=new File(folder, fileName);
 			writer=new BufferedWriter(new FileWriter(jsonFile));
 			writer.write(jsonString);
@@ -45,8 +57,32 @@ public class FileStorer {
 		catch (Exception e){
 			e.printStackTrace();
 		}
+
+
+	}	
+	/**
+	 * Loads the saved game JSON file from the SavedGames folder. 
+	 * @param fileName Name of the file that is to be loaded
+	 * @return Returns the WorldData object that was originally stored
+	 * @throws IOException
+	 */
+	public WorldData loadFile(String fileName) throws IOException {
+		FileReader fr=new FileReader(savedGamesPath+fileName);
+		BufferedReader br=new BufferedReader(fr);
+		try{
+			StringBuilder sb=new StringBuilder();
+			String line;
+			while((line=br.readLine())!=null){
+				sb.append(line);
+			}
+			System.out.println(sb.toString());
+			Gson gson=new Gson();
+			WorldData world=gson.fromJson(sb.toString(), WorldData.class);
+			return world;
+		} finally{
+			br.close();
+		}
 	}
-	
 	public static void main(String[] args){
 		FileStorer f=new FileStorer();
 		f.writeFile("test.txt", "Hi");
