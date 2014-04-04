@@ -64,8 +64,9 @@ public abstract class RPGEngine{
 	 * @param tileSize the tile size
 	 */
 	public void addNewWalkAroundWorld(int tileSize, String background){
-		World world = new ArenaWorld(tileSize, background);
+		World world = new WalkAroundWorld(tileSize, background);
 		world.setDimensions(myCanvas.getWidth(), myCanvas.getHeight());
+		int x = myCanvas.getWidth();
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
 		myCollisionMatrix=null;
@@ -81,7 +82,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
-			myCurrentWorld.repaint();
+			myCanvas.repaint();
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
 				go.move();

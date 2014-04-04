@@ -20,7 +20,7 @@ import engine.gridobject.person.Player;
 import engine.gridobject.person.RuleFollower;
 import engine.images.ScaledImage;
 
-public abstract class World extends JPanel{
+public abstract class World {
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;
@@ -40,6 +40,7 @@ public abstract class World extends JPanel{
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
+//		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
 	
 
@@ -49,8 +50,21 @@ public abstract class World extends JPanel{
 		myNumTileHeight = height/myTileSize;
 		makeTileMatrix();
 	}
+	
 	public int[] getTileSize(){
 		return new int[] {myNumTileWidth, myNumTileHeight};
+	}
+	
+	public int getTileGridHeight() {
+		return myNumTileHeight;
+	}
+	
+	public int getTileGridWidth() {
+		return myNumTileWidth;
+	}
+	
+	public String getBackgroundString() {
+		return myBackground;
 	}
 
 	/**
@@ -83,25 +97,25 @@ public abstract class World extends JPanel{
 
 
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D) g;
-		setOpaque(false);
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		
-		int height = myNumTileHeight * myTileSize;
-		int width = myNumTileWidth * myTileSize;
-		Image background = new ScaledImage(width, height,myBackground).scaleImage();
-		g2d.drawImage(background, 0, 0,null);
-		
-		for(int i=0; i<myGridObjectList.size(); i++){
-			myGridObjectList.get(i).paint(g2d);
-		}
-	}
+//	@Override
+//	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//		Graphics2D g2d = (Graphics2D) g;
+//		setOpaque(false);
+//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//				RenderingHints.VALUE_ANTIALIAS_ON);
+//		
+//		int height = myNumTileHeight * myTileSize;
+//		int width = myNumTileWidth * myTileSize;
+//		Image background = new ScaledImage(width, height,myBackground).scaleImage();
+//		g2d.drawImage(background, 0, 0,null);
+//		
+//		for(int i=0; i<myGridObjectList.size(); i++){
+//			myGridObjectList.get(i).paint(g2d);
+//		}
+//	}
 
-
+	
 	
 	public void setViewSize(){
 		

@@ -28,6 +28,7 @@ public class NPC extends RuleFollower {
 			myDialogue.remove(0);
 		}
 	}
+	
 
 
 

@@ -7,6 +7,8 @@ import engine.world.Tile;
 
 public class Player extends RuleFollower {
 	public boolean aClick = false;
+	
+	
 	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
 		super(image, speed, numTilesWidth, numTilesHeight);
 		myItems = null;
