@@ -2,8 +2,8 @@ package engine.gridobject;
 
 public class Barrier extends GridObject{
 
-	public Barrier(String image, int numTiles) {
-		super(image, numTiles);
+	public Barrier(String image, int numTilesWidth, int numTilesHeight) {
+		super(image, numTilesWidth, numTilesHeight);
 		
 	}
 

@@ -32,7 +32,7 @@ public class Tile {
 	public void setTileObject(GridObject obj){
 		myObject = obj;
 		obj.setPosition(myX, myY);
-		obj.setSize(mySize*obj.getNumTiles(), mySize*obj.getNumTiles());
+		obj.setSize(mySize*obj.getNumTiles()[0], mySize*obj.getNumTiles()[1]);
 		obj.setImage(obj.getImageFile());
 		
 	}

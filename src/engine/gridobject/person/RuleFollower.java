@@ -1,8 +1,9 @@
-package engine.gridobject;
+package engine.gridobject.person;
 
 import java.awt.Rectangle;
 import java.util.List;
 
+import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
 import engine.world.Tile;
@@ -17,13 +18,12 @@ public class RuleFollower extends GridObject {
 	protected int myMinX;
 	protected int myMaxY;
 	protected int myMinY;
-	protected List<String> myDialogue;
+
 	protected Weapon myWeapon;
 	
-	public RuleFollower(String image, double speed, int numTiles) {
-		super(image, numTiles);
+	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight) {
+		super(image, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
-		myDialogue=null;
 		resetMax();
 		myWeapon = null;
 	}
@@ -57,10 +57,10 @@ public class RuleFollower extends GridObject {
 	}
 
 	private void updateFacing() {
-		if(myDX>0)facing="right";
-		else if(myDX<0)facing="left";
-		else if(myDY>0)facing="down";
-		else if(myDY<0)facing="up";
+		if(myDX>0)setFacing("right");
+		else if(myDX<0)setFacing("left");
+		else if(myDY>0)setFacing("down");
+		else if(myDY<0)setFacing("up");
 	}
 	
 	public Rectangle getNextBounds(){
@@ -84,11 +84,6 @@ public class RuleFollower extends GridObject {
 		}
 	}
 	
-	public void addDialogue(String dialogue){
-		myDialogue.add(dialogue);
-	}
-	public List<String> getDialogueList(){
-		return myDialogue;
-	}
+
 
 }

@@ -1,7 +1,11 @@
 package engine.main;
 
+import java.awt.event.KeyEvent;
+
+import engine.Control;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Player;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
 import engine.world.WalkAroundWorld;
@@ -59,8 +63,8 @@ public abstract class RPGEngine{
 	 *
 	 * @param tileSize the tile size
 	 */
-	public void addNewWalkAroundWorld(int tileSize){
-		World world = new ArenaWorld(tileSize);
+	public void addNewWalkAroundWorld(int tileSize, String background){
+		World world = new ArenaWorld(tileSize, background);
 		world.setDimensions(myCanvas.getWidth(), myCanvas.getHeight());
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
@@ -108,5 +112,7 @@ public abstract class RPGEngine{
 	public World getCurrentWorld(){
 		return myCurrentWorld;
 	}
+	
+
 	
 }

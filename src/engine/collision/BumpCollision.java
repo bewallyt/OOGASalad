@@ -1,8 +1,8 @@
 package engine.collision;
 
 import engine.gridobject.GridObject;
-import engine.gridobject.Player;
-import engine.gridobject.RuleFollower;
+import engine.gridobject.person.Player;
+import engine.gridobject.person.RuleFollower;
 
 public class BumpCollision extends CollisionHandler{
 

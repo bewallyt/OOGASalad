@@ -9,8 +9,8 @@ public class StatBuffer extends Item {
 	private int myAmountToChange;
 
 	public StatBuffer(String image, String name, Statistic statistic,
-			int amountToChange, int numTiles) {
-		super(image, name, numTiles);
+			int amountToChange, int numTilesWidth, int numTilesHeight) {
+		super(image, name, numTilesWidth, numTilesHeight);
 		myStatistic = statistic;
 		myAmountToChange = amountToChange;
 	}

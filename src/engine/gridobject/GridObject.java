@@ -1,22 +1,16 @@
 package engine.gridobject;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.awt.image.FilteredImageSource;
-import java.awt.image.ImageFilter;
-import java.awt.image.ImageProducer;
-import java.awt.image.RGBImageFilter;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
 
 import engine.Statistic;
-import engine.collision.CollisionHandler;
+import engine.images.ScaledImage;
 
 public abstract class GridObject{
 
@@ -26,28 +20,24 @@ public abstract class GridObject{
 	protected int myY;
 	protected int myStartX;
 	protected int myStartY;
-	
-	protected CollisionHandler myCollisionHandler;
-	protected String myImageFile;
 	protected Image myImage;
+	private String myImageName;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
-	String facing = "down";
-	private int myNumTiles;
+	private String facing = "down";
+	private int myNumTilesWidth;
+	private int myNumTilesHeight;
 	
-	public GridObject(String image, int numTiles) {
+	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
-		myCollisionHandler = null;
-		myImageFile=image;
-		myNumTiles=numTiles;
+		myNumTilesWidth=numTilesWidth;
+		myNumTilesHeight = numTilesHeight;
+		myImageName=image;
 	}
-	public int getNumTiles(){
-		return myNumTiles;
+	public int[] getNumTiles(){
+		return new int[] {myNumTilesWidth, myNumTilesHeight};
 	}
-	
-	public String getImageFile(){
-		return myImageFile;
-	}
+
 	public void setSize(int width, int height){
 		myWidth=width;
 		myHeight=height;
@@ -64,20 +54,19 @@ public abstract class GridObject{
 	public int[] getPosition(){
 		return new int[] {myX,myY};
 	}
+	public String getImageFile(){
+		return myImageName;
+	}
 	public void setImage(String file) {
-		Image img = scaleImage(myWidth,myHeight,file);
-		myImage = img;
-		
+		Image img = new ScaledImage(myWidth,myHeight,file).scaleImage();
+		myImage = img;	
 	}
 	
 	public void paint(Graphics2D g) {
 		g.drawImage(myImage, myX, myY, null);
 	}
 	
-	
-	public void setCollisionHandler(CollisionHandler handler) {
-		myCollisionHandler = handler;
-	}
+
 	public void addStatistic(Statistic stat) {
 		myStatsMap.put(stat.getName(), stat);
 	}
@@ -100,27 +89,22 @@ public abstract class GridObject{
 	public void setDoesHarm(boolean harm){
 		doesHarm=harm;
 	}
-	public Image scaleImage(int WIDTH, int HEIGHT, String filename) {
-		BufferedImage bi = null;
-		try {
-			ImageIcon ii = new ImageIcon(this.getClass().getResource(filename));
-			bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g2d = (Graphics2D) bi.createGraphics();
-			g2d.addRenderingHints(new RenderingHints(
-					RenderingHints.KEY_RENDERING,
-					RenderingHints.VALUE_RENDER_QUALITY));
-			g2d.drawImage(ii.getImage(), 0, 0, WIDTH, HEIGHT, null);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return bi;
-
-	}
 	
 	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
-	public void uniqueMove(){};
+	public void uniqueMove(){}
+	public int getX() {
+		return myX;
+	}
+	public int getY() {
+		return myY;
+	}
+	
+	public String getFacing() {
+		return facing;
+	}
+	public void setFacing(String facing) {
+		this.facing = facing;
+	}
 	
 }
