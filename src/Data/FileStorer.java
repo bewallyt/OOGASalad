@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 import authoring.WorldData;
 
@@ -42,31 +44,30 @@ public class FileStorer {
 	/**
 	 * Writes a String to a file
 	 * @param fileName String to name the file
-	 * @param jsonString jsonString to be saved
+	 * @param s String to be saved
 	 */
-	private void writeFile(String fileName, String jsonString){
+	private void writeFile(String fileName, String s){
 		BufferedWriter writer=null;
 		try{
 			File folder = new File(savedGamesPath);
 
 			File jsonFile=new File(folder, fileName);
 			writer=new BufferedWriter(new FileWriter(jsonFile));
-			writer.write(jsonString);
+			writer.write(s);
 			writer.close();	
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-
-
 	}	
 	/**
-	 * Loads the saved game JSON file from the SavedGames folder. 
+	 * Loads the saved game JSON file from the SavedGames folder. See "getSavedGameList" method to see a list of
+	 * currently saved games. 
 	 * @param fileName Name of the file that is to be loaded
 	 * @return Returns the WorldData object that was originally stored
 	 * @throws IOException
 	 */
-	public WorldData loadFile(String fileName) throws IOException {
+	public WorldData getWorldData(String fileName) throws IOException {
 		FileReader fr=new FileReader(savedGamesPath+fileName);
 		BufferedReader br=new BufferedReader(fr);
 		try{
@@ -82,6 +83,22 @@ public class FileStorer {
 		} finally{
 			br.close();
 		}
+	}
+	/**
+	 * Method used to access the string names of all saved game files currently in the 
+	 * saved game directory. See "loadFile" method to actually load the WorldData class 
+	 * corresponding to that file. 
+	 * @return List of names of the saved game files. 
+	 */
+	public List<String> getSavedGameList(){
+		File folder=new File(savedGamesPath);
+		File[] listOfFiles=folder.listFiles();
+		List<String> fileNameList=new ArrayList<String>();
+		for(File f: listOfFiles){
+			fileNameList.add(f.getName());
+		}
+		return fileNameList;
+		
 	}
 	public static void main(String[] args){
 		FileStorer f=new FileStorer();
