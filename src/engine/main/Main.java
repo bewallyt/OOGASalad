@@ -18,7 +18,7 @@ public class Main extends RPGEngine {
 		addGridObject(player, 3, 3);
 		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
 		addGridObject(bafm,10,10);
-		bafm.addDialogue("Hey Bitch. Fight Me!");
+
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 		
 		for(int i=0; i<world.getTileGridWidth(); i++){
@@ -30,7 +30,7 @@ public class Main extends RPGEngine {
 			addGridObject(new Barrier("tree.png",1,2), world.getTileGridWidth()-1,i );
 		}
 
-	//	addGridObject(new DialogueBox("Dialogue.png","hello"),2,15);
+//		addGridObject(new Dialogue("Dialogue.png","hello"),2,15);
 		
 		
 	}
@@ -46,8 +46,6 @@ public class Main extends RPGEngine {
 	public void run() {
 		if(myPlayer.getAClick())
 			myEnemy.doNextDialogue();
-			
-		
 	}
 
 	public static void main(String[] args) {
