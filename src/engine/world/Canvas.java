@@ -62,8 +62,8 @@ public class Canvas extends JPanel{
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		int height = myWorld.getTileGridHeight() * myWorld.getTileSize()[1];
-		int width = myWorld.getTileGridWidth() * myWorld.getTileSize()[0];
+		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
+		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
 		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
 		g2d.drawImage(background, 0, 0,null);
 		//System.out.println(width + ", " + height);

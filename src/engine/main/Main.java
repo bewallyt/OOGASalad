@@ -21,13 +21,13 @@ public class Main extends RPGEngine {
 		bafm.addDialogue("Hey Bitch. Fight Me!");
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 		
-		for(int i=0; i<world.getTileSize()[0]; i++){
+		for(int i=0; i<world.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
-			addGridObject(new Barrier("tree.png",1,2), i, world.getTileSize()[1]-1-1);
+			addGridObject(new Barrier("tree.png",1,2), i, world.getTileGridHeight()-1-1);
 		}
-		for(int i=0; i<world.getTileSize()[1]; i++){
+		for(int i=0; i<world.getTileGridHeight(); i++){
 			addGridObject(new Barrier("tree.png",1,2), 0, i);
-			addGridObject(new Barrier("tree.png",1,2), world.getTileSize()[0]-1,i );
+			addGridObject(new Barrier("tree.png",1,2), world.getTileGridWidth()-1,i );
 		}
 
 	//	addGridObject(new DialogueBox("Dialogue.png","hello"),2,15);

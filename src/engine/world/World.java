@@ -51,8 +51,8 @@ public abstract class World {
 		makeTileMatrix();
 	}
 	
-	public int[] getTileSize(){
-		return new int[] {myNumTileWidth, myNumTileHeight};
+	public int getTileSize(){
+		return myTileSize;
 	}
 	
 	public int getTileGridHeight() {
