@@ -33,6 +33,7 @@ public class Temporary extends Feature{
 			}        
 		});    
 		//myComponents.put(new TestPane(), "xxx");
+		//frame.pack();
 		frame.setVisible(true);  
 	}
 	

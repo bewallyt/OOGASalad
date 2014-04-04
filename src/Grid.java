@@ -31,6 +31,7 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 				gbc.gridy = row;
 				CellPanel cell = new CellPanel(row, col);
 				cell.setBorder(defaultBorder);
+				cell.setMinimumSize(new Dimension(48, 48));
 				cell.addMouseListener(this);
 				add(cell, gbc);
 			}
@@ -61,15 +62,6 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 		JScrollPane listScroller = new JScrollPane(list);
 		listScroller.setPreferredSize(new Dimension(250, 800));
 		
-		/*String selectedTileType = ListDialog.showDialog(
-                this,
-                null,
-                "Select a tile type: ",
-                "Tile Creator",
-                tileTypes,
-                null,
-                null);*/
-		
 		String selectedTileImage= ListDialog.showDialog(
                 this,
                 null,
@@ -79,8 +71,18 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
                 null,
                 null);
 		
-		selectedCell.setImage(selectedTileImage);
+		String selectedTileData = ListDialog.showDialog(
+                this,
+                null,
+                "Select what goes on this tile: ",
+                "Tile Creator",
+                tileTypes,
+                null,
+                null);
+		selectedCell.setTileImage(selectedTileImage);
+		selectedCell.setTileDataImage(selectedTileData);
 		this.revalidate();
+		this.repaint();
 	}
 	
 	@Override

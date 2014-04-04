@@ -1,23 +1,20 @@
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.*;
-import javax.imageio.ImageIO;
+import java.awt.*;
 
 public class CellPanel extends JPanel{
 
-	private ImageIcon myImage;
+	private ImageIcon myTileImage;
+	private ImageIcon myTileDataImage;
+	private JLabel myTileLabel;
+	private JLabel myTileDataLabel;
 	protected int myRow;
 	protected int myCol;
 
 	public CellPanel(int row, int col){
 		myRow = row;
 		myCol = col;
+		this.setLayout(new BorderLayout());
 	}
 
 	@Override
@@ -25,9 +22,23 @@ public class CellPanel extends JPanel{
 		return new Dimension(48, 48);
 	}
 	
-	public void setImage(String fileName){	
-		myImage = new ImageIcon("C:/Users/Richard Cao/Desktop/Spring2014/" + fileName + ".jpg"); 
-		JLabel label = new JLabel(myImage);
-		this.add(label);
+	public void setTileImage(String fileName){	
+		if(myTileLabel != null)
+			this.remove(myTileLabel);
+		myTileImage = new ImageIcon("C:/Users/Richard Cao/Desktop/Spring2014/" + fileName + ".jpg"); 
+		myTileLabel = new JLabel(myTileImage);
+		myTileLabel.setLayout(new BorderLayout());
+		myTileLabel.setOpaque(false);
+		this.add(myTileLabel);
+	}
+	
+	//The way I'm putting two images on one tile is that I'm adding the TileData image label to the
+	//tile image label. Does this work when the game actually runs?
+	public void setTileDataImage(String fileName){
+		if(myTileDataLabel != null)
+			this.remove(myTileDataLabel);
+		myTileDataImage = new ImageIcon("C:/Users/Richard Cao/Desktop/Spring2014/" + fileName + ".jpg"); 
+		myTileDataLabel = new JLabel(myTileDataImage);
+		myTileLabel.add(myTileDataLabel);
 	}
 }
