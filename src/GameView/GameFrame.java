@@ -8,15 +8,29 @@ import engine.gridobject.person.Player;
 import engine.world.Canvas;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
-import engine.main.RPGEngine;;
+import engine.main.RPGEngine;
+import authoring.GridObjectData;
+import authoring.TileData;
+import authoring.WorldData;
+import Data.DataDummy;
 
 public class GameFrame extends RPGEngine {
 
 	private int spriteWidth = 1;
 	private int spriteHeight = 1;
+	private WorldData myWorldData;
+	private DataDummy myData;
 	
 	Player myPlayer;
 	BackAndForthMover myEnemy;
+	
+	public GameFrame(){
+		myData = new DataDummy();
+		myWorldData = myData.getWorldData();
+		
+		initializeGame();
+	}
+	
 	public void addObjects(World world){
 		Player player = myPlayer = initPlayer();
 		addGridObject(player, 3, 3);
@@ -42,6 +56,7 @@ public class GameFrame extends RPGEngine {
 	@Override
 	public void initializeGame() {
 		initializeCanvas(800, 800);
+//		initializeCanvas(myWorldData.getWorldSize()[0], myWorldData.getWorldSize()[1]);
 		addNewWalkAroundWorld(40,"grass.jpg");
 		addObjects(getCurrentWorld());
 	}
@@ -53,6 +68,9 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	private Player initPlayer() {
+		
+		GridObjectData myPlayer = myWorldData.getPlayerData();
+		
 		String[] animImages = new String[12];
 		animImages[0] = "fs.png";
 		animImages[3] = "ls.png";
@@ -62,16 +80,12 @@ public class GameFrame extends RPGEngine {
 		player.getAnimImages(animImages);
 		return player;
 	}
-	
-//	private BackAndForthMover initEnemies() {
-//		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);		
-//	}
 
 	public static void main(String[] args) {
-		GameFrame engine = new GameFrame();
-		engine.initializeGame();
+		GameFrame game = new GameFrame();
+//		engine.initializeGame();
 		try {
-			engine.doGameLoop();
+			game.doGameLoop();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
