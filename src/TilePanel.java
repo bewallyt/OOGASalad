@@ -2,7 +2,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 import java.awt.*;
 
-public class CellPanel extends JPanel{
+public class TilePanel extends JPanel{
 
 	private ImageIcon myTileImage;
 	private ImageIcon myTileDataImage;
@@ -11,7 +11,7 @@ public class CellPanel extends JPanel{
 	protected int myRow;
 	protected int myCol;
 
-	public CellPanel(int row, int col){
+	public TilePanel(int row, int col){
 		myRow = row;
 		myCol = col;
 		this.setLayout(new BorderLayout());
