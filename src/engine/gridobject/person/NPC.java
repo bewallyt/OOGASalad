@@ -11,6 +11,16 @@ public class NPC extends RuleFollower {
 	private Movement myMovement;
 	private Player myPlayer;
 	
+	/**
+	 * Instantiates a new npc.
+	 *
+	 * @param image the image
+	 * @param speed the speed
+	 * @param numTilesWidth the num tiles width
+	 * @param numTilesHeight the num tiles height
+	 * @param movementType the movement type. 1=move back and forth, 2=follow player when player gets close, 3=don't move
+	 * @param player the player
+	 */
 	public NPC(String image, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(image, speed, numTilesWidth, numTilesHeight);
 		myDialogue=new ArrayList<String>();
