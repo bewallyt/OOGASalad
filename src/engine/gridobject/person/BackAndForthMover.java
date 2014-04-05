@@ -28,15 +28,15 @@ public class BackAndForthMover extends Enemy {
 	 * @param yEnd the y ending pos
 	 */
 	public void moveBackAndForth(){
-		if(super.getX()==myXEnd)
+		if(getX()==myXEnd)
 			setSpeed(getSpeed() * -1);
-		if(super.getX()==myXStart)
+		if(getX()==myXStart)
 			setSpeed(getSpeed() * -1);
 		if(myXStart!=0 && myXEnd!=0)setDX(getSpeed());
 
-		if(super.getY()==myYEnd)
+		if(getY()==myYEnd)
 			setSpeed(getSpeed() * -1);
-		if(super.getY()==myYStart)
+		if(getY()==myYStart)
 			setSpeed(getSpeed() * -1);
 		if(myYStart!=0 && myYEnd!=0)setDY(getSpeed());
 	}

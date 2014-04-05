@@ -126,6 +126,12 @@ public abstract class GridObject{
 	public void setFacing(String facing) {
 		this.facing = facing;
 	}
+	public int getStartX(){
+		return myStartX;
+	}
+	public int getStartY(){
+		return myStartY;
+	}
 
 
 	

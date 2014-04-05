@@ -6,7 +6,6 @@ import java.util.List;
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
-import engine.world.Tile;
 
 public class RuleFollower extends GridObject {
 
@@ -18,11 +17,15 @@ public class RuleFollower extends GridObject {
 	private int myMinX;
 	private int myMaxY;
 	private int myMinY;
-
 	protected Weapon myWeapon;
 	
-	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight) {
+	
+	
+	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight ) {
 		super(image, numTilesWidth, numTilesHeight);
+		
+		
+		
 		setSpeed(speed);
 		resetMax();
 		myWeapon = null;
