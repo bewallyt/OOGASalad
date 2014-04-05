@@ -3,6 +3,7 @@ package engine.gridobject.person;
 public class PlayerApproacher extends Enemy{
 
 	private Player myPlayer;
+	
 	public PlayerApproacher(String image, double speed, int numTilesWidth, int numTilesHeight,
 			Player player) {
 		super(image, speed, numTilesWidth, numTilesHeight, player);
@@ -15,15 +16,15 @@ public class PlayerApproacher extends Enemy{
 	}
 	
 	public void approachPlayer(Player player){
-		if(getDistance(getX(), myY, player.getX(), player.getY())<70 || nearPlayer){
-			nearPlayer=true;
-			if(myX<player.getX())
-				myDX=Math.abs(mySpeed);
-			else{myDX=-Math.abs(mySpeed);}
+		if(getDistance(getX(), super.getY(), player.getX(), player.getY())<70 || isNearPlayer()){
+			setIsNearPlayer(true);
+			if(super.getX()<player.getX())
+				setDX(Math.abs(getSpeed()));
+			else{setDX(-Math.abs(getSpeed()));}
 
-			if(myY<player.getY())
-				myDY = Math.abs(mySpeed);
-			else{myDY=-Math.abs(mySpeed);}
+			if(super.getY()<player.getY())
+				setDY(Math.abs(getSpeed()));
+			else{setDY(-Math.abs(getSpeed()));}
 
 			System.out.println("near");
 		}

@@ -10,20 +10,20 @@ import engine.world.Tile;
 
 public class RuleFollower extends GridObject {
 
-	protected List<Item> myItems;
-	protected double mySpeed;
-	protected double myDX=0;
-	protected double myDY=0;
-	protected int myMaxX;
-	protected int myMinX;
-	protected int myMaxY;
-	protected int myMinY;
+	private List<Item> myItems;
+	private double mySpeed;
+	private double myDX=0;
+	private double myDY=0;
+	private int myMaxX;
+	private int myMinX;
+	private int myMaxY;
+	private int myMinY;
 
 	protected Weapon myWeapon;
 	
 	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight) {
 		super(image, numTilesWidth, numTilesHeight);
-		mySpeed = speed;
+		setSpeed(speed);
 		resetMax();
 		myWeapon = null;
 	}
@@ -54,25 +54,26 @@ public class RuleFollower extends GridObject {
 	@Override
 	public void move() {
 		updateFacing();
-		if(!(myX+myDX>myMaxX) && !(myX+myDX-myWidth<myMinX))
-			myX+=myDX;
-		if(!(myY+myDY+myHeight>myMaxY) && !(myY+myDY<myMinY))
-			myY+=myDY;
+		if(!(super.getX()+getDX()>myMaxX) && !(super.getX()+getDX()-super.getWidth()<myMinX))
+			super.incrementX(getDX());
+		if(!(super.getY()+getDY()+super.getHeight()>myMaxY) && !(super.getY()+getDY()<myMinY))
+			super.incrementY(getDY());
 		resetMax();
 		uniqueMove();
 		
 	}
 
 	private void updateFacing() {
-		if(myDX>0)setFacing("right");
-		else if(myDX<0)setFacing("left");
-		else if(myDY>0)setFacing("down");
-		else if(myDY<0)setFacing("up");
+		if(getDX()>0)setFacing("right");
+		else if(getDX()<0)setFacing("left");
+		else if(getDY()>0)setFacing("down");
+		else if(getDY()<0)setFacing("up");
 	}
 	
 	public Rectangle getNextBounds(){
 		
-		return new Rectangle((int)(myX+myDX), (int)(myY+myDY), myWidth, myHeight);
+		return new Rectangle((int)(super.getX()+getDX()), (int)(super.getY()+getDY()), 
+										super.getWidth(), super.getHeight());
 	}
 	
 	public void addWeapon(Weapon weapon){
@@ -80,15 +81,47 @@ public class RuleFollower extends GridObject {
 	}
 
 	public void addItem(Item it) {
-		myItems.add(it);
+		getItems().add(it);
 	}
 	
+	public List<Item> getItems() {
+		return myItems;
+	}
+
+	public void setMyItems(List<Item> items) {
+		myItems = items;
+	}
+
 	public void removeItem(Item it) {
-		for (Item current : myItems) {
+		for (Item current : getItems()) {
 			if (current.getName().equals(it.getName())) {
-				myItems.remove(current);
+				getItems().remove(current);
 			}
 		}
+	}
+
+	public double getDY() {
+		return myDY;
+	}
+
+	public void setDY(double myDY) {
+		this.myDY = myDY;
+	}
+
+	public double getSpeed() {
+		return mySpeed;
+	}
+
+	public void setSpeed(double mySpeed) {
+		this.mySpeed = mySpeed;
+	}
+
+	public double getDX() {
+		return myDX;
+	}
+
+	public void setDX(double myDX) {
+		this.myDX = myDX;
 	}
 	
 
