@@ -7,7 +7,7 @@ public class Main {
 		// add features here! HelpPageFeature included as an example.
 		//myFeatures.add(new HelpPageFeature());
 		//myFeatures.add(new GridEditor());
-		myFeatures.add(new Grid());
+		//myFeatures.add(new Grid());
 		myFeatures.add(new GridObjectCreation());
 
 		AuthoringView view = new AuthoringView(myFeatures);
