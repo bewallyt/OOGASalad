@@ -1,22 +1,25 @@
 package authoring;
-/*
- * This is a test TileData class
- */
+
+import java.util.*;
 
 public class TileData {
 	private String myImageName;
-	private GridObjectData[] myGridObjectDatas;
-	public TileData() {
-		myImageName = "";
-		myGridObjectDatas = null;
+	private List<GridObjectData> myGridObjectDatas;
+	
+	public TileData(String s) {
+		myImageName = s;
+		myGridObjectDatas = new ArrayList<GridObjectData>();
 	}
 	
 	public String getImageName(){
 		return myImageName;
 	}
 	
-	public GridObjectData[] getGridObjectDatas() {
+	public List<GridObjectData> getGridObjectDatas() {
 		return myGridObjectDatas;
 	}
-
+	
+	protected void addGridObjectData(GridObjectData gd){
+		myGridObjectDatas.add(gd);
+	}
 }

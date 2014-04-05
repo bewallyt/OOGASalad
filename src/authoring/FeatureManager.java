@@ -5,6 +5,8 @@ import java.util.List;
 
 public class FeatureManager {
 	public static List<Feature> myFeatures = new ArrayList<Feature>();
+	public static WorldData myWorld = new WorldData();
+	
 	public static void addFeature(Feature f){
 		myFeatures.add(f);
 	}
@@ -15,5 +17,9 @@ public class FeatureManager {
 				myFeature = f;
 		}
 		return myFeature;
+	}
+	
+	public static WorldData getWorldData(){
+		return myWorld;
 	}
 }
