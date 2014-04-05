@@ -1,8 +1,11 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import engine.*;
+import engine.gridobject.GridObject;
+import engine.world.SurroundingChecker;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
@@ -10,13 +13,16 @@ public class Player extends RuleFollower {
 
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
+	private SurroundingChecker mySurroundingChecker;
 	
 	private boolean isAnimated = false;
 	private String[] myAnimImages;
+ 
 	
-	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
+	public Player(String image, double speed, int numTilesWidth, int numTilesHeight, SurroundingChecker checker) {
 		super(image, speed, numTilesWidth, numTilesHeight);
 		setMyItems(null);
+		mySurroundingChecker = checker;
 	}
 	
 //	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -40,8 +46,13 @@ public class Player extends RuleFollower {
 			setDX(super.getSpeed());
 		if (e.getKeyCode() == AbstractGameState.LEFT)
 			setDX(-super.getSpeed());
-		if (e.getKeyCode() == AbstractGameState.A)
+		if (e.getKeyCode() == AbstractGameState.A) {
 			aClick = true;
+			GridObject surroundingNPC = mySurroundingChecker.checkSurroundings(this);
+			// to do: call surroundingNPC.doDialogue()...but this hasn't been implemented yet, 
+			// later tonight or tomorrow morning.
+			
+		}
 			
 	}
 

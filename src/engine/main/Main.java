@@ -6,6 +6,7 @@ import engine.gridobject.Barrier;
 import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
@@ -32,7 +33,9 @@ public class Main extends RPGEngine {
 	}
 	
 	public void addObjects(World world){
-		Player player = myPlayer = new Player("player.png",2,1, 1);
+		
+		SurroundingChecker checker = new SurroundingChecker(world);
+		Player player = myPlayer = new Player("player.png",2,1, 1, checker);
 		addGridObject(player, 3, 3);
 		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
 		addGridObject(bafm,10,10);
