@@ -22,6 +22,7 @@ public abstract class GridObject{
 	protected int myStartY;
 	protected Image myImage;
 	private String myImageName;
+//	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	private String facing = "down";

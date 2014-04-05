@@ -7,15 +7,30 @@ import engine.world.Tile;
 
 public class Player extends RuleFollower {
 	
+
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
+	
+	private boolean isAnimated = false;
+	private String[] myAnimImages;
 	
 	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
 		super(image, speed, numTilesWidth, numTilesHeight);
 		myItems = null;
-	
 	}
-
+	
+//	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+//		super(animImages, speed, numTilesWidth, numTilesHeight);
+//		isAnimated = true;
+//		myAnimImages = animImages;
+//		myItems = null;
+//	}
+	
+	public void getAnimImages(String[] animImages) {
+		myAnimImages = animImages;
+		isAnimated = true;
+	}
+	
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == AbstractGameState.UP)
 			myDY = -mySpeed;

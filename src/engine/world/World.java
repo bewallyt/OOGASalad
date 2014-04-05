@@ -36,14 +36,11 @@ public abstract class World {
 	 * @param tileSize the tile size
 	 */
 	public World(int tileSize, String background) {
-		System.out.println("width " + tileSize);
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
-	
-
 	
 	public void setDimensions(int width, int height){
 		myNumTileWidth = width/myTileSize;
@@ -65,6 +62,7 @@ public abstract class World {
 	
 	public String getBackgroundString() {
 		return myBackground;
+
 	}
 
 	/**
