@@ -109,19 +109,19 @@ public class GameFrame extends RPGEngine {
 		*/
 	}
 
-	public static void main(String[] args) {
-		GameFrame game = new GameFrame();
-		try {
-			game.doGameLoop();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		//		Canvas canvas = new Canvas (800,800);
-		//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
-		//		canvas.setWorld(waWorld);
-		//		engine.addObjects(waWorld);
-		//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
-		//		engine.doGameLoop(waWorld, cm);
-	}
+//	public static void main(String[] args) {
+//		GameFrame game = new GameFrame();
+//		try {
+//			game.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		//		Canvas canvas = new Canvas (800,800);
+//		//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
+//		//		canvas.setWorld(waWorld);
+//		//		engine.addObjects(waWorld);
+//		//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
+//		//		engine.doGameLoop(waWorld, cm);
+//	}
 
 }
