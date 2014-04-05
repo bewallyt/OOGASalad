@@ -11,8 +11,8 @@ import engine.world.World;
 
 public class Main extends RPGEngine {
 
-	Player myPlayer;
-	BackAndForthMover myEnemy;
+	private Player myPlayer;
+	private BackAndForthMover myEnemy;
 	
 	
 	public static void main(String[] args) {
