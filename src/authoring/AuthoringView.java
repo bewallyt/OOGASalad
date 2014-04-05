@@ -1,3 +1,4 @@
+package authoring;
 
 import java.awt.BorderLayout;
 import java.util.*;

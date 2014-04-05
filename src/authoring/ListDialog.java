@@ -1,3 +1,4 @@
+package authoring;
 
 import javax.swing.*;
 import java.awt.*;
