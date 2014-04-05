@@ -2,6 +2,8 @@ package authoring;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.*;
 
@@ -22,6 +24,8 @@ public class GridObjectCreation extends Feature{
 		}	
 	}
 	private class GridObjectWindow extends JPanel{
+		private Map<String, JComponent> myPanels;
+		
 		private JCheckBox steppableCheck;
 		private JCheckBox encounterableCheck;
 		
@@ -37,23 +41,37 @@ public class GridObjectCreation extends Feature{
 		private JScrollPane yTileCoWrapper;
 		
 		public GridObjectWindow(){
+			this.setLayout(new BorderLayout());
+			instantiatePanels();
+			
 			steppableCheck = new JCheckBox("Steppable?");
-			add(steppableCheck, BorderLayout.SOUTH);
+			myPanels.get(BorderLayout.SOUTH).add(steppableCheck);
 			encounterableCheck = new JCheckBox("Encounterable?");
-			add(encounterableCheck, BorderLayout.SOUTH);
+			myPanels.get(BorderLayout.SOUTH).add(encounterableCheck);
 			
 			encounterRate = new JTextArea(1,3);
 			encounterRateWrapper = new JScrollPane(encounterRate);
-			add(encounterRateWrapper, BorderLayout.SOUTH);
+			myPanels.get(BorderLayout.SOUTH).add(encounterRateWrapper);
 			
 			coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
-			add(coordinatesLabel, BorderLayout.NORTH);
+			myPanels.get(BorderLayout.WEST).add(coordinatesLabel);
 			xTileCo = new JTextArea(1,3);
 			xTileCoWrapper = new JScrollPane(xTileCo);
-			add(xTileCoWrapper, BorderLayout.NORTH);
+			myPanels.get(BorderLayout.WEST).add(xTileCoWrapper);
 			yTileCo = new JTextArea(1,3);
 			yTileCoWrapper = new JScrollPane(yTileCo);
-			add(yTileCoWrapper, BorderLayout.NORTH);
+			myPanels.get(BorderLayout.WEST).add(yTileCoWrapper);
+		}
+		private void instantiatePanels() {
+			myPanels = new HashMap<String, JComponent>();
+			myPanels.put(BorderLayout.NORTH, new JPanel());
+			myPanels.put(BorderLayout.SOUTH, new JPanel());
+			myPanels.put(BorderLayout.WEST, new JPanel());
+			myPanels.put(BorderLayout.EAST, new JPanel());
+			myPanels.put(BorderLayout.CENTER, new JPanel());
+			for(String s: myPanels.keySet()){
+				this.add(myPanels.get(s), s);
+			}
 		}
 	}
 }
