@@ -22,6 +22,8 @@ public abstract class RPGEngine{
 	/** The my current world. */
 	private World myCurrentWorld;
 	
+	private Player myPlayer;
+	
 	private CollisionMatrix myCollisionMatrix;;
 	
 	/**
@@ -92,6 +94,12 @@ public abstract class RPGEngine{
 		}
 		
 	}
+	
+	public void addPlayer(String image, double speed, int numTilesWidth, int numTilesHeight){
+		Player player = new Player(image, speed, numTilesWidth, numTilesHeight);
+		player.setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
+		myPlayer = player;
+	}
 
 	/**
 	 * Check collisions. Called by doGameLoop
@@ -112,6 +120,10 @@ public abstract class RPGEngine{
 	
 	public World getCurrentWorld(){
 		return myCurrentWorld;
+	}
+	
+	public Player getPlayer(){
+		return myPlayer;
 	}
 	
 

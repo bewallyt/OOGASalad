@@ -13,7 +13,7 @@ import engine.world.World;
 
 public class Main extends RPGEngine {
 
-	private Player myPlayer;
+//	private Player myPlayer;
 	private NPC myNPC;
 	
 	
@@ -34,11 +34,9 @@ public class Main extends RPGEngine {
 	}
 	
 	public void addObjects(World world){
-		
-		SurroundingChecker checker = new SurroundingChecker(world);
-		Player player = myPlayer = new Player("player.png",2,1, 1, checker);
-		addGridObject(player, 3, 3);
-		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, player);
+		addPlayer("player.png",2,1, 1);
+		addGridObject(getPlayer(), 3, 3);
+		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, getPlayer());
 		addGridObject(bafm,10,10);
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
@@ -66,7 +64,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void run() {
-		if(myPlayer.getAClick())
+		if(getPlayer().getAClick())
 			myNPC.doNextDialogue();
 	}
 

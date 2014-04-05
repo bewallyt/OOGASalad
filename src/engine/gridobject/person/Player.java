@@ -19,10 +19,9 @@ public class Player extends RuleFollower {
 	private String[] myAnimImages;
  
 	
-	public Player(String image, double speed, int numTilesWidth, int numTilesHeight, SurroundingChecker checker) {
+	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
 		super(image, speed, numTilesWidth, numTilesHeight);
 		setMyItems(null);
-		mySurroundingChecker = checker;
 	}
 	
 //	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -32,6 +31,9 @@ public class Player extends RuleFollower {
 //		myItems = null;
 //	}
 	
+	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){
+		mySurroundingChecker = surroundingChecker;
+	}
 	public void getAnimImages(String[] animImages) {
 		myAnimImages = animImages;
 		isAnimated = true;
