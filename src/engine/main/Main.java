@@ -7,6 +7,7 @@ import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
@@ -33,7 +34,9 @@ public class Main extends RPGEngine {
 	}
 	
 	public void addObjects(World world){
-		Player player = myPlayer = new Player("player.png",2,1, 1);
+		
+		SurroundingChecker checker = new SurroundingChecker(world);
+		Player player = myPlayer = new Player("player.png",2,1, 1, checker);
 		addGridObject(player, 3, 3);
 		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, player);
 		addGridObject(bafm,10,10);
