@@ -36,7 +36,7 @@ public class Main extends RPGEngine {
 	public void addObjects(World world){
 		addPlayer("player.png",2,1, 1);
 		addGridObject(getPlayer(), 3, 3);
-		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, getPlayer());
+		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);

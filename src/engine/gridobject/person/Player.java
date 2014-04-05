@@ -49,8 +49,8 @@ public class Player extends RuleFollower {
 		if (e.getKeyCode() == AbstractGameState.LEFT)
 			setDX(-super.getSpeed());
 		if (e.getKeyCode() == AbstractGameState.A) {
-			aClick = true;
-			GridObject surroundingNPC = mySurroundingChecker.checkSurroundings(this);
+			//aClick = true;
+			mySurroundingChecker.checkSurroundings(this);
 			// to do: call surroundingNPC.doDialogue()...but this hasn't been implemented yet, 
 			// later tonight or tomorrow morning.
 			

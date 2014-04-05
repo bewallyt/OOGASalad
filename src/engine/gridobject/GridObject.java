@@ -25,7 +25,8 @@ public abstract class GridObject{
 //	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
-	private String facing = "down";
+	private int xFacing = 0;
+	private int yFacing = 0;
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
 	
@@ -119,12 +120,18 @@ public abstract class GridObject{
 		myX += myDX;
 	}
 	
-	public String getFacing() {
-		return facing;
+	public int getXFacing() {
+		return xFacing;
+	}
+	public int getYFacing() {
+		return yFacing;
 	}
 	
-	public void setFacing(String facing) {
-		this.facing = facing;
+	public void setXFacing(int facing) {
+		xFacing = facing;
+	}
+	public void setYFacing(int facing){
+		yFacing=facing;
 	}
 	public int getStartX(){
 		return myStartX;

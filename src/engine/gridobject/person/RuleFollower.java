@@ -67,10 +67,10 @@ public class RuleFollower extends GridObject {
 	}
 
 	private void updateFacing() {
-		if(getDX()>0)setFacing("right");
-		else if(getDX()<0)setFacing("left");
-		else if(getDY()>0)setFacing("down");
-		else if(getDY()<0)setFacing("up");
+		if(getDX()>0)setXFacing(1);
+		else if(getDX()<0)setXFacing(0);
+		else if(getDY()>0)setYFacing(0);
+		else if(getDY()<0)setYFacing(1);
 	}
 	
 	public Rectangle getNextBounds(){
