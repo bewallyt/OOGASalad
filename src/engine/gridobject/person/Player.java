@@ -2,12 +2,13 @@ package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
 
-import engine.Control;
+import engine.*;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
-	public boolean aClick = false;
 	
+	public boolean aClick = false;
+	//private KeyHandler myKeyHandler;
 	
 	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
 		super(image, speed, numTilesWidth, numTilesHeight);
@@ -16,28 +17,28 @@ public class Player extends RuleFollower {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP)
+		if (e.getKeyCode() == AbstractGameState.UP)
 			myDY = -mySpeed;
-		if (e.getKeyCode() == Control.DOWN)
+		if (e.getKeyCode() == AbstractGameState.DOWN)
 			myDY = mySpeed;
-		if (e.getKeyCode() == Control.RIGHT)
+		if (e.getKeyCode() == AbstractGameState.RIGHT)
 			myDX = mySpeed;
-		if (e.getKeyCode() == Control.LEFT)
+		if (e.getKeyCode() == AbstractGameState.LEFT)
 			myDX = -mySpeed;
-		if (e.getKeyCode() == Control.A)
+		if (e.getKeyCode() == AbstractGameState.A)
 			aClick = true;
 			
 	}
 
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP
-				|| e.getKeyCode() == Control.DOWN)
+		if (e.getKeyCode() == AbstractGameState.UP
+				|| e.getKeyCode() == AbstractGameState.DOWN)
 			myDY = 0;
 
-		if (e.getKeyCode() == Control.RIGHT
-				|| e.getKeyCode() == Control.LEFT)
+		if (e.getKeyCode() == AbstractGameState.RIGHT
+				|| e.getKeyCode() == AbstractGameState.LEFT)
 			myDX = 0;
-		if (e.getKeyCode() == Control.A)
+		if (e.getKeyCode() == AbstractGameState.A)
 			aClick=false;
 	}
 	

@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import engine.Control;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
@@ -21,6 +20,7 @@ import engine.gridobject.person.RuleFollower;
 import engine.images.ScaledImage;
 
 public abstract class World {
+	
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;

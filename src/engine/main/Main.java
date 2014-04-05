@@ -13,6 +13,24 @@ public class Main extends RPGEngine {
 
 	Player myPlayer;
 	BackAndForthMover myEnemy;
+	
+	
+	public static void main(String[] args) {
+		Main engine = new Main();
+		engine.initializeGame();
+		try {
+			engine.doGameLoop();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+//		Canvas canvas = new Canvas (800,800);
+//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
+//		canvas.setWorld(waWorld);
+//		engine.addObjects(waWorld);
+//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
+//		engine.doGameLoop(waWorld, cm);
+	}
+	
 	public void addObjects(World world){
 		Player player = myPlayer = new Player("player.png",2,1, 1);
 		addGridObject(player, 3, 3);
@@ -48,20 +66,6 @@ public class Main extends RPGEngine {
 			myEnemy.doNextDialogue();
 	}
 
-	public static void main(String[] args) {
-			Main engine = new Main();
-			engine.initializeGame();
-			try {
-				engine.doGameLoop();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-	//		Canvas canvas = new Canvas (800,800);
-	//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
-	//		canvas.setWorld(waWorld);
-	//		engine.addObjects(waWorld);
-	//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
-	//		engine.doGameLoop(waWorld, cm);
-		}
+
 
 }
