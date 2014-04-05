@@ -36,13 +36,6 @@ public abstract class GridObject{
 		myImageName=image;
 	}
 	
-//	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
-//		myStatsMap = null;		
-//		myNumTilesWidth=numTilesWidth;
-//		myNumTilesHeight = numTilesHeight;
-//		myAnimImages = animImages;
-//	}
-	
 	public int[] getNumTiles(){
 		return new int[] {myNumTilesWidth, myNumTilesHeight};
 	}
@@ -102,6 +95,7 @@ public abstract class GridObject{
 	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
 	public void uniqueMove(){}
+	
 	public int getX() {
 		return myX;
 	}
