@@ -22,6 +22,7 @@ public abstract class GridObject{
 	protected int myStartY;
 	protected Image myImage;
 	private String myImageName;
+//	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	private String facing = "down";
@@ -34,6 +35,7 @@ public abstract class GridObject{
 		myNumTilesHeight = numTilesHeight;
 		myImageName=image;
 	}
+	
 	public int[] getNumTiles(){
 		return new int[] {myNumTilesWidth, myNumTilesHeight};
 	}
@@ -93,6 +95,7 @@ public abstract class GridObject{
 	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
 	public void uniqueMove(){}
+	
 	public int getX() {
 		return myX;
 	}

@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import engine.Control;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
@@ -21,6 +20,7 @@ import engine.gridobject.person.RuleFollower;
 import engine.images.ScaledImage;
 
 public abstract class World {
+	
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;
@@ -36,14 +36,11 @@ public abstract class World {
 	 * @param tileSize the tile size
 	 */
 	public World(int tileSize, String background) {
-		System.out.println("width " + tileSize);
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
-	
-
 	
 	public void setDimensions(int width, int height){
 		myNumTileWidth = width/myTileSize;
@@ -65,6 +62,7 @@ public abstract class World {
 	
 	public String getBackgroundString() {
 		return myBackground;
+
 	}
 
 	/**
