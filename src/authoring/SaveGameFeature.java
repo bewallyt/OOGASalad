@@ -15,7 +15,7 @@ public class SaveGameFeature extends Feature {
 	}
 	private class SaveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			FeatureManager.getDataManager().storeWorldData("default", FeatureManager.getWorldData());;
+			FeatureManager.getDataManager().setWorldData("default", FeatureManager.getWorldData());
 		}
 	}
 }

@@ -32,13 +32,13 @@ public class GridObjectCreation extends Feature{
 		private JTextArea encounterRate;
 		private JScrollPane encounterRateWrapper;
 		
-		private JLabel coordinatesLabel;
-		
-		private JTextArea xTileCo;
-		private JScrollPane xTileCoWrapper;
-		
-		private JTextArea yTileCo;
-		private JScrollPane yTileCoWrapper;
+//		private JLabel coordinatesLabel;
+//		
+//		private JTextArea xTileCo;
+//		private JScrollPane xTileCoWrapper;
+//		
+//		private JTextArea yTileCo;
+//		private JScrollPane yTileCoWrapper;
 		
 		public GridObjectWindow(){
 			this.setLayout(new BorderLayout());
@@ -53,14 +53,14 @@ public class GridObjectCreation extends Feature{
 			encounterRateWrapper = new JScrollPane(encounterRate);
 			myPanels.get(BorderLayout.SOUTH).add(encounterRateWrapper);
 			
-			coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
-			myPanels.get(BorderLayout.WEST).add(coordinatesLabel);
-			xTileCo = new JTextArea(1,3);
-			xTileCoWrapper = new JScrollPane(xTileCo);
-			myPanels.get(BorderLayout.WEST).add(xTileCoWrapper);
-			yTileCo = new JTextArea(1,3);
-			yTileCoWrapper = new JScrollPane(yTileCo);
-			myPanels.get(BorderLayout.WEST).add(yTileCoWrapper);
+//			coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
+//			myPanels.get(BorderLayout.WEST).add(coordinatesLabel);
+//			xTileCo = new JTextArea(1,3);
+//			xTileCoWrapper = new JScrollPane(xTileCo);
+//			myPanels.get(BorderLayout.WEST).add(xTileCoWrapper);
+//			yTileCo = new JTextArea(1,3);
+//			yTileCoWrapper = new JScrollPane(yTileCo);
+//			myPanels.get(BorderLayout.WEST).add(yTileCoWrapper);
 			
 			JButton createButton = new JButton("Create GridObject!");
 			myPanels.get(BorderLayout.EAST).add(createButton);
