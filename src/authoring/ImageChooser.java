@@ -34,7 +34,7 @@ public class ImageChooser extends Feature implements ActionListener{
 		int returnVal = chooser.showOpenDialog(null);
 		if(returnVal == JFileChooser.APPROVE_OPTION){
 			System.out.println("You chose to open this file: " +
-					chooser.getSelectedFile().getName());
+					chooser.getSelectedFile().getAbsolutePath());
 		}
 	}
 	
