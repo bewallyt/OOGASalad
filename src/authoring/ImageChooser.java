@@ -1,4 +1,5 @@
 package authoring;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ImageChooser extends Feature implements ActionListener{
 	private JButton myChooseImageButton;
 	private String fileName;
+	private String filePath;
+	private JFrame frame;
+	private WorldData myWorldData;
 
 	
 	public ImageChooser(){
@@ -20,13 +24,19 @@ public class ImageChooser extends Feature implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if("choose".equals(e.getActionCommand())){
-			fileName = JOptionPane.showInputDialog("Name your tile image");
-			chooseImage();
+			fileName = JOptionPane.showInputDialog("Name your tile image:");
+			if(fileName.equals("")){
+				JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				fileName = JOptionPane.showInputDialog("Please name the image:");
+				chooseImage();
+			} else{
+				chooseImage();
+			}
 		}
 		
 	}
 	
-	protected void chooseImage(){
+	private void chooseImage(){
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"JPG, PNG, GIF", "jpg","gif","png");
@@ -36,7 +46,17 @@ public class ImageChooser extends Feature implements ActionListener{
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getAbsolutePath());
 		}
+		filePath = chooser.getSelectedFile().getAbsolutePath();
+		addToWorldData();
 	}
+	
+	private void addToWorldData(){
+		//myWorldData.saveImage(s, f);
+		//myWorldData.saveImage(fileName, filePath);
+	}
+	
+	
+	
 	
 
 }
