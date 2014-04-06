@@ -14,6 +14,7 @@ import java.util.List;
 import authoring.WorldData;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class FileStorer {
 	public static final String DEFAULT_SRC_FILE="src/";
@@ -34,7 +35,9 @@ public class FileStorer {
 		File folder = new File(savedGamesPath);
 		File jsonFile=new File(folder, name);
 		try(Writer writer=new FileWriter(jsonFile);){
-			Gson gson=new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.setPrettyPrinting();
+			Gson gson = gsonBuilder.create();
 			gson.toJson(world, writer);
 			
 		} catch (IOException e) {
@@ -77,7 +80,9 @@ public class FileStorer {
 				sb.append(line);
 			}
 			System.out.println(sb.toString());
-			Gson gson=new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.setPrettyPrinting();
+			Gson gson = gsonBuilder.create();
 			WorldData world=gson.fromJson(sb.toString(), WorldData.class);
 			return world;
 		} finally{

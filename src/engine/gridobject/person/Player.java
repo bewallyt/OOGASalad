@@ -1,18 +1,28 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
-import engine.Control;
+import engine.*;
+import engine.gridobject.GridObject;
+import engine.world.SurroundingChecker;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
+	
+
 	public boolean aClick = false;
+	//private KeyHandler myKeyHandler;
+	private SurroundingChecker mySurroundingChecker;
 	
 	private boolean isAnimated = false;
 	private String[] myAnimImages;
-	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
+ 
+	
+	public Player(String image, double speed, int numTilesWidth, int numTilesHeight, SurroundingChecker checker) {
 		super(image, speed, numTilesWidth, numTilesHeight);
-		myItems = null;
+		setMyItems(null);
+		mySurroundingChecker = checker;
 	}
 	
 //	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -28,36 +38,33 @@ public class Player extends RuleFollower {
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP){
-			myDY = -mySpeed;
-			if(isAnimated)	setImage(myAnimImages[6]);
-		}
-		if (e.getKeyCode() == Control.DOWN){
-			myDY = mySpeed;
-			if(isAnimated)	setImage(myAnimImages[0]);
-		}
-		if (e.getKeyCode() == Control.RIGHT){
-			myDX = mySpeed;
-			if(isAnimated)	setImage(myAnimImages[9]);
-		}
-		if (e.getKeyCode() == Control.LEFT){
-			myDX = -mySpeed;
-			if(isAnimated)	setImage(myAnimImages[3]);
-		}
-		if (e.getKeyCode() == Control.A)
+		if (e.getKeyCode() == AbstractGameState.UP)
+			setDY(-super.getSpeed());
+		if (e.getKeyCode() == AbstractGameState.DOWN)
+			setDY(super.getSpeed());
+		if (e.getKeyCode() == AbstractGameState.RIGHT)
+			setDX(super.getSpeed());
+		if (e.getKeyCode() == AbstractGameState.LEFT)
+			setDX(-super.getSpeed());
+		if (e.getKeyCode() == AbstractGameState.A) {
 			aClick = true;
+			GridObject surroundingNPC = mySurroundingChecker.checkSurroundings(this);
+			// to do: call surroundingNPC.doDialogue()...but this hasn't been implemented yet, 
+			// later tonight or tomorrow morning.
+			
+		}
 			
 	}
 
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP
-				|| e.getKeyCode() == Control.DOWN)
-			myDY = 0;
+		if (e.getKeyCode() == AbstractGameState.UP
+				|| e.getKeyCode() == AbstractGameState.DOWN)
+			setDY(0);
 
-		if (e.getKeyCode() == Control.RIGHT
-				|| e.getKeyCode() == Control.LEFT)
-			myDX = 0;
-		if (e.getKeyCode() == Control.A)
+		if (e.getKeyCode() == AbstractGameState.RIGHT
+				|| e.getKeyCode() == AbstractGameState.LEFT)
+			setDX(0);
+		if (e.getKeyCode() == AbstractGameState.A)
 			aClick=false;
 	}
 	

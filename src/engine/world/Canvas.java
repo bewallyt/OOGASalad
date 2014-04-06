@@ -9,10 +9,11 @@ import java.awt.RenderingHints;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import engine.Control;
+import engine.WalkAroundState;
 import engine.images.ScaledImage;
 
 public class Canvas extends JPanel{
+	
 	private JFrame myFrame;
 	private int myHeight;
 	private int myWidth;
@@ -42,7 +43,7 @@ public class Canvas extends JPanel{
 
 	public void setWorld(World world){
 		myFrame.add(this);
-		myFrame.addKeyListener(new Control(this, world));
+		myFrame.addKeyListener(new WalkAroundState(this, world));
 		myWorld = world;
 	}
 	
