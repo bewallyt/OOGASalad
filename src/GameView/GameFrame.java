@@ -46,20 +46,31 @@ public class GameFrame extends RPGEngine {
 		addGridObject(bafm, 10, 10);
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
-		TileData currTile;
-		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
-		
-		for(int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++){
-			for(int j = 0; j < myWorldData.getMap("defaultworldkey").getMapWidth(); j++){
-				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
-				currGridObjectDatas = currTile.getGridObjectDatas();
+//		TileData currTile;
+//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
+//		
+//		for(int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++){
+//			for(int j = 0; j < myWorldData.getMap("defaultworldkey").getMapWidth(); j++){
+//				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
+//				currGridObjectDatas = currTile.getGridObjectDatas();
+//
+//				for(int k = 0; k < currGridObjectDatas.size(); k++){
+////				need to figure out stuff here
+//					addGridObject(new GridObject("", 0, 0));
+//				}
+//			}
+//		} 
 
-				for(int k = 0; k < currGridObjectDatas.size(); k++){
-//				need to figure out stuff here
-					addGridObject(new GridObject("", 0, 0));
-				}
-			}
-		} 
+
+		for(int i=0; i<world.getTileGridHeight(); i++){
+			addGridObject(new Barrier("tree.png",1,2), i, 0);
+			addGridObject(new Barrier("tree.png",1,2), i, world.getTileGridHeight()-1-1);
+		}
+		for(int i=0; i<world.getTileGridWidth(); i++){
+			addGridObject(new Barrier("tree.png",1,2), 0, i);
+			addGridObject(new Barrier("tree.png",1,2), world.getTileGridWidth()-1,i );
+		}
+		
 
 		
 //		work in progress till Data and authoring are ready
