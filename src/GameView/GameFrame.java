@@ -49,17 +49,17 @@ public class GameFrame extends RPGEngine {
 		TileData currTile;
 		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
 		
-		for(int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++){
+		/*for(int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++){
 			for(int j = 0; j < myWorldData.getMap("defaultworldkey").getMapWidth(); j++){
 				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
 				currGridObjectDatas = currTile.getGridObjectDatas();
 
 				for(int k = 0; k < currGridObjectDatas.size(); k++){
 //				need to figure out stuff here
-					addGridObject(new GridObject("", 0, 0));
+					//addGridObject(new GridObject("", 0, 0));
 				}
 			}
-		} 
+		} */
 
 		
 //		work in progress till Data and authoring are ready
