@@ -26,11 +26,10 @@ public abstract class GridObject{
 	private int myStartY;
 	private Image myImage;
 	private String myImageName;
-	//	private String[] myAnimImages;
+	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
-	private int xFacing = 0;
-	private int yFacing = 0;
+	
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
 	private List<String> myDialogue;
@@ -43,6 +42,16 @@ public abstract class GridObject{
 		myImageName=image;
 		d=null;
 		myDialogue=new ArrayList<String>();
+	}
+	
+	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
+		myStatsMap = null;
+		myNumTilesWidth=numTilesWidth;
+		myNumTilesHeight = numTilesHeight;
+		myAnimImages=animImages;
+		d=null;
+		myDialogue=new ArrayList<String>();
+		myImageName=animImages[2];
 	}
 
 	public int[] getNumTiles(){
@@ -75,7 +84,6 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-
 		drawDialoge(g);
 	}
 
@@ -167,24 +175,15 @@ public abstract class GridObject{
 		myX += myDX;
 	}
 
-	public int getXFacing() {
-		return xFacing;
-	}
-	public int getYFacing() {
-		return yFacing;
-	}
 
-	public void setXFacing(int facing) {
-		xFacing = facing;
-	}
-	public void setYFacing(int facing){
-		yFacing=facing;
-	}
 	public int getStartX(){
 		return myStartX;
 	}
 	public int getStartY(){
 		return myStartY;
+	}
+	public String[] getAnimImages(){
+		return myAnimImages;
 	}
 
 

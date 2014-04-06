@@ -23,19 +23,19 @@ public class Player extends RuleFollower {
 	private double originalSpeed;
  
 	
-	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
-		super(image, speed, numTilesWidth, numTilesHeight);
-		setMyItems(null);
-		enterDoor=false;
-		originalSpeed = this.getSpeed();
-	}
-	
-//	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
-//		super(animImages, speed, numTilesWidth, numTilesHeight);
-//		isAnimated = true;
-//		myAnimImages = animImages;
-//		myItems = null;
+//	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
+//		super(image, speed, numTilesWidth, numTilesHeight);
+//		setMyItems(null);
+//		enterDoor=false;
+//		originalSpeed = this.getSpeed();
 //	}
+	
+	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+		super(animImages, speed, numTilesWidth, numTilesHeight);
+		isAnimated = true;
+		myAnimImages = animImages;
+		setMyItems(null);
+	}
 	
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){
 		mySurroundingChecker = surroundingChecker;

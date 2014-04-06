@@ -95,8 +95,8 @@ public abstract class RPGEngine{
 
 	}
 
-	public void addPlayer(String image, double speed, int numTilesWidth, int numTilesHeight){
-		Player player = new Player(image, speed, numTilesWidth, numTilesHeight);
+	public void addPlayer(String[] animImages, double speed, int numTilesWidth, int numTilesHeight){
+		Player player = new Player(animImages, speed, numTilesWidth, numTilesHeight);
 		player.setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
 		myPlayer = player;
 		//addGridObject(player, myCurrentWorld.get, numTilesHeight);
