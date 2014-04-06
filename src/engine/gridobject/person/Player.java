@@ -37,14 +37,22 @@ public class Player extends RuleFollower {
 		isAnimated = true;
 	}
 	
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) throws InterruptedException {
 		if (e.getKeyCode() == AbstractGameState.UP){
 			setDY(-super.getSpeed());
 			if(isAnimated)	setImage(myAnimImages[6]);
 		}
 		if (e.getKeyCode() == AbstractGameState.DOWN){
 			setDY(super.getSpeed());
-			if(isAnimated)	setImage(myAnimImages[0]);
+			// Test
+			if(isAnimated){
+				setImage(myAnimImages[1]);
+				Thread.sleep(100);	
+				setImage(myAnimImages[0]);
+				Thread.sleep(100);
+				setImage(myAnimImages[2]);
+				
+			}
 		}
 		if (e.getKeyCode() == AbstractGameState.RIGHT){
 			setDX(super.getSpeed());

@@ -107,6 +107,9 @@ public class GameFrame extends RPGEngine {
 		// hard coded
 		String[] animImages = new String[12];
 		animImages[0] = "fs.png";
+		//Test
+		animImages[1] = "fw1.png";
+		animImages[2] = "fw2.png";
 		animImages[3] = "ls.png";
 		animImages[6] = "bs.png";
 		animImages[9] = "rs.png";
