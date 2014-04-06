@@ -23,7 +23,7 @@ public class FileStorer {
 	//private Gson gson=new Gson();
 	public FileStorer() {
 		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
-		savedGamesPath = path.replaceAll("\\\\", "/");
+		savedGamesPath = path.replaceAll("\\\\", "/");		
 	}
 	/**
 	 * Method used to store an instance of the WorldData class into a JSON data file. This allows
