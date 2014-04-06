@@ -101,9 +101,14 @@ public class GameFrame extends RPGEngine {
 	@Override
 	public void initializeGame() {
 		initializeCanvas(800, 800);
+<<<<<<< HEAD
 		// initializeCanvas(myWorldData.getWorldSize()[0],
 		// myWorldData.getWorldSize()[1]);
 		addNewWalkAroundWorld(40, "grass.jpg");
+=======
+//		initializeCanvas(myWorldData.getWorldSize()[0], myWorldData.getWorldSize()[1]);
+		setNewWorld(40,"grass.jpg");
+>>>>>>> engine
 		addObjects(getCurrentWorld());
 	}
 

@@ -1,23 +1,11 @@
 package engine.world;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import engine.collision.CollisionMatrix;
+import engine.GameObject;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
-import engine.images.ScaledImage;
 
 public abstract class World {
 	
@@ -27,6 +15,8 @@ public abstract class World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private String myBackground;
+	private Player myPlayer;
+	
 
 	/**
 	 * Instantiates a new World.
@@ -42,11 +32,13 @@ public abstract class World {
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
 	
-	public void setDimensions(int width, int height){
+	public void setPlayDimensions(int width, int height){
 		myNumTileWidth = width/myTileSize;
 		myNumTileHeight = height/myTileSize;
 		makeTileMatrix();
 	}
+	
+
 	
 	public int getTileSize(){
 		return myTileSize;
@@ -91,32 +83,15 @@ public abstract class World {
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
+		if(obj instanceof Player)
+			myPlayer = (Player) obj;
 	}
-
-
-
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		Graphics2D g2d = (Graphics2D) g;
-//		setOpaque(false);
-//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
-//		
-//		int height = myNumTileHeight * myTileSize;
-//		int width = myNumTileWidth * myTileSize;
-//		Image background = new ScaledImage(width, height,myBackground).scaleImage();
-//		g2d.drawImage(background, 0, 0,null);
-//		
-//		for(int i=0; i<myGridObjectList.size(); i++){
-//			myGridObjectList.get(i).paint(g2d);
-//		}
-//	}
-
 	
-	
-	public void setViewSize(){
-		
+	public Tile[][] getTileMatrix(){
+		return myTileMatrix;
 	}
-
+	public Player getPlayer(){
+		return myPlayer;
+	}
 }
+
