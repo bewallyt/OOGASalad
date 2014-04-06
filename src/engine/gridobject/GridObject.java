@@ -14,13 +14,13 @@ import engine.images.ScaledImage;
 
 public abstract class GridObject{
 
-	protected int myWidth;
-	protected int myHeight;
-	protected int myX;
-	protected int myY;
-	protected int myStartX;
-	protected int myStartY;
-	protected Image myImage;
+	private int myWidth;
+	private int myHeight;
+	private int myX;
+	private int myY;
+	private int myStartX;
+	private int myStartY;
+	private Image myImage;
 	private String myImageName;
 //	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
@@ -103,11 +103,36 @@ public abstract class GridObject{
 		return myY;
 	}
 	
+	public int getWidth() {
+		return myWidth;
+	}
+	
+	public int getHeight() {
+		return myHeight;
+	}
+	
+	public void incrementY(double myDY) {
+		myY += myDY;
+	}
+	
+	public void incrementX(double myDX) {
+		myX += myDX;
+	}
+	
 	public String getFacing() {
 		return facing;
 	}
+	
 	public void setFacing(String facing) {
 		this.facing = facing;
 	}
+	public int getStartX(){
+		return myStartX;
+	}
+	public int getStartY(){
+		return myStartY;
+	}
+
+
 	
 }

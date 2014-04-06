@@ -1,8 +1,11 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import engine.*;
+import engine.gridobject.GridObject;
+import engine.world.SurroundingChecker;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
@@ -10,13 +13,16 @@ public class Player extends RuleFollower {
 
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
+	private SurroundingChecker mySurroundingChecker;
 	
 	private boolean isAnimated = false;
 	private String[] myAnimImages;
+ 
 	
-	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
+	public Player(String image, double speed, int numTilesWidth, int numTilesHeight, SurroundingChecker checker) {
 		super(image, speed, numTilesWidth, numTilesHeight);
-		myItems = null;
+		setMyItems(null);
+		mySurroundingChecker = checker;
 	}
 	
 //	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -33,26 +39,31 @@ public class Player extends RuleFollower {
 	
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == AbstractGameState.UP)
-			myDY = -mySpeed;
+			setDY(-super.getSpeed());
 		if (e.getKeyCode() == AbstractGameState.DOWN)
-			myDY = mySpeed;
+			setDY(super.getSpeed());
 		if (e.getKeyCode() == AbstractGameState.RIGHT)
-			myDX = mySpeed;
+			setDX(super.getSpeed());
 		if (e.getKeyCode() == AbstractGameState.LEFT)
-			myDX = -mySpeed;
-		if (e.getKeyCode() == AbstractGameState.A)
+			setDX(-super.getSpeed());
+		if (e.getKeyCode() == AbstractGameState.A) {
 			aClick = true;
+			GridObject surroundingNPC = mySurroundingChecker.checkSurroundings(this);
+			// to do: call surroundingNPC.doDialogue()...but this hasn't been implemented yet, 
+			// later tonight or tomorrow morning.
+			
+		}
 			
 	}
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == AbstractGameState.UP
 				|| e.getKeyCode() == AbstractGameState.DOWN)
-			myDY = 0;
+			setDY(0);
 
 		if (e.getKeyCode() == AbstractGameState.RIGHT
 				|| e.getKeyCode() == AbstractGameState.LEFT)
-			myDX = 0;
+			setDX(0);
 		if (e.getKeyCode() == AbstractGameState.A)
 			aClick=false;
 	}
