@@ -5,10 +5,10 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import engine.AbstractGameState;
 import engine.WalkAroundState;
 import engine.images.ScaledImage;
 
@@ -45,6 +45,10 @@ public class Canvas extends JPanel{
 		myFrame.add(this);
 		myFrame.addKeyListener(new WalkAroundState(this, world));
 		myWorld = world;
+	}
+	
+	public void setState(AbstractGameState state){
+		myFrame.addKeyListener(state);
 	}
 	
 	public int getHeight(){

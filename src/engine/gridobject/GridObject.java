@@ -127,13 +127,13 @@ public abstract class GridObject{
 		
 	}
 
-	public Dialogue getNextDialogue(){
+	public Dialogue doDialogue(){
 		System.out.println("hi");
 		Dialogue d = null;
-		if(myDialogue.size()>0){
-			d = new Dialogue("Dialogue.png", myDialogue.get(0));
-			myDialogue.remove(0);
+		for(String str : myDialogue){
+			d = new Dialogue("Dialogue.png",str);
 		}
+		
 		this.d=d;
 		return d;
 	}
