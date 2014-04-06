@@ -3,34 +3,44 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.*;
 
 public class GridObjectCreation extends Feature{
 	private JButton myGridObjectButton;
+	Set<Feature> myGridFeatures;
 	private JFrame frame;
 	public GridObjectCreation(){
+		myGridFeatures = new HashSet<Feature>();
+		myGridFeatures.add(new EncounterableFeature());
+		myGridFeatures.add(new SaveGridObjectFeature());
+		myGridFeatures.add(new SteppableFeature());
+		myGridFeatures.add(new GridObjectCoordinateFeature());
+		
 		myGridObjectButton = new JButton("New GridObject");
 		myGridObjectButton.addActionListener(new GridObjectWindowAction());
 		myComponents.put(myGridObjectButton, BorderLayout.SOUTH);
 	}
 	private class GridObjectWindowAction implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			frame = new JFrame("Create a GridObject");
-    		frame.add(new GridObjectWindow());
-            frame.pack();
-            frame.setVisible(true);
+			AuthoringView gridObjectView = new AuthoringView(myGridFeatures);
+//			frame = new JFrame("Create a GridObject");
+//    		frame.add(new GridObjectWindow());
+//            frame.pack();
+//            frame.setVisible(true);
 		}	
 	}
 	private class GridObjectWindow extends JPanel{
-		private Map<String, JComponent> myPanels;
+//		private Map<String, JComponent> myPanels;
 		
-		private JCheckBox steppableCheck;
-		private JCheckBox encounterableCheck;
-		
-		private JTextArea encounterRate;
-		private JScrollPane encounterRateWrapper;
+//		private JCheckBox steppableCheck;
+//		private JCheckBox encounterableCheck;
+//		
+//		private JTextArea encounterRate;
+//		private JScrollPane encounterRateWrapper;
 		
 //		private JLabel coordinatesLabel;
 //		
@@ -40,18 +50,19 @@ public class GridObjectCreation extends Feature{
 //		private JTextArea yTileCo;
 //		private JScrollPane yTileCoWrapper;
 		
+//		private JButton createButton;
 		public GridObjectWindow(){
-			this.setLayout(new BorderLayout());
-			instantiatePanels();
+//			this.setLayout(new BorderLayout());
+//			instantiatePanels();
 			
-			steppableCheck = new JCheckBox("Steppable?");
-			myPanels.get(BorderLayout.SOUTH).add(steppableCheck);
-			encounterableCheck = new JCheckBox("Encounterable?");
-			myPanels.get(BorderLayout.SOUTH).add(encounterableCheck);
-			
-			encounterRate = new JTextArea(1,3);
-			encounterRateWrapper = new JScrollPane(encounterRate);
-			myPanels.get(BorderLayout.SOUTH).add(encounterRateWrapper);
+//			steppableCheck = new JCheckBox("Steppable?");
+//			myPanels.get(BorderLayout.SOUTH).add(steppableCheck);
+//			encounterableCheck = new JCheckBox("Encounterable?");
+//			myPanels.get(BorderLayout.SOUTH).add(encounterableCheck);
+//			
+//			encounterRate = new JTextArea(1,3);
+//			encounterRateWrapper = new JScrollPane(encounterRate);
+//			myPanels.get(BorderLayout.SOUTH).add(encounterRateWrapper);
 			
 //			coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
 //			myPanels.get(BorderLayout.WEST).add(coordinatesLabel);
@@ -62,19 +73,19 @@ public class GridObjectCreation extends Feature{
 //			yTileCoWrapper = new JScrollPane(yTileCo);
 //			myPanels.get(BorderLayout.WEST).add(yTileCoWrapper);
 			
-			JButton createButton = new JButton("Create GridObject!");
-			myPanels.get(BorderLayout.EAST).add(createButton);
+//			createButton = new JButton("Create GridObject!");
+//			myPanels.get(BorderLayout.EAST).add(createButton);
 		}
-		private void instantiatePanels() {
-			myPanels = new HashMap<String, JComponent>();
-			myPanels.put(BorderLayout.NORTH, new JPanel());
-			myPanels.put(BorderLayout.SOUTH, new JPanel());
-			myPanels.put(BorderLayout.WEST, new JPanel());
-			myPanels.put(BorderLayout.EAST, new JPanel());
-			myPanels.put(BorderLayout.CENTER, new JPanel());
-			for(String s: myPanels.keySet()){
-				this.add(myPanels.get(s), s);
-			}
-		}
+//		private void instantiatePanels() {
+//			myPanels = new HashMap<String, JComponent>();
+//			myPanels.put(BorderLayout.NORTH, new JPanel());
+//			myPanels.put(BorderLayout.SOUTH, new JPanel());
+//			myPanels.put(BorderLayout.WEST, new JPanel());
+//			myPanels.put(BorderLayout.EAST, new JPanel());
+//			myPanels.put(BorderLayout.CENTER, new JPanel());
+//			for(String s: myPanels.keySet()){
+//				this.add(myPanels.get(s), s);
+//			}
+//		}
 	}
 }

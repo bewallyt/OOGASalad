@@ -9,7 +9,7 @@ import Data.FileStorer;
 public class FeatureManager {
 	public static List<Feature> myFeatures = new ArrayList<Feature>();
 	public static WorldData myWorld = new WorldData();
-	public static DataManager myDataManager = new DataManager();
+	public static FileStorer myDataManager = new FileStorer();
 	public static void addFeature(Feature f){
 		myFeatures.add(f);
 	}
@@ -24,7 +24,7 @@ public class FeatureManager {
 	public static WorldData getWorldData(){
 		return myWorld;
 	}
-	public static DataManager getDataManager(){
+	public static FileStorer getDataManager(){
 		return myDataManager;
 	}
 }
