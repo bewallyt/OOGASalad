@@ -13,6 +13,7 @@ import java.util.Map;
 
 import engine.Dialogue;
 import engine.Statistic;
+import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 
 public abstract class GridObject{
@@ -25,7 +26,7 @@ public abstract class GridObject{
 	private int myStartY;
 	private Image myImage;
 	private String myImageName;
-//	private String[] myAnimImages;
+	//	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap;
 	private boolean doesHarm = false;
 	private int xFacing = 0;
@@ -34,7 +35,7 @@ public abstract class GridObject{
 	private int myNumTilesHeight;
 	private List<String> myDialogue;
 	private Dialogue d;
-	
+
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
@@ -43,7 +44,7 @@ public abstract class GridObject{
 		d=null;
 		myDialogue=new ArrayList<String>();
 	}
-	
+
 	public int[] getNumTiles(){
 		return new int[] {myNumTilesWidth, myNumTilesHeight};
 	}
@@ -58,9 +59,9 @@ public abstract class GridObject{
 	public void setPosition(int x, int y){
 		myX=myStartX=x;
 		myY=myStartY=y;
-		
+
 	}
-	
+
 	public int[] getPosition(){
 		return new int[] {myX,myY};
 	}
@@ -71,9 +72,10 @@ public abstract class GridObject{
 		Image img = new ScaledImage(myWidth,myHeight,file).scaleImage();
 		myImage = img;	
 	}
-	
-	public void paint(Graphics2D g) {
-		g.drawImage(myImage, myX, myY, null);
+
+	public void paint(Graphics2D g, int xOff, int yOff) {
+		g.drawImage(myImage, myX-xOff, myY-yOff, null);
+
 		drawDialoge(g);
 	}
 
@@ -90,41 +92,41 @@ public abstract class GridObject{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			g.drawString(d.getDialogue(), 80, 550);
 		}
 	}
-	
+
 
 	public void addStatistic(Statistic stat) {
 		myStatsMap.put(stat.getName(), stat);
 	}
-	
+
 	public void addStatistic(String name, int value, int maxValue){
 		myStatsMap.put(name,new Statistic(name,value,maxValue));
 	}
-	
+
 	public Map<String,Statistic> getStatsMap(){
 		return myStatsMap;
 	}
-	
+
 	public Rectangle getBounds() {
 		return new Rectangle(myX, myY, myWidth, myHeight);	
 	}
-	
+
 	public boolean getDoesHarm(){
 		return doesHarm;
 	}
 	public void setDoesHarm(boolean harm){
 		doesHarm=harm;
 	}
-	
+
 	public void addDialogue(String dialogue){
 		myDialogue.add(dialogue);
 	}
 	public List<String> getDialogueList(){
 		return myDialogue;
-		
+
 	}
 
 	public Dialogue doDialogue(){
@@ -133,45 +135,45 @@ public abstract class GridObject{
 		for(String str : myDialogue){
 			d = new Dialogue("Dialogue.png",str);
 		}
-		
+
 		this.d=d;
 		return d;
 	}
-	
+
 	public void move() {}; // default is to do nothing
 	public void doCollision(GridObject o){};
 	public void uniqueMove(){}
-	
+
 	public int getX() {
 		return myX;
 	}
 	public int getY() {
 		return myY;
 	}
-	
+
 	public int getWidth() {
 		return myWidth;
 	}
-	
+
 	public int getHeight() {
 		return myHeight;
 	}
-	
+
 	public void incrementY(double myDY) {
 		myY += myDY;
 	}
-	
+
 	public void incrementX(double myDX) {
 		myX += myDX;
 	}
-	
+
 	public int getXFacing() {
 		return xFacing;
 	}
 	public int getYFacing() {
 		return yFacing;
 	}
-	
+
 	public void setXFacing(int facing) {
 		xFacing = facing;
 	}
@@ -186,5 +188,5 @@ public abstract class GridObject{
 	}
 
 
-	
+
 }
