@@ -1,33 +1,34 @@
 package authoring;
+import java.awt.Image;
 import java.io.File;
 import java.util.*;
 
 public class WorldData {
 
 	private Map<String, MapData> myLevels;
-	private Map<String, File> myImages;
+	private Map<String, Image> myImages;
 	private static final String DEFAULT_MAP = "defaultworldkey";
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
 		myLevels.put(DEFAULT_MAP, new MapData());
-		myImages = new HashMap<String, File>();
+		myImages = new HashMap<String, Image>();
 		//More general stuff about player, game engine, etc will go here
 	}
 	
-	public File getImage(String fileName){
+	public Image getImage(String fileName){
 		return myImages.get(fileName);
 	}
 	
-	public void saveImage(String s, File f){
-		myImages.put(s, f);
+	public void saveImage(String s, Image i){
+		myImages.put(s, i);
 	}
 	
 	public MapData getMap(String s){
 		return myLevels.get(s);
 	}
 	
-	protected Map<String, File> getImages(){
+	protected Map<String, Image> getImages(){
 		return myImages;
 	}
 	
