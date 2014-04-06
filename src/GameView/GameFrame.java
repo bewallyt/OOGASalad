@@ -5,8 +5,10 @@ import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.BackAndForthMover;
+import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 import engine.main.RPGEngine;
@@ -24,6 +26,7 @@ public class GameFrame extends RPGEngine {
 	private DataDummy myData;
 	
 	Player myPlayer;
+	NPC myNPC;
 	BackAndForthMover myEnemy;
 	
 	public GameFrame(){
@@ -34,12 +37,10 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	public void addObjects(World world){
-		addGridObject(myPlayer = initPlayer(), 3, 3);
-		
-//		hard coded		
-		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, myPlayer);
-		addGridObject(bafm,10,10);
-		bafm.addDialogue("Hey Bitch. Fight Me!");
+		myPlayer = initPlayer();
+//		hard coded
+		NPC bafm = myNPC = new NPC("rival.png", 1, 1, 1, 2, myPlayer);
+		addGridObject(bafm, 10, 10);
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
 		for(int i=0; i<world.getTileGridHeight(); i++){
@@ -94,8 +95,11 @@ public class GameFrame extends RPGEngine {
 		animImages[3] = "ls.png";
 		animImages[6] = "bs.png";
 		animImages[9] = "rs.png";
-		Player player = new Player("player.png",2,spriteWidth, spriteHeight);
+		SurroundingChecker checker = new SurroundingChecker(getCurrentWorld());
+		Player player = new Player("player.png",2,spriteWidth, spriteHeight, checker);
 		player.getAnimImages(animImages);
+		
+		addGridObject(player, 3, 3);
 		return player;
 
 //		work in progress till data and authoring are ready

@@ -38,20 +38,28 @@ public class Player extends RuleFollower {
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == AbstractGameState.UP)
+		if (e.getKeyCode() == AbstractGameState.UP){
 			setDY(-super.getSpeed());
-		if (e.getKeyCode() == AbstractGameState.DOWN)
+			if(isAnimated)	setImage(myAnimImages[6]);
+		}
+		if (e.getKeyCode() == AbstractGameState.DOWN){
 			setDY(super.getSpeed());
-		if (e.getKeyCode() == AbstractGameState.RIGHT)
+			if(isAnimated)	setImage(myAnimImages[0]);
+		}
+		if (e.getKeyCode() == AbstractGameState.RIGHT){
 			setDX(super.getSpeed());
-		if (e.getKeyCode() == AbstractGameState.LEFT)
+			if(isAnimated)	setImage(myAnimImages[9]);
+		}
+		if (e.getKeyCode() == AbstractGameState.LEFT){
 			setDX(-super.getSpeed());
+			if(isAnimated)	setImage(myAnimImages[3]);
+		}		
 		if (e.getKeyCode() == AbstractGameState.A) {
 			aClick = true;
 			GridObject surroundingNPC = mySurroundingChecker.checkSurroundings(this);
 			// to do: call surroundingNPC.doDialogue()...but this hasn't been implemented yet, 
 			// later tonight or tomorrow morning.
-			
+
 		}
 			
 	}
