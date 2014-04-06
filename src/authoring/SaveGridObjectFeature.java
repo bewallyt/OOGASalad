@@ -8,7 +8,7 @@ import javax.swing.JButton;
 
 public class SaveGridObjectFeature extends Feature{
 	private JButton createButton;
-	public SaveGridObjectFeature(){
+	public SaveGridObjectFeature(GridObjectCreation gridObjectCreation){
 		createButton = new JButton("Create GridObject!");
 		createButton.addActionListener(new CreateGridObjectListener());
 		myComponents.put(createButton, BorderLayout.EAST);

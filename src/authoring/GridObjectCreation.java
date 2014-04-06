@@ -12,12 +12,13 @@ import javax.swing.*;
 public class GridObjectCreation extends Feature{
 	private JButton myGridObjectButton;
 	Set<Feature> myGridFeatures;
+	AuthoringView gridAuthoringView;
 	public GridObjectCreation(){
 		myGridFeatures = new HashSet<Feature>();
-		myGridFeatures.add(new EncounterableFeature());
-		myGridFeatures.add(new SaveGridObjectFeature());
-		myGridFeatures.add(new SteppableFeature());
-		myGridFeatures.add(new GridObjectCoordinateFeature());
+		myGridFeatures.add(new EncounterableFeature(this));
+		myGridFeatures.add(new SaveGridObjectFeature(this));
+		myGridFeatures.add(new SteppableFeature(this));
+		myGridFeatures.add(new GridObjectCoordinateFeature(this));
 		
 		myGridObjectButton = new JButton("New GridObject");
 		myGridObjectButton.addActionListener(new GridObjectWindowAction());
@@ -25,7 +26,7 @@ public class GridObjectCreation extends Feature{
 	}
 	private class GridObjectWindowAction implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			AuthoringView gridObjectView = new AuthoringView(myGridFeatures, false);
+			gridAuthoringView = new AuthoringView(myGridFeatures, false);
 		}	
 	}
 }
