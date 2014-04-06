@@ -15,7 +15,7 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 	private JPanel grid;
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
-	private String[] popupMenuItems = {"Tile Editor", "NPC Editor", "Set as Player Start Point", "Clear Tile"};
+	private String[] popupMenuItems = {"Tile Editor", "NPC Editor", "Set as Player Start Point", "Clear Tile", "Tile Image"};
 	private JList list;
 	private Border defaultBorder;
 	private Border selectBorder;
@@ -133,6 +133,7 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 		TilePanel current = (TilePanel) arg0.getComponent();
 		current.setBorder(defaultBorder);
 	}
+
 
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub

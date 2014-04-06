@@ -8,7 +8,8 @@ import engine.gridobject.person.Player;
 import engine.world.Canvas;
 import engine.world.World;
 
-public class Control implements KeyListener{
+public abstract class AbstractGameState implements KeyListener{
+	
 	private World myWorld;
 	private Canvas  myCanvas;
 	public static int UP = 38;
@@ -17,36 +18,31 @@ public class Control implements KeyListener{
 	public static int RIGHT = 39;
 	public static int A = 65;
 	
-	public Control (Canvas c, World world){
+	public AbstractGameState (Canvas c, World world){
 		myWorld = world;
 		myCanvas = c;
 	}
 	
+	public World getWorld() {
+		return myWorld;
+	}
+	
+	public Canvas getCanvas() {
+		return myCanvas;
+	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		for (GridObject gridObject : myWorld.getGridObjectList()){
-			if (gridObject instanceof Player){
-				((Player) gridObject).keyPressed(e);
-			}
-		}
-		
-		
+				
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		for (GridObject gridObject : myWorld.getGridObjectList()){
-			if (gridObject instanceof Player){
-				((Player) gridObject).keyReleased(e);
-			}
-		}
 		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-	
 		
 	}
 

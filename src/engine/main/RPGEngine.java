@@ -2,12 +2,12 @@ package engine.main;
 
 import java.awt.event.KeyEvent;
 
-import engine.Control;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
