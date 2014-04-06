@@ -7,6 +7,13 @@ import java.util.Map;
 
 import authoring.WorldData;
 
+
+
+/** 
+ * Manages WorldData objects. Keeps a map of WorldData objects associated with
+ * each WorldData file.
+ */
+
 public class DataManager {
 	private static DataManager instance = null;
 	private Map<String, WorldData> myWorldDatas;
@@ -38,18 +45,47 @@ public class DataManager {
 		}
 	}
 	
+	/**
+	 * Method used to retrieve a WorldData object from map. If object is not
+	 * in map, it tries to retrieve from the file. If the file isn't found, it
+	 * returns null.
+	 * @param worldDataName
+	 * @return WorldData
+	 */
 	public WorldData getWorldData(String worldDataName) {
-		return myWorldDatas.get(worldDataName);
+		WorldData worldData = null;
+		if (myWorldDatas.containsKey(worldDataName)) {
+			worldData = myWorldDatas.get(worldDataName);
+		}
+		else {
+			worldData = loadWorldDataFromFile(worldDataName);
+		}
+		return worldData;
 	}
 	
+
+	/**
+	 * Method used to add WorldData object to map.
+	 * @param worldDataName
+	 * @param worldData
+	 */
 	public void setWorldData(String worldDataName, WorldData worldData) {
 		myWorldDatas.put(worldDataName, worldData);
 	}
 	
+	/**
+	 * Method used to save WorldData to file.
+	 * @param worldDataName
+	 */
 	public void saveWorldDataToFile(String worldDataName) {
 		myFileStorer.storeWorldData(worldDataName, myWorldDatas.get(worldDataName));
 	}
 	
+	/**
+	 * Method used to load worldData from file. It also updates the map.
+	 * @param worldDataName
+	 * @return WorldData
+	 */
 	public WorldData loadWorldDataFromFile(String worldDataName) {
 		try {
 			WorldData worldData = myFileStorer.getWorldData(worldDataName);
