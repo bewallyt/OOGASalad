@@ -61,6 +61,9 @@ public class GridObjectCreation extends Feature{
 			yTileCo = new JTextArea(1,3);
 			yTileCoWrapper = new JScrollPane(yTileCo);
 			myPanels.get(BorderLayout.WEST).add(yTileCoWrapper);
+			
+			JButton createButton = new JButton("Create GridObject!");
+			myPanels.get(BorderLayout.EAST).add(createButton);
 		}
 		private void instantiatePanels() {
 			myPanels = new HashMap<String, JComponent>();
