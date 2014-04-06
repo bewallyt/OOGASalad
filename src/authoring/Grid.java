@@ -27,7 +27,7 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 	
 	public Grid() {
 		grid = new JPanel(new GridBagLayout());
-		worldMaker();		
+		//worldMaker();		
 		//grid.setLayout(new GridBagLayout());
 		grid.setOpaque(false);
 		popupMenuMaker();
@@ -49,7 +49,7 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 		myComponents.put(grid, BorderLayout.CENTER);
 	}
 	
-	private void worldMaker(){
+	/*private void worldMaker(){
 		int numRows = 0;
 		int numCols = 0;
 		
@@ -63,7 +63,8 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 				world[row][col] = new TilePanel(row, col);
 			}
 		}
-	}
+	}*/
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -75,20 +76,11 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 	
 	private void showPopupMenu(MouseEvent e){
 		selectedCell = (TilePanel) e.getComponent();
-		System.out.println(selectedCell.myRow + " " + selectedCell.myCol);
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	}
 	
 	public void showImageList(){
-		list = new JList(tileTypes);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setVisibleRowCount(-1);
-		
-		JScrollPane listScroller = new JScrollPane(list);
-		listScroller.setPreferredSize(new Dimension(250, 800));
-		
-		String selectedTileImage= ListDialog.showDialog(
+		String selectedTileImage = ListDialog.showDialog(
                 grid,
                 null,
                 "Select an image for the tile: ",
@@ -112,36 +104,30 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		showImageList();
 	}
 
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		if(arg0.getButton() == MouseEvent.BUTTON3)
 			showPopupMenu(arg0);
 	}
 
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		TilePanel current = (TilePanel) arg0.getComponent();
 		current.setBorder(selectBorder);
 	}
 
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		TilePanel current = (TilePanel) arg0.getComponent();
 		current.setBorder(defaultBorder);
 	}
 
 
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
 	}
 }
