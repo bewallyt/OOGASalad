@@ -1,10 +1,10 @@
 package engine.gridobject.person;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
 import engine.Dialogue;
+import engine.world.World;
 
 public class NPC extends RuleFollower {
 	protected List<String> myDialogue;
@@ -28,21 +28,7 @@ public class NPC extends RuleFollower {
 		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType, this, player  );
 	}
 
-	public void addDialogue(String dialogue){
-		myDialogue.add(dialogue);
-	}
-	public List<String> getDialogueList(){
-		return myDialogue;
-		
-	}
-
-	public void doNextDialogue(){
-		System.out.println("hi");
-		if(myDialogue.size()>0){
-			new Dialogue("Dialogue.png", myDialogue.get(0));
-			myDialogue.remove(0);
-		}
-	}
+	
 	
 	public Player getPlayer(){
 		return myPlayer;

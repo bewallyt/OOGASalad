@@ -1,23 +1,10 @@
 package engine.world;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import engine.collision.CollisionMatrix;
+import engine.GameObject;
 import engine.gridobject.GridObject;
-import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
-import engine.images.ScaledImage;
 
 public abstract class World {
 	
@@ -92,8 +79,6 @@ public abstract class World {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
 	}
-
-
 
 //	@Override
 //	protected void paintComponent(Graphics g) {

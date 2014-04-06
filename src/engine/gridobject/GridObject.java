@@ -1,14 +1,17 @@
 package engine.gridobject;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-import javax.swing.ImageIcon;
-
+import engine.Dialogue;
 import engine.Statistic;
 import engine.images.ScaledImage;
 
@@ -29,12 +32,16 @@ public abstract class GridObject{
 	private int yFacing = 0;
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
+	private List<String> myDialogue;
+	private Dialogue d;
 	
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myImageName=image;
+		d=null;
+		myDialogue=new ArrayList<String>();
 	}
 	
 	public int[] getNumTiles(){
@@ -67,6 +74,25 @@ public abstract class GridObject{
 	
 	public void paint(Graphics2D g) {
 		g.drawImage(myImage, myX, myY, null);
+		drawDialoge(g);
+	}
+
+	private void drawDialoge(Graphics2D g) {
+		if(d!=null){
+			g.drawImage(d.getImage(),50,500,null);
+			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
+			Font font=null;
+			try {
+				font = Font.createFont(Font.TRUETYPE_FONT, is);
+				Font sizedFont = font.deriveFont(16f);
+				g.setFont(sizedFont);
+			} catch (FontFormatException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			g.drawString(d.getDialogue(), 80, 550);
+		}
 	}
 	
 
@@ -91,6 +117,25 @@ public abstract class GridObject{
 	}
 	public void setDoesHarm(boolean harm){
 		doesHarm=harm;
+	}
+	
+	public void addDialogue(String dialogue){
+		myDialogue.add(dialogue);
+	}
+	public List<String> getDialogueList(){
+		return myDialogue;
+		
+	}
+
+	public Dialogue getNextDialogue(){
+		System.out.println("hi");
+		Dialogue d = null;
+		if(myDialogue.size()>0){
+			d = new Dialogue("Dialogue.png", myDialogue.get(0));
+			myDialogue.remove(0);
+		}
+		this.d=d;
+		return d;
 	}
 	
 	public void move() {}; // default is to do nothing

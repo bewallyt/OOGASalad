@@ -1,11 +1,9 @@
 package engine.world;
 
-import java.util.List;
-
 import engine.ProximityChecker;
+import engine.gridobject.GridObject;
+import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
-import engine.gridobject.*;
 
 public class SurroundingChecker {
 
@@ -24,17 +22,16 @@ public class SurroundingChecker {
 	 * @return the object that it is facing
 	 */
 	public GridObject checkSurroundings(Player player) {
-		System.out.println(player.getXFacing());
 
 		for(GridObject go : myWorld.getGridObjectList()){
 			if(ProximityChecker.isLeftProximity(player, go) && player.getXFacing()==1 )
-				System.out.println("left interact");
+				return go;
 			if(ProximityChecker.isRightProximity(player, go) && player.getXFacing()==0 ){
-				System.out.println("right interact");			}
+				return go;		}
 			if(ProximityChecker.isBottomProximity(player, go) && player.getYFacing()==1){
-				System.out.println("bottom interact");			}
+				return go;		}
 			if(ProximityChecker.isTopProximity(player, go) && player.getYFacing()==0){
-				System.out.println("top interact");			}
+				return go;		}
 		}
 
 

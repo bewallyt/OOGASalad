@@ -38,7 +38,8 @@ public class Main extends RPGEngine {
 		addGridObject(getPlayer(), 3, 3);
 		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
-
+		bafm.addDialogue("Hey bitch fight me");
+		
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 		
 		for(int i=0; i<world.getTileGridWidth(); i++){
@@ -64,8 +65,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void run() {
-		if(getPlayer().getAClick())
-			myNPC.doNextDialogue();
+		
 	}
 
 
