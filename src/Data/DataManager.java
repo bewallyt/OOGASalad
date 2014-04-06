@@ -46,13 +46,15 @@ public class DataManager {
 		myWorldDatas.put(worldDataName, worldData);
 	}
 	
-	public void saveWorldDataToFile(String worldDataName, WorldData worldData) {
-		myFileStorer.storeWorldData(worldDataName, worldData);
+	public void saveWorldDataToFile(String worldDataName) {
+		myFileStorer.storeWorldData(worldDataName, myWorldDatas.get(worldDataName));
 	}
 	
 	public WorldData loadWorldDataFromFile(String worldDataName) {
 		try {
-			return myFileStorer.getWorldData(worldDataName);
+			WorldData worldData = myFileStorer.getWorldData(worldDataName);
+			myWorldDatas.put(worldDataName, worldData);
+			return worldData;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
