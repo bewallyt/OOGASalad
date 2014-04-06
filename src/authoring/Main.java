@@ -10,6 +10,6 @@ public class Main {
 		myFeatures.add(new ImageChooser());
 		myFeatures.add(new SaveGameFeature());
 
-		AuthoringView view = new AuthoringView(myFeatures);
+		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
 }
