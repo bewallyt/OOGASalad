@@ -111,40 +111,34 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 		grid.repaint();
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		showImageList();
 	}
 
-	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getButton() == MouseEvent.BUTTON3)
 			showPopupMenu(arg0);
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		TilePanel current = (TilePanel) arg0.getComponent();
 		current.setBorder(selectBorder);
 	}
 
-	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		TilePanel current = (TilePanel) arg0.getComponent();
 		current.setBorder(defaultBorder);
 	}
 
-	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
