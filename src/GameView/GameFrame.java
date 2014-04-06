@@ -46,7 +46,7 @@ public class GameFrame extends RPGEngine {
 				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
 				currGridObjectDatas = currTile.getGridObjectDatas();
 
-				for(int k = 0; k < currGridObjectDatas.length; k++){
+				for(int k = 0; k < currGridObjectDatas.size(); k++){
 //				need to figure out stuff here
 					addGridObject(new GridObject("", 0, 0));
 				}
