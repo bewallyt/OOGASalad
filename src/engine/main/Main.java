@@ -4,19 +4,41 @@ import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
 import engine.gridobject.person.BackAndForthMover;
+import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Main extends RPGEngine {
 
-	Player myPlayer;
-	BackAndForthMover myEnemy;
+	private Player myPlayer;
+	private NPC myNPC;
+	
+	
+	public static void main(String[] args) {
+		Main engine = new Main();
+		engine.initializeGame();
+		try {
+			engine.doGameLoop();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+//		Canvas canvas = new Canvas (800,800);
+//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
+//		canvas.setWorld(waWorld);
+//		engine.addObjects(waWorld);
+//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
+//		engine.doGameLoop(waWorld, cm);
+	}
+	
 	public void addObjects(World world){
-		Player player = myPlayer = new Player("player.png",2,1, 1);
+		
+		SurroundingChecker checker = new SurroundingChecker(world);
+		Player player = myPlayer = new Player("player.png",2,1, 1, checker);
 		addGridObject(player, 3, 3);
-		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, player);
+		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, player);
 		addGridObject(bafm,10,10);
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
@@ -45,23 +67,9 @@ public class Main extends RPGEngine {
 	@Override
 	public void run() {
 		if(myPlayer.getAClick())
-			myEnemy.doNextDialogue();
+			myNPC.doNextDialogue();
 	}
 
-	public static void main(String[] args) {
-			Main engine = new Main();
-			engine.initializeGame();
-			try {
-				engine.doGameLoop();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-	//		Canvas canvas = new Canvas (800,800);
-	//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
-	//		canvas.setWorld(waWorld);
-	//		engine.addObjects(waWorld);
-	//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
-	//		engine.doGameLoop(waWorld, cm);
-		}
+
 
 }
