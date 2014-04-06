@@ -3,6 +3,7 @@ package authoring;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -10,7 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ImageChooser extends Feature implements ActionListener{
 	private JButton myChooseImageButton;
 	private String fileName;
-	private String filePath;
+	private File imageFile;
 	private JFrame frame;
 	private WorldData myWorldData;
 
@@ -46,13 +47,12 @@ public class ImageChooser extends Feature implements ActionListener{
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getAbsolutePath());
 		}
-		filePath = chooser.getSelectedFile().getAbsolutePath();
+		imageFile = chooser.getSelectedFile();
 		addToWorldData();
 	}
 	
 	private void addToWorldData(){
-		//myWorldData.saveImage(s, f);
-		//myWorldData.saveImage(fileName, filePath);
+		myWorldData.saveImage(fileName, imageFile);		
 	}
 	
 	
