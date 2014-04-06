@@ -1,5 +1,8 @@
 package GameView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
@@ -24,18 +27,18 @@ public class GameFrame extends RPGEngine {
 	private int spriteHeight = 1;
 	private WorldData myWorldData;
 	private DataDummy myData;
-	
+
 	Player myPlayer;
 	NPC myNPC;
 	BackAndForthMover myEnemy;
-	
-	public GameFrame(){
+
+	public GameFrame() {
 		myData = new DataDummy();
 		myWorldData = myData.getWorldData();
-		
+
 		initializeGame();
 	}
-	
+
 	public void addObjects(World world){
 		myPlayer = initPlayer();
 //		hard coded
@@ -54,42 +57,47 @@ public class GameFrame extends RPGEngine {
 		
 //		work in progress till Data and authoring are ready
 
-		/*
-		TileData currTile;
-		GridObjectData[] currGridObjectDatas;
-		
-		for(int i = 0; i < myWorldData.getWorldSize()[0]; i++){
-			for(int j = 0; j < myWorldData.getWorldSize()[1]; j++){
-				currTile = myWorldData.getTileData(i, j);
-				currGridObjectDatas = currTile.getGridObjectDatas();
 
-				for(int k = 0; k < currGridObjectDatas.length; k++){
-//				need to figure out stuff here
-					addGridObject(new GridObject("", 0, 0));
-				}
-			}
-		} 
-		*/
+//	public void addObjects(World world) {
+//
+//		TileData currTile;
+//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
+//
+//		for (int i = 0; i < myWorldData.getMap("defaultworldkey")
+//				.getMapLength(); i++) {
+//			for (int j = 0; j < myWorldData.getMap("defaultworldkey")
+//					.getMapWidth(); j++) {
+//				currTile = myWorldData.getMap("defaultworldkey").getTileData(i,
+//						j);
+//				currGridObjectDatas = currTile.getGridObjectDatas();
+//
+//				for (int k = 0; k < currGridObjectDatas.size(); k++) {
+//					// need to figure out stuff here
+//					addGridObject(new GridObject("", 0, 0));
+//				}
+//			}
+//		}
 
 	}
 
 	@Override
 	public void initializeGame() {
 		initializeCanvas(800, 800);
-//		initializeCanvas(myWorldData.getWorldSize()[0], myWorldData.getWorldSize()[1]);
-		addNewWalkAroundWorld(40,"grass.jpg");
+		// initializeCanvas(myWorldData.getWorldSize()[0],
+		// myWorldData.getWorldSize()[1]);
+		addNewWalkAroundWorld(40, "grass.jpg");
 		addObjects(getCurrentWorld());
 	}
 
 	@Override
 	public void run() {
-		if(myPlayer.getAClick())
+		if (myPlayer.getAClick())
 			myEnemy.doNextDialogue();
 	}
-	
+
 	private Player initPlayer() {
 
-//		hard coded
+		// hard coded
 		String[] animImages = new String[12];
 		animImages[0] = "fs.png";
 		animImages[3] = "ls.png";
@@ -102,15 +110,15 @@ public class GameFrame extends RPGEngine {
 		addGridObject(player, 3, 3);
 		return player;
 
-//		work in progress till data and authoring are ready
-		/*	
-		PlayerData playerData = myWorldData.getPlayerData();
-		
-		Player player = new Player(playerData.getMyImage(),2,spriteWidth, spriteHeight);
-		if(playerData.isAnimated())
-			player.getAnimImages(playerData.getMyAnimImages());
-		return player;
-		*/
+		// work in progress till data and authoring are ready
+		/*
+		 * PlayerData playerData = myWorldData.getPlayerData();
+		 * 
+		 * Player player = new Player(playerData.getMyImage(),2,spriteWidth,
+		 * spriteHeight); if(playerData.isAnimated())
+		 * player.getAnimImages(playerData.getMyAnimImages()); return player;
+		 */
 	}
+
 
 }
