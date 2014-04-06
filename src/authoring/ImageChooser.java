@@ -17,7 +17,7 @@ public class ImageChooser extends Feature implements ActionListener{
 
 	
 	public ImageChooser(){
-		myChooseImageButton = new JButton("Choose Tile Image");
+		myChooseImageButton = new JButton("New Tile Image");
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
