@@ -9,6 +9,7 @@ public class Main {
 		//myFeatures.add(new GridEditor());
 		//myFeatures.add(new Grid());
 		myFeatures.add(new GridObjectCreation());
+		myFeatures.add(new ImageChooser());
 
 		AuthoringView view = new AuthoringView(myFeatures);
 	}
