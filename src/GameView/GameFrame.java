@@ -7,6 +7,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
+import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 import engine.main.RPGEngine;
@@ -34,12 +35,12 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	public void addObjects(World world){
-		addGridObject(myPlayer = initPlayer(), 3, 3);
+		addGridObject(myPlayer = initPlayer(world), 3, 3);
 		
 //		hard coded		
-		BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, myPlayer);
-		addGridObject(bafm,10,10);
-		bafm.addDialogue("Hey Bitch. Fight Me!");
+		//BackAndForthMover bafm = myEnemy= new BackAndForthMover("rival.png",1,1,1, 350, 550, 0, 0, myPlayer);
+		//addGridObject(bafm,10,10);
+		//bafm.addDialogue("Hey Bitch. Fight Me!");
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
 		for(int i=0; i<world.getTileGridHeight(); i++){
@@ -86,7 +87,9 @@ public class GameFrame extends RPGEngine {
 			myEnemy.doNextDialogue();
 	}
 	
-	private Player initPlayer() {
+	private Player initPlayer(World world) {
+
+		SurroundingChecker checker = new SurroundingChecker(world);
 
 //		hard coded
 		String[] animImages = new String[12];
@@ -94,7 +97,7 @@ public class GameFrame extends RPGEngine {
 		animImages[3] = "ls.png";
 		animImages[6] = "bs.png";
 		animImages[9] = "rs.png";
-		Player player = new Player("player.png",2,spriteWidth, spriteHeight);
+		Player player = new Player("player.png",2,spriteWidth, spriteHeight, checker);
 		player.getAnimImages(animImages);
 		return player;
 
@@ -109,19 +112,20 @@ public class GameFrame extends RPGEngine {
 		*/
 	}
 
-//	public static void main(String[] args) {
-//		GameFrame game = new GameFrame();
-//		try {
-//			game.doGameLoop();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		//		Canvas canvas = new Canvas (800,800);
-//		//		WalkAroundWorld waWorld = new WalkAroundWorld(40, canvas.getWidth(), canvas.getHeight());
-//		//		canvas.setWorld(waWorld);
-//		//		engine.addObjects(waWorld);
-//		//		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
-//		//		engine.doGameLoop(waWorld, cm);
-//	}
-
+	public static void main(String[] args) {
+		GameFrame game = new GameFrame();
+		try {
+			game.doGameLoop();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+			//addNewWalkAroundWorld(40, "grass.jpg");
+			Canvas canvas = new Canvas (800,800);
+			WalkAroundWorld waWorld = new WalkAroundWorld(40, "grass.jpg");
+			waWorld.setDimensions(canvas.getWidth(), canvas.getHeight());
+			canvas.setWorld(waWorld);
+			//engine.addObjects(waWorld);
+			CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
+			//engine.doGameLoop(waWorld, cm);
+	}
 }
