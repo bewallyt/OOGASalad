@@ -78,7 +78,7 @@ public class DataManager {
 	 * @param worldDataName
 	 */
 	public void saveWorldDataToFile(String worldDataName) {
-		myFileStorer.storeWorldData(worldDataName, myWorldDatas.get(worldDataName));
+		myFileStorer.storeWorldData(worldDataName + ".json", myWorldDatas.get(worldDataName));
 	}
 	
 	/**
@@ -88,8 +88,8 @@ public class DataManager {
 	 */
 	public WorldData loadWorldDataFromFile(String worldDataName) {
 		try {
-			WorldData worldData = myFileStorer.getWorldData(worldDataName);
-			myWorldDatas.put(worldDataName, worldData);
+			WorldData worldData = myFileStorer.getWorldData(worldDataName + ".json");
+			myWorldDatas.put(worldDataName + ".json", worldData);
 			return worldData;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
