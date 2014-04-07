@@ -10,19 +10,22 @@ import javax.swing.JPanel;
 
 import engine.AbstractGameState;
 import engine.WalkAroundState;
+import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 
 public class Canvas extends JPanel{
-	
+
 	private JFrame myFrame;
 	private int myHeight;
 	private int myWidth;
 	private World myWorld;
 	private int myWorldHeight;
 	private int myWorldWidth;
+	private int offsetMinX = 0;
+	private int offsetMinY=0;
 
-	
-	
+
+
 	/**
 	 * Instantiates a new canvas.
 	 *
@@ -43,27 +46,28 @@ public class Canvas extends JPanel{
 		frame.setFocusable(true);
 		frame.requestFocus();
 	}
-	
+
 
 	public void setWorld(World world){
 		myFrame.add(this);
 		myFrame.addKeyListener(new WalkAroundState(this, world));
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
+		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
 	}
-	
+
 	public void setState(AbstractGameState state){
 		myFrame.addKeyListener(state);
 	}
-	
+
 	public int getHeight(){
 		return myHeight;
 	}
-	
+
 	public int getWidth(){
 		return myWidth;
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -71,35 +75,37 @@ public class Canvas extends JPanel{
 		setOpaque(false);
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		
+
 		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
 		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
 		getCameraOffset();
 		g2d.drawImage(background, -getCameraOffset()[0], -getCameraOffset()[1],null);
 		for(int i=0; i<myWorld.getGridObjectList().size(); i++){
-			myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
+			if(isInView(myWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
+				myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
+			}
 		}
-
 	}
-	
+
 	public int[] getCameraOffset(){
-		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
-		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
-		int offsetMaxX = width-400;
-		int offsetMaxY = height-400;
-		int offsetMinX = 0;
-		int offsetMinY=0;
+		int offsetMaxX = myWorldWidth-myWidth;
+		int offsetMaxY = myWorldHeight-myHeight;
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
-	   	int cameraY = myWorld.getPlayer().getY() - myHeight /2;
+		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
-		    cameraX = offsetMaxX;
+			cameraX = offsetMaxX;
 		else if (cameraX < offsetMinX)
-		    cameraX = offsetMinX;
+			cameraX = offsetMinX;
 		if (cameraY>offsetMaxY)
 			cameraY = offsetMaxY;
 		else if(cameraY<offsetMinY)
 			cameraY=offsetMinY;
 		return new int[] {cameraX, cameraY};
+	}
+	
+	public boolean isInView(GridObject go, int cameraX, int cameraY){
+		return (go.getBounds().getMaxX()>cameraX && go.getBounds().getMaxY()>cameraY
+				&& go.getBounds().getMinX()<(cameraX+myWidth) && go.getBounds().getMinY()<(cameraY + myHeight));
 	}
 }

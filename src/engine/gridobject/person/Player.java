@@ -15,24 +15,14 @@ public class Player extends RuleFollower {
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
 	private SurroundingChecker mySurroundingChecker;
-	
-	private boolean isAnimated = false;
 	private String[] myAnimImages;
 	private AbstractGameState myState;
 	private boolean enterDoor;
 	private double originalSpeed;
  
 	
-//	public Player(String image, double speed, int numTilesWidth, int numTilesHeight) {
-//		super(image, speed, numTilesWidth, numTilesHeight);
-//		setMyItems(null);
-//		enterDoor=false;
-//		originalSpeed = this.getSpeed();
-//	}
-	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
-		isAnimated = true;
 		myAnimImages = animImages;
 		setMyItems(null);
 	}
@@ -42,7 +32,6 @@ public class Player extends RuleFollower {
 	}
 	public void getAnimImages(String[] animImages) {
 		myAnimImages = animImages;
-		isAnimated = true;
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -81,10 +70,6 @@ public class Player extends RuleFollower {
 			setDX(0);
 		if (e.getKeyCode() == AbstractGameState.A)
 			aClick=false;
-	}
-	
-	public boolean getAClick(){
-		return aClick;
 	}
 	
 	public double getOriginalSpeed(){
