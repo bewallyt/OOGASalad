@@ -7,7 +7,6 @@ import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
-import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
@@ -30,7 +29,6 @@ public class GameFrame extends RPGEngine {
 
 	Player myPlayer;
 	NPC myNPC;
-	BackAndForthMover myEnemy;
 
 	public GameFrame() {
 		myData = new DataDummy();
@@ -40,8 +38,17 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public void addObjects(World world){
-		myPlayer = initPlayer();
-//		hard coded
+		
+		// setting background image for tiles
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				world.getTileMatrix()[i][j].setBackgroundImage("grass.jpg");
+			}
+		}
+		
+		initPlayer();
+		addGridObject(getPlayer(), 3, 3);
+
 		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey bitch fight me");
@@ -101,13 +108,12 @@ public class GameFrame extends RPGEngine {
 
 	}
 
-	private Player initPlayer() {
+	private void initPlayer() {
 
 		// hard coded
 		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
 //		addPlayer(new String[] {"LinkUp.png", "LinkRight.png", "LinkDown.png", "LinkLeft.png"}, 2, 1, 1);
-		addGridObject(getPlayer(), 3, 3);
-		return getPlayer();
+//		return getPlayer();
 
 	}
 
