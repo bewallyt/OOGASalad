@@ -1,6 +1,7 @@
 package authoring;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -28,7 +29,6 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 	private TilePanel[][] world;
 	
 	public Grid() {
-		WorldData wd = FeatureManager.getWorldData();
 		this.setLayout(new GridBagLayout());
 		worldMaker();		
 		this.setOpaque(false);
@@ -67,12 +67,18 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 	}
 	
 	public void showImageList(){
+		WorldData wd = FeatureManager.getWorldData(); 
+		Object[] imageNames = wd.getImages().keySet().toArray();
+		if(imageNames.length == 0){
+			JOptionPane.showMessageDialog(this, "Please upload an image first.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		String selectedTileImage = (String) JOptionPane.showInputDialog(
                 this,
                 "Select an image for the tile: ",
                 "Tile Image Editor",
                 JOptionPane.QUESTION_MESSAGE,
-                null, tileTypes,
+                null, imageNames,
                 "");
 		
 		/*String selectedTileData = (String) JOptionPane.showInputDialog(
@@ -83,16 +89,15 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
                 null, tileTypes,
                 tileTypes[0]);		
 		//selectedCell.setTileDataImage(selectedTileData);*/
-		
+		if(selectedTileImage == null){
+			return;
+		}	
 		selectedCell.setTileImage(selectedTileImage);
 		this.revalidate();
 		this.repaint();
 	}
 	
-	public void scroll(String s){
-		
-	}
-	
+	//need to fix error when user scrolls too far right or too far down
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
 		for (int row = startRow; row < startRow + VIEW_HEIGHT; row++) {
@@ -109,8 +114,12 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 	}
 	
 	public void redrawGrid(int xChange, int yChange){
-		startCol += xChange;
-		startRow += yChange;
+		if((xChange == -1 && startCol > 0) || (xChange == 1 && startCol < 143)){
+			startCol += xChange;
+		}
+		if((yChange == -1 && startRow > 0) || (yChange == 1 && startRow < 143)){
+			startRow += yChange;
+		}
 		this.removeAll();
 		drawGrid();
 		revalidate();
@@ -118,10 +127,6 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if("scrollleft".equals(e.getActionCommand())){
-			scroll(e.getActionCommand());
-		}
-		
 		showImageList();
 	}
 
