@@ -2,6 +2,7 @@ package engine.world;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
@@ -91,8 +92,12 @@ public class Tile {
 		return new int[] {myX,myY};
 	}
 	
-	public void paint(Graphics2D g) {
-		g.drawImage(myBackgroundImage, myX, myY, null);
+	public void paint(Graphics2D g, int xOff, int yOff) {
+		g.drawImage(myBackgroundImage, myX - xOff, myY - yOff, null);
+	}
+
+	public Rectangle getBounds() {
+		return new Rectangle(myX, myY, myY+mySize, myX+mySize);	
 	}
 	
 

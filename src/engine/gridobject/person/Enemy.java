@@ -6,8 +6,8 @@ public abstract class Enemy extends NPC {
 	
 	
 	
-	public Enemy(String image, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
-		super(image,speed, numTilesWidth, numTilesHeight,movementType,player);
+	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 		
 	}
 //

@@ -2,9 +2,8 @@ package engine.world;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import engine.GameObject;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Player;
 
 public abstract class World {
 	
@@ -14,6 +13,8 @@ public abstract class World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private String myBackground;
+	private Player myPlayer;
+	
 
 	/**
 	 * Instantiates a new World.
@@ -29,11 +30,13 @@ public abstract class World {
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
 	
-	public void setDimensions(int width, int height){
+	public void setPlayDimensions(int width, int height){
 		myNumTileWidth = width/myTileSize;
 		myNumTileHeight = height/myTileSize;
 		makeTileMatrix();
 	}
+	
+
 	
 	public int getTileSize(){
 		return myTileSize;
@@ -83,6 +86,8 @@ public abstract class World {
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
+		if(obj instanceof Player)
+			myPlayer = (Player) obj;
 	}
 	
 	public Tile[][] getTileMatrix() {
@@ -92,5 +97,9 @@ public abstract class World {
 	public void setViewSize(){
 		
 	}
-
+		
+	public Player getPlayer(){
+		return myPlayer;
+	}
 }
+

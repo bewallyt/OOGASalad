@@ -14,6 +14,7 @@ import java.util.List;
 import authoring.WorldData;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class FileStorer {
 	public static final String DEFAULT_SRC_FILE="src/";
@@ -22,7 +23,8 @@ public class FileStorer {
 	//private Gson gson=new Gson();
 	public FileStorer() {
 		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
-		savedGamesPath = path.replaceAll("\\\\", "/");
+		savedGamesPath = path.replaceAll("\\\\", "/");	
+		init();
 	}
 	/**
 	 * Method used to store an instance of the WorldData class into a JSON data file. This allows
@@ -31,10 +33,12 @@ public class FileStorer {
 	 * @param world WorldData class that is to be saved
 	 */
 	public void storeWorldData(String name, WorldData world){
-		File folder = new File(savedGamesPath);
+    	File folder = new File(savedGamesPath);
 		File jsonFile=new File(folder, name);
 		try(Writer writer=new FileWriter(jsonFile);){
-			Gson gson=new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.setPrettyPrinting();
+			Gson gson = gsonBuilder.create();
 			gson.toJson(world, writer);
 			
 		} catch (IOException e) {
@@ -77,7 +81,9 @@ public class FileStorer {
 				sb.append(line);
 			}
 			System.out.println(sb.toString());
-			Gson gson=new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.setPrettyPrinting();
+			Gson gson = gsonBuilder.create();
 			WorldData world=gson.fromJson(sb.toString(), WorldData.class);
 			return world;
 		} finally{
@@ -96,6 +102,20 @@ public class FileStorer {
 	public static void main(String[] args){
 		FileStorer f=new FileStorer();
 		f.writeFile("test.txt", "Hi");
+	}
+	
+	private void init() {
+		File theDir = new File(savedGamesPath);
+
+		  // if the directory does not exist, create it
+		  if (!theDir.exists()) {
+		    System.out.println("creating directory: " + savedGamesPath);
+		    boolean result = theDir.mkdir();  
+
+		     if(result) {    
+		       System.out.println("DIR created");  
+		     }
+		  }
 	}
 }
 

@@ -18,11 +18,12 @@ public class NPC extends RuleFollower {
 	 * @param speed the speed
 	 * @param numTilesWidth the num tiles width
 	 * @param numTilesHeight the num tiles height
+
 	 * @param movementType the movement type. 1=move back and forth 2=follow player if it gets close 3=stand still
 	 * @param player the player
 	 */
-	public NPC(String image, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
-		super(image, speed, numTilesWidth, numTilesHeight);
+	public NPC(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+		super(animImages, speed, numTilesWidth, numTilesHeight);
 		myDialogue=new ArrayList<String>();
 		myPlayer=player;
 		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType, this, player  );
