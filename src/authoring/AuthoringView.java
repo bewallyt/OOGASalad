@@ -1,7 +1,9 @@
 package authoring;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowEvent;
 import java.util.*;
+
 import javax.swing.*;
 
 public class AuthoringView {
@@ -55,5 +57,8 @@ public class AuthoringView {
 		}
 		myFrame.pack();
 		myFrame.setVisible(true);
+	}
+	public void close() {
+		myFrame.dispatchEvent(new WindowEvent(myFrame, WindowEvent.WINDOW_CLOSING));
 	}
 }
