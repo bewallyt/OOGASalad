@@ -1,12 +1,15 @@
 package authoring;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 public class GridObjectImageFeature extends Feature {
 
@@ -15,7 +18,9 @@ public class GridObjectImageFeature extends Feature {
 	private GridObjectCreation mySuperFeature;
 	public GridObjectImageFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
+		Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		myTilePanel = new TilePanel(1,1);
+		myTilePanel.setBorder(defaultBorder);
 		addImageButton = new JButton("Add GridObject Image");
 		addImageButton.addActionListener(new GridImageListener());
 		myComponents.put(addImageButton, BorderLayout.SOUTH);
@@ -45,5 +50,6 @@ public class GridObjectImageFeature extends Feature {
 			return;
 		}	
 		myTilePanel.setTileImage(selectedTileImage);
+		mySuperFeature.getView().getFrame().revalidate();
 	}
 }
