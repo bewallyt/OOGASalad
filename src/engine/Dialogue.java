@@ -8,22 +8,27 @@ import engine.images.ScaledImage;
 
 public class Dialogue{
 	private String myDialogue ="";
+	private String myImageName;
 	private Image myImage;
 	
 	public Dialogue(String image, String dialogue) {
 
-		myImage = new ScaledImage(700,200,image).scaleImage();
+		myImageName = image;
 		myDialogue = dialogue;
 	}
 	
-	public void setDialogue(String str){
-		myDialogue = str;
-	}
 	public Image getImage(){
 		return myImage;
 	}
+	public void setDialogue(String str){
+		myDialogue = str;
+	}
+	
 	public String getDialogue(){
 		return myDialogue;
+	}
+	public void setSize(int width, int height){
+		myImage = new ScaledImage(width,height,myImageName).scaleImage();
 	}
 
 }

@@ -84,12 +84,14 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		drawDialogue(g);
 	}
+	
 
-	private void drawDialogue(Graphics2D g) {
+	public void paintDialoge(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
 		if(d!=null){
-			g.drawImage(d.getImage(),50,500,null);
+			d.setSize((int) (xSize*.9), ySize/4);
+			System.out.println(xOffset);
+			g.drawImage(d.getImage(),(int) (xSize*.05),(int) (ySize-ySize/4-ySize*.1),null);
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 			Font font=null;
 			try {
@@ -101,7 +103,7 @@ public abstract class GridObject{
 				e.printStackTrace();
 			}
 
-			g.drawString(d.getDialogue(), 80, 550);
+			g.drawString(d.getDialogue(), (int) (xSize*.1), (int) (ySize-ySize/4));
 		}
 	}
 
