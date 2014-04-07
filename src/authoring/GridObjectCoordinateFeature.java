@@ -14,7 +14,10 @@ public class GridObjectCoordinateFeature extends Feature {
 	
 	private JTextArea yTileCo;
 	private JScrollPane yTileCoWrapper;
-	public GridObjectCoordinateFeature(){
+	
+	private GridObjectCreation mySuperFeature;
+	public GridObjectCoordinateFeature(GridObjectCreation gridObjectCreation){
+		mySuperFeature = gridObjectCreation;
 		coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
 		myComponents.put(coordinatesLabel, BorderLayout.WEST);
 		xTileCo = new JTextArea(1,3);

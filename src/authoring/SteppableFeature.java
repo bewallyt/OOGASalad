@@ -6,7 +6,9 @@ import javax.swing.JCheckBox;
 
 public class SteppableFeature extends Feature{
 	private JCheckBox steppableCheck;
-	public SteppableFeature(){
+	private GridObjectCreation mySuperFeature;
+	public SteppableFeature(GridObjectCreation gridObjectCreation){
+		mySuperFeature = gridObjectCreation;
 		steppableCheck = new JCheckBox("Steppable?");
 		myComponents.put(steppableCheck, BorderLayout.SOUTH);
 	}
