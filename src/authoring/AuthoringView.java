@@ -61,4 +61,7 @@ public class AuthoringView {
 	public void close() {
 		myFrame.dispatchEvent(new WindowEvent(myFrame, WindowEvent.WINDOW_CLOSING));
 	}
+	public JFrame getFrame() {
+		return myFrame;
+	}
 }
