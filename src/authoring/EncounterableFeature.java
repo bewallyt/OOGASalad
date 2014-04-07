@@ -11,7 +11,10 @@ public class EncounterableFeature extends Feature{
 	
 	private JTextArea encounterRate;
 	private JScrollPane encounterRateWrapper;
-	public EncounterableFeature(){
+	
+	private GridObjectCreation mySuperFeature;
+	public EncounterableFeature(GridObjectCreation gridObjectCreation){
+		mySuperFeature = gridObjectCreation;
 		encounterableCheck = new JCheckBox("Encounterable?");
 		myComponents.put(encounterableCheck, BorderLayout.SOUTH);
 		
