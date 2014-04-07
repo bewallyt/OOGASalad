@@ -113,7 +113,6 @@ public class Canvas extends JPanel{
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
-		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
