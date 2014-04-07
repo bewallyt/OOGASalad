@@ -41,7 +41,7 @@ public class GridObjectCreation extends Feature{
 	public Feature getFeature(String s){
 		Feature myFeature=null;
 		for(Feature f: myGridFeatures){
-			if(f.getClass().getName()==s)
+			if(f.getClass().getSimpleName().equals(s))
 				myFeature = f;
 		}
 		return myFeature;

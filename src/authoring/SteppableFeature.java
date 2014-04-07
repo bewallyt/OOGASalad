@@ -12,4 +12,7 @@ public class SteppableFeature extends Feature{
 		steppableCheck = new JCheckBox("Steppable?");
 		myComponents.put(steppableCheck, BorderLayout.SOUTH);
 	}
+	public boolean isSteppable() {
+		return steppableCheck.isSelected();
+	}
 }

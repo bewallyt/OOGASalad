@@ -27,4 +27,20 @@ public class GridObjectCoordinateFeature extends Feature {
 		yTileCoWrapper = new JScrollPane(yTileCo);
 		myComponents.put(yTileCoWrapper, BorderLayout.WEST);
 	}
+	public int getX() {
+		try{
+			return Integer.parseInt(xTileCo.getText());
+		}
+		catch (NumberFormatException e){
+			return -1;
+		}
+	}
+	public int getY() {
+		try{
+			return Integer.parseInt(yTileCo.getText());
+		}
+		catch (NumberFormatException e){
+			return -1;
+		}
+	}
 }
