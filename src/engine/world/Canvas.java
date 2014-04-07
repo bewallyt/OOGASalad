@@ -87,30 +87,33 @@ public class Canvas extends JPanel{
 		// paints objects on tiles
 
 		//Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-		getCameraOffset();
+//		getCameraOffset();
 		//g2d.drawImage(background, -getCameraOffset()[0], -getCameraOffset()[1],null);
 		
 		// paints background of each tile
-		
+	
 		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
 			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
-				if (tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
+				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
 				myWorld.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
-
+		
 		for(int i=0; i<myWorld.getGridObjectList().size(); i++) {
 			if(isInView(myWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
 				myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
 				myWorld.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
+
+		
 		
 	}
 
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
+		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)

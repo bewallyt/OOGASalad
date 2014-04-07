@@ -67,7 +67,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
+		initializeCanvas(400, 400);
 		addNewWalkAroundWorld(40,"grass.jpg", 1000, 1000);
 		addObjects(getCurrentWorld());
 	}
