@@ -26,6 +26,11 @@ public class Player extends RuleFollower {
 		setMyItems(null);
 	}
 	
+	public Player(String spriteSheet, double speed, int numTilesWidth, int numTilesHeight) {
+		super(spriteSheet, speed, numTilesWidth, numTilesHeight);
+		setMyItems(null);
+	}
+	
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){
 		mySurroundingChecker = surroundingChecker;
 	}

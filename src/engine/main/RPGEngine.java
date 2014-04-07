@@ -101,6 +101,13 @@ public abstract class RPGEngine{
 		myPlayer = player;
 		//addGridObject(player, myCurrentWorld.get, numTilesHeight);
 	}
+	
+	public void addPlayer(String spriteSheet, double speed, int numTilesWidth, int numTilesHeight){
+		Player player = new Player(spriteSheet, speed, numTilesWidth, numTilesHeight);
+		player.setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
+		myPlayer = player;
+		//addGridObject(player, myCurrentWorld.get, numTilesHeight);
+	}
 
 	/**
 	 * Check collisions. Called by doGameLoop

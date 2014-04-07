@@ -6,6 +6,7 @@ import java.util.List;
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
+import engine.images.SpriteSheet;
 
 public class RuleFollower extends GridObject {
 
@@ -20,7 +21,9 @@ public class RuleFollower extends GridObject {
 	protected Weapon myWeapon;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
+	private int count = 0;
 	private String currentImageFile;
+	private SpriteSheet sheet;
 	
 	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
@@ -29,6 +32,15 @@ public class RuleFollower extends GridObject {
 		myWeapon = null;
 		currentImageFile=getAnimImages()[2];
 	}
+	
+	public RuleFollower(String spriteSheet, double speed, int numTilesWidth, int numTilesHeight) {
+		super(spriteSheet, numTilesWidth, numTilesHeight);
+		mySpeed = speed;
+		resetMax();
+		myWeapon = null;
+		currentImageFile=spriteSheet;
+	}
+	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -59,21 +71,36 @@ public class RuleFollower extends GridObject {
 
 	private void updateFacing() {
 		String imageName=currentImageFile;
+		count++;
+		if(count == 50)
+			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName=getAnimImages()[1];
+			if(count < 25)
+				imageName=getAnimImages()[4];
+			if(count < 50 && count >= 25)
+				imageName=getAnimImages()[5];
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName=getAnimImages()[3];
+			if(count < 25)
+				imageName=getAnimImages()[10];
+			if(count < 50 && count >= 25)
+				imageName=getAnimImages()[11];
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName=getAnimImages()[2];
+			if(count < 25)
+				imageName=getAnimImages()[7];
+			if(count < 50 && count >= 25)
+				imageName=getAnimImages()[8];
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName=getAnimImages()[0];
+			if(count < 25)
+				imageName=getAnimImages()[1];
+			if(count < 50 && count >= 25)
+				imageName=getAnimImages()[2];
 		}
 		setImage(imageName);
 		currentImageFile=imageName;

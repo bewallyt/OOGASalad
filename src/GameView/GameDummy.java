@@ -20,7 +20,7 @@ import authoring.TileData;
 import authoring.WorldData;
 import Data.DataDummy;
 
-public class GameFrame extends RPGEngine {
+public class GameDummy extends RPGEngine {
 
 	private int spriteWidth = 1;
 	private int spriteHeight = 1;
@@ -30,7 +30,7 @@ public class GameFrame extends RPGEngine {
 	Player myPlayer;
 	NPC myNPC;
 
-	public GameFrame() {
+	public GameDummy() {
 		myData = new DataDummy();
 		myWorldData = myData.getWorldData();
 
@@ -51,8 +51,7 @@ public class GameFrame extends RPGEngine {
 
 		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
-		bafm.addDialogue("Hey bitch fight me");
-		bafm.addDialogue("okay?");
+		bafm.addDialogue("Yo, fight me");
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
@@ -64,31 +63,6 @@ public class GameFrame extends RPGEngine {
 			addGridObject(new Barrier("tree.png",1,2), 0, i);
 			addGridObject(new Barrier("tree.png",1,2), world.getTileGridWidth()-1,i );
 		}
-		
-
-		
-//		work in progress till Data and authoring are ready
-
-
-//	public void addObjects(World world) {
-//
-//		TileData currTile;
-//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
-//
-//		for (int i = 0; i < myWorldData.getMap("defaultworldkey")
-//				.getMapLength(); i++) {
-//			for (int j = 0; j < myWorldData.getMap("defaultworldkey")
-//					.getMapWidth(); j++) {
-//				currTile = myWorldData.getMap("defaultworldkey").getTileData(i,
-//						j);
-//				currGridObjectDatas = currTile.getGridObjectDatas();
-//
-//				for (int k = 0; k < currGridObjectDatas.size(); k++) {
-//					// need to figure out stuff here
-//					addGridObject(new GridObject("", 0, 0));
-//				}
-//			}
-//		}
 
 	}
 
@@ -111,12 +85,19 @@ public class GameFrame extends RPGEngine {
 	private void initPlayer() {
 
 		// hard coded
-		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
-//		addPlayer(anim, 2, 1, 1);
-		String spriteSheet = "PlayerSprites";
-		addPlayer(spriteSheet, 2, 1, 1);
+		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
+//		addPlayer(new String[] {"LinkUp.png", "LinkRight.png", "LinkDown.png", "LinkLeft.png"}, 2, 1, 1);
+//		return getPlayer();
 
+	}
+	
+	public static void main(String[] args) {
+		GameDummy game = new GameDummy();
+		try {
+			game.doGameLoop();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 
