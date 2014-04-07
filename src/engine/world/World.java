@@ -46,6 +46,11 @@ public abstract class World {
 		return myNumTileHeight;
 	}
 	
+	/**
+	 * Returns the width of the canvas, in number of tiles
+	 * 
+	 * @return Returns the width of the canvas, in number of tiles
+	 */
 	public int getTileGridWidth() {
 		return myNumTileWidth;
 	}
@@ -85,9 +90,14 @@ public abstract class World {
 			myPlayer = (Player) obj;
 	}
 	
-	public Tile[][] getTileMatrix(){
+	public Tile[][] getTileMatrix() {
 		return myTileMatrix;
 	}
+	
+	public void setViewSize(){
+		
+	}
+		
 	public Player getPlayer(){
 		return myPlayer;
 	}

@@ -15,7 +15,9 @@ public class FileLister {
 			return fileNameList;
 		}
 		for(File f: listOfFiles){
-			fileNameList.add(f.getName());
+			if (!f.isHidden()) {
+				fileNameList.add(f.getName());
+			}
 		}
 		return fileNameList;
 		
