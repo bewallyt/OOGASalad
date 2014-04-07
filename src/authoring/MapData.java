@@ -17,4 +17,12 @@ public class MapData {
 		myTiles.get(row).set(col, td);
 	}
 	
+	public int getMapWidth(){
+		return myTiles.get(0).size();
+	}
+	
+	public int getMapLength(){
+		return myTiles.size();
+	}
+	
 }

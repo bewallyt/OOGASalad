@@ -42,11 +42,11 @@ public class DataTester {
 	public void dataManagerTest1() throws Exception{
 		DataManager dm = DataManager.getInstance();
 		WorldData d = new WorldData();
-		dm.setWorldData("WorldData1", d);
-		WorldData d2 = dm.getWorldData("WorldData1");
+		dm.setWorldData("WorldData1.json", d);
+		WorldData d2 = dm.getWorldData("WorldData1.json");
 		assertTrue(d2 != null);
-		dm.saveWorldDataToFile("WorldData1");
-		WorldData d3 = dm.loadWorldDataFromFile("WorldData1");
+		dm.saveWorldDataToFile("WorldData1.json");
+		WorldData d3 = dm.loadWorldDataFromFile("WorldData1.json");
 		assertTrue(d3 != null);
 	}
 	
