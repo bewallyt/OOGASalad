@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -13,7 +14,7 @@ public class ImageChooser extends Feature implements ActionListener{
 	private String fileName;
 	private File imageFile;
 	private JFrame frame;
-	private WorldData myWorldData;
+	private ImageResizer myImResizer;
 
 	
 	public ImageChooser(){
@@ -21,6 +22,7 @@ public class ImageChooser extends Feature implements ActionListener{
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
+		myImResizer = new ImageResizer();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -29,15 +31,19 @@ public class ImageChooser extends Feature implements ActionListener{
 			if(fileName.equals("")){
 				JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				fileName = JOptionPane.showInputDialog("Please name the image:");
-				chooseImage();
+				try {
+					chooseImage();
+				} catch (IOException e1) {}
 			} else{
-				chooseImage();
+				try {
+					chooseImage();
+				} catch (IOException e1) {}
 			}
 		}
 		
 	}
 	
-	private void chooseImage(){
+	private void chooseImage() throws IOException{
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"JPG, PNG, GIF", "jpg","gif","png");
@@ -48,15 +54,8 @@ public class ImageChooser extends Feature implements ActionListener{
 					chooser.getSelectedFile().getAbsolutePath());
 		}
 		imageFile = chooser.getSelectedFile();
-		addToWorldData();
-	}
-	
-	private void addToWorldData(){
-		myWorldData.saveImage(fileName, imageFile);		
-	}
-	
-	
-	
-	
+		myImResizer.squareImage(fileName, imageFile);
+		
+	}		
 
 }

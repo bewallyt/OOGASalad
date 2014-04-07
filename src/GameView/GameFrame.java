@@ -42,8 +42,10 @@ public class GameFrame extends RPGEngine {
 	public void addObjects(World world){
 		myPlayer = initPlayer();
 //		hard coded
-		NPC bafm = myNPC = new NPC("rival.png", 1, 1, 1, 2, myPlayer);
-		addGridObject(bafm, 10, 10);
+		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
+		addGridObject(bafm,10,10);
+		bafm.addDialogue("Hey bitch fight me");
+
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
 //		TileData currTile;
@@ -100,36 +102,25 @@ public class GameFrame extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
+		initializeCanvas(400, 400);
 		// initializeCanvas(myWorldData.getWorldSize()[0],
 		// myWorldData.getWorldSize()[1]);
-		addNewWalkAroundWorld(40, "grass.jpg");
+		addNewWalkAroundWorld(40, "grass.jpg", 1000, 1000);
+
 		addObjects(getCurrentWorld());
 	}
 
 	@Override
 	public void run() {
-		if (myPlayer.getAClick())
-			myEnemy.doNextDialogue();
+
 	}
 
 	private Player initPlayer() {
 
 		// hard coded
-		String[] animImages = new String[12];
-		animImages[0] = "fs.png";
-		//Test
-		animImages[1] = "fw1.png";
-		animImages[2] = "fw2.png";
-		animImages[3] = "ls.png";
-		animImages[6] = "bs.png";
-		animImages[9] = "rs.png";
-		SurroundingChecker checker = new SurroundingChecker(getCurrentWorld());
-		Player player = new Player("player.png",2,spriteWidth, spriteHeight, checker);
-		player.getAnimImages(animImages);
-		
-		addGridObject(player, 3, 3);
-		return player;
+		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
+		addGridObject(getPlayer(), 3, 3);
+		return getPlayer();
 
 		// work in progress till data and authoring are ready
 		/*

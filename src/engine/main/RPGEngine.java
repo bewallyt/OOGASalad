@@ -15,20 +15,22 @@ import engine.world.World;
  * The Abstract Class RPGEngine. Extend to create a new RPG game! Main method must be added to subclasses
  */
 public abstract class RPGEngine{
-	
+
 	/** The my canvas. */
 	private Canvas myCanvas;
-	
+
 	/** The my current world. */
 	private World myCurrentWorld;
-	
+
+	private Player myPlayer;
+
 	private CollisionMatrix myCollisionMatrix;;
-	
+
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
 	 */
 	public abstract void initializeGame();
-	
+
 	/**
 	 * Adds a grid object to the specified tile.
 	 *
@@ -44,7 +46,7 @@ public abstract class RPGEngine{
 	 * Run. Called by the main game loop. This method is called at every frame
 	 */
 	public abstract void run();
-	
+
 	/**
 	 * Initialize canvas.
 	 *
@@ -55,23 +57,22 @@ public abstract class RPGEngine{
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
 	}
-	
 
-	
+
+
 	/**
 	 * Adds a new walkaroundworld.
 	 *
 	 * @param tileSize the tile size
 	 */
-	public void addNewWalkAroundWorld(int tileSize, String background){
+	public void addNewWalkAroundWorld(int tileSize, String background, int playHeight, int playWidth){
 		World world = new WalkAroundWorld(tileSize, background);
-		world.setDimensions(myCanvas.getWidth(), myCanvas.getHeight());
-		int x = myCanvas.getWidth();
+		world.setPlayDimensions(playHeight, playWidth);
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
 		myCollisionMatrix=null;
 	}
-	
+
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
 	 * Calls run()
@@ -87,10 +88,18 @@ public abstract class RPGEngine{
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
 				go.move();
 			}
+//			myCurrentWorld.scroll();
 			run();
 			Thread.sleep(10);
 		}
-		
+
+	}
+
+	public void addPlayer(String[] animImages, double speed, int numTilesWidth, int numTilesHeight){
+		Player player = new Player(animImages, speed, numTilesWidth, numTilesHeight);
+		player.setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
+		myPlayer = player;
+		//addGridObject(player, myCurrentWorld.get, numTilesHeight);
 	}
 
 	/**
@@ -109,11 +118,15 @@ public abstract class RPGEngine{
 			}
 		}
 	}
-	
+
 	public World getCurrentWorld(){
 		return myCurrentWorld;
 	}
-	
 
-	
+	public Player getPlayer(){
+		return myPlayer;
+	}
+
+
+
 }
