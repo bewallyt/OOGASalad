@@ -9,7 +9,7 @@ import engine.world.SurroundingChecker;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
-	
+	private int count = 0;
 
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
@@ -37,22 +37,28 @@ public class Player extends RuleFollower {
 		isAnimated = true;
 	}
 	
-	public void keyPressed(KeyEvent e) throws InterruptedException {
+	public void keyPressed(KeyEvent e) {
+		System.out.println(count);
 		if (e.getKeyCode() == AbstractGameState.UP){
 			setDY(-super.getSpeed());
 			if(isAnimated)	setImage(myAnimImages[6]);
 		}
 		if (e.getKeyCode() == AbstractGameState.DOWN){
 			setDY(super.getSpeed());
-			// Test
-			if(isAnimated){
-				setImage(myAnimImages[1]);
-				Thread.sleep(100);	
+			if(isAnimated && count < 10)	{
 				setImage(myAnimImages[0]);
-				Thread.sleep(100);
-				setImage(myAnimImages[2]);
-				
+				count++;
 			}
+			if(isAnimated && count >= 10 && count < 20) {
+				setImage(myAnimImages[1]);
+				count++;
+			}
+			if(isAnimated && count >= 20) {
+				setImage(myAnimImages[2]);
+				count++;
+			}
+			if(count>30)
+				count = 0;
 		}
 		if (e.getKeyCode() == AbstractGameState.RIGHT){
 			setDX(super.getSpeed());
