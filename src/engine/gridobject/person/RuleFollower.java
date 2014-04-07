@@ -18,25 +18,31 @@ public class RuleFollower extends GridObject {
 	private int myMaxY;
 	private int myMinY;
 	protected Weapon myWeapon;
+	//up=0, right=1, down=2, left=3
+	private int myFacing=2;
+	private String currentImageFile;
 	
 	
 	
-	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight ) {
-		super(image, numTilesWidth, numTilesHeight);
-		
-		
-		
-		setSpeed(speed);
-		resetMax();
-		myWeapon = null;
-	}
-	
-//	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
-//		super(animImages, numTilesWidth, numTilesHeight);
-//		mySpeed = speed;
+//	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight ) {
+//		super(image, numTilesWidth, numTilesHeight);
+//		
+//		
+//		
+//		setSpeed(speed);
 //		resetMax();
 //		myWeapon = null;
 //	}
+	
+	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+		super(animImages, numTilesWidth, numTilesHeight);
+		mySpeed = speed;
+		resetMax();
+		myWeapon = null;
+		currentImageFile=getAnimImages()[2];
+	}
+	
+
 	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
@@ -57,20 +63,35 @@ public class RuleFollower extends GridObject {
 	@Override
 	public void move() {
 		updateFacing();
-		if(!(super.getX()+getDX()>myMaxX) && !(super.getX()+getDX()-super.getWidth()<myMinX))
-			super.incrementX(getDX());
-		if(!(super.getY()+getDY()+super.getHeight()>myMaxY) && !(super.getY()+getDY()<myMinY))
-			super.incrementY(getDY());
+		if(!(getX()+getDX()>myMaxX) && !(getX()+getDX()-getWidth()<myMinX))
+			incrementX(getDX());
+		if(!(getY()+getDY()+getHeight()>myMaxY) && !(getY()+getDY()<myMinY))
+			incrementY(getDY());
 		resetMax();
 		uniqueMove();
 		
 	}
 
 	private void updateFacing() {
-		if(getDX()>0)setFacing("right");
-		else if(getDX()<0)setFacing("left");
-		else if(getDY()>0)setFacing("down");
-		else if(getDY()<0)setFacing("up");
+		String imageName=currentImageFile;
+		if(getDX()>0){
+			myFacing=1;
+			imageName=getAnimImages()[1];
+		}
+		else if(getDX()<0){
+			myFacing=3;
+			imageName=getAnimImages()[3];
+		}
+		else if(getDY()>0){
+			myFacing=2;
+			imageName=getAnimImages()[2];
+		}
+		else if(getDY()<0){
+			myFacing=0;
+			imageName=getAnimImages()[0];
+		}
+		setImage(imageName);
+		currentImageFile=imageName;
 	}
 	
 	public Rectangle getNextBounds(){
@@ -80,7 +101,6 @@ public class RuleFollower extends GridObject {
 	}
 	
 	public void addWeapon(Weapon weapon){
-		
 	}
 
 	public void addItem(Item it) {
@@ -125,6 +145,9 @@ public class RuleFollower extends GridObject {
 
 	public void setDX(double myDX) {
 		this.myDX = myDX;
+	}
+	public int getFacing(){
+		return myFacing;
 	}
 	
 
