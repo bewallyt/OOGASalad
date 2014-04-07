@@ -14,7 +14,10 @@ public class GridObjectCoordinateFeature extends Feature {
 	
 	private JTextArea yTileCo;
 	private JScrollPane yTileCoWrapper;
-	public GridObjectCoordinateFeature(){
+	
+	private GridObjectCreation mySuperFeature;
+	public GridObjectCoordinateFeature(GridObjectCreation gridObjectCreation){
+		mySuperFeature = gridObjectCreation;
 		coordinatesLabel = new JLabel("Input X and Y coordinates of GridObject");
 		myComponents.put(coordinatesLabel, BorderLayout.WEST);
 		xTileCo = new JTextArea(1,3);
@@ -23,5 +26,21 @@ public class GridObjectCoordinateFeature extends Feature {
 		yTileCo = new JTextArea(1,3);
 		yTileCoWrapper = new JScrollPane(yTileCo);
 		myComponents.put(yTileCoWrapper, BorderLayout.WEST);
+	}
+	public int getX() {
+		try{
+			return Integer.parseInt(xTileCo.getText());
+		}
+		catch (NumberFormatException e){
+			return -1;
+		}
+	}
+	public int getY() {
+		try{
+			return Integer.parseInt(yTileCo.getText());
+		}
+		catch (NumberFormatException e){
+			return -1;
+		}
 	}
 }
