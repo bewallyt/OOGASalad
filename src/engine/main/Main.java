@@ -3,7 +3,6 @@ package engine.main;
 import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
-import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
@@ -58,7 +57,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(400, 400);
+		initializeCanvas(800, 800);
 		addNewWalkAroundWorld(40,"grass.jpg", 1000, 1000);
 		addObjects(getCurrentWorld());
 	}

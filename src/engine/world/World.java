@@ -2,8 +2,6 @@ package engine.world;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import engine.GameObject;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 

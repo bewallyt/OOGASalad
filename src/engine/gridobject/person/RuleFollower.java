@@ -22,18 +22,6 @@ public class RuleFollower extends GridObject {
 	private int myFacing=2;
 	private String currentImageFile;
 	
-	
-	
-//	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight ) {
-//		super(image, numTilesWidth, numTilesHeight);
-//		
-//		
-//		
-//		setSpeed(speed);
-//		resetMax();
-//		myWeapon = null;
-//	}
-	
 	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
@@ -41,9 +29,6 @@ public class RuleFollower extends GridObject {
 		myWeapon = null;
 		currentImageFile=getAnimImages()[2];
 	}
-	
-
-	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -92,12 +77,6 @@ public class RuleFollower extends GridObject {
 		}
 		setImage(imageName);
 		currentImageFile=imageName;
-	}
-	
-	public Rectangle getNextBounds(){
-		
-		return new Rectangle((int)(super.getX()+getDX()), (int)(super.getY()+getDY()), 
-										super.getWidth(), super.getHeight());
 	}
 	
 	public void addWeapon(Weapon weapon){

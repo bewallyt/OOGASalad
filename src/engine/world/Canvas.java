@@ -84,6 +84,7 @@ public class Canvas extends JPanel{
 		for(int i=0; i<myWorld.getGridObjectList().size(); i++){
 			if(isInView(myWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
 				myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
+				myWorld.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
 	}
