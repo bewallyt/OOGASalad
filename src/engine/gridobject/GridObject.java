@@ -84,10 +84,10 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		drawDialoge(g);
+		drawDialogue(g);
 	}
 
-	private void drawDialoge(Graphics2D g) {
+	private void drawDialogue(Graphics2D g) {
 		if(d!=null){
 			g.drawImage(d.getImage(),50,500,null);
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
@@ -138,10 +138,10 @@ public abstract class GridObject{
 	}
 
 	public Dialogue doDialogue(){
-		System.out.println("hi");
 		Dialogue d = null;
 		for(String str : myDialogue){
 			d = new Dialogue("Dialogue.png",str);
+			System.out.println(str);
 		}
 
 		this.d=d;

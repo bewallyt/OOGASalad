@@ -23,15 +23,11 @@ public class Player extends RuleFollower {
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
-		myAnimImages = animImages;
 		setMyItems(null);
 	}
 	
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){
 		mySurroundingChecker = surroundingChecker;
-	}
-	public void getAnimImages(String[] animImages) {
-		myAnimImages = animImages;
 	}
 	
 	public void keyPressed(KeyEvent e) {

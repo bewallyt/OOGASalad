@@ -45,24 +45,9 @@ public class GameFrame extends RPGEngine {
 		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey bitch fight me");
+		bafm.addDialogue("okay?");
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
-
-//		TileData currTile;
-//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
-//		
-//		for(int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++){
-//			for(int j = 0; j < myWorldData.getMap("defaultworldkey").getMapWidth(); j++){
-//				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
-//				currGridObjectDatas = currTile.getGridObjectDatas();
-//
-//				for(int k = 0; k < currGridObjectDatas.size(); k++){
-////				need to figure out stuff here
-//					addGridObject(new GridObject("", 0, 0));
-//				}
-//			}
-//		} 
-
 
 		for(int i=0; i<world.getTileGridHeight(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
@@ -106,6 +91,7 @@ public class GameFrame extends RPGEngine {
 		// initializeCanvas(myWorldData.getWorldSize()[0],
 		// myWorldData.getWorldSize()[1]);
 		addNewWalkAroundWorld(40, "grass.jpg", 1000, 1000);
+//		addNewWalkAroundWorld(40, "", 1000, 1000);
 
 		addObjects(getCurrentWorld());
 	}
@@ -119,17 +105,10 @@ public class GameFrame extends RPGEngine {
 
 		// hard coded
 		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
+//		addPlayer(new String[] {"LinkUp.png", "LinkRight.png", "LinkDown.png", "LinkLeft.png"}, 2, 1, 1);
 		addGridObject(getPlayer(), 3, 3);
 		return getPlayer();
 
-		// work in progress till data and authoring are ready
-		/*
-		 * PlayerData playerData = myWorldData.getPlayerData();
-		 * 
-		 * Player player = new Player(playerData.getMyImage(),2,spriteWidth,
-		 * spriteHeight); if(playerData.isAnimated())
-		 * player.getAnimImages(playerData.getMyAnimImages()); return player;
-		 */
 	}
 
 
