@@ -11,6 +11,9 @@ public class FileLister {
 		File folder=new File(directoryPath);
 		File[] listOfFiles=folder.listFiles();
 		List<String> fileNameList=new ArrayList<String>();
+		if(listOfFiles == null) {
+			return fileNameList;
+		}
 		for(File f: listOfFiles){
 			fileNameList.add(f.getName());
 		}
