@@ -69,10 +69,18 @@ public class Canvas extends JPanel{
 		
 		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
-		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-		g2d.drawImage(background, 0, 0,null);
-		//System.out.println(width + ", " + height);
 		
+//		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
+//  		g2d.drawImage(background, 0, 0,null);
+		
+		// paints background of each tile
+		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
+			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
+				myWorld.getTileMatrix()[i][j].paint(g2d);
+			}
+		}
+		
+		// paints objects on tiles
 		for(int i=0; i<myWorld.getGridObjectList().size(); i++){
 			myWorld.getGridObjectList().get(i).paint(g2d);
 		}

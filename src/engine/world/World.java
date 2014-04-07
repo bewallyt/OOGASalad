@@ -43,6 +43,11 @@ public abstract class World {
 		return myNumTileHeight;
 	}
 	
+	/**
+	 * Returns the width of the canvas, in number of tiles
+	 * 
+	 * @return Returns the width of the canvas, in number of tiles
+	 */
 	public int getTileGridWidth() {
 		return myNumTileWidth;
 	}
@@ -79,26 +84,10 @@ public abstract class World {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
 	}
-
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		Graphics2D g2d = (Graphics2D) g;
-//		setOpaque(false);
-//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
-//		
-//		int height = myNumTileHeight * myTileSize;
-//		int width = myNumTileWidth * myTileSize;
-//		Image background = new ScaledImage(width, height,myBackground).scaleImage();
-//		g2d.drawImage(background, 0, 0,null);
-//		
-//		for(int i=0; i<myGridObjectList.size(); i++){
-//			myGridObjectList.get(i).paint(g2d);
-//		}
-//	}
-
 	
+	public Tile[][] getTileMatrix() {
+		return myTileMatrix;
+	}
 	
 	public void setViewSize(){
 		
