@@ -36,6 +36,7 @@ public class DataManager {
 		List<String> gameList = myFileStorer.getSavedGameList();
 		for (String gameName : gameList) {
 			try {
+				System.out.println("gameName : " + gameName);
 				WorldData worldData = myFileStorer.getWorldData(gameName);
 				myWorldDatas.put(gameName, worldData);
 			} catch (IOException e) {
@@ -78,7 +79,7 @@ public class DataManager {
 	 * @param worldDataName
 	 */
 	public void saveWorldDataToFile(String worldDataName) {
-		myFileStorer.storeWorldData(worldDataName + ".json", myWorldDatas.get(worldDataName));
+		myFileStorer.storeWorldData(worldDataName, myWorldDatas.get(worldDataName));
 	}
 	
 	/**
@@ -88,8 +89,8 @@ public class DataManager {
 	 */
 	public WorldData loadWorldDataFromFile(String worldDataName) {
 		try {
-			WorldData worldData = myFileStorer.getWorldData(worldDataName + ".json");
-			myWorldDatas.put(worldDataName + ".json", worldData);
+			WorldData worldData = myFileStorer.getWorldData(worldDataName);
+			myWorldDatas.put(worldDataName, worldData);
 			return worldData;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

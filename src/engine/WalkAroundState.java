@@ -29,13 +29,5 @@ public class WalkAroundState extends AbstractGameState {
 				((Player) gridObject).keyReleased(e);
 			}
 		}
-		
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-	
-		
-	}
-
 }
