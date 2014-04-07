@@ -31,15 +31,17 @@ public class ImageManager {
 	 * @param fileName Name of the image file that will be created in the project directory (without an extension)
 	 * @param imageFile File that is to be copied into the project directory
 	 * @throws IOException
+	 * @return Returns the new File stored in the project
 	 */
-	public void storeImage(String fileName, File imageFile) throws IOException{
+	public File storeImage(String fileName, File imageFile) throws IOException{
 		String extension=getFileExtension(imageFile);
 		if(checkImageExtension(extension)){
 			Path source=Paths.get(imageFile.getAbsolutePath());
 			Path newDirectory=Paths.get(imagePath+fileName+extension);
 			Files.copy(source, newDirectory);	
+			return (new File(imagePath+fileName+extension));
 		}
-		
+		return null;
 	}
 	/**
 	 * Returns the file extension of a given file. For instance, "tester.txt" would return ".txt"
