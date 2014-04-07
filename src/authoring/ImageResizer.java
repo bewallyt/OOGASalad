@@ -19,16 +19,11 @@ public class ImageResizer {
 	protected void storeImage(String name, File file) throws IOException {
 		fileName = name;
 		imageFile = file;
-		
-		//BufferedImage bimg = ImageIO.read(file);
-		//scaledImage = bimg.getScaledInstance(48, 48, Image.SCALE_FAST);
-
 		storedImage = myImageManager.storeImage(fileName,imageFile);
 		addToWorldData();
 	}
 
 	private void addToWorldData() {
-
         FeatureManager.getWorldData().saveImage(fileName, storedImage);
 	}
 
