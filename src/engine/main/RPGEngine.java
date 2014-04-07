@@ -2,6 +2,8 @@ package engine.main;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
+
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;

@@ -4,8 +4,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import engine.AbstractGameState;
@@ -38,6 +42,7 @@ public class Canvas extends JPanel{
 		myFrame = frame;
 		myHeight=height;
 		myWidth=width;
+//		frame.setJMenuBar(makeMenuBar());
 		frame.setSize((int) width, (int) height);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
@@ -45,6 +50,41 @@ public class Canvas extends JPanel{
 		frame.setResizable(false);
 		frame.setFocusable(true);
 		frame.requestFocus();
+	}
+	
+	private JMenuBar makeMenuBar() {
+		JMenuBar menu = new JMenuBar();
+		menu.add(makeFileMenu());
+		return menu;
+	}
+	
+	@SuppressWarnings("serial")
+	private JMenu makeFileMenu() {
+		JMenu file = new JMenu("File");
+		file.add(new AbstractAction("Load") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		file.add(new AbstractAction("Save") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		file.add(new AbstractAction("Exit") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		return file;
 	}
 
 
