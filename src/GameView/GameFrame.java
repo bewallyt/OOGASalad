@@ -113,9 +113,8 @@ public class GameFrame extends RPGEngine {
 		// hard coded
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
-//		addPlayer(anim, 2, 1, 1);
+		addPlayer(anim, 2, 1, 1);
 		String spriteSheet = "PlayerSprites";
-		addPlayer(spriteSheet, 2, 1, 1);
 
 	}
 

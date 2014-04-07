@@ -23,7 +23,6 @@ public class RuleFollower extends GridObject {
 	private int myFacing=2;
 	private int count = 0;
 	private String currentImageFile;
-	private SpriteSheet sheet;
 	
 	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
@@ -31,14 +30,6 @@ public class RuleFollower extends GridObject {
 		resetMax();
 		myWeapon = null;
 		currentImageFile=getAnimImages()[2];
-	}
-	
-	public RuleFollower(String spriteSheet, double speed, int numTilesWidth, int numTilesHeight) {
-		super(spriteSheet, numTilesWidth, numTilesHeight);
-		mySpeed = speed;
-		resetMax();
-		myWeapon = null;
-		currentImageFile=spriteSheet;
 	}
 	
 	public void setMaxX(int maxX){
