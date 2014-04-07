@@ -47,7 +47,7 @@ public class Main extends RPGEngine {
 		addGridObject(getPlayer(), 3, 3);
 		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
-		bafm.addDialogue("Hey bitch fight me");
+		bafm.addDialogue("Hey fight me");
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
 
@@ -67,7 +67,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
+		initializeCanvas(400, 400);
 		addNewWalkAroundWorld(40,"grass.jpg", 1000, 1000);
 		addObjects(getCurrentWorld());
 	}

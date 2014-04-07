@@ -1,69 +1,57 @@
 package authoring;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.io.IOException;
+import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
-public class Grid extends Feature implements MouseListener, ActionListener{
+public class Grid extends JPanel implements MouseListener, ActionListener{
 	
 	private static final int VIEW_WIDTH = 12;
 	private static final int VIEW_HEIGHT = 12;
 	private static final int WORLD_WIDTH = 144;
 	private static final int WORLD_HEIGHT = 144;
-	private JPanel grid;
+	private int startRow = 0;
+	private int startCol = 0;
+	private WorldData wd;
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
-	private String[] popupMenuItems = {"Tile Editor", "NPC Editor", "Set as Player Start Point", "Clear Tile", "Tile Image"};
+	private String[] popupMenuItems = { "Tile Image", "Set as Player Start Point", "Clear Tile"};
 	private JList list;
 	private Border defaultBorder;
 	private Border selectBorder;
 	
 	//temporary lists to test features
 	private String[] tileTypes = {"Wall", "Water", "TestTile", "NPC"};
-	private String[] tileImageNames = {"Wall", "Water", "TestTile", "NPC", "Grey"};
+	private String[] tileImageNames;
 	private TilePanel[][] world;
 	
 	public Grid() {
-		grid = new JPanel(new GridBagLayout());
+		this.setLayout(new GridBagLayout());
 		worldMaker();		
-		//grid.setLayout(new GridBagLayout());
-		grid.setOpaque(false);
+		this.setOpaque(false);
 		popupMenuMaker();
-		GridBagConstraints gbc = new GridBagConstraints();
 		// Creates the grid of TilePanels
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
-		for (int row = 0; row < VIEW_HEIGHT; row++) {
-			for (int col = 0; col < VIEW_WIDTH; col++) {
-				gbc.gridx = col;
-				gbc.gridy = row;
-				TilePanel cell = new TilePanel(row, col);
-				cell.setBorder(defaultBorder);
-				cell.setMinimumSize(new Dimension(48, 48));
-				cell.addMouseListener(this);
-				grid.add(cell, gbc);
-			}
-		}
-		myComponents.put(grid, BorderLayout.CENTER);
+		drawGrid();
 	}
 	
 	private void worldMaker(){
-		int numRows = 0;
-		int numCols = 0;
-		
 		//String width = (String) JOptionPane.showInputDialog(grid, "Please input a number");
 		//grid.add(inputArea);
 		
-		world = new TilePanel[numRows][numCols];
+		world = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
 		
-		for (int row = 0; row < numRows; row++) {
-			for (int col = 0; col < numCols; col++) {				
+		for (int row = 0; row < WORLD_HEIGHT; row++) {
+			for (int col = 0; col < WORLD_WIDTH; col++) {				
 				world[row][col] = new TilePanel(row, col);
 			}
 		}
 	}
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -75,73 +63,94 @@ public class Grid extends Feature implements MouseListener, ActionListener{
 	
 	private void showPopupMenu(MouseEvent e){
 		selectedCell = (TilePanel) e.getComponent();
-		System.out.println(selectedCell.myRow + " " + selectedCell.myCol);
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	}
 	
 	public void showImageList(){
-		list = new JList(tileTypes);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setVisibleRowCount(-1);
-		
-		JScrollPane listScroller = new JScrollPane(list);
-		listScroller.setPreferredSize(new Dimension(250, 800));
-		
-		String selectedTileImage= ListDialog.showDialog(
-                grid,
-                null,
+		WorldData wd = FeatureManager.getWorldData(); 
+		Object[] imageNames = wd.getImages().keySet().toArray();
+		if(imageNames.length == 0){
+			JOptionPane.showMessageDialog(this, "Please upload an image first.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		String selectedTileImage = (String) JOptionPane.showInputDialog(
+                this,
                 "Select an image for the tile: ",
-                "Tile Creator",
-                tileImageNames,
-                null,
-                null);
+                "Tile Image Editor",
+                JOptionPane.QUESTION_MESSAGE,
+                null, imageNames,
+                "");
 		
-		String selectedTileData = ListDialog.showDialog(
+		/*String selectedTileData = (String) JOptionPane.showInputDialog(
                 grid,
-                null,
-                "Select what goes on this tile: ",
-                "Tile Creator",
-                tileTypes,
-                null,
-                null);
+                "Select an image for the tile: ",
+                "Tile Image Editor",
+                JOptionPane.QUESTION_MESSAGE,
+                null, tileTypes,
+                tileTypes[0]);		
+		//selectedCell.setTileDataImage(selectedTileData);*/
+		if(selectedTileImage == null){
+			return;
+		}	
 		selectedCell.setTileImage(selectedTileImage);
-		selectedCell.setTileDataImage(selectedTileData);
-		grid.revalidate();
-		grid.repaint();
+		this.revalidate();
+		this.repaint();
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	//need to fix error when user scrolls too far right or too far down
+	public void drawGrid(){
+		GridBagConstraints gbc = new GridBagConstraints();
+		for (int row = startRow; row < startRow + VIEW_HEIGHT; row++) {
+			for (int col = startCol; col < startCol + VIEW_WIDTH; col++) {
+				gbc.gridx = col;
+				gbc.gridy = row;
+				TilePanel cell = world[row][col];
+				cell.setBorder(defaultBorder);
+				cell.setMinimumSize(new Dimension(48, 48));
+				cell.addMouseListener(this);
+				this.add(cell, gbc);
+			}
+		}
+	}
+	
+	public void redrawGrid(int xChange, int yChange){
+		if((xChange == -1 && startCol > 0) || (xChange == 1 && startCol < 143)){
+			startCol += xChange;
+		}
+		if((yChange == -1 && startRow > 0) || (yChange == 1 && startRow < 143)){
+			startRow += yChange;
+		}
+		this.removeAll();
+		drawGrid();
+		revalidate();
+		repaint();
+	}
+	
+	public void actionPerformed(ActionEvent e) {
 		showImageList();
 	}
 
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		if(arg0.getButton() == MouseEvent.BUTTON3)
-			showPopupMenu(arg0);
+	public void mouseClicked(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON3)
+			showPopupMenu(e);
 	}
 
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		TilePanel current = (TilePanel) arg0.getComponent();
+	public void mouseEntered(MouseEvent e) {
+		TilePanel current = (TilePanel) e.getComponent();
 		current.setBorder(selectBorder);
 	}
 
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		TilePanel current = (TilePanel) arg0.getComponent();
+	public void mouseExited(MouseEvent e) {
+		TilePanel current = (TilePanel) e.getComponent();
 		current.setBorder(defaultBorder);
 	}
 
 
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
 	}
 
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		//showPopupMenu(arg0);
 	}
 }
