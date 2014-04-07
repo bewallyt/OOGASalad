@@ -1,12 +1,18 @@
 package engine.gridobject.person;
 
 
-public class Enemy extends NPC {
-	protected boolean nearPlayer=false;
-	private Player myPlayer;
 
-	public Enemy(String image, double speed, int numTilesWidth, int numTilesHeight, Player player) {
-		super(image,speed, numTilesWidth, numTilesHeight);
-		myPlayer = player;
+public abstract class Enemy extends NPC {
+	
+	
+	
+	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
+		
 	}
+//
+//	@Override
+//	public abstract void uniqueMove();
+	
+	
 }

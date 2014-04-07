@@ -6,28 +6,29 @@ import java.util.List;
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
-import engine.world.Tile;
 
 public class RuleFollower extends GridObject {
 
-	protected List<Item> myItems;
-	protected double mySpeed;
-	protected double myDX=0;
-	protected double myDY=0;
-	protected int myMaxX;
-	protected int myMinX;
-	protected int myMaxY;
-	protected int myMinY;
-
+	private List<Item> myItems;
+	private double mySpeed;
+	private double myDX=0;
+	private double myDY=0;
+	private int myMaxX;
+	private int myMinX;
+	private int myMaxY;
+	private int myMinY;
 	protected Weapon myWeapon;
+	//up=0, right=1, down=2, left=3
+	private int myFacing=2;
+	private String currentImageFile;
 	
-	public RuleFollower(String image, double speed, int numTilesWidth, int numTilesHeight) {
-		super(image, numTilesWidth, numTilesHeight);
+	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		resetMax();
 		myWeapon = null;
+		currentImageFile=getAnimImages()[2];
 	}
-	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -47,41 +48,85 @@ public class RuleFollower extends GridObject {
 	@Override
 	public void move() {
 		updateFacing();
-		if(!(myX+myDX>myMaxX) && !(myX+myDX-myWidth<myMinX))
-			myX+=myDX;
-		if(!(myY+myDY+myHeight>myMaxY) && !(myY+myDY<myMinY))
-			myY+=myDY;
+		if(!(getX()+getDX()>myMaxX) && !(getX()+getDX()-getWidth()<myMinX))
+			incrementX(getDX());
+		if(!(getY()+getDY()+getHeight()>myMaxY) && !(getY()+getDY()<myMinY))
+			incrementY(getDY());
 		resetMax();
 		uniqueMove();
 		
 	}
 
 	private void updateFacing() {
-		if(myDX>0)setFacing("right");
-		else if(myDX<0)setFacing("left");
-		else if(myDY>0)setFacing("down");
-		else if(myDY<0)setFacing("up");
-	}
-	
-	public Rectangle getNextBounds(){
-		
-		return new Rectangle((int)(myX+myDX), (int)(myY+myDY), myWidth, myHeight);
+		String imageName=currentImageFile;
+		if(getDX()>0){
+			myFacing=1;
+			imageName=getAnimImages()[1];
+		}
+		else if(getDX()<0){
+			myFacing=3;
+			imageName=getAnimImages()[3];
+		}
+		else if(getDY()>0){
+			myFacing=2;
+			imageName=getAnimImages()[2];
+		}
+		else if(getDY()<0){
+			myFacing=0;
+			imageName=getAnimImages()[0];
+		}
+		setImage(imageName);
+		currentImageFile=imageName;
 	}
 	
 	public void addWeapon(Weapon weapon){
-		
 	}
 
 	public void addItem(Item it) {
-		myItems.add(it);
+		getItems().add(it);
 	}
 	
+	public List<Item> getItems() {
+		return myItems;
+	}
+
+	public void setMyItems(List<Item> items) {
+		myItems = items;
+	}
+
 	public void removeItem(Item it) {
-		for (Item current : myItems) {
+		for (Item current : getItems()) {
 			if (current.getName().equals(it.getName())) {
-				myItems.remove(current);
+				getItems().remove(current);
 			}
 		}
+	}
+
+	public double getDY() {
+		return myDY;
+	}
+
+	public void setDY(double myDY) {
+		this.myDY = myDY;
+	}
+
+	public double getSpeed() {
+		return mySpeed;
+	}
+
+	public void setSpeed(double mySpeed) {
+		this.mySpeed = mySpeed;
+	}
+
+	public double getDX() {
+		return myDX;
+	}
+
+	public void setDX(double myDX) {
+		this.myDX = myDX;
+	}
+	public int getFacing(){
+		return myFacing;
 	}
 	
 
