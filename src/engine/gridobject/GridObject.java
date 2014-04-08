@@ -188,6 +188,12 @@ public abstract class GridObject{
 		return myAnimImages;
 	}
 
+	public int getNumTilesHeight(){
+		return myNumTilesHeight;
+	}
+	public int getNumTilesWidth(){
+		return myNumTilesWidth;
+	}
 
 
 }

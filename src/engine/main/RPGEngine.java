@@ -1,11 +1,10 @@
 package engine.main;
 
-import java.awt.event.KeyEvent;
-
 import engine.collision.CollisionMatrix;
+import engine.gridobject.Barrier;
+import engine.gridobject.Building;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.world.ArenaWorld;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
@@ -61,15 +60,37 @@ public abstract class RPGEngine{
 
 
 	/**
-	 * Adds a new walkaroundworld.
+	 * Adds a new world.
 	 *
-	 * @param tileSize the tile size
+	 * @param world the world to be added
 	 */
-	public void addNewWalkAroundWorld(int tileSize, String background, int playHeight, int playWidth){
-		World world = new WalkAroundWorld(tileSize, background);
-		world.setPlayDimensions(playHeight, playWidth);
+	public void addNewWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				world.getTileMatrix()[i][j].setBackgroundImage("grass.jpg");
+			}
+		}
+		//		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getWidth(), myPlayer.getHeight());
+		myCollisionMatrix=null;
+	}
+
+	public void addBuildingWorld(World world){
+		myCanvas.setWorld(world);
+		myCurrentWorld = world;
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				world.getTileMatrix()[i][j].setBackgroundImage("pokecenterfloor.png");
+			}
+		}
+//		for(int i=0; i<world.getTileGridWidth(); i++){
+//			addGridObject(new Barrier("tree.png",1,2), i, 0);
+//			addGridObject(new Barrier("tree.png",1,2), i, world.getTileGridHeight()-1-1);
+//		}
+		System.out.println("hi");
+		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getNumTilesWidth(), myPlayer.getNumTilesHeight());
+		addGridObject(getPlayer(), 3, 3);
 		myCollisionMatrix=null;
 	}
 
@@ -87,8 +108,13 @@ public abstract class RPGEngine{
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
 				go.move();
+				if(go instanceof Building){
+					if(((Building) go).isBuildingEntered()){
+						System.out.println("new world");
+						addBuildingWorld(((Building) go).getBuildingWorld());
+					}
+				}
 			}
-//			myCurrentWorld.scroll();
 			run();
 			Thread.sleep(10);
 		}
@@ -113,7 +139,7 @@ public abstract class RPGEngine{
 			for (int j = 0; j < myCurrentWorld.getGridObjectList().size(); j++) {
 				if (myCurrentWorld.getGridObjectList().get(i).getBounds().intersects(
 						myCurrentWorld.getGridObjectList().get(j).getBounds())) {
-					cm.getMatrix()[i][j].doCollision();
+					if(cm!=null)cm.getMatrix()[i][j].doCollision();
 				}
 			}
 		}

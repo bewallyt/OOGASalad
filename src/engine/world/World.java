@@ -23,21 +23,16 @@ public abstract class World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, String background) {
+	public World(int tileSize, int playWidth, int playHeight, String background) {
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
+		myNumTileWidth = playWidth/myTileSize;
+		myNumTileHeight = playHeight/myTileSize;
+		makeTileMatrix();
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
-	
-	public void setPlayDimensions(int width, int height){
-		myNumTileWidth = width/myTileSize;
-		myNumTileHeight = height/myTileSize;
-		makeTileMatrix();
-	}
-	
 
-	
 	public int getTileSize(){
 		return myTileSize;
 	}

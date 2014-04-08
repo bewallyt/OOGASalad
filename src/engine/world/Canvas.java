@@ -2,8 +2,8 @@ package engine.world;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.KeyAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import engine.AbstractGameState;
 import engine.WalkAroundState;
 import engine.gridobject.GridObject;
-import engine.images.ScaledImage;
 
 public class Canvas extends JPanel{
 
@@ -23,6 +22,7 @@ public class Canvas extends JPanel{
 	private int myWorldWidth;
 	private int offsetMinX = 0;
 	private int offsetMinY=0;
+	private WalkAroundState myWS;
 
 
 
@@ -50,7 +50,10 @@ public class Canvas extends JPanel{
 
 	public void setWorld(World world){
 		myFrame.add(this);
-		myFrame.addKeyListener(new WalkAroundState(this, world));
+		if(myFrame.getKeyListeners().length>0)myFrame.removeKeyListener(myWS);
+		WalkAroundState ws = new WalkAroundState(this, world);
+		myWS = ws;
+		myFrame.addKeyListener(ws);
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
@@ -79,19 +82,7 @@ public class Canvas extends JPanel{
 		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
 		
-//		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//  		g2d.drawImage(background, 0, 0,null);
-		
-
-		
-		// paints objects on tiles
-
-		//Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//		getCameraOffset();
-		//g2d.drawImage(background, -getCameraOffset()[0], -getCameraOffset()[1],null);
-		
 		// paints background of each tile
-	
 		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
 			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))

@@ -31,8 +31,13 @@ public class Building extends Barrier{
 	public void enterBuilding(){
 		buildingEntered=true;
 	}
+	public boolean isBuildingEntered(){
+		return buildingEntered;
+	}
 	public WalkAroundWorld getBuildingWorld(){
+		buildingEntered=false;
 		return myBuildingWorld;
+		
 	}
 	
 	
