@@ -3,25 +3,32 @@ package engine;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 
-public class Dialogue {
+public class Dialogue{
 	private String myDialogue ="";
+	private String myImageName;
 	private Image myImage;
-
+	
 	public Dialogue(String image, String dialogue) {
+
+		myImageName = image;
 		myDialogue = dialogue;
-		myImage = new ScaledImage(80,20, image).scaleImage();
 	}
 	
-	public void paint(Graphics2D g) {
-		g.drawImage(myImage, 0, 12, null);
-		System.out.println("drawn");
-	//	g.drawString(myDialogue, myX, myY);
+	public Image getImage(){
+		return myImage;
 	}
-	
 	public void setDialogue(String str){
 		myDialogue = str;
+	}
+	
+	public String getDialogue(){
+		return myDialogue;
+	}
+	public void setSize(int width, int height){
+		myImage = new ScaledImage(width,height,myImageName).scaleImage();
 	}
 
 }

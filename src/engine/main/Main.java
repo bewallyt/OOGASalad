@@ -3,20 +3,20 @@ package engine.main;
 import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
-import engine.gridobject.person.BackAndForthMover;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
+import engine.world.Tile;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Main extends RPGEngine {
 
-	private Player myPlayer;
+//	private Player myPlayer;
 	private NPC myNPC;
-	
-	
+
+
 	public static void main(String[] args) {
 		Main engine = new Main();
 		engine.initializeGame();
@@ -32,17 +32,25 @@ public class Main extends RPGEngine {
 //		CollisionMatrix cm = new CollisionMatrix(waWorld.getGridObjectList());
 //		engine.doGameLoop(waWorld, cm);
 	}
-	
+
 	public void addObjects(World world){
 		
-		SurroundingChecker checker = new SurroundingChecker(world);
-		Player player = myPlayer = new Player("player.png",2,1, 1, checker);
-		addGridObject(player, 3, 3);
-		NPC bafm = myNPC= new NPC("rival.png",1,1,1, 2, player);
+		// setting background image for tiles
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				world.getTileMatrix()[i][j].setBackgroundImage("grass.jpg");
+			}
+		}
+		//addPlayer("player.png",2,1, 1);
+		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
+
+		addGridObject(getPlayer(), 3, 3);
+		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
 		addGridObject(bafm,10,10);
+		bafm.addDialogue("Hey fight me");
 
 		addGridObject(new Barrier("pokecenter.png",4, 4), 4, 3);
-		
+
 		for(int i=0; i<world.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
 			addGridObject(new Barrier("tree.png",1,2), i, world.getTileGridHeight()-1-1);
@@ -53,21 +61,20 @@ public class Main extends RPGEngine {
 		}
 
 //		addGridObject(new Dialogue("Dialogue.png","hello"),2,15);
-		
-		
+
+
 	}
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
-		addNewWalkAroundWorld(40,"grass.jpg");
+		initializeCanvas(400, 400);
+		addNewWalkAroundWorld(40,"grass.jpg", 1000, 1000);
 		addObjects(getCurrentWorld());
 	}
 
 	@Override
 	public void run() {
-		if(myPlayer.getAClick())
-			myNPC.doNextDialogue();
+
 	}
 
 

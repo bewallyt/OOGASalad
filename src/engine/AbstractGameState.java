@@ -32,14 +32,14 @@ public abstract class AbstractGameState implements KeyListener{
 	}
 	
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public abstract void keyPressed(KeyEvent e);
 				
-	}
+	
 
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public abstract void keyReleased(KeyEvent e);
 		
-	}
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
