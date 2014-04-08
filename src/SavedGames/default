@@ -4,5 +4,9 @@
       "myTiles": []
     }
   },
-  "myImages": {}
+  "myImages": {
+    "Bloo": {
+      "path": "C:\\Users\\Davis Treybig\\Compsci308\\oogasalad_Team2\\src\\ImageFiles\\Bloo.jpg"
+    }
+  }
 }

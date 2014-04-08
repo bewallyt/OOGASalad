@@ -54,7 +54,7 @@ public class ImageChooser extends Feature implements ActionListener{
 					chooser.getSelectedFile().getAbsolutePath());
 		}
 		imageFile = chooser.getSelectedFile();
-		myImResizer.squareImage(fileName, imageFile);
+		myImResizer.storeImage(fileName, imageFile);
 		
 	}		
 
