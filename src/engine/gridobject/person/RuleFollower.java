@@ -6,6 +6,7 @@ import java.util.List;
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
+import engine.images.SpriteSheet;
 
 public class RuleFollower extends GridObject {
 
@@ -20,6 +21,7 @@ public class RuleFollower extends GridObject {
 	protected Weapon myWeapon;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
+	private int count = 0;
 	private String currentImageFile;
 	
 	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -29,6 +31,11 @@ public class RuleFollower extends GridObject {
 		myWeapon = null;
 		currentImageFile=getAnimImages()[2];
 	}
+	
+	private boolean isAnim(String[] animImages) {
+		return animImages.length == 12;
+	}
+	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -59,24 +66,41 @@ public class RuleFollower extends GridObject {
 
 	private void updateFacing() {
 		String imageName=currentImageFile;
+		count++;
+		if(count == 50)
+			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName=getAnimImages()[1];
+			imageName = switchAnim(3, 4, 5, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName=getAnimImages()[3];
+			imageName = switchAnim(9, 10, 11, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName=getAnimImages()[2];
+			imageName = switchAnim(6, 7, 8, getAnimImages());
+
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName=getAnimImages()[0];
+			imageName = switchAnim(0, 1, 2, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;
+	}
+	
+	private String switchAnim(int still, int start, int end, String[] anim){
+//		System.out.println(anim.length);
+		if(isAnim(anim)) {
+			if(count < 25)
+				return anim[start];
+			else
+				return anim[end];
+		}
+		else {
+			return anim[still];
+		}
 	}
 	
 	public void addWeapon(Weapon weapon){
