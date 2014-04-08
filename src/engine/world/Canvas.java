@@ -4,8 +4,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import engine.AbstractGameState;
@@ -13,9 +18,9 @@ import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 
-public class Canvas extends JPanel{
+public class Canvas extends JComponent{
 
-	private JFrame myFrame;
+	private JPanel myPanel;
 	private int myHeight;
 	private int myWidth;
 	private World myWorld;
@@ -23,8 +28,6 @@ public class Canvas extends JPanel{
 	private int myWorldWidth;
 	private int offsetMinX = 0;
 	private int offsetMinY=0;
-
-
 
 	/**
 	 * Instantiates a new canvas.
@@ -34,30 +37,27 @@ public class Canvas extends JPanel{
 	 * @param tileSize the tile size
 	 */
 	public Canvas(int width, int height){
-		JFrame frame = new JFrame("Pokemon");
-		myFrame = frame;
-		myHeight=height;
-		myWidth=width;
-		frame.setSize((int) width, (int) height);
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.setFocusable(true);
-		frame.requestFocus();
+		JPanel panel = new JPanel();
+		myPanel = panel;
+		myWidth = width;
+		myHeight = height;
+		
+		panel.setSize(width, height);
+		panel.setVisible(true);
+		panel.setFocusable(true);
+		panel.requestFocus();
 	}
 
-
 	public void setWorld(World world){
-		myFrame.add(this);
-		myFrame.addKeyListener(new WalkAroundState(this, world));
+		myPanel.add(this);
+		myPanel.addKeyListener(new WalkAroundState(this, world));
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
 	}
 
 	public void setState(AbstractGameState state){
-		myFrame.addKeyListener(state);
+		myPanel.addKeyListener(state);
 	}
 
 	public int getHeight(){
@@ -66,6 +66,10 @@ public class Canvas extends JPanel{
 
 	public int getWidth(){
 		return myWidth;
+	}
+	
+	public JPanel getMyCanvas(){
+		return myPanel;
 	}
 
 	@Override
@@ -113,7 +117,7 @@ public class Canvas extends JPanel{
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
-		System.out.println(myWorld.getPlayer().getX());
+//		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
