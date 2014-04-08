@@ -4,6 +4,12 @@
 *.war
 *.ear
 
+# Intellij files
+.idea/compiler.xml
+.idea/workspace.xml
+compiler.xml
+workspace.xml
+
 # eclipse files
 .project
 .classpath
