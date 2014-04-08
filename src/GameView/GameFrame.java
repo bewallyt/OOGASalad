@@ -31,6 +31,7 @@ public class GameFrame extends RPGEngine {
 	Player myPlayer;
 	NPC myNPC;
 
+
 	public GameFrame() {
 		myData = new DataDummy();
 		myWorldData = myData.getWorldData();
@@ -65,8 +66,6 @@ public class GameFrame extends RPGEngine {
 			addGridObject(new Barrier("tree.png",1,2), 0, i);
 			addGridObject(new Barrier("tree.png",1,2), world.getTileGridWidth()-1,i );
 		}
-		
-
 		
 //		work in progress till Data and authoring are ready
 
