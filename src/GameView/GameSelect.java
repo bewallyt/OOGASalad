@@ -9,7 +9,30 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public abstract class GameSelect {
+public class GameSelect {
+	private String gameName;
+	
+	public GameSelect () {
+		JFrame frame = new JFrame();
+		frame.setSize(800, 500);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		try {
+			String[] games = getGameNames(getListOfGames());
+			gameName = getGameNameFromUser(frame, games);
+//			frame.setContentPane(new GameFrame());
+//			frame.setResizable(false);
+//			frame.setVisible(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public String getGameName() {
+		return gameName;
+	}
 	
 	private static String[] getGameNames (List<File> gameFiles) {
 		String[] gameNames = new String[gameFiles.size()];
@@ -37,24 +60,5 @@ public abstract class GameSelect {
 		
 	}
 	
-	public static void main (String[] args) {
-		JFrame frame = new JFrame();
-		frame.setSize(800, 500);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		try {
-			String[] games = getGameNames(getListOfGames());
-			String gameName = getGameNameFromUser(frame, games);
-			
-//			frame.setContentPane(new GameFrame());
-//			frame.setResizable(false);
-//			frame.setVisible(true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 }

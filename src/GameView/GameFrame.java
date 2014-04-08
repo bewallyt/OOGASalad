@@ -37,14 +37,14 @@ public class GameFrame extends RPGEngine {
 	NPC myNPC;
 
 
-	public GameFrame() {
+	public GameFrame(String fileName) {
 		myData = new FileStorer();
-//		try {
-//			myWorldData = myData.getWorldData(fileName);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			myWorldData = myData.getWorldData(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		initializeGame();
 	}
