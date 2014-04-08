@@ -4,6 +4,11 @@
 *.war
 *.ear
 
+# Intellij files
+oogasalad_Team2.iml
+.idea/compiler.xml
+.idea/workspace.xml
+
 # eclipse files
 .project
 .classpath
