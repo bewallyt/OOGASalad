@@ -41,7 +41,7 @@ public class Canvas extends JComponent{
 		myFrame = frame;
 		myHeight=height;
 		myWidth=width;
-		frame.setJMenuBar(makeMenuBar());
+//		frame.setJMenuBar(makeMenuBar());
 		frame.setSize((int) width, (int) height);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
