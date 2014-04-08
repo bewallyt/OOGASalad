@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -32,14 +33,16 @@ public class TilePanel extends JPanel{
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
 		
-		Image temp;
+		BufferedImage temp;
 		try {
+
 			temp = ImageIO.read(FeatureManager.getWorldData().getImage(fileName));
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(this, "File could not be loaded.", "Error Message", JOptionPane.ERROR_MESSAGE);
 			temp = null;
 		}
-		myTileImage = new ImageIcon(temp);
+        Image scaledImage = temp.getScaledInstance(48, 48, Image.SCALE_FAST);
+		myTileImage = new ImageIcon(scaledImage);
 		//new ImageIcon("C:/Users/Richard Cao/Desktop/Spring2014/" + fileName + ".jpg"); 
 		myTileLabel = new JLabel(myTileImage);
 		myTileLabel.setLayout(new BorderLayout());
