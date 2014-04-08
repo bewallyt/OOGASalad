@@ -32,6 +32,10 @@ public class RuleFollower extends GridObject {
 		currentImageFile=getAnimImages()[2];
 	}
 	
+	private boolean isAnim(String[] animImages) {
+		return animImages.length == 12;
+	}
+	
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -67,34 +71,36 @@ public class RuleFollower extends GridObject {
 			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			if(count < 25)
-				imageName=getAnimImages()[4];
-			if(count < 50 && count >= 25)
-				imageName=getAnimImages()[5];
+			imageName = switchAnim(3, 4, 5, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			if(count < 25)
-				imageName=getAnimImages()[10];
-			if(count < 50 && count >= 25)
-				imageName=getAnimImages()[11];
+			imageName = switchAnim(9, 10, 11, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			if(count < 25)
-				imageName=getAnimImages()[7];
-			if(count < 50 && count >= 25)
-				imageName=getAnimImages()[8];
+			imageName = switchAnim(6, 7, 8, getAnimImages());
+
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			if(count < 25)
-				imageName=getAnimImages()[1];
-			if(count < 50 && count >= 25)
-				imageName=getAnimImages()[2];
+			imageName = switchAnim(0, 1, 2, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;
+	}
+	
+	private String switchAnim(int still, int start, int end, String[] anim){
+//		System.out.println(anim.length);
+		if(isAnim(anim)) {
+			if(count < 25)
+				return anim[start];
+			else
+				return anim[end];
+		}
+		else {
+			return anim[still];
+		}
 	}
 	
 	public void addWeapon(Weapon weapon){

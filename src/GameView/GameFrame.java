@@ -2,7 +2,6 @@ package GameView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
@@ -19,6 +18,7 @@ import authoring.GridObjectData;
 import authoring.TileData;
 import authoring.WorldData;
 import Data.DataDummy;
+import javax.swing.JFrame;
 
 public class GameFrame extends RPGEngine {
 
@@ -26,6 +26,7 @@ public class GameFrame extends RPGEngine {
 	private int spriteHeight = 1;
 	private WorldData myWorldData;
 	private DataDummy myData;
+	private JFrame myFrame;
 
 	Player myPlayer;
 	NPC myNPC;
@@ -91,14 +92,17 @@ public class GameFrame extends RPGEngine {
 //		}
 
 	}
+	
+	public Canvas getMyCanvas() {
+		return retMyCanvas();
+	}
 
 	@Override
 	public void initializeGame() {
 		initializeCanvas(400, 400);
 		// initializeCanvas(myWorldData.getWorldSize()[0],
 		// myWorldData.getWorldSize()[1]);
-		addNewWalkAroundWorld(40, "grass.jpg", 1000, 1000);
-//		addNewWalkAroundWorld(40, "", 1000, 1000);
+		addNewWalkAroundWorld(40, "", 1000, 1000);
 
 		addObjects(getCurrentWorld());
 	}
@@ -113,8 +117,8 @@ public class GameFrame extends RPGEngine {
 		// hard coded
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
+//		String[] anim = new String[]{"PlayerUp0.png", "PlayerRight0.png", "PlayerDown0.png", "PlayerLeft0.png"};
 		addPlayer(anim, 2, 1, 1);
-		String spriteSheet = "PlayerSprites";
 
 	}
 

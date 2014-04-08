@@ -7,17 +7,28 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+import engine.world.Canvas;
+
 public class AppView extends JFrame{
-	public AppView(String title, GameFrame game) {
+	private Canvas myCanvas;
+	private GameFrame myGame;
+	
+	public AppView(String title, GameFrame game, int width, int height) {
+		myGame = game;
 		setTitle(title);
 		
 		setJMenuBar(makeMenuBar());
 		
-//		this.getContentPane().add(game);
+		this.getContentPane().add(myCanvas = game.getMyCanvas());
 		
 		pack();
+		setSize(width, height);
 		setVisible(true);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setFocusable(true);
+		requestFocus();
 	}
 	
 	private JMenuBar makeMenuBar() {
@@ -55,8 +66,18 @@ public class AppView extends JFrame{
 		return file;
 	}
 	
+	public void doGame() throws InterruptedException {
+		myGame.doGameLoop();
+	}
+	
 	public static void main(String[] args) {
 		GameFrame game = new GameFrame();
-		AppView view = new AppView("yay", game);
+		AppView view = new AppView("yay", game, 400, 400);
+		
+		try {
+			view.doGame();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

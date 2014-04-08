@@ -59,6 +59,10 @@ public abstract class RPGEngine{
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
 	}
+	
+	public Canvas retMyCanvas(){
+		return myCanvas;
+	}
 
 
 
