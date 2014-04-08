@@ -11,9 +11,11 @@ public class AuthoringView {
 	private Map<String, JComponent> myPanels;
 	private Set<Feature> myFeatures;
 	
-	public AuthoringView(Set<Feature> features){
+	public AuthoringView(Set<Feature> features, boolean exitOnClose){
 		myFeatures = features;
 		instantiateObjects();
+		if(exitOnClose)
+			myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addAllFeatures();
 		setUpFrame();
 	}
@@ -23,7 +25,6 @@ public class AuthoringView {
 	}
 	private void addWorkspaceObjects(){
 		myFrame = new JFrame("OOGASalad Authoring");
-		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myPanels=new HashMap<String, JComponent>();
 		myFrame.setJMenuBar((JMenuBar)myPanels.get(MENU_BAR));
 		instantiatePanels();

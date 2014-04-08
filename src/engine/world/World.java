@@ -2,9 +2,8 @@ package engine.world;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import engine.GameObject;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Player;
 
 public abstract class World {
 	
@@ -14,6 +13,8 @@ public abstract class World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private String myBackground;
+	private Player myPlayer;
+	
 
 	/**
 	 * Instantiates a new World.
@@ -22,19 +23,16 @@ public abstract class World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, String background) {
+	public World(int tileSize, int playWidth, int playHeight, String background) {
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
 		myBackground = background;
+		myNumTileWidth = playWidth/myTileSize;
+		myNumTileHeight = playHeight/myTileSize;
+		makeTileMatrix();
 //		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
 	}
-	
-	public void setDimensions(int width, int height){
-		myNumTileWidth = width/myTileSize;
-		myNumTileHeight = height/myTileSize;
-		makeTileMatrix();
-	}
-	
+
 	public int getTileSize(){
 		return myTileSize;
 	}
@@ -43,6 +41,11 @@ public abstract class World {
 		return myNumTileHeight;
 	}
 	
+	/**
+	 * Returns the width of the canvas, in number of tiles
+	 * 
+	 * @return Returns the width of the canvas, in number of tiles
+	 */
 	public int getTileGridWidth() {
 		return myNumTileWidth;
 	}
@@ -78,30 +81,20 @@ public abstract class World {
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 		myGridObjectList.add(obj);
+		if(obj instanceof Player)
+			myPlayer = (Player) obj;
 	}
-
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		Graphics2D g2d = (Graphics2D) g;
-//		setOpaque(false);
-//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
-//		
-//		int height = myNumTileHeight * myTileSize;
-//		int width = myNumTileWidth * myTileSize;
-//		Image background = new ScaledImage(width, height,myBackground).scaleImage();
-//		g2d.drawImage(background, 0, 0,null);
-//		
-//		for(int i=0; i<myGridObjectList.size(); i++){
-//			myGridObjectList.get(i).paint(g2d);
-//		}
-//	}
-
 	
+	public Tile[][] getTileMatrix() {
+		return myTileMatrix;
+	}
 	
 	public void setViewSize(){
 		
 	}
-
+		
+	public Player getPlayer(){
+		return myPlayer;
+	}
 }
+
