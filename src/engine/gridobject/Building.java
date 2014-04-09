@@ -17,7 +17,7 @@ public class Building extends Barrier{
 	}
 	
 	public boolean playerAtDoor(Player player){
-		return (Math.abs(player.getX()-myDoorX)<5 && Math.abs(player.getY()-myDoorY)<5);
+		return (Math.abs(player.getX()-myDoorX)<player.getWidth() && Math.abs(player.getY()-myDoorY)<player.getHeight());
 	}
 	
 	public int getDoorY(){
