@@ -93,6 +93,7 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 			return;
 		}	
 		selectedCell.setTileImage(selectedTileImage);
+		wd.getMap(WorldData.DEFAULT_MAP).addTileData(selectedCell.getRow(), selectedCell.getCol(), selectedCell.getTileData());
 		this.revalidate();
 		this.repaint();
 	}
