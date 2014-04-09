@@ -103,6 +103,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
+			
 			myCanvas.repaint();
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {

@@ -84,6 +84,7 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
+		
 	}
 	
 
