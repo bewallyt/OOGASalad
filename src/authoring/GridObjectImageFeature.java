@@ -16,6 +16,7 @@ public class GridObjectImageFeature extends Feature {
 	private JButton addImageButton;
 	private TilePanel myTilePanel;
 	private GridObjectCreation mySuperFeature;
+	private String myImageName;
 	public GridObjectImageFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
 		Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
@@ -49,7 +50,12 @@ public class GridObjectImageFeature extends Feature {
 		if(selectedTileImage == null){
 			return;
 		}	
+		myImageName = selectedTileImage;
 		myTilePanel.setTileImage(selectedTileImage);
 		mySuperFeature.getView().getFrame().revalidate();
+	}
+	public String getImageName() {
+		System.out.println(myImageName);
+		return myImageName;
 	}
 }
