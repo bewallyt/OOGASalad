@@ -4,6 +4,7 @@ import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
 import engine.gridobject.Building;
+import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
@@ -34,7 +35,8 @@ public class Main extends RPGEngine {
 		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
 
 		addGridObject(getPlayer(), 3, 3);
-		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
+		Enemy bafm = new Enemy(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
+		bafm.battleOnSight();
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey fight me");
 		Building pokeCenter = new Building("pokecenter.png",4, 4, 222, 278);

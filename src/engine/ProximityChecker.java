@@ -21,25 +21,25 @@ public class ProximityChecker {
 	public static int isLeftProximity(GridObject Obj1, GridObject Obj2){
 		if((isOnBottom(Obj1, Obj2)<-2 && isOnTop(Obj1, Obj2)>2))
 			return (int) isOnLeft(Obj1, Obj2);
-		return -1;
+		return Integer.MAX_VALUE;
 		
 	}
 	public static int isRightProximity(GridObject Obj1, GridObject Obj2){
 		if((isOnBottom(Obj1, Obj2)<-2 && isOnTop(Obj1, Obj2)>2))
 			return (int) isOnRight(Obj1, Obj2);
-		return -1;
+		return Integer.MAX_VALUE;
 		
 	}
 	public static int isBottomProximity(GridObject Obj1, GridObject Obj2){
 		if(isOnRight(Obj1, Obj2)<-2 && isOnLeft(Obj1, Obj2)>2)
 			return (int) isOnBottom(Obj1, Obj2);
-		return -1;
+		return Integer.MAX_VALUE;
 	}
 
 	public static int isTopProximity(GridObject Obj1, GridObject Obj2){
 		if(isOnRight(Obj1, Obj2)<-2 && isOnLeft(Obj1, Obj2)>2)
 			return (int) isOnTop(Obj1, Obj2);
-		return -1;
+		return Integer.MAX_VALUE;
 	}
 
 	//		if(myObj1 instanceof RuleFollower){

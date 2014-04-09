@@ -4,13 +4,14 @@ import engine.ProximityChecker;
 
 
 
-public abstract class Enemy extends NPC {
+public class Enemy extends NPC {
 	private boolean battleOnTalk=false;
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
 
 	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
+		
 
 	}
 
@@ -31,20 +32,25 @@ public abstract class Enemy extends NPC {
 	}
 
 	public boolean battleInitiated(){
-		if(battleOnSight && inSight())
+		if(battleOnSight && inSight()){
 			battleInitiated=true;
+			return true;
+		}
+		
 //		else if(battleOnTalk && talked)
 		return false;
 	}
 
 	public boolean inSight(){
-		if(ProximityChecker.isLeftProximity(this, getPlayer())<20 && getFacing() == 1)
+//		System.out.println(Math.abs(ProximityChecker.isTopProximity(this,getPlayer())));
+//		System.out.println(getFacing() + " " + Math.abs(ProximityChecker.isTopProximity(this, getPlayer())));
+		if(Math.abs(ProximityChecker.isLeftProximity(this, getPlayer()))<100 && getFacing() == 1)
 			return true;
-		if(ProximityChecker.isRightProximity(this,  getPlayer())<20 && getFacing()==3)
+		if(Math.abs(ProximityChecker.isRightProximity(this,  getPlayer()))<100 && getFacing()==3)
 			return true;
-		if(ProximityChecker.isTopProximity(this, getPlayer())<20 && getFacing()==2)
+		if(Math.abs(ProximityChecker.isTopProximity(this, getPlayer()))<100 && getFacing()==2)
 			return true;
-		if(ProximityChecker.isBottomProximity(this, getPlayer())<20 && getFacing()==0)
+		if(Math.abs(ProximityChecker.isBottomProximity(this, getPlayer()))<100 && getFacing()==0)
 			return true;
 		return false;
 	}
