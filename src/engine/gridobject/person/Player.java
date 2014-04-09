@@ -61,6 +61,9 @@ public class Player extends RuleFollower {
 			}
 			
 		}
+		if (e.getKeyCode() == AbstractGameState.SPACE) {
+			//this.setSize(get)
+		}
 	}
 
 	public void keyReleased(KeyEvent e) {
