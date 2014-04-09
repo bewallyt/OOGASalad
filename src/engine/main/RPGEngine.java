@@ -1,13 +1,12 @@
 package engine.main;
 
 import engine.collision.CollisionMatrix;
-import engine.gridobject.Barrier;
 import engine.gridobject.Building;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
-import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 /**
@@ -113,6 +112,10 @@ public abstract class RPGEngine{
 						System.out.println("new world");
 						addBuildingWorld(((Building) go).getBuildingWorld());
 					}
+				}
+				if(go instanceof Enemy){
+					if(((Enemy) go).battleInitiated())
+						System.out.println("battle!");
 				}
 			}
 			run();

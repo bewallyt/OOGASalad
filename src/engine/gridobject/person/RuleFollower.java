@@ -7,7 +7,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
 
-public class RuleFollower extends GridObject {
+public abstract class RuleFollower extends GridObject {
 
 	private List<Item> myItems;
 	private double mySpeed;

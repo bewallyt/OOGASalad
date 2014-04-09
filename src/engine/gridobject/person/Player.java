@@ -56,7 +56,10 @@ public class Player extends RuleFollower {
 		}		
 		if (e.getKeyCode() == AbstractGameState.A) {
 			GridObject surrounding = mySurroundingChecker.checkSurroundings(this);
-			if(surrounding!=null)surrounding.doDialogue();
+			if(surrounding!=null){
+				surrounding.doDialogue();
+			}
+			
 		}
 	}
 
