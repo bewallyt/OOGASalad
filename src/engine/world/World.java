@@ -12,7 +12,6 @@ public abstract class World {
 	private int myTileSize;
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
-	private String myBackground;
 	private Player myPlayer;
 	
 
@@ -23,10 +22,10 @@ public abstract class World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, int playWidth, int playHeight, String background) {
+	public World(int tileSize, int playWidth, int playHeight) {
 		myTileSize=tileSize;
 		myGridObjectList = new ArrayList<GridObject>();
-		myBackground = background;
+
 		myNumTileWidth = playWidth/myTileSize;
 		myNumTileHeight = playHeight/myTileSize;
 		makeTileMatrix();
@@ -49,12 +48,14 @@ public abstract class World {
 	public int getTileGridWidth() {
 		return myNumTileWidth;
 	}
-	
-	public String getBackgroundString() {
-		return myBackground;
 
+	public void paintFullBackround(String fileName){
+		for (int i = 0; i < getTileGridWidth(); i++) {
+			for (int j = 0; j < getTileGridHeight(); j++) {
+				getTileMatrix()[i][j].setBackgroundImage(fileName);
+			}
+		}
 	}
-
 	/**
 	 * Make empty matrix of tiles.
 	 * 

@@ -1,13 +1,13 @@
 package engine.main;
 
 import engine.collision.CollisionMatrix;
-import engine.gridobject.Barrier;
 import engine.gridobject.Building;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
+import engine.world.ArenaWorld;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
-import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 /**
@@ -58,7 +58,9 @@ public abstract class RPGEngine{
 	}
 
 
-
+	public void addNewArenaWorld(ArenaWorld world){
+		
+	}
 	/**
 	 * Adds a new world.
 	 *
@@ -67,11 +69,7 @@ public abstract class RPGEngine{
 	public void addNewWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
-		for (int i = 0; i < world.getTileGridWidth(); i++) {
-			for (int j = 0; j < world.getTileGridHeight(); j++) {
-				world.getTileMatrix()[i][j].setBackgroundImage("grass.jpg");
-			}
-		}
+		
 		//		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getWidth(), myPlayer.getHeight());
 		myCollisionMatrix=null;
 	}
@@ -79,18 +77,12 @@ public abstract class RPGEngine{
 	public void addBuildingWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
-		for (int i = 0; i < world.getTileGridWidth(); i++) {
-			for (int j = 0; j < world.getTileGridHeight(); j++) {
-				world.getTileMatrix()[i][j].setBackgroundImage("pokecenterfloor.png");
-			}
-		}
-//		for(int i=0; i<world.getTileGridWidth(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), i, 0);
-//			addGridObject(new Barrier("tree.png",1,2), i, world.getTileGridHeight()-1-1);
-//		}
-		System.out.println("hi");
 		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getNumTilesWidth(), myPlayer.getNumTilesHeight());
-		addGridObject(getPlayer(), 3, 3);
+//		myPlayer.setPosition(myCurrentWorld.getTileGridWidth()*myCurrentWorld.getTileSize()/2, 0);
+		addGridObject(getPlayer(), world.getTileGridWidth()/2, world.getTileGridHeight()-3);
+		myPlayer.setFacing(0);
+		
+		
 		myCollisionMatrix=null;
 	}
 
@@ -104,6 +96,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
+			
 			myCanvas.repaint();
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
@@ -113,6 +106,10 @@ public abstract class RPGEngine{
 						System.out.println("new world");
 						addBuildingWorld(((Building) go).getBuildingWorld());
 					}
+				}
+				if(go instanceof Enemy){
+					if(((Enemy) go).battleInitiated())
+						System.out.println("battle!");
 				}
 			}
 			run();
@@ -151,6 +148,10 @@ public abstract class RPGEngine{
 
 	public Player getPlayer(){
 		return myPlayer;
+	}
+	
+	public void paintConstantBackground(String background){
+		myCurrentWorld.paintFullBackround(background);
 	}
 
 

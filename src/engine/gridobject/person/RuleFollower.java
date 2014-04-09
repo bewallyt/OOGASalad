@@ -7,7 +7,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
 
-public class RuleFollower extends GridObject {
+public abstract class RuleFollower extends GridObject {
 
 	private List<Item> myItems;
 	private double mySpeed;
@@ -27,7 +27,7 @@ public class RuleFollower extends GridObject {
 		mySpeed = speed;
 		resetMax();
 		myWeapon = null;
-		currentImageFile=getAnimImages()[2];
+		currentImageFile=getAnimImages()[myFacing];
 	}
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
@@ -127,6 +127,10 @@ public class RuleFollower extends GridObject {
 	}
 	public int getFacing(){
 		return myFacing;
+	}
+	public void setFacing (int facing){
+		myFacing = facing;
+		currentImageFile=getAnimImages()[myFacing];
 	}
 	
 
