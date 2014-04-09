@@ -30,8 +30,11 @@ public class Main extends RPGEngine {
 	}
 
 	public void makeOutsideWorld(){
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, "grass.jpg");
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
+		
 		addNewWorld(outsideWorld);
+		outsideWorld.paintFullBackround("grass.jpg");
+		
 		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
 
 		addGridObject(getPlayer(), 3, 3);
@@ -41,7 +44,10 @@ public class Main extends RPGEngine {
 		bafm.addDialogue("Hey fight me");
 		Building pokeCenter = new Building("pokecenter.png",4, 4, 222, 278);
 		addGridObject(pokeCenter, 4, 3);
-		pokeCenter.setBuildingWorld(new WalkAroundWorld(40, 1000, 1000, "pokecenterfloor.jpg"));
+		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
+		buildingWorld.paintFullBackround("pokecenterfloor.png");
+		buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
+		pokeCenter.setBuildingWorld(buildingWorld);
 
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
@@ -51,10 +57,6 @@ public class Main extends RPGEngine {
 			addGridObject(new Barrier("tree.png",1,2), 0, i);
 			addGridObject(new Barrier("tree.png",1,2), outsideWorld.getTileGridWidth()-1,i );
 		}
-	}
-	
-	public void makeBuildingWorld(){
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000, "pokecenterfloor.jpg");
 	}
 
 	@Override
