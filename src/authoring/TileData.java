@@ -11,6 +11,10 @@ public class TileData {
 		myGridObjectDatas = new ArrayList<GridObjectData>();
 	}
 	
+	public void setImageName(String s){
+		myImageName = s;
+	}
+
 	public String getImageName(){
 		return myImageName;
 	}
