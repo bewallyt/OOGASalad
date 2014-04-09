@@ -42,7 +42,9 @@ public class Main extends RPGEngine {
 			}
 		}
 		//addPlayer("player.png",2,1, 1);
-		addPlayer(new String[] {"PlayerUp.png","PlayerRight.png", "PlayerDown.png", "PlayerLeft.png"},2,1, 1);
+		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
+		addPlayer(anim, 2, 1, 1);
 
 		addGridObject(getPlayer(), 3, 3);
 		NPC bafm = myNPC= new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());

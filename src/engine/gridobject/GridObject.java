@@ -140,10 +140,10 @@ public abstract class GridObject{
 	}
 
 	public Dialogue doDialogue(){
-		System.out.println("hi");
 		Dialogue d = null;
 		for(String str : myDialogue){
 			d = new Dialogue("Dialogue.png",str);
+			System.out.println(str);
 		}
 
 		this.d=d;

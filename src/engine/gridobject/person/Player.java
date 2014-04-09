@@ -10,7 +10,7 @@ import engine.world.SurroundingChecker;
 import engine.world.Tile;
 
 public class Player extends RuleFollower {
-	
+	private int count = 0;
 
 	public boolean aClick = false;
 	//private KeyHandler myKeyHandler;
@@ -23,19 +23,14 @@ public class Player extends RuleFollower {
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
-		myAnimImages = animImages;
 		setMyItems(null);
 	}
 	
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){
 		mySurroundingChecker = surroundingChecker;
 	}
-	public void getAnimImages(String[] animImages) {
-		myAnimImages = animImages;
-	}
 	
 	public void keyPressed(KeyEvent e) {
-
 //		System.out.println("playerx: " + this.getX() + "playery: " + this.getY());
 		if (e.getKeyCode() == AbstractGameState.UP){
 			setDY(-getSpeed());

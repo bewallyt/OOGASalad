@@ -2,6 +2,8 @@ package engine.main;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
+
 import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
@@ -56,6 +58,10 @@ public abstract class RPGEngine{
 	public void initializeCanvas(int width, int height){
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
+	}
+	
+	public Canvas retMyCanvas(){
+		return myCanvas;
 	}
 
 
