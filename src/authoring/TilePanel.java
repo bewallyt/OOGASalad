@@ -9,15 +9,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class TilePanel extends JPanel{
-
+	
+	private TileData myData;
 	private Icon myTileImage;
 	//private ImageIcon myTileDataImage;
 	private JLabel myTileLabel;
 	private JLabel myTileDataLabel;
-	protected int myRow;
-	protected int myCol;
+	private int myRow;
+	private int myCol;
 
 	public TilePanel(int row, int col){
+		myData = new TileData(null);
 		myRow = row;
 		myCol = col;
 		this.setLayout(new BorderLayout());
@@ -45,8 +47,24 @@ public class TilePanel extends JPanel{
 		myTileLabel.setLayout(new BorderLayout());
 		myTileLabel.setOpaque(false);
 		this.add(myTileLabel);
+		updateImage(fileName);
 	}
-
+	
+	public void updateImage(String s){
+		myData.setImageName(s);
+	}
+	
+	public TileData getTileData(){
+		return myData;
+	}
+	
+	public int getRow(){
+		return myRow;
+	}
+	
+	public int getCol(){
+		return myCol;
+	}
 	//The way I'm putting two images on one tile is that I'm adding the TileData image label to the
 	//tile image label. Does this work when the game actually runs?
 	/*public void setTileDataImage(String fileName){
