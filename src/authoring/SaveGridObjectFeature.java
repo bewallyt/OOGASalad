@@ -20,6 +20,7 @@ public class SaveGridObjectFeature extends Feature{
 			mySuperFeature.getData().setX(((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getX());
 			mySuperFeature.getData().setY(((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getY());
 			mySuperFeature.getData().setSteppable(((SteppableFeature)(mySuperFeature.getFeature("SteppableFeature"))).isSteppable());
+			mySuperFeature.getData().setImageName(((GridObjectImageFeature)(mySuperFeature.getFeature("GridObjectImageFeature"))).getImageName());
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getView().close();
 			}
