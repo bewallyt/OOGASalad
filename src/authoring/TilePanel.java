@@ -40,24 +40,24 @@ public class TilePanel extends JPanel{
 		return new Dimension(36, 36);
 	}
 
-	public void setTileImage(String fileName) {	
+	public void setTileImage(Icon fileName) {	
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
 		
-		BufferedImage temp;
+		/*BufferedImage temp;
 		try {
 			temp = ImageIO.read(FeatureManager.getWorldData().getImage(fileName));
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(this, "File could not be loaded.", "Error Message", JOptionPane.ERROR_MESSAGE);
 			temp = null;
-		}
-        Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		myTileImage = new ImageIcon(scaledImage);
+		}*/
+        //Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
+		myTileImage = fileName;
 		myTileLabel = new JLabel(myTileImage);
 		myTileLabel.setLayout(new BorderLayout());
 		myTileLabel.setOpaque(false);
 		this.add(myTileLabel);
-		updateImage(fileName);
+		updateImage(fileName.toString());
 	}
 	
 	public void updateImage(String s){
