@@ -1,17 +1,9 @@
 package engine.main;
 
-import engine.Dialogue;
-import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
-import engine.gridobject.Building;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
-import engine.gridobject.person.Player;
-import engine.world.Canvas;
-import engine.world.SurroundingChecker;
-import engine.world.Tile;
 import engine.world.WalkAroundWorld;
-import engine.world.World;
 
 public class Main extends RPGEngine {
 
@@ -42,12 +34,13 @@ public class Main extends RPGEngine {
 		bafm.battleOnSight();
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey fight me");
-		Building pokeCenter = new Building("pokecenter.png",4, 4, 222, 278);
+		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
+		pokeCenter.setDoor(222, 278);
 		addGridObject(pokeCenter, 4, 3);
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
 		buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
-		pokeCenter.setBuildingWorld(buildingWorld);
+		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
 
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);

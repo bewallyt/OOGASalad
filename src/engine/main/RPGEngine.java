@@ -1,7 +1,6 @@
 package engine.main;
 
 import engine.collision.CollisionMatrix;
-import engine.gridobject.Building;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;

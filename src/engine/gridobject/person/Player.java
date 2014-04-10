@@ -1,13 +1,12 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
-import java.util.List;
 
-import engine.*;
-import engine.gridobject.Building;
+import engine.AbstractGameState;
+import engine.gridobject.Barrier;
+import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.world.SurroundingChecker;
-import engine.world.Tile;
 
 public class Player extends RuleFollower {
 	
@@ -77,11 +76,11 @@ public class Player extends RuleFollower {
 		return originalSpeed;
 	}
 	
-	public Building enterBuilding(){
+	public Door enterBuilding(){
 		GridObject surrounding = mySurroundingChecker.checkSurroundings(this);
-		if(surrounding instanceof Building && ((Building) surrounding).getDoor().playerAtDoor(this) && getFacing()==0){
+		if(surrounding instanceof Barrier && ((Barrier) surrounding).hasDoor() && ((Barrier) surrounding).getDoor().playerAtDoor(this) && getFacing()==0){
 			System.out.println("GO IN DOOR");
-			return (Building) surrounding;
+			return  ((Barrier) surrounding).getDoor();
 		}
 		return null;
 	}
