@@ -113,7 +113,6 @@ public abstract class RPGEngine{
 			run();
 			Thread.sleep(10);
 		}
-
 	}
 
 	public void addPlayer(String[] animImages, double speed, int numTilesWidth, int numTilesHeight){
