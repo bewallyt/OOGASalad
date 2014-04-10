@@ -101,11 +101,9 @@ public abstract class RPGEngine{
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
 				go.move();
-				if(go instanceof Building){
-					if(((Building) go).isBuildingEntered()){
-						System.out.println("new world");
-						addBuildingWorld(((Building) go).getBuildingWorld());
-					}
+				if(myPlayer.enterBuilding()!=null){
+					System.out.println("new world");
+					addBuildingWorld(myPlayer.enterBuilding().getBuildingWorld());
 				}
 				if(go instanceof Enemy){
 					if(((Enemy) go).battleInitiated())
