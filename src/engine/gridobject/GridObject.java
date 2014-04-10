@@ -32,16 +32,16 @@ public abstract class GridObject{
 	
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
-	private List<String> myDialogue;
-	private Dialogue d;
+	private List<String> myDialogueList;
+	private Dialogue myDialogue;
 
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myImageName=image;
-		d=null;
-		myDialogue=new ArrayList<String>();
+		myDialogue=null;
+		myDialogueList=new ArrayList<String>();
 	}
 	
 	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
@@ -49,8 +49,8 @@ public abstract class GridObject{
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myAnimImages=animImages;
-		d=null;
-		myDialogue=new ArrayList<String>();
+		myDialogue=null;
+		myDialogueList=new ArrayList<String>();
 		myImageName=animImages[2];
 	}
 
@@ -84,14 +84,14 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
+		
 	}
 	
 
 	public void paintDialoge(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
-		if(d!=null){
-			d.setSize((int) (xSize*.9), ySize/4);
-			System.out.println(xOffset);
-			g.drawImage(d.getImage(),(int) (xSize*.05),(int) (ySize-ySize/4-ySize*.1),null);
+		if(myDialogue!=null){
+			myDialogue.setSize((int) (xSize*.9), ySize/4);
+			g.drawImage(myDialogue.getImage(),(int) (xSize*.05),(int) (ySize-ySize/4-ySize*.1),null);
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 			Font font=null;
 			try {
@@ -103,7 +103,7 @@ public abstract class GridObject{
 				e.printStackTrace();
 			}
 
-			g.drawString(d.getDialogue(), (int) (xSize*.1), (int) (ySize-ySize/4));
+			g.drawString(myDialogue.getDialogue(), (int) (xSize*.1), (int) (ySize-ySize/4));
 		}
 	}
 
@@ -132,21 +132,21 @@ public abstract class GridObject{
 	}
 
 	public void addDialogue(String dialogue){
-		myDialogue.add(dialogue);
+		myDialogueList.add(dialogue);
 	}
 	public List<String> getDialogueList(){
-		return myDialogue;
+		return myDialogueList;
 
 	}
 
 	public Dialogue doDialogue(){
-		System.out.println("hi");
 		Dialogue d = null;
-		for(String str : myDialogue){
+		for(String str : myDialogueList){
 			d = new Dialogue("Dialogue.png",str);
+			System.out.println(str);
 		}
 
-		this.d=d;
+		this.myDialogue=d;
 		return d;
 	}
 
@@ -188,6 +188,14 @@ public abstract class GridObject{
 		return myAnimImages;
 	}
 
+	public int getNumTilesHeight(){
+		return myNumTilesHeight;
+	}
+	public int getNumTilesWidth(){
+		return myNumTilesWidth;
+	}
+	
+	
 
 
 }
