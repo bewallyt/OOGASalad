@@ -55,7 +55,6 @@ public class GridObjectImageFeature extends Feature {
 		mySuperFeature.getView().getFrame().revalidate();
 	}
 	public String getImageName() {
-		System.out.println(myImageName);
 		return myImageName;
 	}
 }

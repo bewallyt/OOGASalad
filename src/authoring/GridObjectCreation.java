@@ -24,6 +24,7 @@ public class GridObjectCreation extends Feature{
 		myGridFeatures.add(new GridObjectCoordinateFeature(this));
 		myGridFeatures.add(new GridObjectImageFeature(this));
 		myGridFeatures.add(new TalkableFeature(this));
+		myGridFeatures.add(new WidthHeightFeature(this));
 		
 		myGridObjectButton = new JButton("New GridObject");
 		myGridObjectButton.addActionListener(new GridObjectWindowAction());

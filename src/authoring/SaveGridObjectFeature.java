@@ -22,7 +22,10 @@ public class SaveGridObjectFeature extends Feature{
 			mySuperFeature.getData().setSteppable(((SteppableFeature)(mySuperFeature.getFeature("SteppableFeature"))).isSteppable());
 			mySuperFeature.getData().setImageName(((GridObjectImageFeature)(mySuperFeature.getFeature("GridObjectImageFeature"))).getImageName());
 			mySuperFeature.getData().setTalkable(((TalkableFeature)(mySuperFeature.getFeature("TalkableFeature"))).isTalkable());
+			mySuperFeature.getData().setWidth(((WidthHeightFeature)(mySuperFeature.getFeature("WidthHeightFeature"))).getWidth());
+			mySuperFeature.getData().setHeight(((WidthHeightFeature)(mySuperFeature.getFeature("WidthHeightFeature"))).getHeight());
 			if(mySuperFeature.getData().isDefined()){
+				mySuperFeature.getData().init();
 				mySuperFeature.getView().close();
 			}
 		}
