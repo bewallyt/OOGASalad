@@ -17,6 +17,7 @@ public abstract class AbstractGameState implements KeyListener{
 	public static int LEFT = 37;
 	public static int RIGHT = 39;
 	public static int A = 65;
+	public static int SPACE = 32;
 	
 	public AbstractGameState (Canvas c, World world){
 		myWorld = world;

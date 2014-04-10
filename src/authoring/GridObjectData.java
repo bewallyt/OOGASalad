@@ -9,10 +9,15 @@ public class GridObjectData {
 	private Boolean isTalkable;
 	private int x;
 	private int y;
+	private int width;
+	private int height;
 	
 	public GridObjectData(){
 		x = -1;
 		y = -1;
+	}
+	public void init(){
+		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
 	}
 //	public GridObjectData(TileData td, boolean step, boolean talk, String s) {
 //		myTile = td;
@@ -60,5 +65,10 @@ public class GridObjectData {
 		}
 		return true;
 	}
-
+	public void setWidth(int w) {
+		width = w;
+	}
+	public void setHeight(int h) {
+		height = h;
+	}
 }

@@ -1,3 +1,4 @@
+
 package engine.world;
 
 import java.awt.Graphics;
@@ -49,6 +50,7 @@ public class Canvas extends JComponent{
 		frame.setResizable(false);
 		frame.setFocusable(true);
 		frame.requestFocus();
+		frame.setBounds(100, 100,width, height-1);
 	}
 	
 	private JMenuBar makeMenuBar() {
