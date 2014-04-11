@@ -62,16 +62,9 @@ public class Grid extends JPanel{
 	}
 
 	public void showImageMenu(){
-		
-		/*if(selectedTileImage == null){
-			return;
-		}	
-		selectedCell.setTileImage(selectedTileImage);
-		wd.getMap(WorldData.DEFAULT_MAP).addTileData(selectedCell.getRow(), selectedCell.getCol(), selectedCell.getTileData());*/
-
+		imageEditor.setVisible(true);
 	}
 
-	//need to fix error when user scrolls too far right or too far down
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
 		for (int row = startRow; row < 144; row++) {
@@ -82,6 +75,7 @@ public class Grid extends JPanel{
 				cell.setBorder(defaultBorder);
 				cell.setMinimumSize(new Dimension(48, 48));
 				cell.addMouseListener(new SelectedCellListener());
+				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);
 			}
 		}
@@ -96,21 +90,16 @@ public class Grid extends JPanel{
 
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
-			if(e.getButton() == MouseEvent.BUTTON1){
-				TilePanel selected = (TilePanel) e.getComponent();
-				selected.setTileImage(imageEditor.selectImage());
-				repaint();
-			}
 			if(e.getButton() == MouseEvent.BUTTON3)
 				showPopupMenu(e);
 		}
-		
+
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			TilePanel current = (TilePanel) e.getComponent();
 			current.setBorder(selectBorder);
 		}
-		
+
 		@Override
 		public void mouseExited(MouseEvent e) {
 			TilePanel current = (TilePanel) e.getComponent();
@@ -118,16 +107,19 @@ public class Grid extends JPanel{
 		}
 
 		public void mousePressed(MouseEvent e) {
-			
+			TilePanel selected = (TilePanel) e.getComponent();
+			selected.setTileImage(imageEditor.selectImage());
+			selected.setBorder(defaultBorder);
+			repaint();
 		}
 
 		public void mouseReleased(MouseEvent e) {
 
 		}
-		
+
 		@Override
 		public void mouseDragged(MouseEvent e){
-
+			
 		}
 	}
 }
