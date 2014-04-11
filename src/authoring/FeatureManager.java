@@ -9,6 +9,7 @@ import Data.FileStorer;
 public class FeatureManager {
 	public static List<Feature> myFeatures = new ArrayList<Feature>();
 	public static WorldData myWorld = new WorldData();
+	public static TileImageEditor imageEditor = new TileImageEditor("Tile Image Editor");
 	public static FileStorer myDataManager = new FileStorer();
 	public static void addFeature(Feature f){
 		myFeatures.add(f);
