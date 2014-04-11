@@ -7,7 +7,7 @@ public class WorldData {
 
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
-	private static final String DEFAULT_MAP = "defaultworldkey";
+	protected static final String DEFAULT_MAP = "defaultworldkey";
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();

@@ -1,3 +1,4 @@
+
 package engine.world;
 
 import java.awt.Graphics;
@@ -20,7 +21,7 @@ import engine.images.ScaledImage;
 
 public class Canvas extends JComponent{
 
-	private JPanel myPanel;
+	private JFrame myFrame;
 	private int myHeight;
 	private int myWidth;
 	private World myWorld;
@@ -37,27 +38,67 @@ public class Canvas extends JComponent{
 	 * @param tileSize the tile size
 	 */
 	public Canvas(int width, int height){
-		JPanel panel = new JPanel();
-		myPanel = panel;
-		myWidth = width;
-		myHeight = height;
+		JFrame frame = new JFrame("Pokemon");
+		myFrame = frame;
+		myHeight=height;
+		myWidth=width;
+//		frame.setJMenuBar(makeMenuBar());
+		frame.setSize((int) width, (int) height);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setFocusable(true);
+		frame.requestFocus();
+		frame.setBounds(100, 100,width, height-1);
+	}
+	
+	private JMenuBar makeMenuBar() {
+		JMenuBar menu = new JMenuBar();
+		menu.add(makeFileMenu());
+		return menu;
+	}
+	
+	@SuppressWarnings("serial")
+	private JMenu makeFileMenu() {
+		JMenu file = new JMenu("File");
+		file.add(new AbstractAction("Load") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		panel.setSize(width, height);
-		panel.setVisible(true);
-		panel.setFocusable(true);
-		panel.requestFocus();
+		file.add(new AbstractAction("Save") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		file.add(new AbstractAction("Exit") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		return file;
 	}
 
+
 	public void setWorld(World world){
-		myPanel.add(this);
-		myPanel.addKeyListener(new WalkAroundState(this, world));
+		myFrame.add(this);
+		myFrame.addKeyListener(new WalkAroundState(this, world));
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
 	}
 
 	public void setState(AbstractGameState state){
-		myPanel.addKeyListener(state);
+		myFrame.addKeyListener(state);
 	}
 
 	public int getHeight(){
@@ -66,10 +107,6 @@ public class Canvas extends JComponent{
 
 	public int getWidth(){
 		return myWidth;
-	}
-	
-	public JPanel getMyCanvas(){
-		return myPanel;
 	}
 
 	@Override
@@ -110,8 +147,6 @@ public class Canvas extends JComponent{
 			}
 		}
 
-		
-		
 	}
 
 	public int[] getCameraOffset(){

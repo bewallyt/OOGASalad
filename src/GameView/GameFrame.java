@@ -1,7 +1,9 @@
 package GameView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import engine.Dialogue;
 import engine.collision.CollisionMatrix;
 import engine.gridobject.Barrier;
@@ -18,6 +20,8 @@ import authoring.GridObjectData;
 import authoring.TileData;
 import authoring.WorldData;
 import Data.DataDummy;
+import Data.FileStorer;
+
 import javax.swing.JFrame;
 
 public class GameFrame extends RPGEngine {
@@ -25,16 +29,22 @@ public class GameFrame extends RPGEngine {
 	private int spriteWidth = 1;
 	private int spriteHeight = 1;
 	private WorldData myWorldData;
-	private DataDummy myData;
+//	private DataDummy myData;
 	private JFrame myFrame;
+	private FileStorer myData;
 
 	Player myPlayer;
 	NPC myNPC;
 
 
-	public GameFrame() {
-		myData = new DataDummy();
-		myWorldData = myData.getWorldData();
+	public GameFrame(String fileName) {
+		myData = new FileStorer();
+		try {
+			myWorldData = myData.getWorldData(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		initializeGame();
 	}
