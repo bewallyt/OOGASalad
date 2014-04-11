@@ -2,8 +2,8 @@ package engine.world;
 
 public class ArenaWorld extends World {
 
-	public ArenaWorld(int tileSize, String background) {
-		super(tileSize, background);
+	public ArenaWorld(int tileSize, int playWidth, int playHeight) {
+		super(tileSize, playWidth, playHeight);
 	}
 
 }
