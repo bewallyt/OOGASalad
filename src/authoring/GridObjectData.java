@@ -59,6 +59,13 @@ public class GridObjectData {
 		return y;
 	}
 	
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
+	}
+	
 	public boolean isDefined(){
 		if(x==-1||y==-1){
 			return false;
