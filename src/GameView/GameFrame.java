@@ -21,6 +21,7 @@ import authoring.GridObjectData;
 import authoring.TileData;
 import authoring.WorldData;
 import Data.DataDummy;
+import Data.DataManager;
 import Data.FileStorer;
 
 import javax.swing.JFrame;
@@ -34,19 +35,17 @@ public class GameFrame extends RPGEngine {
 	private WorldData myWorldData;
 	// private DataDummy myData;
 	// private JFrame myFrame;
-	private FileStorer myData;
+	private DataManager myData;
 
 	Player myPlayer;
 	NPC myNPC;
 
 	public GameFrame(String fileName) {
-		myData = new FileStorer();
-		try {
-			myWorldData = myData.getWorldData(fileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		myData = new FileStorer();
+		myData = new DataManager();
+//			myWorldData = myData.getWorldData(fileName);
+		myWorldData = myData.loadWorldDataFromFile(fileName);
+		
 
 		initializeGame();
 	}
@@ -61,57 +60,57 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
-	public void makeOutsideWorld() {
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
-
-		addNewWorld(outsideWorld);
-		outsideWorld.paintFullBackround("grass.jpg");
-
-		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
-				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
-				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
-				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
-				"PlayerLeft2.png" };
-		addPlayer(anim, 2, 1, 1);
-
-		addGridObject(getPlayer(), 3, 3);
-		Enemy bafm = new Enemy(new String[] { "rival.png", "rival.png",
-				"rival.png", "rival.png" }, 1, 1, 1, 3, getPlayer());
-		bafm.battleOnSight();
-		addGridObject(bafm, 10, 10);
-		bafm.addDialogue("Hey fight me");
-		Barrier pokeCenter = new Barrier("pokecenter.png", 4, 4);
-		pokeCenter.setDoor(222, 278);
-		addGridObject(pokeCenter, 4, 3);
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
-		buildingWorld.paintFullBackround("pokecenterfloor.png");
-		buildingWorld.setTileObject(new Barrier("cabinets.jpg", 3, 1),
-				getCurrentWorld().getTileGridWidth() / 2, getCurrentWorld()
-						.getTileGridHeight() - 2);
-		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
-
-		for (int i = 0; i < outsideWorld.getTileGridWidth(); i++) {
-			addGridObject(new Barrier("tree.png", 1, 2), i, 0);
-			addGridObject(new Barrier("tree.png", 1, 2), i,
-					outsideWorld.getTileGridHeight() - 1 - 1);
-		}
-		for (int i = 0; i < outsideWorld.getTileGridHeight(); i++) {
-			addGridObject(new Barrier("tree.png", 1, 2), 0, i);
-			addGridObject(new Barrier("tree.png", 1, 2),
-					outsideWorld.getTileGridWidth() - 1, i);
-		}
-	}
-	
+//	public void makeOutsideWorld() {
+//		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
+//
+//		addNewWorld(outsideWorld);
+//		outsideWorld.paintFullBackround("grass.jpg");
+//
+//		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
+//				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
+//				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
+//				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
+//				"PlayerLeft2.png" };
+//		addPlayer(anim, 2, 1, 1);
+//
+//		addGridObject(getPlayer(), 3, 3);
+//		Enemy bafm = new Enemy(new String[] { "rival.png", "rival.png",
+//				"rival.png", "rival.png" }, 1, 1, 1, 3, getPlayer());
+//		bafm.battleOnSight();
+//		addGridObject(bafm, 10, 10);
+//		bafm.addDialogue("Hey fight me");
+//		Barrier pokeCenter = new Barrier("pokecenter.png", 4, 4);
+//		pokeCenter.setDoor(222, 278);
+//		addGridObject(pokeCenter, 4, 3);
+//		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
+//		buildingWorld.paintFullBackround("pokecenterfloor.png");
+//		buildingWorld.setTileObject(new Barrier("cabinets.jpg", 3, 1),
+//				getCurrentWorld().getTileGridWidth() / 2, getCurrentWorld()
+//						.getTileGridHeight() - 2);
+//		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
+//
+//		for (int i = 0; i < outsideWorld.getTileGridWidth(); i++) {
+//			addGridObject(new Barrier("tree.png", 1, 2), i, 0);
+//			addGridObject(new Barrier("tree.png", 1, 2), i,
+//					outsideWorld.getTileGridHeight() - 1 - 1);
+//		}
+//		for (int i = 0; i < outsideWorld.getTileGridHeight(); i++) {
+//			addGridObject(new Barrier("tree.png", 1, 2), 0, i);
+//			addGridObject(new Barrier("tree.png", 1, 2),
+//					outsideWorld.getTileGridWidth() - 1, i);
+//		}
+//	}
+//	
 	/*
 	 * Communication between Data and Engine test below:
-	 * addObjects()
+	 * makeOutsideWorld()
 	 * addPlayer()
 	 * addEnemy()
 	 */
 
-	public void addObjects() {
+	public void makeOutsideWorld() {
 		// Fit authoring data
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(36, 144, 144);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
 
 		addNewWorld(outsideWorld);
 
@@ -144,10 +143,7 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	public void addPlayer(){
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
 
-		addNewWorld(outsideWorld);
-		outsideWorld.paintFullBackround("grass.jpg");
 
 		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
