@@ -9,18 +9,18 @@ import javax.swing.border.MatteBorder;
 
 public class Grid extends JPanel{
 
-	private static final int WORLD_WIDTH = 144;
-	private static final int WORLD_HEIGHT = 144;
+	private static final int WORLD_WIDTH = 100;
+	private static final int WORLD_HEIGHT = 100;
 	private int startRow = 0;
 	private int startCol = 0;
-	private WorldData wd;
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
 	private String[] popupMenuItems = { "Tile Image Editor", "Set as Player Start Point", "Clear Tile"};
 	private Border defaultBorder;
 	private Border selectBorder;
-	private TilePanel[][] world;
+	//temporarily static until I can figure out a workaround with the other authoring folks
+	protected static TilePanel[][] currentMap;
 
 	public Grid() {
 		this.setLayout(new GridBagLayout());
@@ -38,15 +38,15 @@ public class Grid extends JPanel{
 		//String width = (String) JOptionPane.showInputDialog(grid, "Please input a number");
 		//grid.add(inputArea);
 
-		world = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
+		currentMap = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
 
 		for (int row = 0; row < WORLD_HEIGHT; row++) {
 			for (int col = 0; col < WORLD_WIDTH; col++) {				
-				world[row][col] = new TilePanel(row, col);
+				currentMap[row][col] = new TilePanel(row, col);
 			}
 		}
 	}
-
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -67,13 +67,13 @@ public class Grid extends JPanel{
 
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
-		for (int row = startRow; row < 144; row++) {
-			for (int col = startCol; col < 144; col++) {
+		for (int row = startRow; row < WORLD_HEIGHT; row++) {
+			for (int col = startCol; col < WORLD_WIDTH; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
-				TilePanel cell = world[row][col];
+				TilePanel cell = currentMap[row][col];
 				cell.setBorder(defaultBorder);
-				cell.setMinimumSize(new Dimension(48, 48));
+				cell.setMinimumSize(new Dimension(36, 36));
 				cell.addMouseListener(new SelectedCellListener());
 				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);

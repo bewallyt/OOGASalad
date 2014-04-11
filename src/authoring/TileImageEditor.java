@@ -23,7 +23,6 @@ public class TileImageEditor extends JFrame {
 		model = new DefaultListModel();
 		list = new JList(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.addListSelectionListener(new SelectionListener());
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
@@ -45,13 +44,5 @@ public class TileImageEditor extends JFrame {
 	public Icon selectImage(){
 		return (Icon) model.get(list.getSelectedIndex());
 	}
-	
-	public class SelectionListener implements ListSelectionListener {
 
-		@Override
-		public void valueChanged(ListSelectionEvent arg0) {
-			//selectImage();
-		}
-		
-	}
 }

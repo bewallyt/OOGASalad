@@ -16,7 +16,7 @@ public class GridViewerFeature extends Feature{
 		myViewer = new JScrollPane(myGrid);
 		myViewer.setPreferredSize(new Dimension(592, 590));
 		myComponents.put(myViewer, BorderLayout.CENTER);
-		FeatureManager.imageEditor.setLocation(myGrid.getX() + 650, myGrid.getY());
+		//FeatureManager.imageEditor.setLocation(myGrid.getX() + 650, myGrid.getY());
 		FeatureManager.imageEditor.setVisible(true);
 	}
 }
