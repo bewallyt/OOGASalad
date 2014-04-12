@@ -73,9 +73,9 @@ public class Player extends RuleFollower {
 	
 	public Door enterBuilding(){
 		GridObject surrounding = mySurroundingChecker.checkSurroundings(this);
-		if(surrounding instanceof Barrier && ((Barrier) surrounding).hasDoor() && ((Barrier) surrounding).getDoor().playerAtDoor(this) && getFacing()==0){
+		if(surrounding instanceof Door && ((Door) surrounding).playerAtDoor(this)){
 			System.out.println("GO IN DOOR");
-			return  ((Barrier) surrounding).getDoor();
+			return  (Door) surrounding;
 		}
 		return null;
 	}

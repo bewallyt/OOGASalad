@@ -112,8 +112,8 @@ public abstract class GridObject{
 		myStatsMap.put(stat.getName(), stat);
 	}
 
-	public void addStatistic(String name, int value, int maxValue){
-		myStatsMap.put(name,new Statistic(name,value,maxValue));
+	public void addStatistic(String name, int value){
+		myStatsMap.put(name,new Statistic(name,value));
 	}
 
 	public Map<String,Statistic> getStatsMap(){

@@ -1,6 +1,7 @@
 package engine.main;
 
 import engine.gridobject.Barrier;
+import engine.gridobject.Door;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.world.WalkAroundWorld;
@@ -40,13 +41,13 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey fight me");
 		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
-		pokeCenter.setDoor(222, 278);
 		addGridObject(pokeCenter, 4, 3);
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
-		//buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
-		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
-
+		Door door = new Door("cabinets.jpg", 1, 1);
+		door.setBuildingWorld(buildingWorld);
+		addGridObject(door, 15, 15);
+		
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
 			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
