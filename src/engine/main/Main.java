@@ -44,7 +44,7 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 		addGridObject(pokeCenter, 4, 3);
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
-		buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
+		//buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
 		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
 
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
