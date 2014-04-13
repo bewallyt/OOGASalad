@@ -22,19 +22,20 @@ public class UploadedGridObjectImagesFeature extends Feature {
 	
 	public UploadedGridObjectImagesFeature(GridObjectCreation gridObjectCreation){
 		mySuperFeature = gridObjectCreation;
-//		model = new DefaultListModel();
-//		
-//		ImageManager m=new ImageManager();
-//	
-//		BufferedImage temp;
-//		try {
-//			temp = ImageIO.read(new File("C:/Users/Richard Cao/Desktop/Spring2014/Tlaksdjf.png"));
-//		} catch (IOException e) {
-//			temp = null;
-//		}
+		model = new DefaultListModel();
+		
+		ImageManager m=new ImageManager();
+	
+		/*BufferedImage temp;
+		try {
+			temp = ImageIO.read(new File("C:/Users/Richard Cao/Desktop/Spring2014/Tlaksdjf.png"));
+		} catch (IOException e) {
+			temp = null;
+		}
+>>>>>>> 6fc5174f308674d75ee69dfc6a5df352a69e7c75
 		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
 		Icon x = new ImageIcon(scaledImage);
-		model.addElement(x);
+		model.addElement(x);*/
 
 		list = new JList(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);

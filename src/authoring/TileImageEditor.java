@@ -42,7 +42,10 @@ public class TileImageEditor extends JFrame {
 	}
 	
 	public Icon selectImage(){
-		return (Icon) model.get(list.getSelectedIndex());
+		if(model.size() > 0){
+			return (Icon) model.get(list.getSelectedIndex());
+		}
+		return null;
 	}
 
 }
