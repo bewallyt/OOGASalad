@@ -46,7 +46,7 @@ public class Grid extends JPanel{
 			}
 		}
 	}
-	
+
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -107,10 +107,14 @@ public class Grid extends JPanel{
 		}
 
 		public void mousePressed(MouseEvent e) {
-			TilePanel selected = (TilePanel) e.getComponent();
-			selected.setTileImage(imageEditor.selectImage());
-			selected.setBorder(defaultBorder);
-			repaint();
+			if(e.getButton() == MouseEvent.BUTTON1){
+				TilePanel selected = (TilePanel) e.getComponent();
+				if(imageEditor.selectImage() != null){
+					selected.setTileImage(imageEditor.selectImage());
+					selected.setBorder(defaultBorder);
+					repaint();
+				}
+			}
 		}
 
 		public void mouseReleased(MouseEvent e) {
@@ -119,7 +123,7 @@ public class Grid extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e){
-			
+
 		}
 	}
 }

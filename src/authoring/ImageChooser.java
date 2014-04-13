@@ -55,7 +55,6 @@ public class ImageChooser extends Feature implements ActionListener{
 		}
 		imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile);
-		
 	}		
 
 }
