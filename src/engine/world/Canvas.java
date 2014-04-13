@@ -42,7 +42,6 @@ public class Canvas extends JComponent{
 		myFrame = frame;
 		myHeight=height;
 		myWidth=width;
-//		frame.setJMenuBar(makeMenuBar());
 		frame.setSize((int) width, (int) height);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
@@ -52,42 +51,6 @@ public class Canvas extends JComponent{
 		frame.requestFocus();
 		frame.setBounds(100, 100,width, height-1);
 	}
-	
-	private JMenuBar makeMenuBar() {
-		JMenuBar menu = new JMenuBar();
-		menu.add(makeFileMenu());
-		return menu;
-	}
-	
-	@SuppressWarnings("serial")
-	private JMenu makeFileMenu() {
-		JMenu file = new JMenu("File");
-		file.add(new AbstractAction("Load") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		file.add(new AbstractAction("Save") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		file.add(new AbstractAction("Exit") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.exit(0);
-			}
-		});
-		return file;
-	}
-
 
 	public void setWorld(World world){
 		myFrame.add(this);

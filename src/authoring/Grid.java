@@ -21,9 +21,11 @@ public class Grid extends JPanel{
 	private Border defaultBorder;
 	private Border selectBorder;
 	private TilePanel[][] world;
+	private JPanel panel;
 
 	public Grid() {
 		this.setLayout(new GridBagLayout());
+		panel=this;
 		mapMaker();		
 		this.setOpaque(false);
 		imageEditor = FeatureManager.imageEditor;
@@ -32,6 +34,7 @@ public class Grid extends JPanel{
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
+		
 	}
 
 	private void mapMaker(){
@@ -108,9 +111,7 @@ public class Grid extends JPanel{
 
 		public void mousePressed(MouseEvent e) {
 			TilePanel selected = (TilePanel) e.getComponent();
-			selected.setTileImage(imageEditor.selectImage());
-			selected.setBorder(defaultBorder);
-			repaint();
+			placeImage(selected);
 		}
 
 		public void mouseReleased(MouseEvent e) {
@@ -119,7 +120,16 @@ public class Grid extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e){
-			
+			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
+			placeImage(currentPanel);
+		}
+		private void placeImage(TilePanel currentPanel){
+			Icon i=imageEditor.selectImage();
+			if(i!=null){
+				currentPanel.setTileImage(imageEditor.selectImage());
+				currentPanel.setBorder(defaultBorder);
+				repaint();
+			}	
 		}
 	}
 }
