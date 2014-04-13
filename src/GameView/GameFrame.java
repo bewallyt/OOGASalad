@@ -10,6 +10,7 @@ import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.gridobject.person.RuleFollower;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
@@ -151,12 +152,22 @@ public class GameFrame extends RPGEngine {
 
 				for (GridObjectData gridObjectData : currGridObjectDatas) {
 					// Defaulted at Barrier for now.
-					Barrier tempBarrier = (Barrier) Reflection.createInstance(
+					// if (gridObjectData instanceOf Barrier) or something like that?
+					
+					GridObject gridobject = (Barrier) Reflection.createInstance(
 							"Barrier", gridObjectData.getImageName(),
 							gridObjectData.getWidth(),
 							gridObjectData.getHeight());
 
-					addGridObject(tempBarrier, gridObjectData.getX(),
+					// elseif (gridObjectData instanceOf RuleFollower) or something like that?
+					
+					// Using 1 as default speed since no getSpeed() method yet
+					RuleFollower temprf = (RuleFollower) Reflection.createInstance("RuleFollower", gridObjectData.getImageName(),
+							1, gridObjectData.getWidth(), gridObjectData.getHeight());
+					
+					
+					
+					addGridObject(gridobject, gridObjectData.getX(),
 							gridObjectData.getY());
 
 				}
