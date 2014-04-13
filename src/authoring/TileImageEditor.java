@@ -50,7 +50,7 @@ public class TileImageEditor extends JFrame {
 	}
 	
 	public Icon selectImage(){
-		if(list.getModel().getSize()!=0){
+		if(list.getSelectedIndex()!=-1){
 			return (Icon) model.get(list.getSelectedIndex());
 		}	
 		return null;

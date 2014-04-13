@@ -120,9 +120,9 @@ public class Grid extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e){
-			Point p=e.getPoint();
-			TilePanel currentPanel=(TilePanel)panel.getComponentAt(p.x, p.y);
-			placeImage(currentPanel);
+			//Point p=e.getPoint();
+			//TilePanel currentPanel=(TilePanel)panel.getComponentAt(p.x, p.y);
+			//placeImage(currentPanel);
 		}
 		private void placeImage(TilePanel currentPanel){
 			Icon i=imageEditor.selectImage();
