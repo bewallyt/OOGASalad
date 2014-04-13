@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class SaveGameFeature extends Feature {
 	private JButton mySaveButton;
@@ -15,7 +16,8 @@ public class SaveGameFeature extends Feature {
 	}
 	private class SaveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			FeatureManager.getDataManager().storeWorldData("default", FeatureManager.getWorldData());
+			new SaveGameWindow();
+			//FeatureManager.getDataManager().storeWorldData("default", FeatureManager.getWorldData());
 		}
 	}
 }
