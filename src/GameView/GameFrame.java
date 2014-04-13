@@ -30,35 +30,36 @@ import engine.gridobject.person.Enemy;
 
 public class GameFrame extends RPGEngine {
 
-	// private int spriteWidth = 1;
-	// private int spriteHeight = 1;
 	private WorldData myWorldData;
-	// private DataDummy myData;
-	// private JFrame myFrame;
-	private DataManager myData;
-
+//	private DataManager myData;
+	private FileStorer myData;
+	
 	Player myPlayer;
 	NPC myNPC;
 
 	public GameFrame(String fileName) {
-//		myData = new FileStorer();
-		myData = new DataManager();
-//			myWorldData = myData.getWorldData(fileName);
-		myWorldData = myData.loadWorldDataFromFile(fileName);
+		myData = new FileStorer();
+//		myData = new DataManager();
+		try {
+			myWorldData = myData.getWorldData(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		myWorldData = myData.loadWorldDataFromFile(fileName);
 		
-
 		initializeGame();
 	}
 
-	public static void main(String[] args) {
-		Main engine = new Main();
-		engine.initializeGame();
-		try {
-			engine.doGameLoop();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		Main engine = new Main();
+//		engine.initializeGame();
+//		try {
+//			engine.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 //	public void makeOutsideWorld() {
 //		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
@@ -117,15 +118,12 @@ public class GameFrame extends RPGEngine {
 		TileData currTile;
 		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
 		
-		addPlayer();
-		addEnemy();
+//		addPlayer();
+//		addEnemy();
 
-		for (int i = 0; i < myWorldData.getMap("defaultworldkey")
-				.getMapLength(); i++) {
-			for (int j = 0; j < myWorldData.getMap("defaultworldkey")
-					.getMapWidth(); j++) {
-				currTile = myWorldData.getMap("defaultworldkey").getTileData(i,
-						j);
+		for (int i = 0; i < myWorldData.getMap("defaultworldkey").getMapLength(); i++) {
+			for (int j = 0; j < myWorldData.getMap("defaultworldkey").getMapWidth(); j++) {
+				currTile = myWorldData.getMap("defaultworldkey").getTileData(i, j);
 				currGridObjectDatas = currTile.getGridObjectDatas();
 
 				for (GridObjectData gridObjectData : currGridObjectDatas) {
