@@ -25,9 +25,9 @@ public abstract class RPGEngine{
 	private Player myPlayer;
 
 	private CollisionMatrix myCollisionMatrix;
-	
+
 	private World myOutsideWorld;
-	
+
 	private int[] myEnterPos;
 
 	/**
@@ -61,14 +61,14 @@ public abstract class RPGEngine{
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
 	}
-	
+
 	public Canvas retMyCanvas(){
 		return myCanvas;
 	}
 
 
 	public void addNewArenaWorld(ArenaWorld world){
-		
+
 	}
 	/**
 	 * Adds a new world.
@@ -78,7 +78,7 @@ public abstract class RPGEngine{
 	public void addNewWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
-		
+
 		//		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getWidth(), myPlayer.getHeight());
 		myCollisionMatrix=null;
 	}
@@ -96,8 +96,8 @@ public abstract class RPGEngine{
 //		mat.getDoor().setBuildingWorld(myOutsideWorld);
 //		addGridObject(mat, 4, 3);
 		myEnterPos = new int[] {myPlayer.getX(), myPlayer.getY()};
-		
-		
+
+
 		myCollisionMatrix=null;
 	}
 
@@ -111,7 +111,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
-			
+
 			myCanvas.repaint();
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
@@ -162,7 +162,7 @@ public abstract class RPGEngine{
 	public Player getPlayer(){
 		return myPlayer;
 	}
-	
+
 	public void paintConstantBackground(String background){
 		myCurrentWorld.paintFullBackround(background);
 	}

@@ -68,7 +68,6 @@ public abstract class GridObject{
 	public void setPosition(int x, int y){
 		myX=myStartX=x;
 		myY=myStartY=y;
-
 	}
 
 	public int[] getPosition(){
@@ -84,7 +83,6 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		
 	}
 	
 

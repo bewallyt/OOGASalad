@@ -8,17 +8,9 @@ public class Door extends GridObject{
 	public Door(String image, int numTilesWidth, int numTilesHeight) {
 		super(image, numTilesWidth, numTilesHeight);
 	}
-
-	
-//	public Door (int xpos, int ypos){
-//		myX = xpos;
-//		myY = ypos;
-//	}
-	
 	
 	public boolean playerAtDoor(Player player){
-		System.out.println(Math.abs(player.getX()-getX())<player.getWidth() && Math.abs(player.getY()-getY())<player.getHeight());
-		return (Math.abs(player.getX()-getX())<player.getWidth() && Math.abs(player.getY()-getY())<player.getHeight());
+		return (Math.abs(player.getX()-getX())<getWidth() && Math.abs(player.getY()-getY())<getHeight());
 	}
 	
 	public void setBuildingWorld(WalkAroundWorld world){

@@ -24,12 +24,12 @@ public class Main extends RPGEngine {
 
 	public void makeOutsideWorld(){
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
-		
+
 		addNewWorld(outsideWorld);
 		outsideWorld.paintFullBackround("grass.jpg");
-		
 
-		
+
+
 String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 		"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
 		addPlayer(anim,2,1, 1);
@@ -46,8 +46,8 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
 		Door door = new Door("cabinets.jpg", 1, 1);
 		door.setBuildingWorld(buildingWorld);
-		addGridObject(door, 15, 15);
-		
+		addGridObject(door, 6, 6);
+
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
 			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
@@ -62,7 +62,7 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 	public void initializeGame() {
 		initializeCanvas(400, 400);
 		makeOutsideWorld();
-		
+
 	}
 
 	@Override

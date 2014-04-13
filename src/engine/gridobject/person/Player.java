@@ -1,9 +1,9 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import engine.AbstractGameState;
-import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.world.SurroundingChecker;
@@ -18,7 +18,6 @@ public class Player extends RuleFollower {
 	private AbstractGameState myState;
 	private boolean enterDoor;
 	private double originalSpeed;
- 
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
@@ -32,9 +31,7 @@ public class Player extends RuleFollower {
 	public void keyPressed(KeyEvent e) {
 //		System.out.println("playerx: " + this.getX() + "playery: " + this.getY());
 		if (e.getKeyCode() == AbstractGameState.UP){
-			System.out.println("up");
-			setDY(-getSpeed());
-			
+			setDY(-getSpeed());	
 		}
 		if (e.getKeyCode() == AbstractGameState.DOWN){
 			setDY(getSpeed());
@@ -46,13 +43,11 @@ public class Player extends RuleFollower {
 			setDX(-getSpeed());
 		}		
 		if (e.getKeyCode() == AbstractGameState.A) {
-			GridObject surrounding = mySurroundingChecker.checkSurroundings(this);
+			GridObject surrounding = mySurroundingChecker.checkSurroundings(this).get(0);
 			if(surrounding!=null){
 				surrounding.doDialogue();
 			}
-			
 		}
-
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -72,13 +67,13 @@ public class Player extends RuleFollower {
 	}
 	
 	public Door enterBuilding(){
-		GridObject surrounding = mySurroundingChecker.checkSurroundings(this);
-		if(surrounding instanceof Door && ((Door) surrounding).playerAtDoor(this)){
-			System.out.println("GO IN DOOR");
-			return  (Door) surrounding;
+		List<GridObject> surroundings = mySurroundingChecker.checkSurroundings(this);
+		for(GridObject surrounding : surroundings){
+			if(surrounding instanceof Door && ((Door) surrounding).playerAtDoor(this)){
+				return  (Door) surrounding;
+			}
 		}
+		
 		return null;
 	}
-	
-	
 }

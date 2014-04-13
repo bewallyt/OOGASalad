@@ -19,5 +19,4 @@ public class StatBuffer extends Item {
 	public void useItem() {
 		changeStatistic(myStatistic, myAmountToChange);
 	}
-
 }

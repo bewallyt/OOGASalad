@@ -51,6 +51,7 @@ public class Canvas extends JComponent{
 		frame.setFocusable(true);
 		frame.requestFocus();
 		frame.setBounds(100, 100,width, height-1);
+
 	}
 	
 	private JMenuBar makeMenuBar() {
@@ -120,19 +121,6 @@ public class Canvas extends JComponent{
 		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
 		
-//		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//  		g2d.drawImage(background, 0, 0,null);
-		
-
-		
-		// paints objects on tiles
-
-		//Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//		getCameraOffset();
-		//g2d.drawImage(background, -getCameraOffset()[0], -getCameraOffset()[1],null);
-		
-		// paints background of each tile
-	
 		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
 			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
