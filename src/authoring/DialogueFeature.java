@@ -5,8 +5,12 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -19,8 +23,11 @@ public class DialogueFeature extends Feature{
 	private NPCResponseNode myRoot;
 	private NPCResponseNode myCurrent;
 	private GridObjectCreation mySuperFeature;
+	private JFrame frame;
 	public DialogueFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
+		myRoot = new NPCResponseNode("Enter NPCResponse Here");
+		myCurrent = myRoot;
 		setResponses();
 		myResponses.add(0,myCurrent.getString());
 		myResponsesWrapper = new JList(myResponses.toArray());
@@ -36,16 +43,32 @@ public class DialogueFeature extends Feature{
 			myResponses.add(q.getString());
 		}
 	}
-	private class DialogueClickAction implements ListSelectionListener{
-
-		@Override
-		public void valueChanged(ListSelectionEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
 	public NPCResponseNode getDialogue() {
 		return myRoot;
+	}
+	private class DialogueClickAction implements ListSelectionListener{
+		public void valueChanged(ListSelectionEvent arg0) {
+			if(myResponsesWrapper.getSelectedValue()!=null){
+				frame = new JFrame("Input Dialogue");
+				frame.add(new DialogueInputPanel());
+	            frame.pack();
+	            frame.setVisible(true);
+				myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
+			}
+		}
+		
+		private class DialogueInputPanel extends JPanel{
+			private JLabel dialogueLabel;
+			
+			private JTextArea text;
+			private JScrollPane textWrapper;
+			public DialogueInputPanel(){
+				dialogueLabel = new JLabel("Enter the desired dialogue.");
+				text = new JTextArea(1,40);
+				textWrapper = new JScrollPane(text);
+				this.add(dialogueLabel);
+				this.add(textWrapper);
+			}
+		}
 	}
 }
