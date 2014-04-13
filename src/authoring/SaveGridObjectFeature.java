@@ -17,6 +17,9 @@ public class SaveGridObjectFeature extends Feature{
 	}
 	private class CreateGridObjectListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			TilePanel test = Grid.currentMap[((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getX()]
+					[((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getY()];
+			test.addGridObjectImage(((GridObjectImageFeature)(mySuperFeature.getFeature("GridObjectImageFeature"))).getImage());
 			mySuperFeature.getData().setX(((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getX());
 			mySuperFeature.getData().setY(((GridObjectCoordinateFeature)(mySuperFeature.getFeature("GridObjectCoordinateFeature"))).getY());
 			mySuperFeature.getData().setSteppable(((SteppableFeature)(mySuperFeature.getFeature("SteppableFeature"))).isSteppable());
@@ -26,7 +29,7 @@ public class SaveGridObjectFeature extends Feature{
 			mySuperFeature.getData().setHeight(((WidthHeightFeature)(mySuperFeature.getFeature("WidthHeightFeature"))).getHeight());
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
-				mySuperFeature.getView().close();
+				//mySuperFeature.getView().close();
 			}
 		}
 	}
