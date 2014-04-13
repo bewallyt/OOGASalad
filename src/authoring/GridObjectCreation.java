@@ -38,7 +38,11 @@ public class GridObjectCreation extends Feature{
 	public AuthoringView getView(){
 		return gridObjectView;
 	}
-
+//	private class GridObjectWindowAction implements ActionListener{
+//		public void actionPerformed(ActionEvent e) {
+//			gridObjectView = new AuthoringView(myGridFeatures, false);		
+//		}	
+//	}
 	public Feature getFeature(String s){
 		Feature myFeature=null;
 		for(Feature f: myGridFeatures){

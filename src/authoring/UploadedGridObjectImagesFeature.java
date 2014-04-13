@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Data.ImageManager;
+
 public class UploadedGridObjectImagesFeature extends Feature {
 
 	private GridObjectCreation mySuperFeature;
@@ -22,6 +24,8 @@ public class UploadedGridObjectImagesFeature extends Feature {
 		mySuperFeature = gridObjectCreation;
 		model = new DefaultListModel();
 		
+		ImageManager m=new ImageManager();
+	
 		/*BufferedImage temp;
 		try {
 			temp = ImageIO.read(new File("C:/Users/Richard Cao/Desktop/Spring2014/Tlaksdjf.png"));
