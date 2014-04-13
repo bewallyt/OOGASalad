@@ -10,11 +10,14 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Data.ImageManager;
+
 public class TileImageEditor extends JFrame {
 
 	private JList list;
 	private JScrollPane scroll;
 	DefaultListModel model;
+	ImageManager m=new ImageManager();
 
 	public TileImageEditor(String s) {
 		super(s);
@@ -28,6 +31,10 @@ public class TileImageEditor extends JFrame {
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
 		this.getContentPane().add(scroll, BorderLayout.CENTER);
+		
+		for(String image: m.getSavedImageList()){
+			addImage(m.loadImage(image));
+		}
 	}
 
 	public void addImage(File fileName){
@@ -43,7 +50,10 @@ public class TileImageEditor extends JFrame {
 	}
 	
 	public Icon selectImage(){
-		return (Icon) model.get(list.getSelectedIndex());
+		if(list.getModel().getSize()!=0){
+			return (Icon) model.get(list.getSelectedIndex());
+		}	
+		return null;
 	}
 	
 	public class SelectionListener implements ListSelectionListener {
