@@ -1,12 +1,61 @@
 package authoring;
 
-import javax.swing.*;
-
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-//import statements here
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class addCharacterWindow extends JFrame{
+	private JTextField healthField;
+	private JTextField damageField;
+	private JButton addCharacter;
+	
+	public addCharacterWindow() {
+		super("Add a character");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setLayout(new GridLayout(5,1));
+		buildPanel();
+		pack();
+		setVisible(true);
+	}
+
+	private void buildPanel(){
+		healthField=new JTextField(10);
+		addCharacter=new JButton("Add Character");
+		addCharacter.addActionListener(new addCharacterListener());
+		
+		JLabel healthLabel=new JLabel("Health:");
+		JLabel damageLabel=new JLabel("Damage:");
+		
+		JPanel panel1=new JPanel();
+		JPanel panel2=new JPanel();
+		JPanel panel3=new JPanel();
+		JPanel panel4=new JPanel();
+		JPanel panel5=new JPanel();
+		
+		panel1.add(healthLabel);
+		panel2.add(healthField);
+		panel3.add(damageLabel);
+		panel4.add(damageField);
+		panel5.add(addCharacter);
+	}
+	
+	private class addCharacterListener implements ActionListener{
+		public void actionperformed(ActionEvent e){
+			
+		}
+	}
+}
+
+
+
 public class SaveGameWindow extends JFrame{
 
     private JTextField saveGameField;

@@ -10,14 +10,14 @@ import authoring.WorldData;
 
 public class DataTester {
 
-// Commenting temporarily until authoring branch gets onto master
-/*	@Test
+
+	@Test
 	public void basicStoreLoadTest() throws Exception{
 		WorldData d=new WorldData();
 		FileStorer f=new FileStorer();
 		f.storeWorldData("TestWorld2.txt", d);
 		WorldData d2=f.getWorldData("TestWorld2.txt");
-	}*/
+	}
 	@Test
 	public void fileListTest() throws Exception{
 		FileStorer f=new FileStorer();
