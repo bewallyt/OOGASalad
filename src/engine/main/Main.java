@@ -26,7 +26,7 @@ public class Main extends RPGEngine {
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
 
 		addNewWorld(outsideWorld);
-		outsideWorld.paintFullBackround("grass.jpg");
+		outsideWorld.paintFullBackround("grassSmall.png");
 
 
 

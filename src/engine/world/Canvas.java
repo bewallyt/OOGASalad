@@ -14,7 +14,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
-import engine.AbstractGameState;
+//import engine.AbstractGameState;
+import engine.Control;
 import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
@@ -92,15 +93,15 @@ public class Canvas extends JComponent{
 
 	public void setWorld(World world){
 		myFrame.add(this);
-		myFrame.addKeyListener(new WalkAroundState(this, world));
+		myFrame.addKeyListener(new Control(this, world));
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
 	}
 
-	public void setState(AbstractGameState state){
-		myFrame.addKeyListener(state);
-	}
+//	public void setState(Control state){
+//		myFrame.addKeyListener(state);
+//	}
 
 	public int getHeight(){
 		return myHeight;

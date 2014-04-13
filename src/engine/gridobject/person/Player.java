@@ -3,7 +3,10 @@ package engine.gridobject.person;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-import engine.AbstractGameState;
+import engine.AbstractState;
+//import engine.AbstractGameState;
+import engine.Control;
+import engine.WalkAroundState;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.world.SurroundingChecker;
@@ -12,15 +15,15 @@ public class Player extends RuleFollower {
 	private int count = 0;
 
 	public boolean aClick = false;
-	//private KeyHandler myKeyHandler;
+	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
 	private String[] myAnimImages;
-	private AbstractGameState myState;
 	private boolean enterDoor;
 	private double originalSpeed;
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
+		myState = new WalkAroundState(this);
 		setMyItems(null);
 	}
 	
@@ -28,38 +31,20 @@ public class Player extends RuleFollower {
 		mySurroundingChecker = surroundingChecker;
 	}
 	
+	public void setState(AbstractState state) {
+		myState = state;
+	}
+	
 	public void keyPressed(KeyEvent e) {
-//		System.out.println("playerx: " + this.getX() + "playery: " + this.getY());
-		if (e.getKeyCode() == AbstractGameState.UP){
-			setDY(-getSpeed());	
-		}
-		if (e.getKeyCode() == AbstractGameState.DOWN){
-			setDY(getSpeed());
-		}
-		if (e.getKeyCode() == AbstractGameState.RIGHT){
-			setDX(getSpeed());
-		}
-		if (e.getKeyCode() == AbstractGameState.LEFT){
-			setDX(-getSpeed());
-		}		
-		if (e.getKeyCode() == AbstractGameState.A) {
-			GridObject surrounding = mySurroundingChecker.checkSurroundings(this).get(0);
-			if(surrounding!=null){
-				surrounding.doDialogue();
-			}
-		}
+		myState.keyPressed(e);
 	}
 
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == AbstractGameState.UP
-				|| e.getKeyCode() == AbstractGameState.DOWN)
-			setDY(0);
-
-		if (e.getKeyCode() == AbstractGameState.RIGHT
-				|| e.getKeyCode() == AbstractGameState.LEFT)
-			setDX(0);
-		if (e.getKeyCode() == AbstractGameState.A)
-			aClick=false;
+		myState.keyReleased(e);
+	}
+	
+	public void setAClick(boolean b) {
+		aClick = b;
 	}
 	
 	public double getOriginalSpeed(){
@@ -76,4 +61,9 @@ public class Player extends RuleFollower {
 		
 		return null;
 	}
+
+	public SurroundingChecker getSurroundingChecker() {
+		return mySurroundingChecker;
+	}
+
 }
