@@ -51,7 +51,7 @@ public class GridObjectImageFeature extends Feature {
 			return;
 		}	
 		myImageName = selectedTileImage;
-		myTilePanel.setTileImage(selectedTileImage);
+		//myTilePanel.setTileImage(selectedTileImage);
 		mySuperFeature.getView().getFrame().revalidate();
 	}
 	public String getImageName() {

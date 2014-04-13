@@ -70,6 +70,14 @@ public class ImageManager {
 		return false;
 	}
 	/**
+	 * Loads the image corresponding to the file name within the default Image resource package. 
+	 * @param s String name of the image file
+	 * @return File s with the path of the image
+	 */
+	public File loadImage(String s){
+		return new File(imagePath+s);
+	}
+	/**
 	 * Returns a list of all the names of currently saved images in the default image
 	 * folder. 
 	 * @return List of names of images
