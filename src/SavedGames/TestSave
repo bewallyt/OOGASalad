@@ -968,7 +968,6 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "javax.swing.ImageIcon@7846b8c3",
             "myGridObjectDatas": []
           },
           {
@@ -30319,9 +30318,5 @@
       ]
     }
   },
-  "myImages": {
-    "grasssss": {
-      "path": "C:\\Users\\Richard Cao\\Desktop\\Spring2014\\CompSci308\\oogasalad_Team2\\src\\ImageFiles\\grasssss.jpg"
-    }
-  }
+  "myImages": {}
 }

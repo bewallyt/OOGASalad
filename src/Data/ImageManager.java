@@ -70,11 +70,12 @@ public class ImageManager {
 		return false;
 	}
 	/**
-	 * Returns the image File specified by the given name in the package
-	 * @param imageName String name of the image you want to access
+	 * Loads the image corresponding to the file name within the default Image resource package. 
+	 * @param s String name of the image file
+	 * @return File s with the path of the image
 	 */
-	public File getStoredImage(String imageName){
-		return new File(imagePath+imageName);
+	public File loadImage(String s){
+		return new File(imagePath+s);
 	}
 	/**
 	 * Returns a list of all the names of currently saved images in the default image
