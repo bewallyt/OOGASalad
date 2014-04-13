@@ -7,10 +7,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
-public class Grid extends JPanel implements MouseListener, ActionListener{
-	
-	private static final int VIEW_WIDTH = 12;
-	private static final int VIEW_HEIGHT = 12;
+public class Grid extends JPanel{
+
 	private static final int WORLD_WIDTH = 144;
 	private static final int WORLD_HEIGHT = 144;
 	private int startRow = 0;
@@ -18,140 +16,120 @@ public class Grid extends JPanel implements MouseListener, ActionListener{
 	private WorldData wd;
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
-	private String[] popupMenuItems = { "Tile Image", "Set as Player Start Point", "Clear Tile"};
-	private JList list;
+	private TileImageEditor imageEditor;
+	private String[] popupMenuItems = { "Tile Image Editor", "Set as Player Start Point", "Clear Tile"};
 	private Border defaultBorder;
 	private Border selectBorder;
-	
-	//temporary lists to test features
-	private String[] tileTypes = {"Wall", "Water", "TestTile", "NPC"};
-	private String[] tileImageNames;
 	private TilePanel[][] world;
-	
+	private JPanel panel;
+
 	public Grid() {
 		this.setLayout(new GridBagLayout());
-		worldMaker();		
+		panel=this;
+		mapMaker();		
 		this.setOpaque(false);
+		imageEditor = FeatureManager.imageEditor;
 		popupMenuMaker();
 		// Creates the grid of TilePanels
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
+		
 	}
-	
-	private void worldMaker(){
+
+	private void mapMaker(){
 		//String width = (String) JOptionPane.showInputDialog(grid, "Please input a number");
 		//grid.add(inputArea);
-		
+
 		world = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
-		
+
 		for (int row = 0; row < WORLD_HEIGHT; row++) {
 			for (int col = 0; col < WORLD_WIDTH; col++) {				
 				world[row][col] = new TilePanel(row, col);
 			}
 		}
 	}
-	
+
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
 			JMenuItem menuItem = new JMenuItem(popupMenuItems[i]);
-			menuItem.addActionListener(this);
-		    popup.add(menuItem);
+			menuItem.addActionListener(new PopupMenuListener());
+			popup.add(menuItem);
 		}
 	}
-	
+
 	private void showPopupMenu(MouseEvent e){
 		selectedCell = (TilePanel) e.getComponent();
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	}
-	
-	public void showImageList(){
-		WorldData wd = FeatureManager.getWorldData(); 
-		Object[] imageNames = wd.getImages().keySet().toArray();
-		if(imageNames.length == 0){
-			JOptionPane.showMessageDialog(this, "Please upload an image first.", "Error Message", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		String selectedTileImage = (String) JOptionPane.showInputDialog(
-                this,
-                "Select an image for the tile: ",
-                "Tile Image Editor",
-                JOptionPane.QUESTION_MESSAGE,
-                null, imageNames,
-                "");
-		
-		/*String selectedTileData = (String) JOptionPane.showInputDialog(
-                grid,
-                "Select an image for the tile: ",
-                "Tile Image Editor",
-                JOptionPane.QUESTION_MESSAGE,
-                null, tileTypes,
-                tileTypes[0]);		
-		//selectedCell.setTileDataImage(selectedTileData);*/
-		if(selectedTileImage == null){
-			return;
-		}	
-		selectedCell.setTileImage(selectedTileImage);
-		wd.getMap(WorldData.DEFAULT_MAP).addTileData(selectedCell.getRow(), selectedCell.getCol(), selectedCell.getTileData());
-		this.revalidate();
-		this.repaint();
+
+	public void showImageMenu(){
+		imageEditor.setVisible(true);
 	}
-	
-	//need to fix error when user scrolls too far right or too far down
+
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
-		for (int row = startRow; row < startRow + VIEW_HEIGHT; row++) {
-			for (int col = startCol; col < startCol + VIEW_WIDTH; col++) {
+		for (int row = startRow; row < 144; row++) {
+			for (int col = startCol; col < 144; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
 				TilePanel cell = world[row][col];
 				cell.setBorder(defaultBorder);
 				cell.setMinimumSize(new Dimension(48, 48));
-				cell.addMouseListener(this);
+				cell.addMouseListener(new SelectedCellListener());
+				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);
 			}
 		}
 	}
-	
-	public void redrawGrid(int xChange, int yChange){
-		if((xChange == -1 && startCol > 0) || (xChange == 1 && startCol < 143)){
-			startCol += xChange;
+
+	public class PopupMenuListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			showImageMenu();
 		}
-		if((yChange == -1 && startRow > 0) || (yChange == 1 && startRow < 143)){
-			startRow += yChange;
+	}
+
+
+	public class SelectedCellListener extends MouseAdapter{
+		public void mouseClicked(MouseEvent e) {
+			if(e.getButton() == MouseEvent.BUTTON3)
+				showPopupMenu(e);
 		}
-		this.removeAll();
-		drawGrid();
-		revalidate();
-		repaint();
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		showImageList();
-	}
 
-	public void mouseClicked(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON3)
-			showPopupMenu(e);
-	}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			TilePanel current = (TilePanel) e.getComponent();
+			current.setBorder(selectBorder);
+		}
 
-	public void mouseEntered(MouseEvent e) {
-		TilePanel current = (TilePanel) e.getComponent();
-		current.setBorder(selectBorder);
-	}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			TilePanel current = (TilePanel) e.getComponent();
+			current.setBorder(defaultBorder);
+		}
 
-	public void mouseExited(MouseEvent e) {
-		TilePanel current = (TilePanel) e.getComponent();
-		current.setBorder(defaultBorder);
-	}
+		public void mousePressed(MouseEvent e) {
+			TilePanel selected = (TilePanel) e.getComponent();
+			placeImage(selected);
+		}
 
+		public void mouseReleased(MouseEvent e) {
 
-	public void mousePressed(MouseEvent arg0) {
-		//showPopupMenu(arg0);
-	}
+		}
 
-	public void mouseReleased(MouseEvent arg0) {
-		//showPopupMenu(arg0);
+		@Override
+		public void mouseDragged(MouseEvent e){
+			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
+			placeImage(currentPanel);
+		}
+		private void placeImage(TilePanel currentPanel){
+			Icon i=imageEditor.selectImage();
+			if(i!=null){
+				currentPanel.setTileImage(imageEditor.selectImage());
+				currentPanel.setBorder(defaultBorder);
+				repaint();
+			}	
+		}
 	}
 }

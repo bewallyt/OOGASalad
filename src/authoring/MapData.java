@@ -10,7 +10,7 @@ public class MapData {
 		myTiles = new ArrayList<List<TileData>>(144);
 		for(int i = 0; i < 144; i++){
 			List<TileData> temp = new ArrayList<TileData>();
-			for(int j = 0; j < 12; j++){
+			for(int j = 0; j < 144; j++){
 				temp.add(new TileData(null));
 			}
 			myTiles.add(i, temp);
