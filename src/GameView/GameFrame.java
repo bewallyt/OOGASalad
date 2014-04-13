@@ -130,11 +130,13 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public void addEnemy() {
+		
 		Enemy bafm = new Enemy(new String[] { "rival.png", "rival.png",
 				"rival.png", "rival.png" }, 1, 1, 1, 3, getPlayer());
 		bafm.battleOnSight();
 		addGridObject(bafm, 10, 10);
 		bafm.addDialogue("Hey fight me");
+		
 	}
 
 	public void addGridObjects() {
@@ -152,21 +154,25 @@ public class GameFrame extends RPGEngine {
 
 				for (GridObjectData gridObjectData : currGridObjectDatas) {
 					// Defaulted at Barrier for now.
-					// if (gridObjectData instanceOf Barrier) or something like that?
-					
-					GridObject gridobject = (Barrier) Reflection.createInstance(
-							"Barrier", gridObjectData.getImageName(),
-							gridObjectData.getWidth(),
-							gridObjectData.getHeight());
+					// if (gridObjectData instanceOf Barrier) or something like
+					// that?
 
-					// elseif (gridObjectData instanceOf RuleFollower) or something like that?
-					
+					GridObject gridobject = (Barrier) Reflection
+							.createInstance("Barrier",
+									gridObjectData.getImageName(),
+									gridObjectData.getWidth(),
+									gridObjectData.getHeight());
+
+					// elseif (gridObjectData instanceOf RuleFollower) or
+					// something like that?
+
 					// Using 1 as default speed since no getSpeed() method yet
-					RuleFollower temprf = (RuleFollower) Reflection.createInstance("RuleFollower", gridObjectData.getImageName(),
-							1, gridObjectData.getWidth(), gridObjectData.getHeight());
-					
-					
-					
+					GridObject gridobject2 = (RuleFollower) Reflection
+							.createInstance("RuleFollower",
+									gridObjectData.getImageName(), 1,
+									gridObjectData.getWidth(),
+									gridObjectData.getHeight());
+
 					addGridObject(gridobject, gridObjectData.getX(),
 							gridObjectData.getY());
 
