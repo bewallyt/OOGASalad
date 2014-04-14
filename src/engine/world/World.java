@@ -17,6 +17,8 @@ public abstract class World {
 	private List<GridObject> myGridObjectList;
 	private Player myPlayer;
 	private CollisionMatrix myCollisionMatrix;
+	private int[] mySavedPlayerPosition;
+	
 	
 
 	/**
@@ -106,6 +108,23 @@ public abstract class World {
 
 	public CollisionMatrix getCollisionMatrix() {
 		return myCollisionMatrix;
+	}
+	
+	public void savePlayerPosition(){
+		mySavedPlayerPosition = new int[] {myPlayer.getX(),myPlayer.getY(),reverseFacing()};
+		System.out.println(myPlayer.getDY());
+		
+	}
+	
+	public int[] getSavedPlayerPosition(){
+		return mySavedPlayerPosition;
+	}
+	
+	private int reverseFacing(){
+		if(myPlayer.getFacing()==1)return 3;
+		else{
+			return Math.abs(myPlayer.getFacing()-2);
+		}
 	}
 }
 

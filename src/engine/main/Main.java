@@ -54,20 +54,20 @@ public class Main extends RPGEngine {
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList2);
+		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 600, 600, player, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
 		door2.setBuildingWorld(outsideWorld);
 		
-		outsideWorld.setTileObject(gridObjectList.get(0), 1, 1);
+		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
 		
-		buildingWorld.setTileObject(gridObjectList2.get(0), 1, 1);
+		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
 		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
-		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 5);
+		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
 		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
 				gridObjectList2.get(2)),0,2);

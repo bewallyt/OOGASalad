@@ -2,9 +2,10 @@ package engine.gridobject;
 
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
+import engine.world.World;
 
 public class Door extends GridObject{
-	private WalkAroundWorld myBuildingWorld;
+	private World myBuildingWorld;
 	public Door(String image, int numTilesWidth, int numTilesHeight) {
 		super(image, numTilesWidth, numTilesHeight);
 	}
@@ -13,11 +14,11 @@ public class Door extends GridObject{
 		return (Math.abs(player.getX()-getX())<getWidth() && Math.abs(player.getY()-getY())<getHeight());
 	}
 	
-	public void setBuildingWorld(WalkAroundWorld world){
+	public void setBuildingWorld(World world){
 		myBuildingWorld = world;
 	}
 	
-	public WalkAroundWorld getBuildingWorld(){
+	public World getBuildingWorld(){
 		return myBuildingWorld;
 	}
 }

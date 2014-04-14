@@ -90,7 +90,6 @@ public abstract class RuleFollower extends GridObject {
 	}
 	
 	private String switchAnim(int still, int start, int end, String[] anim){
-//		System.out.println(anim.length);
 		if(isAnim(anim)) {
 			if(count < 25)
 				return anim[start];

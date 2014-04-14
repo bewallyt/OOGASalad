@@ -23,8 +23,6 @@ public abstract class RPGEngine{
 	/** The my current world. */
 	private World myCurrentWorld;
 	
-	private World myPreviousWorld;
-
 
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
@@ -74,9 +72,9 @@ public abstract class RPGEngine{
 	 * @param world the world to be set as current world
 	 */
 	public void setWorld(World world){
+		
 		myCanvas.setWorld(world);
-		myPreviousWorld = myCurrentWorld;
-		myCurrentWorld = (WalkAroundWorld) world;
+		myCurrentWorld = world;
 		myCurrentWorld.getPlayer().setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
 	}
 
@@ -87,8 +85,16 @@ public abstract class RPGEngine{
 	 * @param y Y location of the player at spawn time (pixels)
 	 */
 	public void changeWorld(World world, int x, int y) {
-		myCurrentWorld.getPlayer().setPosition(x, y);
+		myCurrentWorld.savePlayerPosition();
 		setWorld(world);
+		if(myCurrentWorld.getSavedPlayerPosition()!=null){
+			System.out.println("been");
+			myCurrentWorld.getPlayer().setFacing(myCurrentWorld.getSavedPlayerPosition()[2]);
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
+		}
+		else{
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), myCurrentWorld.getPlayer().getStartY());
+		}
 	}
 	
 
@@ -102,7 +108,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
-
+			//System.out.println(myCurrentWorld + " " + myCurrentWorld.getPlayer().getX());
 			myCanvas.repaint();
 			checkCollisions(((WalkAroundWorld) myCurrentWorld).getCollisionMatrix());
 			for (GridObject go : ((WalkAroundWorld) myCurrentWorld).getGridObjectList()) {
@@ -151,6 +157,8 @@ public abstract class RPGEngine{
 	public void paintConstantBackground(String background){
 		myCurrentWorld.paintFullBackround(background);
 	}
+	
+
 
 
 
