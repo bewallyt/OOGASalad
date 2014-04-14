@@ -14,7 +14,7 @@ public class Movement2 extends Movement{
 	}
 	
 	public void approachPlayer(Player player){
-		System.out.println(getNPC().howFarFromPlayer());
+//		System.out.println(getNPC().howFarFromPlayer());
 		if(getNPC().howFarFromPlayer()<150){	
 			if(getNPC().getX()<player.getX())
 				getNPC().setDX(Math.abs(getNPC().getSpeed()));

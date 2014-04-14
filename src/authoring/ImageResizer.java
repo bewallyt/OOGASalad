@@ -25,6 +25,7 @@ public class ImageResizer {
 
 	private void addToWorldData() {
         FeatureManager.getWorldData().saveImage(fileName, storedImage);
+        FeatureManager.imageEditor.addImage(storedImage, fileName);
 	}
 
 }
