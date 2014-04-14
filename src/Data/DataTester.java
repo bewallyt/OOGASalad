@@ -23,9 +23,8 @@ public class DataTester {
 		FileStorer f=new FileStorer();
 		List<String> list=f.getSavedGameList();
 		if (!list.isEmpty()) {
-			//assertTrue(list.contains("test.txt"));
-			//assertTrue(list.contains("TestWorld.txt"));
-			//assertFalse(list.contains("BlahBloo.jpg"));
+			assertTrue(list.contains("default"));
+			assertTrue(list.contains("WorldData1.json"));
 		}
 
 	}
@@ -40,7 +39,7 @@ public class DataTester {
 	
 	@Test
 	public void dataManagerTest1() throws Exception{
-		DataManager dm = DataManager.getInstance();
+		DataManager dm = new DataManager();
 		WorldData d = new WorldData();
 		dm.setWorldData("WorldData1.json", d);
 		WorldData d2 = dm.getWorldData("WorldData1.json");
