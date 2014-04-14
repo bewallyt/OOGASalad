@@ -1,12 +1,11 @@
 package engine.gridobject.person;
 
-import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
-import engine.images.SpriteSheet;
 
 public abstract class RuleFollower extends GridObject {
 
@@ -18,7 +17,7 @@ public abstract class RuleFollower extends GridObject {
 	private int myMinX;
 	private int myMaxY;
 	private int myMinY;
-	protected Weapon myWeapon;
+	protected List<Weapon> myWeapons;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
 	private int count = 0;
@@ -28,7 +27,7 @@ public abstract class RuleFollower extends GridObject {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		resetMax();
-		myWeapon = null;
+		myWeapons = new ArrayList<Weapon>();
 		currentImageFile=getAnimImages()[myFacing];
 	}
 	
@@ -104,6 +103,7 @@ public abstract class RuleFollower extends GridObject {
 	}
 	
 	public void addWeapon(Weapon weapon){
+		myWeapons.add(weapon);
 	}
 
 	public void addItem(Item it) {
@@ -156,7 +156,4 @@ public abstract class RuleFollower extends GridObject {
 		myFacing = facing;
 		currentImageFile=getAnimImages()[myFacing];
 	}
-	
-
-
 }
