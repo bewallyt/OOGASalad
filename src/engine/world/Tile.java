@@ -93,11 +93,11 @@ public class Tile {
 	}
 	
 	public void paint(Graphics2D g, int xOff, int yOff) {
-		g.drawImage(myBackgroundImage, myX - xOff, myY - yOff, null);
+		g.drawImage(myBackgroundImage, myX - (xOff), myY - (yOff) , null);
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(myX, myY, myY+mySize, myX+mySize);	
+		return new Rectangle(myX, myY, myY+(mySize), myX+(mySize));	
 	}
 	
 

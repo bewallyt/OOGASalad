@@ -14,7 +14,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
-import engine.AbstractGameState;
+//import engine.AbstractGameState;
+import engine.Control;
 import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
@@ -50,19 +51,20 @@ public class Canvas extends JComponent{
 		frame.setFocusable(true);
 		frame.requestFocus();
 		frame.setBounds(100, 100,width, height-1);
+
 	}
 
 	public void setWorld(World world){
 		myFrame.add(this);
-		myFrame.addKeyListener(new WalkAroundState(this, world));
+		myFrame.addKeyListener(new Control(this, world));
 		myWorld = world;
 		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
 	}
 
-	public void setState(AbstractGameState state){
-		myFrame.addKeyListener(state);
-	}
+//	public void setState(Control state){
+//		myFrame.addKeyListener(state);
+//	}
 
 	public int getHeight(){
 		return myHeight;
@@ -83,19 +85,6 @@ public class Canvas extends JComponent{
 		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
 		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
 		
-//		Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//  		g2d.drawImage(background, 0, 0,null);
-		
-
-		
-		// paints objects on tiles
-
-		//Image background = new ScaledImage(width, height, myWorld.getBackgroundString()).scaleImage();
-//		getCameraOffset();
-		//g2d.drawImage(background, -getCameraOffset()[0], -getCameraOffset()[1],null);
-		
-		// paints background of each tile
-	
 		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
 			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))

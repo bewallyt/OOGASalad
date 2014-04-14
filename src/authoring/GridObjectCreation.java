@@ -14,6 +14,7 @@ public class GridObjectCreation extends Feature{
 	private Set<Feature> myGridFeatures;
 	private GridObjectData myData;
 	private AuthoringView gridObjectView;
+	
 	public GridObjectCreation(){
 		myData = new GridObjectData();
 		
@@ -25,10 +26,12 @@ public class GridObjectCreation extends Feature{
 		myGridFeatures.add(new GridObjectImageFeature(this));
 		myGridFeatures.add(new TalkableFeature(this));
 		myGridFeatures.add(new WidthHeightFeature(this));
+		myGridFeatures.add(new DialogueFeature(this));
+		//myGridFeatures.add(new UploadedGridObjectImagesFeature(this));
 		
 		myGridObjectButton = new JButton("New GridObject");
-		myGridObjectButton.addActionListener(new GridObjectWindowAction());
 		myComponents.put(myGridObjectButton, BorderLayout.SOUTH);
+		gridObjectView = new AuthoringView(myGridFeatures, false);
 	}
 	public GridObjectData getData(){
 		return myData;
@@ -36,11 +39,11 @@ public class GridObjectCreation extends Feature{
 	public AuthoringView getView(){
 		return gridObjectView;
 	}
-	private class GridObjectWindowAction implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			gridObjectView = new AuthoringView(myGridFeatures, false);
-		}	
-	}
+//	private class GridObjectWindowAction implements ActionListener{
+//		public void actionPerformed(ActionEvent e) {
+//			gridObjectView = new AuthoringView(myGridFeatures, false);		
+//		}	
+//	}
 	public Feature getFeature(String s){
 		Feature myFeature=null;
 		for(Feature f: myGridFeatures){

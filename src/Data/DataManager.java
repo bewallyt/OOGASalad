@@ -15,7 +15,6 @@ import authoring.WorldData;
  */
 
 public class DataManager {
-	private static DataManager instance = null;
 	private Map<String, WorldData> myWorldDatas;
 	private FileStorer myFileStorer;
 	
@@ -23,13 +22,6 @@ public class DataManager {
 		myWorldDatas = new HashMap<String, WorldData>();
 		myFileStorer = new FileStorer();
 		init();
-	}
-	
-	public static DataManager getInstance() {
-		if (instance == null) {
-			instance = new DataManager();
-		}
-		return instance;
 	}
 	
 	private void init() {

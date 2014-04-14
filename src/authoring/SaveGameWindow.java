@@ -7,14 +7,12 @@ import java.awt.HeadlessException;
 import java.awt.event.*;
 
 //import statements here
-public class SaveGameWindow extends JFrame
-{
+public class SaveGameWindow extends JFrame{
 
     private JTextField saveGameField;
     private JButton saveButton;
 
-    public SaveGameWindow()
-    {
+    public SaveGameWindow(){
         super("Saving Game:");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -22,11 +20,9 @@ public class SaveGameWindow extends JFrame
         buildPanel();
         pack();
         setVisible(true);
-
     }
 
     private void buildPanel(){
-
         saveGameField = new JTextField(10);
         saveButton=new JButton("Save");
         saveButton.addActionListener(new SaveButton());
@@ -42,9 +38,7 @@ public class SaveGameWindow extends JFrame
         panel1.add(NameLabel);
         panel2.add(saveGameField);
         panel3.add(saveButton);
-        
-
-    }
+ }
     private boolean validateText(){
     	return !saveGameField.getText().equals("");
     }
