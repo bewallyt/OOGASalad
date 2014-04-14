@@ -66,6 +66,7 @@ public abstract class GridObject{
 		return new int[] {myWidth,myHeight};
 	}
 	public void setPosition(int x, int y){
+		// can move myStartX/y to just NPC class
 		myX=myStartX=x;
 		myY=myStartY=y;
 	}
