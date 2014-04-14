@@ -26,18 +26,17 @@ public class TileImageEditor extends JFrame {
 		model = new DefaultListModel();
 		list = new JList(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.addListSelectionListener(new SelectionListener());
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
 		this.getContentPane().add(scroll, BorderLayout.CENTER);
 		
 		for(String image: m.getSavedImageList()){
-			addImage(m.loadImage(image));
+			addImage(m.loadImage(image), image);
 		}
 	}
 
-	public void addImage(File fileName){
+	public void addImage(File fileName, String s){
 		BufferedImage temp;
 		try {
 			temp = ImageIO.read(fileName);
@@ -45,13 +44,13 @@ public class TileImageEditor extends JFrame {
 			temp = null;
 		}
 		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		Icon x = new ImageIcon(scaledImage);
+		ImageIcon x = new ImageIcon(scaledImage, s);
 		model.addElement(x);
 	}
 	
-	public Icon selectImage(){
+	public ImageIcon selectImage(){
 		if(list.getSelectedIndex()!=-1){
-			return (Icon) model.get(list.getSelectedIndex());
+			return (ImageIcon) model.get(list.getSelectedIndex());
 		}	
 		return null;
 	}
@@ -64,4 +63,5 @@ public class TileImageEditor extends JFrame {
 		}
 		
 	}
+
 }
