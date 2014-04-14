@@ -5,6 +5,7 @@ import java.io.File;
 public class GridObjectData {
 
 	private String myImageName;
+	private String myID;
 	private Boolean isSteppable;
 	private Boolean isTalkable;
 	private int x;
@@ -36,6 +37,11 @@ public class GridObjectData {
 	}
 	public String getImageName(){
 		return myImageName;
+	}
+	public String getID(){
+		if (!isSteppable) return "Barrier";
+		else if (isTalkable) return "Rule Follower";
+		return null;
 	}
 	public void setX(int xx){
 		x=xx;
