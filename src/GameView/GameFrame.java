@@ -41,9 +41,8 @@ public class GameFrame extends RPGEngine {
 
 	Player myPlayer;
 	NPC myNPC;
-	
-	List<GridObject> myGridObjectList = new ArrayList<GridObject>();
 
+	List<GridObject> myGridObjectList = new ArrayList<GridObject>();
 
 	public GameFrame(String fileName) {
 
@@ -52,7 +51,6 @@ public class GameFrame extends RPGEngine {
 		try {
 			myWorldData = myData.getWorldData(fileName);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// myWorldData = myData.loadWorldDataFromFile(fileName);
@@ -81,20 +79,27 @@ public class GameFrame extends RPGEngine {
 
 	public void makeOutsideWorld() {
 
-		addPlayer();
-
+		createPlayer();
 		addGridObjectList();
-
-		// Fit authoring data
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, myPlayer, myGridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000,
+				myPlayer, myGridObjectList);
 		setWorld(outsideWorld);
-		
+
 		// addNewWorld(outsideWorld);
-		addEnemy();
+		// addEnemy();
+
+		setGridObjects(outsideWorld);
+		outsideWorld.paintFullBackround("grassSmall.png");
 
 	}
 
-	public void addPlayer() {
+	public void setGridObjects(World world) {
+		for (GridObject g : myGridObjectList) {
+			world.setTileObject(g, g.getX(), g.getY());
+		}
+	}
+
+	public void createPlayer() {
 
 		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
@@ -103,7 +108,7 @@ public class GameFrame extends RPGEngine {
 				"PlayerLeft2.png" };
 		Player player = new Player(anim, 2, 1, 1);
 		myPlayer = player;
-		
+
 	}
 
 	public void addEnemy() {
@@ -112,12 +117,11 @@ public class GameFrame extends RPGEngine {
 				"rival.png", "rival.png" }, 1, 1, 1, 3, myPlayer);
 		bafm.battleOnSight();
 		// addGridObject(bafm, 10, 10);
-		bafm.addDialogue("Hey fight me");
+		bafm.addDialogue("Hey, fight me!");
 
 	}
 
 	public void addGridObjectList() {
-
 
 		TileData currTile;
 		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
@@ -153,6 +157,8 @@ public class GameFrame extends RPGEngine {
 				}
 			}
 		}
+		// TESTING PURPOSES
+		myGridObjectList.add(new Barrier("pokecenter.png", 4, 4));
 	}
 
 	/*
