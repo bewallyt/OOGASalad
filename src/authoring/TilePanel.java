@@ -13,8 +13,8 @@ import java.io.IOException;
 public class TilePanel extends JPanel{
 	
 	private TileData myData;
-	private Icon myTileImage;
-	private Icon myGridObjectImage;
+	private ImageIcon myTileImage;
+	private ImageIcon myGridObjectImage;
 	private JLabel myTileLabel;
 	private JLabel myGridObjectLabel;
 	private int myRow;
@@ -42,7 +42,7 @@ public class TilePanel extends JPanel{
 		return new Dimension(36, 36);
 	}
 
-	public void setTileImage(Icon fileName) {	
+	public void setTileImage(ImageIcon fileName) {	
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
 		
@@ -51,10 +51,10 @@ public class TilePanel extends JPanel{
 		myTileLabel.setLayout(new BorderLayout());
 		myTileLabel.setOpaque(true);
 		this.add(myTileLabel);
-		updateImage(fileName.toString());
+		updateImage(myTileImage.getDescription());
 	}
 	
-	public void addGridObjectImage(Icon fileName){
+	public void addGridObjectImage(ImageIcon fileName){
 		if(myGridObjectLabel != null)
 			this.remove(myGridObjectLabel);
 		

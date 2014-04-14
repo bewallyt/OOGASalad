@@ -35,7 +35,7 @@ public class Grid extends JPanel{
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
-		
+
 	}
 
 	private void mapMaker(){
@@ -124,6 +124,7 @@ public class Grid extends JPanel{
 			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
 			placeImage(currentPanel);
 		}
+
 		private void placeImage(TilePanel currentPanel){
 			Icon i=imageEditor.selectImage();
 			if(i!=null){

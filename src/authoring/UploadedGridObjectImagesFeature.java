@@ -63,7 +63,7 @@ public class UploadedGridObjectImagesFeature extends Feature {
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			GridObjectImageFeature imageControl = (GridObjectImageFeature) (mySuperFeature.getFeature("GridObjectImageFeature"));
-			Icon image = (Icon) model.get(list.getSelectedIndex());
+			ImageIcon image = (ImageIcon) model.get(list.getSelectedIndex());
 			imageControl.setImage(image);
 		}
 		

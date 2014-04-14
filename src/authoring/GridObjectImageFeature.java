@@ -5,17 +5,14 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
 public class GridObjectImageFeature extends Feature {
 
 	private TilePanel myTilePanel;
-	private Icon myImage;
+	private ImageIcon myImage;
 	private GridObjectCreation mySuperFeature;
 	private String myImageName;
 	
@@ -58,13 +55,13 @@ public class GridObjectImageFeature extends Feature {
 		return myImageName;
 	}
 	
-	public void setImage(Icon name){
+	public void setImage(ImageIcon name){
 		myTilePanel.addGridObjectImage(name);
 		myImage = name;
 		myTilePanel.revalidate();
 	}
 	
-	public Icon getImage(){
+	public ImageIcon getImage(){
 		return myImage;
 	}
 }
