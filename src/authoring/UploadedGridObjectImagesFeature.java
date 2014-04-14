@@ -26,7 +26,7 @@ public class UploadedGridObjectImagesFeature extends Feature {
 		
 		ImageManager m=new ImageManager();
 	
-		BufferedImage temp;
+		/*BufferedImage temp;
 		try {
 			temp = ImageIO.read(new File("C:/Users/Richard Cao/Desktop/Spring2014/Tlaksdjf.png"));
 		} catch (IOException e) {
@@ -34,7 +34,7 @@ public class UploadedGridObjectImagesFeature extends Feature {
 		}
 		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
 		Icon x = new ImageIcon(scaledImage);
-		model.addElement(x);
+		model.addElement(x);*/
 
 		list = new JList(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
