@@ -19,8 +19,6 @@ public class Grid extends JPanel{
 	private String[] popupMenuItems = { "Tile Image Editor", "Grid Object Editor", "Set as Player Start Point", "Clear Tile"};
 	private Border defaultBorder;
 	private Border selectBorder;
-	//temporarily static until I can figure out a workaround with the other authoring folks
-	//protected static TilePanel[][] currentMap;
 	private TilePanel[][] world;
 	private JPanel panel;
 
@@ -56,8 +54,10 @@ public class Grid extends JPanel{
 			for(int col = 0; col < world.length; col++){
 				TilePanel temp = world[row][col];
 				temp.update();
+				world[row][col] = temp;
 			}
 	}
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -139,7 +139,6 @@ public class Grid extends JPanel{
 			if(i!=null){
 				currentPanel.setTileImage(imageEditor.selectImage());
 				currentPanel.setBorder(defaultBorder);
-				repaint();
 			}	
 		}
 	}

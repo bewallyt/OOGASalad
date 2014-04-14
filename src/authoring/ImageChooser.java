@@ -26,6 +26,7 @@ public class ImageChooser extends Feature implements ActionListener{
 		myChooseGridImageButton.addActionListener(this);
 		myChooseGridImageButton.setActionCommand("grid");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
+		myComponents.put(myChooseGridImageButton, BorderLayout.SOUTH);
 		myImResizer = new ImageResizer();
 	}
 
