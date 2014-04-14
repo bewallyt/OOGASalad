@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
+import java.util.List;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -42,30 +42,45 @@ public class TilePanel extends JPanel{
 		return new Dimension(36, 36);
 	}
 
-	public void setTileImage(ImageIcon fileName) {	
+	public void setTileImage(ImageIcon imageFile) {	
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
 		
-		myTileImage = fileName;
+		myTileImage = imageFile;
 		myTileLabel = new JLabel(myTileImage);
 		myTileLabel.setLayout(new BorderLayout());
 		myTileLabel.setOpaque(true);
 		this.add(myTileLabel);
-		updateImage(myTileImage.getDescription());
+		saveImage(myTileImage.getDescription());
 	}
 	
-	public void addGridObjectImage(ImageIcon fileName){
+	public void addGridObjectImage(ImageIcon imageFile){
 		if(myGridObjectLabel != null)
 			this.remove(myGridObjectLabel);
 		
-		myGridObjectImage = fileName;
+		myGridObjectImage = imageFile;
 		myGridObjectLabel = new JLabel(myGridObjectImage);
 		myGridObjectLabel.setLayout(new BorderLayout());
 		myGridObjectLabel.setOpaque(false);
 		this.add(myGridObjectLabel);
 	}
 	
-	public void updateImage(String s){
+	public void update(){
+		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
+		for(GridObjectData g : myGridObjects){
+			if(g.getImageName() != null){
+				ImageIcon i;
+				try {
+					i = new ImageIcon(ImageIO.read(FeatureManager.myWorld.getImage(g.getImageName())));
+					this.addGridObjectImage(i);
+				} catch (IOException e) {
+					
+				}
+			}
+		}
+		
+	}
+	public void saveImage(String s){
 		myData.setImageName(s);
 		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).addTileData(this.myRow, this.myCol, this.myData);
 	}
