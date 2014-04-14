@@ -75,11 +75,12 @@ public class GameFrame extends RPGEngine {
 
 	public void makeOutsideWorld() {
 		// Fit authoring data
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
-
+		
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, myWorldData.getMap("defaultworldkey").getMapLength(), myWorldData.getMap("defaultworldkey").getMapWidth());
+		
 		addNewWorld(outsideWorld);
-		addPlayer();
-		addEnemy();
+//		addPlayer();
+//		addEnemy();
 		addGridObjects();
 
 	}
