@@ -11,6 +11,7 @@ public class GridObjectData {
 	private int y;
 	private int width;
 	private int height;
+	private NPCResponseNode myRoot;
 	
 	public GridObjectData(){
 		x = -1;
@@ -42,6 +43,9 @@ public class GridObjectData {
 	public void setY(int yy){
 		y=yy;
 	}
+	public void setDialogue(NPCResponseNode root){
+		myRoot = root;
+	}
 	
 	public void setSteppable(boolean b){
 		isSteppable = b;
@@ -57,6 +61,9 @@ public class GridObjectData {
 	}
 	public int getY(){
 		return y;
+	}
+	public NPCResponseNode getDialogue(){
+		return myRoot;
 	}
 	
 	public boolean isDefined(){

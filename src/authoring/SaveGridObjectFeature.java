@@ -27,6 +27,7 @@ public class SaveGridObjectFeature extends Feature{
 			mySuperFeature.getData().setTalkable(((TalkableFeature)(mySuperFeature.getFeature("TalkableFeature"))).isTalkable());
 			mySuperFeature.getData().setWidth(((WidthHeightFeature)(mySuperFeature.getFeature("WidthHeightFeature"))).getWidth());
 			mySuperFeature.getData().setHeight(((WidthHeightFeature)(mySuperFeature.getFeature("WidthHeightFeature"))).getHeight());
+			mySuperFeature.getData().setDialogue(((DialogueFeature)(mySuperFeature.getFeature("DialogueFeature"))).getDialogue());
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
 				//mySuperFeature.getView().close();
