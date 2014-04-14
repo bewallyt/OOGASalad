@@ -24,13 +24,13 @@ public class SurroundingChecker {
 	public GridObject checkSurroundings(Player player) {
 
 		for(GridObject go : myWorld.getGridObjectList()){
-			if(ProximityChecker.isLeftProximity(player, go) && player.getFacing()==1 )
+			if(ProximityChecker.isLeftProximity(player, go)==2 && player.getFacing()==1 )
 				return go;
-			if(ProximityChecker.isRightProximity(player, go) && player.getFacing()==3 ){
+			if(ProximityChecker.isRightProximity(player, go)==-2 && player.getFacing()==3 ){
 				return go;		}
-			if(ProximityChecker.isBottomProximity(player, go) && player.getFacing()==0){
+			if(ProximityChecker.isBottomProximity(player, go)==-2 && player.getFacing()==0){
 				return go;		}
-			if(ProximityChecker.isTopProximity(player, go) && player.getFacing()==2){
+			if(ProximityChecker.isTopProximity(player, go)==2 && player.getFacing()==2){
 				return go;		}
 		}
 

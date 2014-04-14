@@ -9,10 +9,16 @@ public class GridObjectData {
 	private Boolean isTalkable;
 	private int x;
 	private int y;
+	private int width;
+	private int height;
+	private NPCResponseNode myRoot;
 	
 	public GridObjectData(){
 		x = -1;
 		y = -1;
+	}
+	public void init(){
+		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
 	}
 //	public GridObjectData(TileData td, boolean step, boolean talk, String s) {
 //		myTile = td;
@@ -37,6 +43,9 @@ public class GridObjectData {
 	public void setY(int yy){
 		y=yy;
 	}
+	public void setDialogue(NPCResponseNode root){
+		myRoot = root;
+	}
 	
 	public void setSteppable(boolean b){
 		isSteppable = b;
@@ -53,6 +62,9 @@ public class GridObjectData {
 	public int getY(){
 		return y;
 	}
+	public NPCResponseNode getDialogue(){
+		return myRoot;
+	}
 	
 	public boolean isDefined(){
 		if(x==-1||y==-1){
@@ -60,5 +72,10 @@ public class GridObjectData {
 		}
 		return true;
 	}
-
+	public void setWidth(int w) {
+		width = w;
+	}
+	public void setHeight(int h) {
+		height = h;
+	}
 }
