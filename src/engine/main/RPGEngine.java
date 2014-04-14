@@ -3,10 +3,9 @@ package engine.main;
 import java.util.List;
 
 import engine.collision.CollisionMatrix;
-import engine.gridobject.Barrier;
+import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Player;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
@@ -23,6 +22,8 @@ public abstract class RPGEngine{
 
 	/** The my current world. */
 	private World myCurrentWorld;
+	
+	private World myPreviousWorld;
 
 
 	/**
@@ -74,6 +75,7 @@ public abstract class RPGEngine{
 	 */
 	public void setWorld(World world){
 		myCanvas.setWorld(world);
+		myPreviousWorld = myCurrentWorld;
 		myCurrentWorld = (WalkAroundWorld) world;
 		myCurrentWorld.getPlayer().setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
 	}
@@ -105,9 +107,10 @@ public abstract class RPGEngine{
 			checkCollisions(((WalkAroundWorld) myCurrentWorld).getCollisionMatrix());
 			for (GridObject go : ((WalkAroundWorld) myCurrentWorld).getGridObjectList()) {
 				go.move();
-				if(myCurrentWorld.getPlayer().enterBuilding()!=null){
+				Door d = myCurrentWorld.getPlayer().isDoorEntered();
+				if(d!=null){
 					System.out.println("new world");
-					changeWorld(myCurrentWorld.getPlayer().enterBuilding().getBuildingWorld(), 100, 50);
+					changeWorld(d.getBuildingWorld(), 100, 50);
 					break;
 				}
 				if(go instanceof Enemy){

@@ -36,4 +36,5 @@ public class CollisionMatrix {
 	public CollisionHandler[][] getMatrix() {
 		return myCollisionMatrix;
 	}
+
 }

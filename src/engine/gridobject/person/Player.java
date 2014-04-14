@@ -18,7 +18,7 @@ public class Player extends RuleFollower {
 	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
 	private String[] myAnimImages;
-	private boolean enterDoor;
+	private Door enteredDoor=null;
 	private double originalSpeed;
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -51,15 +51,15 @@ public class Player extends RuleFollower {
 		return originalSpeed;
 	}
 	
-	public Door enterBuilding(){
-		List<GridObject> surroundings = mySurroundingChecker.checkSurroundings(this);
-		for(GridObject surrounding : surroundings){
-			if(surrounding instanceof Door && ((Door) surrounding).playerAtDoor(this)){
-				return  (Door) surrounding;
-			}
-		}
-		
-		return null;
+
+	public Door isDoorEntered(){
+		Door door = enteredDoor;
+		enteredDoor=null;
+		return door;
+	}
+	
+	public void enterDoor(Door door){
+		enteredDoor=door;
 	}
 
 	public SurroundingChecker getSurroundingChecker() {

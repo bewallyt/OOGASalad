@@ -3,6 +3,7 @@ package engine.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.collision.EnterCollision;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
@@ -37,6 +38,7 @@ public class Main extends RPGEngine {
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
 		Door door = new Door("cabinets.jpg", 1, 1);
+		Door door2 = new Door("cabinets.jpg", 1, 1);
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
@@ -44,7 +46,8 @@ public class Main extends RPGEngine {
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
-		gridObjectList2.add(door);
+		gridObjectList2.add(door2);
+	
 		
 		
 		
@@ -53,19 +56,22 @@ public class Main extends RPGEngine {
 		
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
-
+		door2.setBuildingWorld(outsideWorld);
 		
-		outsideWorld.setTileObject(gridObjectList.get(0), 4, 4);
-		outsideWorld.setTileObject(gridObjectList.get(1), 6, 7);
-		outsideWorld.setTileObject(gridObjectList.get(2), 6, 7);
+		outsideWorld.setTileObject(gridObjectList.get(0), 1, 1);
+		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
+		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
 		outsideWorld.paintFullBackround("grassSmall.png");
+		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
+															gridObjectList.get(2)),0,2);
 		
-		
-		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 4);
-		buildingWorld.setTileObject(gridObjectList2.get(1), 8, 7);
-		buildingWorld.setTileObject(gridObjectList2.get(2), 6, 7);
+		buildingWorld.setTileObject(gridObjectList2.get(0), 1, 1);
+		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
+		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 5);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
-
+		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
+				gridObjectList2.get(2)),0,2);
+		
 
 
 
