@@ -10,11 +10,14 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Data.ImageManager;
+
 public class TileImageEditor extends JFrame {
 
 	private JList list;
 	private JScrollPane scroll;
 	DefaultListModel model;
+	ImageManager m=new ImageManager();
 
 	public TileImageEditor(String s) {
 		super(s);
@@ -27,9 +30,13 @@ public class TileImageEditor extends JFrame {
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
 		this.getContentPane().add(scroll, BorderLayout.CENTER);
+		
+		for(String image: m.getSavedImageList()){
+			addImage(m.loadImage(image), image);
+		}
 	}
 
-	public void addImage(File fileName){
+	public void addImage(File fileName, String s){
 		BufferedImage temp;
 		try {
 			temp = ImageIO.read(fileName);
@@ -37,15 +44,24 @@ public class TileImageEditor extends JFrame {
 			temp = null;
 		}
 		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		Icon x = new ImageIcon(scaledImage);
+		ImageIcon x = new ImageIcon(scaledImage, s);
 		model.addElement(x);
 	}
 	
-	public Icon selectImage(){
-		if(model.size() > 0){
-			return (Icon) model.get(list.getSelectedIndex());
-		}
+	public ImageIcon selectImage(){
+		if(list.getSelectedIndex()!=-1){
+			return (ImageIcon) model.get(list.getSelectedIndex());
+		}	
 		return null;
+	}
+	
+	public class SelectionListener implements ListSelectionListener {
+
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			//selectImage();
+		}
+		
 	}
 
 }

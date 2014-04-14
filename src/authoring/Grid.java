@@ -21,9 +21,12 @@ public class Grid extends JPanel{
 	private Border selectBorder;
 	//temporarily static until I can figure out a workaround with the other authoring folks
 	protected static TilePanel[][] currentMap;
+	private TilePanel[][] world;
+	private JPanel panel;
 
 	public Grid() {
 		this.setLayout(new GridBagLayout());
+		panel=this;
 		mapMaker();		
 		this.setOpaque(false);
 		imageEditor = FeatureManager.imageEditor;
@@ -32,6 +35,7 @@ public class Grid extends JPanel{
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
+
 	}
 
 	private void mapMaker(){
@@ -107,14 +111,8 @@ public class Grid extends JPanel{
 		}
 
 		public void mousePressed(MouseEvent e) {
-			if(e.getButton() == MouseEvent.BUTTON1){
-				TilePanel selected = (TilePanel) e.getComponent();
-				if(imageEditor.selectImage() != null){
-					selected.setTileImage(imageEditor.selectImage());
-					selected.setBorder(defaultBorder);
-					repaint();
-				}
-			}
+			TilePanel selected = (TilePanel) e.getComponent();
+			placeImage(selected);
 		}
 
 		public void mouseReleased(MouseEvent e) {
@@ -123,7 +121,17 @@ public class Grid extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e){
+			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
+			placeImage(currentPanel);
+		}
 
+		private void placeImage(TilePanel currentPanel){
+			Icon i=imageEditor.selectImage();
+			if(i!=null){
+				currentPanel.setTileImage(imageEditor.selectImage());
+				currentPanel.setBorder(defaultBorder);
+				repaint();
+			}	
 		}
 	}
 }
