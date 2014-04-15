@@ -40,6 +40,7 @@ public class ImageChooser extends Feature implements ActionListener{
 			fileName = JOptionPane.showInputDialog("Name your image:");
             determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
             identifier = determineImage.replaceAll("\\s","").toLowerCase();
+
 			if(fileName.equals("")){
 				JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				fileName = JOptionPane.showInputDialog("Please name the image:");
