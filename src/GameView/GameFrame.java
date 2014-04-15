@@ -19,6 +19,7 @@ import engine.world.World;
 import engine.main.Main;
 import engine.main.RPGEngine;
 import authoring.GridObjectData;
+import authoring.PlayerData;
 //import authoring.PlayerData;
 import authoring.TileData;
 import authoring.WorldData;
@@ -96,12 +97,19 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public void createPlayer() {
-		// hard coded for now, needs to be changed
-		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
+		
+		PlayerData myPlayerData = myWorldData.getPlayData();
+		
+		/*String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
 				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
-				"PlayerLeft2.png" };
+				"PlayerLeft2.png" };*/
+		
+		String[] anim = myPlayerData.getMyAnimImages();
+		// int speed = myPlayerData.getSpeed();
+		// int width = myPlayerData.getWidth();
+		// int height = myPlayerData.getHeight();
 		myPlayer = new Player(anim, 2, 1, 1);
 	}
 
