@@ -10,7 +10,10 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -24,15 +27,33 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class ImageManager {
 	public static final String DEFAULT_SRC_FILE="src/";
-	public static final String DEFAULT_IMAGE_PACKAGE="ImageFiles/";
+	//public static final String DEFAULT_IMAGE_PACKAGE="TestImageFiles/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
 	public static final String DEFAULT_IMAGE_EXTENSION="jpg";
+	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject/", "TileImage/"};
 	private String imagePath;
 	
 	public ImageManager() {
 		//String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_IMAGE_PACKAGE; 
 		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE;
 		imagePath = path.replaceAll("\\\\", "/");
+	}
+	public Map<Image, String> getSavedImageMap(){
+		Map<Image, String> imageMap=new HashMap<Image, String>();
+		for(String s: IMAGE_FOLDER_OPTIONS){
+			for(String image: getSavedImageList(imagePath+s)){
+				System.out.println(image);
+				File file=loadImage(image, s);
+				BufferedImage temp;
+				try {
+					temp = ImageIO.read(file);
+				} catch (IOException e) {
+					temp = null;
+				}
+				imageMap.put((Image)temp, image);
+			}
+		}
+		return imageMap;
 	}
 	/**
 	 * Loads a specified image file into the project directory to be used in the authoring environment
@@ -113,16 +134,16 @@ public class ImageManager {
 	 * @param s String name of the image file
 	 * @return File s with the path of the image
 	 */
-	public File loadImage(String s){
-		return new File(imagePath+s);
+	public File loadImage(String name, String imageType){
+		return new File(imagePath+imageType+name);
 	}
 	/**
 	 * Returns a list of all the names of currently saved images in the default image
 	 * folder. 
 	 * @return List of names of images
 	 */
-	public List<String> getSavedImageList(){
-		return new FileLister().getFileList(imagePath);
+	public List<String> getSavedImageList(String path){
+		return new FileLister().getFileList(path);
 	}
 	public static void main(String[] args){
 		ImageManager image=new ImageManager();

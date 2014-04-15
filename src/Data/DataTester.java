@@ -31,7 +31,7 @@ public class DataTester {
 	@Test
 	public void imageListTest() throws Exception{
 		ImageManager m=new ImageManager();
-		List<String> list=m.getSavedImageList();
+	//	List<String> list=m.getSavedImageList();
 		assertTrue(list.contains("TestImage.JPG"));
 		assertTrue(list.contains("TestImage2.jpg"));
 		assertFalse(list.contains("bloobloo"));

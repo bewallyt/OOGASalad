@@ -33,12 +33,14 @@ public class TileImageEditor extends JFrame {
 		scroll = new JScrollPane(list);
 		this.getContentPane().add(scroll, BorderLayout.CENTER);
 		
-		//for(String image: m.getSavedImageList()){
-		//	addImage(m.loadImage(image), image);
-		//}
+		addExistingImages();
 	}
 	
-	
+	private void addExistingImages(){
+		for(Image image: m.getSavedImageMap().keySet()){
+			addImage(image, m.getSavedImageMap().get(m));
+		}
+	}
 	public void addImage(Image m, String s){	
 		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);
