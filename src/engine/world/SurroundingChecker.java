@@ -40,6 +40,7 @@ public class SurroundingChecker {
 			if(ProximityChecker.isTopProximity(player, go)==2 && player.getFacing()==2){
 				goList.add(go);		}
 		}
+		if (goList.isEmpty()) goList.add(null);
 		return goList;
 
 	}
