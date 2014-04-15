@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 
 public class ItemCreation extends Feature implements ActionListener{
     private JFrame frame;
+    private String iName;
+    private int xc;
+    private int yc;
 
     public ItemCreation(){
         JButton createItem = new JButton("Create Item");
@@ -39,12 +42,12 @@ public class ItemCreation extends Feature implements ActionListener{
         };
         panel1.add(itemName);
         JPanel panel2 = new JPanel(new SpringLayout());
-        JLabel x = new JLabel("X");
-        JLabel y = new JLabel("Y");
+        JLabel x = new JLabel("X",JLabel.TRAILING);
+        JLabel y = new JLabel("Y",JLabel.TRAILING);
         panel2.add(x);
-        panel2.add(y);
         x.setLabelFor(xCoor);
         panel2.add(xCoor);
+        panel2.add(y);
         y.setLabelFor(yCoor);
         panel2.add(yCoor);
 
@@ -61,16 +64,22 @@ public class ItemCreation extends Feature implements ActionListener{
 
         JOptionPane.showOptionDialog(null, itemPane, "New Item", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
-        if(itemName.getText().equals("")){
-            JOptionPane.showMessageDialog(frame, "Name must be assigned.", "Error Message", JOptionPane.ERROR_MESSAGE);
+        if(itemName.getText().equals("") || xCoor.getText().equals("") || yCoor.getText().equals("")){
+            JOptionPane.showMessageDialog(frame, "Missing name or coordinates.", "Error Message", JOptionPane.ERROR_MESSAGE);
             itemCreationPanel();
         }
 
-        String iName = itemName.getText();
-        int xc = Integer.parseInt(xCoor.getText());
-        int yc = Integer.parseInt(yCoor.getText());
+        iName = itemName.getText();
+        xc = Integer.parseInt(xCoor.getText());
+        yc = Integer.parseInt(yCoor.getText());
 
-
-
+        makeAndSaveItem();
     }
+
+    private void makeAndSaveItem() {
+        Item madeItem = new Item(iName,xc,yc);
+        FeatureManager.getWorldData().saveItem(madeItem);
+    }
+
+
 }
