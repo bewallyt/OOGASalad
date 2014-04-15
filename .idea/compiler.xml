@@ -19,5 +19,8 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="EclipseCompilerSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-proceedOnError" />
+  </component>
 </project>
 
