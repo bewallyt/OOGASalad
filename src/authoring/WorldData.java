@@ -8,6 +8,7 @@ public class WorldData {
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
     private List<Item> myItems;
+    private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
 	
 	public WorldData(){
@@ -27,6 +28,8 @@ public class WorldData {
 	}
 
     public void saveItem(Item it){ myItems.add(it);}
+
+    public void savePlayer(PlayerData player){ playData = player; }
 	
 	public void addLevel(String s, MapData md){
 		myLevels.put(s, md);
@@ -41,6 +44,10 @@ public class WorldData {
 	}
 
     protected List<Item> getMyItems(){ return myItems;}
+
+    public PlayerData getPlayData(){
+        return playData;
+    }
 	
 	/*private TileData[][] myTileDatas;
 	private int myWorldWidth;

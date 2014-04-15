@@ -37,4 +37,12 @@ public class PlayerData {
 		myAnimImages = ims;
 		isAnim = true;
 	}
+
+    public void setStartLocation(int xcoor, int ycoor){
+        myXStart = xcoor;
+        myYStart = ycoor;
+    }
+
+    public int getMyXStart(){ return myXStart; }
+    public int getMyYStart(){ return myYStart; }
 }
