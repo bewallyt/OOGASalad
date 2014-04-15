@@ -5,29 +5,25 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
 public class GridObjectImageFeature extends Feature {
 
-	private JButton addImageButton;
 	private TilePanel myTilePanel;
+	private ImageIcon myImage;
 	private GridObjectCreation mySuperFeature;
 	private String myImageName;
+	
 	public GridObjectImageFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
 		Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		myTilePanel = new TilePanel(1,1);
 		myTilePanel.setBorder(defaultBorder);
-		addImageButton = new JButton("Add GridObject Image");
-		addImageButton.addActionListener(new GridImageListener());
-		myComponents.put(addImageButton, BorderLayout.SOUTH);
 		myComponents.put(myTilePanel, BorderLayout.SOUTH);
 	}
-	
+
 	private class GridImageListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			showImageList();
@@ -54,7 +50,19 @@ public class GridObjectImageFeature extends Feature {
 		//myTilePanel.setTileImage(selectedTileImage);
 		mySuperFeature.getView().getFrame().revalidate();
 	}
+	
 	public String getImageName() {
 		return myImageName;
+	}
+	
+	public void setImage(ImageIcon name){
+		myImageName = name.getDescription();
+		myTilePanel.addGridObjectImage(name);
+		myImage = name;
+		myTilePanel.revalidate();
+	}
+	
+	public ImageIcon getImage(){
+		return myImage;
 	}
 }

@@ -9,15 +9,14 @@ import javax.swing.border.MatteBorder;
 
 public class Grid extends JPanel{
 
-	private static final int WORLD_WIDTH = 144;
-	private static final int WORLD_HEIGHT = 144;
+	private static final int WORLD_WIDTH = 100;
+	private static final int WORLD_HEIGHT = 100;
 	private int startRow = 0;
 	private int startCol = 0;
-	private WorldData wd;
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
-	private String[] popupMenuItems = { "Tile Image Editor", "Set as Player Start Point", "Clear Tile"};
+	private String[] popupMenuItems = { "Tile Image Editor", "Grid Object Editor", "Set as Player Start Point", "Clear Tile"};
 	private Border defaultBorder;
 	private Border selectBorder;
 	private TilePanel[][] world;
@@ -34,7 +33,7 @@ public class Grid extends JPanel{
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
-		
+
 	}
 
 	private void mapMaker(){
@@ -49,7 +48,16 @@ public class Grid extends JPanel{
 			}
 		}
 	}
-
+	
+	public void tileRepaint(){
+		for(int row = 0; row < world.length; row++)
+			for(int col = 0; col < world.length; col++){
+				TilePanel temp = world[row][col];
+				temp.update();
+				world[row][col] = temp;
+			}
+	}
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -70,13 +78,13 @@ public class Grid extends JPanel{
 
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
-		for (int row = startRow; row < 144; row++) {
-			for (int col = startCol; col < 144; col++) {
+		for (int row = startRow; row < WORLD_HEIGHT; row++) {
+			for (int col = startCol; col < WORLD_WIDTH; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
 				TilePanel cell = world[row][col];
 				cell.setBorder(defaultBorder);
-				cell.setMinimumSize(new Dimension(48, 48));
+				cell.setMinimumSize(new Dimension(36, 36));
 				cell.addMouseListener(new SelectedCellListener());
 				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);
@@ -87,6 +95,8 @@ public class Grid extends JPanel{
 	public class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			showImageMenu();
+			GridObjectCreation goc = new GridObjectCreation();
+			//goc.setCoordinates();
 		}
 	}
 
@@ -123,12 +133,12 @@ public class Grid extends JPanel{
 			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
 			placeImage(currentPanel);
 		}
+
 		private void placeImage(TilePanel currentPanel){
 			Icon i=imageEditor.selectImage();
 			if(i!=null){
 				currentPanel.setTileImage(imageEditor.selectImage());
 				currentPanel.setBorder(defaultBorder);
-				repaint();
 			}	
 		}
 	}

@@ -5,17 +5,30 @@ import engine.Statistic;
 import engine.gridobject.GridObject;
 import engine.world.Tile;
 
-public abstract class Item extends GridObject implements Listable {
+public abstract class Item implements Listable {
 
 	private String myName;
+	private String myImageName;
+	private Statistic myStatistic;
+	private boolean useOnPlayer=false;
+	private boolean useOnWeapon=false;
 	
-	public Item(String image, String name, int numTilesWidth, int numTilesHeight) {
-		super(image, numTilesWidth, numTilesHeight);
+	public Item(String image, String name, Statistic statistic) {
 		myName = name;
+		myImageName = image;
+		myStatistic = statistic;
 	}
 
 	public String getName() {
 		return myName;
+	}
+	
+	public void useOnPlayer(){
+		useOnPlayer=true;
+	}
+	
+	public void useOnWeapon(){
+		useOnWeapon=true;
 	}
 
 	public abstract void useItem();
@@ -26,8 +39,8 @@ public abstract class Item extends GridObject implements Listable {
 		
 	}
 	
-	public void changeStatistic(Statistic statistic, int amountToChange){
-		statistic.changeValue(amountToChange);
+	public void changeStatistic(int amountToChange){
+		myStatistic.changeValue(amountToChange);
 	}
 	
 }

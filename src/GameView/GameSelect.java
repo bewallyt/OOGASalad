@@ -13,7 +13,7 @@ public class GameSelect {
 	private String gameName;
 	
 	public GameSelect () {
-		JFrame frame = new JFrame();
+		JFrame frame = new JFrame("Select");
 		frame.setSize(800, 500);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,9 +21,6 @@ public class GameSelect {
 		try {
 			String[] games = getGameNames(getListOfGames());
 			gameName = getGameNameFromUser(frame, games);
-//			frame.setContentPane(new GameFrame());
-//			frame.setResizable(false);
-//			frame.setVisible(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +53,7 @@ public class GameSelect {
 	}
 	
 	private static String getGameNameFromUser (JFrame frame, String[] games) {
-		return (String) JOptionPane.showInputDialog(frame, "Select a Game to Play", "", JOptionPane.PLAIN_MESSAGE, null, games, "");
+		return (String) JOptionPane.showInputDialog(frame, "Select a Game to Play", "Select", JOptionPane.PLAIN_MESSAGE, null, games, "");
 		
 	}
 	

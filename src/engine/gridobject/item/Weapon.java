@@ -1,22 +1,43 @@
 package engine.gridobject.item;
 
-import engine.world.Tile;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Weapon extends Item{
+import engine.Statistic;
 
-	public Weapon(Tile tile, String image, String name, int numTilesWidth, int numTilesHeight) {
-		super(image, name, numTilesWidth, numTilesHeight);	
-		super.setDoesHarm(true);
+public class Weapon{
+	private String myName;
+	private String myImageName;
+	private Statistic myDamage;
+	private Statistic mySpeed;
+	private List<Attack> myAttacks;
+	public final static int DEFAULT_SPEED=1;
+	public final static int DEFAULT_DAMAGE=1;
+	public Weapon(String image, String name, List<Attack> attacks) {
+		myName = name;
+		myImageName = image;
+		myAttacks = new ArrayList<Attack>(attacks);
+		mySpeed = new Statistic("Speed", DEFAULT_SPEED);
+		myDamage = new Statistic("Damage",DEFAULT_DAMAGE);
 	}
 
-	@Override
-	public void useItem() {
-		// TODO Auto-generated method stub
-		//Here I will use ProximityChecker() to determine onto whom the weapon should be used.
-		//The ProximityChecker will NOT be necessary for Arena mode because animation patterns
-		//are consistent. Modify HurtCollision? or use BumpCollision. Change the player's range
-		//momentarily when they are attacking using a Weapon.
-		
+	public void addAttack(Attack attack){
+		myAttacks.add(attack);
+	}
+	public void removeAttack(Attack attack){
+		myAttacks.remove(attack);
+	}
+	
+	public List<Attack> getAttackList(){
+		return myAttacks;
+	}
+	
+	public Statistic getDamage(){
+		return myDamage;
+	}
+	
+	public Statistic getSpeed(){
+		return mySpeed;
 	}
 
 }
