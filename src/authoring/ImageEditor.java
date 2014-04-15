@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import Data.ImageManager;
 
-public abstract class ImageEditor {
+public class ImageEditor {
 	
 	protected JList list;
 	protected JScrollPane scroll;

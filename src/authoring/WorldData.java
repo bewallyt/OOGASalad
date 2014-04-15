@@ -24,6 +24,10 @@ public class WorldData {
 		myImages.put(s, f);
 	}
 	
+	public void addLevel(String s, MapData md){
+		myLevels.put(s, md);
+	}
+	
 	public MapData getMap(String s){
 		return myLevels.get(s);
 	}
