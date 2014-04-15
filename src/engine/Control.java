@@ -2,13 +2,15 @@ package engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashSet;
+import java.util.Set;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.world.Canvas;
 import engine.world.World;
 
-public abstract class AbstractGameState implements KeyListener{
+public class Control implements KeyListener{
 	
 	private World myWorld;
 	private Canvas  myCanvas;
@@ -18,8 +20,10 @@ public abstract class AbstractGameState implements KeyListener{
 	public static int RIGHT = 39;
 	public static int A = 65;
 	public static int SPACE = 32;
+	Set<Integer> pressedKeys = new HashSet<Integer>();
+
 	
-	public AbstractGameState (Canvas c, World world){
+	public Control(Canvas c, World world){
 		myWorld = world;
 		myCanvas = c;
 	}
@@ -32,13 +36,19 @@ public abstract class AbstractGameState implements KeyListener{
 		return myCanvas;
 	}
 	
-	@Override
-	public abstract void keyPressed(KeyEvent e);
+	public void keyPressed(KeyEvent e){
+		if(pressedKeys.size() == 0) {
+			myWorld.getPlayer().keyPressed(e);
+			pressedKeys.add(e.getKeyCode());
+		}
+	}
 				
 	
 
-	@Override
-	public abstract void keyReleased(KeyEvent e);
+	public void keyReleased(KeyEvent e) {		
+		myWorld.getPlayer().keyReleased(e);
+		pressedKeys.remove(e.getKeyCode());
+	}
 		
 	
 

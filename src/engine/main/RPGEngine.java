@@ -1,12 +1,14 @@
 package engine.main;
 
 import engine.collision.CollisionMatrix;
+import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
+import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 /**
@@ -22,7 +24,11 @@ public abstract class RPGEngine{
 
 	private Player myPlayer;
 
-	private CollisionMatrix myCollisionMatrix;;
+	private CollisionMatrix myCollisionMatrix;
+
+	private World myOutsideWorld;
+
+	private int[] myEnterPos;
 
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
@@ -55,14 +61,14 @@ public abstract class RPGEngine{
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
 	}
-	
+
 	public Canvas retMyCanvas(){
 		return myCanvas;
 	}
 
 
 	public void addNewArenaWorld(ArenaWorld world){
-		
+
 	}
 	/**
 	 * Adds a new world.
@@ -72,7 +78,7 @@ public abstract class RPGEngine{
 	public void addNewWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
-		
+
 		//		addPlayer(myPlayer.getAnimImages(), myPlayer.getSpeed(), myPlayer.getWidth(), myPlayer.getHeight());
 		myCollisionMatrix=null;
 	}
@@ -84,8 +90,14 @@ public abstract class RPGEngine{
 //		myPlayer.setPosition(myCurrentWorld.getTileGridWidth()*myCurrentWorld.getTileSize()/2, 0);
 		addGridObject(getPlayer(), world.getTileGridWidth()/2, world.getTileGridHeight()-3);
 		myPlayer.setFacing(0);
-		
-		
+//		Barrier mat = new Barrier("cabinets.jpg",1, 1);
+//		myCurrentWorld.setTileObject(mat, getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
+//		mat.setDoor(mat.getX(), mat.getY());
+//		mat.getDoor().setBuildingWorld(myOutsideWorld);
+//		addGridObject(mat, 4, 3);
+		myEnterPos = new int[] {myPlayer.getX(), myPlayer.getY()};
+
+
 		myCollisionMatrix=null;
 	}
 
@@ -99,13 +111,14 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 		while (true) {
-			
+
 			myCanvas.repaint();
 			checkCollisions(myCollisionMatrix);
 			for (GridObject go : myCurrentWorld.getGridObjectList()) {
 				go.move();
 				if(myPlayer.enterBuilding()!=null){
 					System.out.println("new world");
+					myOutsideWorld=myCurrentWorld;
 					addBuildingWorld(myPlayer.enterBuilding().getBuildingWorld());
 				}
 				if(go instanceof Enemy){
@@ -149,7 +162,7 @@ public abstract class RPGEngine{
 	public Player getPlayer(){
 		return myPlayer;
 	}
-	
+
 	public void paintConstantBackground(String background){
 		myCurrentWorld.paintFullBackround(background);
 	}

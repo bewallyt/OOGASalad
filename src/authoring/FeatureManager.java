@@ -17,6 +17,7 @@ public class FeatureManager {
 	public static Feature getFeature(String s){
 		Feature myFeature=null;
 		for(Feature f: myFeatures){
+			System.out.println(f.getClass().getName());
 			if(f.getClass().getName()==s)
 				myFeature = f;
 		}

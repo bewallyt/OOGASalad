@@ -68,7 +68,6 @@ public abstract class GridObject{
 	public void setPosition(int x, int y){
 		myX=myStartX=x;
 		myY=myStartY=y;
-
 	}
 
 	public int[] getPosition(){
@@ -84,7 +83,6 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		
 	}
 	
 
@@ -112,8 +110,8 @@ public abstract class GridObject{
 		myStatsMap.put(stat.getName(), stat);
 	}
 
-	public void addStatistic(String name, int value, int maxValue){
-		myStatsMap.put(name,new Statistic(name,value,maxValue));
+	public void addStatistic(String name, int value){
+		myStatsMap.put(name,new Statistic(name,value));
 	}
 
 	public Map<String,Statistic> getStatsMap(){

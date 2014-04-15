@@ -19,4 +19,8 @@ public class GridViewerFeature extends Feature{
 		//FeatureManager.imageEditor.setLocation(myGrid.getX() + 650, myGrid.getY());
 		FeatureManager.imageEditor.setVisible(true);
 	}
+	
+	public void tileRepaint(){
+		myGrid.tileRepaint();
+	}
 }

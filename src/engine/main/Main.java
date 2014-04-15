@@ -1,6 +1,7 @@
 package engine.main;
 
 import engine.gridobject.Barrier;
+import engine.gridobject.Door;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.world.WalkAroundWorld;
@@ -23,13 +24,13 @@ public class Main extends RPGEngine {
 
 	public void makeOutsideWorld(){
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000);
-		
-		addNewWorld(outsideWorld);
-		outsideWorld.paintFullBackround("grass.jpg");
-		
 
-		
-String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+		addNewWorld(outsideWorld);
+		outsideWorld.paintFullBackround("grassSmall.png");
+
+
+
+		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 		"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png", "PlayerLeft2.png"};
 		addPlayer(anim,2,1, 1);
 
@@ -40,12 +41,12 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 		addGridObject(bafm,10,10);
 		bafm.addDialogue("Hey fight me");
 		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
-		pokeCenter.setDoor(222, 278);
 		addGridObject(pokeCenter, 4, 3);
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000);
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
-		buildingWorld.setTileObject(new Barrier("cabinets.jpg",3,1 ), getCurrentWorld().getTileGridWidth()/2, getCurrentWorld().getTileGridHeight()-2);
-		pokeCenter.getDoor().setBuildingWorld(buildingWorld);
+		Door door = new Door("cabinets.jpg", 1, 1);
+		door.setBuildingWorld(buildingWorld);
+		addGridObject(door, 6, 6);
 
 		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
 			addGridObject(new Barrier("tree.png",1,2), i, 0);
@@ -61,7 +62,7 @@ String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 	public void initializeGame() {
 		initializeCanvas(400, 400);
 		makeOutsideWorld();
-		
+
 	}
 
 	@Override
