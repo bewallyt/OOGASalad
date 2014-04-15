@@ -94,10 +94,15 @@ public abstract class GridObject{
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 			Font font=null;
 			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
+				try {
+					font = Font.createFont(Font.TRUETYPE_FONT, is);
+				} catch (FontFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Font sizedFont = font.deriveFont(16f);
 				g.setFont(sizedFont);
-			} catch (FontFormatException | IOException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
