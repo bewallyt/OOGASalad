@@ -2,14 +2,18 @@ package authoring;
 
 
 public class PlayerData {
-	private Boolean isAnim = false;
+	private Boolean isAnim;
 	private String[] myAnimImages;
 	private String myImage;
 	private int myXStart;
 	private int myYStart;
 	
-	public PlayerData(){
-		
+	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y){
+        isAnim = anim;
+        myImage = imName;
+        myAnimImages = animImage;
+        myXStart = x;
+        myYStart = y;
 	}
 	
 	public Boolean isAnimated(){

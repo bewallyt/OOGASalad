@@ -55,9 +55,9 @@ public class ItemCreation extends Feature implements ActionListener{
         panel2.add(yCoor);
 
         SpringUtilities.makeCompactGrid(panel2,
-                2, 2, //rows, cols
-                6, 6,        //initX, initY
-                6, 6);       //xPad, yPad
+                2, 2,
+                6, 6,
+                6, 6);
 
         JPanel panel3 = new JPanel();
 
