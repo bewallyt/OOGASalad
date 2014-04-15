@@ -2,6 +2,7 @@ package Data;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,27 +20,40 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ImageManager {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_IMAGE_PACKAGE="ImageFiles/";
+	public static final String DEFAULT_TILE_IMAGE_PACKAGE="TileImages/";
+	public static final String DEFAULT_GRID_IMAGE_PACKAGE="GridImages/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
 	private String imagePath;
 	
 	public ImageManager() {
-		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_IMAGE_PACKAGE; 
+		//String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_IMAGE_PACKAGE; 
+		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE;
 		imagePath = path.replaceAll("\\\\", "/");
 	}
 	/**
 	 * Loads a specified image file into the project directory to be used in the authoring environment
 	 * @param fileName Name of the image file that will be created in the project directory (without an extension)
 	 * @param imageFile File that is to be copied into the project directory
+	 * @param imageType indicates what the image will be used for (and thus what folder it will be saved in)
 	 * @throws IOException
 	 * @return Returns the new File stored in the project
 	 */
-	public File storeImage(String fileName, File imageFile) throws IOException{
+	public File storeImage(String fileName, File imageFile, String imageType) throws IOException{
 		String extension=getFileExtension(imageFile);
 		if(checkImageExtension(extension)){
 			Path source=Paths.get(imageFile.getAbsolutePath());
-			Path newDirectory=Paths.get(imagePath+fileName+extension);
-			Files.copy(source, newDirectory);	
-			return (new File(imagePath+fileName+extension));
+			String newPath=imagePath+imageType+"/"+fileName+extension;
+			Path newDirectory=Paths.get(newPath);
+			System.out.println(newPath);
+			File newImageFile=new File(newPath);
+			newImageFile.mkdirs();
+			try{
+				Files.copy(source, newDirectory);
+			}
+			catch(FileAlreadyExistsException e){
+				return null;
+			}
+			return (newImageFile);
 		}
 		return null;
 	}
@@ -93,7 +107,7 @@ public class ImageManager {
 		int returnVal=chooser.showOpenDialog(null);
 		File f=chooser.getSelectedFile();
 		try {
-			image.storeImage("TestImage2", f);
+			image.storeImage("TestImage2", f, "TileImage");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
