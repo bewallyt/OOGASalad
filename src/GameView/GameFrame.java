@@ -59,10 +59,8 @@ public class GameFrame extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		
 		initializeCanvas(400, 400);
 		makeOutsideWorld();
-
 	}
 
 	// public static void main(String[] args) {
