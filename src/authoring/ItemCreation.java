@@ -44,37 +44,37 @@ public class ItemCreation extends Feature implements ActionListener{
             }
         };
         panel1.add(itemName);
-        JPanel panel2 = new JPanel(new SpringLayout());
-        JLabel x = new JLabel("X",JLabel.TRAILING);
-        JLabel y = new JLabel("Y",JLabel.TRAILING);
-        panel2.add(x);
-        x.setLabelFor(xCoor);
-        panel2.add(xCoor);
-        panel2.add(y);
-        y.setLabelFor(yCoor);
-        panel2.add(yCoor);
-
-        SpringUtilities.makeCompactGrid(panel2,
-                2, 2,
-                6, 6,
-                6, 6);
+//        JPanel panel2 = new JPanel(new SpringLayout());
+//        JLabel x = new JLabel("X",JLabel.TRAILING);
+//        JLabel y = new JLabel("Y",JLabel.TRAILING);
+//        panel2.add(x);
+//        x.setLabelFor(xCoor);
+//        panel2.add(xCoor);
+//        panel2.add(y);
+//        y.setLabelFor(yCoor);
+//        panel2.add(yCoor);
+//
+//        SpringUtilities.makeCompactGrid(panel2,
+//                2, 2,
+//                6, 6,
+//                6, 6);
 
         JPanel panel3 = new JPanel();
 
         itemPane.addTab(nameTab,panel1);
-        itemPane.addTab(locationTab,panel2);
+        //itemPane.addTab(locationTab,panel2);
         itemPane.addTab(attriTab,panel3);
 
         result = JOptionPane.showOptionDialog(null, itemPane, "New Item", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION) {
-            if (itemName.getText().equals("") || xCoor.getText().equals("") || yCoor.getText().equals("")) {
+            if (itemName.getText().equals("")) {
                 JOptionPane.showMessageDialog(frame, "Missing name or coordinates.", "Error Message", JOptionPane.ERROR_MESSAGE);
                 itemCreationPanel();
             } else{
                 iName = itemName.getText();
-                xc = Integer.parseInt(xCoor.getText());
-                yc = Integer.parseInt(yCoor.getText());
+                //xc = Integer.parseInt(xCoor.getText());
+                //yc = Integer.parseInt(yCoor.getText());
                 makeAndSaveItem();
             }
         } else{}
@@ -83,7 +83,7 @@ public class ItemCreation extends Feature implements ActionListener{
     }
 
     private void makeAndSaveItem() {
-        Item madeItem = new Item(iName,xc,yc);
+        Item madeItem = new Item(iName);
         FeatureManager.getWorldData().saveItem(madeItem);
     }
 
