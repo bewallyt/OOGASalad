@@ -37,6 +37,13 @@ public class ImageChooser extends Feature implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if("choose".equals(e.getActionCommand()) || "grid".equals(e.getActionCommand())){
 
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+            panel.add(new JTextField(10));
+            panel.add(new JRadioButton("Grid Object"));
+            panel.add(new JRadioButton("Tile Image"));
+            JOptionPane.showOptionDialog(null,panel,"Choosing an image",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,null);
+
 			fileName = JOptionPane.showInputDialog("Name your image:");
             determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
             identifier = determineImage.replaceAll("\\s","").toLowerCase();
