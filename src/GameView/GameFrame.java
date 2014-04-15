@@ -106,8 +106,7 @@ public class GameFrame extends RPGEngine {
 				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
 				"PlayerLeft2.png" };
-		Player player = new Player(anim, 2, 1, 1);
-		myPlayer = player;
+		myPlayer = new Player(anim, 2, 1, 1);
 
 	}
 
