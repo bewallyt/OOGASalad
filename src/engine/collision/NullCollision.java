@@ -11,7 +11,6 @@ public class NullCollision extends CollisionHandler{
 
 	@Override
 	public void doCollision() {
-		// TODO Auto-generated method stub
 		
 	}
 

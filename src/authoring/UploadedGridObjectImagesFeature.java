@@ -33,7 +33,7 @@ public class UploadedGridObjectImagesFeature extends Feature {
 			temp = null;
 		}
 		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		Icon x = new ImageIcon(scaledImage);
+		Icon x = new ImageIcon(scaledImage, "m.jpg");
 		model.addElement(x);*/
 
 		list = new JList(model);
