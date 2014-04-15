@@ -9,8 +9,7 @@ public class ImageResizer {
 	
 	private File storedImage;
 	private String fileName;
-    private String fileId;
-	private File imageFile;
+
     private ImageManager myImageManager;
 	
 	public ImageResizer(){
@@ -19,8 +18,8 @@ public class ImageResizer {
 
 	protected void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
-		imageFile = file;
-        fileId = id;
+		File imageFile = file;
+        String fileId = id;
 		storedImage = myImageManager.storeImage(fileName,imageFile,fileId);
 		addToWorldData();
 	}
