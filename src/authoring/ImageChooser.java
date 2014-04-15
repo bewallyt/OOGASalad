@@ -10,18 +10,18 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ImageChooser extends Feature implements ActionListener{
-	private JButton myChooseImageButton;
+
 	private String fileName;
-    private String determineImage;
+
     private String identifier;
     private JFrame frame;
-	private File imageFile;
+
 	private ImageResizer myImResizer;
     private Object[] choices = {"Grid Object","Tile Image"};
 
 	
 	public ImageChooser(){
-		myChooseImageButton = new JButton("New Image");
+		JButton myChooseImageButton = new JButton("New Image");
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
@@ -34,7 +34,7 @@ public class ImageChooser extends Feature implements ActionListener{
 		if("choose".equals(e.getActionCommand())){
 
 			fileName = JOptionPane.showInputDialog("Name your image:");
-            determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
+            String determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
             identifier = determineImage.replaceAll("\\s","").toLowerCase();
 
 			if(fileName.equals("")){
@@ -62,8 +62,9 @@ public class ImageChooser extends Feature implements ActionListener{
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getAbsolutePath());
 		}
-		imageFile = chooser.getSelectedFile();
+		File imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile, identifier);
-	}		
+	}
+
 
 }
