@@ -8,8 +8,11 @@ public class Main {
 		myFeatures.add(new GridViewerFeature());
 		myFeatures.add(new GridObjectCreation());
 		myFeatures.add(new ImageChooser());
+        myFeatures.add(new ItemCreation());
+        myFeatures.add(new PlayerCreation());
 		myFeatures.add(new SaveGameFeature());
-
+		myFeatures.add(new MapCreatorFeature());
+		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
 }
