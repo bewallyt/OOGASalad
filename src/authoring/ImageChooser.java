@@ -13,9 +13,12 @@ public class ImageChooser extends Feature implements ActionListener{
 	private JButton myChooseImageButton;
 	private JButton myChooseGridImageButton;
 	private String fileName;
+    private String determineImage;
+    private String identifier;
+    private JFrame frame;
 	private File imageFile;
-	private JFrame frame;
 	private ImageResizer myImResizer;
+    private Object[] choices = {"Grid Object","Tile Image"};
 
 	
 	public ImageChooser(){
@@ -27,11 +30,16 @@ public class ImageChooser extends Feature implements ActionListener{
 		myChooseGridImageButton.setActionCommand("grid");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
 		myImResizer = new ImageResizer();
+
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if("choose".equals(e.getActionCommand()) || "grid".equals(e.getActionCommand())){
+
 			fileName = JOptionPane.showInputDialog("Name your image:");
+            determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
+            identifier = determineImage.replaceAll("\\s","").toLowerCase();
 			if(fileName.equals("")){
 				JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				fileName = JOptionPane.showInputDialog("Please name the image:");
@@ -58,7 +66,7 @@ public class ImageChooser extends Feature implements ActionListener{
 					chooser.getSelectedFile().getAbsolutePath());
 		}
 		imageFile = chooser.getSelectedFile();
-		myImResizer.storeImage(fileName, imageFile);
+		myImResizer.storeImage(fileName, imageFile, identifier);
 	}		
 
 }
