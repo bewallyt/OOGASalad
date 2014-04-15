@@ -17,7 +17,6 @@ public class ImageChooser extends Feature implements ActionListener{
     private JFrame frame;
 
 	private ImageResizer myImResizer;
-    private Object[] choices = {"Grid Object","Tile Image"};
 
 	
 	public ImageChooser(){
@@ -33,26 +32,35 @@ public class ImageChooser extends Feature implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if("choose".equals(e.getActionCommand())){
 
-			fileName = JOptionPane.showInputDialog("Name your image:");
-            String determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
-            identifier = determineImage.replaceAll("\\s","").toLowerCase();
+            imageFilePanel();
 
-			if(fileName.equals("")){
-				JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
-				fileName = JOptionPane.showInputDialog("Please name the image:");
-				try {
-					chooseImage(e);
-				} catch (IOException e1) {}
-			} else{
-				try {
-					chooseImage(e);
-				} catch (IOException e1) {}
-			}
+			//fileName = JOptionPane.showInputDialog("Name your image:");
+
+            //String determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
+            //identifier = determineImage.replaceAll("\\s","").toLowerCase();
+
+			//if(fileName.equals("")){
+			//	JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				//fileName = JOptionPane.showInputDialog("Please name the image:");
+				//try {
+
+				//} catch (IOException e1) {}
+			//} else{
+				//try {
+				//	chooseImage(e);
+				//} catch (IOException e1) {}
+			//}
+            try {
+                chooseImage();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
 		}
-		
-	}
+
+
+    }
 	
-	private void chooseImage(ActionEvent e) throws IOException{
+	private void chooseImage() throws IOException {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				"JPG, PNG, GIF", "jpg","gif","png");
@@ -65,6 +73,30 @@ public class ImageChooser extends Feature implements ActionListener{
 		File imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile, identifier);
 	}
+
+    private void imageFilePanel(){
+        JRadioButton go = new JRadioButton("Grid Object");
+        JRadioButton ti = new JRadioButton("Tile Image");
+        JTextField fn = new JTextField(15);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.add(fn);
+        panel.add(go);
+        panel.add(ti);
+        JOptionPane.showOptionDialog(null, panel, "Name Image", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+        if(fn.getText().equals("") || !(go.isSelected()) && !(ti.isSelected())){
+            JOptionPane.showMessageDialog(frame, "Complete required fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
+            imageFilePanel();
+        }
+
+        fileName = fn.getText();
+        if(go.isSelected()){
+            identifier = "gridobject";
+        } else {
+            identifier = "tileimage";
+        }
+    }
 
 
 }
