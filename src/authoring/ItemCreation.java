@@ -1,5 +1,7 @@
 package authoring;
 
+import com.sun.codemodel.internal.JOp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,7 @@ public class ItemCreation extends Feature implements ActionListener{
     private String iName;
     private int xc;
     private int yc;
+    private int result;
 
     public ItemCreation(){
         JButton createItem = new JButton("Create Item");
@@ -62,18 +65,21 @@ public class ItemCreation extends Feature implements ActionListener{
         itemPane.addTab(locationTab,panel2);
         itemPane.addTab(attriTab,panel3);
 
-        JOptionPane.showOptionDialog(null, itemPane, "New Item", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        result = JOptionPane.showOptionDialog(null, itemPane, "New Item", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
-        if(itemName.getText().equals("") || xCoor.getText().equals("") || yCoor.getText().equals("")){
-            JOptionPane.showMessageDialog(frame, "Missing name or coordinates.", "Error Message", JOptionPane.ERROR_MESSAGE);
-            itemCreationPanel();
-        }
+        if(result == JOptionPane.OK_OPTION) {
+            if (itemName.getText().equals("") || xCoor.getText().equals("") || yCoor.getText().equals("")) {
+                JOptionPane.showMessageDialog(frame, "Missing name or coordinates.", "Error Message", JOptionPane.ERROR_MESSAGE);
+                itemCreationPanel();
+            } else{
+                iName = itemName.getText();
+                xc = Integer.parseInt(xCoor.getText());
+                yc = Integer.parseInt(yCoor.getText());
+                makeAndSaveItem();
+            }
+        } else{}
 
-        iName = itemName.getText();
-        xc = Integer.parseInt(xCoor.getText());
-        yc = Integer.parseInt(yCoor.getText());
 
-        makeAndSaveItem();
     }
 
     private void makeAndSaveItem() {
