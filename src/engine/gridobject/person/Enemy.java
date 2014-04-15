@@ -5,7 +5,6 @@ import engine.ProximityChecker;
 
 
 public class Enemy extends NPC {
-	private boolean battleOnTalk=false;
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
 
@@ -13,30 +12,25 @@ public class Enemy extends NPC {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
 
-	public void battleOnTalk(){
-		battleOnTalk=true;
-	}
-
 	public void battleOnSight(){
 		battleOnSight=true;
 	}
 
-	public boolean getBattleOnTalk(){
-		return battleOnTalk;
+	public boolean isBattle(){
+		return battleInitiated;
 	}
 
-	public boolean getBattleOnSight(){
-		return battleOnSight;
-	}
-
-	public boolean battleInitiated(){
+	public void battleInitiatedOnSight(){
 		if(battleOnSight && inSight()){
-			battleInitiated=true;
-			return true;
+			doAction();
 		}
-		
-//		else if(battleOnTalk && talked)
-		return false;
+	}
+
+	@Override 
+	public void doAction(){
+		doDialogue();
+		battleInitiated=true;
+		System.out.println("battle");
 	}
 
 	public boolean inSight(){

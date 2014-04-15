@@ -142,6 +142,10 @@ public abstract class GridObject{
 		return myDialogueList;
 
 	}
+	
+	public void doAction(){
+		doDialogue();
+	}
 
 	public Dialogue doDialogue(){
 		Dialogue d = null;

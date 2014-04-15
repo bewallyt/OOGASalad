@@ -125,7 +125,7 @@ public abstract class RPGEngine{
 					break;
 				}
 				if(go instanceof Enemy){
-					if(((Enemy) go).battleInitiated())
+					if(((Enemy) go).isBattle())
 						System.out.println("battle!");
 				}
 			}
