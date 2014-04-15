@@ -1,5 +1,9 @@
 package Data;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
@@ -8,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -20,9 +25,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ImageManager {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_IMAGE_PACKAGE="ImageFiles/";
-	public static final String DEFAULT_TILE_IMAGE_PACKAGE="TileImages/";
-	public static final String DEFAULT_GRID_IMAGE_PACKAGE="GridImages/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
+	public static final String DEFAULT_IMAGE_EXTENSION="jpg";
 	private String imagePath;
 	
 	public ImageManager() {
@@ -42,11 +46,13 @@ public class ImageManager {
 		String extension=getFileExtension(imageFile);
 		if(checkImageExtension(extension)){
 			Path source=Paths.get(imageFile.getAbsolutePath());
-			String newPath=imagePath+imageType+"/"+fileName+extension;
-			Path newDirectory=Paths.get(newPath);
-			System.out.println(newPath);
-			File newImageFile=new File(newPath);
-			newImageFile.mkdirs();
+			String newParentPath=imagePath+imageType;
+			String fullPath=newParentPath+"/"+fileName+extension;
+			
+			Path newDirectory=Paths.get(fullPath);
+			File newImageFile=new File(fullPath);
+			File parentFolderFile=new File(newParentPath);
+			parentFolderFile.mkdirs();
 			try{
 				Files.copy(source, newDirectory);
 			}
@@ -56,6 +62,25 @@ public class ImageManager {
 			return (newImageFile);
 		}
 		return null;
+	}
+	public File storeScaledImage(String filename, Image image, String imageType) throws IOException{
+		String newParentPath=imagePath+imageType;
+		String fullPath=newParentPath+"/"+filename+"."+DEFAULT_IMAGE_EXTENSION;
+		System.out.println("Full Path :"+ fullPath);
+		
+		File newImageFile=new File(fullPath);
+		File parentFolderFile=new File(newParentPath);
+		parentFolderFile.mkdirs();
+
+		RenderedImage rendered=imageToRenderedImage(image);
+		ImageIO.write(rendered, DEFAULT_IMAGE_EXTENSION, newImageFile);
+		return newImageFile;
+	}
+	public RenderedImage imageToRenderedImage(Image image){
+		BufferedImage bImage= new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		Graphics2D bImageGraphics = bImage.createGraphics();
+		bImageGraphics.drawImage(image, null, null);
+		return (RenderedImage)bImage;
 	}
 	/**
 	 * Returns the file extension of a given file. For instance, "tester.txt" would return ".txt"

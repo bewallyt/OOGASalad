@@ -2,6 +2,7 @@ package authoring;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -16,7 +17,8 @@ public class TileImageEditor extends JFrame {
 
 	private JList list;
 	private JScrollPane scroll;
-	DefaultListModel model;
+	private DefaultListModel model;
+	public static final String DEFAULT_IMAGE_SAVE_EXTENSION=".jpg";
 	ImageManager m=new ImageManager();
 
 	public TileImageEditor(String s) {
@@ -31,20 +33,14 @@ public class TileImageEditor extends JFrame {
 		scroll = new JScrollPane(list);
 		this.getContentPane().add(scroll, BorderLayout.CENTER);
 		
-		for(String image: m.getSavedImageList()){
-			addImage(m.loadImage(image), image);
-		}
+		//for(String image: m.getSavedImageList()){
+		//	addImage(m.loadImage(image), image);
+		//}
 	}
-
-	public void addImage(File fileName, String s){
-		BufferedImage temp;
-		try {
-			temp = ImageIO.read(fileName);
-		} catch (IOException e) {
-			temp = null;
-		}
-		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		ImageIcon x = new ImageIcon(scaledImage, s);
+	
+	
+	public void addImage(Image m, String s){	
+		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);
 	}
 	
