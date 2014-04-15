@@ -32,6 +32,7 @@ import engine.gridobject.person.Enemy;
 
 public class GameFrame extends RPGEngine {
 
+	// temporary, will be removed when data adds this info into WorldData
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
 
@@ -39,13 +40,9 @@ public class GameFrame extends RPGEngine {
 	// private DataManager myData;
 	private FileStorer myData;
 
-	Player myPlayer;
-	NPC myNPC;
-
-	List<GridObject> myGridObjectList = new ArrayList<GridObject>();
+	private Player myPlayer;
 
 	public GameFrame(String fileName) {
-
 		// myData = new FileStorer();
 		myData = new FileStorer();
 		try {
@@ -56,6 +53,12 @@ public class GameFrame extends RPGEngine {
 		// myWorldData = myData.loadWorldDataFromFile(fileName);
 
 		initializeGame();
+	}
+
+	@Override
+	public void initializeGame() {
+		initializeCanvas(400, 400);
+		makeOutsideWorld();
 	}
 
 	// public static void main(String[] args) {
@@ -78,52 +81,49 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	public void makeOutsideWorld() {
-
 		createPlayer();
-		addGridObjectList();
+		List<GridObject> gridObjectList = createGridObjectList();
+
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000,
-				myPlayer, myGridObjectList);
+				myPlayer, gridObjectList);
+
 		setWorld(outsideWorld);
 
-		// addNewWorld(outsideWorld);
 		// addEnemy();
 
-		setGridObjects(outsideWorld);
+		setGridObjects(outsideWorld, gridObjectList);
 		outsideWorld.paintFullBackround("grassSmall.png");
-
-	}
-
-	public void setGridObjects(World world) {
-		for (GridObject g : myGridObjectList) {
-			world.setTileObject(g, g.getX(), g.getY());
-		}
 	}
 
 	public void createPlayer() {
-
+		// hard coded for now, needs to be changed
 		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
 				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
 				"PlayerLeft2.png" };
 		myPlayer = new Player(anim, 2, 1, 1);
+	}
 
+	public void setGridObjects(World world, List<GridObject> list) {
+		for (GridObject g : list) {
+			world.setTileObject(g, g.getX(), g.getY());
+		}
 	}
 
 	public void addEnemy() {
-
 		Enemy bafm = new Enemy(new String[] { "rival.png", "rival.png",
 				"rival.png", "rival.png" }, 1, 1, 1, 3, myPlayer);
 		bafm.battleOnSight();
 		// addGridObject(bafm, 10, 10);
 		bafm.addDialogue("Hey, fight me!");
-
 	}
 
-	public void addGridObjectList() {
+	public List<GridObject> createGridObjectList() {
 
 		TileData currTile;
 		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
+		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
 
 		for (int i = 0; i < myWorldData.getMap("defaultworldkey")
 				.getMapLength(); i++) {
@@ -156,8 +156,7 @@ public class GameFrame extends RPGEngine {
 				}
 			}
 		}
-		// TESTING PURPOSES
-		myGridObjectList.add(new Barrier("pokecenter.png", 4, 4));
+		return myGridObjectList;
 	}
 
 	/*
@@ -197,15 +196,7 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	@Override
-	public void initializeGame() {
-		initializeCanvas(400, 400);
-		makeOutsideWorld();
-
-	}
-
-	@Override
 	public void run() {
 
 	}
-
 }
