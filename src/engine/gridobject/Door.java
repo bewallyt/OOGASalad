@@ -3,25 +3,14 @@ package engine.gridobject;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 
-public class Door{
-	int myX;
-	int myY;
+public class Door extends GridObject{
 	private WalkAroundWorld myBuildingWorld;
-	public Door (int xpos, int ypos){
-		myX = xpos;
-		myY = ypos;
-	}
-	
-	public int getX(){
-		return myX;
-	}
-	
-	public int getY(){
-		return myY;
+	public Door(String image, int numTilesWidth, int numTilesHeight) {
+		super(image, numTilesWidth, numTilesHeight);
 	}
 	
 	public boolean playerAtDoor(Player player){
-		return (Math.abs(player.getX()-myX)<player.getWidth() && Math.abs(player.getY()-myY)<player.getHeight());
+		return (Math.abs(player.getX()-getX())<getWidth() && Math.abs(player.getY()-getY())<getHeight());
 	}
 	
 	public void setBuildingWorld(WalkAroundWorld world){

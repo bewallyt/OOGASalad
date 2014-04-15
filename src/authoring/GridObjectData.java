@@ -5,12 +5,14 @@ import java.io.File;
 public class GridObjectData {
 
 	private String myImageName;
+	private String myID;
 	private Boolean isSteppable;
 	private Boolean isTalkable;
 	private int x;
 	private int y;
 	private int width;
 	private int height;
+	private NPCResponseNode myRoot;
 	
 	public GridObjectData(){
 		x = -1;
@@ -36,11 +38,19 @@ public class GridObjectData {
 	public String getImageName(){
 		return myImageName;
 	}
+	public String getID(){
+		if (!isSteppable) return "Barrier";
+		else if (isTalkable) return "Rule Follower";
+		return null;
+	}
 	public void setX(int xx){
 		x=xx;
 	}
 	public void setY(int yy){
 		y=yy;
+	}
+	public void setDialogue(NPCResponseNode root){
+		myRoot = root;
 	}
 	
 	public void setSteppable(boolean b){
@@ -57,6 +67,9 @@ public class GridObjectData {
 	}
 	public int getY(){
 		return y;
+	}
+	public NPCResponseNode getDialogue(){
+		return myRoot;
 	}
 	
 	public int getWidth(){
