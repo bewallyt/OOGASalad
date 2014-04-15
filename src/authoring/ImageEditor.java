@@ -25,11 +25,10 @@ public class ImageEditor {
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
-		
-		addExistingImages();
+		this.addExistingImages();
 	}
 	
-	private void addExistingImages(){
+	public void addExistingImages(){
 		for(Image image: m.getSavedImageMap().keySet()){
 			addImage(image, m.getSavedImageMap().get(m));
 		}
