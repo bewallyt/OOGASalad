@@ -1,3 +1,4 @@
+
 package GameView;
 
 import java.io.IOException;
@@ -59,7 +60,15 @@ public class GameFrame extends RPGEngine {
 	@Override
 	public void initializeGame() {
 		initializeCanvas(400, 400);
+<<<<<<< HEAD
 		makeOutsideWorld();
+=======
+		// initializeCanvas(myWorldData.getWorldSize()[0],
+		// myWorldData.getWorldSize()[1]);
+		// addNewWalkAroundWorld(40, "", 1000, 1000);
+
+		addObjects(getCurrentWorld());
+>>>>>>> master
 	}
 
 	// public static void main(String[] args) {
@@ -166,6 +175,7 @@ public class GameFrame extends RPGEngine {
 		}
 		return myGridObjectList;
 	}
+<<<<<<< HEAD
 
 	/*
 	 * public void addGridObjects() {
@@ -207,4 +217,6 @@ public class GameFrame extends RPGEngine {
 	public void run() {
 
 	}
+=======
+>>>>>>> master
 }
