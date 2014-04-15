@@ -51,7 +51,8 @@ public class Main extends RPGEngine {
 
 	private void makeOutsideWorld(){
 		List<GridObject> gridObjectList = new ArrayList<GridObject>();
-		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
+		List<Integer> xList = new ArrayList<Integer>();
+		List<Integer> yList = new ArrayList<Integer>();
 		
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
@@ -60,55 +61,35 @@ public class Main extends RPGEngine {
 		Player player = new Player(anim, 2, 1, 1);
 		
 		gridObjectList.add(player);
-//		System.out.println(myWorldData.getMap("defaultworldkey").getTileData(1, 1).getImageName());
+		xList.add(6);
+		yList.add(6);
+
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				gridObjectList.add(new Barrier(myWorldData.getMap("defaultworldkey").getTileData(i, j).getImageName() + ".png", 1, 1));
+				xList.add(i);
+				yList.add(j);
+			}
+		}
+
 		gridObjectList.add(new Barrier(myWorldData.getMap("defaultworldkey").getTileData(1, 1).getImageName()+".png", 1, 1));
 //		gridObjectList.add(new Barrier("pokecenter.png",4, 4));		
 		
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
-		outsideWorld.setTileObject(gridObjectList.get(0), 4, 4);
-		outsideWorld.setTileObject(gridObjectList.get(1), 1, 1);
+		for(int i = 0; i < 25; i++) {
+			System.out.println(gridObjectList.get(i).getImageFile() + " " + i);
+			outsideWorld.setTileObject(gridObjectList.get(i), xList.get(i), yList.get(i));
+		}
+//		outsideWorld.setTileObject(gridObjectList.get(0), 4, 4);
+//		outsideWorld.setTileObject(gridObjectList.get(1), 1, 1);
+		
+
+		
 		
 		
 //		outsideWorld.paintFullBackround("grassSmall.png");
-
-
-
-
-
-		
-//		addPlayer(anim,2,1, 1);
-
-
-//		addGridObject(getPlayer(), 3, 3);
-//		Enemy bafm = new Enemy(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
-//		bafm.battleOnSight();
-//		addGridObject(bafm,10,10);
-//		bafm.addDialogue("Hey fight me");
-//		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
-//		addGridObject(pokeCenter, 4, 3);
-//		
-//		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), i, 0);
-//			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
-//		}
-//		for(int i=0; i<outsideWorld.getTileGridHeight(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), 0, i);
-//			addGridObject(new Barrier("tree.png",1,2), outsideWorld.getTileGridWidth()-1,i );
-//		}
-//		
-//
-//		
-
-
-//		Barrier pokeCenter2 = new Barrier("pokecenter.png",4, 4);
-//		buildingWorld.setTileObject(pokeCenter2, 4, 3);
-		
-//		Door door = new Door("cabinets.jpg", 1, 1);
-//		door.setBuildingWorld(buildingWorld);
-//		addGridObject(door, 6, 6);
-
 
 	}
 
