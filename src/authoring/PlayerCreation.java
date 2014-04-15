@@ -42,7 +42,7 @@ public class PlayerCreation extends Feature implements ActionListener{
         JPanel panel1 = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
-                size.width += 200;
+                size.width += 150;
                 return size;
             }
         };
