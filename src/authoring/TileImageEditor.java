@@ -39,15 +39,9 @@ public class TileImageEditor extends ImageEditor {
 		scroll = new JScrollPane(list);
 		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
 		
-		addExistingImages();
 		myWindow.setVisible(true);
 	}
 	
-	private void addExistingImages(){
-		for(Image image: m.getSavedImageMap().keySet()){
-			addImage(image, m.getSavedImageMap().get(m));
-		}
-	}
 	public void addImage(Image m, String s){	
 		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);

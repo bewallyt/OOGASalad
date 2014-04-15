@@ -26,20 +26,17 @@ public class ImageEditor {
 		list.setVisibleRowCount(-1);
 		scroll = new JScrollPane(list);
 		
-		for(String image: m.getSavedImageList()){
-			addImage(m.loadImage(image), image);
+		addExistingImages();
+	}
+	
+	private void addExistingImages(){
+		for(Image image: m.getSavedImageMap().keySet()){
+			addImage(image, m.getSavedImageMap().get(m));
 		}
 	}
-
-	public void addImage(File fileName, String s){
-		BufferedImage temp;
-		try {
-			temp = ImageIO.read(fileName);
-		} catch (IOException e) {
-			temp = null;
-		}
-		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		ImageIcon x = new ImageIcon(scaledImage, s);
+	
+	public void addImage(Image m, String s){	
+		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);
 	}
 	
