@@ -2,6 +2,9 @@ package engine.world;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import engine.collision.CollisionHandler;
+import engine.collision.CollisionMatrix;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 
@@ -13,6 +16,7 @@ public abstract class World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private Player myPlayer;
+	private CollisionMatrix myCollisionMatrix;
 	
 
 	/**
@@ -22,14 +26,18 @@ public abstract class World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, int playWidth, int playHeight) {
+	public World(int tileSize, int playWidth, int playHeight, Player p, List<GridObject> gridObjects) {
+		myPlayer = p;
 		myTileSize=tileSize;
-		myGridObjectList = new ArrayList<GridObject>();
-
+		myGridObjectList = gridObjects;
 		myNumTileWidth = playWidth/myTileSize;
 		myNumTileHeight = playHeight/myTileSize;
 		makeTileMatrix();
-//		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
+		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
+	}
+	
+	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
+		myCollisionMatrix.setCollisionHandler(handler, x, y);
 	}
 
 	public int getTileSize(){
@@ -56,6 +64,7 @@ public abstract class World {
 			}
 		}
 	}
+	
 	/**
 	 * Make empty matrix of tiles.
 	 * 
@@ -81,9 +90,6 @@ public abstract class World {
 	
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
-		myGridObjectList.add(obj);
-		if(obj instanceof Player)
-			myPlayer = (Player) obj;
 	}
 	
 	public Tile[][] getTileMatrix() {
@@ -96,6 +102,10 @@ public abstract class World {
 		
 	public Player getPlayer(){
 		return myPlayer;
+	}
+
+	public CollisionMatrix getCollisionMatrix() {
+		return myCollisionMatrix;
 	}
 }
 
