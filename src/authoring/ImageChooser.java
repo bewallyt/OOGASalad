@@ -11,7 +11,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ImageChooser extends Feature implements ActionListener{
 	private JButton myChooseImageButton;
-	private JButton myChooseGridImageButton;
 	private String fileName;
     private String determineImage;
     private String identifier;
@@ -22,12 +21,9 @@ public class ImageChooser extends Feature implements ActionListener{
 
 	
 	public ImageChooser(){
-		myChooseImageButton = new JButton("New Tile Image");
+		myChooseImageButton = new JButton("New Image");
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");
-		myChooseGridImageButton = new JButton("New Grid Object Image");
-		myChooseGridImageButton.addActionListener(this);
-		myChooseGridImageButton.setActionCommand("grid");
 		myComponents.put(myChooseImageButton, BorderLayout.SOUTH);
 		myImResizer = new ImageResizer();
 
@@ -35,7 +31,7 @@ public class ImageChooser extends Feature implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if("choose".equals(e.getActionCommand()) || "grid".equals(e.getActionCommand())){
+		if("choose".equals(e.getActionCommand())){
 
 			fileName = JOptionPane.showInputDialog("Name your image:");
             determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
