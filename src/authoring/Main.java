@@ -10,7 +10,8 @@ public class Main {
 		myFeatures.add(new ImageChooser());
         myFeatures.add(new ItemCreation());
 		myFeatures.add(new SaveGameFeature());
-
+		myFeatures.add(new MapCreatorFeature());
+		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
 }

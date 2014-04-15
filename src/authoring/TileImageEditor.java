@@ -10,56 +10,33 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.View;
 
 import Data.ImageManager;
 
-public class TileImageEditor extends JFrame {
-
-	private JList list;
-	private JScrollPane scroll;
-	private DefaultListModel model;
+public class TileImageEditor extends ImageEditor {
+	
+	private JFrame myWindow;
 	public static final String DEFAULT_IMAGE_SAVE_EXTENSION=".jpg";
-	ImageManager m=new ImageManager();
 
-	public TileImageEditor(String s) {
-		super(s);
-		this.setLayout(new BorderLayout());
-		this.setSize(360, 360);
-		model = new DefaultListModel();
-		list = new JList(model);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setVisibleRowCount(-1);
-		scroll = new JScrollPane(list);
-		this.getContentPane().add(scroll, BorderLayout.CENTER);
-		
-		addExistingImages();
+	public TileImageEditor() {
+		super();
+		myWindow = new JFrame("Tile Image Editor");
+		myWindow.setLayout(new BorderLayout());
+		myWindow.setBounds(620, 0, 360, 360);
+		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
+
+		myWindow.setVisible(true);
 	}
 	
-	private void addExistingImages(){
-		for(Image image: m.getSavedImageMap().keySet()){
-			addImage(image, m.getSavedImageMap().get(m));
-		}
-	}
 	public void addImage(Image m, String s){	
 		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);
 	}
 	
-	public ImageIcon selectImage(){
-		if(list.getSelectedIndex()!=-1){
-			return (ImageIcon) model.get(list.getSelectedIndex());
-		}	
-		return null;
+	public void setVisible(boolean input){
+		myWindow.setVisible(input);
 	}
-	
-	public class SelectionListener implements ListSelectionListener {
 
-		@Override
-		public void valueChanged(ListSelectionEvent arg0) {
-			//selectImage();
-		}
-		
-	}
 
 }

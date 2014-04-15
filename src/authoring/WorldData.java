@@ -28,6 +28,10 @@ public class WorldData {
 
     public void saveItem(Item it){ myItems.add(it);}
 	
+	public void addLevel(String s, MapData md){
+		myLevels.put(s, md);
+	}
+	
 	public MapData getMap(String s){
 		return myLevels.get(s);
 	}

@@ -35,6 +35,7 @@ public class ImageResizer {
         FeatureManager.getWorldData().saveImage(fileName, storedImage);
         FeatureManager.imageEditor.addImage(m, fileName);
 	}
+	
 	public Image scaleImage(File fileName, String s){
 		BufferedImage temp;
 		try {
