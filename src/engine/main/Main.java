@@ -3,6 +3,8 @@ package engine.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.dialogue.NPCResponseNode;
+import engine.dialogue.UserQueryNode;
 import engine.collision.EnterCollision;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
@@ -37,12 +39,32 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
+		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
+								,1,1,1, 3, player);
+		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
+		NPCResponseNode n0 = new NPCResponseNode(bafm, "Glad you feel that way!");
+		NPCResponseNode n1 = new NPCResponseNode(bafm, "choice 1");
+		NPCResponseNode n2 = new NPCResponseNode(bafm, "choice 2");
+		NPCResponseNode n3 = new NPCResponseNode(bafm, "choice 3");
+		UserQueryNode q0 = new UserQueryNode(player, null, "I feel good", n0);
+		UserQueryNode q1 = new UserQueryNode(player, null, "I feel bad", n1);
+		UserQueryNode q2 = new UserQueryNode(player, null, "I feel great", n2);
+		UserQueryNode q3 = new UserQueryNode(player, null, "I feel asdfad", n3);
+		n.addResponseNode(q0);
+		n.addResponseNode(q1);
+		n.addResponseNode(q2);
+		n.addResponseNode(q3);
+
+
+		bafm.setResponseNode(n);
+
 		Door door = new Door("cabinets.jpg", 1, 1);
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);
+		gridObjectList.add(bafm);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -61,6 +83,7 @@ public class Main extends RPGEngine {
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
+		outsideWorld.setTileObject(gridObjectList.get(3), 6, 5);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);

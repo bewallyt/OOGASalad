@@ -1,15 +1,13 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
-import java.util.List;
 
 import engine.AbstractState;
-//import engine.AbstractGameState;
-import engine.Control;
 import engine.WalkAroundState;
 import engine.gridobject.Door;
-import engine.gridobject.GridObject;
+import engine.gridobject.item.Item;
 import engine.world.SurroundingChecker;
+//import engine.AbstractGameState;
 
 public class Player extends RuleFollower {
 	private int count = 0;
@@ -64,6 +62,16 @@ public class Player extends RuleFollower {
 
 	public SurroundingChecker getSurroundingChecker() {
 		return mySurroundingChecker;
+	}
+
+	public boolean hasItem(String myItemName) {
+		if (myItemName != null) {
+			for (Item i : super.getItems()) {
+				if (i.getName().equals(myItemName)) return true;
+			}
+		}
+
+		return false;
 	}
 
 }
