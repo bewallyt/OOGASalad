@@ -6,14 +6,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ItemCreation extends Feature implements ActionListener{
+class ItemCreation extends Feature implements ActionListener{
     private JFrame frame;
     private String iName;
     private int xc;
     private int yc;
     private int result;
 
-    public ItemCreation(){
+    private ItemCreation(){
         JButton createItem = new JButton("Create Item");
         createItem.addActionListener(this);
         createItem.setActionCommand("create");
