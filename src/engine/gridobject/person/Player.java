@@ -11,7 +11,7 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.world.SurroundingChecker;
 
-public class Player extends RuleFollower {
+public class Player extends Person {
 	private int count = 0;
 
 	public boolean aClick = false;

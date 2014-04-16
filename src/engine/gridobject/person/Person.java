@@ -7,7 +7,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
 
-public abstract class RuleFollower extends GridObject {
+public abstract class Person extends GridObject {
 
 	private List<Item> myItems;
 	private double mySpeed;
@@ -23,7 +23,7 @@ public abstract class RuleFollower extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	
-	public RuleFollower(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		resetMax();

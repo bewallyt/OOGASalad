@@ -9,9 +9,9 @@ import engine.gridobject.person.Player;
 
 public class SurroundingChecker {
 
-	private World myWorld;
+	private WalkAroundWorld myWorld;
 
-	public SurroundingChecker(World w) {
+	public SurroundingChecker(WalkAroundWorld w) {
 		myWorld = w;
 	}
 

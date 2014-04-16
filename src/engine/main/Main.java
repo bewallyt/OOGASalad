@@ -54,10 +54,10 @@ public class Main extends RPGEngine {
 		
 		
 		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 600, 600, player, gridObjectList2);
+		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
 		door2.setBuildingWorld(outsideWorld);
 		
