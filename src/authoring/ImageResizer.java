@@ -11,18 +11,18 @@ import javax.imageio.ImageIO;
 
 import Data.ImageManager;
 
-public class ImageResizer {
+ class ImageResizer {
 	
 	private File storedImage;
 	private String fileName;
 
     private ImageManager myImageManager;
 	
-	public ImageResizer(){
+	private ImageResizer(){
         myImageManager = new ImageManager();
     }
 
-	protected void storeImage(String name, File file, String id) throws IOException {
+	private void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
 		File imageFile = file;
         String fileId = id;
@@ -36,7 +36,7 @@ public class ImageResizer {
         FeatureManager.imageEditor.addImage(m, fileName);
 	}
 	
-	public Image scaleImage(File fileName, String s){
+	private Image scaleImage(File fileName, String s){
 		BufferedImage temp;
 		try {
 			temp = ImageIO.read(fileName);
