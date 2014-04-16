@@ -31,7 +31,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
+
 		if("choose".equals(e.getActionCommand()) || "grid".equals(e.getActionCommand())){
 
             JPanel panel = new JPanel();
@@ -59,7 +59,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 		}
 		
 	}
-=======
+
 		if("choose".equals(e.getActionCommand())){
 
             imageFilePanel();
@@ -91,7 +91,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 
     }
->>>>>>> master
+
 	
 	private void chooseImage() throws IOException {
 		JFileChooser chooser = new JFileChooser();
