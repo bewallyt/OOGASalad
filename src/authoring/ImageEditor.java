@@ -33,6 +33,8 @@ public class ImageEditor {
 	public void addExistingImages(){
 		Map<Image, String> imageMap = m.getSavedImageMap();
 		for(Image image:imageMap.keySet()){
+			//if(!(FeatureManager.getWorldData().getImages().containsValue(image)))
+				//FeatureManager.getWorldData().saveImage(imageMap.get(image), m.loadImage(imageMap.get(image), ));
 			addImage(image, imageMap.get(image));
 		}
 	}

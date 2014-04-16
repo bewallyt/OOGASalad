@@ -27,7 +27,6 @@ public class SaveGridObjectFeature extends Feature{
 			mySuperFeature.getData().setDialogue(((DialogueFeature)(mySuperFeature.getFeature("DialogueFeature"))).getDialogue());
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
-				System.out.println(((GridObjectImageFeature)(mySuperFeature.getFeature("GridObjectImageFeature"))).getImageName());
 				((GridViewerFeature)FeatureManager.getFeature("authoring.GridViewerFeature")).tileRepaint();
 				//mySuperFeature.getView().close();
 			}

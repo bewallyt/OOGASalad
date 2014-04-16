@@ -33,7 +33,6 @@ public class GridObjectImageEditor extends ImageEditor {
 		public void valueChanged(ListSelectionEvent arg0) {
 			GridObjectImageFeature imageControl = (GridObjectImageFeature) (mySuperFeature.getFeature("GridObjectImageFeature"));
 			ImageIcon image = (ImageIcon) model.get(list.getSelectedIndex());
-			System.out.println(image.getDescription() + " GridObjectEditor");
 			imageControl.setImage(image);
 		}
 		
