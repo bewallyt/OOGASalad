@@ -113,6 +113,7 @@ public abstract class RPGEngine{
 			String classname = myCurrentWorld.getClass().getName();
 			GameLooper cl = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
 			if(cl.doLoop()!=null){
+				System.out.println("change");
 				changeWorld(cl.doLoop(),50,100);
 			}
 			run();

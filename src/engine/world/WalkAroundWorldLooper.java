@@ -27,8 +27,11 @@ public class WalkAroundWorldLooper extends GameLooper {
 				return d.getBuildingWorld();
 			}
 			if(go instanceof Enemy){
-				if(((Enemy) go).isBattle())
-					System.out.println("battle!");
+				if(((Enemy) go).isBattle()){
+					//System.out.println("ble!");
+					return ((Enemy) go).getWorld();
+				}
+				
 			}
 		}
 		return null;

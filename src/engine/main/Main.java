@@ -10,6 +10,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
 public class Main extends RPGEngine {
@@ -41,6 +42,7 @@ public class Main extends RPGEngine {
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
+		enemy.setWorld(new ArenaWorld(1000, 1000, player));
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));

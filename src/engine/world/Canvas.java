@@ -121,8 +121,17 @@ public class Canvas extends JComponent{
 
 
 		
-		paintWalkAroundWorld(g2d);
+		if(myWorld instanceof WalkAroundWorld)paintWalkAroundWorld(g2d);
+		else{
+			paintArenaWorld(g2d);
+		}
 
+	}
+
+	private void paintArenaWorld(Graphics2D g2d) {
+		ArenaWorld world = (ArenaWorld) myWorld;
+		System.out.println("paintarenaworldincanvas");
+		
 	}
 
 	private void paintWalkAroundWorld(Graphics2D g2d) {
