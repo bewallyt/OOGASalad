@@ -4,14 +4,17 @@ public class Statistic implements Listable {
 
 	String myName;
 	int myValue;
+	int myMaxValue;
 
-	public Statistic(String name, int value) {
+	public Statistic(String name, int value, int maxValue) {
 		myName = name;
 		myValue = value;
+		myMaxValue=maxValue;
 	}
 
 	public void changeValue(int amountToChange) {
-		myValue += amountToChange;
+		if(myValue+amountToChange<=myMaxValue)
+			myValue += amountToChange;
 	}
 
 	public int getValue() {
@@ -23,7 +26,11 @@ public class Statistic implements Listable {
 	}
 	
 	public void incrementByOne(){
-		myValue++;
+		if(myValue+1<=myMaxValue)
+			myValue++;
+	}
+	public int getMaxValue(){
+		return myMaxValue;
 	}
 	
 	@Override

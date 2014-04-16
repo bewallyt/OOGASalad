@@ -1,24 +1,22 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
-import java.util.List;
 
 import engine.AbstractState;
-//import engine.AbstractGameState;
-import engine.Control;
 import engine.WalkAroundState;
 import engine.gridobject.Door;
-import engine.gridobject.GridObject;
+import engine.gridobject.item.Item;
 import engine.world.SurroundingChecker;
+//import engine.AbstractGameState;
 
-public class Player extends RuleFollower {
+public class Player extends Person {
 	private int count = 0;
 
 	public boolean aClick = false;
 	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
 	private String[] myAnimImages;
-	private boolean enterDoor;
+	private Door enteredDoor=null;
 	private double originalSpeed;
 	
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
@@ -50,20 +48,29 @@ public class Player extends RuleFollower {
 	public double getOriginalSpeed(){
 		return originalSpeed;
 	}
+
+	public Door isDoorEntered(){
+		Door door = enteredDoor;
+		enteredDoor=null;
+		return door;
+	}
 	
-	public Door enterBuilding(){
-		List<GridObject> surroundings = mySurroundingChecker.checkSurroundings(this);
-		for(GridObject surrounding : surroundings){
-			if(surrounding instanceof Door && ((Door) surrounding).playerAtDoor(this)){
-				return  (Door) surrounding;
-			}
-		}
-		
-		return null;
+	public void enterDoor(Door door){
+		enteredDoor=door;
 	}
 
 	public SurroundingChecker getSurroundingChecker() {
 		return mySurroundingChecker;
+	}
+
+	public boolean hasItem(String myItemName) {
+		if (myItemName != null) {
+			for (Item i : super.getItems()) {
+				if (i.getName().equals(myItemName)) return true;
+			}
+		}
+
+		return false;
 	}
 
 }

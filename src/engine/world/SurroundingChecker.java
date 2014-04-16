@@ -9,9 +9,9 @@ import engine.gridobject.person.Player;
 
 public class SurroundingChecker {
 
-	private World myWorld;
+	private WalkAroundWorld myWorld;
 
-	public SurroundingChecker(World w) {
+	public SurroundingChecker(WalkAroundWorld w) {
 		myWorld = w;
 	}
 
@@ -40,6 +40,7 @@ public class SurroundingChecker {
 			if(ProximityChecker.isTopProximity(player, go)==2 && player.getFacing()==2){
 				goList.add(go);		}
 		}
+		if (goList.isEmpty()) goList.add(null);
 		return goList;
 
 	}

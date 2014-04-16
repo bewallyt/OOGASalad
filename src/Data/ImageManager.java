@@ -42,7 +42,7 @@ public class ImageManager {
 		Map<Image, String> imageMap=new HashMap<Image, String>();
 		for(String s: IMAGE_FOLDER_OPTIONS){
 			for(String image: getSavedImageList(imagePath+s)){
-				System.out.println(image);
+				//System.out.println(image);
 				File file=loadImage(image, s);
 				BufferedImage temp;
 				try {

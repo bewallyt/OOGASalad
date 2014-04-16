@@ -9,12 +9,13 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ImageChooser extends Feature implements ActionListener{
+ public class ImageChooser extends Feature implements ActionListener{
 
 	private String fileName;
 
     private String identifier;
     private JFrame frame;
+    private int result;
 
 	private ImageResizer myImResizer;
 
@@ -50,12 +51,14 @@ public class ImageChooser extends Feature implements ActionListener{
 				//	chooseImage(e);
 				//} catch (IOException e1) {}
 			//}
-            try {
-                chooseImage();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-		}
+            if(result==JOptionPane.OK_OPTION){
+                try {
+                    chooseImage();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+		     }
+        }
 
 
     }
@@ -83,12 +86,14 @@ public class ImageChooser extends Feature implements ActionListener{
         panel.add(fn);
         panel.add(go);
         panel.add(ti);
-        JOptionPane.showOptionDialog(null, panel, "Name Image", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        result = JOptionPane.showOptionDialog(null, panel, "Name Image", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
-        if(fn.getText().equals("") || !(go.isSelected()) && !(ti.isSelected())){
-            JOptionPane.showMessageDialog(frame, "Complete required fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
-            imageFilePanel();
-        }
+        if(result == JOptionPane.OK_OPTION){
+            if(fn.getText().equals("") || !(go.isSelected()) && !(ti.isSelected())){
+                JOptionPane.showMessageDialog(frame, "Complete required fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
+                imageFilePanel();
+            }
+        } else{}
 
         fileName = fn.getText();
         if(go.isSelected()){
