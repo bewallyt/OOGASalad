@@ -16,6 +16,7 @@ public class ImageEditor {
 	protected JList list;
 	protected JScrollPane scroll;
 	protected DefaultListModel model;
+	protected JFrame myWindow;
 	ImageManager m=new ImageManager();
 	
 	public ImageEditor() {

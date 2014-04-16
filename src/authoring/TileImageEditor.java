@@ -16,7 +16,6 @@ import Data.ImageManager;
 
 public class TileImageEditor extends ImageEditor {
 	
-	private JFrame myWindow;
 	public static final String DEFAULT_IMAGE_SAVE_EXTENSION=".jpg";
 
 	public TileImageEditor() {

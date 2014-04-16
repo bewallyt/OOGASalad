@@ -13,49 +13,17 @@ import javax.swing.event.ListSelectionListener;
 
 import Data.ImageManager;
 
-public class UploadedGridObjectImagesFeature extends Feature {
+public class UploadedGridObjectImagesFeature extends ImageEditor {
 
 	private GridObjectCreation mySuperFeature;
-	private JList list;
-	private JScrollPane scroll;
-	DefaultListModel model;
 	
 	public UploadedGridObjectImagesFeature(GridObjectCreation gridObjectCreation){
+		super();
+		myWindow = new JFrame("GridObject Image Editor");
+		myWindow.setLayout(new BorderLayout());
 		mySuperFeature = gridObjectCreation;
-		model = new DefaultListModel();
-		
-		ImageManager m=new ImageManager();
-	
-		/*BufferedImage temp;
-		try {
-			temp = ImageIO.read(new File("C:/Users/Richard Cao/Desktop/Spring2014/Tlaksdjf.png"));
-		} catch (IOException e) {
-			temp = null;
-		}
-		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		Icon x = new ImageIcon(scaledImage, "m.jpg");
-		model.addElement(x);*/
-
-		list = new JList(model);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		//list.addListSelectionListener(new SelectionListener());
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setVisibleRowCount(-1);
 		list.addListSelectionListener(new IconListener());
-		scroll = new JScrollPane(list);
-		myComponents.put(scroll, BorderLayout.NORTH);
-	}
-	
-	public void addImage(File fileName){
-		BufferedImage temp;
-		try {
-			temp = ImageIO.read(fileName);
-		} catch (IOException e) {
-			temp = null;
-		}
-		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-		Icon x = new ImageIcon(scaledImage);
-		model.addElement(x);
+		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
 	}
 	
 	public class IconListener implements ListSelectionListener {
