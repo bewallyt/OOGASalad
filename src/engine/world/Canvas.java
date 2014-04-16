@@ -95,8 +95,8 @@ public class Canvas extends JComponent{
 		myFrame.add(this);
 		myFrame.addKeyListener(new Control(this, world));
 		myWorld = world;
-		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
-		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
+		myWorldHeight = myWorld.getPlayHeight();
+		myWorldWidth = myWorld.getPlayWidth();
 	}
 
 //	public void setState(Control state){
@@ -119,23 +119,36 @@ public class Canvas extends JComponent{
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
-		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
+
 		
-		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
-			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
-				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
-				myWorld.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
-			}
-		}
-		
-		for(int i=0; i<myWorld.getGridObjectList().size(); i++) {
-			if(isInView(myWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
-				myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
-				myWorld.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
-			}
+		if(myWorld instanceof WalkAroundWorld)paintWalkAroundWorld(g2d);
+		else{
+			paintArenaWorld(g2d);
 		}
 
+	}
+
+	private void paintArenaWorld(Graphics2D g2d) {
+		ArenaWorld world = (ArenaWorld) myWorld;
+		System.out.println("paintarenaworldincanvas");
+		
+	}
+
+	private void paintWalkAroundWorld(Graphics2D g2d) {
+		WalkAroundWorld world = (WalkAroundWorld) myWorld;
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				if (myWorld.getPlayer()!=null && tileIsInView(world.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
+				world.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
+			}
+		}
+		
+		for(int i=0; i<world.getGridObjectList().size(); i++) {
+			if(isInView(world.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
+				world.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
+				world.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
+			}
+		}
 	}
 
 	public int[] getCameraOffset(){

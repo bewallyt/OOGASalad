@@ -9,7 +9,7 @@ import engine.dialogue.ConversationManager;
 import engine.dialogue.NPCResponseNode;
 import engine.world.World;
 
-public class NPC extends RuleFollower {
+public class NPC extends Person {
 	protected List<String> myDialogue;
 	private Movement myMovement;
 	private Player myPlayer;

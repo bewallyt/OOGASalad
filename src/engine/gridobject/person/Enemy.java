@@ -1,27 +1,38 @@
 package engine.gridobject.person;
 
 import engine.ProximityChecker;
+import engine.world.ArenaWorld;
 
 
 
 public class Enemy extends NPC {
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
+	private ArenaWorld myWorld;
 
 	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
+	
+	public void setWorld(ArenaWorld world){
+		myWorld = world;
+	}
+	
+	public ArenaWorld getWorld(){
+		return myWorld;
+	}
 
-	public void battleOnSight(){
+	public void doBattleOnSight(){
 		battleOnSight=true;
 	}
 
 	public boolean isBattle(){
+		battleInitiatedOnSight();
 		return battleInitiated;
 	}
 
 	public void battleInitiatedOnSight(){
-		if(battleOnSight && inSight()){
+		if(battleOnSight && inSight()){	
 			doAction();
 		}
 	}
@@ -30,7 +41,6 @@ public class Enemy extends NPC {
 	public void doAction(){
 		doDialogue();
 		battleInitiated=true;
-		System.out.println("battle");
 	}
 
 	public boolean inSight(){

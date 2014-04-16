@@ -9,7 +9,7 @@ import engine.gridobject.item.Item;
 import engine.world.SurroundingChecker;
 //import engine.AbstractGameState;
 
-public class Player extends RuleFollower {
+public class Player extends Person {
 	private int count = 0;
 
 	public boolean aClick = false;

@@ -12,6 +12,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
 public class Main extends RPGEngine {
@@ -60,11 +61,15 @@ public class Main extends RPGEngine {
 
 		Door door = new Door("cabinets.jpg", 1, 1);
 		Door door2 = new Door("cabinets.jpg", 1, 1);
+		Enemy enemy = new Enemy(anim,2,1,1,1, player);
+		enemy.doBattleOnSight();
+		enemy.setWorld(new ArenaWorld(1000, 1000, player));
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);
 		gridObjectList.add(bafm);
+		gridObjectList.add(enemy);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -73,17 +78,18 @@ public class Main extends RPGEngine {
 		
 		
 		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 600, 600, player, gridObjectList2);
+		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
 		door2.setBuildingWorld(outsideWorld);
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
-		outsideWorld.setTileObject(gridObjectList.get(3), 6, 5);
+		outsideWorld.setTileObject(gridObjectList.get(3), 10, 10);
+		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
@@ -136,7 +142,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(400, 400);
+		initializeCanvas(800, 800);
 		makeOutsideWorld();
 
 	}
