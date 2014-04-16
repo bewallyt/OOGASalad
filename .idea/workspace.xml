@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e6dda74-a1e2-4238-8eeb-2b8ac2c3d8e9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/authoring/ItemCreation.java" afterPath="$PROJECT_DIR$/src/authoring/ItemCreation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/authoring/PlayerData.java" afterPath="$PROJECT_DIR$/src/authoring/PlayerData.java" />
     </list>
     <ignored path="oogasalad_Team2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemCreation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ItemCreation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/authoring/ItemCreation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2672414" vertical-offset="750" max-vertical-offset="1410">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1410">
+              <caret line="84" column="40" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerData.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerData.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.67241377" vertical-offset="0" max-vertical-offset="840">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -132,11 +132,11 @@
         <option value="$PROJECT_DIR$/src/authoring/SpringUtilities.java" />
         <option value="$PROJECT_DIR$/src/authoring/ImageChooser.java" />
         <option value="$PROJECT_DIR$/src/authoring/Main.java" />
-        <option value="$PROJECT_DIR$/src/authoring/PlayerData.java" />
         <option value="$PROJECT_DIR$/src/authoring/WorldData.java" />
         <option value="$PROJECT_DIR$/src/authoring/PlayerCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/Item.java" />
         <option value="$PROJECT_DIR$/src/authoring/ItemCreation.java" />
+        <option value="$PROJECT_DIR$/src/authoring/PlayerData.java" />
       </list>
     </option>
   </component>
@@ -694,7 +694,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34829000" />
+    <option name="totallyTimeSpent" value="35494000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1792" y="50" width="1680" height="991" extended-state="6" />
@@ -1058,14 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/WorldData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1185">
@@ -1117,11 +1109,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/ItemCreation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2672414" vertical-offset="750" max-vertical-offset="1410">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1410">
+          <caret line="84" column="40" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67241377" vertical-offset="0" max-vertical-offset="840">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
