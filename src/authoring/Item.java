@@ -3,28 +3,33 @@ package authoring;
 public class Item {
 
     private String itemName;
-    private int xlocation;
-    private int ylocation;
+    private int mySpeed;
+    private int myAttack;
+    private int myDefense;
 
     public Item(String name){
         itemName = name;
     }
 
-    public Item(String name, int xloc, int yloc){
+    public Item(String name, int speed, int attack, int defense){
         itemName = name;
-        xlocation = xloc;
-        ylocation = yloc;
+        mySpeed = speed;
+        myAttack = attack;
+        myDefense = defense;
+
     }
 
     public String getItemName(){
             return itemName;
     }
 
-    public int getXlocation(){
-        return xlocation;
+    public int getMySpeed(){
+        return mySpeed;
     }
 
-    public int getYlocation(){
-        return ylocation;
+    public int getMyAttack(){
+        return myAttack;
     }
+
+    public int getMyDefense() { return myDefense; }
 }

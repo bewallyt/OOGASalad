@@ -1,6 +1,8 @@
 package authoring;
 
 
+import java.util.Map;
+
 public class PlayerData {
 	private Boolean isAnim;
 	private String[] myAnimImages;
@@ -10,8 +12,9 @@ public class PlayerData {
     private int pWidth;
     private int pHeight;
     private int speed;
+    private Map<String,String> myPlayerValues;
 	
-	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y){
+	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y, Map<String, String> startVals){
         isAnim = anim;
         myImage = imName;
         myAnimImages = animImage;
@@ -20,6 +23,7 @@ public class PlayerData {
         pWidth = 36;
         pHeight = 36;
         speed = 10;
+        myPlayerValues = startVals;
 
 	}
 	

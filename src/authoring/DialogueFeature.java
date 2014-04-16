@@ -19,13 +19,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-
 public class DialogueFeature extends Feature{
 	private JScrollPane myTextWindow;
 	private JList myResponsesWrapper;
 	private List<String> myResponses;
 	private NPCResponseNode myRoot;
 	private NPCResponseNode myCurrent;
+	private int myModIndex;
 	private JButton newQueryOption;
 	private JFrame frame;
 	private GridObjectCreation mySuperFeature;
@@ -58,7 +58,7 @@ public class DialogueFeature extends Feature{
 	private class QueryListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			frame = new JFrame("Input Dialogue");
-			frame.add(new DialogueInputPanel(false));
+			frame.add(new DialogueInputPanel(1));
 			frame.pack();
 			frame.setVisible(true);
 		}
@@ -68,7 +68,14 @@ public class DialogueFeature extends Feature{
 			if(myResponsesWrapper.getSelectedValue()!=null){
 				if(myResponsesWrapper.getSelectedIndex()==0){
 					frame = new JFrame("Input Dialogue");
-					frame.add(new DialogueInputPanel(true));
+					frame.add(new DialogueInputPanel(0));
+					frame.pack();
+					frame.setVisible(true);
+					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
+				}
+				else{
+					frame = new JFrame("Input Dialogue");
+					frame.add(new DialogueInputPanel(0));
 					frame.pack();
 					frame.setVisible(true);
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
@@ -83,8 +90,8 @@ public class DialogueFeature extends Feature{
 		private JScrollPane textWrapper;
 		
 		private JButton confirm;
-		private boolean myNodeType;
-		public DialogueInputPanel(boolean nodeType){
+		private int myNodeType;
+		public DialogueInputPanel(int nodeType){
 			myNodeType = nodeType;
 			dialogueLabel = new JLabel("Enter the desired dialogue.");
 			text = new JTextArea(1,40);
@@ -97,7 +104,7 @@ public class DialogueFeature extends Feature{
 		}
 		private class DoneListener implements ActionListener{
 			public void actionPerformed(ActionEvent arg0) {
-				if(myNodeType){
+				if(myNodeType==0){
 				myCurrent.setString(text.getText());
 				}
 				else{
