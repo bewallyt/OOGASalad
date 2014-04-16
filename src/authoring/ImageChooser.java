@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 	private ImageResizer myImResizer;
 
 	
-	private ImageChooser(){
+	public ImageChooser(){
 		JButton myChooseImageButton = new JButton("New Image");
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");

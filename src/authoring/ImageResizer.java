@@ -18,11 +18,11 @@ import Data.ImageManager;
 
     private ImageManager myImageManager;
 	
-	private ImageResizer(){
+	public ImageResizer(){
         myImageManager = new ImageManager();
     }
 
-	private void storeImage(String name, File file, String id) throws IOException {
+	public void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
 		File imageFile = file;
         String fileId = id;

@@ -16,7 +16,7 @@ import java.util.Map;
     private String noAnImage;
     private String[] animationImages;
 
-    private PlayerCreation(){
+    public PlayerCreation(){
         JButton createPlayer = new JButton("New Player");
         createPlayer.addActionListener(this);
         createPlayer.setActionCommand("newplayer");
