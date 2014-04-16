@@ -1,6 +1,5 @@
 package authoring;
 
-import com.sun.codemodel.internal.JOp;
 
 import javax.swing.*;
 import java.awt.*;

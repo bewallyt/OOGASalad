@@ -7,6 +7,9 @@ public class PlayerData {
 	private String myImage;
 	private int myXStart;
 	private int myYStart;
+    private int pWidth;
+    private int pHeight;
+    private int speed;
 	
 	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y){
         isAnim = anim;
@@ -14,16 +17,18 @@ public class PlayerData {
         myAnimImages = animImage;
         myXStart = x;
         myYStart = y;
+        pWidth = 36;
+        pHeight = 36;
+        speed = 10;
+
 	}
 	
 	public Boolean isAnimated(){
 		return isAnim;
 	}
-	
 	public String getMyImage(){
 		return myImage;
 	}
-	
 	public String[] getMyAnimImages(){
 		return myAnimImages;
 	}
@@ -45,4 +50,7 @@ public class PlayerData {
 
     public int getMyXStart(){ return myXStart; }
     public int getMyYStart(){ return myYStart; }
+    public int getpWidth(){ return pWidth; }
+    public int getpHeight(){ return pHeight; }
+    public int getSpeed(){ return speed; }
 }

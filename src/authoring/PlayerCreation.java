@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerCreation extends Feature implements ActionListener{
+ public class PlayerCreation extends Feature implements ActionListener{
 
     private JFrame frame;
     private Boolean isChecked;
