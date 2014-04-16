@@ -132,6 +132,7 @@ public class ImageManager {
 	/**
 	 * Loads the image corresponding to the file name within the default Image resource package. 
 	 * @param s String name of the image file
+	 * @param imageType Type of the image which is to be loaded. Includes gridObject or tileImage
 	 * @return File s with the path of the image
 	 */
 	public File loadImage(String name, String imageType){
@@ -142,7 +143,7 @@ public class ImageManager {
 	 * folder. 
 	 * @return List of names of images
 	 */
-	public List<String> getSavedImageList(String path){
+	private List<String> getSavedImageList(String path){
 		return new FileLister().getFileList(path);
 	}
 	public static void main(String[] args){
