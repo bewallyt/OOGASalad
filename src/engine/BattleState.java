@@ -6,7 +6,7 @@ public class BattleState extends AbstractState {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		this.
+		
 
 	}
 

@@ -26,8 +26,9 @@ public class DialogueFeature extends Feature{
 	private List<String> myResponses;
 	private NPCResponseNode myRoot;
 	private NPCResponseNode myCurrent;
-	private GridObjectCreation mySuperFeature;
+	private JButton newQueryOption;
 	private JFrame frame;
+	private GridObjectCreation mySuperFeature;
 	public DialogueFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
 		myRoot = new NPCResponseNode("Initial NPC Response");
@@ -38,55 +39,72 @@ public class DialogueFeature extends Feature{
 		myResponsesWrapper.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		myTextWindow = new JScrollPane(myResponsesWrapper);
 		myTextWindow.setPreferredSize(new Dimension(200,100));
+		newQueryOption = new JButton("New Query Option");
+		newQueryOption.addActionListener(new QueryListener());
 		myComponents.put(myTextWindow, BorderLayout.CENTER);
+		myComponents.put(newQueryOption, BorderLayout.CENTER);
 	}
 	private void setResponses(){
 		myResponses = new ArrayList<String>();
 		myResponses.add(0,myCurrent.getString());
 		for(UserQueryNode q: myCurrent.getChildren()){
-			myResponses.add(q.getString());
+			myResponses.add("   "+q.getString());
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
 	public NPCResponseNode getDialogue() {
 		return myRoot;
 	}
+	private class QueryListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			frame = new JFrame("Input Dialogue");
+			frame.add(new DialogueInputPanel(false));
+			frame.pack();
+			frame.setVisible(true);
+		}
+	}
 	private class DialogueClickAction implements ListSelectionListener{
 		public void valueChanged(ListSelectionEvent arg0) {
 			if(myResponsesWrapper.getSelectedValue()!=null){
 				if(myResponsesWrapper.getSelectedIndex()==0){
 					frame = new JFrame("Input Dialogue");
-					frame.add(new DialogueInputPanel());
+					frame.add(new DialogueInputPanel(true));
 					frame.pack();
 					frame.setVisible(true);
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
 				}
 			}
 		}
+	}
+	private class DialogueInputPanel extends JPanel{
+		private JLabel dialogueLabel;
 		
-		private class DialogueInputPanel extends JPanel{
-			private JLabel dialogueLabel;
-			
-			private JTextArea text;
-			private JScrollPane textWrapper;
-			
-			private JButton confirm;
-			public DialogueInputPanel(){
-				dialogueLabel = new JLabel("Enter the desired dialogue.");
-				text = new JTextArea(1,40);
-				textWrapper = new JScrollPane(text);
-				confirm = new JButton("Done");
-				confirm.addActionListener(new DoneListener());
-				this.add(dialogueLabel);
-				this.add(textWrapper);
-				this.add(confirm);
-			}
-			private class DoneListener implements ActionListener{
-				public void actionPerformed(ActionEvent arg0) {
-					myCurrent.setString(text.getText());
-					setResponses();
-					frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+		private JTextArea text;
+		private JScrollPane textWrapper;
+		
+		private JButton confirm;
+		private boolean myNodeType;
+		public DialogueInputPanel(boolean nodeType){
+			myNodeType = nodeType;
+			dialogueLabel = new JLabel("Enter the desired dialogue.");
+			text = new JTextArea(1,40);
+			textWrapper = new JScrollPane(text);
+			confirm = new JButton("Done");
+			confirm.addActionListener(new DoneListener());
+			this.add(dialogueLabel);
+			this.add(textWrapper);
+			this.add(confirm);
+		}
+		private class DoneListener implements ActionListener{
+			public void actionPerformed(ActionEvent arg0) {
+				if(myNodeType){
+				myCurrent.setString(text.getText());
 				}
+				else{
+					myCurrent.addChild(new UserQueryNode(text.getText(), myCurrent));
+				}
+				setResponses();
+				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			}
 		}
 	}

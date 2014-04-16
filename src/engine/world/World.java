@@ -36,8 +36,10 @@ public abstract class World {
 		return myPlayWidth;
 	}
 
+
 	public int getPlayHeight() {
 		return myPlayHeight;
+
 	}
 
 	//	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
