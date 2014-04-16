@@ -39,6 +39,7 @@ public class GameFrame extends RPGEngine {
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
 
+	private Boolean musicOn;
 	private WorldData myWorldData;
 	// private DataManager myData;
 	private FileStorer myData;
@@ -186,6 +187,18 @@ public class GameFrame extends RPGEngine {
 	 * 
 	 * } } } }
 	 */
+	
+	public Boolean musicOn() {
+		return musicOn;
+	}
+	
+	public void setMusicOn() {
+		musicOn = true;
+	}
+	
+	public void setMusicOff() {
+		musicOn = false;
+	}
 
 	@Override
 	public void run() {

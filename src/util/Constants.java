@@ -19,5 +19,8 @@ public class Constants {
     // authoring
     
     // data
+    
+    // util
+    public final static int BUFFER_SIZE = 12800000;
 
 }

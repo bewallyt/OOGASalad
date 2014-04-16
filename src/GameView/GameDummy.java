@@ -39,6 +39,7 @@ public class GameDummy extends RPGEngine {
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
 
+	private Boolean musicOn;
 	private WorldData myWorldData;
 	// private DataManager myData;
 	private FileStorer myData;
@@ -63,33 +64,6 @@ public class GameDummy extends RPGEngine {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 		makeOutsideWorld();
 	}
-
-	/*
-	 * Communication between Data and Engine test below: makeOutsideWorld()
-	 * addPlayer() addEnemy()
-	 */
-
-//	public void makeOutsideWorld() {
-//		createPlayer();
-//		List<GridObject> gridObjectList = createGridObjectList();
-//
-//		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000,
-//				myPlayer, gridObjectList);
-//
-//		setWorld(outsideWorld);
-//
-//		// addEnemy();
-//
-//		setGridObjects(outsideWorld, gridObjectList);
-//		outsideWorld.paintFullBackround("grassSmall.png");
-//	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	private void makeOutsideWorld(){
@@ -135,13 +109,6 @@ public class GameDummy extends RPGEngine {
 //		outsideWorld.paintFullBackround("grassSmall.png");
 
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
