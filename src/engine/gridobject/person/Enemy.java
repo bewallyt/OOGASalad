@@ -12,16 +12,17 @@ public class Enemy extends NPC {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
 
-	public void battleOnSight(){
+	public void doBattleOnSight(){
 		battleOnSight=true;
 	}
 
 	public boolean isBattle(){
+		battleInitiatedOnSight();
 		return battleInitiated;
 	}
 
 	public void battleInitiatedOnSight(){
-		if(battleOnSight && inSight()){
+		if(battleOnSight && inSight()){	
 			doAction();
 		}
 	}

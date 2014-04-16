@@ -112,8 +112,6 @@ public abstract class World {
 	
 	public void savePlayerPosition(){
 		mySavedPlayerPosition = new int[] {myPlayer.getX(),myPlayer.getY(),reverseFacing()};
-		System.out.println(myPlayer.getDY());
-		
 	}
 	
 	public int[] getSavedPlayerPosition(){

@@ -96,7 +96,6 @@ public abstract class RPGEngine{
 	}
 
 	private void setSavedPosition() {
-		System.out.println("been");
 		myCurrentWorld.getPlayer().setFacing(myCurrentWorld.getSavedPlayerPosition()[2]);
 		if(myCurrentWorld.getPlayer().getFacing()==2)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
 		if(myCurrentWorld.getPlayer().getFacing()==0)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
@@ -120,7 +119,6 @@ public abstract class RPGEngine{
 				go.move();
 				Door d = myCurrentWorld.getPlayer().isDoorEntered();
 				if(d!=null){
-					System.out.println("new world");
 					changeWorld(d.getBuildingWorld(), 100, 50);
 					break;
 				}

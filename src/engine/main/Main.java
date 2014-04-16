@@ -39,10 +39,13 @@ public class Main extends RPGEngine {
 		Player player = new Player(anim, 2, 1, 1);
 		Door door = new Door("cabinets.jpg", 1, 1);
 		Door door2 = new Door("cabinets.jpg", 1, 1);
+		Enemy enemy = new Enemy(anim,2,1,1,1, player);
+		enemy.doBattleOnSight();
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);
+		gridObjectList.add(enemy);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -61,6 +64,7 @@ public class Main extends RPGEngine {
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
+		outsideWorld.setTileObject(gridObjectList.get(3), 10, 10);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
@@ -113,7 +117,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(400, 400);
+		initializeCanvas(800, 800);
 		makeOutsideWorld();
 
 	}
