@@ -20,7 +20,7 @@ import java.util.Map;
         JButton createPlayer = new JButton("New Player");
         createPlayer.addActionListener(this);
         createPlayer.setActionCommand("newplayer");
-        myComponents.put(createPlayer,BorderLayout.SOUTH);
+        myComponents.put(createPlayer,BorderLayout.EAST);
     }
 
     public void actionPerformed(ActionEvent e) {
