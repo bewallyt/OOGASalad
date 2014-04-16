@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
- class ImageChooser extends Feature implements ActionListener{
+ public class ImageChooser extends Feature implements ActionListener{
 
 	private String fileName;
 

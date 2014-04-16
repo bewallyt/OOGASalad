@@ -1,11 +1,28 @@
 package engine.world;
 
+import java.awt.Image;
+
+import engine.gridobject.person.Enemy;
+import engine.gridobject.person.Player;
+import engine.images.ScaledImage;
+
 public class ArenaWorld extends World {
+	ScaledImage myBackground;
+	Enemy myEnemy;
+	
+	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy) {
+		super(playWidth, playHeight, p);
+		myEnemy = enemy;
+		myBackground = new ScaledImage(playWidth,playHeight,backgroundImage);
 
-	public ArenaWorld(int tileSize, int playWidth, int playHeight) {
-		super(tileSize, playWidth, playHeight);
-//		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
-
+	}
+	
+	public Enemy getEnemy(){
+		return myEnemy;
+	}
+	
+	public ScaledImage getBackground(){
+		return myBackground;
 	}
 
 }

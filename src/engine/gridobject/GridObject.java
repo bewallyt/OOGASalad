@@ -8,12 +8,12 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import engine.Dialogue;
 import engine.Statistic;
-import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 
 public abstract class GridObject{
@@ -27,7 +27,7 @@ public abstract class GridObject{
 	private Image myImage;
 	private String myImageName;
 	private String[] myAnimImages;
-	private Map<String,Statistic> myStatsMap;
+	private Map<String,Statistic> myStatsMap = new HashMap<String,Statistic>();
 	private boolean doesHarm = false;
 	
 	private int myNumTilesWidth;
@@ -45,7 +45,6 @@ public abstract class GridObject{
 	}
 	
 	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
-		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myAnimImages=animImages;
@@ -74,6 +73,10 @@ public abstract class GridObject{
 	public int[] getPosition(){
 		return new int[] {myX,myY};
 	}
+	public Image getImage(){
+		return myImage;
+	}
+	
 	public String getImageFile(){
 		return myImageName;
 	}
@@ -84,6 +87,7 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
+		//System.out.println("paint");
 	}
 	
 
@@ -94,10 +98,15 @@ public abstract class GridObject{
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 			Font font=null;
 			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
+				try {
+					font = Font.createFont(Font.TRUETYPE_FONT, is);
+				} catch (FontFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Font sizedFont = font.deriveFont(16f);
 				g.setFont(sizedFont);
-			} catch (FontFormatException | IOException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -108,11 +117,12 @@ public abstract class GridObject{
 
 
 	public void addStatistic(Statistic stat) {
+		System.out.println(myStatsMap);
 		myStatsMap.put(stat.getName(), stat);
 	}
 
-	public void addStatistic(String name, int value){
-		myStatsMap.put(name,new Statistic(name,value));
+	public void addStatistic(String name, int value,int maxValue){
+		myStatsMap.put(name,new Statistic(name,value,maxValue));
 	}
 
 	public Map<String,Statistic> getStatsMap(){
@@ -136,6 +146,10 @@ public abstract class GridObject{
 	public List<String> getDialogueList(){
 		return myDialogueList;
 
+	}
+	
+	public void doAction(){
+		doDialogue();
 	}
 
 	public Dialogue doDialogue(){

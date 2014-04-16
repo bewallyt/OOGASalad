@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 import Data.ImageManager;
 
- class ImageResizer {
+ public class ImageResizer {
 	
 	private File storedImage;
 	private String fileName;
@@ -23,7 +23,7 @@ import Data.ImageManager;
         myImageManager = new ImageManager();
     }
 
-	private void storeImage(String name, File file, String id) throws IOException {
+	protected void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
 		File imageFile = file;
         fileId = id;

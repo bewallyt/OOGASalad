@@ -1,31 +1,89 @@
 package GameView;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class GameSelect {
+public class GameSelect{
+	private GameFrame myGame;
 	private String gameName;
+	private String[] games;
+	private JComboBox comboBox;
 	
-	public GameSelect () {
-		JFrame frame = new JFrame("Select");
-		frame.setSize(800, 500);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public GameSelect (GameFrame game) {
+		myGame = game;
 		
 		try {
-			String[] games = getGameNames(getListOfGames());
-			gameName = getGameNameFromUser(frame, games);
+			games = getGameNames(getListOfGames());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		JFrame f =  new JFrame("Select");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		f.getContentPane().add(makeCombo(games), BorderLayout.NORTH);
+		f.getContentPane().add(makeButtons(), BorderLayout.SOUTH);
+		
+		f.pack();
+		f.setResizable(false);
+		f.setVisible(true);
+		
 	}
+	
+	public JPanel makeCombo(String[] games) {
+		JPanel p = new JPanel();
+		
+		comboBox = new JComboBox(games);
+		
+		p.add(comboBox);
+		
+		return p;
+	}
+	
+	public JPanel makeButtons() {
+		JPanel p = new JPanel();
+		
+		JButton goButton = new JButton("Go");
+		goButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println(comboBox.getSelectedItem());
+				// TODO Auto-generated method stub
+				myGame.initialize((String) comboBox.getSelectedItem());
+				
+			}
+		});
+		JButton cancelButton = new JButton("Cancel");
+		goButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		p.add(goButton);
+		p.add(cancelButton);
+		
+		return p;
+	}
+	
+	
 	
 	public String getGameName() {
 		return gameName;
@@ -50,11 +108,6 @@ public class GameSelect {
 				games.add(file);
 		}
 		return games;
-	}
-	
-	private static String getGameNameFromUser (JFrame frame, String[] games) {
-		return (String) JOptionPane.showInputDialog(frame, "Select a Game to Play", "Select", JOptionPane.PLAIN_MESSAGE, null, games, "");
-		
 	}
 	
 	
