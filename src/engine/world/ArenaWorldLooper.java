@@ -12,7 +12,7 @@ public class ArenaWorldLooper extends GameLooper {
 
 	@Override
 	public World doLoop() {
-		System.out.println("dolooparenaworld");
+		
 		return null;
 	}
 

@@ -50,7 +50,6 @@ public class Player extends Person {
 	public double getOriginalSpeed(){
 		return originalSpeed;
 	}
-	
 
 	public Door isDoorEntered(){
 		Door door = enteredDoor;

@@ -1,11 +1,14 @@
 package engine.gridobject.person;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
 import engine.gridobject.item.Weapon;
+import engine.images.ScaledImage;
 
 public abstract class Person extends GridObject {
 
@@ -22,6 +25,7 @@ public abstract class Person extends GridObject {
 	private int myFacing=2;
 	private int count = 0;
 	private String currentImageFile;
+	private Image myBattleImage;
 	
 	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
@@ -154,5 +158,14 @@ public abstract class Person extends GridObject {
 	public void setFacing (int facing){
 		myFacing = facing;
 		currentImageFile=getAnimImages()[myFacing];
+	}
+	
+	public void setBattleImage(String file){
+		Image bimg = new ScaledImage(150,150,file).scaleImage();
+		myBattleImage = bimg;
+	}
+	
+	public Image getBattleImage(){
+		return myBattleImage;
 	}
 }

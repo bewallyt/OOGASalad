@@ -3,6 +3,7 @@ package engine.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
@@ -38,11 +39,13 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
+		
 		Door door = new Door("cabinets.jpg", 1, 1);
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
-		enemy.setWorld(new ArenaWorld(1000, 1000, player));
+		enemy.setWorld(new ArenaWorld(1000, 1000, player,enemy));
+	
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
@@ -78,8 +81,10 @@ public class Main extends RPGEngine {
 		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
 				gridObjectList2.get(2)),0,2);
 		
-
-
+		player.setBattleImage("PlayerRight0.png");
+		player.addStatistic(new Statistic("health",100,100));
+		enemy.setBattleImage("rival.png");
+		enemy.addStatistic(new Statistic("health",50,100));
 
 
 		

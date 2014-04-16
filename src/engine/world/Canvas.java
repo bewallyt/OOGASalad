@@ -1,9 +1,11 @@
 
 package engine.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 
@@ -13,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+
+
 
 //import engine.AbstractGameState;
 import engine.Control;
@@ -130,8 +134,17 @@ public class Canvas extends JComponent{
 
 	private void paintArenaWorld(Graphics2D g2d) {
 		ArenaWorld world = (ArenaWorld) myWorld;
-		System.out.println("paintarenaworldincanvas");
-		
+		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/15, (int) (myHeight/2), null);
+		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.4), myHeight/5, null);
+		drawStatusBars(g2d, world);
+	}
+
+	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
+		g2d.setColor(Color.green);
+		g2d.draw(new Rectangle((int) (myWidth/1.5),myHeight/2+60, myWidth/4, 10));
+		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer().getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").getMaxValue())), 10));
+		g2d.draw(new Rectangle((int) (myWidth/15),myHeight/5, myWidth/4, 10));
+		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy().getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health").getMaxValue())), 10));
 	}
 
 	private void paintWalkAroundWorld(Graphics2D g2d) {
