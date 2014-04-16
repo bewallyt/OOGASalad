@@ -1,12 +1,8 @@
 package engine.main;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import authoring.WorldData;
-import Data.FileStorer;
-import GameView.GameSelect;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
@@ -19,77 +15,93 @@ public class Main extends RPGEngine {
 
 //	private Player myPlayer;
 	private NPC myNPC;
-	private FileStorer myData;
-	private WorldData myWorldData;
 
 
 	public static void main(String[] args) {
-		//GameSelect select = new GameSelect();
-//		Main engine = new Main(select.getGameName());
-		Main engine = new Main("hi");
-		
+		Main engine = new Main();
+		engine.initializeGame();
 		try {
 			engine.doGameLoop();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public Main(String fileName) {
-		myData = new FileStorer();
-		
-		try {
-			myWorldData = myData.getWorldData(fileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		initializeGame();
-		
-	}
 
 	private void makeOutsideWorld(){
 		List<GridObject> gridObjectList = new ArrayList<GridObject>();
-		List<Integer> xList = new ArrayList<Integer>();
-		List<Integer> yList = new ArrayList<Integer>();
-		
+		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
+
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
-		
+		Door door = new Door("cabinets.jpg", 1, 1);
+
 		gridObjectList.add(player);
-		xList.add(6);
-		yList.add(6);
+		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
+		gridObjectList.add(door);
 
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 5; j++) {
-				gridObjectList.add(new Barrier(myWorldData.getMap("defaultworldkey").getTileData(i, j).getImageName() + ".png", 1, 1));
-				xList.add(i);
-				yList.add(j);
-			}
-		}
+		gridObjectList2.add(player);
+		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
+		gridObjectList2.add(door);
 
-		gridObjectList.add(new Barrier(myWorldData.getMap("defaultworldkey").getTileData(1, 1).getImageName()+".png", 1, 1));
-//		gridObjectList.add(new Barrier("pokecenter.png",4, 4));		
-		
+
+
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
-		
-		for(int i = 0; i < 25; i++) {
-			System.out.println(gridObjectList.get(i).getImageFile() + " " + i);
-			outsideWorld.setTileObject(gridObjectList.get(i), xList.get(i), yList.get(i));
-		}
-//		outsideWorld.setTileObject(gridObjectList.get(0), 4, 4);
-//		outsideWorld.setTileObject(gridObjectList.get(1), 1, 1);
-		
 
-		
-		
-		
-//		outsideWorld.paintFullBackround("grassSmall.png");
+		WalkAroundWorld buildingWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList2);
+		door.setBuildingWorld(buildingWorld);
+
+
+		outsideWorld.setTileObject(gridObjectList.get(0), 4, 4);
+		outsideWorld.setTileObject(gridObjectList.get(1), 6, 7);
+		outsideWorld.setTileObject(gridObjectList.get(2), 6, 7);
+		outsideWorld.paintFullBackround("grassSmall.png");
+
+
+		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 4);
+		buildingWorld.setTileObject(gridObjectList2.get(1), 8, 7);
+		buildingWorld.setTileObject(gridObjectList2.get(2), 6, 7);
+		buildingWorld.paintFullBackround("pokecenterfloor.png");
+
+
+
+
+
+
+//		addPlayer(anim,2,1, 1);
+
+
+//		addGridObject(getPlayer(), 3, 3);
+//		Enemy bafm = new Enemy(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
+//		bafm.battleOnSight();
+//		addGridObject(bafm,10,10);
+//		bafm.addDialogue("Hey fight me");
+//		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
+//		addGridObject(pokeCenter, 4, 3);
+//		
+//		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
+//			addGridObject(new Barrier("tree.png",1,2), i, 0);
+//			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
+//		}
+//		for(int i=0; i<outsideWorld.getTileGridHeight(); i++){
+//			addGridObject(new Barrier("tree.png",1,2), 0, i);
+//			addGridObject(new Barrier("tree.png",1,2), outsideWorld.getTileGridWidth()-1,i );
+//		}
+//		
+//
+//		
+
+
+//		Barrier pokeCenter2 = new Barrier("pokecenter.png",4, 4);
+//		buildingWorld.setTileObject(pokeCenter2, 4, 3);
+
+//		Door door = new Door("cabinets.jpg", 1, 1);
+//		door.setBuildingWorld(buildingWorld);
+//		addGridObject(door, 6, 6);
+
 
 	}
 
