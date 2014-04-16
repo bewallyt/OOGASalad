@@ -15,9 +15,9 @@ public class WalkAroundWorld extends World {
 	private int myTileSize;
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
-	private Player myPlayer;
 	private CollisionMatrix myCollisionMatrix;
 	
+
 	
 	/**
 	 * Instantiates a new World.
@@ -26,12 +26,85 @@ public class WalkAroundWorld extends World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public WalkAroundWorld(int tileSize, int playWidth, int playHeight, Player p, 
-													List<GridObject> gridObjects) {
-		super(tileSize, playWidth, playHeight, p, gridObjects);
+	public WalkAroundWorld(int playWidth, int playHeight, Player p,int tileSize, List<GridObject> gridObjects) {
+		super(playWidth, playHeight, p);
+		myNumTileWidth = playWidth/tileSize;
+		myNumTileHeight = playHeight/tileSize;
+		myGridObjectList = gridObjects;
+		myTileSize=tileSize;
+		makeTileMatrix();
+		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
 		
 	}
-	
+	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
+		myCollisionMatrix.setCollisionHandler(handler, x, y);
+	}
 
+	public int getTileSize(){
+		return myTileSize;
+	}
+	
+	public int getTileGridHeight() {
+		return myNumTileHeight;
+	}
+	
+	/**
+	 * Returns the width of the canvas, in number of tiles
+	 * 
+	 * @return Returns the width of the canvas, in number of tiles
+	 */
+	public int getTileGridWidth() {
+		return myNumTileWidth;
+	}
+
+	public void paintFullBackround(String fileName){
+		for (int i = 0; i < getTileGridWidth(); i++) {
+			for (int j = 0; j < getTileGridHeight(); j++) {
+				getTileMatrix()[i][j].setBackgroundImage(fileName);
+			}
+		}
+	}
+	
+	/**
+	 * Make empty matrix of tiles.
+	 * 
+	 * @return the tile matrix
+	 */
+	public Tile[][] makeTileMatrix() {
+		System.out.println(myNumTileWidth + " " + myNumTileHeight);
+		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
+		for (int i = 0; i < myNumTileWidth; i++) {
+			for (int j = 0; j < myNumTileHeight; j++) {
+				tileMatrix[i][j] = new Tile(myTileSize,i*myTileSize,j*myTileSize);
+			}
+		}
+		
+		myTileMatrix = tileMatrix;
+		
+		return tileMatrix;
+	}
+
+	public List<GridObject> getGridObjectList(){
+		return myGridObjectList;
+	}
+	
+	public void setTileObject(GridObject obj, int xTile, int yTile) {
+		myTileMatrix[xTile][yTile].setTileObject(obj);
+	}
+	
+	public Tile[][] getTileMatrix() {
+		return myTileMatrix;
+	}
+	
+	public void setViewSize(){
+		
+	}
+
+	public CollisionMatrix getCollisionMatrix() {
+		return myCollisionMatrix;
+	}
+
+
+	
 
 }

@@ -36,7 +36,7 @@ public class WalkAroundState extends AbstractState {
 		if (e.getKeyCode() == Control.A) {
 			GridObject surrounding = myPlayer.getSurroundingChecker().checkSurroundings(myPlayer).get(0);
 			if(surrounding!=null){
-				surrounding.doDialogue();
+				surrounding.doAction();
 			}
 		}	
 	}

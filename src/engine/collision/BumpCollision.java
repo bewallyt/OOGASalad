@@ -3,7 +3,7 @@ package engine.collision;
 import engine.ProximityChecker;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
+import engine.gridobject.person.Person;
 
 public class BumpCollision extends CollisionHandler{
 
@@ -13,18 +13,18 @@ public class BumpCollision extends CollisionHandler{
 
 	@Override
 	public void doCollision() {		
-		if(myObj1 instanceof RuleFollower){
+		if(myObj1 instanceof Person){
 			if(ProximityChecker.isLeftProximity(myObj1, myObj2)==2){
-				((RuleFollower) myObj1).setMaxX((int)myObj2.getBounds().getMinX()-myObj1.getSize()[0]);
+				((Person) myObj1).setMaxX((int)myObj2.getBounds().getMinX()-myObj1.getSize()[0]);
 			}
 			if(ProximityChecker.isRightProximity(myObj1, myObj2)==-2 ){
-				((RuleFollower) myObj1).setMinX((int)myObj2.getBounds().getMaxX()-myObj1.getSize()[0]);
+				((Person) myObj1).setMinX((int)myObj2.getBounds().getMaxX()-myObj1.getSize()[0]);
 			}
 			if(ProximityChecker.isBottomProximity(myObj1, myObj2)==-2){
-				((RuleFollower) myObj1).setMinY((int)myObj2.getBounds().getMaxY());
+				((Person) myObj1).setMinY((int)myObj2.getBounds().getMaxY());
 			}
 			if(ProximityChecker.isTopProximity(myObj1, myObj2)==2){
-				((RuleFollower) myObj1).setMaxY((int)myObj2.getBounds().getMinY());
+				((Person) myObj1).setMaxY((int)myObj2.getBounds().getMinY());
 			}
 		}
 	}
