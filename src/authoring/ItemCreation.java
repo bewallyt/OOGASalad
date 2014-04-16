@@ -17,7 +17,7 @@ public class ItemCreation extends Feature implements ActionListener{
         JButton createItem = new JButton("Create Item");
         createItem.addActionListener(this);
         createItem.setActionCommand("create");
-        myComponents.put(createItem, BorderLayout.EAST);
+        myComponents.put(createItem, BorderLayout.SOUTH);
     }
 
     public void actionPerformed(ActionEvent e) {
