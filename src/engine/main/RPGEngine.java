@@ -23,6 +23,9 @@ public abstract class RPGEngine{
 
 	/** The my current world. */
 	private World myCurrentWorld;
+	
+	/** */
+	private Boolean isInitialized = false;
 
 
 	/**
@@ -89,6 +92,10 @@ public abstract class RPGEngine{
 		setWorld(world);
 	}
 	
+	public void isInitialized() {
+		isInitialized = true;
+	}
+	
 
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
@@ -99,7 +106,7 @@ public abstract class RPGEngine{
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void doGameLoop() throws InterruptedException {
-		while (true) {
+		while (isInitialized) {
 
 			myCanvas.repaint();
 			checkCollisions(((WalkAroundWorld) myCurrentWorld).getCollisionMatrix());
