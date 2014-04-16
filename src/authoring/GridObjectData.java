@@ -28,7 +28,6 @@ public class GridObjectData {
 //		isTalkable = talk;
 //		myImageName = s;
 //	}
-	
 	public Boolean isSteppable(){
 		return isSteppable;
 	}

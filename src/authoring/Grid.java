@@ -16,11 +16,9 @@ public class Grid extends JPanel{
 	private TilePanel selectedCell;
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
-	private String[] popupMenuItems = { "Tile Image Editor", "Set as Player Start Point", "Clear Tile"};
+	private String[] popupMenuItems = { "Tile Image Editor", "Grid Object Editor", "Set as Player Start Point", "Clear Tile"};
 	private Border defaultBorder;
 	private Border selectBorder;
-	//temporarily static until I can figure out a workaround with the other authoring folks
-	protected static TilePanel[][] currentMap;
 	private TilePanel[][] world;
 	private JPanel panel;
 
@@ -42,15 +40,24 @@ public class Grid extends JPanel{
 		//String width = (String) JOptionPane.showInputDialog(grid, "Please input a number");
 		//grid.add(inputArea);
 
-		currentMap = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
+		world = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
 
 		for (int row = 0; row < WORLD_HEIGHT; row++) {
 			for (int col = 0; col < WORLD_WIDTH; col++) {				
-				currentMap[row][col] = new TilePanel(row, col);
+				world[row][col] = new TilePanel(row, col);
 			}
 		}
 	}
-
+	
+	public void tileRepaint(){
+		for(int row = 0; row < world.length; row++)
+			for(int col = 0; col < world.length; col++){
+				TilePanel temp = world[row][col];
+				temp.update();
+				world[row][col] = temp;
+			}
+	}
+	
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -75,7 +82,7 @@ public class Grid extends JPanel{
 			for (int col = startCol; col < WORLD_WIDTH; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
-				TilePanel cell = currentMap[row][col];
+				TilePanel cell = world[row][col];
 				cell.setBorder(defaultBorder);
 				cell.setMinimumSize(new Dimension(36, 36));
 				cell.addMouseListener(new SelectedCellListener());
@@ -88,6 +95,8 @@ public class Grid extends JPanel{
 	public class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			showImageMenu();
+			GridObjectCreation goc = new GridObjectCreation();
+			//goc.setCoordinates();
 		}
 	}
 
@@ -130,7 +139,6 @@ public class Grid extends JPanel{
 			if(i!=null){
 				currentPanel.setTileImage(imageEditor.selectImage());
 				currentPanel.setBorder(defaultBorder);
-				repaint();
 			}	
 		}
 	}

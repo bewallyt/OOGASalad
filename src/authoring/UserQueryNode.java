@@ -1,9 +1,9 @@
 package authoring;
 
 public class UserQueryNode {
-	public String myString;
-	public NPCResponseNode myParent;
-	public NPCResponseNode myChild;
+	private String myString;
+	private NPCResponseNode myParent;
+	private NPCResponseNode myChild;
 	public UserQueryNode(String s, NPCResponseNode p){
 		myString = s;
 		myParent = p;

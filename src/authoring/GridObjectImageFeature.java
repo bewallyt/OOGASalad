@@ -56,6 +56,7 @@ public class GridObjectImageFeature extends Feature {
 	}
 	
 	public void setImage(ImageIcon name){
+		myImageName = name.getDescription();
 		myTilePanel.addGridObjectImage(name);
 		myImage = name;
 		myTilePanel.revalidate();
