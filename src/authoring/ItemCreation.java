@@ -9,8 +9,9 @@ import java.awt.event.ActionListener;
 public class ItemCreation extends Feature implements ActionListener{
     private JFrame frame;
     private String iName;
-    private int xc;
-    private int yc;
+    private int sv;
+    private int av;
+    private int dv;
     private int result;
 
     public ItemCreation(){
@@ -28,11 +29,12 @@ public class ItemCreation extends Feature implements ActionListener{
 
     private void itemCreationPanel() {
         String nameTab = "Item Name";
-        String locationTab = "Item Location";
         String attriTab = "Item Attributes";
         JTextField itemName = new JTextField(15);
-        JTextField xCoor = new JTextField(5);
-        JTextField yCoor = new JTextField(5);
+        JTextField speedval = new JTextField(5);
+        JTextField attackval = new JTextField(5);
+        JTextField defenseval = new JTextField(5);
+
 
         JTabbedPane itemPane = new JTabbedPane();
         JPanel panel1 = new JPanel(){
@@ -42,38 +44,48 @@ public class ItemCreation extends Feature implements ActionListener{
                 return size;
             }
         };
-        panel1.add(itemName);
-//        JPanel panel2 = new JPanel(new SpringLayout());
-//        JLabel x = new JLabel("X",JLabel.TRAILING);
-//        JLabel y = new JLabel("Y",JLabel.TRAILING);
-//        panel2.add(x);
-//        x.setLabelFor(xCoor);
-//        panel2.add(xCoor);
-//        panel2.add(y);
-//        y.setLabelFor(yCoor);
-//        panel2.add(yCoor);
-//
-//        SpringUtilities.makeCompactGrid(panel2,
-//                2, 2,
-//                6, 6,
-//                6, 6);
 
-        JPanel panel3 = new JPanel();
+        panel1.add(itemName);
+
+        JPanel panel2 = new JPanel(new SpringLayout());
+        JLabel speed = new JLabel("Speed Boost:",JLabel.TRAILING);
+        JLabel attack = new JLabel("Attack Boost:",JLabel.TRAILING);
+        JLabel defense = new JLabel("Defense Boost:", JLabel.TRAILING);
+
+        panel2.add(speed);
+        speed.setLabelFor(speedval);
+        panel2.add(speedval);
+
+        panel2.add(attack);
+        attack.setLabelFor(attackval);
+        panel2.add(attackval);
+
+        panel2.add(defense);
+        defense.setLabelFor(defenseval);
+        panel2.add(defenseval);
+
+        SpringUtilities.makeCompactGrid(panel2,
+                3, 2,
+                6, 6,
+                6, 6);
 
         itemPane.addTab(nameTab,panel1);
-        //itemPane.addTab(locationTab,panel2);
-        itemPane.addTab(attriTab,panel3);
+        itemPane.addTab(attriTab,panel2);
+
 
         result = JOptionPane.showOptionDialog(null, itemPane, "New Item", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION) {
-            if (itemName.getText().equals("")) {
-                JOptionPane.showMessageDialog(frame, "Missing name or coordinates.", "Error Message", JOptionPane.ERROR_MESSAGE);
+            if (itemName.getText().equals("") || speedval.getText().equals("") ||
+                    attackval.getText().equals("") ||
+                    defenseval.getText().equals("")) {
+                JOptionPane.showMessageDialog(frame, "Missing name and/or values.", "Error Message", JOptionPane.ERROR_MESSAGE);
                 itemCreationPanel();
             } else{
                 iName = itemName.getText();
-                //xc = Integer.parseInt(xCoor.getText());
-                //yc = Integer.parseInt(yCoor.getText());
+                sv = Integer.parseInt(speedval.getText());
+                av = Integer.parseInt(attackval.getText());
+                dv = Integer.parseInt(defenseval.getText());
                 makeAndSaveItem();
             }
         } else{}
@@ -82,7 +94,7 @@ public class ItemCreation extends Feature implements ActionListener{
     }
 
     private void makeAndSaveItem() {
-        Item madeItem = new Item(iName);
+        Item madeItem = new Item(iName,sv,av,dv);
         FeatureManager.getWorldData().saveItem(madeItem);
     }
 
