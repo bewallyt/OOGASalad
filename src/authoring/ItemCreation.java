@@ -40,7 +40,7 @@ public class ItemCreation extends Feature implements ActionListener{
         JPanel panel1 = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
-                size.width += 200;
+                size.width += 50;
                 return size;
             }
         };
