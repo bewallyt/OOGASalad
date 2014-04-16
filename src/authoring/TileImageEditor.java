@@ -27,15 +27,5 @@ public class TileImageEditor extends ImageEditor {
 
 		myWindow.setVisible(true);
 	}
-	
-	public void addImage(Image m, String s){	
-		ImageIcon x = new ImageIcon(m, s);
-		model.addElement(x);
-	}
-	
-	public void setVisible(boolean input){
-		myWindow.setVisible(input);
-	}
-
 
 }

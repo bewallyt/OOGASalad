@@ -40,10 +40,19 @@ public class ImageEditor {
 		model.addElement(x);
 	}
 	
+	public void imageRefresh(){
+		model.clear();
+		this.addExistingImages();
+	}
+	
 	public ImageIcon selectImage(){
 		if(list.getSelectedIndex()!=-1){
 			return (ImageIcon) model.get(list.getSelectedIndex());
 		}	
 		return null;
+	}
+	
+	public void setVisible(boolean input){
+		myWindow.setVisible(input);
 	}
 }

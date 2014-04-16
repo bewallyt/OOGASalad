@@ -22,7 +22,7 @@ public class Grid extends JPanel{
 		panel=this;
 		mapMaker();		
 		this.setOpaque(false);
-		imageEditor = FeatureManager.imageEditor;
+		imageEditor = FeatureManager.tileEditor;
 		popupMenuMaker();
 		// Creates the grid of TilePanels
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);

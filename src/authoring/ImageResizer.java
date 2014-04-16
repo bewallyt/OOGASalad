@@ -15,6 +15,7 @@ public class ImageResizer {
 	
 	private File storedImage;
 	private String fileName;
+	private String fileId;
 
     private ImageManager myImageManager;
 	
@@ -25,7 +26,7 @@ public class ImageResizer {
 	protected void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
 		File imageFile = file;
-        String fileId = id;
+        fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
 		addToWorldData(m);
@@ -33,7 +34,7 @@ public class ImageResizer {
 
 	private void addToWorldData(Image m) {
         FeatureManager.getWorldData().saveImage(fileName, storedImage);
-        FeatureManager.imageEditor.addImage(m, fileName);
+        FeatureManager.tileEditor.imageRefresh();
 	}
 	
 	public Image scaleImage(File fileName, String s){
