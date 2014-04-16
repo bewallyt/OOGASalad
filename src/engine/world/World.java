@@ -71,7 +71,7 @@ public abstract class World {
 	 * @return the tile matrix
 	 */
 	public Tile[][] makeTileMatrix() {
-		System.out.println(myNumTileWidth + " " + myNumTileHeight);
+//		System.out.println(myNumTileWidth + " " + myNumTileHeight);
 		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
 		for (int i = 0; i < myNumTileWidth; i++) {
 			for (int j = 0; j < myNumTileHeight; j++) {
