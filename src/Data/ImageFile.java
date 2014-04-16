@@ -21,6 +21,9 @@ public class ImageFile {
 	public String getName(){
 		return name;
 	}
+	public void changeName(String s){
+		name=s;
+	}
 	public String getType(){
 		return imageType;
 	}
