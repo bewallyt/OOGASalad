@@ -16,6 +16,7 @@ import Data.ImageManager;
 	
 	private ImageFile storedImage;
 	private String fileName;
+	private String fileId;
 
     private ImageManager myImageManager;
 	
@@ -26,15 +27,17 @@ import Data.ImageManager;
 	public void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
 		File imageFile = file;
-        String fileId = id;
+        fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
 		addToEditor(m);
 	}
 
+
 	private void addToEditor(Image m) {
        // FeatureManager.getWorldData().saveImage(fileName, storedImage);
         FeatureManager.imageEditor.addImage(m, fileName);
+
 	}
 	
 	private Image scaleImage(File fileName, String s){

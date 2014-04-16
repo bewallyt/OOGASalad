@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     <option name="DEFAULT_COMPILER" value="Javac" />
 =======
+<<<<<<< HEAD
+    <option name="DEFAULT_COMPILER" value="Javac" />
+=======
     <option name="DEFAULT_COMPILER" value="Eclipse" />
 >>>>>>> master
+>>>>>>> authoring
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />

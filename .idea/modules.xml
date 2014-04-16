@@ -4,10 +4,14 @@
 <<<<<<< HEAD
     <modules />
 =======
+<<<<<<< HEAD
+    <modules />
+=======
     <modules>
       <module fileurl="file://$PROJECT_DIR$/oogasalad_Team2.iml" filepath="$PROJECT_DIR$/oogasalad_Team2.iml" />
     </modules>
 >>>>>>> master
+>>>>>>> authoring
   </component>
 </project>
 

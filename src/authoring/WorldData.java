@@ -10,6 +10,8 @@ public class WorldData {
     private List<Item> myItems;
     private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
+	protected static final int DEFAULT_MAP_WIDTH = 100;
+	protected static final int DEFAULT_MAP_HEIGHT = 100;
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
