@@ -2,21 +2,23 @@ package authoring;
 
 import java.util.*;
 
+import Data.ImageFile;
+
 public class TileData {
-	private String myImageName;
+	private ImageFile myImage;
 	private List<GridObjectData> myGridObjectDatas;
 	
-	public TileData(String s) {
-		myImageName = s;
+	public TileData(ImageFile image) {
+		myImage = image;
 		myGridObjectDatas = new ArrayList<GridObjectData>();
 	}
 	
 	public void setImageName(String s){
-		myImageName = s;
+		myImage.changeName(s);;
 	}
 
 	public String getImageName(){
-		return myImageName;
+		return myImage.getName();
 	}
 	
 	public List<GridObjectData> getGridObjectDatas() {
