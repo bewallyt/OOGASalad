@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
+<<<<<<< HEAD
     <modules />
+=======
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/oogasalad_Team2.iml" filepath="$PROJECT_DIR$/oogasalad_Team2.iml" />
+    </modules>
+>>>>>>> master
   </component>
 </project>
 
