@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
- class ImageChooser extends Feature implements ActionListener{
+ public class ImageChooser extends Feature implements ActionListener{
 
 	private String fileName;
 
@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 	private ImageResizer myImResizer;
 
 	
-	private ImageChooser(){
+	public ImageChooser(){
 		JButton myChooseImageButton = new JButton("New Image");
 		myChooseImageButton.addActionListener(this);
 		myChooseImageButton.setActionCommand("choose");

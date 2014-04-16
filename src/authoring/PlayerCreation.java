@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
- class PlayerCreation extends Feature implements ActionListener{
+ public class PlayerCreation extends Feature implements ActionListener{
 
     private JFrame frame;
     private Boolean isChecked;
@@ -16,7 +16,7 @@ import java.util.Map;
     private String noAnImage;
     private String[] animationImages;
 
-    private PlayerCreation(){
+    public PlayerCreation(){
         JButton createPlayer = new JButton("New Player");
         createPlayer.addActionListener(this);
         createPlayer.setActionCommand("newplayer");
