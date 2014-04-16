@@ -17,16 +17,17 @@ public class GridObjectImageEditor extends ImageEditor {
 
 	private GridObjectCreation mySuperFeature;
 	
-	public GridObjectImageEditor(GridObjectCreation gridObjectCreation){
+	public GridObjectImageEditor(){
 		super();
 		myWindow = new JFrame("GridObject Image Editor");
 		myWindow.setLayout(new BorderLayout());
 		myWindow.setBounds(0, 300, 360, 360);
-		mySuperFeature = gridObjectCreation;
 		list.addListSelectionListener(new IconListener());
 		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
 	}
-	
+	public void setSuperFeature(GridObjectCreation grid){
+		mySuperFeature=grid;
+	}
 	public class IconListener implements ListSelectionListener {
 
 		@Override

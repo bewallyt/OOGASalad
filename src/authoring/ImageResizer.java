@@ -30,13 +30,13 @@ import Data.ImageManager;
         fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
-		addToEditor(m);
+		addToEditor(storedImage);
 	}
 
 
-	private void addToEditor(Image m) {
-       // FeatureManager.getWorldData().saveImage(fileName, storedImage);
-        FeatureManager.imageEditor.addImage(m, fileName);
+	private void addToEditor(ImageFile imageFile) {
+		if(imageFile.getType())
+        FeatureManager.tileEditor.addImage(m, fileName);
 
 	}
 	

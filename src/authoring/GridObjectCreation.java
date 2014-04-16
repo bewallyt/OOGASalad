@@ -31,7 +31,7 @@ public class GridObjectCreation extends Feature{
 		
 		myGridObjectButton = new JButton("New GridObject");
 		myGridObjectButton.addActionListener(new GridObjectWindowAction());
-		imageEditor = new GridObjectImageEditor(this);
+		imageEditor.setSuperFeature(this);
 		myComponents.put(myGridObjectButton, BorderLayout.SOUTH);
 		//gridObjectView = new AuthoringView(myGridFeatures, false);
 	}
