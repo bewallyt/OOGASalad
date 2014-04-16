@@ -13,7 +13,7 @@ class ItemCreation extends Feature implements ActionListener{
     private int yc;
     private int result;
 
-    private ItemCreation(){
+    public ItemCreation(){
         JButton createItem = new JButton("Create Item");
         createItem.addActionListener(this);
         createItem.setActionCommand("create");

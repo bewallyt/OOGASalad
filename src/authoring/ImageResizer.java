@@ -19,7 +19,7 @@ import Data.ImageManager;
 
     private ImageManager myImageManager;
 	
-	private ImageResizer(){
+	public ImageResizer(){
         myImageManager = new ImageManager();
     }
 
