@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 import Data.ImageManager;
 
-public class ImageResizer {
+ public class ImageResizer {
 	
 	private File storedImage;
 	private String fileName;
@@ -36,7 +36,7 @@ public class ImageResizer {
         FeatureManager.imageEditor.addImage(m, fileName);
 	}
 	
-	public Image scaleImage(File fileName, String s){
+	private Image scaleImage(File fileName, String s){
 		BufferedImage temp;
 		try {
 			temp = ImageIO.read(fileName);
