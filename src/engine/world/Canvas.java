@@ -57,9 +57,9 @@ public class Canvas extends JComponent{
 		myWorldWidth = myWorld.getPlayWidth();
 	}
 
-//	public void setState(Control state){
-//		myFrame.addKeyListener(state);
-//	}
+	//	public void setState(Control state){
+	//		myFrame.addKeyListener(state);
+	//	}
 
 	public int getHeight(){
 		return myHeight;
@@ -78,7 +78,7 @@ public class Canvas extends JComponent{
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
 
-		
+
 		if(myWorld instanceof WalkAroundWorld)paintWalkAroundWorld(g2d);
 		else{
 			paintArenaWorld(g2d);
@@ -92,7 +92,7 @@ public class Canvas extends JComponent{
 		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight/2), null);
 		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.5), myHeight/5, null);
 		drawStatusBars(g2d, world);
-		
+
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
@@ -108,10 +108,10 @@ public class Canvas extends JComponent{
 		for (int i = 0; i < world.getTileGridWidth(); i++) {
 			for (int j = 0; j < world.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(world.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
-				world.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
+					world.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
-		
+
 		for(int i=0; i<world.getGridObjectList().size(); i++) {
 			if(isInView(world.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
 				world.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
@@ -123,7 +123,7 @@ public class Canvas extends JComponent{
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
-//		System.out.println(myWorld.getPlayer().getX());
+		//		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
@@ -136,12 +136,12 @@ public class Canvas extends JComponent{
 			cameraY=offsetMinY;
 		return new int[] {cameraX, cameraY};
 	}
-	
+
 	public boolean isInView(GridObject go, int cameraX, int cameraY){
 		return (go.getBounds().getMaxX()>cameraX && go.getBounds().getMaxY()>cameraY
 				&& go.getBounds().getMinX()<(cameraX+myWidth) && go.getBounds().getMinY()<(cameraY + myHeight));
 	}
-	
+
 	public boolean tileIsInView(Tile go, int cameraX, int cameraY){
 		return (go.getBounds().getMaxX()>cameraX && go.getBounds().getMaxY()>cameraY
 				&& go.getBounds().getMinX()<(cameraX+myWidth) && go.getBounds().getMinY()<(cameraY + myHeight));

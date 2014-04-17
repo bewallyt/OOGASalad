@@ -17,9 +17,9 @@ public abstract class RPGEngine{
 
 	/** The my current world. */
 	private World myCurrentWorld;
-	
 	private GameLooper myGameLooper;
 	
+
 
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
@@ -98,6 +98,10 @@ public abstract class RPGEngine{
 		if(myCurrentWorld.getPlayer().getFacing()==0)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 	}
 	
+	public void isInitialized() {
+		isInitialized = true;
+	}
+	
 
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
@@ -108,7 +112,10 @@ public abstract class RPGEngine{
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void doGameLoop() throws InterruptedException {
+
 		while (true) {
+
+
 			myCanvas.repaint();
 			String classname = myCurrentWorld.getClass().getName();
 			GameLooper cl = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);

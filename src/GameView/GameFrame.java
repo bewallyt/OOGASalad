@@ -30,6 +30,7 @@ import Data.FileStorer;
 
 import javax.swing.JFrame;
 
+import util.Constants;
 import engine.gridobject.person.Enemy;
 
 public class GameFrame extends RPGEngine {
@@ -38,44 +39,35 @@ public class GameFrame extends RPGEngine {
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
 
+	private Boolean musicOn;
 	private WorldData myWorldData;
 	// private DataManager myData;
 	private FileStorer myData;
 
 	private Player myPlayer;
 
-	public GameFrame(String fileName) {
+	public GameFrame() {
 		// myData = new FileStorer();
 		myData = new FileStorer();
+
+	}
+	
+	public void initialize(String fileName) {
 		try {
 			myWorldData = myData.getWorldData(fileName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// myWorldData = myData.loadWorldDataFromFile(fileName);
-
+		
 		initializeGame();
 	}
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(400, 400);
+		isInitialized();
+		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 		makeOutsideWorld();
 	}
-
-	// public static void main(String[] args) {
-	// Main engine = new Main();
-	// engine.initializeGame();
-	// try {
-	// myWorldData = myData.getWorldData(fileName);
-	// } catch (IOException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// // myWorldData = myData.loadWorldDataFromFile(fileName);
-	//
-	// initializeGame();
-	// }
 
 	/*
 	 * Communication between Data and Engine test below: makeOutsideWorld()
@@ -118,14 +110,6 @@ public class GameFrame extends RPGEngine {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
 		}
-	}
-
-	public void addEnemy() {
-		Enemy bafm = new Enemy(new String[] { "rival.png", "rival.png",
-				"rival.png", "rival.png" }, 1, 1, 1, 3, myPlayer);
-		bafm.battleOnSight();
-		// addGridObject(bafm, 10, 10);
-		bafm.addDialogue("Hey, fight me!");
 	}
 
 	public List<GridObject> createGridObjectList() {
@@ -203,6 +187,18 @@ public class GameFrame extends RPGEngine {
 	 * 
 	 * } } } }
 	 */
+	
+	public Boolean musicOn() {
+		return musicOn;
+	}
+	
+	public void setMusicOn() {
+		musicOn = true;
+	}
+	
+	public void setMusicOff() {
+		musicOn = false;
+	}
 
 	@Override
 	public void run() {
