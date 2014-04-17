@@ -5,9 +5,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.battle.Weapon;
 import engine.gridobject.GridObject;
 import engine.gridobject.item.Item;
-import engine.gridobject.item.Weapon;
 import engine.images.ScaledImage;
 
 public abstract class Person extends GridObject {
@@ -20,7 +20,7 @@ public abstract class Person extends GridObject {
 	private int myMinX;
 	private int myMaxY;
 	private int myMinY;
-	protected List<Weapon> myWeapons;
+	private List<Weapon> myWeapons;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
 	private int count = 0;
@@ -107,6 +107,10 @@ public abstract class Person extends GridObject {
 	
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
+	}
+	
+	public List<Weapon> getWeaponList(){
+		return myWeapons;
 	}
 
 	public void addItem(Item it) {

@@ -69,7 +69,7 @@ public abstract class RPGEngine{
 	 * @param world the world to be set as current world
 	 */
 	public void setWorld(World world){
-		
+		System.out.println("world " + world);
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
 		

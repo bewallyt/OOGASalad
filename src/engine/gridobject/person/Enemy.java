@@ -13,11 +13,11 @@ public class Enemy extends NPC {
 	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
-	
+
 	public void setWorld(ArenaWorld world){
 		myWorld = world;
 	}
-	
+
 	public ArenaWorld getWorld(){
 		return myWorld;
 	}
