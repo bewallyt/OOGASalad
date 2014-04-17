@@ -35,7 +35,7 @@ public class Main extends RPGEngine {
 	private void makeOutsideWorld(){
 		List<GridObject> gridObjectList = new ArrayList<GridObject>();
 		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
-		
+
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
@@ -63,12 +63,14 @@ public class Main extends RPGEngine {
 
 
 		Door door = new Door("cabinets.jpg", 1, 1);
+
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
+
 		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy));
+
 		enemy.setResponseNode(n);
-		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);
@@ -101,6 +103,7 @@ public class Main extends RPGEngine {
 		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
 		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
 		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
+
 		buildingWorld.paintFullBackround("pokecenterfloor.png");
 		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
 				gridObjectList2.get(2)),0,2);
@@ -111,7 +114,7 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("health",50,100));
 
 
-		
+
 //		addPlayer(anim,2,1, 1);
 
 
@@ -138,7 +141,7 @@ public class Main extends RPGEngine {
 
 //		Barrier pokeCenter2 = new Barrier("pokecenter.png",4, 4);
 //		buildingWorld.setTileObject(pokeCenter2, 4, 3);
-		
+
 //		Door door = new Door("cabinets.jpg", 1, 1);
 //		door.setBuildingWorld(buildingWorld);
 //		addGridObject(door, 6, 6);
