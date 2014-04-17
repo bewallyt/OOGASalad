@@ -5,14 +5,16 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import Data.ImageFile;
 import Data.ImageManager;
 
-public class ImageEditor {
+public abstract class ImageEditor {
 	
 	protected JList list;
 	protected JScrollPane scroll;
@@ -30,14 +32,7 @@ public class ImageEditor {
 		this.addExistingImages();
 	}
 	
-	public void addExistingImages(){
-		Map<Image, String> imageMap = m.getSavedImageMap();
-		for(Image image:imageMap.keySet()){
-			//if(!(FeatureManager.getWorldData().getImages().containsValue(image)))
-				//FeatureManager.getWorldData().saveImage(imageMap.get(image), m.loadImage(imageMap.get(image), ));
-			addImage(image, imageMap.get(image));
-		}
-	}
+	public abstract void addExistingImages();
 	
 	public void addImage(Image m, String s){	
 		ImageIcon x = new ImageIcon(m, s);

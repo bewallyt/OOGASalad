@@ -35,8 +35,13 @@ import Data.ImageManager;
 
 
 	private void addToEditor(ImageFile imageFile) {
-		if(imageFile.getType())
-        FeatureManager.tileEditor.addImage(m, fileName);
+		if(imageFile.getType().equals(FeatureManager.tileEditor.IMAGE_TYPE)){
+			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
+		}
+		else if(imageFile.getType()==FeatureManager.gridObjectImageEditor.IMAGE_TYPE){
+			FeatureManager.gridObjectImageEditor.addImage(imageFile.getImage(), fileName);
+		}
+        
 
 	}
 	
