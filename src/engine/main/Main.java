@@ -66,7 +66,7 @@ public class Main extends RPGEngine {
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
-		enemy.setWorld(new ArenaWorld(1000, 1000, player,enemy));
+		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy));
 		enemy.setResponseNode(n);
 		
 		gridObjectList.add(player);
