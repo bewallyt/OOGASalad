@@ -1,7 +1,18 @@
 package engine.dialogue;
 
+
+
+/**
+ * This is a class that takes MatrixNodes and organizes them in such a way that
+ * a user can "select" different options. The idea is that this can be used for any sort of
+ * backend system for a display that allows a user to choose from a set of options.
+ * 
+ */
+
 public class InteractionMatrix {
 
+
+	
 	private int selectedNodeX;
 	private int selectedNodeY;
 	
@@ -18,10 +29,17 @@ public class InteractionMatrix {
 		myNodes[x][y] = m;
 	}
 	
+	/**
+	 * Allows access to the currently highlighted/selected option in the menu
+	 * @return currently selected node
+	 */
 	public MatrixNode getCurrentNode() {
 		return myNodes[selectedNodeX][selectedNodeY];
 	}
 	
+	/**
+	 * Allows user to toggle up in the select box, selecting the option above the current option
+	 */
 	public void moveUp() {
 		if (selectedNodeY != 0) {
 			selectedNodeY--;
@@ -29,6 +47,9 @@ public class InteractionMatrix {
 		
 	}
 	
+	/**
+	 * Allows user to toggle down in the select box, selecting the option below the current option
+	 */
 	public void moveDown() {
 		if (selectedNodeY != 1) {
 			selectedNodeY++;
