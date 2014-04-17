@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
-import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.state.WalkAroundState;
 
 public class ConversationManager implements InteractionBox {
 

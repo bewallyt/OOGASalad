@@ -88,11 +88,12 @@ public class Main extends RPGEngine {
 		
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
+		outsideWorld.addRandomEncounter(enemy);
 		
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
 		door2.setBuildingWorld(outsideWorld);
-		tallGrass.setBuildingWorld(new ArenaWorld("battlebackground.png",800,800,player,enemy));
+		tallGrass.setBuildingWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter()));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);

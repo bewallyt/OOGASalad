@@ -2,10 +2,10 @@ package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
 
-import engine.AbstractState;
-import engine.WalkAroundState;
 import engine.gridobject.Door;
 import engine.gridobject.item.Item;
+import engine.state.AbstractState;
+import engine.state.WalkAroundState;
 import engine.world.SurroundingChecker;
 //import engine.AbstractGameState;
 

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Dialogue;
-import engine.DialogueState;
 import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.TransparentDisplayer;
+import engine.state.DialogueState;
 
 public class NPC extends Person {
 	

@@ -1,18 +1,22 @@
 package engine.world;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import engine.battle.Weapon;
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.TextDisplayer;
 import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 
 public class WalkAroundWorld extends World {
 
-	
+
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;
@@ -20,8 +24,8 @@ public class WalkAroundWorld extends World {
 	private List<GridObject> myGridObjectList;
 	private CollisionMatrix myCollisionMatrix;
 	private TextDisplayer myTextDisplayer;
+	List<Enemy> myRandomEncounters = new ArrayList<Enemy>();
 
-	
 	/**
 	 * Instantiates a new World.
 	 *
@@ -38,8 +42,9 @@ public class WalkAroundWorld extends World {
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
 		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
+
 	}
-	
+
 	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
 		myCollisionMatrix.setCollisionHandler(handler, x, y);
 	}
@@ -47,11 +52,11 @@ public class WalkAroundWorld extends World {
 	public int getTileSize(){
 		return myTileSize;
 	}
-	
+
 	public int getTileGridHeight() {
 		return myNumTileHeight;
 	}
-	
+
 	/**
 	 * Returns the width of the canvas, in number of tiles
 	 * 
@@ -68,7 +73,7 @@ public class WalkAroundWorld extends World {
 			}
 		}
 	}
-	
+
 	/**
 	 * Make empty matrix of tiles.
 	 * 
@@ -82,26 +87,26 @@ public class WalkAroundWorld extends World {
 				tileMatrix[i][j] = new Tile(myTileSize,i*myTileSize,j*myTileSize);
 			}
 		}
-		
+
 		myTileMatrix = tileMatrix;
-		
+
 		return tileMatrix;
 	}
 
 	public List<GridObject> getGridObjectList(){
 		return myGridObjectList;
 	}
-	
+
 	public void setTileObject(GridObject obj, int xTile, int yTile) {
 		myTileMatrix[xTile][yTile].setTileObject(obj);
 	}
-	
+
 	public Tile[][] getTileMatrix() {
 		return myTileMatrix;
 	}
-	
+
 	public void setViewSize(){
-		
+
 	}
 
 	public CollisionMatrix getCollisionMatrix() {
@@ -111,7 +116,7 @@ public class WalkAroundWorld extends World {
 	public TextDisplayer getTextDisplayer() {
 		return myTextDisplayer;
 	}
-	
+
 
 	/**
 	 * This method will place an InteractionBox into the TextDisplayer (container for the goods).
@@ -121,6 +126,15 @@ public class WalkAroundWorld extends World {
 	public void setTextDisplayer(InteractionBox b) {
 		myTextDisplayer.setInteractionBox(b);
 	}
-	
+
+	public void addRandomEncounter(Enemy enemy){
+		myRandomEncounters.add(enemy);
+	}
+
+	public Enemy getRandomEncounter(){
+		int rand = new Random().nextInt(myRandomEncounters.size());
+		return myRandomEncounters.get(rand);
+	}
+
 
 }

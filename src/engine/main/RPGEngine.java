@@ -99,11 +99,6 @@ public abstract class RPGEngine{
 		if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 	}
 	
-	public void isInitialized() {
-		isInitialized = true;
-	}
-	
-
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
 	 * Calls run()
