@@ -4,25 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Dialogue;
-import engine.DialogueState;
 import engine.dialogue.ConversationManager;
+import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
-import engine.world.World;
+import engine.dialogue.TransparentDisplayer;
+import engine.state.DialogueState;
 
 public class NPC extends Person {
+	
 	protected List<String> myDialogue;
 	private Movement myMovement;
 	private Player myPlayer;
 	private NPCResponseNode myResponseNode;
-
+	private DialogueDisplayControl myDialogueDisplayControl;
 	
 	/**
 	 * Instantiates a new npc.
 	 *
 	 * @param image the image
 	 * @param speed the speed
-	 * @param numTilesWidth the num tiles width
-	 * @param numTilesHeight the num tiles height
+	 * @param numTilesWidth the width in tiles
+	 * @param numTilesHeight the height in tiles
 
 	 * @param movementType the movement type. 1=move back and forth 2=follow player if it gets close 3=stand still
 	 * @param player the player
@@ -83,12 +85,24 @@ public class NPC extends Person {
 	public Dialogue doDialogue(){
 		Dialogue d = null;		
 		System.out.println("Conversation Mode");
-		myPlayer.setState(new DialogueState(new ConversationManager(myPlayer, this, myResponseNode)));
+		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
+		myPlayer.setState(new DialogueState(conversation));
+		myDialogueDisplayControl.setInteractionBox(conversation);
 		return d;
 	}
-	 
 	
-
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
 
 
 

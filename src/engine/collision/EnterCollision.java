@@ -14,7 +14,6 @@ public class EnterCollision extends CollisionHandler {
 	public void doCollision() {
 		if(myObj1 instanceof Player)
 			((Player) myObj1).enterDoor((Door) myObj2);
-
 	}
 
 }

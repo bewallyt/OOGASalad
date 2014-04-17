@@ -2,7 +2,7 @@ package engine.dialogue;
 
 import engine.gridobject.person.Player;
 
-public class UserQueryNode {
+public class UserQueryNode implements MatrixNode {
 
 		private Player myPlayer;
 		private String myItemName;

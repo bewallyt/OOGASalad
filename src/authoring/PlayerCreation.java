@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import java.util.Map;
     private int yc;
     private String noAnImage;
     private String[] animationImages;
+    private Map<String,String> playerValues;
 
     public PlayerCreation(){
         JButton createPlayer = new JButton("New Player");
@@ -32,17 +34,20 @@ import java.util.Map;
     private void playerSettings() {
         String nameTab = "Player Animation";
         String locationTab = "Player Location";
-        String attriTab = "Player Images";
+        String attriTab = "Player Attributes";
+        String imaTab = "Player Images";
+        String objTab = "Items/Weapons";
         JTextField xCoor = new JTextField(5);
         JTextField yCoor = new JTextField(5);
         JCheckBox isAnimated = new JCheckBox("Is Animated?");
         animationImages = new String[4];
+        playerValues = new HashMap<String, String>();
 
         JTabbedPane itemPane = new JTabbedPane();
         JPanel panel1 = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
-                size.width += 150;
+                size.width += 200;
                 return size;
             }
         };
@@ -62,13 +67,15 @@ import java.util.Map;
                 6, 6,
                 6, 6);
 
-        JPanel panel3 = new JPanel(new SpringLayout());
-        String[] labels = {"Non-animated image name:","Left animation image name:","Top animation image name:",
+        String[] labels = {"Damage:","Defense:","Health:","Level:","Speed:","Non-animated image name:",
+                "Left animation image name:","Top animation image name:",
                 "Right animation image name:","Bottom animation image name:"};
 
-        Map<String,JTextField> textvals = new HashMap<String,JTextField>();
+        Map<String,JTextField> textvals = new HashMap<String, JTextField>();
 
-        for(int i=0; i<labels.length; i++){
+        JPanel panel3 = new JPanel(new SpringLayout());
+
+        for(int i=0; i<5; i++){
             JLabel l = new JLabel(labels[i],JLabel.TRAILING);
             JTextField n = new JTextField(10);
             panel3.add(l);
@@ -82,20 +89,43 @@ import java.util.Map;
                 6, 6,
                 6, 6);
 
+        JPanel panel4 = new JPanel(new SpringLayout());
+
+        for(int i=5; i<labels.length; i++){
+            JLabel l = new JLabel(labels[i],JLabel.TRAILING);
+            JTextField n = new JTextField(10);
+            panel4.add(l);
+            l.setLabelFor(n);
+            panel4.add(n);
+            textvals.put(labels[i],n);
+        }
+
+        SpringUtilities.makeCompactGrid(panel4,
+                5, 2,
+                6, 6,
+                6, 6);
+
+        JPanel panel5 = new JPanel(new FlowLayout());
+        makeListofWeaponsItems();
+        ArrayList<Weapon> weaponList = (ArrayList<Weapon>) FeatureManager.getWorldData().getMyWeapons();
+        ArrayList<Item> itemList = (ArrayList<Item>) FeatureManager.getWorldData().getMyItems();
+
         itemPane.addTab(nameTab,panel1);
         itemPane.addTab(locationTab,panel2);
         itemPane.addTab(attriTab,panel3);
+        itemPane.addTab(imaTab,panel4);
 
         int result = JOptionPane.showOptionDialog(null, itemPane, "New Player", JOptionPane.CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION) {
-            if (xCoor.getText().equals("") || yCoor.getText().equals("") ||
-                    textvals.get(labels[0]).getText().equals("") ||
-                    textvals.get(labels[1]).getText().equals("") ||
-                    textvals.get(labels[2]).getText().equals("") ||
-                    textvals.get(labels[3]).getText().equals("") ||
-                    textvals.get(labels[4]).getText().equals("")) {
+            int count = 0;
+            for(String s: textvals.keySet()){
+                if(textvals.get(s).getText().equals("")){
+                    count++;
+                }
+            }
+            if (xCoor.getText().equals("") || yCoor.getText().equals("") || count>0) {
                 JOptionPane.showMessageDialog(frame, "All fields must be completed.", "Error Message",
                         JOptionPane.ERROR_MESSAGE);
                 playerSettings();
@@ -103,17 +133,23 @@ import java.util.Map;
                 isChecked = isAnimated.isSelected();
                 xc = Integer.parseInt(xCoor.getText());
                 yc = Integer.parseInt(yCoor.getText());
-                noAnImage = textvals.get(labels[0]).getText();
+                noAnImage = textvals.get(labels[5]).getText();
                 for(int j=0; j<animationImages.length; j++){
-                    animationImages[j]=textvals.get(labels[j+1]).getText();
+                    animationImages[j]=textvals.get(labels[j+6]).getText();
+                }
+                for(int j=0; j<5; j++) {
+                    playerValues.put(labels[j],textvals.get(labels[j]).getText());
                 }
                 makeandsavePlayer();
             }
         } else{}
     }
 
-    private void makeandsavePlayer() {
-        PlayerData madePlayer = new PlayerData(isChecked,noAnImage,animationImages,xc,yc);
+     private void makeListofWeaponsItems() {
+     }
+
+     private void makeandsavePlayer() {
+        PlayerData madePlayer = new PlayerData(isChecked,noAnImage,animationImages,xc,yc,playerValues);
         FeatureManager.getWorldData().savePlayer(madePlayer);
     }
 }

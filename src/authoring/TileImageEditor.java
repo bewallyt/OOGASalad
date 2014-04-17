@@ -16,7 +16,6 @@ import Data.ImageManager;
 
 public class TileImageEditor extends ImageEditor {
 	
-	private JFrame myWindow;
 	public static final String DEFAULT_IMAGE_SAVE_EXTENSION=".jpg";
 
 	public TileImageEditor() {
@@ -28,15 +27,5 @@ public class TileImageEditor extends ImageEditor {
 
 		myWindow.setVisible(true);
 	}
-	
-	public void addImage(Image m, String s){	
-		ImageIcon x = new ImageIcon(m, s);
-		model.addElement(x);
-	}
-	
-	public void setVisible(boolean input){
-		myWindow.setVisible(input);
-	}
-
 
 }
