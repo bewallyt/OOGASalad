@@ -1,13 +1,16 @@
 package engine.world;
 
 import engine.GameLooper;
+import engine.battle.BattleManager;
 
 public class ArenaWorldLooper extends GameLooper {
 
 	ArenaWorld myWorld;
+	BattleManager myBattleManager;
 	public ArenaWorldLooper(World currentWorld) {
 		super(currentWorld);
 		myWorld = (ArenaWorld) getWorld();
+		myBattleManager = new BattleManager(myWorld.getPlayer(),myWorld.getEnemy());
 	}
 
 	@Override

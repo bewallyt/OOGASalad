@@ -10,12 +10,9 @@ import engine.world.SurroundingChecker;
 //import engine.AbstractGameState;
 
 public class Player extends Person {
-	private int count = 0;
-
 	public boolean aClick = false;
 	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
-	private String[] myAnimImages;
 	private Door enteredDoor=null;
 	private double originalSpeed;
 	
