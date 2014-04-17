@@ -66,7 +66,7 @@ public class Main extends RPGEngine {
 
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("grassback.jpg",1,1);
-		Enemy enemy = new Enemy(anim,2,1,1,3, player);
+		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
 
 	
@@ -126,12 +126,4 @@ public class Main extends RPGEngine {
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}
-
-	@Override
-	public void run() {
-
-	}
-
-
-
 }

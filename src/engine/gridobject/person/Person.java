@@ -23,6 +23,8 @@ public abstract class Person extends GridObject {
 	private int myStartX;
 	private int myStartY;
 	private List<Weapon> myWeapons;
+	private Weapon myCurrentWeapon;
+	private int myMoney;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
 	private int count = 0;
@@ -35,6 +37,7 @@ public abstract class Person extends GridObject {
 		resetMax();
 		myWeapons = new ArrayList<Weapon>();
 		currentImageFile=getAnimImages()[myFacing];
+		myMoney=0;
 	}
 
 	private boolean isAnim(String[] animImages) {
@@ -113,6 +116,7 @@ public abstract class Person extends GridObject {
 	 * @param weapon the weapon
 	 */
 	public void addWeapon(Weapon weapon){
+		myCurrentWeapon=myWeapons.get(0);
 		myWeapons.add(weapon);
 	}
 
@@ -217,4 +221,18 @@ public abstract class Person extends GridObject {
 	public void incrementX(double myDX) {
 		super.setPosition((int) (getX()+myDX), getY());
 	}
+	public void setCurrentWeapon(Weapon weapon){
+		myCurrentWeapon=weapon;
+	}
+	public Weapon getCurrentWeapon(){
+		return myCurrentWeapon;
+	}
+	
+	public int getMoney(){
+		return myMoney;
+	}
+	public void changeMoney (int amountToChange){
+		myMoney+=amountToChange;
+	}
+	
 }
