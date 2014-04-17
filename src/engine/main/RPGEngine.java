@@ -88,14 +88,15 @@ public abstract class RPGEngine{
 			setSavedPosition();
 		}
 		else{
-			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), myCurrentWorld.getPlayer().getStartY());
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
+					myCurrentWorld.getPlayer().getStartY());
 		}
 	}
 
 	private void setSavedPosition() {
 		myCurrentWorld.getPlayer().setFacing(myCurrentWorld.getSavedPlayerPosition()[2]);
-		if(myCurrentWorld.getPlayer().getFacing()==2)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
-		if(myCurrentWorld.getPlayer().getFacing()==0)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
+		if(myCurrentWorld.getPlayer().getFacing()==2) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
+		if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 	}
 	
 	public void isInitialized() {

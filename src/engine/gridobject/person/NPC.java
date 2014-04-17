@@ -6,15 +6,17 @@ import java.util.List;
 import engine.Dialogue;
 import engine.DialogueState;
 import engine.dialogue.ConversationManager;
+import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
-import engine.world.World;
+import engine.dialogue.TransparentDisplayer;
 
 public class NPC extends Person {
+	
 	protected List<String> myDialogue;
 	private Movement myMovement;
 	private Player myPlayer;
 	private NPCResponseNode myResponseNode;
-
+	private DialogueDisplayControl myDialogueDisplayControl;
 	
 	/**
 	 * Instantiates a new npc.
@@ -83,12 +85,23 @@ public class NPC extends Person {
 	public Dialogue doDialogue(){
 		Dialogue d = null;		
 		System.out.println("Conversation Mode");
-		myPlayer.setState(new DialogueState(new ConversationManager(myPlayer, this, myResponseNode)));
+		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
+		myPlayer.setState(new DialogueState(conversation));
+		myDialogueDisplayControl.setInteractionBox(conversation);
 		return d;
 	}
-	 
 	
-
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
 
 
 

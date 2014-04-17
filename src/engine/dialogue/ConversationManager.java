@@ -1,8 +1,10 @@
 package engine.dialogue;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -40,9 +42,10 @@ public class ConversationManager implements InteractionBox {
 	}
 
 	@Override
-	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
+	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int xOffset, int yOffset) {
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font=null;
+		
 		try {
 			try {
 				font = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -50,24 +53,24 @@ public class ConversationManager implements InteractionBox {
 				e.printStackTrace();
 			}
 			Font sizedFont = font.deriveFont(16f);
-			g.setFont(sizedFont);
+			g2d.setFont(sizedFont);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+		g2d.setColor(Color.white);
+		g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, xSize , ySize/4));
+		g2d.setColor(Color.black);
+
 		if (RESPONDING) {
-			printResponses(g, myResponses);
+			printResponses(g2d, myResponses);
 		} else {
-			g.drawString(textToBeDisplayed, (int) (xSize*.1), (int) (ySize-ySize/4));
+			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
 		}
 	}
 
 	private void printResponses(Graphics2D g, InteractionMatrix myResponses) {
-	//		for (int i = 0; i < myResponses.length; i++) {
-	//			for (int j = 0; j < myResponses[i].length; j++) {
-	//				System.out.println(myResponses[i][j].getString());
-	//			}
-	//		}
+		
 	}
 
 	@Override
@@ -94,9 +97,10 @@ public class ConversationManager implements InteractionBox {
 			newNodes = createAvailableResponses(newNodes);
 		}
 
-		
+		// we exit the conversation here
 		if (!newNodes) {
 			myPlayer.setState(new WalkAroundState(myPlayer));
+			myNPC.getDialogueDisplayControl().setInteractionBox(new TransparentDisplayer());
 			System.out.println("Walk Around World");
 		}
 	}
@@ -106,12 +110,10 @@ public class ConversationManager implements InteractionBox {
 		if (currentResponseNode.getUserQueryNodes() == null) return false;
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
-			//	myResponses[j][i] = currentResponseNode.getUserQueryNodes().get(count);
 				myResponses.setNode(currentResponseNode.getUserQueryNodes().get(count), j, i);
 				count++;
 			}
 		}	
-	//	currentUserQueryNode = myResponses[0][0];
 		currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		RESPONDING = true;
 		return true;

@@ -123,6 +123,8 @@ public abstract class World {
 		}
 	}
 
+
+
 	//
 	//	public CollisionMatrix getCollisionMatrix() {
 	//		return myCollisionMatrix;
