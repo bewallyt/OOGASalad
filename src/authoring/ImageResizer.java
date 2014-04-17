@@ -1,32 +1,50 @@
 package authoring;
 
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class ImageResizer {
+import Data.ImageManager;
+
+ public class ImageResizer {
 	
-	private Image scaledImage;
+	private File storedImage;
 	private String fileName;
-	private File imageFile;
+	private String fileId;
+
+    private ImageManager myImageManager;
 	
-	public ImageResizer(){}
+	public ImageResizer(){
+        myImageManager = new ImageManager();
+    }
 
-	protected void squareImage(String name, File file) throws IOException {
+	protected void storeImage(String name, File file, String id) throws IOException {
 		fileName = name;
-		imageFile = file;
-		
-		//BufferedImage bimg = ImageIO.read(file);
-		//scaledImage = bimg.getScaledInstance(48, 48, Image.SCALE_FAST);
-		
-		addToWorldData();
+		File imageFile = file;
+        fileId = id;
+        Image m=scaleImage(imageFile, fileName);
+        storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
+		addToWorldData(m);
 	}
 
-	private void addToWorldData() {
-		FeatureManager.getWorldData().saveImage(fileName, imageFile);
+	private void addToWorldData(Image m) {
+        FeatureManager.getWorldData().saveImage(fileName, storedImage);
+        FeatureManager.tileEditor.imageRefresh();
 	}
-
+	
+	private Image scaleImage(File fileName, String s){
+		BufferedImage temp;
+		try {
+			temp = ImageIO.read(fileName);
+		} catch (IOException e) {
+			temp = null;
+		}
+		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
+		return scaledImage;
+	}
 }

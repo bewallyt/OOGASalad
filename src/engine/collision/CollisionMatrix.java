@@ -14,17 +14,15 @@ public class CollisionMatrix {
 	}
 
 	private CollisionHandler[][] makeCollisionMatrix() {
-		CollisionHandler[][] collisionMatrix = new CollisionHandler[myGridObjectList.size()][myGridObjectList.size()];
+		System.out.println(myGridObjectList.size());
+		CollisionHandler[][] collisionMatrix = new CollisionHandler[myGridObjectList.size()]
+																   [myGridObjectList.size()];
 		for (int i = 0; i < myGridObjectList.size(); i++) {
 			for (int j = 0; j < myGridObjectList.size(); j++) {
-				if (myGridObjectList.get(i).getDoesHarm() && !(myGridObjectList.get(j).getDoesHarm())) {
-					collisionMatrix[i][j] = new HurtCollision(myGridObjectList.get(i),myGridObjectList.get(j));
-				} else if (myGridObjectList.get(j).getDoesHarm() && !(myGridObjectList.get(i).getDoesHarm()))
-					collisionMatrix[i][j] = new HurtCollision(myGridObjectList.get(i),myGridObjectList.get(j));
-				else if (i == j) {
-					collisionMatrix[i][j] = new NullCollision(null,null);
-				} else {
+				if (i != j) {
 					collisionMatrix[i][j] = new BumpCollision(myGridObjectList.get(i),myGridObjectList.get(j));
+				} else {
+					collisionMatrix[i][j] = new NullCollision(myGridObjectList.get(i),myGridObjectList.get(j));
 				}
 			}
 
@@ -32,7 +30,12 @@ public class CollisionMatrix {
 		return collisionMatrix;
 	}
 
+	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
+		myCollisionMatrix[x][y] = handler;
+	}
+	
 	public CollisionHandler[][] getMatrix() {
 		return myCollisionMatrix;
 	}
+
 }

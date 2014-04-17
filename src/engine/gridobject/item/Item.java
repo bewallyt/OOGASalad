@@ -5,13 +5,15 @@ import engine.Statistic;
 import engine.gridobject.GridObject;
 import engine.world.Tile;
 
-public abstract class Item extends GridObject implements Listable {
+public abstract class Item implements Listable {
 
 	private String myName;
+	private String myImageName;
+
 	
-	public Item(String image, String name, int numTilesWidth, int numTilesHeight) {
-		super(image, numTilesWidth, numTilesHeight);
+	public Item(String image, String name) {
 		myName = name;
+		myImageName = image;
 	}
 
 	public String getName() {
@@ -26,8 +28,6 @@ public abstract class Item extends GridObject implements Listable {
 		
 	}
 	
-	public void changeStatistic(Statistic statistic, int amountToChange){
-		statistic.changeValue(amountToChange);
-	}
+
 	
 }

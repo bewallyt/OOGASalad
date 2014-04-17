@@ -8,12 +8,12 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import engine.Dialogue;
 import engine.Statistic;
-import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 
 public abstract class GridObject{
@@ -27,13 +27,12 @@ public abstract class GridObject{
 	private Image myImage;
 	private String myImageName;
 	private String[] myAnimImages;
-	private Map<String,Statistic> myStatsMap;
-	private boolean doesHarm = false;
-	
+	private Map<String,Statistic> myStatsMap = new HashMap<String,Statistic>();
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
 	private List<String> myDialogueList;
 	private Dialogue myDialogue;
+	private boolean initiateBattle=false;
 
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
@@ -45,7 +44,6 @@ public abstract class GridObject{
 	}
 	
 	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
-		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myAnimImages=animImages;
@@ -66,14 +64,18 @@ public abstract class GridObject{
 		return new int[] {myWidth,myHeight};
 	}
 	public void setPosition(int x, int y){
+		// can move myStartX/y to just NPC class
 		myX=myStartX=x;
 		myY=myStartY=y;
-
 	}
 
 	public int[] getPosition(){
 		return new int[] {myX,myY};
 	}
+	public Image getImage(){
+		return myImage;
+	}
+	
 	public String getImageFile(){
 		return myImageName;
 	}
@@ -84,7 +86,7 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		
+		//System.out.println("paint");
 	}
 	
 
@@ -95,10 +97,15 @@ public abstract class GridObject{
 			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 			Font font=null;
 			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
+				try {
+					font = Font.createFont(Font.TRUETYPE_FONT, is);
+				} catch (FontFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Font sizedFont = font.deriveFont(16f);
 				g.setFont(sizedFont);
-			} catch (FontFormatException | IOException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -109,10 +116,11 @@ public abstract class GridObject{
 
 
 	public void addStatistic(Statistic stat) {
+		System.out.println(myStatsMap);
 		myStatsMap.put(stat.getName(), stat);
 	}
 
-	public void addStatistic(String name, int value, int maxValue){
+	public void addStatistic(String name, int value,int maxValue){
 		myStatsMap.put(name,new Statistic(name,value,maxValue));
 	}
 
@@ -124,13 +132,6 @@ public abstract class GridObject{
 		return new Rectangle(myX, myY, myWidth, myHeight);	
 	}
 
-	public boolean getDoesHarm(){
-		return doesHarm;
-	}
-	public void setDoesHarm(boolean harm){
-		doesHarm=harm;
-	}
-
 	public void addDialogue(String dialogue){
 		myDialogueList.add(dialogue);
 	}
@@ -138,12 +139,16 @@ public abstract class GridObject{
 		return myDialogueList;
 
 	}
+	
+	public void doAction(){
+		doDialogue();
+	}
 
 	public Dialogue doDialogue(){
-		
 		Dialogue d = null;
 		for(String str : myDialogueList){
 			d = new Dialogue("Dialogue.png",str);
+			System.out.println(str);
 		}
 
 		this.myDialogue=d;
@@ -193,6 +198,16 @@ public abstract class GridObject{
 	}
 	public int getNumTilesWidth(){
 		return myNumTilesWidth;
+	}
+	public void initiateBattle(){
+		initiateBattle=true;
+	}
+	public boolean battleInitiated(){
+		if(initiateBattle){
+			initiateBattle=false;
+			return true;
+		}
+		return false;
 	}
 	
 	

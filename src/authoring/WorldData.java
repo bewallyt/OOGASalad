@@ -7,12 +7,17 @@ public class WorldData {
 
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
-	private static final String DEFAULT_MAP = "defaultworldkey";
+    private List<Item> myItems;
+    private PlayerData playData;
+	protected static final String DEFAULT_MAP = "defaultworldkey";
+	protected static final int DEFAULT_MAP_WIDTH = 100;
+	protected static final int DEFAULT_MAP_HEIGHT = 100;
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
 		myLevels.put(DEFAULT_MAP, new MapData());
 		myImages = new HashMap<String, File>();
+        myItems = new ArrayList<Item>();
 		//More general stuff about player, game engine, etc will go here
 	}
 	
@@ -23,6 +28,14 @@ public class WorldData {
 	public void saveImage(String s, File f){
 		myImages.put(s, f);
 	}
+
+    public void saveItem(Item it){ myItems.add(it);}
+
+    public void savePlayer(PlayerData player){ playData = player; }
+	
+	public void addLevel(String s, MapData md){
+		myLevels.put(s, md);
+	}
 	
 	public MapData getMap(String s){
 		return myLevels.get(s);
@@ -31,6 +44,12 @@ public class WorldData {
 	protected Map<String, File> getImages(){
 		return myImages;
 	}
+
+    protected List<Item> getMyItems(){ return myItems;}
+
+    public PlayerData getPlayData(){
+        return playData;
+    }
 	
 	/*private TileData[][] myTileDatas;
 	private int myWorldWidth;

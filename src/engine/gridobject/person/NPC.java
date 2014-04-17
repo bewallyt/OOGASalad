@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Dialogue;
-import engine.world.World;
+import engine.dialogue.ConversationManager;
+import engine.dialogue.DialogueDisplayControl;
+import engine.dialogue.NPCResponseNode;
+import engine.dialogue.TransparentDisplayer;
+import engine.state.DialogueState;
 
-public class NPC extends RuleFollower {
+public class NPC extends Person {
+	
 	protected List<String> myDialogue;
 	private Movement myMovement;
 	private Player myPlayer;
-
+	private NPCResponseNode myResponseNode;
+	private DialogueDisplayControl myDialogueDisplayControl;
 	
 	/**
 	 * Instantiates a new npc.
@@ -27,10 +33,16 @@ public class NPC extends RuleFollower {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
 		myDialogue=new ArrayList<String>();
 		myPlayer=player;
-		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType, this, player  );
+		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType,
+															this, player  );
+		
+		// CHANGE THIS
+		myResponseNode = null;
 	}
 
-	
+	public void setResponseNode(NPCResponseNode n) {
+		myResponseNode = n;
+	}
 	
 	public Player getPlayer(){
 		return myPlayer;
@@ -64,10 +76,32 @@ public class NPC extends RuleFollower {
 	}
 
 	
-	 
-	 
+	@Override
+	public void doAction(){
+		doDialogue();
+	}
 	
-
+	@Override
+	public Dialogue doDialogue(){
+		Dialogue d = null;		
+		System.out.println("Conversation Mode");
+		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
+		myPlayer.setState(new DialogueState(conversation));
+		myDialogueDisplayControl.setInteractionBox(conversation);
+		return d;
+	}
+	
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
 
 
 

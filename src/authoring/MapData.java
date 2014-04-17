@@ -7,7 +7,14 @@ public class MapData {
 	List<List<TileData>> myTiles;
 	
 	public MapData(){
-		myTiles = new ArrayList<List<TileData>>();
+		myTiles = new ArrayList<List<TileData>>(WorldData.DEFAULT_MAP_HEIGHT);
+		for(int i = 0; i < WorldData.DEFAULT_MAP_HEIGHT; i++){
+			List<TileData> temp = new ArrayList<TileData>();
+			for(int j = 0; j < WorldData.DEFAULT_MAP_WIDTH; j++){
+				temp.add(new TileData(null));
+			}
+			myTiles.add(i, temp);
+		}
 	}
 	public TileData getTileData(int row, int col){
 		return myTiles.get(row).get(col);

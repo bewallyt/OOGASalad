@@ -6,14 +6,18 @@ public class Statistic implements Listable {
 	int myValue;
 	int myMaxValue;
 
-	public Statistic(String name, int maxValue, int value) {
+	public Statistic(String name, int value, int maxValue) {
 		myName = name;
 		myValue = value;
-		myMaxValue = maxValue;
+		myMaxValue=maxValue;
 	}
 
 	public void changeValue(int amountToChange) {
-		myValue += amountToChange;
+		if(myValue+amountToChange<=myMaxValue)
+			myValue += amountToChange;
+		else{
+			myValue=myMaxValue;
+		}
 	}
 
 	public int getValue() {
@@ -24,10 +28,17 @@ public class Statistic implements Listable {
 		return myName;
 	}
 	
+	public int getMaxValue(){
+		return myMaxValue;
+	}
+	
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
 
+	}
+	public void setToMax(){
+		myValue=myMaxValue;
 	}
 
 	//	@Override

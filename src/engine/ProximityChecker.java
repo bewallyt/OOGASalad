@@ -1,7 +1,7 @@
 package engine;
 
 import engine.gridobject.GridObject;
-import engine.gridobject.person.RuleFollower;
+import engine.gridobject.person.Person;
 
 public class ProximityChecker {
 
