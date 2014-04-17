@@ -17,7 +17,8 @@ public class ConversationManager implements InteractionBox {
 	private NPCResponseNode currentResponseNode;
 	private UserQueryNode currentUserQueryNode;
 	private String textToBeDisplayed;
-	private UserQueryNode[][] myResponses;
+//	private UserQueryNode[][] myResponses;
+	private InteractionMatrix myResponses;
 	private int widthOfText;
 	private Player myPlayer;
 	private NPC myNPC;
@@ -31,9 +32,10 @@ public class ConversationManager implements InteractionBox {
 		myPlayer = p;
 		myNPC = n;
 		System.out.println(textToBeDisplayed);
-		myResponses = new UserQueryNode[2][2];
-		selectedOptionX = 0;
-		selectedOptionY = 0;
+		//myResponses = new UserQueryNode[2][2];
+		myResponses = new InteractionMatrix();
+//		selectedOptionX = 0;
+//		selectedOptionY = 0;
 		RESPONDING = false;
 	}
 
@@ -45,13 +47,11 @@ public class ConversationManager implements InteractionBox {
 			try {
 				font = Font.createFont(Font.TRUETYPE_FONT, is);
 			} catch (FontFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Font sizedFont = font.deriveFont(16f);
 			g.setFont(sizedFont);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -62,12 +62,12 @@ public class ConversationManager implements InteractionBox {
 		}
 	}
 
-	private void printResponses(Graphics2D g, UserQueryNode[][] myResponses) {
-		for (int i = 0; i < myResponses.length; i++) {
-			for (int j = 0; j < myResponses[i].length; j++) {
-				System.out.println(myResponses[i][j].getString());
-			}
-		}
+	private void printResponses(Graphics2D g, InteractionMatrix myResponses) {
+	//		for (int i = 0; i < myResponses.length; i++) {
+	//			for (int j = 0; j < myResponses[i].length; j++) {
+	//				System.out.println(myResponses[i][j].getString());
+	//			}
+	//		}
 	}
 
 	@Override
@@ -106,11 +106,13 @@ public class ConversationManager implements InteractionBox {
 		if (currentResponseNode.getUserQueryNodes() == null) return false;
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
-				myResponses[j][i] = currentResponseNode.getUserQueryNodes().get(count);
+			//	myResponses[j][i] = currentResponseNode.getUserQueryNodes().get(count);
+				myResponses.setNode(currentResponseNode.getUserQueryNodes().get(count), j, i);
 				count++;
 			}
 		}	
-		currentUserQueryNode = myResponses[0][0];
+	//	currentUserQueryNode = myResponses[0][0];
+		currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		RESPONDING = true;
 		return true;
 	}
@@ -129,31 +131,31 @@ public class ConversationManager implements InteractionBox {
 	}
 	
 	public void moveUp() {
-		if (selectedOptionY != 0) {
-			selectedOptionY--;
-			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		if (RESPONDING) {
+			myResponses.moveUp();
+			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 		
 	}
 	
 	public void moveDown() {
-		if (selectedOptionY != 1 && RESPONDING) {
-			selectedOptionY++;
-			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		if (RESPONDING) {
+			myResponses.moveDown();
+			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 	}
 	
 	public void moveLeft() {
-		if (selectedOptionX != 0 && RESPONDING) {
-			selectedOptionX--;
-			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		if (RESPONDING) {
+			myResponses.moveLeft();
+			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 	}
 	
 	public void moveRight() {
-		if (selectedOptionX != 1 && RESPONDING) {
-			selectedOptionX++;
-			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		if (RESPONDING) {
+			myResponses.moveRight();
+			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 	}
 
