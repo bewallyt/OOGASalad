@@ -1,6 +1,5 @@
 package authoring;
 import java.awt.Dimension;
-import java.awt.Image;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,7 +21,7 @@ public class TilePanel extends JPanel{
 	private int myCol;
 
 	public TilePanel(int row, int col){
-		myData = FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(row, col);
+		myData = new TileData(null);
 		myRow = row;
 		myCol = col;
 		this.setLayout(new BorderLayout());
@@ -53,6 +52,7 @@ public class TilePanel extends JPanel{
 		myTileLabel.setOpaque(true);
 		this.add(myTileLabel);
 		saveImage(myTileImage.getDescription());
+		saveImageFile();
 	}
 	
 	public void addGridObjectImage(ImageIcon imageFile){
@@ -70,18 +70,16 @@ public class TilePanel extends JPanel{
 		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
 		for(GridObjectData g : myGridObjects){
 			if(g.getImageName() != null){
-				BufferedImage temp;
+				ImageIcon i;
 				try {
-					System.out.println(FeatureManager.myWorld.getImage(g.getImageName()));
-					temp = ImageIO.read(FeatureManager.myWorld.getImage(g.getImageName()));
-					Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
-					ImageIcon i = new ImageIcon(scaledImage);
+					i = new ImageIcon(ImageIO.read(FeatureManager.myWorld.getImage(g.getImageName())));
 					this.addGridObjectImage(i);
 				} catch (IOException e) {
 					
 				}
 			}
 		}
+		
 	}
 	public void saveImage(String s){
 		myData.setImageName(s);
