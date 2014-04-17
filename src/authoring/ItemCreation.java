@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.List;
 
 public class ItemCreation extends Feature implements ActionListener, ItemListener{
     private JFrame frame;
@@ -17,12 +17,19 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     private int av;
     private int dv;
     private int result;
+
     private String[] labels = {"Speed Boost:","Damage Boost:","Defense Boost:","Name:","Speed:","Damage:","Name2:",
             "Speed2:","Damage2:","On/Amount:"};
     private String[] playerAtt = {"Nothing","Damage","Defense","Health","Level","Speed"};
+
     private JComboBox attChoices;
+    private JCheckBox isWeapon;
     private JTextField amount;
     private Map<String,JTextField> textvals;
+    private Attacks attack1;
+    private Attacks attack2;
+    private String optionalEffect;
+    private int oeAmount;
 
     public ItemCreation(){
         JButton createItem = new JButton("Create Item");
@@ -73,7 +80,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
         String weaponOPt = "Weapon Effect (Optional)";
 
         JTextField itemName = new JTextField(15);
-        JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
+        isWeapon = new JCheckBox("Is A Weapon?");
         isWeapon.addItemListener(this);
 
 
@@ -136,30 +143,74 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
         itemPane.addTab(weaponTab,panel3);
         itemPane.addTab(weaponOPt,panel4);
 
-        result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+        int count = 0;
 
         if(result == JOptionPane.OK_OPTION) {
-//
-//            if (itemName.getText().equals("") || speedval.getText().equals("") ||
-//                    attackval.getText().equals("") ||
-//                    defenseval.getText().equals("")) {
-//                JOptionPane.showMessageDialog(frame, "Missing name and/or values.", "Error Message", JOptionPane.ERROR_MESSAGE);
-//                itemCreationPanel();
-//            } else{
-//                iName = itemName.getText();
-//                sv = Integer.parseInt(speedval.getText());
-//                av = Integer.parseInt(attackval.getText());
-//                dv = Integer.parseInt(defenseval.getText());
-//                makeAndSaveItem();
-//            }
-        } else{}
+            iName = itemName.getText();
+            if(itemName.getText().equals("")){
+                showError();
+            } else{
+            if(!(isWeapon.isSelected())){
+                for(int i=0; i<3; i++){
+                    if(textvals.get(labels[i]).getText().equals("")){
+                        count++;
+                    }
+            }
+                if(count>0){
+                   showError();
+                } else{
+                    sv = Integer.parseInt(textvals.get(labels[0]).getText());
+                    av = Integer.parseInt(textvals.get(labels[1]).getText());
+                    dv = Integer.parseInt(textvals.get(labels[2]).getText());
+                    makeAndSaveItem();
+                }
+            } else{
+                for(int i=3; i<9; i++){
+                    if(textvals.get(labels[i]).getText().equals("")){
+                        count++;
+                    }
+                }
+                if(count>0){
+                   showError();
+                } else{
+                    attack1 = new Attacks(textvals.get(labels[3]).getText(),
+                            Integer.parseInt(textvals.get(labels[4]).getText()),
+                            Integer.parseInt(textvals.get(labels[5]).getText()));
+                    attack2 = new Attacks(textvals.get(labels[6]).getText(),
+                            Integer.parseInt(textvals.get(labels[7]).getText()),
+                            Integer.parseInt(textvals.get(labels[8]).getText()));
+                    optionalEffect = (String)attChoices.getSelectedItem();
+                    oeAmount = Integer.parseInt(amount.getText());
+                    makeWeapon();
+
+                }
+            }
+            }
+        }
 
 
     }
 
+    private void makeWeapon() {
+        List<Attacks> wepAttacks = new ArrayList<Attacks>();
+        wepAttacks.add(attack1);
+        wepAttacks.add(attack2);
+        Weapon madeWeapon = new Weapon(iName,wepAttacks,optionalEffect,oeAmount);
+    }
+
+
     private void makeAndSaveItem() {
-//        Item madeItem = new Item(iName,sv,av,dv);
-//        FeatureManager.getWorldData().saveItem(madeItem);
+        Item madeItem = new Item(iName,sv,av,dv);
+        FeatureManager.getWorldData().saveItem(madeItem);
+    }
+
+    private void showError(){
+        JOptionPane.showMessageDialog(frame, "Missing name and/or values.", "Error Message",
+                JOptionPane.ERROR_MESSAGE);
+        itemCreationPanel();
     }
 
 

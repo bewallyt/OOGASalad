@@ -1,6 +1,7 @@
 package authoring;
 
 
+import java.util.List;
 import java.util.Map;
 
 public class PlayerData {
@@ -13,6 +14,7 @@ public class PlayerData {
     private int pHeight;
     private int speed;
     private Map<String,String> myPlayerValues;
+    private List<Weapon> myWeapons;
 	
 	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y, Map<String, String> startVals){
         isAnim = anim;
@@ -24,6 +26,7 @@ public class PlayerData {
         pHeight = 36;
         speed = 10;
         myPlayerValues = startVals;
+
 
 	}
 	
