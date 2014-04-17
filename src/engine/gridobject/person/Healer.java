@@ -12,5 +12,4 @@ public class Healer extends NPC {
 		doDialogue();
 		getPlayer().getStatsMap().get("health").setToMax();
 	}
-
 }

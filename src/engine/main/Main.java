@@ -69,7 +69,7 @@ public class Main extends RPGEngine {
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
 
-		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy));
+	
 
 		enemy.setResponseNode(n);
 		gridObjectList.add(player);
@@ -89,11 +89,12 @@ public class Main extends RPGEngine {
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		outsideWorld.addRandomEncounter(enemy);
+		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy,outsideWorld));
 		
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
-		door.setBuildingWorld(buildingWorld);
-		door2.setBuildingWorld(outsideWorld);
-		tallGrass.setBuildingWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter()));
+		door.setWorld(buildingWorld);
+		door2.setWorld(outsideWorld);
+		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);

@@ -34,13 +34,14 @@ public class WalkAroundWorldLooper extends GameLooper {
 			go.move();
 			Door d = myWorld.getPlayer().isDoorEntered();
 			if(d!=null){
-				return d.getBuildingWorld();
+				return d.getWorld();
 			}
 			if(go instanceof Enemy){
 				if(((Enemy) go).isBattle()){
 					return ((Enemy) go).getWorld();
 				}	
 			}
+			
 
 		}
 		return null;
