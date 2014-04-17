@@ -96,6 +96,8 @@ public class Canvas extends JComponent{
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
+		g2d.setColor(Color.yellow);
+		g2d.fill(new Rectangle((int) (myWidth/1.5-10),myHeight/2+40, myWidth/3, 40));
 		g2d.setColor(Color.green);
 		g2d.draw(new Rectangle((int) (myWidth/1.5),myHeight/2+60, myWidth/4, 10));
 		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer().getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").getMaxValue())), 10));
