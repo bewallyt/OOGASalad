@@ -1,22 +1,17 @@
 
 package engine.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
 
 //import engine.AbstractGameState;
 import engine.Control;
-import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 
@@ -58,13 +53,13 @@ public class Canvas extends JComponent{
 		myFrame.add(this);
 		myFrame.addKeyListener(new Control(this, world));
 		myWorld = world;
-		myWorldHeight = myWorld.getTileGridHeight() * myWorld.getTileSize();
-		myWorldWidth = myWorld.getTileGridWidth() * myWorld.getTileSize();
+		myWorldHeight = myWorld.getPlayHeight();
+		myWorldWidth = myWorld.getPlayWidth();
 	}
 
-//	public void setState(Control state){
-//		myFrame.addKeyListener(state);
-//	}
+	//	public void setState(Control state){
+	//		myFrame.addKeyListener(state);
+	//	}
 
 	public int getHeight(){
 		return myHeight;
@@ -82,29 +77,53 @@ public class Canvas extends JComponent{
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		int height = myWorld.getTileGridHeight() * myWorld.getTileSize();
-		int width = myWorld.getTileGridWidth() * myWorld.getTileSize();
-		
-		for (int i = 0; i < myWorld.getTileGridWidth(); i++) {
-			for (int j = 0; j < myWorld.getTileGridHeight(); j++) {
-				if (myWorld.getPlayer()!=null && tileIsInView(myWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
-				myWorld.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
-			}
+
+
+		if(myWorld instanceof WalkAroundWorld)paintWalkAroundWorld(g2d);
+		else{
+			paintArenaWorld(g2d);
 		}
-		
-		for(int i=0; i<myWorld.getGridObjectList().size(); i++) {
-			if(isInView(myWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
-				myWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
-				myWorld.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
+
+	}
+
+	private void paintArenaWorld(Graphics2D g2d) {
+		ArenaWorld world = (ArenaWorld) myWorld;
+		g2d.drawImage(world.getBackground().scaleImage(),0,-myWidth/4, null);
+		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight/2), null);
+		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.5), myHeight/5, null);
+		drawStatusBars(g2d, world);
+
+	}
+
+	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
+		g2d.setColor(Color.green);
+		g2d.draw(new Rectangle((int) (myWidth/1.5),myHeight/2+60, myWidth/4, 10));
+		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer().getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").getMaxValue())), 10));
+		g2d.draw(new Rectangle((int) (myWidth/15),myHeight/5, myWidth/4, 10));
+		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy().getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health").getMaxValue())), 10));
+	}
+
+	private void paintWalkAroundWorld(Graphics2D g2d) {
+		WalkAroundWorld world = (WalkAroundWorld) myWorld;
+		for (int i = 0; i < world.getTileGridWidth(); i++) {
+			for (int j = 0; j < world.getTileGridHeight(); j++) {
+				if (myWorld.getPlayer()!=null && tileIsInView(world.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
+					world.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
 
+		for(int i=0; i<world.getGridObjectList().size(); i++) {
+			if(isInView(world.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
+				world.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
+				world.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
+			}
+		}
 	}
 
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
-//		System.out.println(myWorld.getPlayer().getX());
+		//		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
@@ -117,12 +136,12 @@ public class Canvas extends JComponent{
 			cameraY=offsetMinY;
 		return new int[] {cameraX, cameraY};
 	}
-	
+
 	public boolean isInView(GridObject go, int cameraX, int cameraY){
 		return (go.getBounds().getMaxX()>cameraX && go.getBounds().getMaxY()>cameraY
 				&& go.getBounds().getMinX()<(cameraX+myWidth) && go.getBounds().getMinY()<(cameraY + myHeight));
 	}
-	
+
 	public boolean tileIsInView(Tile go, int cameraX, int cameraY){
 		return (go.getBounds().getMaxX()>cameraX && go.getBounds().getMaxY()>cameraY
 				&& go.getBounds().getMinX()<(cameraX+myWidth) && go.getBounds().getMinY()<(cameraY + myHeight));

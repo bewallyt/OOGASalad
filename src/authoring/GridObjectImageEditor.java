@@ -45,7 +45,7 @@ public class GridObjectImageEditor extends ImageEditor {
 	public void addExistingImages() {
 		List<ImageFile> imageList=m.getSavedImageMap();
 		for(ImageFile image: imageList){
-			if(image.getType().equals(IMAGE_TYPE)){
+			if(image.getType().equalsIgnoreCase(IMAGE_TYPE)){
 				addImage(image.getImage(), image.getName());
 			}
 		}

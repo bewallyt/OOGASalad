@@ -1,5 +1,6 @@
 package main;
 
+import GameView.GameDummy;
 import GameView.GameFrame;
 import GameView.GameSelect;
 
@@ -9,8 +10,9 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		GameSelect select = new GameSelect();
-		GameFrame game = new GameFrame(select.getGameName());
+		GameFrame game = new GameFrame();
+		GameSelect select = new GameSelect(game);
+				
 		try {
 			game.doGameLoop();
 		} catch (InterruptedException e) {

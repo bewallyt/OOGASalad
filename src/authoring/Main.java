@@ -6,7 +6,7 @@ public class Main {
 		Set myFeatures = new HashSet<Feature>();
 		//myFeatures.add(new GridEditor());
 		myFeatures.add(new GridViewerFeature());
-	//	myFeatures.add(new GridObjectCreation());
+     	myFeatures.add(new GridObjectCreation());
 		myFeatures.add(new ImageChooser());
         myFeatures.add(new ItemCreation());
         myFeatures.add(new PlayerCreation());

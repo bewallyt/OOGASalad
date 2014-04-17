@@ -130,11 +130,25 @@ public class ImageManager {
 	 * @param s String name of the image file
 	 * @return File s with the path of the image
 	 */
-	/*
-	public File loadImage(String name, String imageType){
-		return new File(SRC+imageType+name);
+	private ImageFile loadImage(String name, String imageType){
+		return new ImageFile(name, imageType);
 	}
-	*/
+	/**
+	 * Loads the image corresponding to the file name within the default Image resource package. 
+	 * @param s String name of the image file
+	 * @return File s with the path of the image
+	 */
+	public ImageFile loadGridObjectImage(String name){
+		return loadImage(name, IMAGE_FOLDER_OPTIONS[2]);
+	}
+	/**
+	 * Loads the tile image with the given string name, ie "TestImage.jpg" 
+	 * @param s String name of the image file
+	 * @return ImageFile ImageFile of the given image
+	 */
+	public ImageFile loadTileImage(String name){
+		return loadImage(name, IMAGE_FOLDER_OPTIONS[1]);
+	}
 	/**
 	 * Returns a list of all the names of currently saved images in the default image
 	 * folder. 

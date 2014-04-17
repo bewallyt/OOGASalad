@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import Data.ImageFile;
 import Data.ImageManager;
 
- class ImageResizer {
+ public class ImageResizer {
 	
 	private ImageFile storedImage;
 	private String fileName;
@@ -24,7 +24,8 @@ import Data.ImageManager;
         myImageManager = new ImageManager();
     }
 
-	public void storeImage(String name, File file, String id) throws IOException {
+	protected void storeImage(String name, File file, String id) throws IOException {
+
 		fileName = name;
 		File imageFile = file;
         fileId = id;
@@ -35,10 +36,10 @@ import Data.ImageManager;
 
 
 	private void addToEditor(ImageFile imageFile) {
-		if(imageFile.getType().equals(FeatureManager.tileEditor.IMAGE_TYPE)){
+		if(imageFile.getType().equalsIgnoreCase(FeatureManager.tileEditor.IMAGE_TYPE)){
 			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
 		}
-		else if(imageFile.getType()==FeatureManager.gridObjectImageEditor.IMAGE_TYPE){
+		else if(imageFile.getType().equalsIgnoreCase(FeatureManager.gridObjectImageEditor.IMAGE_TYPE)){
 			FeatureManager.gridObjectImageEditor.addImage(imageFile.getImage(), fileName);
 		}
         

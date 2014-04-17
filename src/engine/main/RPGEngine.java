@@ -1,15 +1,9 @@
 package engine.main;
 
-import java.util.List;
-
-import engine.collision.CollisionMatrix;
-import engine.gridobject.Barrier;
-import engine.gridobject.GridObject;
-import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Player;
+import engine.GameLooper;
+import engine.gridobject.person.Reflection;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
-import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
@@ -23,6 +17,8 @@ public abstract class RPGEngine{
 
 	/** The my current world. */
 	private World myCurrentWorld;
+	private GameLooper myGameLooper;
+	
 
 
 	/**
@@ -73,9 +69,10 @@ public abstract class RPGEngine{
 	 * @param world the world to be set as current world
 	 */
 	public void setWorld(World world){
+		
 		myCanvas.setWorld(world);
-		myCurrentWorld = (WalkAroundWorld) world;
-		myCurrentWorld.getPlayer().setSurroundingsChecker(new SurroundingChecker(myCurrentWorld));
+		myCurrentWorld = world;
+		
 	}
 
 	/**
@@ -85,8 +82,24 @@ public abstract class RPGEngine{
 	 * @param y Y location of the player at spawn time (pixels)
 	 */
 	public void changeWorld(World world, int x, int y) {
-		myCurrentWorld.getPlayer().setPosition(x, y);
+		myCurrentWorld.savePlayerPosition();
 		setWorld(world);
+		if(myCurrentWorld.getSavedPlayerPosition()!=null){
+			setSavedPosition();
+		}
+		else{
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), myCurrentWorld.getPlayer().getStartY());
+		}
+	}
+
+	private void setSavedPosition() {
+		myCurrentWorld.getPlayer().setFacing(myCurrentWorld.getSavedPlayerPosition()[2]);
+		if(myCurrentWorld.getPlayer().getFacing()==2)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
+		if(myCurrentWorld.getPlayer().getFacing()==0)myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
+	}
+	
+	public void isInitialized() {
+		isInitialized = true;
 	}
 	
 
@@ -99,21 +112,16 @@ public abstract class RPGEngine{
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void doGameLoop() throws InterruptedException {
+
 		while (true) {
 
+
 			myCanvas.repaint();
-			checkCollisions(((WalkAroundWorld) myCurrentWorld).getCollisionMatrix());
-			for (GridObject go : ((WalkAroundWorld) myCurrentWorld).getGridObjectList()) {
-				go.move();
-				if(myCurrentWorld.getPlayer().enterBuilding()!=null){
-					System.out.println("new world");
-					changeWorld(myCurrentWorld.getPlayer().enterBuilding().getBuildingWorld(), 100, 50);
-					break;
-				}
-				if(go instanceof Enemy){
-					if(((Enemy) go).battleInitiated())
-						System.out.println("battle!");
-				}
+			String classname = myCurrentWorld.getClass().getName();
+			GameLooper cl = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
+			if(cl.doLoop()!=null){
+				System.out.println("change");
+				changeWorld(cl.doLoop(),50,100);
 			}
 			run();
 			Thread.sleep(10);
@@ -121,34 +129,11 @@ public abstract class RPGEngine{
 	}
 
 
-	/**
-	 * Check collisions. Called by doGameLoop
-	 *
-	 * @param world the world
-	 * @param cm the cm
-	 */
-	private void checkCollisions(CollisionMatrix cm) {
-		for (int i = 0; i < myCurrentWorld.getGridObjectList().size(); i++) {
-			List<GridObject> myList = myCurrentWorld.getGridObjectList();
-			for (int j = 0; j < myCurrentWorld.getGridObjectList().size(); j++) {
-				if (myCurrentWorld.getGridObjectList().get(i).getBounds().intersects(
-						myCurrentWorld.getGridObjectList().get(j).getBounds())) {
-					if(cm!=null) {
-						cm.getMatrix()[i][j].doCollision();
-					}
-				}
-			}
-		}
-	}
-
 	public World getCurrentWorld(){
 		return myCurrentWorld;
 	}
 
 	public void paintConstantBackground(String background){
-		myCurrentWorld.paintFullBackround(background);
+		((WalkAroundWorld) myCurrentWorld).paintFullBackround(background);
 	}
-
-
-
 }

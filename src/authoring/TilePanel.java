@@ -52,6 +52,7 @@ public class TilePanel extends JPanel{
 		myTileLabel.setOpaque(true);
 		this.add(myTileLabel);
 		saveImage(myTileImage.getDescription());
+		saveImageFile();
 	}
 	
 	public void addGridObjectImage(ImageIcon imageFile){

@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Dialogue;
+import engine.DialogueState;
+import engine.dialogue.ConversationManager;
+import engine.dialogue.NPCResponseNode;
 import engine.world.World;
 
-public class NPC extends RuleFollower {
+public class NPC extends Person {
 	protected List<String> myDialogue;
 	private Movement myMovement;
 	private Player myPlayer;
+	private NPCResponseNode myResponseNode;
 
 	
 	/**
@@ -27,10 +31,16 @@ public class NPC extends RuleFollower {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
 		myDialogue=new ArrayList<String>();
 		myPlayer=player;
-		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType, this, player  );
+		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType,
+															this, player  );
+		
+		// CHANGE THIS
+		myResponseNode = null;
 	}
 
-	
+	public void setResponseNode(NPCResponseNode n) {
+		myResponseNode = n;
+	}
 	
 	public Player getPlayer(){
 		return myPlayer;
@@ -64,7 +74,18 @@ public class NPC extends RuleFollower {
 	}
 
 	
-	 
+	@Override
+	public void doAction(){
+		doDialogue();
+	}
+	
+	@Override
+	public Dialogue doDialogue(){
+		Dialogue d = null;		
+		System.out.println("Conversation Mode");
+		myPlayer.setState(new DialogueState(new ConversationManager(myPlayer, this, myResponseNode)));
+		return d;
+	}
 	 
 	
 
