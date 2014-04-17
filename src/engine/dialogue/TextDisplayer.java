@@ -28,7 +28,7 @@ public class TextDisplayer {
 	}
 	
 	/**
-	 * This method should be called from a Canvas.
+	 * This method should be called from a Canvas. It will paint the text box and whatever is in it.
 	 * 
 	 * @param g2d graphixxx object
 	 * @param xSize size of canvas, in x direction
@@ -38,7 +38,7 @@ public class TextDisplayer {
 	 */
 	public void paintDisplayer(Graphics2D g2d, int xSize, int ySize, int xOffset, int yOffset) {
 		if (myInteractionBox != null) {
-			myInteractionBox.paintDisplay(g2d, xSize, ySize, xOffset, yOffset);
+			myInteractionBox.paintDisplay(g2d, xSize, ySize, xSize, ySize/2);
 		}
 	}
 }

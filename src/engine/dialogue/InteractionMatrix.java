@@ -25,8 +25,8 @@ public class InteractionMatrix {
 		myNodes = new MatrixNode[DIMENSION][DIMENSION];
 	}
 	
-	public void setNode(MatrixNode m, int x, int y) {
-		myNodes[x][y] = m;
+	public void setNode(MatrixNode mNode, int x, int y) {
+		myNodes[x][y] = mNode;
 	}
 	
 	/**
@@ -35,6 +35,15 @@ public class InteractionMatrix {
 	 */
 	public MatrixNode getCurrentNode() {
 		return myNodes[selectedNodeX][selectedNodeY];
+	}
+	
+	public MatrixNode getNode(int i, int j) {
+		return myNodes[i][j];
+	}
+	
+	public int[] getSelectedNodeLocation() {
+		int[] ret = {selectedNodeX, selectedNodeY};
+		return ret;
 	}
 	
 	/**
@@ -56,16 +65,26 @@ public class InteractionMatrix {
 		}
 	}
 	
+	/**
+	 * Allows user to toggle left in the select box, selecting the option to the left of the current option
+	 */
 	public void moveLeft() {
 		if (selectedNodeX != 0) {
 			selectedNodeX--;
 		}
 	}
 	
+	/**
+	 * Allows user to toggle right in the select box, selecting the option to the right of the current option
+	 */
 	public void moveRight() {
 		if (selectedNodeX != 1) {
 			selectedNodeX++;
 		}
+	}
+	
+	public int getDimension() {
+		return DIMENSION;
 	}
 	
 	

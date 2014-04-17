@@ -93,6 +93,7 @@ public class NPC extends Person {
 	
 	/**
 	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
 	 * @param ddc the DialogueDisplayControl
 	 */
 	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
