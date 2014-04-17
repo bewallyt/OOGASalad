@@ -1,12 +1,12 @@
 package engine.world;
 
-import java.util.List;
-
 import engine.GameLooper;
 import engine.collision.CollisionMatrix;
+import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
+import engine.gridobject.person.NPC;
 
 public class WalkAroundWorldLooper extends GameLooper {
 	
@@ -15,6 +15,16 @@ public class WalkAroundWorldLooper extends GameLooper {
 		super(currentWorld);
 		myWorld = (WalkAroundWorld) getWorld();
 		getWorld().getPlayer().setSurroundingsChecker(new SurroundingChecker(myWorld));
+		setDialogueDisplayControl();
+	}
+
+	private void setDialogueDisplayControl() {
+		for (GridObject go : (myWorld.getGridObjectList())) {
+			if (go instanceof NPC) {
+				((NPC) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			}
+		}
+		
 	}
 
 	@Override

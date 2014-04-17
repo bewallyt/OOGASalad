@@ -153,7 +153,6 @@ public class Main extends RPGEngine {
 	public void initializeGame() {
 		initializeCanvas(800, 800);
 		makeOutsideWorld();
-
 	}
 
 	@Override

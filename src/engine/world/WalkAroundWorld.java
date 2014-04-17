@@ -4,6 +4,9 @@ import java.util.List;
 
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
+import engine.dialogue.InteractionBox;
+import engine.dialogue.TextDisplayer;
+import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 
@@ -16,7 +19,7 @@ public class WalkAroundWorld extends World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private CollisionMatrix myCollisionMatrix;
-	
+	private TextDisplayer myTextDisplayer;
 
 	
 	/**
@@ -34,8 +37,9 @@ public class WalkAroundWorld extends World {
 		myTileSize=tileSize;
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
-		
+		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
 	}
+	
 	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
 		myCollisionMatrix.setCollisionHandler(handler, x, y);
 	}
@@ -104,7 +108,19 @@ public class WalkAroundWorld extends World {
 		return myCollisionMatrix;
 	}
 
+	public TextDisplayer getTextDisplayer() {
+		return myTextDisplayer;
+	}
+	
 
+	/**
+	 * This method will place an InteractionBox into the TextDisplayer (container for the goods).
+	 * This TextDisplayer will then be painted in every cycle.
+	 * @param b InteractionBox to put into the TextDisplayer
+	 */
+	public void setTextDisplayer(InteractionBox b) {
+		myTextDisplayer.setInteractionBox(b);
+	}
 	
 
 }
