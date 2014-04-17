@@ -106,7 +106,7 @@ public class ConversationManager implements InteractionBox {
 		if (currentResponseNode.getUserQueryNodes() == null) return false;
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
-				myResponses[i][j] = currentResponseNode.getUserQueryNodes().get(count);
+				myResponses[j][i] = currentResponseNode.getUserQueryNodes().get(count);
 				count++;
 			}
 		}	
@@ -124,7 +124,38 @@ public class ConversationManager implements InteractionBox {
 		return false;
 	}
 
-
+	public Player getPlayer() {
+		return myPlayer;
+	}
+	
+	public void moveUp() {
+		if (selectedOptionY != 0) {
+			selectedOptionY--;
+			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		}
+		
+	}
+	
+	public void moveDown() {
+		if (selectedOptionY != 1 && RESPONDING) {
+			selectedOptionY++;
+			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		}
+	}
+	
+	public void moveLeft() {
+		if (selectedOptionX != 0 && RESPONDING) {
+			selectedOptionX--;
+			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		}
+	}
+	
+	public void moveRight() {
+		if (selectedOptionX != 1 && RESPONDING) {
+			selectedOptionX++;
+			currentUserQueryNode = myResponses[selectedOptionX][selectedOptionY];
+		}
+	}
 
 
 }
