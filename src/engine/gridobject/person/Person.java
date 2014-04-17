@@ -7,8 +7,8 @@ import java.util.List;
 
 import engine.battle.Weapon;
 import engine.gridobject.GridObject;
-import engine.gridobject.item.Item;
 import engine.images.ScaledImage;
+import engine.item.Item;
 
 public abstract class Person extends GridObject {
 
@@ -36,6 +36,7 @@ public abstract class Person extends GridObject {
 		mySpeed = speed;
 		resetMax();
 		myWeapons = new ArrayList<Weapon>();
+		myItems = new ArrayList<Item>();
 		currentImageFile=getAnimImages()[myFacing];
 		myMoney=0;
 	}
@@ -116,8 +117,9 @@ public abstract class Person extends GridObject {
 	 * @param weapon the weapon
 	 */
 	public void addWeapon(Weapon weapon){
-		myCurrentWeapon=myWeapons.get(0);
 		myWeapons.add(weapon);
+		myCurrentWeapon=myWeapons.get(0);
+		System.out.println(myWeapons.size());
 	}
 
 	public List<Weapon> getWeaponList(){

@@ -3,7 +3,7 @@ package engine.gridobject.person;
 import java.awt.event.KeyEvent;
 
 import engine.gridobject.Door;
-import engine.gridobject.item.Item;
+import engine.item.Item;
 import engine.state.AbstractState;
 import engine.state.WalkAroundState;
 import engine.world.SurroundingChecker;

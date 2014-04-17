@@ -14,7 +14,9 @@ import java.util.Map;
 
 import engine.Dialogue;
 import engine.Statistic;
+import engine.battle.Weapon;
 import engine.images.ScaledImage;
+import engine.item.Item;
 
 public abstract class GridObject{
 
@@ -32,6 +34,7 @@ public abstract class GridObject{
 	private List<String> myDialogueList;
 	private Dialogue myDialogue;
 	private boolean initiateBattle=false;
+	private Pickupable myPickupable;
 
 	/**
 	 * Instantiates a new grid object.
@@ -195,8 +198,12 @@ public abstract class GridObject{
 	public int getHeight() {
 		return myHeight;
 	}
-
-
+	public void setPickupable(Pickupable pickupable){
+		myPickupable=pickupable;
+	}
+	public Pickupable getPickupable(){
+		return myPickupable;
+	}
 
 
 

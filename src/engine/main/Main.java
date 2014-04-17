@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.battle.Weapon;
 import engine.collision.BattleCollision;
 import engine.collision.EnterCollision;
 import engine.dialogue.NPCResponseNode;
@@ -14,6 +15,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.item.Item;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
@@ -78,6 +80,9 @@ public class Main extends RPGEngine {
 		gridObjectList.add(bafm);
 		gridObjectList.add(enemy);
 		gridObjectList.add(tallGrass);
+		Barrier cab = new Barrier("cabinets.jpg",1,1);
+		cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
+		gridObjectList.add(cab);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -102,6 +107,7 @@ public class Main extends RPGEngine {
 		outsideWorld.setTileObject(gridObjectList.get(3), 8, 13);
 		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
 		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
+		outsideWorld.setTileObject(gridObjectList.get(6), 1, 2);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
