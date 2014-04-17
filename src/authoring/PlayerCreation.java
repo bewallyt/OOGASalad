@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ import java.util.Map;
         String locationTab = "Player Location";
         String attriTab = "Player Attributes";
         String imaTab = "Player Images";
+        String objTab = "Items/Weapons";
         JTextField xCoor = new JTextField(5);
         JTextField yCoor = new JTextField(5);
         JCheckBox isAnimated = new JCheckBox("Is Animated?");
@@ -103,6 +105,11 @@ import java.util.Map;
                 6, 6,
                 6, 6);
 
+        JPanel panel5 = new JPanel(new FlowLayout());
+        makeListofWeaponsItems();
+        ArrayList<Weapon> weaponList = (ArrayList<Weapon>) FeatureManager.getWorldData().getMyWeapons();
+        ArrayList<Item> itemList = (ArrayList<Item>) FeatureManager.getWorldData().getMyItems();
+
         itemPane.addTab(nameTab,panel1);
         itemPane.addTab(locationTab,panel2);
         itemPane.addTab(attriTab,panel3);
@@ -138,7 +145,10 @@ import java.util.Map;
         } else{}
     }
 
-    private void makeandsavePlayer() {
+     private void makeListofWeaponsItems() {
+     }
+
+     private void makeandsavePlayer() {
         PlayerData madePlayer = new PlayerData(isChecked,noAnImage,animationImages,xc,yc,playerValues);
         FeatureManager.getWorldData().savePlayer(madePlayer);
     }

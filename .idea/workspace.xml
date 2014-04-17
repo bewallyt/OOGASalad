@@ -45,20 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerCreation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerCreation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/authoring/PlayerCreation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1287" max-vertical-offset="2160">
-              <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
+            <state vertical-scroll-proportion="1.1807228" vertical-offset="1399" max-vertical-offset="2295">
+              <caret line="147" column="17" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerData.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PlayerData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4388984" vertical-offset="79" max-vertical-offset="1050">
+            <state vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1050">
               <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -70,8 +70,8 @@
       <file leaf-file-name="WorldData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/authoring/WorldData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="825">
-              <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="825">
+              <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -100,12 +100,12 @@
         <option value="$PROJECT_DIR$/src/authoring/ImageResizer.java" />
         <option value="$PROJECT_DIR$/src/authoring/AddMenu.java" />
         <option value="$PROJECT_DIR$/src/authoring/Item.java" />
-        <option value="$PROJECT_DIR$/src/authoring/PlayerCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/Weapon.java" />
         <option value="$PROJECT_DIR$/src/authoring/Attacks.java" />
         <option value="$PROJECT_DIR$/src/authoring/WorldData.java" />
         <option value="$PROJECT_DIR$/src/authoring/ItemCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/authoring/PlayerCreation.java" />
       </list>
     </option>
   </component>
@@ -703,12 +703,12 @@
       <workItem from="1397668051324" duration="185000" />
       <workItem from="1397675587105" duration="4511000" />
       <workItem from="1397681257313" duration="8710000" />
-      <workItem from="1397698000522" duration="5201000" />
+      <workItem from="1397698000522" duration="6611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57445000" />
+    <option name="totallyTimeSpent" value="58855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="991" extended-state="6" />
@@ -1055,14 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerCreation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1287" max-vertical-offset="2160">
-          <caret line="131" column="17" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/gridobject/item/Weapon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06872852" vertical-offset="0" max-vertical-offset="873">
@@ -1097,14 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/authoring/WorldData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="825">
-          <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56798625" vertical-offset="0" max-vertical-offset="581">
@@ -1126,13 +1110,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/authoring/WorldData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="825">
+          <caret line="56" column="54" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4388984" vertical-offset="79" max-vertical-offset="1050">
+        <state vertical-scroll-proportion="0.0" vertical-offset="334" max-vertical-offset="1050">
           <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerCreation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1807228" vertical-offset="1399" max-vertical-offset="2295">
+          <caret line="147" column="17" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
