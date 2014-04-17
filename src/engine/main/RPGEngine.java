@@ -19,6 +19,10 @@ public abstract class RPGEngine{
 	private World myCurrentWorld;
 	private GameLooper myGameLooper;
 	
+	private Boolean isInitialized = false;
+	
+	/** myMusic */
+	private Boolean musicOn;
 
 
 	/**
@@ -102,6 +106,18 @@ public abstract class RPGEngine{
 		isInitialized = true;
 	}
 	
+	public Boolean musicOn() {
+		return musicOn;
+	}
+	
+	public void setMusicOn() {
+		musicOn = true;
+	}
+	
+	public void setMusicOff() {
+		musicOn = false;
+	}
+	
 
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
@@ -113,7 +129,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 
-		while (true) {
+		while (isInitialized) {
 
 
 			myCanvas.repaint();

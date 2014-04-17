@@ -12,7 +12,6 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
@@ -46,16 +45,18 @@ public class GameDummy extends RPGEngine {
 
 	private Player myPlayer;
 
-	public GameDummy(String fileName) {
+	public GameDummy() {
 		// myData = new FileStorer();
 		myData = new FileStorer();
-		
+	}
+	
+	public void initialize(String fileName) {
 		try {
 			myWorldData = myData.getWorldData(fileName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-				
+		
 		initializeGame();
 	}
 
@@ -92,7 +93,7 @@ public class GameDummy extends RPGEngine {
 		gridObjectList.add(new Barrier(myWorldData.getMap("defaultworldkey").getTileData(1, 1).getImageName()+".png", 1, 1));
 //		gridObjectList.add(new Barrier("pokecenter.png",4, 4));		
 		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, player, gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
 		for(int i = 0; i < 25; i++) {
@@ -129,11 +130,6 @@ public class GameDummy extends RPGEngine {
 		myPlayer = new Player(anim, 2, 1, 1);
 	}
 
-	public void setGridObjects(World world, List<GridObject> list) {
-		for (GridObject g : list) {
-			world.setTileObject(g, g.getX(), g.getY());
-		}
-	}
 
 	public List<GridObject> createGridObjectList() {
 

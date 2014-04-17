@@ -12,7 +12,7 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
+//import engine.gridobject.person.RuleFollower;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
@@ -39,7 +39,6 @@ public class GameFrame extends RPGEngine {
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
 
-	private Boolean musicOn;
 	private WorldData myWorldData;
 	// private DataManager myData;
 	private FileStorer myData;
@@ -78,15 +77,14 @@ public class GameFrame extends RPGEngine {
 		createPlayer();
 		List<GridObject> gridObjectList = createGridObjectList();
 
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000,
-				myPlayer, gridObjectList);
+//		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, myPlayer, gridObjectList);
 
-		setWorld(outsideWorld);
+//		setWorld(outsideWorld);
 
 		// addEnemy();
 
-		setGridObjects(outsideWorld, gridObjectList);
-		outsideWorld.paintFullBackround("grassSmall.png");
+//		setGridObjects(outsideWorld, gridObjectList);
+//		outsideWorld.paintFullBackround("grassSmall.png");
 	}
 
 	public void createPlayer() {
@@ -108,7 +106,7 @@ public class GameFrame extends RPGEngine {
 
 	public void setGridObjects(World world, List<GridObject> list) {
 		for (GridObject g : list) {
-			world.setTileObject(g, g.getX(), g.getY());
+//			world.setTileObject(g, g.getX(), g.getY());
 		}
 	}
 
@@ -188,18 +186,7 @@ public class GameFrame extends RPGEngine {
 	 * } } } }
 	 */
 	
-	public Boolean musicOn() {
-		return musicOn;
-	}
 	
-	public void setMusicOn() {
-		musicOn = true;
-	}
-	
-	public void setMusicOff() {
-		musicOn = false;
-	}
-
 	@Override
 	public void run() {
 
