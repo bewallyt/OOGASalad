@@ -1,7 +1,8 @@
-package engine;
+package engine.state;
 
 import java.awt.event.KeyEvent;
 
+import engine.Control;
 import engine.dialogue.ConversationManager;
 import engine.gridobject.GridObject;
 

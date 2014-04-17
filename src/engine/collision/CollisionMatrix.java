@@ -30,6 +30,13 @@ public class CollisionMatrix {
 		return collisionMatrix;
 	}
 
+	/**
+	 * Sets a new collision handler.
+	 *
+	 * @param handler the handler
+	 * @param x the x coordinate of the handler in the matrix
+	 * @param y the y coordinate of the handler in the matrix
+	 */
 	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
 		myCollisionMatrix[x][y] = handler;
 	}

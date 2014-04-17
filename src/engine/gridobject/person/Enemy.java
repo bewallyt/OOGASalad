@@ -10,10 +10,25 @@ public class Enemy extends NPC {
 	private boolean battleInitiated=false;
 	private ArenaWorld myWorld;
 
+	/**
+	 * Instantiates a new enemy.
+	 *
+	 * @param animImages the anim images (must be 12)
+	 * @param speed the speed of the enemy
+	 * @param numTilesWidth the width in tiles
+	 * @param numTilesHeight the height in tiles
+	 * @param movementType the movement type. 1=back and forth 2=follow player 3=stand still
+	 * @param player the player
+	 */
 	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
 
+	/**
+	 * Sets the arena world that should be created if a battle is initiated.
+	 *
+	 * @param world the new world
+	 */
 	public void setWorld(ArenaWorld world){
 		myWorld = world;
 	}
@@ -22,6 +37,9 @@ public class Enemy extends NPC {
 		return myWorld;
 	}
 
+	/**
+	 * This enemy initiates a battle if the player is in sight.
+	 */
 	public void doBattleOnSight(){
 		battleOnSight=true;
 	}
@@ -43,7 +61,7 @@ public class Enemy extends NPC {
 		battleInitiated=true;
 	}
 
-	public boolean inSight(){
+	private boolean inSight(){
 		if(Math.abs(ProximityChecker.isLeftProximity(this, getPlayer()))<100 && 
 				ProximityChecker.isTopProximity(this, getPlayer())<=2 && getFacing() == 1)
 			return true;

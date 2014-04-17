@@ -9,26 +9,15 @@ public abstract class Item implements Listable {
 
 	private String myName;
 	private String myImageName;
-	private Statistic myStatistic;
-	private boolean useOnPlayer=false;
-	private boolean useOnWeapon=false;
+
 	
-	public Item(String image, String name, Statistic statistic) {
+	public Item(String image, String name) {
 		myName = name;
 		myImageName = image;
-		myStatistic = statistic;
 	}
 
 	public String getName() {
 		return myName;
-	}
-	
-	public void useOnPlayer(){
-		useOnPlayer=true;
-	}
-	
-	public void useOnWeapon(){
-		useOnWeapon=true;
 	}
 
 	public abstract void useItem();
@@ -39,8 +28,6 @@ public abstract class Item implements Listable {
 		
 	}
 	
-	public void changeStatistic(int amountToChange){
-		myStatistic.changeValue(amountToChange);
-	}
+
 	
 }

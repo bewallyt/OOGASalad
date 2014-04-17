@@ -12,12 +12,14 @@ public class BattleManager implements InteractionBox{
 	Player myPlayer;
 	Enemy myEnemy;
 	BattleAI myBattleAI;
+	Weapon myCurrentPlayerWeapon;
+	Weapon myCurrentEnemyWeapon;
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
 		myEnemy=enemy;
 		myBattleAI=new BattleAI(enemy);
 	}
-	
+
 	public void attack(Person attacker, Person victim, Weapon weapon, Attack attack){
 		int level = attacker.getStatsMap().get("level").getValue();
 		int playerDamage = attacker.getStatsMap().get("damage").getValue();
