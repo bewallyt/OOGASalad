@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="IdProvider" IDEtalkID="1FBC368090239963191A1EC60BB0344A" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
+=======
+<<<<<<< HEAD
+  <component name="IdProvider" IDEtalkID="E3CCC808A0B8F276C1B94AFE9BDAFE3A" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
+=======
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
@@ -137,5 +145,7 @@
       </state>
     </states>
   </component>
+>>>>>>> master
+>>>>>>> authoring
 </project>
 

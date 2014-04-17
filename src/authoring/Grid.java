@@ -9,11 +9,6 @@ import javax.swing.border.MatteBorder;
 
 public class Grid extends JPanel{
 
-	private static final int WORLD_WIDTH = 100;
-	private static final int WORLD_HEIGHT = 100;
-	private int startRow = 0;
-	private int startCol = 0;
-	private TilePanel selectedCell;
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
 	private String[] popupMenuItems = { "Tile Image Editor", "Grid Object Editor", "Set as Player Start Point", "Clear Tile"};
@@ -27,23 +22,19 @@ public class Grid extends JPanel{
 		panel=this;
 		mapMaker();		
 		this.setOpaque(false);
-		imageEditor = FeatureManager.imageEditor;
+		imageEditor = FeatureManager.tileEditor;
 		popupMenuMaker();
 		// Creates the grid of TilePanels
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
-
 	}
 
 	private void mapMaker(){
-		//String width = (String) JOptionPane.showInputDialog(grid, "Please input a number");
-		//grid.add(inputArea);
+		world = new TilePanel[WorldData.DEFAULT_MAP_HEIGHT][WorldData.DEFAULT_MAP_WIDTH];
 
-		world = new TilePanel[WORLD_HEIGHT][WORLD_WIDTH];
-
-		for (int row = 0; row < WORLD_HEIGHT; row++) {
-			for (int col = 0; col < WORLD_WIDTH; col++) {				
+		for (int row = 0; row < WorldData.DEFAULT_MAP_HEIGHT; row++) {
+			for (int col = 0; col < WorldData.DEFAULT_MAP_WIDTH; col++) {				
 				world[row][col] = new TilePanel(row, col);
 			}
 		}
@@ -62,13 +53,13 @@ public class Grid extends JPanel{
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
 			JMenuItem menuItem = new JMenuItem(popupMenuItems[i]);
+			menuItem.setActionCommand(popupMenuItems[i]);
 			menuItem.addActionListener(new PopupMenuListener());
 			popup.add(menuItem);
 		}
 	}
 
 	private void showPopupMenu(MouseEvent e){
-		selectedCell = (TilePanel) e.getComponent();
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	}
 
@@ -78,8 +69,8 @@ public class Grid extends JPanel{
 
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
-		for (int row = startRow; row < WORLD_HEIGHT; row++) {
-			for (int col = startCol; col < WORLD_WIDTH; col++) {
+		for (int row = 0; row < WorldData.DEFAULT_MAP_HEIGHT; row++) {
+			for (int col = 0; col < WorldData.DEFAULT_MAP_WIDTH; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
 				TilePanel cell = world[row][col];

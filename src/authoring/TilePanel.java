@@ -72,6 +72,7 @@ public class TilePanel extends JPanel{
 			if(g.getImageName() != null){
 				BufferedImage temp;
 				try {
+					System.out.println(FeatureManager.myWorld.getImage(g.getImageName()));
 					temp = ImageIO.read(FeatureManager.myWorld.getImage(g.getImageName()));
 					Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
 					ImageIcon i = new ImageIcon(scaledImage);
