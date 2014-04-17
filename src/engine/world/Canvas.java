@@ -80,7 +80,7 @@ public class Canvas extends JComponent{
 
 
 		if(myWorld instanceof WalkAroundWorld) paintWalkAroundWorld(g2d);
-		else{
+		else if(myWorld instanceof ArenaWorld){
 			paintArenaWorld(g2d);
 		}
 
@@ -118,24 +118,11 @@ public class Canvas extends JComponent{
 	private void paintMenuWorld(Graphics2D g2d){
 		
 		WalkAroundWorld menuWorld = (WalkAroundWorld) myWorld;
-		
-		
-		for (int i = 0; i < menuWorld.getTileGridWidth(); i++) {
-			for (int j = 0; j < menuWorld.getTileGridHeight(); j++) {
-				if (myWorld.getPlayer()!=null && tileIsInView(menuWorld.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
-					menuWorld.getTileMatrix()[i][j].paint(g2d, getCameraOffset()[0], getCameraOffset()[1]);
-			}
-		}
 
-		for(int i=0; i<menuWorld.getGridObjectList().size(); i++) {
-			if(isInView(menuWorld.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
-				menuWorld.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
-				menuWorld.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
-			}
-		}
-		
 		menuWorld.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
 												getCameraOffset()[1]);
+		
+		// Test for 
 		
 	}
 

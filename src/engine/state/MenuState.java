@@ -15,10 +15,26 @@ public class MenuState extends AbstractState {
 		super();
 		myMenu = menu;
 	}
+	
+	public MenuState(){
+		
+	}
 
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == Control.UP){
 			myMenu.moveCursorUp();
@@ -35,25 +51,9 @@ public class MenuState extends AbstractState {
 		if (e.getKeyCode() == Control.A) {
 			myMenu.select();
 			}
-		if (e.getKeyCode() == Control.SPACE) {
-			myMenu.toggleMenu();
-		}
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getKeyCode() == Control.SPACE) {
-
-		}
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+//		if (e.getKeyCode() == Control.SPACE) {
+//			myMenu.toggleMenu();
+//		}
 	}
 
 }

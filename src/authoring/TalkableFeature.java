@@ -15,7 +15,7 @@ public class TalkableFeature extends Feature {
 	public TalkableFeature(GridObjectCreation gridObjectCreation){
 		mySuperFeature = gridObjectCreation;
 		talkableCheck = new JCheckBox("Talkable?");
-		myComponents.put(talkableCheck, BorderLayout.EAST);
+		myComponents.put(talkableCheck, BorderLayout.WEST);
 	}
 	public boolean isTalkable() {
 		return talkableCheck.isSelected();

@@ -13,6 +13,7 @@ import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
+import engine.menu.MenuManager;
 
 public class WalkAroundWorld extends World {
 
@@ -24,6 +25,7 @@ public class WalkAroundWorld extends World {
 	private List<GridObject> myGridObjectList;
 	private CollisionMatrix myCollisionMatrix;
 	private TextDisplayer myTextDisplayer;
+	private MenuManager myMenuManager;
 	List<Enemy> myRandomEncounters = new ArrayList<Enemy>();
 
 	/**
@@ -41,8 +43,9 @@ public class WalkAroundWorld extends World {
 		myTileSize=tileSize;
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
-		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
 
+		//myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
+		myTextDisplayer = new TextDisplayer(new MenuManager());
 	}
 
 	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
