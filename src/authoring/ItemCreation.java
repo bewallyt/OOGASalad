@@ -197,6 +197,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
         wepAttacks.add(attack1);
         wepAttacks.add(attack2);
         Weapon madeWeapon = new Weapon(iName,wepAttacks,optionalEffect,oeAmount);
+        FeatureManager.getWorldData().saveWeapons(madeWeapon);
     }
 
 
