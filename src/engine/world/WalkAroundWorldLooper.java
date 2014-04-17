@@ -28,11 +28,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 			}
 			if(go instanceof Enemy){
 				if(((Enemy) go).isBattle()){
-					//System.out.println("ble!");
 					return ((Enemy) go).getWorld();
-				}
-				
+				}	
 			}
+
 		}
 		return null;
 	}

@@ -28,12 +28,11 @@ public abstract class GridObject{
 	private String myImageName;
 	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap = new HashMap<String,Statistic>();
-	private boolean doesHarm = false;
-	
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
 	private List<String> myDialogueList;
 	private Dialogue myDialogue;
+	private boolean initiateBattle=false;
 
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
 		myStatsMap = null;
@@ -133,13 +132,6 @@ public abstract class GridObject{
 		return new Rectangle(myX, myY, myWidth, myHeight);	
 	}
 
-	public boolean getDoesHarm(){
-		return doesHarm;
-	}
-	public void setDoesHarm(boolean harm){
-		doesHarm=harm;
-	}
-
 	public void addDialogue(String dialogue){
 		myDialogueList.add(dialogue);
 	}
@@ -206,6 +198,16 @@ public abstract class GridObject{
 	}
 	public int getNumTilesWidth(){
 		return myNumTilesWidth;
+	}
+	public void initiateBattle(){
+		initiateBattle=true;
+	}
+	public boolean battleInitiated(){
+		if(initiateBattle){
+			initiateBattle=false;
+			return true;
+		}
+		return false;
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.collision.BattleCollision;
 import engine.collision.EnterCollision;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
@@ -61,10 +62,10 @@ public class Main extends RPGEngine {
 
 		bafm.setResponseNode(n);
 
-
 		Door door = new Door("cabinets.jpg", 1, 1);
 
 		Door door2 = new Door("cabinets.jpg", 1, 1);
+		Door tallGrass = new Door("grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
 
@@ -76,6 +77,7 @@ public class Main extends RPGEngine {
 		gridObjectList.add(door);
 		gridObjectList.add(bafm);
 		gridObjectList.add(enemy);
+		gridObjectList.add(tallGrass);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -90,16 +92,19 @@ public class Main extends RPGEngine {
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
 		door.setBuildingWorld(buildingWorld);
 		door2.setBuildingWorld(outsideWorld);
+		tallGrass.setBuildingWorld(new ArenaWorld("battlebackground.png",800,800,player,enemy));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
 		outsideWorld.setTileObject(gridObjectList.get(3), 10, 10);
 		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
+		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
 		
+		outsideWorld.setCollisionHandler(new BattleCollision(gridObjectList.get(0),gridObjectList.get(5)), 0, 5);
 		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
 		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
 		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);

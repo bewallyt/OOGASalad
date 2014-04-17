@@ -1,4 +1,4 @@
-package engine.gridobject.item;
+package engine.battle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,13 @@ public class Weapon{
 	private List<Attack> myAttacks;
 	public final static int DEFAULT_SPEED=1;
 	public final static int DEFAULT_DAMAGE=1;
+	public final static int DEFAULT_MAX=100;
 	public Weapon(String image, String name, List<Attack> attacks) {
 		myName = name;
 		myImageName = image;
 		myAttacks = new ArrayList<Attack>(attacks);
-		mySpeed = new Statistic("Speed", DEFAULT_SPEED);
-		myDamage = new Statistic("Damage",DEFAULT_DAMAGE);
+		mySpeed = new Statistic("Speed", DEFAULT_SPEED,DEFAULT_MAX);
+		myDamage = new Statistic("Damage",DEFAULT_DAMAGE,DEFAULT_MAX);
 	}
 
 	public void addAttack(Attack attack){
@@ -38,6 +39,12 @@ public class Weapon{
 	
 	public Statistic getSpeed(){
 		return mySpeed;
+	}
+	public void setDamage(int value, int max){
+		myDamage = new Statistic("damage",value, max);
+	}
+	public void setSpeed(int value, int max){
+		mySpeed = new Statistic("speed",value, max);
 	}
 
 }
