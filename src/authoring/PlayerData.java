@@ -1,6 +1,7 @@
 package authoring;
 
 
+import java.util.List;
 import java.util.Map;
 
 public class PlayerData {
@@ -13,8 +14,11 @@ public class PlayerData {
     private int pHeight;
     private int speed;
     private Map<String,String> myPlayerValues;
+    private List<Weapon> myWeapons;
+    private List<Item> myItems;
 	
-	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y, Map<String, String> startVals){
+	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y, Map<String, String> startVals,
+    List<Weapon> weps, List<Item> its){
         isAnim = anim;
         myImage = imName;
         myAnimImages = animImage;
@@ -24,6 +28,8 @@ public class PlayerData {
         pHeight = 36;
         speed = 10;
         myPlayerValues = startVals;
+        myWeapons = weps;
+        myItems = its;
 
 	}
 	
@@ -57,4 +63,8 @@ public class PlayerData {
     public int getpWidth(){ return pWidth; }
     public int getpHeight(){ return pHeight; }
     public int getSpeed(){ return speed; }
+    public Map<String,String> getMyPlayerValues(){ return myPlayerValues;}
+    public List<Weapon> getMyWeapons(){ return  myWeapons;}
+    public List<Item> getMyItems(){ return myItems;}
+
 }
