@@ -129,9 +129,4 @@ public abstract class RPGEngine{
 	public void paintConstantBackground(String background){
 		((WalkAroundWorld) myCurrentWorld).paintFullBackround(background);
 	}
-	
-
-
-
-
 }

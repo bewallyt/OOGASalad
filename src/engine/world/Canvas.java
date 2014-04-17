@@ -4,23 +4,14 @@ package engine.world;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-
-
 
 //import engine.AbstractGameState;
 import engine.Control;
-import engine.WalkAroundState;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 
@@ -97,9 +88,11 @@ public class Canvas extends JComponent{
 
 	private void paintArenaWorld(Graphics2D g2d) {
 		ArenaWorld world = (ArenaWorld) myWorld;
-		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/15, (int) (myHeight/2), null);
-		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.4), myHeight/5, null);
+		g2d.drawImage(world.getBackground().scaleImage(),0,-myWidth/4, null);
+		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight/2), null);
+		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.5), myHeight/5, null);
 		drawStatusBars(g2d, world);
+		
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
