@@ -16,14 +16,12 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     private int sv;
     private int av;
     private int dv;
-    private int result;
 
     private String[] labels = {"Speed Boost:","Damage Boost:","Defense Boost:","Name:","Speed:","Damage:","Name2:",
             "Speed2:","Damage2:","On/Amount:"};
     private String[] playerAtt = {"Nothing","Damage","Defense","Health","Level","Speed"};
 
     private JComboBox attChoices;
-    private JCheckBox isWeapon;
     private JTextField amount;
     private Map<String,JTextField> textvals;
     private Attacks attack1;
@@ -80,7 +78,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
         String weaponOPt = "Weapon Effect (Optional)";
 
         JTextField itemName = new JTextField(15);
-        isWeapon = new JCheckBox("Is A Weapon?");
+        JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
         isWeapon.addItemListener(this);
 
 
@@ -143,7 +141,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
         itemPane.addTab(weaponTab,panel3);
         itemPane.addTab(weaponOPt,panel4);
 
-        result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
+        int result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, null, null);
 
         int count = 0;

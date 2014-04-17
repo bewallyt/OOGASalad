@@ -80,13 +80,13 @@
       <file leaf-file-name="ItemCreation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/authoring/ItemCreation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.032702237" vertical-offset="2779" max-vertical-offset="3360">
-              <caret line="184" column="45" selection-start-line="184" selection-start-column="45" selection-end-line="184" selection-end-column="45" />
+            <state vertical-scroll-proportion="-4.292599" vertical-offset="2749" max-vertical-offset="3330">
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2750#2960#0" expanded="true" />
-                <element signature="e#2949#2950#0" expanded="true" />
-                <element signature="e#6593#6602#0" expanded="true" />
+                <element signature="e#2704#2914#0" expanded="true" />
+                <element signature="e#2903#2904#0" expanded="true" />
+                <element signature="e#6551#6560#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -718,12 +718,12 @@
       <workItem from="1397668051324" duration="185000" />
       <workItem from="1397675587105" duration="4511000" />
       <workItem from="1397681257313" duration="8710000" />
-      <workItem from="1397698000522" duration="4441000" />
+      <workItem from="1397698000522" duration="4609000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56685000" />
+    <option name="totallyTimeSpent" value="56853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="991" extended-state="6" />
@@ -1139,13 +1139,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/ItemCreation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.032702237" vertical-offset="2779" max-vertical-offset="3360">
-          <caret line="184" column="45" selection-start-line="184" selection-start-column="45" selection-end-line="184" selection-end-column="45" />
+        <state vertical-scroll-proportion="-4.292599" vertical-offset="2749" max-vertical-offset="3330">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2750#2960#0" expanded="true" />
-            <element signature="e#2949#2950#0" expanded="true" />
-            <element signature="e#6593#6602#0" expanded="true" />
+            <element signature="e#2704#2914#0" expanded="true" />
+            <element signature="e#2903#2904#0" expanded="true" />
+            <element signature="e#6551#6560#0" expanded="true" />
           </folding>
         </state>
       </provider>
