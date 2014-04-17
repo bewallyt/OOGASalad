@@ -118,41 +118,6 @@ public class Main extends RPGEngine {
 		player.addStatistic(new Statistic("health",100,100));
 		enemy.setBattleImage("rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
-
-
-
-//		addPlayer(anim,2,1, 1);
-
-
-//		addGridObject(getPlayer(), 3, 3);
-//		Enemy bafm = new Enemy(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
-//		bafm.battleOnSight();
-//		addGridObject(bafm,10,10);
-//		bafm.addDialogue("Hey fight me");
-//		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
-//		addGridObject(pokeCenter, 4, 3);
-//		
-//		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), i, 0);
-//			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
-//		}
-//		for(int i=0; i<outsideWorld.getTileGridHeight(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), 0, i);
-//			addGridObject(new Barrier("tree.png",1,2), outsideWorld.getTileGridWidth()-1,i );
-//		}
-//		
-//
-//		
-
-
-//		Barrier pokeCenter2 = new Barrier("pokecenter.png",4, 4);
-//		buildingWorld.setTileObject(pokeCenter2, 4, 3);
-
-//		Door door = new Door("cabinets.jpg", 1, 1);
-//		door.setBuildingWorld(buildingWorld);
-//		addGridObject(door, 6, 6);
-
-
 	}
 
 	@Override
