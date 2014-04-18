@@ -1,19 +1,11 @@
 package engine.menu;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import engine.dialogue.InteractionBox;
 
 public class MenuDisplayer {
-	
-	package engine.dialogue;
-
-	import java.awt.Color;
-	import java.awt.Graphics2D;
-	import java.awt.Rectangle;
-
-	/**
-	 * This is what actually will be displaying text/menus/whatever on the Canvas. A world will have an instance
-	 * of one of these bad boys. This TextDislayer merely is a container for an object that implements
-	 * the InteractionBox interface.
-	 *
-	 */
 
 		InteractionBox myInteractionBox;
 		

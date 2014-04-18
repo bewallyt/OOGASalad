@@ -87,7 +87,7 @@ public class MenuManager implements InteractionBox {
 			e.printStackTrace();
 		}
 
-		g2d.setColor(Color.white);
+		g2d.setColor(Color.green);
 		g2d.fill(new Rectangle((int) ((int) 0), ySize / 2 + 60, xSize,
 				ySize / 4));
 		g2d.setColor(Color.black);

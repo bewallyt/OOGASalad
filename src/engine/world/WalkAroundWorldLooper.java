@@ -7,15 +7,19 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
+import engine.menu.MenuControl;
+import engine.menu.MenuManager;
 
 public class WalkAroundWorldLooper extends GameLooper {
 	
 	WalkAroundWorld myWorld;
+	
 	public WalkAroundWorldLooper(WalkAroundWorld currentWorld) {
 		super(currentWorld);
 		myWorld = (WalkAroundWorld) getWorld();
 		getWorld().getPlayer().setSurroundingsChecker(new SurroundingChecker(myWorld));
 		setDialogueDisplayControl();
+		setMenuControl();
 	}
 
 	private void setDialogueDisplayControl() {
@@ -27,6 +31,12 @@ public class WalkAroundWorldLooper extends GameLooper {
 		
 	}
 
+	private void setMenuControl(){
+		
+		myWorld.setMenuDisplayer(new MenuManager());
+		//myWorld.getPlayer().setMenuControl(new MenuControl(myWorld));
+	}
+	
 	@Override
 	public World doLoop() {
 		checkCollisions( myWorld.getCollisionMatrix());

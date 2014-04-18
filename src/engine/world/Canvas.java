@@ -110,21 +110,6 @@ public class Canvas extends JComponent{
 	}
 	
 	
-	/*
-	 * Added to test Menu
-	 */
-
-	
-	private void paintMenuWorld(Graphics2D g2d){
-		
-		WalkAroundWorld menuWorld = (WalkAroundWorld) myWorld;
-
-		menuWorld.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
-												getCameraOffset()[1]);
-		
-		// Test for 
-		
-	}
 
 	private void paintWalkAroundWorld(Graphics2D g2d) {
 	
@@ -147,6 +132,9 @@ public class Canvas extends JComponent{
 		
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
 												getCameraOffset()[1]);
+		
+		world.getMenuDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
+				getCameraOffset()[1]);
 	}
 
 	public int[] getCameraOffset(){

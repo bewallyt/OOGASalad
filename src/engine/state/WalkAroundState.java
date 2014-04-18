@@ -14,7 +14,6 @@ import engine.world.World;
 public class WalkAroundState extends AbstractState {
 
 	private Player myPlayer;
-	private MenuManager myMenuManager;
 
 	public WalkAroundState(Player p) {
 		super();
@@ -56,8 +55,8 @@ public class WalkAroundState extends AbstractState {
 			myPlayer.setAClick(false);
 		// Added to test menu.
 		if (e.getKeyCode() == Control.SPACE) {
-			myPlayer.setState(new MenuState(myMenuManager));
-			//myMenuManager.toggleMenu();
+			myPlayer.setState(new MenuState());
+			// need a way to get myWorld so we can call myWorld.setMenuDisplay(new MenuManager());
 		}
 	}
 

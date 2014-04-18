@@ -11,14 +11,11 @@ public class MenuState extends AbstractState {
 	
 	private MenuManager myMenu;
 	
-	public MenuState(MenuManager menu) {
+	public MenuState() {
 		super();
-		myMenu = menu;
+	
 	}
 	
-	public MenuState(){
-		
-	}
 
 
 	@Override
