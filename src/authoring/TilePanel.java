@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TilePanel extends JPanel{
+public class TilePanel extends JLayeredPane{
 	
 	private TileData myData;
 	private ImageIcon myTileImage;
@@ -29,11 +29,12 @@ public class TilePanel extends JPanel{
 		myRow = row;
 		myCol = col;
 		this.setLayout(new BorderLayout());
+		this.setVisible(true);
 	}
 	
-	public TilePanel(int row, int col, TileData existingData){
+	public TilePanel(int row, int col, ImageIcon bg){
 		this(row, col);
-		myData = existingData;
+		this.setTileImage(bg);
 	}
 	
 	@Override
@@ -52,21 +53,20 @@ public class TilePanel extends JPanel{
 		
 		myTileImage = imageFile;
 		myTileLabel = new JLabel(myTileImage);
-		myTileLabel.setLayout(new BorderLayout());
+		myTileLabel.setLayout(null);
 		myTileLabel.setOpaque(true);
-		this.add(myTileLabel);
+		this.add(myTileLabel, 1);
 		saveImage(myTileImage.getDescription());
 	}
 	
 	public void addGridObjectImage(ImageIcon imageFile){
-		if(myGridObjectLabel != null)
-			this.remove(myGridObjectLabel);
-		
 		myGridObjectImage = imageFile;
 		myGridObjectLabel = new JLabel(myGridObjectImage);
 		myGridObjectLabel.setLayout(new BorderLayout());
 		myGridObjectLabel.setOpaque(false);
-		this.add(myGridObjectLabel);
+		this.add(myGridObjectLabel, 0);
+		this.revalidate();
+		this.repaint();
 	}
 	
 	public void update(){
