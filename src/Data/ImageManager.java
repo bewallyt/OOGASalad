@@ -29,7 +29,7 @@ public class ImageManager {
 	public static final String SRC="src/";
 	//public static final String DEFAULT_IMAGE_PACKAGE="TestImageFiles/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
-	public static final String DEFAULT_IMAGE_EXTENSION="jpg";
+	public static final String DEFAULT_IMAGE_EXTENSION="gif";
 	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject", "TileImage"};
 	
 	public ImageManager() {	
@@ -140,7 +140,7 @@ public class ImageManager {
 	 * @return File s with the path of the image
 	 */
 	public ImageFile loadGridObjectImage(String name){
-		return loadImage(name, IMAGE_FOLDER_OPTIONS[2]);
+		return loadImage(name, IMAGE_FOLDER_OPTIONS[0]);
 	}
 	/**
 	 * Loads the tile image with the given string name, ie "TestImage.jpg" 
