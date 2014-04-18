@@ -11,7 +11,7 @@ public class ObjectiveFeature extends Feature{
 	public ObjectiveFeature(){
 		createObjectiveButton = new JButton("Add Objectives");
 		createObjectiveButton.addActionListener(new ObjectiveListener());
-		myComponents.put(createObjectiveButton, BorderLayout.EAST);
+		myComponents.put(createObjectiveButton, BorderLayout.NORTH);
 	}
 	private class ObjectiveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
