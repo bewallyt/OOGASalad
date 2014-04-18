@@ -73,38 +73,38 @@ public class Main extends RPGEngine {
 
 		bafm.setResponseNode(n);
 
-		Door door = new Door("cabinets.jpg", 1, 1);
+		//Door door = new Door("cabinets.jpg", 1, 1);
 
-		Door door2 = new Door("cabinets.jpg", 1, 1);
-		Door tallGrass = new Door("grassback.jpg",1,1);
+		//Door door2 = new Door("cabinets.jpg", 1, 1);
+		//Door tallGrass = new Door("grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
 
 	
 
 		//enemy.setResponseNode(n);
-		Attack attack2 = new Attack("ck");
-		attack.setSpeed(10, 100);
-		attack.setDamage(10, 100);
-		List<Attack> attackList2 = new ArrayList<Attack>();
-		attackList2.add(attack2);
-		
-		Weapon weapon2 = new Weapon("cabinets.jpg", "wp", attackList2);
-		enemy.addWeapon(weapon2);
+//		Attack attack2 = new Attack("ck");
+//		attack.setSpeed(10, 100);
+//		attack.setDamage(10, 100);
+//		List<Attack> attackList2 = new ArrayList<Attack>();
+//		attackList2.add(attack2);
+//		
+//		Weapon weapon2 = new Weapon("cabinets.jpg", "wp", attackList2);
+//		enemy.addWeapon(weapon2);
 		
 		gridObjectList.add(player);
-		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
-		gridObjectList.add(door);
+		//gridObjectList.add(new Barrier("pokecenter.png",4, 4));
+		//gridObjectList.add(door);
 		gridObjectList.add(bafm);
 		gridObjectList.add(enemy);
-		gridObjectList.add(tallGrass);
+		//gridObjectList.add(tallGrass);
 		Barrier cab = new Barrier("cabinets.jpg",1,1);
 		cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
 		gridObjectList.add(cab);
 		
-		gridObjectList2.add(player);
-		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
-		gridObjectList2.add(door2);
+		//gridObjectList2.add(player);
+		//gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
+		//gridObjectList2.add(door2);
 	
 		
 		
@@ -114,30 +114,30 @@ public class Main extends RPGEngine {
 		outsideWorld.addRandomEncounter(enemy);
 		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy,outsideWorld));
 		
-		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
-		door.setWorld(buildingWorld);
-		door2.setWorld(outsideWorld);
-		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
+		//WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
+		//door.setWorld(buildingWorld);
+		//door2.setWorld(outsideWorld);
+		//tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
-		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
-		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
-		outsideWorld.setTileObject(gridObjectList.get(3), 8, 13);
-		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
-		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
-		outsideWorld.setTileObject(gridObjectList.get(6), 1, 2);
+		//outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
+		//outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
+		outsideWorld.setTileObject(gridObjectList.get(1), 8, 13);
+		outsideWorld.setTileObject(gridObjectList.get(2), 10, 8);
+		//outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
+		outsideWorld.setTileObject(gridObjectList.get(3), 1, 2);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
 		
-		outsideWorld.setCollisionHandler(new BattleCollision(gridObjectList.get(0),gridObjectList.get(5)), 0, 5);
-		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
-		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
-		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
-
-		buildingWorld.paintFullBackround("pokecenterfloor.png");
-		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
-				gridObjectList2.get(2)),0,2);
+		//outsideWorld.setCollisionHandler(new BattleCollision(gridObjectList.get(0),gridObjectList.get(5)), 0, 5);
+//		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
+//		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
+//		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
+//
+//		buildingWorld.paintFullBackround("pokecenterfloor.png");
+//		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
+//				gridObjectList2.get(2)),0,2);
 		
 		player.setBattleImage("PlayerRight0.png");
 		player.addStatistic(new Statistic("health",100,100));
@@ -147,7 +147,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(400, 400);
+		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}
 

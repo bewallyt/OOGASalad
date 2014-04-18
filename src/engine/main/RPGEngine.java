@@ -42,6 +42,8 @@ public abstract class RPGEngine{
 	public void setWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
+		String classname = myCurrentWorld.getClass().getName();
+		myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
 		
 	}
 
@@ -84,14 +86,10 @@ public abstract class RPGEngine{
 
 		while (true) {
 			myCanvas.repaint();
-			String classname = myCurrentWorld.getClass().getName();
-			if (classname.equals("engine.world.ArenaWorld")) {
-				int x= 5;
-			}
-			GameLooper cl = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
-			if(cl.doLoop()!=null){
+			if(myGameLooper.doLoop()!=null){
 				System.out.println("change");
-				changeWorld(cl.doLoop(),50,100);
+				changeWorld(myGameLooper.doLoop(),50,100);
+				
 			}
 			Thread.sleep(10);
 		}

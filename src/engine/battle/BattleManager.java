@@ -13,6 +13,7 @@ import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
+import engine.dialogue.MatrixNode;
 import engine.dialogue.UserQueryNode;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
@@ -50,9 +51,9 @@ public class BattleManager implements InteractionBox{
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
-		setWeaponChildrenNodes(myWeaponSelector);
-		setBagChildrenNodes(myBagSelector);
-		setRunChildrenNodes(myRunSelector);
+//		setWeaponChildrenNodes(myWeaponSelector);
+//		setBagChildrenNodes(myBagSelector);
+//		setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
 		setAttackChildrenNodes(myAttackSelector);
@@ -135,7 +136,6 @@ public class BattleManager implements InteractionBox{
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,int height) {
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font=null;
-
 		try {
 			try {
 				font = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -167,7 +167,7 @@ public class BattleManager implements InteractionBox{
 		int yCornerLoc = ySize/2 + 120;
 		for (int i = 0; i < myOptions.getDimension(); i++) {
 			for (int j = 0; j < myOptions.getDimension(); j++) {
-				UserQueryNode qn = (UserQueryNode) myOptions.getNode(j, i);
+				MatrixNode qn = (MatrixNode) myOptions.getNode(j, i);
 				g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}
 		}
@@ -180,9 +180,14 @@ public class BattleManager implements InteractionBox{
 	public void getNextText() {
 		if(myCurrentState==TOPLEVEL){
 			int count=0;
+			myCurrentBattleSelector.getChildren().size();
 			for(int i=0; i<myOptions.getDimension(); i++){
 				for(int j=0; j<myOptions.getDimension(); j++){
-					myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
+					if(myCurrentBattleSelector.getChildren().size()>count)
+						myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
+					else{
+						myOptions.setNode(null, i, j);
+					}
 					count++;
 				}
 			}
@@ -237,8 +242,9 @@ public class BattleManager implements InteractionBox{
 		setCurrentNode();
 	}
 	private void setCurrentNode() {
-		if(myCurrentState==TOPLEVEL)
+		if(myCurrentState==TOPLEVEL){
 			myCurrentBattleSelector=(BattleSelectorNode) myOptions.getCurrentNode();
+		}
 		else if(myCurrentState==BOTTOMLEVEL){
 			myCurrentBattleExecutorNode=(BattleExecutorNode) myOptions.getCurrentNode();
 		}
