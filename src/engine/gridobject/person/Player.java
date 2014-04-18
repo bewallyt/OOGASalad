@@ -2,9 +2,13 @@ package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
 
+<<<<<<< HEAD
 import engine.dialogue.InteractionBox;
+=======
+import engine.dialogue.DialogueDisplayControl;
+>>>>>>> a396885a748d10f316e4f3bc3aba586f0cf67662
 import engine.gridobject.Door;
-import engine.gridobject.item.Item;
+import engine.item.Item;
 import engine.state.AbstractState;
 import engine.state.WalkAroundState;
 import engine.world.SurroundingChecker;
@@ -73,5 +77,6 @@ public class Player extends Person {
 
 		return false;
 	}
+
 
 }

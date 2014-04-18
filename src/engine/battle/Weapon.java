@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.gridobject.Pickupable;
+import engine.gridobject.person.Player;
 
-public class Weapon{
+public class Weapon implements Pickupable{
 	private String myName;
 	private String myImageName;
 	private Statistic myDamage;
@@ -17,7 +19,7 @@ public class Weapon{
 	public Weapon(String image, String name, List<Attack> attacks) {
 		myName = name;
 		myImageName = image;
-		myAttacks = new ArrayList<Attack>(attacks);
+		myAttacks = attacks;
 		mySpeed = new Statistic("Speed", DEFAULT_SPEED,DEFAULT_MAX);
 		myDamage = new Statistic("Damage",DEFAULT_DAMAGE,DEFAULT_MAX);
 	}
@@ -45,6 +47,12 @@ public class Weapon{
 	}
 	public void setSpeed(int value, int max){
 		mySpeed = new Statistic("speed",value, max);
+	}
+
+	@Override
+	public void pickUp(Player player) {
+		player.addWeapon(this);
+		
 	}
 
 }

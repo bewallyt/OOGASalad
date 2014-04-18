@@ -140,7 +140,7 @@ public class ImageManager {
 	 * @return File s with the path of the image
 	 */
 	public ImageFile loadGridObjectImage(String name){
-		return loadImage(name, IMAGE_FOLDER_OPTIONS[2]);
+		return loadImage(name, IMAGE_FOLDER_OPTIONS[0]);
 	}
 	/**
 	 * Loads the tile image with the given string name, ie "TestImage.jpg" 
