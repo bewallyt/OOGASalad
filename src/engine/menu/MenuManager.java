@@ -24,7 +24,7 @@ public class MenuManager implements InteractionBox {
 	private static final int SYMBOL_RADIUS = 10;
 	
 	public MenuManager(){
-		mySelections = new InteractionMatrix2x2();
+		mySelections = new InteractionMatrix6x1();
 	}
 
 	public void setState(AbstractState state) {
