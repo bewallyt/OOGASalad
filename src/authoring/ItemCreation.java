@@ -29,6 +29,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     private String optionalEffect;
     private int oeAmount;
 
+
     public ItemCreation(){
         JButton createItem = new JButton("Create Item");
         createItem.addActionListener(this);
