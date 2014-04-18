@@ -12,6 +12,7 @@ public class Main {
         myFeatures.add(new PlayerCreation());
 		myFeatures.add(new SaveGameFeature());
 		myFeatures.add(new MapCreatorFeature());
+		myFeatures.add(new ObjectiveFeature());
 		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
