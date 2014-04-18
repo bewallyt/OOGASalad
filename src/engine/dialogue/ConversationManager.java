@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import java.util.*;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.images.ScaledImage;
 import engine.state.WalkAroundState;
 
 public class ConversationManager implements InteractionBox {
@@ -52,14 +54,16 @@ public class ConversationManager implements InteractionBox {
 			} catch (FontFormatException e) {
 				e.printStackTrace();
 			}
-			Font sizedFont = font.deriveFont(12f);
+			Font sizedFont = font.deriveFont(16f);
 			g2d.setFont(sizedFont);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		g2d.setColor(Color.white);
-		g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
+		Image img = new ScaledImage(width, 150,"textbox.png").scaleImage();
+		g2d.drawImage(img, 0, height + 70, null);
+		//g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
 		g2d.setColor(Color.black);
 
 		if (RESPONDING) {
