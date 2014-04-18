@@ -19,7 +19,7 @@ public class ConversationManager implements InteractionBox {
 	private NPCResponseNode currentResponseNode;
 	private UserQueryNode currentUserQueryNode;
 	private String textToBeDisplayed;
-	private InteractionMatrix myResponses;
+	private InteractionMatrix2x2 myResponses;
 	private int widthOfText;
 	private Player myPlayer;
 	private NPC myNPC;
@@ -37,7 +37,7 @@ public class ConversationManager implements InteractionBox {
 		myPlayer = p;
 		myNPC = n;
 		System.out.println(textToBeDisplayed);
-		myResponses = new InteractionMatrix();
+		myResponses = new InteractionMatrix2x2();
 		RESPONDING = false;
 	}
 
@@ -73,8 +73,8 @@ public class ConversationManager implements InteractionBox {
 								int width, int height) {
 		int xCornerLoc = xSize/10;
 		int yCornerLoc = ySize/2 + 120;
-		for (int i = 0; i < myResponses.getDimensionX(); i++) {
-			for (int j = 0; j < myResponses.getDimensionY(); j++) {
+		for (int i = 0; i < myResponses.getDimension()[0]; i++) {
+			for (int j = 0; j < myResponses.getDimension()[1]; j++) {
 				UserQueryNode qn = (UserQueryNode) myResponses.getNode(j, i);
 				g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}

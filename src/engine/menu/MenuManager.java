@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
+import engine.dialogue.InteractionMatrix2x2;
 import engine.dialogue.UserQueryNode;
 import engine.gridobject.GridObject;
 import engine.state.AbstractState;
@@ -23,7 +24,7 @@ public class MenuManager implements InteractionBox {
 	private static final int SYMBOL_RADIUS = 10;
 	
 	public MenuManager(){
-		mySelections = new InteractionMatrix();
+		mySelections = new InteractionMatrix2x2();
 	}
 
 	public void setState(AbstractState state) {
@@ -113,8 +114,8 @@ public class MenuManager implements InteractionBox {
 			int width, int height) {
 		int xCornerLoc = xSize / 10;
 		int yCornerLoc = ySize / 2 + 120;
-		for (int i = 0; i < mySelections.getDimensionX(); i++) {
-			for (int j = 0; j < mySelections.getDimensionY(); j++) {
+		for (int i = 0; i < mySelections.getDimension()[0]; i++) {
+			for (int j = 0; j < mySelections.getDimension()[1]; j++) {
 				UserQueryNode qn = (UserQueryNode) mySelections.getNode(j, i);
 				g2d.drawString(qn.getString(), (int) (xCornerLoc + j
 						* (xSize * 5 / 10)), (int) (yCornerLoc + i
