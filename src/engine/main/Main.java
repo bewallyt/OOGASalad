@@ -127,10 +127,6 @@ public class Main extends RPGEngine {
 		makeOutsideWorld();
 	}
 
-	@Override
-	public void run() {
-
-	}
 
 
 

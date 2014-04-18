@@ -2,6 +2,7 @@ package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
 
+import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.Door;
 import engine.gridobject.item.Item;
 import engine.state.AbstractState;
@@ -83,5 +84,6 @@ public class Player extends Person {
 
 		return false;
 	}
+
 
 }

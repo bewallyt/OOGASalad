@@ -1,16 +1,17 @@
 package engine.world;
 
-import engine.GameLooper;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
+import engine.gridobject.person.Person;
 
 public class WalkAroundWorldLooper extends GameLooper {
 	
 	WalkAroundWorld myWorld;
+	
 	public WalkAroundWorldLooper(WalkAroundWorld currentWorld) {
 		super(currentWorld);
 		myWorld = (WalkAroundWorld) getWorld();
@@ -20,11 +21,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 
 	private void setDialogueDisplayControl() {
 		for (GridObject go : (myWorld.getGridObjectList())) {
-			if (go instanceof NPC) {
-				((NPC) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			if (go instanceof Person) {
+				((Person) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			}
 		}
-		
 	}
 
 	@Override
