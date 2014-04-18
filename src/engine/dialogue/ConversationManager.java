@@ -67,6 +67,7 @@ public class ConversationManager implements InteractionBox {
 		} else {
 			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
 		}
+		
 	}
 
 	private void printResponses(Graphics2D g2d, InteractionMatrix myResponses2, int xSize, int ySize, 

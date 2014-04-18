@@ -33,7 +33,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 
 	private void setMenuControl(){
 		
-		myWorld.setMenuDisplayer(new MenuManager());
+//		myWorld.setMenuDisplayer(new MenuManager());
 		//myWorld.getPlayer().setMenuControl(new MenuControl(myWorld));
 	}
 	

@@ -36,7 +36,7 @@ public class InteractionMatrix6x1 extends InteractionMatrix {
 	 * the current option
 	 */
 	public void moveDown() {
-		if (selectedNodeY != 1) {
+		if (selectedNodeY != 5) {
 			selectedNodeY++;
 		}
 	}

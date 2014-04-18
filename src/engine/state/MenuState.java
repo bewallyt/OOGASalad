@@ -16,6 +16,7 @@ public class MenuState extends AbstractState {
 	public MenuState(Player p) {
 		super();
 		myPlayer = p;
+		myMenu = new MenuManager();
 	
 	}
 	
@@ -41,13 +42,7 @@ public class MenuState extends AbstractState {
 		}
 		if (e.getKeyCode() == Control.DOWN){
 			myMenu.moveCursorDown();
-		}
-		if (e.getKeyCode() == Control.RIGHT){
-			myMenu.moveCursorRight();
-		}
-		if (e.getKeyCode() == Control.LEFT){
-			myMenu.moveCursorLeft();
-		}		
+		}	
 		if (e.getKeyCode() == Control.A) {
 			myMenu.select();
 			}

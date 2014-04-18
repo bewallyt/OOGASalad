@@ -62,6 +62,8 @@ public class WalkAroundState extends AbstractState {
 		if (e.getKeyCode() == Control.SPACE) {
 			myPlayer.setState(new MenuState(myPlayer));
 			MenuManager mm = new MenuManager();
+			System.out.println("creation of menumanager");
+			mm.createMenuNodes();
 			//myPlayer.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			myPlayer.setInteractionBox(mm);
 			//myDialogueDisplayControl.setInteractionBox(mm);
