@@ -77,8 +77,7 @@ public class MenuManager implements InteractionBox {
 	}
 
 	@Override
-	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int xOffset,
-			int yOffset) {
+	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width, int height) {
 
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font = null;
@@ -96,8 +95,7 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		g2d.fill(new Rectangle((int) ((int) 0), ySize / 2 + 60, xSize,
-				ySize / 4));
+		g2d.fill(new Rectangle(xSize -190, ySize/2 - 240, width/4 + 50 , height + 60));
 		g2d.setColor(Color.black);
 	}
 
