@@ -1,4 +1,4 @@
-package engine.gridobject.item;
+package engine.item;
 
 import engine.Statistic;
 import engine.world.Tile;

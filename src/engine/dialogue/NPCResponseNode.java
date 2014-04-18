@@ -2,8 +2,8 @@ package engine.dialogue;
 
 import java.util.*;
 
-import engine.gridobject.item.Item;
 import engine.gridobject.person.NPC;
+import engine.item.Item;
 
 public class NPCResponseNode {
 
