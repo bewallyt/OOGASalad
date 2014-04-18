@@ -1,14 +1,11 @@
 package engine.state;
 
 import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
 
 import engine.Control;
 import engine.gridobject.GridObject;
+import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
-import engine.world.Canvas;
-import engine.world.World;
 
 public class WalkAroundState extends AbstractState {
 
@@ -38,6 +35,10 @@ public class WalkAroundState extends AbstractState {
 			GridObject surrounding = myPlayer.getSurroundingChecker().checkSurroundings(myPlayer).get(0);
 			if(surrounding!=null){
 				surrounding.doAction();
+			}
+			if(surrounding.getPickupable()!=null){
+				(surrounding.getPickupable()).pickUp(myPlayer);
+				surrounding.setPickupable(null);
 			}
 		}	
 	}

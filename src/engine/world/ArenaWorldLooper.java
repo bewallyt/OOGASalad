@@ -1,6 +1,5 @@
 package engine.world;
 
-import engine.GameLooper;
 import engine.battle.BattleManager;
 
 public class ArenaWorldLooper extends GameLooper {
