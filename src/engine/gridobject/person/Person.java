@@ -250,6 +250,7 @@ public abstract class Person extends GridObject {
 	public void setCurrentWeapon(Weapon weapon){
 		myCurrentWeapon=weapon;
 	}
+	
 	public Weapon getCurrentWeapon(){
 		return myCurrentWeapon;
 	}

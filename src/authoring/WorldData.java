@@ -2,6 +2,7 @@ package authoring;
 import java.awt.Image;
 import java.io.File;
 import java.util.*;
+import javax.swing.*;
 
 public class WorldData {
 
@@ -11,8 +12,8 @@ public class WorldData {
     private List<Weapon> myWeapons;
     private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
-	protected static final int DEFAULT_MAP_WIDTH = 100;
-	protected static final int DEFAULT_MAP_HEIGHT = 100;
+	protected static final int DEFAULT_MAP_WIDTH = 10;
+	protected static final int DEFAULT_MAP_HEIGHT = 10;
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
