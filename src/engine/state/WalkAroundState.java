@@ -54,10 +54,13 @@ public class WalkAroundState extends AbstractState {
 		if (e.getKeyCode() == Control.A)
 			myPlayer.setAClick(false);
 		// Added to test menu.
-		if (e.getKeyCode() == Control.SPACE) {
-			myPlayer.setState(new MenuState());
-			// need a way to get myWorld so we can call myWorld.setMenuDisplay(new MenuManager());
-		}
+//		if (e.getKeyCode() == Control.SPACE) {
+//			myPlayer.setState(new MenuState());
+//			MenuManager mm = new MenuManager();
+//			myPlayer.setDialogueDisplayControl(new MenuControl(myWorld));
+//			myDialogueDisplayControl.setInteractionBox(mm);
+////			// need a way to get myWorld so we can call myWorld.setMenuDisplay(new MenuManager());
+//		}
 	}
 
 	@Override
