@@ -1,9 +1,9 @@
 package engine.main;
 
-import engine.GameLooper;
 import engine.gridobject.person.Reflection;
 import engine.world.ArenaWorld;
 import engine.world.Canvas;
+import engine.world.GameLooper;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 

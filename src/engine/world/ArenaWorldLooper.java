@@ -1,6 +1,5 @@
 package engine.world;
 
-import engine.GameLooper;
 import engine.battle.BattleManager;
 import engine.state.BattleState;
 
