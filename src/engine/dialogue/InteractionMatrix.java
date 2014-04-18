@@ -17,12 +17,19 @@ public class InteractionMatrix {
 	private int selectedNodeY;
 	
 	private MatrixNode[][] myNodes;
-	private static final int DIMENSION = 2;
+	private int myDimensionX = 2;
+	private int myDimensinoY = 2;
 	
 	public InteractionMatrix() {
 		selectedNodeX = 0;
 		selectedNodeY = 0;
-		myNodes = new MatrixNode[DIMENSION][DIMENSION];
+		myNodes = new MatrixNode[DIMENSION_X][DIMENSION_Y];
+	}
+	
+	public InteractionMatrix(int DimensionX, int DimensionY) {
+		selectedNodeX = 0;
+		selectedNodeY = 0;
+		myNodes = new MatrixNode[DIMENSION_X][DIMENSION_Y];
 	}
 	
 	public void setNode(MatrixNode mNode, int x, int y) {
@@ -83,9 +90,14 @@ public class InteractionMatrix {
 		}
 	}
 	
-	public int getDimension() {
-		return DIMENSION;
+	public int getDimensionX() {
+		return DIMENSION_X;
 	}
+	
+	public int getDimensionY() {
+		return DIMENSION_Y;
+	}
+	
 	
 	
 }

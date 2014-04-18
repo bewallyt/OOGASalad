@@ -10,6 +10,7 @@ import engine.menu.MenuControl;
 import engine.menu.MenuManager;
 import engine.gridobject.person.Person;
 
+
 public class WalkAroundWorldLooper extends GameLooper {
 	
 	WalkAroundWorld myWorld;
