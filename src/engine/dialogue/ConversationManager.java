@@ -76,7 +76,11 @@ public class ConversationManager implements InteractionBox {
 		for (int i = 0; i < myResponses.getDimension(); i++) {
 			for (int j = 0; j < myResponses.getDimension(); j++) {
 				UserQueryNode qn = (UserQueryNode) myResponses.getNode(j, i);
-				g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				if (qn != null) {
+					g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				} else {
+					g2d.drawString("     -", (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				}
 			}
 		}
 		

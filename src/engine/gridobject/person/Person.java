@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.battle.Attack;
 import engine.battle.Weapon;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
@@ -30,6 +31,7 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+	private Attack myCurrentAttack;
 
 	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
@@ -235,6 +237,12 @@ public abstract class Person extends GridObject {
 	}
 	public void changeMoney (int amountToChange){
 		myMoney+=amountToChange;
+	}
+	public void setCurrentAttack(Attack attack){
+		myCurrentAttack=attack;
+	}
+	public Attack getCurrentAttack(){
+		return myCurrentAttack;
 	}
 	
 }

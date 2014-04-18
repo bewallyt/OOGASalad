@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.dialogue.MatrixNode;
 import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
 
-public class Weapon implements Pickupable{
+public class Weapon implements Pickupable, MatrixNode, BattleExecutable{
 	private String myName;
 	private String myImageName;
 	private Statistic myDamage;

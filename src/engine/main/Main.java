@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.battle.Attack;
 import engine.battle.Weapon;
 import engine.collision.BattleCollision;
 import engine.collision.EnterCollision;
@@ -44,7 +45,15 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
-
+		Attack attack = new Attack("atck");
+		attack.setSpeed(10, 100);
+		attack.setDamage(10, 100);
+		List<Attack> attackList = new ArrayList<Attack>();
+		attackList.add(attack);
+		
+		Weapon weapon = new Weapon("cabinets.jpg", "wep", attackList);
+		player.addWeapon(weapon);
+		
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
 		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
@@ -58,7 +67,7 @@ public class Main extends RPGEngine {
 		UserQueryNode q3 = new UserQueryNode(player, null, "I feel meh...", n3);
 		n.addResponseNode(q0);
 		n.addResponseNode(q1);
-		n.addResponseNode(q2);
+		n.addResponseNode(null);
 		n.addResponseNode(q3);
 
 
@@ -73,7 +82,16 @@ public class Main extends RPGEngine {
 
 	
 
-		enemy.setResponseNode(n);
+		//enemy.setResponseNode(n);
+		Attack attack2 = new Attack("ck");
+		attack.setSpeed(10, 100);
+		attack.setDamage(10, 100);
+		List<Attack> attackList2 = new ArrayList<Attack>();
+		attackList2.add(attack2);
+		
+		Weapon weapon2 = new Weapon("cabinets.jpg", "wp", attackList2);
+		enemy.addWeapon(weapon2);
+		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);

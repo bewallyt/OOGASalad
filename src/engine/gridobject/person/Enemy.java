@@ -1,6 +1,7 @@
 package engine.gridobject.person;
 
 import engine.ProximityChecker;
+import engine.battle.Attack;
 import engine.world.ArenaWorld;
 
 
@@ -9,6 +10,7 @@ public class Enemy extends NPC {
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
 	private ArenaWorld myWorld;
+
 
 	/**
 	 * Instantiates a new enemy.
@@ -57,7 +59,7 @@ public class Enemy extends NPC {
 
 	@Override 
 	public void doAction(){
-		doDialogue();
+		//doDialogue();
 		battleInitiated=true;
 	}
 
@@ -76,6 +78,8 @@ public class Enemy extends NPC {
 			return true;
 		return false;
 	}
+	
+	
 
 
 
