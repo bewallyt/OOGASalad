@@ -47,6 +47,7 @@ public class Main extends RPGEngine {
 
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
+		
 		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
 		NPCResponseNode n0 = new NPCResponseNode(bafm, "You chose choice 0");
 		NPCResponseNode n1 = new NPCResponseNode(bafm, "You chose choice 1");
@@ -132,11 +133,5 @@ public class Main extends RPGEngine {
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> b10613a9dfea5e7cbda85701e65c1e8bd9b90280
 }

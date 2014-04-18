@@ -163,7 +163,7 @@ public class ConversationManager implements InteractionBox {
 
 	public void moveLeft() {
 		if (RESPONDING) {
-			myResponses.moveLeft();
+			myResponses.moveLeft(); 
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 	}
