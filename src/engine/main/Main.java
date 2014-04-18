@@ -46,14 +46,14 @@ public class Main extends RPGEngine {
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
 		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
-		NPCResponseNode n0 = new NPCResponseNode(bafm, "Glad you feel that way!");
-		NPCResponseNode n1 = new NPCResponseNode(bafm, "choice 1");
-		NPCResponseNode n2 = new NPCResponseNode(bafm, "choice 2");
-		NPCResponseNode n3 = new NPCResponseNode(bafm, "choice 3");
+		NPCResponseNode n0 = new NPCResponseNode(bafm, "You chose choice 0");
+		NPCResponseNode n1 = new NPCResponseNode(bafm, "You chose choice 1");
+		NPCResponseNode n2 = new NPCResponseNode(bafm, "You chose choice 2");
+		NPCResponseNode n3 = new NPCResponseNode(bafm, "You chose choice 3");
 		UserQueryNode q0 = new UserQueryNode(player, null, "I feel good", n0);
 		UserQueryNode q1 = new UserQueryNode(player, null, "I feel bad", n1);
 		UserQueryNode q2 = new UserQueryNode(player, null, "I feel great", n2);
-		UserQueryNode q3 = new UserQueryNode(player, null, "I feel asdfad", n3);
+		UserQueryNode q3 = new UserQueryNode(player, null, "I feel meh...", n3);
 		n.addResponseNode(q0);
 		n.addResponseNode(q1);
 		n.addResponseNode(q2);
@@ -66,10 +66,10 @@ public class Main extends RPGEngine {
 
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("grassback.jpg",1,1);
-		Enemy enemy = new Enemy(anim,2,1,1,1, player);
+		Enemy enemy = new Enemy(anim,2,1,1,3, player);
 		enemy.doBattleOnSight();
 
-		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy));
+	
 
 		enemy.setResponseNode(n);
 		gridObjectList.add(player);
@@ -86,19 +86,20 @@ public class Main extends RPGEngine {
 		
 		
 		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		outsideWorld.addRandomEncounter(enemy);
+		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy,outsideWorld));
 		
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
-		door.setBuildingWorld(buildingWorld);
-		door2.setBuildingWorld(outsideWorld);
-		tallGrass.setBuildingWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter()));
+		door.setWorld(buildingWorld);
+		door2.setWorld(outsideWorld);
+		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
-		outsideWorld.setTileObject(gridObjectList.get(3), 10, 10);
+		outsideWorld.setTileObject(gridObjectList.get(3), 8, 13);
 		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
 		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
 		outsideWorld.paintFullBackround("grassSmall.png");
@@ -122,7 +123,7 @@ public class Main extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
+		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}
 

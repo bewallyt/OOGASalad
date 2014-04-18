@@ -22,8 +22,7 @@ public abstract class GridObject{
 	private int myHeight;
 	private int myX;
 	private int myY;
-	private int myStartX;
-	private int myStartY;
+
 	private Image myImage;
 	private String myImageName;
 	private String[] myAnimImages;
@@ -34,8 +33,14 @@ public abstract class GridObject{
 	private Dialogue myDialogue;
 	private boolean initiateBattle=false;
 
+	/**
+	 * Instantiates a new grid object.
+	 *
+	 * @param image the image file
+	 * @param numTilesWidth the width of the object in tiles
+	 * @param numTilesHeight the height of the object in tiles
+	 */
 	public GridObject(String image, int numTilesWidth, int numTilesHeight) {
-		myStatsMap = null;
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myImageName=image;
@@ -43,6 +48,13 @@ public abstract class GridObject{
 		myDialogueList=new ArrayList<String>();
 	}
 	
+	/**
+	 * Instantiates a new grid object.
+	 *
+	 * @param animImages the anim images (12 are needed)
+	 * @param numTilesWidth the width of the object in tiles
+	 * @param numTilesHeight the height of the object in tiles
+	 */
 	public GridObject(String[] animImages, int numTilesWidth, int numTilesHeight) {
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
@@ -64,9 +76,8 @@ public abstract class GridObject{
 		return new int[] {myWidth,myHeight};
 	}
 	public void setPosition(int x, int y){
-		// can move myStartX/y to just NPC class
-		myX=myStartX=x;
-		myY=myStartY=y;
+		myX=x;
+		myY=y;
 	}
 
 	public int[] getPosition(){
@@ -86,7 +97,6 @@ public abstract class GridObject{
 
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
-		//System.out.println("paint");
 	}
 	
 
@@ -115,11 +125,23 @@ public abstract class GridObject{
 	}
 
 
+	/**
+	 * Adds a statistic to the player's statsmap.
+	 *
+	 * @param stat the statistic
+	 */
 	public void addStatistic(Statistic stat) {
 		System.out.println(myStatsMap);
 		myStatsMap.put(stat.getName(), stat);
 	}
 
+	/**
+	 * Adds a statistic to the player's statsmap.
+	 *
+	 * @param name the name
+	 * @param value the value
+	 * @param maxValue the max value
+	 */
 	public void addStatistic(String name, int value,int maxValue){
 		myStatsMap.put(name,new Statistic(name,value,maxValue));
 	}
@@ -174,21 +196,10 @@ public abstract class GridObject{
 		return myHeight;
 	}
 
-	public void incrementY(double myDY) {
-		myY += myDY;
-	}
-
-	public void incrementX(double myDX) {
-		myX += myDX;
-	}
 
 
-	public int getStartX(){
-		return myStartX;
-	}
-	public int getStartY(){
-		return myStartY;
-	}
+
+
 	public String[] getAnimImages(){
 		return myAnimImages;
 	}
@@ -199,18 +210,4 @@ public abstract class GridObject{
 	public int getNumTilesWidth(){
 		return myNumTilesWidth;
 	}
-	public void initiateBattle(){
-		initiateBattle=true;
-	}
-	public boolean battleInitiated(){
-		if(initiateBattle){
-			initiateBattle=false;
-			return true;
-		}
-		return false;
-	}
-	
-	
-
-
 }

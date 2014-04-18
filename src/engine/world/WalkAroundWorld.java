@@ -33,9 +33,11 @@ public class WalkAroundWorld extends World {
 	/**
 	 * Instantiates a new World.
 	 *
-	 * @param numTileWidth the num tile width
-	 * @param numTileHeight the num tile height
-	 * @param tileSize the tile size
+	 * @param the width of the playfield in pixels
+	 * @param the height of the playfield in pixels
+	 * @param p the player in the world
+	 * @param tileSize the size of each tile
+	 * @param gridObjects the list of grid objects in every world
 	 */
 	public WalkAroundWorld(int playWidth, int playHeight, Player p,int tileSize, List<GridObject> gridObjects) {
 		super(playWidth, playHeight, p);
@@ -51,6 +53,13 @@ public class WalkAroundWorld extends World {
 		myMenuDisplayer = new MenuDisplayer(new TransparentDisplayer());
 	}
 
+	/**
+	 * Sets a new collision handler.
+	 *
+	 * @param handler the handler
+	 * @param x the x coordinate of the collision matrix
+	 * @param y the y coordinate of the collision matrix
+	 */
 	public void setCollisionHandler(CollisionHandler handler, int x, int y) {
 		myCollisionMatrix.setCollisionHandler(handler, x, y);
 	}
@@ -140,10 +149,20 @@ public class WalkAroundWorld extends World {
 		myMenuDisplayer.setInteractionBox(b);
 	}
 
+	/**
+	 * Adds an enemy to a world to be randomly encountered when random battles are initiated
+	 *
+	 * @param enemy the enemy (must be given exactly 1 weapon)
+	 */
 	public void addRandomEncounter(Enemy enemy){
 		myRandomEncounters.add(enemy);
 	}
 
+	/**
+	 * Gets a random enemy from the world's randomencounter list.
+	 *
+	 * @return the random enemy
+	 */
 	public Enemy getRandomEncounter(){
 		int rand = new Random().nextInt(myRandomEncounters.size());
 		return myRandomEncounters.get(rand);

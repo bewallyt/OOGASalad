@@ -23,8 +23,8 @@ public class NPC extends Person {
 	 *
 	 * @param image the image
 	 * @param speed the speed
-	 * @param numTilesWidth the num tiles width
-	 * @param numTilesHeight the num tiles height
+	 * @param numTilesWidth the width in tiles
+	 * @param numTilesHeight the height in tiles
 
 	 * @param movementType the movement type. 1=move back and forth 2=follow player if it gets close 3=stand still
 	 * @param player the player
@@ -93,6 +93,7 @@ public class NPC extends Person {
 	
 	/**
 	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
 	 * @param ddc the DialogueDisplayControl
 	 */
 	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
