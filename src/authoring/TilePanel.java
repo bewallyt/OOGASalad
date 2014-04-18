@@ -54,7 +54,7 @@ public class TilePanel extends JLayeredPane{
 		myTileImage = imageFile;
 		myTileLabel = new JLabel(myTileImage);
 		myTileLabel.setLayout(null);
-		myTileLabel.setOpaque(true);
+		myTileLabel.setOpaque(false);
 		this.add(myTileLabel, 1);
 		saveImage(myTileImage.getDescription());
 	}
