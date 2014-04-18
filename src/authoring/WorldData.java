@@ -17,7 +17,7 @@ public class WorldData {
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
-		myLevels.put(DEFAULT_MAP, new MapData());
+		myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
         myItems = new ArrayList<Item>();
         myWeapons = new ArrayList<Weapon>();
