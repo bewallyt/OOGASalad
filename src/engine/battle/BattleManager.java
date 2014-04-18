@@ -12,8 +12,6 @@ public class BattleManager implements InteractionBox{
 	Player myPlayer;
 	Enemy myEnemy;
 	BattleAI myBattleAI;
-	Weapon myCurrentPlayerWeapon;
-	Weapon myCurrentEnemyWeapon;
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
 		myEnemy=enemy;
