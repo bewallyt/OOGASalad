@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.InputStream;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
 import engine.gridobject.GridObject;
+import engine.images.ScaledImage;
 import engine.state.AbstractState;
 
 public class MenuManager implements InteractionBox {
@@ -101,7 +103,9 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		g2d.fill(new Rectangle(xSize -190, ySize/2 - 240, width/4 + 50 , height + 60));
+		Image img = new ScaledImage(200, height + 50,"startmenu.png").scaleImage();
+		g2d.drawImage(img, width - 200, 0, null);
+		//g2d.fill(new Rectangle(xSize -190, ySize/2 - 240, width/4 + 50 , height + 60));
 		g2d.setColor(Color.black);
 		
 //		if(currentPos != prevPos){
