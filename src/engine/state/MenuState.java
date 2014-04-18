@@ -3,6 +3,7 @@ package engine.state;
 import java.awt.event.KeyEvent;
 
 import engine.Control;
+import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.menu.MenuManager;
@@ -10,9 +11,11 @@ import engine.menu.MenuManager;
 public class MenuState extends AbstractState {
 	
 	private MenuManager myMenu;
+	private Player myPlayer;
 	
-	public MenuState() {
+	public MenuState(Player p) {
 		super();
+		myPlayer = p;
 	
 	}
 	
@@ -48,9 +51,11 @@ public class MenuState extends AbstractState {
 		if (e.getKeyCode() == Control.A) {
 			myMenu.select();
 			}
-//		if (e.getKeyCode() == Control.SPACE) {
-//			myMenu.toggleMenu();
-//		}
+		if (e.getKeyCode() == Control.SPACE) {
+			myPlayer.setState(new WalkAroundState(myPlayer));
+			myPlayer.setInteractionBox(new TransparentDisplayer());
+			//myMenu.toggleMenu();
+		}
 	}
 
 }

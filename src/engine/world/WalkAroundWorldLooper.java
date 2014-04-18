@@ -6,12 +6,9 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
-<<<<<<< HEAD
 import engine.menu.MenuControl;
 import engine.menu.MenuManager;
-=======
 import engine.gridobject.person.Person;
->>>>>>> a396885a748d10f316e4f3bc3aba586f0cf67662
 
 public class WalkAroundWorldLooper extends GameLooper {
 	

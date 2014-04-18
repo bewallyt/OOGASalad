@@ -132,18 +132,5 @@ public class Main extends RPGEngine {
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-//	@Override
-//	public void run() {
-//
-//	}
-=======
->>>>>>> a396885a748d10f316e4f3bc3aba586f0cf67662
-
-
-
-=======
->>>>>>> b10613a9dfea5e7cbda85701e65c1e8bd9b90280
 }
