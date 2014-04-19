@@ -14,7 +14,6 @@ public class SaveGameWindow extends JFrame{
 
     public SaveGameWindow(){
         super("Saving Game:");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(3,1));
         buildPanel();

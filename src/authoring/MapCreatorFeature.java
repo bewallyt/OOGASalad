@@ -28,7 +28,6 @@ public class MapCreatorFeature extends Feature {
 			}
 			
 			gridView.addMap(mapName);
-			FeatureManager.myWorld.addLevel(mapName, new MapData());
 		}
 	}
 }

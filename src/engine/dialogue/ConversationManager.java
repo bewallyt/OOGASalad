@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import java.util.*;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.images.ScaledImage;
 import engine.state.WalkAroundState;
 
 public class ConversationManager implements InteractionBox {
@@ -19,7 +21,7 @@ public class ConversationManager implements InteractionBox {
 	private NPCResponseNode currentResponseNode;
 	private UserQueryNode currentUserQueryNode;
 	private String textToBeDisplayed;
-	private InteractionMatrix myResponses;
+	private InteractionMatrix2x2 myResponses;
 	private int widthOfText;
 	private Player myPlayer;
 	private NPC myNPC;
@@ -37,7 +39,7 @@ public class ConversationManager implements InteractionBox {
 		myPlayer = p;
 		myNPC = n;
 		System.out.println(textToBeDisplayed);
-		myResponses = new InteractionMatrix();
+		myResponses = new InteractionMatrix2x2();
 		RESPONDING = false;
 	}
 
@@ -52,29 +54,32 @@ public class ConversationManager implements InteractionBox {
 			} catch (FontFormatException e) {
 				e.printStackTrace();
 			}
-			Font sizedFont = font.deriveFont(12f);
+			Font sizedFont = font.deriveFont(16f);
 			g2d.setFont(sizedFont);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		g2d.setColor(Color.white);
-		g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
+		Image img = new ScaledImage(width, 150,"textbox.png").scaleImage();
+		g2d.drawImage(img, 0, height + 70, null);
+		//g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
 		g2d.setColor(Color.black);
 
 		if (RESPONDING) {
 			printResponses(g2d, myResponses, xSize, ySize, width, height);
 		} else {
 			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
-		}
+		}	
 	}
 
 	private void printResponses(Graphics2D g2d, InteractionMatrix myResponses2, int xSize, int ySize, 
 								int width, int height) {
 		int xCornerLoc = xSize/10;
 		int yCornerLoc = ySize/2 + 120;
-		for (int i = 0; i < myResponses.getDimension(); i++) {
-			for (int j = 0; j < myResponses.getDimension(); j++) {
+
+		for (int i = 0; i < myResponses.getDimension()[0]; i++) {
+			for (int j = 0; j < myResponses.getDimension()[1]; j++) {
 				UserQueryNode qn = (UserQueryNode) myResponses.getNode(j, i);
 				g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}
@@ -163,7 +168,7 @@ public class ConversationManager implements InteractionBox {
 
 	public void moveLeft() {
 		if (RESPONDING) {
-			myResponses.moveLeft();
+			myResponses.moveLeft(); 
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
 		}
 	}
