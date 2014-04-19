@@ -75,7 +75,7 @@ public class GameFrame extends RPGEngine {
 	public void createWorlds() {
 		createPlayer();
 		for(MapData map : myWorldData.getMaps().values()) {
-			MapDataParser parser = new MapDataParser(map);
+			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 

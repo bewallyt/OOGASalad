@@ -10,7 +10,7 @@ public class WorldData {
     private List<Item> myItems;
     private List<Weapon> myWeapons;
     private PlayerData playData;
-	//protected static final String DEFAULT_MAP = "defaultworldkey";
+	protected static final String DEFAULT_MAP = "defaultworldkey";
 	//protected static final int DEFAULT_MAP_WIDTH = 10;
 	//protected static final int DEFAULT_MAP_HEIGHT = 10;
 	

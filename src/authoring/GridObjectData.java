@@ -12,6 +12,8 @@ public class GridObjectData {
 	private int y;
 	private int width;
 	private int height;
+	private int speed;
+	private int movementType;
 	private NPCResponseNode myRoot;
 
 	public GridObjectData() {
@@ -107,5 +109,13 @@ public class GridObjectData {
 
 	public void setHeight(int h) {
 		height = h;
+	}
+	
+	public int getSpeed(){
+		return speed;
+	}
+	
+	public int getMovementType(){
+		return movementType;
 	}
 }
