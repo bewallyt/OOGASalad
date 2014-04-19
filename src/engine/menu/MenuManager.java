@@ -22,8 +22,6 @@ public class MenuManager implements InteractionBox {
 	private AbstractState myState;
 	private boolean menuToggler = false;
 	private InteractionMatrix6x1 mySelections;
-	private int mySelectedNodeY = 0;
-
 
 	public MenuManager() {
 		mySelections = new InteractionMatrix6x1();
@@ -43,12 +41,10 @@ public class MenuManager implements InteractionBox {
 
 	public void moveCursorUp() {
 		mySelections.moveUp();
-		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
 	}
 
 	public void moveCursorDown() {
 		mySelections.moveDown();
-		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
 	}
 
 	public void select() {
@@ -110,8 +106,7 @@ public class MenuManager implements InteractionBox {
 
 	@Override
 	public void getNextText() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void drawSelector(Graphics2D g2d, int xSize, int ySize, int width,

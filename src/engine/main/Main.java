@@ -43,7 +43,7 @@ public class Main extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, 2, 1, 1);
+		Player player = new Player(anim, 2);
 
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
