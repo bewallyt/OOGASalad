@@ -36,14 +36,17 @@ public class BattleManager implements InteractionBox{
 	private final static int BOTTOMLEVEL=1;
 	private final static int ATTACKHAPPENED=2;
 	private final static int WEAPONSELECTED=3;
+	private final static int RAN=4;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
 	private static final int SYMBOL_RADIUS = 10;
-	private static final String TEXT_DISPLAYED_EVENT_COMPLETED="event was completed! Wooooo";
+	private static final String TEXT_DISPLAYED_ATTACK_COMPLETED="You damaged the enemy by: ";
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
-//	private String textToBeDisplayed="event was completed! Wooooo";
-	private String textToBeDisplayed=TEXT_DISPLAYED_EVENT_COMPLETED;
+	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
+	private String textToBeDisplayed;
+	private boolean ran=false;
+	private int damageDealt;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -113,19 +116,12 @@ public class BattleManager implements InteractionBox{
 		int defense = victim.getStatsMap().get("defense").getValue();
 		int random = 30 + (int)(Math.random() * ((25 - 30) + 1));
 		int total = (((((2*level+2)*playerDamage*(weaponDamage+attackDamage)/defense))+2)/random);
-		System.out.println("pd " + playerDamage);
-		System.out.println("ad " + attackDamage);
-		System.out.println("wd " + weaponDamage);
-		System.out.println("level " + level);
-		System.out.println("random " + random);
-		System.out.println("defense " + defense);
-		System.out.println("total " + total);
 		if(attackDamage!=0)
 			victim.getStatsMap().get("health").changeValue(-total);
 		if(attack.getEffect()!=null){
 			attack.getEffect().doEffect();
 		}
-		System.out.println(myEnemy.getStatsMap().get("health").getValue());
+		damageDealt=total;
 	}
 
 	public Person[] attackFirst(Person person1, Weapon weapon1, Attack attack1, Person person2, Weapon weapon2, Attack attack2){
@@ -191,7 +187,11 @@ public class BattleManager implements InteractionBox{
 	}
 	@Override
 	public void getNextText() {
-		if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
+		((InteractionMatrix2x2) myOptions).resetMatrixPosition();
+		if(myCurrentState==RAN){
+			ran=true;
+		}
+		else if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
@@ -222,8 +222,9 @@ public class BattleManager implements InteractionBox{
 			else if(executable instanceof Item)
 				((Item) executable).useItem();
 			else if(executable instanceof Run){
-				((Run) executable).getRunMessage();
-				//go to walkaround world!
+				//ran=true;
+				myCurrentState=RAN;
+				setCurrentTextToBeDisplayed();
 			}
 	//		myCurrentState=ATTACKHAPPENED;
 
@@ -284,8 +285,14 @@ public class BattleManager implements InteractionBox{
 			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
 		}
 		else if(myCurrentState==ATTACKHAPPENED){
-			textToBeDisplayed=TEXT_DISPLAYED_EVENT_COMPLETED;
+			textToBeDisplayed=TEXT_DISPLAYED_ATTACK_COMPLETED + damageDealt;
 		}
+		else if(myCurrentState==RAN){
+			textToBeDisplayed=TEXT_DISPLAYED_RAN;
+		}
+	}
+	public boolean didRun(){
+		return ran;
 	}
 
 

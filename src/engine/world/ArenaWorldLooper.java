@@ -25,6 +25,10 @@ public class ArenaWorldLooper extends GameLooper {
 			myWorld.getEnemy().setWasBattled();
 			return myWorld.getPrevWorld();
 		}	
+		if(myBattleManager.didRun()){
+			myWorld.getEnemy().setWasBattled();
+			return myWorld.getPrevWorld();
+		}
 		return null;
 //		System.out.println("Conversation Mode");
 //		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
