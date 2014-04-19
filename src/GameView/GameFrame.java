@@ -80,10 +80,8 @@ public class GameFrame extends RPGEngine {
 
 		setWorld(outsideWorld);
 
-		// addEnemy();
-
 		setGridObjects(outsideWorld, gridObjectList);
-		outsideWorld.paintFullBackround("grassSmall.png");
+//		outsideWorld.paintFullBackround("grassSmall.png");
 	}
 
 	public void createPlayer() {
