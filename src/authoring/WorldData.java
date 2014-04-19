@@ -1,8 +1,7 @@
 package authoring;
-import java.awt.Image;
+
 import java.io.File;
 import java.util.*;
-import javax.swing.*;
 
 public class WorldData {
 
@@ -15,41 +14,50 @@ public class WorldData {
 	private String currentMapName;
 	
 	public WorldData(){
+
 		myLevels = new HashMap<String, MapData>();
-		//myLevels.put(DEFAULT_MAP, new MapData(10, 10));
+		// myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
-        myItems = new HashMap<String, Item>();
-        myWeapons = new HashMap<String, Weapon>();
+		myItems = new HashMap<String, Item>();
+		myWeapons = new HashMap<String, Weapon>();
 	}
-	
-	public File getImage(String fileName){
+
+	public File getImage(String fileName) {
 		return myImages.get(fileName);
 	}
-	
-	public void saveImage(String s, File f){
+
+	public void saveImage(String s, File f) {
 		myImages.put(s, f);
 	}
 
-    public Map<String,Item> getMyItems(){ return myItems;}
+	public Map<String, Item> getMyItems() {
+		return myItems;
+	}
 
+<<<<<<< HEAD
     public void saveItem(String n, Item it){ myItems.put(n,it);}
+=======
+	// public void saveItem(Item it){ myItems.add(it);}
+>>>>>>> 299a2a6d8fa290360dc0760cbac4fd3f3572d97e
 
-    public PlayerData getPlayData(){
-        return playData;
-    }
+	public PlayerData getPlayData() {
+		return playData;
+	}
 
-    public void savePlayer(PlayerData player){ playData = player; }
-	
-	public void addLevel(String s, MapData md){
+	public void savePlayer(PlayerData player) {
+		playData = player;
+	}
+
+	public void addLevel(String s, MapData md) {
 		myLevels.put(s, md);
 		System.out.println(myLevels.keySet());
 	}
-	
-	public MapData getMap(String s){
+
+	public MapData getMap(String s) {
 		return myLevels.get(s);
 	}
-	
-	public Map<String, MapData> getMaps(){
+
+	public Map<String, MapData> getMaps() {
 		return myLevels;
 	}
 	
@@ -59,18 +67,26 @@ public class WorldData {
 	
 	public MapData getCurrentMap(){
 		return myLevels.get(currentMapName);
+
 	}
-	
-	protected Map<String, File> getImages(){
+
+	protected Map<String, File> getImages() {
 		return myImages;
 	}
 
+<<<<<<< HEAD
     public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
 
     public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
 
 
 
+=======
+	// public void saveWeapons(Weapon wep){ myWeapons.add(wep);}
+>>>>>>> 299a2a6d8fa290360dc0760cbac4fd3f3572d97e
 
+	public Map<String, Weapon> getMyWeapons() {
+		return myWeapons;
+	}
 
 }

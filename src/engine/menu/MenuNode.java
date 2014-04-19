@@ -3,17 +3,21 @@ package engine.menu;
 import engine.dialogue.MatrixNode;
 
 public class MenuNode implements MatrixNode {
-	
-	public MenuNode(){
-		
+
+	public MenuNode() {
+
 	}
-	
-	public void changeWorld(){
-		
+
+	public void doAction() {
+
 	}
-	
-	public void changeState(){
-		
+
+	public void changeWorld() {
+
+	}
+
+	public void changeState() {
+
 	}
 
 }
