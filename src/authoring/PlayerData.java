@@ -10,23 +10,18 @@ public class PlayerData {
 	private String myImage;
 	private int myXStart;
 	private int myYStart;
-    private int pWidth;
-    private int pHeight;
-    private int speed;
-    private Map<String,String> myPlayerValues;
-    private List<Weapon> myWeapons;
-    private List<Item> myItems;
+    private Map<String,Integer> myPlayerValues;
+    private String[] myWeapons;
+    private String[] myItems;
 	
-	public PlayerData(Boolean anim, String imName, String[] animImage, int x, int y, Map<String, String> startVals,
-    List<Weapon> weps, List<Item> its){
-        isAnim = anim;
-        myImage = imName;
-        myAnimImages = animImage;
+	public PlayerData(String charName, int x, int y, Map<String, Integer> startVals,
+    String[] weps, String[] its){
+
+        myImage = charName;
+
         myXStart = x;
         myYStart = y;
-        pWidth = 36;
-        pHeight = 36;
-        speed = 10;
+
         myPlayerValues = startVals;
         myWeapons = weps;
         myItems = its;
@@ -60,11 +55,8 @@ public class PlayerData {
 
     public int getMyXStart(){ return myXStart; }
     public int getMyYStart(){ return myYStart; }
-    public int getpWidth(){ return pWidth; }
-    public int getpHeight(){ return pHeight; }
-    public int getSpeed(){ return speed; }
-    public Map<String,String> getMyPlayerValues(){ return myPlayerValues;}
-    public List<Weapon> getMyWeapons(){ return  myWeapons;}
-    public List<Item> getMyItems(){ return myItems;}
+    public Map<String,Integer> getMyPlayerValues(){ return myPlayerValues;}
+    public String[] getMyWeapons(){ return  myWeapons;}
+    public String[] getMyItems(){ return myItems;}
 
 }
