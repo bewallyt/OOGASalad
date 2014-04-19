@@ -74,20 +74,20 @@ public class GameFrame extends RPGEngine {
 	
 	public void createWorlds() {
 		createPlayer();
+
 		for(MapData map : myWorldData.getMaps().values()) {
 			
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
-						
+			gridObjectList.add(myPlayer);						
 			List<String> TileImageList = parser.getTileImageList();
 
 			// tile size is default. ask engine to take it out of constructor
 			WalkAroundWorld currWorld = new WalkAroundWorld(map.getMapLength()*40, map.getMapWidth()*40, myPlayer, Constants.TILE_SIZE, gridObjectList);
 			setWorld(currWorld);
-			
-			setGridObjects(currWorld, gridObjectList);
+
 			setTileImages(currWorld, TileImageList);
-			currWorld.setTileObject(myPlayer, 7, 7);
+			setGridObjects(currWorld, gridObjectList);
 		}
 	}
 
@@ -101,9 +101,6 @@ public class GameFrame extends RPGEngine {
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
 				"PlayerLeft2.png" };
 		
-		//String[] anim = myPlayerData.getMyAnimImages();
-		//int speed = myPlayerData.getSpeed();
-		//myPlayer = new Player(anim, speed);
 		myPlayer = new Player(anim, 2);
 	}
 
