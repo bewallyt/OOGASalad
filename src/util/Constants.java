@@ -13,6 +13,8 @@ public class Constants {
 	// player
 	public static final int CANVASWIDTH = 400, CANVASHEIGHT = 400;
 	
+	public static final String[] CATEGORIES = {"Barrier", "Door", "NPC", "enemy"};
+	
     // engine
     public static final String IMAGEPATH = "ImageFiles/";
     

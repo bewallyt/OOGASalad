@@ -1,6 +1,8 @@
 package authoring;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.awt.event.ActionListener;
 
 public class GridViewerFeature extends Feature{
 	
+	private WorldData wd;
 	private JScrollPane myViewer;
 	private JTabbedPane tabs;
 	private List<Grid> myGrids;
@@ -18,10 +21,11 @@ public class GridViewerFeature extends Feature{
 	private int col;
 	
 	public GridViewerFeature() {
+		wd = FeatureManager.getWorldData();
 		myGrids = new ArrayList<Grid>();
 		tabs = new JTabbedPane();
+		tabs.addChangeListener(new TabbedPaneListener());
 		myComponents.put(tabs, BorderLayout.CENTER);
-		
 		mapName = JOptionPane.showInputDialog("Name your map:");
 		if(mapName.equals("")){
 			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
@@ -37,7 +41,7 @@ public class GridViewerFeature extends Feature{
 	}
 	
 	public void addMap(String s){
-		mapSize();
+		mapSize();		
 		tabs.addTab(s, myViewer);
 	}
 	
@@ -62,8 +66,18 @@ public class GridViewerFeature extends Feature{
 			row = Integer.parseInt(rowEntry.getText());
 			col = Integer.parseInt(colEntry.getText());
 		}
-		FeatureManager.myWorld.addLevel(mapName, new MapData(row, col));
+		MapData md = new MapData(row, col);
+		wd.addLevel(mapName, md);
+		wd.setCurrentMap(md, mapName);
 		gridMaker(row, col);
 	}
 	
+	public class TabbedPaneListener implements ChangeListener{
+
+		@Override
+		public void stateChanged(ChangeEvent arg0) {
+			wd.setCurrentMap(wd.getMap(tabs.getTitleAt(tabs.getSelectedIndex())), tabs.getTitleAt(tabs.getSelectedIndex()));
+		}
+		
+	}
 }

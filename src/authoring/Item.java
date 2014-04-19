@@ -7,10 +7,6 @@ public class Item {
     private int myAttack;
     private int myDefense;
 
-    public Item(String name){
-        itemName = name;
-    }
-
     public Item(String name, int speed, int attack, int defense){
         itemName = name;
         mySpeed = speed;
