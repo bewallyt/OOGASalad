@@ -1,6 +1,7 @@
 package authoring;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ public class CommonAttributes {
     protected Map<String,JTextField> nameImageValues;
     protected Map<String,JTextField> textValues;
     protected String[] attributes = {"Speed","Damage","Defense","Health","Level"};
+    protected JTextField itemName;
+    protected JTextField imageName;
 
     public CommonAttributes(){}
 
@@ -32,5 +35,26 @@ public class CommonAttributes {
                 6, 6);
 
         return attributePanel;
+    }
+
+    public JPanel nameImageFields(){
+        JLabel nameLabel = new JLabel("Name");
+        JLabel imageLabel = new JLabel("Image");
+        itemName = new JTextField("newItem",15);
+        imageName = new JTextField("defaultIW",15);
+        JPanel namePanel = new JPanel(){
+            public Dimension getPreferredSize() {
+                Dimension size = super.getPreferredSize();
+                size.width += 200;
+                return size;
+            }
+        };
+
+        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
+        namePanel.add(nameLabel);
+        namePanel.add(itemName);
+        namePanel.add(imageLabel);
+        namePanel.add(imageName);
+        return namePanel;
     }
 }
