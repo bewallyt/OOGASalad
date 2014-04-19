@@ -10,6 +10,7 @@ public class ArenaWorldLooper extends GameLooper {
 	BattleManager myBattleManager;
 	public ArenaWorldLooper(ArenaWorld currentWorld) {
 		super(currentWorld);
+		//myWorld.getEnemy().setWasBattled();
 		myWorld = (ArenaWorld) getWorld();
 		myWorld.getPlayer().setDialogueDisplayControl(new DialogueDisplayControl(currentWorld));
 		myBattleManager = new BattleManager(myWorld.getPlayer(),myWorld.getEnemy());
@@ -19,7 +20,9 @@ public class ArenaWorldLooper extends GameLooper {
 
 	@Override
 	public World doLoop() {
-		if(myWorld.getEnemy().getStatsMap().get("health").getValue()==0){
+		if(myWorld.getEnemy().getStatsMap().get("health").getValue()<=0){
+			System.out.println("go back");
+			myWorld.getEnemy().setWasBattled();
 			return myWorld.getPrevWorld();
 		}	
 		return null;

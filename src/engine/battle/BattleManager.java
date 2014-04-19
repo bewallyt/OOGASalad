@@ -57,7 +57,7 @@ public class BattleManager implements InteractionBox{
 		setAttackChildrenNodes(myAttackSelector);
 		setWeaponChildrenNodes(myWeaponSelector);
 //		setBagChildrenNodes(myBagSelector);
-//		setRunChildrenNodes(myRunSelector);
+		setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
 		setAttackChildrenNodes(myAttackSelector);
