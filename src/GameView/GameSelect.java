@@ -62,7 +62,6 @@ public class GameSelect{
 		goButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(comboBox.getSelectedItem());
 				// TODO Auto-generated method stub
 				myGame.initialize((String) comboBox.getSelectedItem());
 				
