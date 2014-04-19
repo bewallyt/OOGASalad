@@ -12,7 +12,7 @@ public class GridObject {
 		myImage=image;
 	}
 	public void init(){
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 
 	public String getImage(){

@@ -65,6 +65,12 @@ public class TilePanel extends JLayeredPane{
 		myTileLabel.setOpaque(false);
 		this.add(myTileLabel, 1);
 		saveImage(myTileImage.getDescription());
+<<<<<<< HEAD
+
+//		saveImageFile();
+
+=======
+>>>>>>> 299a2a6d8fa290360dc0760cbac4fd3f3572d97e
 	}
 	
 	public void addGridObjectImage(ImageIcon imageFile){
