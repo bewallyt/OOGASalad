@@ -16,7 +16,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.item.Item;
+import engine.item.KeyItem;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
@@ -45,7 +45,7 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2, 1, 1);
-		Attack attack = new Attack("atck");
+		Attack attack = new Attack("attack");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
 		List<Attack> attackList = new ArrayList<Attack>();
@@ -59,18 +59,18 @@ public class Main extends RPGEngine {
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
 		
-		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
-		NPCResponseNode n0 = new NPCResponseNode(bafm, "You chose choice 0");
-		NPCResponseNode n1 = new NPCResponseNode(bafm, "You chose choice 1");
-		NPCResponseNode n2 = new NPCResponseNode(bafm, "You chose choice 2");
-		NPCResponseNode n3 = new NPCResponseNode(bafm, "You chose choice 3");
-		UserQueryNode q0 = new UserQueryNode(player, null, "I feel good", n0);
-		UserQueryNode q1 = new UserQueryNode(player, null, "I feel bad", n1);
-		UserQueryNode q2 = new UserQueryNode(player, null, "I feel great", n2);
-		UserQueryNode q3 = new UserQueryNode(player, null, "I feel meh...", n3);
+		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
+		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
+		NPCResponseNode n1 = new NPCResponseNode(bafm, "Yeah it sucks");
+		NPCResponseNode n2 = new NPCResponseNode(bafm, "Thats not nice...");
+		NPCResponseNode n3 = new NPCResponseNode(bafm, "You found it! Thanks");
+		UserQueryNode q0 = new UserQueryNode(player, null, "I'll help!", n0);
+		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
+		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
+		UserQueryNode q3 = new UserQueryNode(player, "sword", null, n3);
 		n.addResponseNode(q0);
 		n.addResponseNode(q1);
-		n.addResponseNode(null);
+		n.addResponseNode(q2);
 		n.addResponseNode(q3);
 
 
@@ -103,8 +103,10 @@ public class Main extends RPGEngine {
 		gridObjectList.add(bafm);
 		gridObjectList.add(enemy);
 		gridObjectList.add(tallGrass);
-		Barrier cab = new Barrier("cabinets.jpg",1,1);
-		cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
+		Barrier cab = new Barrier("zeldasword.png",1,1);
+	//	cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
+		cab.setPickupable(new KeyItem("zeldasword.png", "sword"));
+		
 		gridObjectList.add(cab);
 		
 		gridObjectList2.add(player);
@@ -122,7 +124,8 @@ public class Main extends RPGEngine {
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
 		door.setWorld(buildingWorld);
 		door2.setWorld(outsideWorld);
-		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
+		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld
+								.getRandomEncounter(),outsideWorld));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
@@ -130,7 +133,7 @@ public class Main extends RPGEngine {
 		outsideWorld.setTileObject(gridObjectList.get(3), 8, 13);
 		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
 		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
-		outsideWorld.setTileObject(gridObjectList.get(6), 1, 2);
+		outsideWorld.setTileObject(gridObjectList.get(6), 1, 12);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);

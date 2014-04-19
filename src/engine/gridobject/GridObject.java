@@ -93,6 +93,7 @@ public abstract class GridObject{
 	public String getImageFile(){
 		return myImageName;
 	}
+	
 	public void setImage(String file) {
 		Image img = new ScaledImage(myWidth,myHeight,file).scaleImage();
 		myImage = img;	

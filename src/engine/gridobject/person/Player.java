@@ -28,7 +28,7 @@ public class Player extends Person {
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
 		myState = new WalkAroundState(this);
-		setMyItems(null);
+		//setMyItems(null);
 	}
 	
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker){

@@ -50,7 +50,8 @@ public class InteractionMatrix {
 	 * Allows user to toggle up in the select box, selecting the option above the current option
 	 */
 	public void moveUp() {
-		if (selectedNodeY != 0 && myNodes[selectedNodeX][selectedNodeY-1] != null) {
+		if (selectedNodeY != 0 && myNodes[selectedNodeX][selectedNodeY-1] != null &&
+				myNodes[selectedNodeX][selectedNodeY-1].getString() != null) {
 			selectedNodeY--;
 		}
 		
@@ -60,7 +61,8 @@ public class InteractionMatrix {
 	 * Allows user to toggle down in the select box, selecting the option below the current option
 	 */
 	public void moveDown() {
-		if (selectedNodeY != 1 && myNodes[selectedNodeX][selectedNodeY+1] != null) {
+		if (selectedNodeY != 1 && myNodes[selectedNodeX][selectedNodeY+1] != null &&
+				myNodes[selectedNodeX][selectedNodeY+1].getString() != null) {
 			selectedNodeY++;
 		}
 	}
@@ -69,7 +71,8 @@ public class InteractionMatrix {
 	 * Allows user to toggle left in the select box, selecting the option to the left of the current option
 	 */
 	public void moveLeft() {
-		if (selectedNodeX != 0 && myNodes[selectedNodeX-1][selectedNodeY] != null) {
+		if (selectedNodeX != 0 && myNodes[selectedNodeX-1][selectedNodeY] != null &&
+				myNodes[selectedNodeX-1][selectedNodeY].getString() != null) {
 			selectedNodeX--;
 		}
 	}
@@ -78,7 +81,8 @@ public class InteractionMatrix {
 	 * Allows user to toggle right in the select box, selecting the option to the right of the current option
 	 */
 	public void moveRight() {
-		if (selectedNodeX != 1 && myNodes[selectedNodeX+1][selectedNodeY] != null) {
+		if (selectedNodeX != 1 && myNodes[selectedNodeX+1][selectedNodeY] != null 
+				&& myNodes[selectedNodeX+1][selectedNodeY].getString() != null) {
 			selectedNodeX++;
 		}
 	}
