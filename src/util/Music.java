@@ -7,7 +7,6 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-<<<<<<< HEAD
 import engine.main.RPGEngine;
 import GameView.GameFrame;
 
@@ -116,7 +115,7 @@ public class Music {
         sourceLine.drain();
         sourceLine.close();
     }
-=======
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -237,6 +236,6 @@ public class Music {
 		mySourceDataLine.drain();
 		mySourceDataLine.close();
 	}
->>>>>>> master
+
 
 }
