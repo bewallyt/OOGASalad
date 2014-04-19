@@ -1,8 +1,7 @@
 package authoring;
-import java.awt.Image;
+
 import java.io.File;
 import java.util.*;
-import javax.swing.*;
 
 public class WorldData {
 
@@ -22,33 +21,39 @@ public class WorldData {
 		myLevels = new HashMap<String, MapData>();
 		//myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
-        myItems = new ArrayList<Item>();
-        myWeapons = new ArrayList<Weapon>();
+		myItems = new ArrayList<Item>();
+		myWeapons = new ArrayList<Weapon>();
 	}
-	
-	public File getImage(String fileName){
+
+	public File getImage(String fileName) {
 		return myImages.get(fileName);
 	}
-	
-	public void saveImage(String s, File f){
+
+	public void saveImage(String s, File f) {
 		myImages.put(s, f);
 	}
 
-    public List<Item> getMyItems(){ return myItems;}
+	public List<Item> getMyItems() {
+		return myItems;
+	}
 
-    public void saveItem(Item it){ myItems.add(it);}
+	public void saveItem(Item it) {
+		myItems.add(it);
+	}
 
-    public PlayerData getPlayData(){
-        return playData;
-    }
+	public PlayerData getPlayData() {
+		return playData;
+	}
 
-    public void savePlayer(PlayerData player){ playData = player; }
-	
-	public void addLevel(String s, MapData md){
+	public void savePlayer(PlayerData player) {
+		playData = player;
+	}
+
+	public void addLevel(String s, MapData md) {
 		myLevels.put(s, md);
 	}
-	
-	public MapData getMap(String s){
+
+	public MapData getMap(String s) {
 		return myLevels.get(s);
 	}
 	
@@ -69,12 +74,11 @@ public class WorldData {
 		return myImages;
 	}
 
-    public void saveWeapons(Weapon wep){ myWeapons.add(wep);}
+	public void saveWeapons(Weapon wep) {
+		myWeapons.add(wep);
+	}
 
-    public List<Weapon> getMyWeapons(){ return myWeapons;}
-
-
-
-
-
+	public List<Weapon> getMyWeapons() {
+		return myWeapons;
+	}
 }

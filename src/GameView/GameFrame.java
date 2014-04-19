@@ -97,11 +97,10 @@ public class GameFrame extends RPGEngine {
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
 				"PlayerLeft2.png" };
 		
-//		String[] anim = myPlayerData.getMyAnimImages();
-		// int speed = myPlayerData.getSpeed();
-		// int width = myPlayerData.getWidth();
-		// int height = myPlayerData.getHeight();
-		myPlayer = new Player(anim, 2, 1, 1);
+		//String[] anim = myPlayerData.getMyAnimImages();
+		//int speed = myPlayerData.getSpeed();
+		//myPlayer = new Player(anim, speed);
+		myPlayer = new Player(anim, 2);
 	}
 
 	public void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
