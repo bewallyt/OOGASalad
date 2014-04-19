@@ -60,8 +60,7 @@ public class GameSelect{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				myGame.initialize((String) comboBox.getSelectedItem());
-				
+				myGame.initialize(gameName = (String) comboBox.getSelectedItem());
 			}
 		});
 		JButton cancelButton = new JButton("Cancel");

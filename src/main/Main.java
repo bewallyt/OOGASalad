@@ -2,6 +2,8 @@ package main;
 
 import java.net.URL;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import util.Music;
 import GameView.GameDummy;
 import GameView.GameFrame;
@@ -21,7 +23,12 @@ public class Main {
 		
 		
 		GameFrame game = new GameFrame();
-		GameSelect select = new GameSelect(game);
+		JFrame select = new JFrame();
+		
+		String[] games = {"mountainTest", "test1", "test2"};
+		game.initialize((String) JOptionPane.showInputDialog(select, "Select a Game", "", JOptionPane.PLAIN_MESSAGE, null, games, ""));
+//		GameSelect select = new GameSelect(game);
+//		game.initialize("mountainTest");
 				
 		try {
 			game.doGameLoop();

@@ -38,16 +38,24 @@ public class GameFrame extends RPGEngine {
 	// temporary, will be removed when data adds this info into WorldData
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
-	private WorldData myWorldData;
-	// private DataManager myData;
-	private FileStorer myData;
 
+	private WorldData myWorldData;
+	private FileStorer myData;
 	private Player myPlayer;
 
-	public GameFrame() {
-		// myData = new FileStorer();
-		myData = new FileStorer();
 
+//	public static void main(String[] args) {
+//		GameFrame engine = new GameFrame();
+//		engine.initialize("mountainTest");
+//		try {
+//			engine.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+	public GameFrame() {
+		myData = new FileStorer();
 	}
 	
 	public void initialize(String fileName) {
