@@ -13,5 +13,9 @@ public class RunExecutorNode extends BattleExecutorNode {
 	public BattleExecutable getExecutor() {
 		return myRun;
 	}
+	@Override
+	public String getString() {
+		return "ran";
+	}
 
 }

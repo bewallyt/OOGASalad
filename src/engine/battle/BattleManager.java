@@ -39,7 +39,7 @@ public class BattleManager implements InteractionBox{
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
 	private static final int SYMBOL_RADIUS = 10;
-	private String textToBeDisplayed="do you even lift bro";
+	private String textToBeDisplayed="event was completed! Wooooo";
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -68,6 +68,7 @@ public class BattleManager implements InteractionBox{
 		myOptions.setNode(myBagSelector, 1, 0);
 		myOptions.setNode(myWeaponSelector, 0, 1);
 		myOptions.setNode(myRunSelector, 1, 1);
+		myCurrentBattleSelector=(BattleSelectorNode) myOptions.getCurrentNode();
 	}
 
 	private void setAttackChildrenNodes(BattleSelectorNode node){
@@ -106,13 +107,21 @@ public class BattleManager implements InteractionBox{
 		int weaponDamage = weapon.getDamage().getValue();
 		int attackDamage = attack.getDamage().getValue();
 		int defense = victim.getStatsMap().get("defense").getValue();
-		int random = 217 + (int)(Math.random() * ((255 - 217) + 1));
-		int total = (((((2*level/5+2)*playerDamage*(weaponDamage+attackDamage)/defense)/50)+2)/random);
+		int random = 30 + (int)(Math.random() * ((25 - 30) + 1));
+		int total = (((((2*level+2)*playerDamage*(weaponDamage+attackDamage)/defense))+2)/random);
+		System.out.println("pd " + playerDamage);
+		System.out.println("ad " + attackDamage);
+		System.out.println("wd " + weaponDamage);
+		System.out.println("level " + level);
+		System.out.println("random " + random);
+		System.out.println("defense " + defense);
+		System.out.println("total " + total);
 		if(attackDamage!=0)
 			victim.getStatsMap().get("health").changeValue(-total);
 		if(attack.getEffect()!=null){
 			attack.getEffect().doEffect();
 		}
+		System.out.println(myEnemy.getStatsMap().get("health").getValue());
 	}
 
 	public Person[] attackFirst(Person person1, Weapon weapon1, Attack attack1, Person person2, Weapon weapon2, Attack attack2){
@@ -168,7 +177,7 @@ public class BattleManager implements InteractionBox{
 		for (int i = 0; i < myOptions.getDimension(); i++) {
 			for (int j = 0; j < myOptions.getDimension(); j++) {
 				MatrixNode qn = (MatrixNode) myOptions.getNode(j, i);
-				g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				if(qn!=null)g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}
 		}
 
@@ -178,20 +187,11 @@ public class BattleManager implements InteractionBox{
 	}
 	@Override
 	public void getNextText() {
-		if(myCurrentState==TOPLEVEL){
-			int count=0;
-			myCurrentBattleSelector.getChildren().size();
-			for(int i=0; i<myOptions.getDimension(); i++){
-				for(int j=0; j<myOptions.getDimension(); j++){
-					if(myCurrentBattleSelector.getChildren().size()>count)
-						myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
-					else{
-						myOptions.setNode(null, i, j);
-					}
-					count++;
-				}
-			}
-			myCurrentState=BOTTOMLEVEL;
+		if (myCurrentState==ATTACKHAPPENED){
+			setOriginalNodes();
+			initializeChildrenNodes();
+			myCurrentState=TOPLEVEL;
+			
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
 			BattleExecutable executable = myCurrentBattleExecutorNode.getExecutor();
@@ -219,6 +219,24 @@ public class BattleManager implements InteractionBox{
 			myCurrentState=ATTACKHAPPENED;
 
 		}
+		else if(myCurrentState==TOPLEVEL){
+			int count=0;
+			myCurrentBattleSelector.getChildren().size();
+			for(int i=0; i<myOptions.getDimension(); i++){
+				for(int j=0; j<myOptions.getDimension(); j++){
+					if(myCurrentBattleSelector.getChildren().size()>count)
+						myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
+					else{
+						myOptions.setNode(null, i, j);
+					}
+					count++;
+				}
+			}
+			myCurrentBattleExecutorNode = (BattleExecutorNode) myOptions.getCurrentNode();
+			myCurrentState=BOTTOMLEVEL;
+		}
+		
+		
 
 
 	}

@@ -6,8 +6,4 @@ public abstract class BattleExecutorNode implements MatrixNode{
 
 
 	public abstract BattleExecutable getExecutor();
-	public String getString(){
-
-		return "selected";
-	}
 }

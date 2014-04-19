@@ -7,6 +7,7 @@ import engine.battle.BattleManager;
 
 public class BattleState extends AbstractState {
 	BattleManager myBattleManager;
+	private boolean a=false;
 
 	public BattleState(BattleManager bm){
 		myBattleManager=bm;
@@ -33,12 +34,16 @@ public class BattleState extends AbstractState {
 			myBattleManager.moveLeft();
 		}		
 		if (e.getKeyCode() == Control.A) {
-			myBattleManager.getNextText();
+			if(a==false){
+				a=true;
+				myBattleManager.getNextText();
+			}
 		}	
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		a=false;
 		if (e.getKeyCode() == Control.A)
 			myBattleManager.getPlayer().setAClick(false);
 	}

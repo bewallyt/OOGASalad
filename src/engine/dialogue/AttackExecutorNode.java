@@ -16,6 +16,11 @@ public class AttackExecutorNode extends BattleExecutorNode {
 		return myAttack;
 	}
 
+	@Override
+	public String getString() {
+		return myAttack.getName();
+	}
+
 
 
 

@@ -38,6 +38,11 @@ public class Attack implements MatrixNode,BattleExecutable {
 	public Effect getEffect(){
 		return myEffect;
 	}
+
+	@Override
+	public String getString() {
+		return myName;
+	}
 	
 	
 }

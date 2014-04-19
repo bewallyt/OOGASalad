@@ -12,5 +12,9 @@ public class WeaponExecutorNode extends BattleExecutorNode {
 	public BattleExecutable getExecutor() {
 		return myWeapon;
 	}
+	@Override
+	public String getString() {
+		return myWeapon.getString();
+	}
 
 }

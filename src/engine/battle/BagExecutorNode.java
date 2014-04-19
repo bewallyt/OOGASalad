@@ -13,5 +13,9 @@ public class BagExecutorNode extends BattleExecutorNode {
 	public BattleExecutable getExecutor() {
 		return myItem;
 	}
+	@Override
+	public String getString() {
+		return myItem.getName();
+	}
 
 }
