@@ -1,32 +1,42 @@
 package engine.world;
 
-import engine.GameLooper;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
+import engine.menu.MenuControl;
+import engine.menu.MenuManager;
+import engine.gridobject.person.Person;
+
 
 public class WalkAroundWorldLooper extends GameLooper {
 	
 	WalkAroundWorld myWorld;
+	
 	public WalkAroundWorldLooper(WalkAroundWorld currentWorld) {
 		super(currentWorld);
 		myWorld = (WalkAroundWorld) getWorld();
 		getWorld().getPlayer().setSurroundingsChecker(new SurroundingChecker(myWorld));
 		setDialogueDisplayControl();
+		setMenuControl();
 	}
 
 	private void setDialogueDisplayControl() {
 		for (GridObject go : (myWorld.getGridObjectList())) {
-			if (go instanceof NPC) {
-				((NPC) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			if (go instanceof Person) {
+				((Person) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			}
 		}
-		
 	}
 
+	private void setMenuControl(){
+		
+//		myWorld.setMenuDisplayer(new MenuManager());
+		//myWorld.getPlayer().setMenuControl(new MenuControl(myWorld));
+	}
+	
 	@Override
 	public World doLoop() {
 		checkCollisions( myWorld.getCollisionMatrix());

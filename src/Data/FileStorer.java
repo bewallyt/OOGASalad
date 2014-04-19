@@ -80,7 +80,7 @@ public class FileStorer {
 			while((line=br.readLine())!=null){
 				sb.append(line);
 			}
-			System.out.println(sb.toString());
+			//System.out.println(sb.toString());
 			GsonBuilder gsonBuilder = new GsonBuilder();
 			gsonBuilder.setPrettyPrinting();
 			Gson gson = gsonBuilder.create();
@@ -109,11 +109,11 @@ public class FileStorer {
 
 		  // if the directory does not exist, create it
 		  if (!theDir.exists()) {
-		    System.out.println("creating directory: " + savedGamesPath);
+		    //System.out.println("creating directory: " + savedGamesPath);
 		    boolean result = theDir.mkdir();  
 
 		     if(result) {    
-		       System.out.println("DIR created");  
+		      // System.out.println("DIR created");  
 		     }
 		  }
 	}

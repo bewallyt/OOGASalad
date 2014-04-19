@@ -25,5 +25,6 @@ public class TileData {
 	
 	protected void addGridObjectData(GridObjectData gd){
 		myGridObjectDatas.add(gd);
+		System.out.println(myGridObjectDatas);
 	}
 }

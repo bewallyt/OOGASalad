@@ -2,6 +2,10 @@ package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
 
+import engine.dialogue.InteractionBox;
+
+import engine.dialogue.DialogueDisplayControl;
+
 import engine.gridobject.Door;
 import engine.item.Item;
 import engine.state.AbstractState;
@@ -10,20 +14,15 @@ import engine.world.SurroundingChecker;
 //import engine.AbstractGameState;
 
 public class Player extends Person {
+	private int count = 0;
+
 	public boolean aClick = false;
 	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
+	private String[] myAnimImages;
 	private Door enteredDoor=null;
 	private double originalSpeed;
 	
-	/**
-	 * Instantiates a new player.
-	 *
-	 * @param animImages the anim images (must be 12)
-	 * @param speed the speed of the player
-	 * @param numTilesWidth the width of the player in tiles
-	 * @param numTilesHeight the height of the player in tiles
-	 */
 	public Player(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, speed, numTilesWidth, numTilesHeight);
 		myState = new WalkAroundState(this);
@@ -68,12 +67,6 @@ public class Player extends Person {
 		return mySurroundingChecker;
 	}
 
-	/**
-	 * Checks for item.
-	 *
-	 * @param myItemName the my item name
-	 * @return true, if player has the item
-	 */
 	public boolean hasItem(String myItemName) {
 		if (myItemName != null) {
 			for (Item i : super.getItems()) {
@@ -83,5 +76,6 @@ public class Player extends Person {
 
 		return false;
 	}
+
 
 }

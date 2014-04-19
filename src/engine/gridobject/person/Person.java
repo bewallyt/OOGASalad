@@ -1,11 +1,12 @@
 package engine.gridobject.person;
 
 import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Weapon;
+import engine.dialogue.DialogueDisplayControl;
+import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
@@ -30,6 +31,8 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+	private DialogueDisplayControl myDialogueDisplayControl;
+
 
 	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
@@ -223,9 +226,27 @@ public abstract class Person extends GridObject {
 	public void incrementX(double myDX) {
 		super.setPosition((int) (getX()+myDX), getY());
 	}
+	
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
+	
+	public void setInteractionBox(InteractionBox box) {
+		myDialogueDisplayControl.setInteractionBox(box);
+	}
 	public void setCurrentWeapon(Weapon weapon){
 		myCurrentWeapon=weapon;
 	}
+	
 	public Weapon getCurrentWeapon(){
 		return myCurrentWeapon;
 	}

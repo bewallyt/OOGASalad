@@ -13,6 +13,8 @@ import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
+//import engine.menu.MenuDisplayer;
+import engine.menu.MenuManager;
 
 public class WalkAroundWorld extends World {
 
@@ -24,6 +26,8 @@ public class WalkAroundWorld extends World {
 	private List<GridObject> myGridObjectList;
 	private CollisionMatrix myCollisionMatrix;
 	private TextDisplayer myTextDisplayer;
+	//private MenuDisplayer myMenuDisplayer;
+	private Player myPlayer;
 	List<Enemy> myRandomEncounters = new ArrayList<Enemy>();
 
 	/**
@@ -43,8 +47,10 @@ public class WalkAroundWorld extends World {
 		myTileSize=tileSize;
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
-		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
 
+		myPlayer = p;
+		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
+		//myMenuDisplayer = new MenuDisplayer(new TransparentDisplayer());
 	}
 
 	/**
@@ -126,6 +132,9 @@ public class WalkAroundWorld extends World {
 		return myTextDisplayer;
 	}
 
+//	public MenuDisplayer getMenuDisplayer(){
+//		return myMenuDisplayer;
+//	}
 
 	/**
 	 * This method will place an InteractionBox into the TextDisplayer (container for the goods).
@@ -135,6 +144,10 @@ public class WalkAroundWorld extends World {
 	public void setTextDisplayer(InteractionBox b) {
 		myTextDisplayer.setInteractionBox(b);
 	}
+	
+//	public void setMenuDisplayer(InteractionBox b){
+//		myMenuDisplayer.setInteractionBox(b);
+//	}
 
 	/**
 	 * Adds an enemy to a world to be randomly encountered when random battles are initiated

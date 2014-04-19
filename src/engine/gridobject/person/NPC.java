@@ -16,7 +16,6 @@ public class NPC extends Person {
 	private Movement myMovement;
 	private Player myPlayer;
 	private NPCResponseNode myResponseNode;
-	private DialogueDisplayControl myDialogueDisplayControl;
 	
 	/**
 	 * Instantiates a new npc.
@@ -86,23 +85,13 @@ public class NPC extends Person {
 		Dialogue d = null;		
 		System.out.println("Conversation Mode");
 		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
+		System.out.println("creation of conversationmanager");
 		myPlayer.setState(new DialogueState(conversation));
-		myDialogueDisplayControl.setInteractionBox(conversation);
+		super.setInteractionBox(conversation);
 		return d;
 	}
 	
-	/**
-	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
-	 * 
-	 * @param ddc the DialogueDisplayControl
-	 */
-	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
-		myDialogueDisplayControl = ddc;
-	}
-	
-	public DialogueDisplayControl getDialogueDisplayControl() {
-		return myDialogueDisplayControl;
-	}
+
 
 
 
