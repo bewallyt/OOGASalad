@@ -19,7 +19,7 @@ public class GridObjectData {
 		y = -1;
 	}
 	public void init(){
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 //	public GridObjectData(TileData td, boolean step, boolean talk, String s) {
 //		myTile = td;
