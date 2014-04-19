@@ -79,6 +79,7 @@ public abstract class RPGEngine{
 		isInitialized = bool;
 	}
 	
+
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
 	 * 

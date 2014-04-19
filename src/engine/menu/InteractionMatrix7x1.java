@@ -11,12 +11,12 @@ import engine.dialogue.MatrixNode;
  * 
  */
 
-public class InteractionMatrix6x1 extends InteractionMatrix {
+public class InteractionMatrix7x1 extends InteractionMatrix {
 
-	public InteractionMatrix6x1() {
+	public InteractionMatrix7x1() {
 		selectedNodeX = 0;
 		selectedNodeY = 0;
-		myNodes = new MatrixNode[6][1];
+		myNodes = new MatrixNode[7][1];
 		myXDimension = 1;
 		myYDimension = 6;
 	}
@@ -28,6 +28,8 @@ public class InteractionMatrix6x1 extends InteractionMatrix {
 	public void moveUp() {
 		if (selectedNodeY != 0) {
 			selectedNodeY--;
+		} else {
+			selectedNodeY = 6;
 		}
 	}
 
@@ -36,8 +38,10 @@ public class InteractionMatrix6x1 extends InteractionMatrix {
 	 * the current option
 	 */
 	public void moveDown() {
-		if (selectedNodeY != 5) {
+		if (selectedNodeY != 6) {
 			selectedNodeY++;
+		} else {
+			selectedNodeY = 0;
 		}
 	}
 
