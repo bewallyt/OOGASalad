@@ -16,9 +16,9 @@ public class InteractionMatrix7x1 extends InteractionMatrix {
 	public InteractionMatrix7x1() {
 		selectedNodeX = 0;
 		selectedNodeY = 0;
-		myNodes = new MatrixNode[7][1];
+		myNodes = new MatrixNode[1][7];
 		myXDimension = 1;
-		myYDimension = 6;
+		myYDimension = 7;
 	}
 
 	/**
