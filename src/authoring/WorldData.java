@@ -36,11 +36,7 @@ public class WorldData {
 		return myItems;
 	}
 
-
-
     public void saveItem(String n, Item it){ myItems.put(n,it);}
-
-
 
 	public PlayerData getPlayData() {
 		return playData;
