@@ -3,22 +3,18 @@ package authoring;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class ItemCreation extends Feature implements ActionListener, ItemListener{
+public class ItemCreation extends Feature implements ActionListener, ItemListener, MouseListener{
     private JFrame frame;
     private String iName;
     private int sv;
     private int av;
     private int dv;
 
-    private String[] labels = {"Speed Boost:","Damage Boost:","Defense Boost:","Name:","Speed:","Damage:","Name2:",
-            "Speed2:","Damage2:","On/Amount:"};
+    private String[] labels = {"Speed","Damage","Defense","Name","Speed","Damage","On/Amount"};
     private String[] playerAtt = {"Nothing","Damage","Defense","Health","Level","Speed"};
 
     private JComboBox attChoices;
@@ -28,6 +24,7 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     private Attacks attack2;
     private String optionalEffect;
     private int oeAmount;
+    private List<Attacks> wepAttacks;
 
 
     public ItemCreation(){
@@ -40,8 +37,12 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     public void actionPerformed(ActionEvent e) {
         if("create".equals(e.getActionCommand())){
             itemCreationPanel();
-        }
+        } else if("add".equals(e.getActionCommand())){
+            attackCreationPanel();
+        } else{}
     }
+
+
 
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange()==ItemEvent.SELECTED){
@@ -112,26 +113,38 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
                 6, 6,
                 6, 6);
 
-        JPanel panel3 = new JPanel(new SpringLayout());
-        for (int i = 3; i < 9; i++) {
-                JLabel l = new JLabel(labels[i],JLabel.TRAILING);
-                JTextField n = new JTextField(10);
-                panel3.add(l);
-                l.setLabelFor(n);
-                panel3.add(n);
-                textvals.put(labels[i], n);
-                n.setEnabled(false);
-        }
+        JPanel panel3 = new JPanel(new FlowLayout());
+        JButton addattack = new JButton("+ Attack");
+        addattack.setActionCommand("add");
+        addattack.addActionListener(this);
+        DefaultListModel attackListModel = new DefaultListModel();
+        JList attackList = new JList(attackListModel);
+        attackList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        attackList.addMouseListener(this);
+        attackList.setVisibleRowCount(4);
+        JScrollPane aScroll = new JScrollPane(attackList);
+        panel3.add(addattack);
+        panel3.add(aScroll);
 
-
-        SpringUtilities.makeCompactGrid(panel3,
-                6, 2,
-                6, 6,
-                6, 6);
+//        for (int i = 3; i < 9; i++) {
+//                JLabel l = new JLabel(labels[i],JLabel.TRAILING);
+//                JTextField n = new JTextField(10);
+//                panel3.add(l);
+//                l.setLabelFor(n);
+//                panel3.add(n);
+//                textvals.put(labels[i], n);
+//                n.setEnabled(false);
+//        }
+//
+//
+//        SpringUtilities.makeCompactGrid(panel3,
+//                6, 2,
+//                6, 6,
+//                6, 6);
 
         JPanel panel4 = new JPanel();
         panel4.setLayout(new FlowLayout());
-        JLabel opt = new JLabel(labels[9]);
+        JLabel opt = new JLabel(labels[6]);
         panel4.add(opt);
         opt.setLabelFor(attChoices);
         panel4.add(attChoices);
@@ -193,12 +206,52 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
 
     }
 
+    private void attackCreationPanel() {
+        JPanel panel6 = new JPanel(new SpringLayout());
+        for (int i = 3; i < 6; i++) {
+                JLabel l = new JLabel(labels[i],JLabel.TRAILING);
+                JTextField n = new JTextField(10);
+                panel6.add(l);
+                l.setLabelFor(n);
+                panel6.add(n);
+                textvals.put(labels[i], n);
+
+        SpringUtilities.makeCompactGrid(panel6,
+                    3, 2,
+                    6, 6,
+                    6, 6);
+
+        int result = JOptionPane.showOptionDialog(null, panel6, "New Attack", JOptionPane.CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(result == JOptionPane.OK_OPTION){
+            int count = 0;
+            for(int j = 3; j < 6; j++) {
+                if(textvals.get(labels[i]).getText().equals("")){
+                    count++;
+                }
+            }
+            if(count>0){
+                showError();
+            } else{
+                Attacks attack = new Attacks(textvals.get(labels[3]).getText(),
+                        Integer.parseInt(textvals.get(labels[4]).getText()),
+                        Integer.parseInt(textvals.get(labels[5]).getText()));
+                wepAttacks.add(attack);
+            }
+        }
+
+      }
+
+
+
+    }
+
     private void makeWeapon() {
-        List<Attacks> wepAttacks = new ArrayList<Attacks>();
-        wepAttacks.add(attack1);
-        wepAttacks.add(attack2);
-        Weapon madeWeapon = new Weapon(iName,wepAttacks,optionalEffect,oeAmount);
-        FeatureManager.getWorldData().saveWeapons(madeWeapon);
+        //List<Attacks> wepAttacks = new ArrayList<Attacks>();
+        //wepAttacks.add(attack1);
+        //wepAttacks.add(attack2);
+        //Weapon madeWeapon = new Weapon(iName,wepAttacks,optionalEffect,oeAmount);
+        //FeatureManager.getWorldData().saveWeapons(madeWeapon);
     }
 
 
@@ -214,5 +267,28 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
     }
 
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
