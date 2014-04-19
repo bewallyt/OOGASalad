@@ -11,7 +11,6 @@ import engine.menu.MenuManager;
 import engine.world.Canvas;
 import engine.world.World;
 
-
 public class WalkAroundState extends AbstractState {
 
 	private Player myPlayer;
@@ -42,11 +41,11 @@ public class WalkAroundState extends AbstractState {
 				surrounding.doAction();
 			}
 
-			if(surrounding.getPickupable()!=null){
+			if (surrounding.getPickupable() != null) {
 				(surrounding.getPickupable()).pickUp(myPlayer);
 				surrounding.setPickupable(null);
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -62,11 +61,7 @@ public class WalkAroundState extends AbstractState {
 			MenuManager mm = new MenuManager();
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
-			System.out.println("creation of menumanager");
-			//myPlayer.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			myPlayer.setInteractionBox(mm);
-			//myDialogueDisplayControl.setInteractionBox(mm);
-//			// need a way to get myWorld so we can call myWorld.setMenuDisplay(new MenuManager());
 		}
 	}
 
