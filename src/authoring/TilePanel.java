@@ -26,7 +26,7 @@ public class TilePanel extends JLayeredPane{
 	private Dimension myDimension;
 
 	public TilePanel(int row, int col){
-		myData = FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(row, col);
+		myData = FeatureManager.getWorldData().getCurrentMap().getTileData(row, col);
 		myRow = row;
 		myCol = col;
 		myDimension = new Dimension(36, 36);
@@ -92,7 +92,7 @@ public class TilePanel extends JLayeredPane{
 	}
 	public void saveImage(String s){
 		myData.setImageName(s);
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).addTileData(this.myRow, this.myCol, this.myData);
+		FeatureManager.getWorldData().getCurrentMap().addTileData(this.myRow, this.myCol, this.myData);
 		
 	}
 
