@@ -87,6 +87,7 @@ public class GameFrame extends RPGEngine {
 			
 			setGridObjects(currWorld, gridObjectList);
 			setTileImages(currWorld, TileImageList);
+			currWorld.setTileObject(myPlayer, 7, 7);
 		}
 	}
 
@@ -117,7 +118,7 @@ public class GameFrame extends RPGEngine {
 		int n = 0;
 		for(int i = 0; i < world.getTileGridHeight(); i++) {
 			for(int j = 0; j < world.getTileGridWidth(); j++) {
-				world.setTileImage(i, j, list.get(n));
+				world.setTileImage(j, i, list.get(n));
 				n++;
 			}
 		}
