@@ -105,7 +105,6 @@ public class Grid extends JPanel{
 
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
-			((TilePanel)e.getComponent()).tileResize();
 			if(e.getButton() == MouseEvent.BUTTON3)
 				showPopupMenu(e);
 		}

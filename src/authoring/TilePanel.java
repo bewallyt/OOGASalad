@@ -39,12 +39,12 @@ public class TilePanel extends JLayeredPane{
 		this.setTileImage(bg);
 	}
 	
-	public void tileResize(){
+	/*public void tileResize(){
 		System.out.println("resized");
 		myDimension = new Dimension(100, 100);
 		this.repaint();
 		this.revalidate();
-	}
+	}*/
 	@Override
 	public void setPreferredSize(Dimension size){
 		//return myDimension;
@@ -65,6 +65,10 @@ public class TilePanel extends JLayeredPane{
 		myTileLabel.setOpaque(false);
 		this.add(myTileLabel, 1);
 		saveImage(myTileImage.getDescription());
+<<<<<<< HEAD
+//		saveImageFile();
+=======
+>>>>>>> c1b1bce51152c580d2a3b284f140b79a824f7de5
 	}
 	
 	public void addGridObjectImage(ImageIcon imageFile){
@@ -92,8 +96,8 @@ public class TilePanel extends JLayeredPane{
 	}
 	public void saveImage(String s){
 		myData.setImageName(s);
-		FeatureManager.getWorldData().getCurrentMap().addTileData(this.myRow, this.myCol, this.myData);
-		
+		MapData md = FeatureManager.getWorldData().getCurrentMap();
+		md.addTileData(this.myRow, this.myCol, this.myData);
 	}
 
 }

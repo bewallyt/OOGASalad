@@ -132,29 +132,6 @@ public class Main extends RPGEngine {
 	public void initializeGame() {
 		setInit(true);
 		initializeCanvas(500, 500);
-		makeOutsideWorld2();
+		makeOutsideWorld();
 	}
-	
-	private void makeOutsideWorld2(){
-		List<GridObject> gridObjectList = new ArrayList<GridObject>();
-
-		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
-				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
-				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, 2);
-
-		
-		gridObjectList.add(player);
-	
-		
-		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList);
-		setWorld(outsideWorld); // this is only called for the initial world
-		
-		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
-		outsideWorld.paintFullBackround("grassSmall.png");
-
-	}
-	
 }
