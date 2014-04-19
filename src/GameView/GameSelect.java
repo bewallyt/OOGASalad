@@ -64,7 +64,7 @@ public class GameSelect{
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(comboBox.getSelectedItem());
 				// TODO Auto-generated method stub
-				myGame.initialize((String) comboBox.getSelectedItem());
+//				myGame.initialize((String) comboBox.getSelectedItem());
 				
 			}
 		});
