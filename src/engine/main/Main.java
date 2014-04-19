@@ -55,6 +55,10 @@ public class Main extends RPGEngine {
 		weapon.setDamage(10, 100);
 		weapon.setSpeed(10, 100);
 		player.addWeapon(weapon);
+		Weapon w2 = new Weapon("cabinets.jpg", "wep2", attackList);
+		w2.setDamage(20, 100);
+		w2.setSpeed(20, 100);
+		player.addWeapon(w2);
 		
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
