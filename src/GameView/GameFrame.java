@@ -19,6 +19,7 @@ import engine.world.World;
 import engine.main.Main;
 import engine.main.RPGEngine;
 import authoring.GridObjectData;
+import authoring.MapData;
 import authoring.PlayerData;
 //import authoring.PlayerData;
 import authoring.TileData;
@@ -73,12 +74,11 @@ public class GameFrame extends RPGEngine {
 
 	public void makeOutsideWorld() {
 		createPlayer();
-		List<GridObject> gridObjectList = createGridObjectList();
+		List<GridObject> gridObjectList = createGridObjectList("defaultworldkey");
 
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, 40, gridObjectList);
-
-//		setWorld(outsideWorld);
-
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, Constants.TILE_SIZE, gridObjectList);
+		setWorld(outsideWorld);
+				
 		setGridObjects(outsideWorld, gridObjectList);
 //		outsideWorld.paintFullBackround("grassSmall.png");
 	}
@@ -106,20 +106,15 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
-	public List<GridObject> createGridObjectList() {
+	public List<GridObject> createGridObjectList(String worldKey) {
 
-		TileData currTile;
 		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
 		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
-
-		for (int i = 0; i < myWorldData.getMap("defaultworldkey")
-				.getMapLength(); i++) {
-			for (int j = 0; j < myWorldData.getMap("defaultworldkey")
-					.getMapWidth(); j++) {
-				currTile = myWorldData.getMap("defaultworldkey").getTileData(i,
-						j);
-
-				currGridObjectDatas = currTile.getGridObjectDatas();
+		MapData myCurrMap = myWorldData.getMap(worldKey);
+		
+		for (int i = 0; i < myCurrMap.getMapLength(); i++) {
+			for (int j = 0; j < myCurrMap.getMapWidth(); j++) {
+				currGridObjectDatas = myCurrMap.getTileData(i, j).getGridObjectDatas();
 
 				for (GridObjectData gridObjectData : currGridObjectDatas) {
 					GridObject gridobject = null;
