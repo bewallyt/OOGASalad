@@ -23,28 +23,31 @@ public class Grid extends JPanel{
 	private JPanel panel;
 	private final static String DEFAULT_TILE_IMAGE = "DefaultTileImage.jpg";
 	private ImageIcon defaultBackground;
+	private int myNumRows;
+	private int myNumCols;
 	
-	public Grid() {
+	public Grid(int row, int col) {
 		ImageManager m = new ImageManager();
 		ImageFile i = m.loadTileImage(DEFAULT_TILE_IMAGE);
 		defaultBackground = new ImageIcon(i.getImage(), DEFAULT_TILE_IMAGE);
 		this.setLayout(new GridBagLayout());
 		panel=this;
+		myNumRows = row;
+		myNumCols = col;
 		mapMaker();		
 		this.setOpaque(false);
 		imageEditor = FeatureManager.tileEditor;
 		popupMenuMaker();
-		// Creates the grid of TilePanels
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
 		drawGrid();
 	}
 
 	private void mapMaker(){
-		world = new TilePanel[WorldData.DEFAULT_MAP_HEIGHT][WorldData.DEFAULT_MAP_WIDTH];
+		world = new TilePanel[myNumRows][myNumCols];
 
-		for (int row = 0; row < WorldData.DEFAULT_MAP_HEIGHT; row++) {
-			for (int col = 0; col < WorldData.DEFAULT_MAP_WIDTH; col++) {				
+		for (int row = 0; row < myNumRows; row++) {
+			for (int col = 0; col < myNumCols; col++) {				
 				world[row][col] = new TilePanel(row, col, defaultBackground);
 			}
 		}
@@ -79,13 +82,13 @@ public class Grid extends JPanel{
 
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
-		for (int row = 0; row < WorldData.DEFAULT_MAP_HEIGHT; row++) {
-			for (int col = 0; col < WorldData.DEFAULT_MAP_WIDTH; col++) {
+		for (int row = 0; row < myNumRows; row++) {
+			for (int col = 0; col < myNumCols; col++) {
 				gbc.gridx = col;
 				gbc.gridy = row;
 				TilePanel cell = world[row][col];
 				cell.setBorder(defaultBorder);
-				cell.setMinimumSize(new Dimension(36, 36));
+				//cell.setMinimumSize(new Dimension(36, 36));
 				cell.addMouseListener(new SelectedCellListener());
 				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);
@@ -96,14 +99,13 @@ public class Grid extends JPanel{
 	public class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			showImageMenu();
-			GridObjectCreation goc = new GridObjectCreation();
-			//goc.setCoordinates();
 		}
 	}
 
 
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
+			((TilePanel)e.getComponent()).tileResize();
 			if(e.getButton() == MouseEvent.BUTTON3)
 				showPopupMenu(e);
 		}

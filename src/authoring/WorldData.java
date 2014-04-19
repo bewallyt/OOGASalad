@@ -11,13 +11,16 @@ public class WorldData {
     private List<Item> myItems;
     private List<Weapon> myWeapons;
     private PlayerData playData;
-	protected static final String DEFAULT_MAP = "defaultworldkey";
-	protected static final int DEFAULT_MAP_WIDTH = 10;
-	protected static final int DEFAULT_MAP_HEIGHT = 10;
+	//protected static final String DEFAULT_MAP = "defaultworldkey";
+	//protected static final int DEFAULT_MAP_WIDTH = 10;
+	//protected static final int DEFAULT_MAP_HEIGHT = 10;
+	
+	protected MapData currentMap;
+	protected String currentMapName;
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
-		myLevels.put(DEFAULT_MAP, new MapData());
+		//myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
         myItems = new ArrayList<Item>();
         myWeapons = new ArrayList<Weapon>();
@@ -47,6 +50,19 @@ public class WorldData {
 	
 	public MapData getMap(String s){
 		return myLevels.get(s);
+	}
+	
+	public Map<String, MapData> getMaps(){
+		return myLevels;
+	}
+	
+	public void setCurrentMap(MapData input, String s){
+		currentMap = input;
+		currentMapName = s;
+	}
+	
+	public MapData getCurrentMap(){
+		return currentMap;
 	}
 	
 	protected Map<String, File> getImages(){
