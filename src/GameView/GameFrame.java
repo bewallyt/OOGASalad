@@ -64,7 +64,7 @@ public class GameFrame extends RPGEngine {
 	public void initializeGame() {
 		setInit(true);
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
-		makeOutsideWorld();
+		createWorlds();
 	}
 
 	/*
@@ -72,15 +72,19 @@ public class GameFrame extends RPGEngine {
 	 * addPlayer() addEnemy()
 	 */
 
-	public void makeOutsideWorld() {
+	public void createWorlds() {
 		createPlayer();
-		List<GridObject> gridObjectList = createGridObjectList("defaultworldkey");
+		for(MapData map : myWorldData.getMaps().values()) {
+			MapDataParser parser = new MapDataParser(map);
+			List<GridObject> gridObjectList = parser.getGridObjectList();
+			List<String> TileImageList = parser.getTileImageList();
 
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, Constants.TILE_SIZE, gridObjectList);
-		setWorld(outsideWorld);
-				
-		setGridObjects(outsideWorld, gridObjectList);
-//		outsideWorld.paintFullBackround("grassSmall.png");
+			// tile size is default. ask engine to take it out of constructor
+			WalkAroundWorld currWorld = new WalkAroundWorld(map.getMapLength(), map.getMapWidth(), myPlayer, Constants.TILE_SIZE, gridObjectList);
+			
+			setGridObjects(currWorld, gridObjectList);
+			setTileImages(currWorld, TileImageList);
+		}
 	}
 
 	public void createPlayer() {
@@ -102,80 +106,49 @@ public class GameFrame extends RPGEngine {
 
 	public void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
-//			world.setTileObject(g, g.getX(), g.getY());
+			world.setTileObject(g, g.getX(), g.getY());
+		}
+	}
+	
+	public void setTileImages(WalkAroundWorld world, List<String> list) {
+		for(String s : list) {
+			
 		}
 	}
 
-	public List<GridObject> createGridObjectList(String worldKey) {
-
-		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
-		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
-		MapData myCurrMap = myWorldData.getMap(worldKey);
-		
-		for (int i = 0; i < myCurrMap.getMapLength(); i++) {
-			for (int j = 0; j < myCurrMap.getMapWidth(); j++) {
-				currGridObjectDatas = myCurrMap.getTileData(i, j).getGridObjectDatas();
-
-				for (GridObjectData gridObjectData : currGridObjectDatas) {
-					GridObject gridobject = null;
-					if (gridObjectData.getID().equals("Barrier")) {
-						gridobject = new Barrier(gridObjectData.getImageName(),
-								gridObjectData.getWidth(),
-								gridObjectData.getHeight());
-					} else if (gridObjectData.getID().equals("Door")) {
-						gridobject = new Door(gridObjectData.getImageName(),
-								gridObjectData.getWidth(),
-								gridObjectData.getHeight());
-					} else if (gridObjectData.getID().equals("NPC")) {
-						gridobject = new NPC(
-								new String[] { gridObjectData.getImageName() },
-								DEFAULT_MOVEMENT_SPEED,
-								gridObjectData.getWidth(),
-								gridObjectData.getHeight(),
-								DEFAULT_MOVEMENT_TYPE, myPlayer);
-					}
-					myGridObjectList.add(gridobject);
-				}
-			}
-		}
-		return myGridObjectList;
-	}
-
-	/*
-	 * public void addGridObjects() {
-	 * 
-	 * TileData currTile; List<GridObjectData> currGridObjectDatas = new
-	 * ArrayList<GridObjectData>();
-	 * 
-	 * // addPlayer(); // addEnemy();
-	 * 
-	 * for (int i = 0; i < myWorldData.getMap("defaultworldkey")
-	 * .getMapLength(); i++) { for (int j = 0; j <
-	 * myWorldData.getMap("defaultworldkey") .getMapWidth(); j++) { currTile =
-	 * myWorldData.getMap("defaultworldkey").getTileData(i, j);
-	 * 
-	 * currGridObjectDatas = currTile.getGridObjectDatas();
-	 * 
-	 * for (GridObjectData gridObjectData : currGridObjectDatas) { // Defaulted
-	 * at Barrier for now. // if (gridObjectData instanceOf Barrier) or
-	 * something like // that?
-	 * 
-	 * GridObject gridobject = (Barrier) Reflection .createInstance("Barrier",
-	 * gridObjectData.getImageName(), gridObjectData.getWidth(),
-	 * gridObjectData.getHeight());
-	 * 
-	 * // elseif (gridObjectData instanceOf RuleFollower) or // something like
-	 * that?
-	 * 
-	 * // Using 1 as default speed since no getSpeed() method yet GridObject
-	 * gridobject2 = (RuleFollower) Reflection .createInstance("RuleFollower",
-	 * gridObjectData.getImageName(), 1, gridObjectData.getWidth(),
-	 * gridObjectData.getHeight());
-	 * 
-	 * addGridObject(gridobject, gridObjectData.getX(), gridObjectData.getY());
-	 * 
-	 * } } } }
-	 */
+//	public List<GridObject> createGridObjectList(MapData currMap) {
+//
+//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
+//		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
+//		
+//		for (int i = 0; i < currMap.getMapLength(); i++) {
+//			for (int j = 0; j < currMap.getMapWidth(); j++) {
+//				currGridObjectDatas = currMap.getTileData(i, j).getGridObjectDatas();
+//
+//				for (GridObjectData gridObjectData : currGridObjectDatas) {
+//					GridObject gridobject = null;
+//					if (gridObjectData.getID().equals("Barrier")) {
+//						gridobject = new Barrier(gridObjectData.getImageName(),
+//								gridObjectData.getWidth(),
+//								gridObjectData.getHeight());
+//					} else if (gridObjectData.getID().equals("Door")) {
+//						gridobject = new Door(gridObjectData.getImageName(),
+//								gridObjectData.getWidth(),
+//								gridObjectData.getHeight());
+//					} else if (gridObjectData.getID().equals("NPC")) {
+//						gridobject = new NPC(
+//								new String[] { gridObjectData.getImageName() },
+//								DEFAULT_MOVEMENT_SPEED,
+//								gridObjectData.getWidth(),
+//								gridObjectData.getHeight(),
+//								DEFAULT_MOVEMENT_TYPE, myPlayer);
+//					}
+//					myGridObjectList.add(gridobject);
+//				}
+//			}
+//		}
+//		return myGridObjectList;
+//	}
 	
 	public void run() {
 
