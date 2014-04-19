@@ -35,11 +35,15 @@ public class BattleManager implements InteractionBox{
 	private final static int TOPLEVEL=0;
 	private final static int BOTTOMLEVEL=1;
 	private final static int ATTACKHAPPENED=2;
+	private final static int WEAPONSELECTED=3;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
 	private static final int SYMBOL_RADIUS = 10;
-	private String textToBeDisplayed="event was completed! Wooooo";
+	private static final String TEXT_DISPLAYED_EVENT_COMPLETED="event was completed! Wooooo";
+	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
+//	private String textToBeDisplayed="event was completed! Wooooo";
+	private String textToBeDisplayed=TEXT_DISPLAYED_EVENT_COMPLETED;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -51,7 +55,7 @@ public class BattleManager implements InteractionBox{
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
-//		setWeaponChildrenNodes(myWeaponSelector);
+		setWeaponChildrenNodes(myWeaponSelector);
 //		setBagChildrenNodes(myBagSelector);
 //		setRunChildrenNodes(myRunSelector);
 	}
@@ -163,9 +167,9 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==TOPLEVEL || myCurrentState==BOTTOMLEVEL){
 			printResponses(g2d, myOptions, xSize, ySize, width, height);
 		}
-		else{
+		else {
 			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
-		}
+		} 
 			
 
 	}
@@ -187,7 +191,7 @@ public class BattleManager implements InteractionBox{
 	}
 	@Override
 	public void getNextText() {
-		if (myCurrentState==ATTACKHAPPENED){
+		if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
@@ -195,9 +199,12 @@ public class BattleManager implements InteractionBox{
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
 			BattleExecutable executable = myCurrentBattleExecutorNode.getExecutor();
-			if(executable instanceof Weapon)
+			if(executable instanceof Weapon){
 				myPlayer.setCurrentWeapon((Weapon) executable);
-			if(executable instanceof Attack){
+				myCurrentState=WEAPONSELECTED;
+				setCurrentTextToBeDisplayed();
+			}
+			else if(executable instanceof Attack){
 				Weapon enemyWeapon = myBattleAI.chooseWeapon();
 				myEnemy.setCurrentWeapon(enemyWeapon);
 				myEnemy.setCurrentAttack(myBattleAI.chooseAttack(enemyWeapon));
@@ -208,15 +215,17 @@ public class BattleManager implements InteractionBox{
 				myCurrentVictim = attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[1];
 				attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
-				attack(myCurrentVictim,myCurrentAttacker,myCurrentVictim.getCurrentWeapon(),myCurrentVictim.getCurrentAttack());	
+				attack(myCurrentVictim,myCurrentAttacker,myCurrentVictim.getCurrentWeapon(),myCurrentVictim.getCurrentAttack());
+				myCurrentState=ATTACKHAPPENED;
+				setCurrentTextToBeDisplayed();
 			}
-			if(executable instanceof Item)
+			else if(executable instanceof Item)
 				((Item) executable).useItem();
-			if(executable instanceof Run){
+			else if(executable instanceof Run){
 				((Run) executable).getRunMessage();
 				//go to walkaround world!
 			}
-			myCurrentState=ATTACKHAPPENED;
+	//		myCurrentState=ATTACKHAPPENED;
 
 		}
 		else if(myCurrentState==TOPLEVEL){
@@ -269,6 +278,14 @@ public class BattleManager implements InteractionBox{
 	}
 	public Player getPlayer() {
 		return myPlayer;
+	}
+	private void setCurrentTextToBeDisplayed() {
+		if(myCurrentState==WEAPONSELECTED){
+			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
+		}
+		else if(myCurrentState==ATTACKHAPPENED){
+			textToBeDisplayed=TEXT_DISPLAYED_EVENT_COMPLETED;
+		}
 	}
 
 
