@@ -91,7 +91,7 @@ public class MenuManager implements InteractionBox {
 		MenuNode bagNode = new MenuNode();
 		MenuNode nameNode = new MenuNode();
 		MenuNode saveNode = new MenuNode();
-		MenuNode optionsNode = new MenuNode();
+		MenuNode optionsNode = new OptionsNode();
 		MenuNode exitNode = new ExitNode();
 
 		mySelections.setNode(pokedexNode, 0, 0);
