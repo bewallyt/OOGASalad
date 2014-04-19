@@ -71,16 +71,19 @@ public class GameFrame extends RPGEngine {
 	 * Communication between Data and Engine test below: makeOutsideWorld()
 	 * addPlayer() addEnemy()
 	 */
-
+	
 	public void createWorlds() {
 		createPlayer();
 		for(MapData map : myWorldData.getMaps().values()) {
+			
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
+						
 			List<String> TileImageList = parser.getTileImageList();
 
 			// tile size is default. ask engine to take it out of constructor
-			WalkAroundWorld currWorld = new WalkAroundWorld(map.getMapLength(), map.getMapWidth(), myPlayer, Constants.TILE_SIZE, gridObjectList);
+			WalkAroundWorld currWorld = new WalkAroundWorld(map.getMapLength()*40, map.getMapWidth()*40, myPlayer, Constants.TILE_SIZE, gridObjectList);
+			setWorld(currWorld);
 			
 			setGridObjects(currWorld, gridObjectList);
 			setTileImages(currWorld, TileImageList);
@@ -106,48 +109,19 @@ public class GameFrame extends RPGEngine {
 	public void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
+			System.out.println("x: "+g.getX()+" y: "+g.getY());
 		}
 	}
 	
 	public void setTileImages(WalkAroundWorld world, List<String> list) {
-		for(String s : list) {
-			
+		int n = 0;
+		for(int i = 0; i < world.getTileGridHeight(); i++) {
+			for(int j = 0; j < world.getTileGridWidth(); j++) {
+				world.setTileImage(i, j, list.get(n));
+				n++;
+			}
 		}
 	}
-
-//	public List<GridObject> createGridObjectList(MapData currMap) {
-//
-//		List<GridObjectData> currGridObjectDatas = new ArrayList<GridObjectData>();
-//		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
-//		
-//		for (int i = 0; i < currMap.getMapLength(); i++) {
-//			for (int j = 0; j < currMap.getMapWidth(); j++) {
-//				currGridObjectDatas = currMap.getTileData(i, j).getGridObjectDatas();
-//
-//				for (GridObjectData gridObjectData : currGridObjectDatas) {
-//					GridObject gridobject = null;
-//					if (gridObjectData.getID().equals("Barrier")) {
-//						gridobject = new Barrier(gridObjectData.getImageName(),
-//								gridObjectData.getWidth(),
-//								gridObjectData.getHeight());
-//					} else if (gridObjectData.getID().equals("Door")) {
-//						gridobject = new Door(gridObjectData.getImageName(),
-//								gridObjectData.getWidth(),
-//								gridObjectData.getHeight());
-//					} else if (gridObjectData.getID().equals("NPC")) {
-//						gridobject = new NPC(
-//								new String[] { gridObjectData.getImageName() },
-//								DEFAULT_MOVEMENT_SPEED,
-//								gridObjectData.getWidth(),
-//								gridObjectData.getHeight(),
-//								DEFAULT_MOVEMENT_TYPE, myPlayer);
-//					}
-//					myGridObjectList.add(gridobject);
-//				}
-//			}
-//		}
-//		return myGridObjectList;
-//	}
 	
 	public void run() {
 

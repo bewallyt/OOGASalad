@@ -20,6 +20,8 @@ public class MapDataParser {
 
 	public MapDataParser(MapData map, Player p) {
 		myMap = map;
+		myGridObjectList = new ArrayList<GridObject>();
+		myTileImageList = new ArrayList<String>();		
 		parseMap(p);
 	}
 
@@ -52,7 +54,10 @@ public class MapDataParser {
 								data.getSpeed(), data.getWidth(),
 								data.getHeight(), data.getMovementType(), p);
 					}
-					myGridObjectList.add(gridobject);
+					if (gridobject != null) {
+						gridobject.setPosition(i, j);
+						myGridObjectList.add(gridobject);
+					}
 				}
 				myTileImageList.add(currTile.getImageName());
 			}

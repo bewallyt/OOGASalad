@@ -80,6 +80,10 @@ public class WalkAroundWorld extends World {
 	public int getTileGridWidth() {
 		return myNumTileWidth;
 	}
+	
+	public void setTileImage(int i, int j, String fileName) {
+		myTileMatrix[i][j].setBackgroundImage(fileName);
+	}
 
 	public void paintFullBackround(String fileName){
 		for (int i = 0; i < getTileGridWidth(); i++) {
