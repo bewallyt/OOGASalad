@@ -44,14 +44,11 @@ public class MenuManager implements InteractionBox {
 	public void moveCursorUp() {
 		mySelections.moveUp();
 		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
-		System.out.println("mySelectedNodeY: " + mySelectedNodeY);
-		System.out.println(mySelections.getSelectedNodeLocation()[1]);
 	}
 
 	public void moveCursorDown() {
 		mySelections.moveDown();
 		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
-		System.out.println(mySelections.getSelectedNodeLocation()[1]);
 	}
 
 	public void select() {
