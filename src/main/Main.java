@@ -1,6 +1,6 @@
 package main;
 
-import util.Music;
+//import util.Music;
 import GameView.GameFrame;
 import GameView.GameSelect;
 
@@ -13,6 +13,7 @@ public class Main {
 		GameFrame game = new GameFrame();
 		GameSelect select = new GameSelect();
 		
+		// could possibly surround with try/catch for cancellation instances
 		game.initialize(select.getSelectedGame());
 				
 		try {
