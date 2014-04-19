@@ -55,28 +55,29 @@ public class ItemCreation extends CommonAttributes implements ActionListener, It
         String attributeTab = "Attributes";
         String attackTab = "Weapon Attacks";
 
-        JLabel nameLabel = new JLabel("Name");
-        JLabel imageLabel = new JLabel("Image");
-        JTextField itemName = new JTextField("newItem",15);
-        JTextField imageName = new JTextField("defaultIW",15);
+//        JLabel nameLabel = new JLabel("Name");
+//        JLabel imageLabel = new JLabel("Image");
+//        JTextField itemName = new JTextField("newItem",15);
+//        JTextField imageName = new JTextField("defaultIW",15);
         JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
         isWeapon.addItemListener(this);
 
 
         JTabbedPane itemPane = new JTabbedPane();
-        JPanel namePanel = new JPanel(){
-            public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                size.width += 200;
-                return size;
-            }
-        };
-
-        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
-        namePanel.add(nameLabel);
-        namePanel.add(itemName);
-        namePanel.add(imageLabel);
-        namePanel.add(imageName);
+//        JPanel namePanel = new JPanel(){
+//            public Dimension getPreferredSize() {
+//                Dimension size = super.getPreferredSize();
+//                size.width += 200;
+//                return size;
+//            }
+//        };
+//
+//        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
+//        namePanel.add(nameLabel);
+//        namePanel.add(itemName);
+//        namePanel.add(imageLabel);
+//        namePanel.add(imageName);
+        JPanel namePanel = nameImageFields();
         namePanel.add(isWeapon);
 
         JPanel attributePanel = attributeFields();
