@@ -13,10 +13,10 @@ public class MenuState extends AbstractState {
 	private MenuManager myMenu;
 	private Player myPlayer;
 	
-	public MenuState(Player p) {
+	public MenuState(Player p, MenuManager m) {
 		super();
 		myPlayer = p;
-		myMenu = new MenuManager();
+		myMenu = m;
 	
 	}
 	
@@ -49,7 +49,6 @@ public class MenuState extends AbstractState {
 		if (e.getKeyCode() == Control.SPACE) {
 			myPlayer.setState(new WalkAroundState(myPlayer));
 			myPlayer.setInteractionBox(new TransparentDisplayer());
-			//myMenu.toggleMenu();
 		}
 	}
 

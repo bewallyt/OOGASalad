@@ -53,17 +53,16 @@ public class WalkAroundState extends AbstractState {
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == Control.UP || e.getKeyCode() == Control.DOWN)
 			myPlayer.setDY(0);
-
 		if (e.getKeyCode() == Control.RIGHT || e.getKeyCode() == Control.LEFT)
 			myPlayer.setDX(0);
 		if (e.getKeyCode() == Control.A)
 			myPlayer.setAClick(false);
 		// Added to test menu.
 		if (e.getKeyCode() == Control.SPACE) {
-			myPlayer.setState(new MenuState(myPlayer));
 			MenuManager mm = new MenuManager();
-			System.out.println("creation of menumanager");
 			mm.createMenuNodes();
+			myPlayer.setState(new MenuState(myPlayer, mm));
+			System.out.println("creation of menumanager");
 			//myPlayer.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			myPlayer.setInteractionBox(mm);
 			//myDialogueDisplayControl.setInteractionBox(mm);

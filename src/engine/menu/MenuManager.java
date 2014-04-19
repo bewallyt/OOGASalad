@@ -12,6 +12,7 @@ import java.io.InputStream;
 
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
+import engine.dialogue.InteractionMatrix2x2;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.state.AbstractState;
@@ -20,17 +21,12 @@ public class MenuManager implements InteractionBox {
 
 	private AbstractState myState;
 	private boolean menuToggler = false;
-	private InteractionMatrix mySelections;
-	private static final int SYMBOL_RADIUS = 10;
-	
-	private int currentPos;
-	private int prevPos;
-	
-	public MenuManager(){
-		mySelections = new InteractionMatrix6x1();
-		prevPos = 0;
-		currentPos = 0;
+	private InteractionMatrix6x1 mySelections;
+	private int mySelectedNodeY = 0;
 
+
+	public MenuManager() {
+		mySelections = new InteractionMatrix6x1();
 	}
 
 	public void setState(AbstractState state) {
@@ -46,50 +42,36 @@ public class MenuManager implements InteractionBox {
 	}
 
 	public void moveCursorUp() {
-		// TODO Auto-generated method stub
 		mySelections.moveUp();
-		currentPos++;
-		//System.out.println("Current Position" + currentPos);
-		//System.out.println(mySelections.getSelectedNodeLocation()[1]);
-
+		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
+		System.out.println("mySelectedNodeY: " + mySelectedNodeY);
+		System.out.println(mySelections.getSelectedNodeLocation()[1]);
 	}
-	
 
 	public void moveCursorDown() {
-		// TODO Auto-generated method stub
 		mySelections.moveDown();
-		currentPos--;
-		//System.out.println("Current Position" + currentPos);
-		//System.out.println(mySelections.getSelectedNodeLocation()[1]);
-
+		mySelectedNodeY = mySelections.getSelectedNodeLocation()[1];
+		System.out.println(mySelections.getSelectedNodeLocation()[1]);
 	}
 
 	public void select() {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void toggleMenu() {
-		if (menuToggler == false) {
-			menuToggler = true;
-		} else {
-			menuToggler = false;
-		}
-
+		menuToggler = !menuToggler;
 	}
-
 
 	public boolean getMenuToggler() {
 		return menuToggler;
 	}
 
-	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width, int height) {
-		
+	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
+			int height) {
 
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font = null;
 
-		//System.out.println("Current Position: " + currentPos);
 		try {
 			try {
 				font = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -103,71 +85,44 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		Image img = new ScaledImage(200, height + 50,"startmenu.png").scaleImage();
+		Image img = new ScaledImage(200, height + 50, "startmenu.png")
+				.scaleImage();
 		g2d.drawImage(img, width - 200, 0, null);
-		//g2d.fill(new Rectangle(xSize -190, ySize/2 - 240, width/4 + 50 , height + 60));
 		g2d.setColor(Color.black);
-		
-//		if(currentPos != prevPos){
-//			System.out.println("dsfsd");
-//			printResponses(g2d, xSize, ySize, width, height);
-//			prevPos = currentPos;
-//		}
-		
-		System.out.println("test" + currentPos);
+
+		drawSelector(g2d, xSize, ySize, width, height);
 	}
-	
+
 	public void createMenuNodes() {
-		
+
 		MenuNode pokedexNode = new MenuNode();
 		MenuNode pokemonNode = new MenuNode();
-		MenuNode bagNode     = new MenuNode();
-		MenuNode saveNode    = new MenuNode();
+		MenuNode bagNode = new MenuNode();
+		MenuNode saveNode = new MenuNode();
 		MenuNode optionsNode = new MenuNode();
-		MenuNode exitNode    = new MenuNode();
-		
-				mySelections.setNode(pokedexNode, 0, 0);
-				mySelections.setNode(pokemonNode, 1, 0);
-				mySelections.setNode(bagNode, 2, 0);
-				mySelections.setNode(saveNode, 3, 0);
-				mySelections.setNode(optionsNode, 4, 0);
-				mySelections.setNode(exitNode, 5, 0);
+		MenuNode exitNode = new MenuNode();
 
-		}	
+		mySelections.setNode(pokedexNode, 0, 0);
+		mySelections.setNode(pokemonNode, 1, 0);
+		mySelections.setNode(bagNode, 2, 0);
+		mySelections.setNode(saveNode, 3, 0);
+		mySelections.setNode(optionsNode, 4, 0);
+		mySelections.setNode(exitNode, 5, 0);
+
+	}
 
 	@Override
 	public void getNextText() {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void testIncrement(){
-		System.out.println("test" + currentPos);
-	}
 
-	// Taken from Conversation Manager. Refactor going into the future.
-
-	private void printResponses(Graphics2D g2d, int xSize, int ySize,
-			int width, int height) {
-
-		
-		int xCornerLoc = xSize / 10;
-		int yCornerLoc = ySize / 2 + 120;
-		for (int i = 0; i < mySelections.getDimension()[0]; i++) {
-			for (int j = 0; j < mySelections.getDimension()[1]; j++) {
-				MenuNode qn = (MenuNode) mySelections.getNode(j, i);
-//				g2d.drawString("blah", (int) (xCornerLoc + j
-//						* (xSize * 5 / 10)), (int) (yCornerLoc + i
-//						* (height * 3 / 10)));
-			}
-		}
+	private void drawSelector(Graphics2D g2d, int xSize, int ySize, int width,
+			int height) {
 
 		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
-//		System.out.println("selected node location" +  mySelections.getSelectedNodeLocation()[1]);
-		g2d.fillOval((int) (xCornerLoc - 10 + mySelections.getSelectedNodeLocation()[0]
-				* (xSize - 25) * 5 / 10)
-				- SYMBOL_RADIUS, (int) (yCornerLoc + mySelections.getSelectedNodeLocation()[1]
-				* (height - 15) * 3 / 10)
-				- SYMBOL_RADIUS, SYMBOL_RADIUS, SYMBOL_RADIUS);
+		Image img = new ScaledImage(200, 45, "redrectangle.png").scaleImage();
+		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
+
 	}
 }
