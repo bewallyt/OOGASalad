@@ -20,7 +20,7 @@ public class GridObjectData {
 		x = -1;
 		y = -1;
 	}
-<<<<<<< HEAD
+
 	public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
@@ -32,24 +32,7 @@ public class GridObjectData {
 //		myImageName = s;
 //	}
 	public Boolean isSteppable(){
-=======
 
-	public void init() {
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP)
-				.getTileData(x, y).addGridObjectData(this);
-	}
-
-	// public GridObjectData(TileData td, boolean step, boolean talk, String s)
-	// {
-	// myTile = td;
-	// td.addGridObjectData(this);
-	// isSteppable = step;
-	// isTalkable = talk;
-	// myImageName = s;
-	// }
-	
-	public Boolean isSteppable() {
->>>>>>> 299a2a6d8fa290360dc0760cbac4fd3f3572d97e
 		return isSteppable;
 	}
 

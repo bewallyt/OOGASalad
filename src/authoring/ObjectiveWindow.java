@@ -40,7 +40,7 @@ public class ObjectiveWindow implements ItemListener {
         
         
         JTextField field1 = new JTextField(5);
-        JTextField field2=new JTextField
+        JTextField field2=new JTextField();
         field.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Title"), field.getBorder()));
         
         

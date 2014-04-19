@@ -34,9 +34,13 @@ public class WorldData {
 		return myItems;
 	}
 
+<<<<<<< HEAD
 
     public void saveItem(String n, Item it){ myItems.put(n,it);}
 
+=======
+    public void saveItem(String n, Item it){ myItems.put(n,it);}
+>>>>>>> b3695df5b8949b0224e47f15e40199980ee52ac9
 
 	public PlayerData getPlayData() {
 		return playData;
@@ -72,7 +76,10 @@ public class WorldData {
 		return myImages;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b3695df5b8949b0224e47f15e40199980ee52ac9
     public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
 
     public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
