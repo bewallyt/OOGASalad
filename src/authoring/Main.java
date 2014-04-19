@@ -7,11 +7,10 @@ public class Main {
 		myFeatures.add(new GridViewerFeature());
      	myFeatures.add(new GridObjectCreation());
 		myFeatures.add(new ImageChooser());
-        myFeatures.add(new PlayerCreation());
 		myFeatures.add(new SaveGameFeature());
 		myFeatures.add(new MapCreatorFeature());
 		myFeatures.add(new ObjectiveFeature());
-        myFeatures.add(new AddItemsOrWeapons());
+        myFeatures.add(new AddGameComponents());
 		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}

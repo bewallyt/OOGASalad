@@ -10,6 +10,7 @@ public class WorldData {
     private Map<String,Item> myItems;
     private Map<String,Weapon> myWeapons;
     private PlayerData playData;
+    private List<RandomEnemy> myRandomEnemies;
 
 	private String currentMapName;
 	
@@ -20,6 +21,7 @@ public class WorldData {
 		myImages = new HashMap<String, File>();
 		myItems = new HashMap<String, Item>();
 		myWeapons = new HashMap<String, Weapon>();
+        myRandomEnemies = new ArrayList<RandomEnemy>();
 	}
 
 	public File getImage(String fileName) {
@@ -78,5 +80,8 @@ public class WorldData {
 
     public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
 
+    public void saveRandomEnemy(RandomEnemy re){myRandomEnemies.add(re);}
+
+    public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
 
 }

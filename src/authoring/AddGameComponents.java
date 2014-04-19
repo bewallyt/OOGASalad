@@ -8,17 +8,20 @@ import java.awt.event.ActionListener;
 /**
  * Created by Prit on 4/18/14.
  */
-public class AddItemsOrWeapons extends Feature implements ActionListener {
+public class AddGameComponents extends Feature implements ActionListener {
 
-    private String[] buttonNames = {"Item/Weapon","Player","Map Enemy","Random Enemy"};
-    private ItemCreation itemCreation;
+    private String[] buttonNames = {"Item/Weapon","Player/Enemy"};
+    private ItemWeaponCreation itemWeaponCreation;
+    private PlayerEnemyCreation playerEnemyCreation;
 
-    public AddItemsOrWeapons(){
+    public AddGameComponents(){
         JButton add = new JButton("+");
         add.setActionCommand("add");
         add.addActionListener(this);
         myComponents.put(add, BorderLayout.SOUTH);
-        itemCreation = new ItemCreation();
+        itemWeaponCreation = new ItemWeaponCreation();
+        playerEnemyCreation = new PlayerEnemyCreation();
+
     }
 
     @Override
@@ -26,8 +29,10 @@ public class AddItemsOrWeapons extends Feature implements ActionListener {
         if("add".equals(e.getActionCommand())){
             showCreationOptions();
         } else if("item/weapon".equals(e.getActionCommand())){
-            itemCreation.creationPanel();
-        } else{}
+            itemWeaponCreation.creationPanel();
+        } else if("player/enemy".equals(e.getActionCommand())){
+            playerEnemyCreation.creationPanel();
+        }
     }
 
 
