@@ -34,7 +34,11 @@ public class WorldData {
 		return myItems;
 	}
 
-	// public void saveItem(Item it){ myItems.add(it);}
+
+
+    public void saveItem(String n, Item it){ myItems.put(n,it);}
+
+
 
 	public PlayerData getPlayData() {
 		return playData;
@@ -70,10 +74,9 @@ public class WorldData {
 		return myImages;
 	}
 
-	// public void saveWeapons(Weapon wep){ myWeapons.add(wep);}
+    public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
 
-	public Map<String, Weapon> getMyWeapons() {
-		return myWeapons;
-	}
+    public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
+
 
 }

@@ -30,20 +30,28 @@ import Data.FileStorer;
 import javax.swing.JFrame;
 
 import util.Constants;
+
 import engine.gridobject.person.Enemy;
 
 public class GameFrame extends RPGEngine {
 
 	private WorldData myWorldData;
-	// private DataManager myData;
 	private FileStorer myData;
-
 	private Player myPlayer;
 
-	public GameFrame() {
-		// myData = new FileStorer();
-		myData = new FileStorer();
 
+//	public static void main(String[] args) {
+//		GameFrame engine = new GameFrame();
+//		engine.initialize("mountainTest");
+//		try {
+//			engine.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+	public GameFrame() {
+		myData = new FileStorer();
 	}
 
 	public void initialize(String fileName) {
@@ -70,11 +78,11 @@ public class GameFrame extends RPGEngine {
 
 	public void createWorlds() {
 		createPlayer();
-		for (MapData map : myWorldData.getMaps().values()) {
 
+		for(MapData map : myWorldData.getMaps().values()) {
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
-			gridObjectList.add(myPlayer);
+			gridObjectList.add(myPlayer);						
 			List<String> TileImageList = parser.getTileImageList();
 
 			// tile size is default. ask engine to take it out of constructor
@@ -83,41 +91,37 @@ public class GameFrame extends RPGEngine {
 					Constants.TILE_SIZE, gridObjectList);
 			setWorld(currWorld);
 
-			setGridObjects(currWorld, gridObjectList);
-			currWorld.setTileObject(myPlayer, 5, 0);
-
 			setTileImages(currWorld, TileImageList);
+			setGridObjects(currWorld, gridObjectList);
 		}
 	}
 
 	public void createPlayer() {
-
+		
 		PlayerData myPlayerData = myWorldData.getPlayData();
-
+		
 		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
 				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
 				"PlayerLeft2.png" };
 
-		// String[] anim = myPlayerData.getMyAnimImages();
-		// int speed = myPlayerData.getSpeed();
-		// myPlayer = new Player(anim, speed);
+		//myPlayer = new Player(myPlayerData.getMyAnimImages(), myPlayerData.getSpeed());
 		myPlayer = new Player(anim, 2);
 	}
 
 	public void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
-			System.out.println("x: " + g.getX() + " y: " + g.getY());
 		}
 	}
 
 	public void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
-		for (int i = 0; i < world.getTileGridHeight(); i++) {
-			for (int j = 0; j < world.getTileGridWidth(); j++) {
-				world.setTileImage(i, j, list.get(n));
+
+		for(int i = 0; i < world.getTileGridHeight(); i++) {
+			for(int j = 0; j < world.getTileGridWidth(); j++) {
+				world.setTileImage(j, i, list.get(n));
 				n++;
 			}
 		}

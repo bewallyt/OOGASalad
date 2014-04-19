@@ -1,44 +1,32 @@
 package authoring;
 
 
+import engine.battle.Attack;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class ItemCreation extends Feature implements ActionListener, ItemListener, MouseListener{
-    private JFrame frame;
-    private String iName;
-    private int sv;
-    private int av;
-    private int dv;
+public class ItemCreation extends CommonAttributes implements ActionListener, ItemListener, MouseListener{
 
-    private String[] labels = {"Speed","Damage","Defense","Name","Speed","Damage","On/Amount"};
-    private String[] playerAtt = {"Nothing","Damage","Defense","Health","Level","Speed"};
-
-    private JComboBox attChoices;
-    private JTextField amount;
-    private Map<String,JTextField> textvals;
-    private Attacks attack1;
-    private Attacks attack2;
-    private String optionalEffect;
-    private int oeAmount;
-    private List<Attacks> wepAttacks;
-
+    private String name;
+    private String image;
+    private int speed;
+    private int damage;
+    //private String[] attributes = {"Speed","Damage","Defense","Health","Level"};
+    //private Map<String,JTextField> textValues;
+    private Map<String,Integer> attributeValues;
+    private List<Attacks> weaponAttacks;
+    private DefaultListModel attackListModel;
 
     public ItemCreation(){
-        JButton createItem = new JButton("Create Item");
-        createItem.addActionListener(this);
-        createItem.setActionCommand("create");
-        myComponents.put(createItem, BorderLayout.SOUTH);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if("create".equals(e.getActionCommand())){
-            itemCreationPanel();
-        } else if("add".equals(e.getActionCommand())){
-            attackCreationPanel();
+        if("add".equals(e.getActionCommand())){
+            attackCreation();
         } else{}
     }
 
@@ -46,249 +34,144 @@ public class ItemCreation extends Feature implements ActionListener, ItemListene
 
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange()==ItemEvent.SELECTED){
-            for(int i=0; i<3; i++){
-                textvals.get(labels[i]).setEnabled(false);
+            for(int j=2; j<5; j++){
+                textValues.get(attributes[j]).setEnabled(false);
             }
-            for(int i=3; i<9; i++){
-                textvals.get(labels[i]).setEnabled(true);
-            }
-            attChoices.setEnabled(true);
-            amount.setEnabled(true);
         } else{
-            for(int i=0; i<3; i++){
-                textvals.get(labels[i]).setEnabled(true);
+            for(int j=2; j<5; j++){
+                textValues.get(attributes[j]).setEnabled(true);
             }
-            for(int i=3; i<9; i++){
-                textvals.get(labels[i]).setEnabled(false);
-            }
-            attChoices.setEnabled(false);
-            amount.setEnabled(false);
         }
-
     }
 
-    private void itemCreationPanel() {
-        textvals = new HashMap<String, JTextField>();
-        attChoices = new JComboBox(playerAtt);
-        attChoices.setEnabled(false);
-        amount = new JTextField(5);
-        amount.setEnabled(false);
+    protected void creationPanel() {
+       //textValues = new HashMap<String, JTextField>();
+       attributeValues = new HashMap<String, Integer>();
+       weaponAttacks = new ArrayList<Attacks>();
+       Attacks basicAttack = new Attacks("basic",2,2);
+       weaponAttacks.add(basicAttack);
 
-        String nameTab = "Item Name";
-        String attriTab = "Item Attributes";
-        String weaponTab = "Weapon Attacks";
-        String weaponOPt = "Weapon Effect (Optional)";
+        String nameTab = "Name/Image";
+        String attributeTab = "Attributes";
+        String attackTab = "Weapon Attacks";
 
-        JTextField itemName = new JTextField(15);
+//        JLabel nameLabel = new JLabel("Name");
+//        JLabel imageLabel = new JLabel("Image");
+//        JTextField itemName = new JTextField("newItem",15);
+//        JTextField imageName = new JTextField("defaultIW",15);
         JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
         isWeapon.addItemListener(this);
 
 
         JTabbedPane itemPane = new JTabbedPane();
-        JPanel panel1 = new JPanel(){
-            public Dimension getPreferredSize() {
-                Dimension size = super.getPreferredSize();
-                size.width += 200;
-                return size;
-            }
-        };
+//        JPanel namePanel = new JPanel(){
+//            public Dimension getPreferredSize() {
+//                Dimension size = super.getPreferredSize();
+//                size.width += 200;
+//                return size;
+//            }
+//        };
+//
+//        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
+//        namePanel.add(nameLabel);
+//        namePanel.add(itemName);
+//        namePanel.add(imageLabel);
+//        namePanel.add(imageName);
+        JPanel namePanel = nameImageFields();
+        namePanel.add(isWeapon);
 
-        panel1.setLayout(new FlowLayout());
-        panel1.add(itemName);
-        panel1.add(isWeapon);
-        panel1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        JPanel attributePanel = attributeFields();
 
-        JPanel panel2 = new JPanel(new SpringLayout());
-        for(int i=0; i<3; i++){
-            JLabel l = new JLabel(labels[i],JLabel.TRAILING);
-            JTextField n = new JTextField(10);
-            panel2.add(l);
-            l.setLabelFor(n);
-            panel2.add(n);
-            textvals.put(labels[i],n);
-        }
-
-        SpringUtilities.makeCompactGrid(panel2,
-                3, 2,
-                6, 6,
-                6, 6);
-
-        JPanel panel3 = new JPanel(new FlowLayout());
+        JPanel attackPanel = new JPanel(new FlowLayout());
         JButton addattack = new JButton("+ Attack");
         addattack.setActionCommand("add");
         addattack.addActionListener(this);
-        DefaultListModel attackListModel = new DefaultListModel();
+
+        attackListModel = new DefaultListModel();
         JList attackList = new JList(attackListModel);
         attackList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         attackList.addMouseListener(this);
         attackList.setVisibleRowCount(4);
         JScrollPane aScroll = new JScrollPane(attackList);
-        panel3.add(addattack);
-        panel3.add(aScroll);
+        attackPanel.add(addattack);
+        attackPanel.add(aScroll);
 
-//        for (int i = 3; i < 9; i++) {
-//                JLabel l = new JLabel(labels[i],JLabel.TRAILING);
-//                JTextField n = new JTextField(10);
-//                panel3.add(l);
-//                l.setLabelFor(n);
-//                panel3.add(n);
-//                textvals.put(labels[i], n);
-//                n.setEnabled(false);
-//        }
-//
-//
-//        SpringUtilities.makeCompactGrid(panel3,
-//                6, 2,
-//                6, 6,
-//                6, 6);
-
-        JPanel panel4 = new JPanel();
-        panel4.setLayout(new FlowLayout());
-        JLabel opt = new JLabel(labels[6]);
-        panel4.add(opt);
-        opt.setLabelFor(attChoices);
-        panel4.add(attChoices);
-        panel4.add(amount);
-
-        itemPane.addTab(nameTab,panel1);
-        itemPane.addTab(attriTab,panel2);
-        itemPane.addTab(weaponTab,panel3);
-        itemPane.addTab(weaponOPt,panel4);
+        itemPane.addTab(nameTab,namePanel);
+        itemPane.addTab(attributeTab,attributePanel);
+        itemPane.addTab(attackTab,attackPanel);
 
         int result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, null, null);
-
-        int count = 0;
+                JOptionPane.PLAIN_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION) {
-            iName = itemName.getText();
-            if(itemName.getText().equals("")){
-                showError();
-            } else{
-            if(!(isWeapon.isSelected())){
-                for(int i=0; i<3; i++){
-                    if(textvals.get(labels[i]).getText().equals("")){
-                        count++;
-                    }
-            }
-                if(count>0){
-                   showError();
-                } else{
-                    sv = Integer.parseInt(textvals.get(labels[0]).getText());
-                    av = Integer.parseInt(textvals.get(labels[1]).getText());
-                    dv = Integer.parseInt(textvals.get(labels[2]).getText());
-                    makeAndSaveItem();
-                }
-            } else{
-                for(int i=3; i<9; i++){
-                    if(textvals.get(labels[i]).getText().equals("")){
-                        count++;
-                    }
-                }
-                if(count>0){
-                   showError();
-                } else{
-                    attack1 = new Attacks(textvals.get(labels[3]).getText(),
-                            Integer.parseInt(textvals.get(labels[4]).getText()),
-                            Integer.parseInt(textvals.get(labels[5]).getText()));
-                    attack2 = new Attacks(textvals.get(labels[6]).getText(),
-                            Integer.parseInt(textvals.get(labels[7]).getText()),
-                            Integer.parseInt(textvals.get(labels[8]).getText()));
-                    optionalEffect = (String)attChoices.getSelectedItem();
-                    oeAmount = Integer.parseInt(amount.getText());
-                    makeWeapon();
 
+            name = itemName.getText();
+            image = imageName.getText();
+
+            if(isWeapon.isSelected()){
+                speed = Integer.parseInt(textValues.get(attributes[0]).getText());
+                damage = Integer.parseInt(textValues.get(attributes[1]).getText());
+                makeWeapon();
+            } else {
+                for (String s : textValues.keySet()) {
+                    attributeValues.put(s, Integer.parseInt(textValues.get(s).getText()));
                 }
+                makeAndSaveItem();
             }
-            }
+
         }
 
 
     }
 
-    private void attackCreationPanel() {
-        JPanel panel6 = new JPanel(new SpringLayout());
-        for (int i = 3; i < 6; i++) {
-                JLabel l = new JLabel(labels[i],JLabel.TRAILING);
-                JTextField n = new JTextField(10);
-                panel6.add(l);
-                l.setLabelFor(n);
-                panel6.add(n);
-                textvals.put(labels[i], n);
+    private void attackCreation(){
+        JPanel attackPanel = new JPanel(new SpringLayout());
+        JLabel n = new JLabel("Name");
+        JLabel s = new JLabel("Speed");
+        JLabel d = new JLabel("Damage");
+        JTextField nf = new JTextField("newAttack",15);
+        JTextField sf = new JTextField("5",15);
+        JTextField df = new JTextField("5",15);
+        attackPanel.add(n);
+        n.setLabelFor(nf);
+        attackPanel.add(nf);
+        attackPanel.add(s);
+        s.setLabelFor(sf);
+        attackPanel.add(sf);
+        attackPanel.add(d);
+        d.setLabelFor(df);
+        attackPanel.add(df);
 
-        SpringUtilities.makeCompactGrid(panel6,
-                    3, 2,
-                    6, 6,
-                    6, 6);
+        SpringUtilities.makeCompactGrid(attackPanel,
+                     3,2,
+                     6,6,
+                     6,6);
 
-        int result = JOptionPane.showOptionDialog(null, panel6, "New Attack", JOptionPane.CANCEL_OPTION,
+        int result = JOptionPane.showOptionDialog(null, attackPanel, "New Attack", JOptionPane.CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE, null, null, null);
-        if(result == JOptionPane.OK_OPTION){
-            int count = 0;
-            for(int j = 3; j < 6; j++) {
-                if(textvals.get(labels[i]).getText().equals("")){
-                    count++;
-                }
-            }
-            if(count>0){
-                showError();
-            } else{
-                Attacks attack = new Attacks(textvals.get(labels[3]).getText(),
-                        Integer.parseInt(textvals.get(labels[4]).getText()),
-                        Integer.parseInt(textvals.get(labels[5]).getText()));
-                wepAttacks.add(attack);
-            }
+        if(result==JOptionPane.OK_OPTION){
+             Attacks newAttack = new Attacks(nf.getText(),Integer.parseInt(sf.getText()),
+                     Integer.parseInt(df.getText()));
+             weaponAttacks.add(newAttack);
+             attackListModel.addElement(nf.getText());
+
         }
-
-      }
-
-
-
     }
 
     private void makeWeapon() {
-        //List<Attacks> wepAttacks = new ArrayList<Attacks>();
-        //wepAttacks.add(attack1);
-        //wepAttacks.add(attack2);
-        //Weapon madeWeapon = new Weapon(iName,wepAttacks,optionalEffect,oeAmount);
-        //FeatureManager.getWorldData().saveWeapons(madeWeapon);
+        Weapon madeWeapon = new Weapon(name,image,speed,damage,weaponAttacks);
+        FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
     }
-
 
     private void makeAndSaveItem() {
-        Item madeItem = new Item(iName,sv,av,dv);
-        FeatureManager.getWorldData().saveItem(madeItem);
-    }
-
-    private void showError(){
-        JOptionPane.showMessageDialog(frame, "Missing name and/or values.", "Error Message",
-                JOptionPane.ERROR_MESSAGE);
-        itemCreationPanel();
+        Item madeItem = new Item(name,image,attributeValues);
+        FeatureManager.getWorldData().saveItem(name,madeItem);
     }
 
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseClicked(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 }
