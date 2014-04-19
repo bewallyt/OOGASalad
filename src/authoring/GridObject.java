@@ -2,9 +2,9 @@ package authoring;
 
 public class GridObject {
 
-	private String myImage;
-	private int x;
-	private int y;
+	protected String myImage;
+	protected int x;
+	protected int y;
 	
 	public GridObject(int x, int y, String image){
 		this.x=x;
