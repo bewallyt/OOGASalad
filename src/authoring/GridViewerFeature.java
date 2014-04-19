@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GridViewerFeature extends Feature{
-	
+
 	private WorldData wd;
 	private JScrollPane myViewer;
 	private JTabbedPane tabs;
@@ -19,39 +19,40 @@ public class GridViewerFeature extends Feature{
 	private String mapName;
 	private int row;
 	private int col;
-	
+
 	public GridViewerFeature() {
 		wd = FeatureManager.getWorldData();
 		myGrids = new ArrayList<Grid>();
 		tabs = new JTabbedPane();
 		tabs.addChangeListener(new TabbedPaneListener());
 		myComponents.put(tabs, BorderLayout.CENTER);
-		mapName = JOptionPane.showInputDialog("Name your map:");
-		if(mapName.equals("")){
+		String name = JOptionPane.showInputDialog("Name your map:");
+		if(name.equals("")){
 			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
 			return;				
 		}
-		
-		this.addMap(mapName);
+
+		this.addMap(name);
 	}
-	
+
 	public void tileRepaint(){
 		for(Grid g : myGrids)
 			g.tileRepaint();
 	}
-	
+
 	public void addMap(String s){
+		mapName = s;
 		mapSize();		
 		tabs.addTab(s, myViewer);
 	}
-	
+
 	public void gridMaker(int height, int width){
 		Grid g = new Grid(height, width);
 		myGrids.add(g);
 		myViewer = new JScrollPane(myGrids.get(myGrids.size() - 1));
 		myViewer.setPreferredSize(new Dimension(592, 590));
 	}
-	
+
 	public void mapSize(){
 		JPanel mapSizer = new JPanel();
 		JTextField rowEntry = new JTextField(5);
@@ -68,16 +69,16 @@ public class GridViewerFeature extends Feature{
 		}
 		MapData md = new MapData(row, col);
 		wd.addLevel(mapName, md);
-		wd.setCurrentMap(md, mapName);
+		wd.setCurrentMap(mapName);
 		gridMaker(row, col);
 	}
-	
+
 	public class TabbedPaneListener implements ChangeListener{
 
 		@Override
 		public void stateChanged(ChangeEvent arg0) {
-			wd.setCurrentMap(wd.getMap(tabs.getTitleAt(tabs.getSelectedIndex())), tabs.getTitleAt(tabs.getSelectedIndex()));
+			wd.setCurrentMap(tabs.getTitleAt(tabs.getSelectedIndex()));
 		}
-		
 	}
+
 }

@@ -59,7 +59,7 @@ public class MenuManager implements InteractionBox {
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
-
+		
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font = null;
 
@@ -95,12 +95,12 @@ public class MenuManager implements InteractionBox {
 		MenuNode exitNode = new ExitNode();
 
 		mySelections.setNode(pokedexNode, 0, 0);
-		mySelections.setNode(pokemonNode, 1, 0);
-		mySelections.setNode(bagNode, 2, 0);
-		mySelections.setNode(nameNode, 3, 0);
-		mySelections.setNode(saveNode, 4, 0);
-		mySelections.setNode(optionsNode, 5, 0);
-		mySelections.setNode(exitNode, 6, 0);
+		mySelections.setNode(pokemonNode, 0, 1);
+		mySelections.setNode(bagNode, 0, 2);
+		mySelections.setNode(nameNode, 0, 3);
+		mySelections.setNode(saveNode, 0, 4);
+		mySelections.setNode(optionsNode, 0, 5);
+		mySelections.setNode(exitNode, 0, 6);
 
 	}
 

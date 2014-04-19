@@ -39,12 +39,12 @@ public class TilePanel extends JLayeredPane{
 		this.setTileImage(bg);
 	}
 	
-	public void tileResize(){
+	/*public void tileResize(){
 		System.out.println("resized");
 		myDimension = new Dimension(100, 100);
 		this.repaint();
 		this.revalidate();
-	}
+	}*/
 	@Override
 	public void setPreferredSize(Dimension size){
 		//return myDimension;
@@ -96,8 +96,8 @@ public class TilePanel extends JLayeredPane{
 	}
 	public void saveImage(String s){
 		myData.setImageName(s);
-		FeatureManager.getWorldData().getCurrentMap().addTileData(this.myRow, this.myCol, this.myData);
-		
+		MapData md = FeatureManager.getWorldData().getCurrentMap();
+		md.addTileData(this.myRow, this.myCol, this.myData);
 	}
 
 }
