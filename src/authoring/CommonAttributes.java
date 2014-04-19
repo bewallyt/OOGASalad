@@ -17,7 +17,7 @@ public class CommonAttributes {
 
     public CommonAttributes(){}
 
-    public JPanel attributeFields(){
+    protected JPanel attributeFields(){
         textValues = new HashMap<String, JTextField>();
         JPanel attributePanel = new JPanel(new SpringLayout());
         for(int i=0; i<attributes.length; i++){
@@ -37,7 +37,7 @@ public class CommonAttributes {
         return attributePanel;
     }
 
-    public JPanel nameImageFields(){
+    protected JPanel nameImageFields(){
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);
