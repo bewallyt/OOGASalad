@@ -1,7 +1,10 @@
 package GameView;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+
+import main.Main;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
@@ -12,6 +15,7 @@ import authoring.WorldData;
 //import Data.DataManager;
 import Data.FileStorer;
 import util.Constants;
+import util.Music;
 
 public class GameFrame extends RPGEngine {
 	private WorldData myWorldData;
@@ -20,7 +24,13 @@ public class GameFrame extends RPGEngine {
 
 	public GameFrame() {
 		myData = new FileStorer();
+		initializeGame();
 	}
+	
+	/**
+	 * 
+	 * @param fileName defines which saved game to load or re load
+	 */
 
 	public void initialize(String fileName) {
 		try {
@@ -28,15 +38,20 @@ public class GameFrame extends RPGEngine {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		initializeGame();
+		initMusicTest();
+		setInit(true);
+		createWorlds();
 	}
 
 	@Override
 	public void initializeGame() {
-		setInit(true);
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
-		createWorlds();
+	}
+	
+	private void initMusicTest() {
+		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
+		Music music = new Music(mainURL);
+		music.start();		
 	}
 
 
