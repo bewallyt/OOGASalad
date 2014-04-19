@@ -37,6 +37,7 @@ public class BattleManager implements InteractionBox{
 	private final static int ATTACKHAPPENED=2;
 	private final static int WEAPONSELECTED=3;
 	private final static int RAN=4;
+	private final static int ITEMUSED=5;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -44,6 +45,7 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_ATTACK_COMPLETED="You damaged the enemy by: ";
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
+	private static final String TEXT_DISPLAYED_ITEM_USED="item used!";
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private int damageDealt;
@@ -59,7 +61,7 @@ public class BattleManager implements InteractionBox{
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
 		setWeaponChildrenNodes(myWeaponSelector);
-//		setBagChildrenNodes(myBagSelector);
+		setBagChildrenNodes(myBagSelector);
 		setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
@@ -191,7 +193,7 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==RAN){
 			ran=true;
 		}
-		else if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
+		else if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED || myCurrentState==ITEMUSED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
@@ -219,8 +221,11 @@ public class BattleManager implements InteractionBox{
 				myCurrentState=ATTACKHAPPENED;
 				setCurrentTextToBeDisplayed();
 			}
-			else if(executable instanceof Item)
+			else if(executable instanceof Item){				
 				((Item) executable).useItem();
+				myCurrentState=ITEMUSED;
+				setCurrentTextToBeDisplayed();
+			}
 			else if(executable instanceof Run){
 				//ran=true;
 				myCurrentState=RAN;
@@ -283,6 +288,9 @@ public class BattleManager implements InteractionBox{
 	private void setCurrentTextToBeDisplayed() {
 		if(myCurrentState==WEAPONSELECTED){
 			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
+		}
+		else if(myCurrentState==ITEMUSED){
+			textToBeDisplayed=TEXT_DISPLAYED_ITEM_USED;
 		}
 		else if(myCurrentState==ATTACKHAPPENED){
 			textToBeDisplayed=TEXT_DISPLAYED_ATTACK_COMPLETED + damageDealt;
