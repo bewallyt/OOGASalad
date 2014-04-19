@@ -27,6 +27,7 @@ public class DialogueFeature extends Feature{
 	private NPCResponseNode myCurrent;
 	private int myModIndex;
 	private JButton newQueryOption;
+	private JButton myGoBack;
 	private JFrame frame;
 	private GridObjectCreation mySuperFeature;
 	public DialogueFeature(GridObjectCreation gridObjectCreation) {
@@ -41,8 +42,11 @@ public class DialogueFeature extends Feature{
 		myTextWindow.setPreferredSize(new Dimension(200,100));
 		newQueryOption = new JButton("New Query Option");
 		newQueryOption.addActionListener(new QueryListener());
-		myComponents.put(myTextWindow, BorderLayout.CENTER);
-		myComponents.put(newQueryOption, BorderLayout.CENTER);
+		myGoBack = new JButton("Go Up A Level");
+		myGoBack.addActionListener(new GoBackListener());
+		myComponents.put(myTextWindow, BorderLayout.EAST);
+		myComponents.put(newQueryOption, BorderLayout.EAST);
+		myComponents.put(myGoBack, BorderLayout.EAST);
 	}
 	private void setResponses(){
 		myResponses = new ArrayList<String>();
@@ -57,10 +61,20 @@ public class DialogueFeature extends Feature{
 	}
 	private class QueryListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			if(myCurrent.getChildren().size()<4){
 			frame = new JFrame("Input Dialogue");
 			frame.add(new DialogueInputPanel(1));
 			frame.pack();
 			frame.setVisible(true);
+			}
+		}
+	}
+	private class GoBackListener implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			if(myCurrent!=myRoot){
+			myCurrent=myCurrent.getParent().getParent();
+			setResponses();
+			}
 		}
 	}
 	private class DialogueClickAction implements ListSelectionListener{
@@ -74,11 +88,9 @@ public class DialogueFeature extends Feature{
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
 				}
 				else{
-					frame = new JFrame("Input Dialogue");
-					frame.add(new DialogueInputPanel(0));
-					frame.pack();
-					frame.setVisible(true);
+					myCurrent = myCurrent.getChildren().get(myResponsesWrapper.getSelectedIndex()-1).getChild();
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
+					setResponses();
 				}
 			}
 		}
@@ -88,6 +100,9 @@ public class DialogueFeature extends Feature{
 		
 		private JTextArea text;
 		private JScrollPane textWrapper;
+
+		private JTextArea secondText;
+		private JScrollPane secondTextWrapper;
 		
 		private JButton confirm;
 		private int myNodeType;
@@ -96,10 +111,15 @@ public class DialogueFeature extends Feature{
 			dialogueLabel = new JLabel("Enter the desired dialogue.");
 			text = new JTextArea(1,40);
 			textWrapper = new JScrollPane(text);
-			confirm = new JButton("Done");
-			confirm.addActionListener(new DoneListener());
 			this.add(dialogueLabel);
 			this.add(textWrapper);
+			if(myNodeType==1){
+				secondText = new JTextArea(1,40);
+				secondTextWrapper = new JScrollPane(secondText);
+				this.add(secondTextWrapper);
+			}
+			confirm = new JButton("Done");
+			confirm.addActionListener(new DoneListener());
 			this.add(confirm);
 		}
 		private class DoneListener implements ActionListener{
@@ -108,7 +128,10 @@ public class DialogueFeature extends Feature{
 				myCurrent.setString(text.getText());
 				}
 				else{
-					myCurrent.addChild(new UserQueryNode(text.getText(), myCurrent));
+					UserQueryNode uqn = new UserQueryNode(text.getText(), myCurrent);
+					uqn.setChild(new NPCResponseNode(secondText.getText()));
+					uqn.getChild().setParent(uqn);
+					myCurrent.addChild(uqn);
 				}
 				setResponses();
 				frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

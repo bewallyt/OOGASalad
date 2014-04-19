@@ -9,11 +9,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Data.ImageFile;
 import Data.ImageManager;
 
  public class ImageResizer {
 	
-	private File storedImage;
+	private ImageFile storedImage;
 	private String fileName;
 	private String fileId;
 
@@ -24,17 +25,25 @@ import Data.ImageManager;
     }
 
 	protected void storeImage(String name, File file, String id) throws IOException {
+
 		fileName = name;
 		File imageFile = file;
         fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
-		addToWorldData(m);
+		addToEditor(storedImage);
 	}
 
-	private void addToWorldData(Image m) {
-        FeatureManager.getWorldData().saveImage(fileName, storedImage);
-        FeatureManager.tileEditor.imageRefresh();
+
+	private void addToEditor(ImageFile imageFile) {
+		if(imageFile.getType().equalsIgnoreCase(FeatureManager.tileEditor.IMAGE_TYPE)){
+			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
+		}
+		else if(imageFile.getType().equalsIgnoreCase(FeatureManager.gridObjectImageEditor.IMAGE_TYPE)){
+			FeatureManager.gridObjectImageEditor.addImage(imageFile.getImage(), fileName);
+		}
+        
+
 	}
 	
 	private Image scaleImage(File fileName, String s){

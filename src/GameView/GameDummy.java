@@ -19,6 +19,7 @@ import engine.world.World;
 import engine.main.Main;
 import engine.main.RPGEngine;
 import authoring.GridObjectData;
+import authoring.MapData;
 import authoring.PlayerData;
 //import authoring.PlayerData;
 import authoring.TileData;
@@ -58,6 +59,35 @@ public class GameDummy extends RPGEngine {
 		}
 		
 		initializeGame();
+	}
+	
+	
+	protected void setUpWorld(String worldKey) {
+		
+	}
+	
+	private List<GridObject> createGridObjectList(String worldKey) {
+//		TileData currTile;
+		List<GridObjectData> currDatas = new ArrayList<GridObjectData>();
+		List<GridObject> myGridObjectList = new ArrayList<GridObject>();
+		
+		MapData myCurrMap = myWorldData.getMap(worldKey);
+		
+		for(int i = 0; i < myCurrMap.getMapLength(); i++) {
+			for(int j = 0; j < myCurrMap.getMapWidth(); j++) {
+				currDatas = myCurrMap.getTileData(i, j).getGridObjectDatas();
+				
+				for(GridObjectData currData : currDatas) {
+					GridObject gridobject;
+					if(currData.getID().equals("Barrier")) {
+						gridobject = new Barrier(currData.getImageName(), currData.getWidth(), currData.getHeight());
+					} else if (currData.getID().equals("Door")) {
+						gridobject = new Door(currData.getImageName(), currData.getWidth(), currData.getHeight());
+					} else if (currData.getID().)
+					
+				}
+			}
+		}
 	}
 
 	@Override

@@ -2,23 +2,25 @@ package authoring;
 import java.awt.Image;
 import java.io.File;
 import java.util.*;
+import javax.swing.*;
 
 public class WorldData {
 
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
     private List<Item> myItems;
+    private List<Weapon> myWeapons;
     private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
-	protected static final int DEFAULT_MAP_WIDTH = 100;
-	protected static final int DEFAULT_MAP_HEIGHT = 100;
+	protected static final int DEFAULT_MAP_WIDTH = 10;
+	protected static final int DEFAULT_MAP_HEIGHT = 10;
 	
 	public WorldData(){
 		myLevels = new HashMap<String, MapData>();
 		myLevels.put(DEFAULT_MAP, new MapData());
 		myImages = new HashMap<String, File>();
         myItems = new ArrayList<Item>();
-		//More general stuff about player, game engine, etc will go here
+        myWeapons = new ArrayList<Weapon>();
 	}
 	
 	public File getImage(String fileName){
@@ -29,7 +31,13 @@ public class WorldData {
 		myImages.put(s, f);
 	}
 
+    public List<Item> getMyItems(){ return myItems;}
+
     public void saveItem(Item it){ myItems.add(it);}
+
+    public PlayerData getPlayData(){
+        return playData;
+    }
 
     public void savePlayer(PlayerData player){ playData = player; }
 	
@@ -45,43 +53,12 @@ public class WorldData {
 		return myImages;
 	}
 
-    protected List<Item> getMyItems(){ return myItems;}
+    public void saveWeapons(Weapon wep){ myWeapons.add(wep);}
 
-    public PlayerData getPlayData(){
-        return playData;
-    }
-	
-	/*private TileData[][] myTileDatas;
-	private int myWorldWidth;
-	private int myWorldHeight;
-	private PlayerData myPlayerData;
-	
-	public WorldData(int width, int height) {
-		myWorldWidth = width;
-		myWorldHeight = height;
-		myPlayerData = new PlayerData();
-		myTileDatas = new TileData[myWorldWidth][myWorldHeight];
-	}
-	
-	public TileData getTileData(int x, int y) {
-		return myTileDatas[x][y];
-	}
-	
-	public int[] getWorldSize(){
-		return new int[]{myWorldWidth, myWorldHeight};
-	}
-	
-	public PlayerData getPlayerData(){		
-		String[] animImages = new String[12];
-		animImages[0] = "fs.png";
-		animImages[3] = "ls.png";
-		animImages[6] = "bs.png";
-		animImages[9] = "rs.png";
-		
-		myPlayerData.setMyImage("blank");
-		myPlayerData.setMyAnimImages(animImages);
-		System.out.println(myPlayerData.getMyImage());
-		return myPlayerData;
-	}*/
+    public List<Weapon> getMyWeapons(){ return myWeapons;}
+
+
+
+
 
 }

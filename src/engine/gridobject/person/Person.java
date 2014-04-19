@@ -1,14 +1,15 @@
 package engine.gridobject.person;
 
 import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.battle.Weapon;
+import engine.dialogue.DialogueDisplayControl;
+import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
-import engine.gridobject.item.Item;
-import engine.gridobject.item.Weapon;
 import engine.images.ScaledImage;
+import engine.item.Item;
 
 public abstract class Person extends GridObject {
 
@@ -20,25 +21,33 @@ public abstract class Person extends GridObject {
 	private int myMinX;
 	private int myMaxY;
 	private int myMinY;
-	protected List<Weapon> myWeapons;
+	private int myStartX;
+	private int myStartY;
+	private List<Weapon> myWeapons;
+	private Weapon myCurrentWeapon;
+	private int myMoney;
 	//up=0, right=1, down=2, left=3
 	private int myFacing=2;
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
-	
+	private DialogueDisplayControl myDialogueDisplayControl;
+
+
 	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		resetMax();
 		myWeapons = new ArrayList<Weapon>();
+		myItems = new ArrayList<Item>();
 		currentImageFile=getAnimImages()[myFacing];
+		myMoney=0;
 	}
-	
+
 	private boolean isAnim(String[] animImages) {
 		return animImages.length == 12;
 	}
-	
+
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -64,7 +73,7 @@ public abstract class Person extends GridObject {
 			incrementY(getDY());
 		resetMax();
 		uniqueMove();
-		
+
 	}
 
 	private void updateFacing() {
@@ -92,7 +101,7 @@ public abstract class Person extends GridObject {
 		setImage(imageName);
 		currentImageFile=imageName;
 	}
-	
+
 	private String switchAnim(int still, int start, int end, String[] anim){
 		if(isAnim(anim)) {
 			if(count < 25)
@@ -104,23 +113,48 @@ public abstract class Person extends GridObject {
 			return anim[still];
 		}
 	}
-	
+
+	/**
+	 * Adds a weapon to the person's weapon list.
+	 *
+	 * @param weapon the weapon
+	 */
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
+		myCurrentWeapon=myWeapons.get(0);
+		System.out.println(myWeapons.size());
 	}
 
-	public void addItem(Item it) {
-		getItems().add(it);
+	public List<Weapon> getWeaponList(){
+		return myWeapons;
 	}
-	
+
+	/**
+	 * Adds the item.
+	 *
+	 * @param an item to the person's item list
+	 */
+	public void addItem(Item it) {
+		myItems.add(it);
+	}
+
 	public List<Item> getItems() {
 		return myItems;
 	}
 
+	/**
+	 * Sets a list of items as the person's item list
+	 * @param items
+	 */
 	public void setMyItems(List<Item> items) {
 		myItems = items;
 	}
 
+	/**
+	 * Removes the item.
+	 *
+	 * @param it the item to be removed from the item list
+	 */
 	public void removeItem(Item it) {
 		for (Item current : getItems()) {
 			if (current.getName().equals(it.getName())) {
@@ -133,24 +167,24 @@ public abstract class Person extends GridObject {
 		return myDY;
 	}
 
-	public void setDY(double myDY) {
-		this.myDY = myDY;
+	public void setDY(double DY) {
+		myDY = DY;
 	}
 
 	public double getSpeed() {
 		return mySpeed;
 	}
 
-	public void setSpeed(double mySpeed) {
-		this.mySpeed = mySpeed;
+	public void setSpeed(double Speed) {
+		mySpeed = Speed;
 	}
 
 	public double getDX() {
 		return myDX;
 	}
 
-	public void setDX(double myDX) {
-		this.myDX = myDX;
+	public void setDX(double DX) {
+		myDX = DX;
 	}
 	public int getFacing(){
 		return myFacing;
@@ -159,13 +193,69 @@ public abstract class Person extends GridObject {
 		myFacing = facing;
 		currentImageFile=getAnimImages()[myFacing];
 	}
-	
+
+	/**
+	 * Sets the battle image.
+	 *
+	 * @param file the new battle image
+	 */
 	public void setBattleImage(String file){
 		Image bimg = new ScaledImage(150,150,file).scaleImage();
 		myBattleImage = bimg;
 	}
-	
+
 	public Image getBattleImage(){
 		return myBattleImage;
 	}
+	public int getStartX(){
+		return myStartX;
+	}
+	public int getStartY(){
+		return myStartY;
+	}
+
+	@Override
+	public void setPosition(int x, int y){
+		super.setPosition(x, y);
+		myStartX=x; myStartY=y;
+	}
+	public void incrementY(double myDY) {
+		super.setPosition(getX(), (int) (getY()+myDY));
+	}
+
+	public void incrementX(double myDX) {
+		super.setPosition((int) (getX()+myDX), getY());
+	}
+	
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
+	
+	public void setInteractionBox(InteractionBox box) {
+		myDialogueDisplayControl.setInteractionBox(box);
+	}
+	public void setCurrentWeapon(Weapon weapon){
+		myCurrentWeapon=weapon;
+	}
+	
+	public Weapon getCurrentWeapon(){
+		return myCurrentWeapon;
+	}
+	
+	public int getMoney(){
+		return myMoney;
+	}
+	public void changeMoney (int amountToChange){
+		myMoney+=amountToChange;
+	}
+	
 }

@@ -12,7 +12,6 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-//import engine.gridobject.person.RuleFollower;
 import engine.world.Canvas;
 import engine.world.SurroundingChecker;
 import engine.world.WalkAroundWorld;
@@ -38,7 +37,6 @@ public class GameFrame extends RPGEngine {
 	// temporary, will be removed when data adds this info into WorldData
 	private final int DEFAULT_MOVEMENT_TYPE = 1;
 	private final int DEFAULT_MOVEMENT_SPEED = 1;
-
 	private WorldData myWorldData;
 	// private DataManager myData;
 	private FileStorer myData;
@@ -63,7 +61,7 @@ public class GameFrame extends RPGEngine {
 
 	@Override
 	public void initializeGame() {
-		isInitialized();
+		setInit(true);
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 		makeOutsideWorld();
 	}
@@ -77,13 +75,11 @@ public class GameFrame extends RPGEngine {
 		createPlayer();
 		List<GridObject> gridObjectList = createGridObjectList();
 
-//		WalkAroundWorld outsideWorld = new WalkAroundWorld(40, 1000, 1000, myPlayer, gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, 40, gridObjectList);
 
 //		setWorld(outsideWorld);
 
-		// addEnemy();
-
-//		setGridObjects(outsideWorld, gridObjectList);
+		setGridObjects(outsideWorld, gridObjectList);
 //		outsideWorld.paintFullBackround("grassSmall.png");
 	}
 
@@ -91,20 +87,20 @@ public class GameFrame extends RPGEngine {
 		
 		PlayerData myPlayerData = myWorldData.getPlayData();
 		
-		/*String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
+		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
 				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
 				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
 				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
-				"PlayerLeft2.png" };*/
+				"PlayerLeft2.png" };
 		
-		String[] anim = myPlayerData.getMyAnimImages();
+//		String[] anim = myPlayerData.getMyAnimImages();
 		// int speed = myPlayerData.getSpeed();
 		// int width = myPlayerData.getWidth();
 		// int height = myPlayerData.getHeight();
 		myPlayer = new Player(anim, 2, 1, 1);
 	}
 
-	public void setGridObjects(World world, List<GridObject> list) {
+	public void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 //			world.setTileObject(g, g.getX(), g.getY());
 		}
@@ -186,8 +182,6 @@ public class GameFrame extends RPGEngine {
 	 * } } } }
 	 */
 	
-	
-	@Override
 	public void run() {
 
 	}

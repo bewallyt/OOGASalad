@@ -79,8 +79,8 @@ public class Canvas extends JComponent{
 
 
 
-		if(myWorld instanceof WalkAroundWorld)paintWalkAroundWorld(g2d);
-		else{
+		if(myWorld instanceof WalkAroundWorld) paintWalkAroundWorld(g2d);
+		else if(myWorld instanceof ArenaWorld){
 			paintArenaWorld(g2d);
 		}
 
@@ -96,15 +96,26 @@ public class Canvas extends JComponent{
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
+		g2d.setColor(Color.yellow);
+		g2d.fill(new Rectangle((int) (myWidth/1.5-10),myHeight/2+40, myWidth/3, 40));
 		g2d.setColor(Color.green);
 		g2d.draw(new Rectangle((int) (myWidth/1.5),myHeight/2+60, myWidth/4, 10));
-		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer().getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").getMaxValue())), 10));
+		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer()
+					.getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").
+					getMaxValue())), 10));
 		g2d.draw(new Rectangle((int) (myWidth/15),myHeight/5, myWidth/4, 10));
-		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy().getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health").getMaxValue())), 10));
+		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy()
+					.getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health")
+					.getMaxValue())), 10));
 	}
+	
+	
 
 	private void paintWalkAroundWorld(Graphics2D g2d) {
+	
 		WalkAroundWorld world = (WalkAroundWorld) myWorld;
+		
+		
 		for (int i = 0; i < world.getTileGridWidth(); i++) {
 			for (int j = 0; j < world.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(world.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
@@ -118,6 +129,12 @@ public class Canvas extends JComponent{
 				world.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
+		
+		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
+												getCameraOffset()[1]);
+		
+//		world.getMenuDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
+//				getCameraOffset()[1]);
 	}
 
 	public int[] getCameraOffset(){

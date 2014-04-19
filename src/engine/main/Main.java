@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.Statistic;
+import engine.battle.Weapon;
+import engine.collision.BattleCollision;
 import engine.collision.EnterCollision;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
@@ -13,6 +15,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.item.Item;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
@@ -44,15 +47,16 @@ public class Main extends RPGEngine {
 
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
+		
 		NPCResponseNode n = new NPCResponseNode(bafm, "Hello there! How are you?");
-		NPCResponseNode n0 = new NPCResponseNode(bafm, "Glad you feel that way!");
-		NPCResponseNode n1 = new NPCResponseNode(bafm, "choice 1");
-		NPCResponseNode n2 = new NPCResponseNode(bafm, "choice 2");
-		NPCResponseNode n3 = new NPCResponseNode(bafm, "choice 3");
+		NPCResponseNode n0 = new NPCResponseNode(bafm, "You chose choice 0");
+		NPCResponseNode n1 = new NPCResponseNode(bafm, "You chose choice 1");
+		NPCResponseNode n2 = new NPCResponseNode(bafm, "You chose choice 2");
+		NPCResponseNode n3 = new NPCResponseNode(bafm, "You chose choice 3");
 		UserQueryNode q0 = new UserQueryNode(player, null, "I feel good", n0);
 		UserQueryNode q1 = new UserQueryNode(player, null, "I feel bad", n1);
 		UserQueryNode q2 = new UserQueryNode(player, null, "I feel great", n2);
-		UserQueryNode q3 = new UserQueryNode(player, null, "I feel asdfad", n3);
+		UserQueryNode q3 = new UserQueryNode(player, null, "I feel meh...", n3);
 		n.addResponseNode(q0);
 		n.addResponseNode(q1);
 		n.addResponseNode(q2);
@@ -61,19 +65,25 @@ public class Main extends RPGEngine {
 
 		bafm.setResponseNode(n);
 
-
 		Door door = new Door("cabinets.jpg", 1, 1);
 
 		Door door2 = new Door("cabinets.jpg", 1, 1);
+		Door tallGrass = new Door("grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,2,1,1,1, player);
 		enemy.doBattleOnSight();
-		enemy.setWorld(new ArenaWorld("battlebackground.png",800, 800, player,enemy));
+
+	
+
 		enemy.setResponseNode(n);
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
 		gridObjectList.add(door);
 		gridObjectList.add(bafm);
 		gridObjectList.add(enemy);
+		gridObjectList.add(tallGrass);
+		Barrier cab = new Barrier("cabinets.jpg",1,1);
+		cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
+		gridObjectList.add(cab);
 		
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("pokecenter.png",4, 4));
@@ -82,22 +92,28 @@ public class Main extends RPGEngine {
 		
 		
 		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40,gridObjectList);
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
+		outsideWorld.addRandomEncounter(enemy);
+		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy,outsideWorld));
 		
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
-		door.setBuildingWorld(buildingWorld);
-		door2.setBuildingWorld(outsideWorld);
+		door.setWorld(buildingWorld);
+		door2.setWorld(outsideWorld);
+		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld.getRandomEncounter(),outsideWorld));
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
-		outsideWorld.setTileObject(gridObjectList.get(3), 10, 10);
+		outsideWorld.setTileObject(gridObjectList.get(3), 8, 13);
 		outsideWorld.setTileObject(gridObjectList.get(4), 10, 8);
+		outsideWorld.setTileObject(gridObjectList.get(5), 12, 12);
+		outsideWorld.setTileObject(gridObjectList.get(6), 1, 2);
 		outsideWorld.paintFullBackround("grassSmall.png");
 		outsideWorld.setCollisionHandler(new EnterCollision(gridObjectList.get(0), 
 															gridObjectList.get(2)),0,2);
 		
+		outsideWorld.setCollisionHandler(new BattleCollision(gridObjectList.get(0),gridObjectList.get(5)), 0, 5);
 		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
 		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
 		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
@@ -110,55 +126,12 @@ public class Main extends RPGEngine {
 		player.addStatistic(new Statistic("health",100,100));
 		enemy.setBattleImage("rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
-
-
-
-//		addPlayer(anim,2,1, 1);
-
-
-//		addGridObject(getPlayer(), 3, 3);
-//		Enemy bafm = new Enemy(new String[] {"rival.png","rival.png","rival.png","rival.png"},1,1,1, 3, getPlayer());
-//		bafm.battleOnSight();
-//		addGridObject(bafm,10,10);
-//		bafm.addDialogue("Hey fight me");
-//		Barrier pokeCenter = new Barrier("pokecenter.png",4, 4);
-//		addGridObject(pokeCenter, 4, 3);
-//		
-//		for(int i=0; i<outsideWorld.getTileGridWidth(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), i, 0);
-//			addGridObject(new Barrier("tree.png",1,2), i, outsideWorld.getTileGridHeight()-1-1);
-//		}
-//		for(int i=0; i<outsideWorld.getTileGridHeight(); i++){
-//			addGridObject(new Barrier("tree.png",1,2), 0, i);
-//			addGridObject(new Barrier("tree.png",1,2), outsideWorld.getTileGridWidth()-1,i );
-//		}
-//		
-//
-//		
-
-
-//		Barrier pokeCenter2 = new Barrier("pokecenter.png",4, 4);
-//		buildingWorld.setTileObject(pokeCenter2, 4, 3);
-
-//		Door door = new Door("cabinets.jpg", 1, 1);
-//		door.setBuildingWorld(buildingWorld);
-//		addGridObject(door, 6, 6);
-
-
 	}
 
 	@Override
 	public void initializeGame() {
-		initializeCanvas(800, 800);
+		setInit(true);
+		initializeCanvas(500, 500);
 		makeOutsideWorld();
-
 	}
-
-	@Override
-	public void run() {
-
-	}
-
-
-
 }

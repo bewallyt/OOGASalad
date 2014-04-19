@@ -15,6 +15,9 @@ public class Statistic implements Listable {
 	public void changeValue(int amountToChange) {
 		if(myValue+amountToChange<=myMaxValue)
 			myValue += amountToChange;
+		else{
+			myValue=myMaxValue;
+		}
 	}
 
 	public int getValue() {
@@ -25,10 +28,6 @@ public class Statistic implements Listable {
 		return myName;
 	}
 	
-	public void incrementByOne(){
-		if(myValue+1<=myMaxValue)
-			myValue++;
-	}
 	public int getMaxValue(){
 		return myMaxValue;
 	}
@@ -37,6 +36,9 @@ public class Statistic implements Listable {
 	public void display() {
 		// TODO Auto-generated method stub
 
+	}
+	public void setToMax(){
+		myValue=myMaxValue;
 	}
 
 	//	@Override
