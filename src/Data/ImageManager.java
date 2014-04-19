@@ -79,7 +79,7 @@ public class ImageManager {
 		String newParentPath=SRC+imageType+"/";
 		String fullName=filename+"."+DEFAULT_IMAGE_EXTENSION;
 		String fullPath=newParentPath+fullName;
-		System.out.println("Full Path: "+ fullPath);
+	//	System.out.println("Full Path: "+ fullPath);
 		
 		File newImageFile=new File(fullPath);
 		if(checkImageExtension(getFileExtension(newImageFile))){

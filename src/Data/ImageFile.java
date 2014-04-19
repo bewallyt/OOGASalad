@@ -15,7 +15,7 @@ public class ImageFile {
 	public ImageFile(String name, String imageType) {
 		this.name=name;
 		this.imageType=imageType;
-		System.out.println("Name: "+name + "   Type: "+ imageType);
+	//	System.out.println("Name: "+name + "   Type: "+ imageType);
 	}
 
 	public String getName(){
