@@ -79,9 +79,8 @@ public class Canvas extends JComponent{
 
 
 
-		if(myWorld instanceof WalkAroundWorld) 
-			paintWalkAroundWorld(g2d);
-		else{
+		if(myWorld instanceof WalkAroundWorld) paintWalkAroundWorld(g2d);
+		else if (myWorld instanceof ArenaWorld){
 			paintArenaWorld(g2d);
 		}
 
@@ -110,6 +109,8 @@ public class Canvas extends JComponent{
 					.getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health")
 					.getMaxValue())), 10));
 	}
+	
+	
 
 	private void paintWalkAroundWorld(Graphics2D g2d) {
 	
@@ -132,6 +133,9 @@ public class Canvas extends JComponent{
 		
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
 												getCameraOffset()[1]);
+		
+//		world.getMenuDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
+//				getCameraOffset()[1]);
 	}
 
 	public int[] getCameraOffset(){

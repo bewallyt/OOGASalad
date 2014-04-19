@@ -15,6 +15,7 @@ public abstract class RPGEngine{
 	private World myCurrentWorld;
 	private GameLooper myGameLooper;
 	private World myPreviousWorld;
+	private Boolean isInitialized = false;
 
 
 	/**
@@ -76,6 +77,11 @@ public abstract class RPGEngine{
 		if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 	}
 	
+	public void setInit(Boolean bool) {
+		isInitialized = bool;
+	}
+	
+
 	/**
 	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
 	 * 
@@ -84,7 +90,7 @@ public abstract class RPGEngine{
 	 */
 	public void doGameLoop() throws InterruptedException {
 
-		while (true) {
+		while (isInitialized) {
 			myCanvas.repaint();
 			if(myGameLooper.doLoop()!=null){
 				System.out.println("change");

@@ -13,8 +13,8 @@ import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
+import engine.dialogue.InteractionMatrix2x2;
 import engine.dialogue.MatrixNode;
-import engine.dialogue.UserQueryNode;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
@@ -49,7 +49,7 @@ public class BattleManager implements InteractionBox{
 		myPlayer = player;
 		myEnemy=enemy;
 		myBattleAI=new BattleAI(enemy);
-		myOptions = new InteractionMatrix();
+		myOptions = new InteractionMatrix2x2();
 		setOriginalNodes();
 		initializeChildrenNodes();
 	}
@@ -178,8 +178,8 @@ public class BattleManager implements InteractionBox{
 			int width, int height) {
 		int xCornerLoc = xSize/10;
 		int yCornerLoc = ySize/2 + 120;
-		for (int i = 0; i < myOptions.getDimension(); i++) {
-			for (int j = 0; j < myOptions.getDimension(); j++) {
+		for (int i = 0; i < myOptions.getDimension()[0]; i++) {
+			for (int j = 0; j < myOptions.getDimension()[1]; j++) {
 				MatrixNode qn = (MatrixNode) myOptions.getNode(j, i);
 				if(qn!=null)g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}
@@ -231,8 +231,8 @@ public class BattleManager implements InteractionBox{
 		else if(myCurrentState==TOPLEVEL){
 			int count=0;
 			myCurrentBattleSelector.getChildren().size();
-			for(int i=0; i<myOptions.getDimension(); i++){
-				for(int j=0; j<myOptions.getDimension(); j++){
+			for(int i=0; i<myOptions.getDimension()[0]; i++){
+				for(int j=0; j<myOptions.getDimension()[1]; j++){
 					if(myCurrentBattleSelector.getChildren().size()>count)
 						myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
 					else{

@@ -13,6 +13,8 @@ import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
+//import engine.menu.MenuDisplayer;
+import engine.menu.MenuManager;
 
 public class WalkAroundWorld extends World {
 
@@ -23,7 +25,6 @@ public class WalkAroundWorld extends World {
 	private Tile[][] myTileMatrix;
 	private List<GridObject> myGridObjectList;
 	private CollisionMatrix myCollisionMatrix;
-	
 	List<Enemy> myRandomEncounters = new ArrayList<Enemy>();
 
 	/**
@@ -43,8 +44,6 @@ public class WalkAroundWorld extends World {
 		myTileSize=tileSize;
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
-		
-
 	}
 
 	/**
@@ -73,6 +72,10 @@ public class WalkAroundWorld extends World {
 	 */
 	public int getTileGridWidth() {
 		return myNumTileWidth;
+	}
+	
+	public void setTileImage(int i, int j, String fileName) {
+		myTileMatrix[i][j].setBackgroundImage(fileName);
 	}
 
 	public void paintFullBackround(String fileName){
@@ -123,7 +126,9 @@ public class WalkAroundWorld extends World {
 	}
 
 
-
+//	public MenuDisplayer getMenuDisplayer(){
+//		return myMenuDisplayer;
+//	}
 
 
 
