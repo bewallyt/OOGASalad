@@ -15,6 +15,7 @@ public class MapDataParser {
 	
 	public MapDataParser(MapData map) {
 		myMap = map;
+		parseMap();
 	}
 	
 	public List<GridObject> getGridObjectList() {
@@ -42,7 +43,6 @@ public class MapDataParser {
 				}
 				
 				myTileImageList.add(currTile.getImageName());
-				
 			}
 		}
 	}
