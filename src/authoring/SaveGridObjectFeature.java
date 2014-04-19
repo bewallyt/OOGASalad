@@ -32,7 +32,6 @@ public class SaveGridObjectFeature extends Feature{
 			
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
-				FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(mySuperFeature.getData());
 				((GridViewerFeature)FeatureManager.getFeature("authoring.GridViewerFeature")).tileRepaint();
 				//mySuperFeature.getView().close();
 			}

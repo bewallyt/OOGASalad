@@ -28,7 +28,7 @@ public class DataManager {
 		List<String> gameList = myFileStorer.getSavedGameList();
 		for (String gameName : gameList) {
 			try {
-				System.out.println("gameName : " + gameName);
+			//	System.out.println("gameName : " + gameName);
 				WorldData worldData = myFileStorer.getWorldData(gameName);
 				myWorldDatas.put(gameName, worldData);
 			} catch (IOException e) {

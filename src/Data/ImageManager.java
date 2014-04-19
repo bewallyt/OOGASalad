@@ -29,7 +29,7 @@ public class ImageManager {
 	public static final String SRC="src/";
 	//public static final String DEFAULT_IMAGE_PACKAGE="TestImageFiles/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
-	public static final String DEFAULT_IMAGE_EXTENSION="jpg";
+	public static final String DEFAULT_IMAGE_EXTENSION="gif";
 	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject", "TileImage"};
 	
 	public ImageManager() {	
@@ -79,7 +79,7 @@ public class ImageManager {
 		String newParentPath=SRC+imageType+"/";
 		String fullName=filename+"."+DEFAULT_IMAGE_EXTENSION;
 		String fullPath=newParentPath+fullName;
-		System.out.println("Full Path: "+ fullPath);
+	//	System.out.println("Full Path: "+ fullPath);
 		
 		File newImageFile=new File(fullPath);
 		if(checkImageExtension(getFileExtension(newImageFile))){
