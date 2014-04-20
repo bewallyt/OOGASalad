@@ -16,7 +16,7 @@ public class Grid extends JPanel{
 	
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
-	private String[] popupMenuItems = { "Tile Image Editor", "Grid Object Editor", "Set as Player Start Point", "Clear Tile"};
+	private String[] popupMenuItems = { "Tile Image Editor"};
 	private Border defaultBorder;
 	private Border selectBorder;
 	private TilePanel[][] world;
