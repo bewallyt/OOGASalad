@@ -1,10 +1,12 @@
 package engine.main;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import util.Constants;
+import util.Music;
 import Data.FileStorer;
 import GameView.MapDataParser;
 import authoring.MapData;
@@ -206,10 +208,17 @@ public class Main extends RPGEngine {
 		
 		
 	}
+	
+	private void initMusicTest() {
+		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
+		Music music = new Music(mainURL);
+		music.start();
+	}
 
 	@Override
 	public void initializeGame() {
 		setInit(true);
+		initMusicTest();
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}

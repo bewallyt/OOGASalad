@@ -120,15 +120,15 @@ public class DoorCreation {
 	private class createDoorListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			DoorObject myDoor=getDoor();
+			DoorData myDoor=getDoor();
 			if(validateText(textFieldList)){
 				FeatureManager.getWorldData().saveDoor(myDoor);
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
-		private DoorObject getDoor(){
-			return new DoorObject(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription(), 
+		private DoorData getDoor(){
+			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription(), 
 					getIntValue(toXField.getText()), getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
 		}
 	}
