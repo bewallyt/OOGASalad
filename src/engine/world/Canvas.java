@@ -80,7 +80,7 @@ public class Canvas extends JComponent{
 
 
 		if(myWorld instanceof WalkAroundWorld) paintWalkAroundWorld(g2d);
-		else if(myWorld instanceof ArenaWorld){
+		else if (myWorld instanceof ArenaWorld){
 			paintArenaWorld(g2d);
 		}
 
@@ -92,6 +92,7 @@ public class Canvas extends JComponent{
 		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight/2), null);
 		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.5), myHeight/5, null);
 		drawStatusBars(g2d, world);
+		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, 0,0);
 
 	}
 

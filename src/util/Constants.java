@@ -19,6 +19,8 @@ public class Constants {
 		
     // engine
     public static final String IMAGEPATH = "ImageFiles/";
+    public static final String GRIDOBJECTPATH = "gridobject/";
+    public static final String TILEIMAGEPATH = "TileImage/";
     
     // authoring
     

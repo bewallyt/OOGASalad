@@ -1,9 +1,10 @@
 package engine.battle;
 
 import engine.Statistic;
+import engine.dialogue.MatrixNode;
 import engine.gridobject.person.Person;
 
-public class Attack {
+public class Attack implements MatrixNode,BattleExecutable {
 	private String myName;
 	private Statistic myDamage;
 	private Statistic mySpeed;
@@ -36,6 +37,11 @@ public class Attack {
 	}
 	public Effect getEffect(){
 		return myEffect;
+	}
+
+	@Override
+	public String getString() {
+		return myName;
 	}
 	
 	

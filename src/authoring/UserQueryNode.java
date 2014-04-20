@@ -2,11 +2,9 @@ package authoring;
 
 public class UserQueryNode {
 	private String myString;
-	private NPCResponseNode myParent;
 	private NPCResponseNode myChild;
-	public UserQueryNode(String s, NPCResponseNode p){
+	public UserQueryNode(String s){
 		myString = s;
-		myParent = p;
 	}
 	public void setString(String s){
 		myString = s;
@@ -20,8 +18,5 @@ public class UserQueryNode {
 	}
 	public NPCResponseNode getChild(){
 		return myChild;
-	}
-	public NPCResponseNode getParent(){
-		return myParent;
 	}
 }

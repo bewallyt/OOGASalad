@@ -1,27 +1,22 @@
 package authoring;
 
 
-import engine.battle.Attack;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class ItemCreation extends CommonAttributes implements ActionListener, ItemListener, MouseListener{
+public class ItemWeaponCreation extends CommonAttributes implements ActionListener, ItemListener, MouseListener{
 
-    private String name;
-    private String image;
     private int speed;
     private int damage;
-    //private String[] attributes = {"Speed","Damage","Defense","Health","Level"};
-    //private Map<String,JTextField> textValues;
-    private Map<String,Integer> attributeValues;
     private List<Attacks> weaponAttacks;
     private DefaultListModel attackListModel;
+    private JList attackList;
+    private JButton addattack;
 
-    public ItemCreation(){
+    public ItemWeaponCreation(){
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -30,77 +25,61 @@ public class ItemCreation extends CommonAttributes implements ActionListener, It
         } else{}
     }
 
-
-
     public void itemStateChanged(ItemEvent e) {
         if(e.getStateChange()==ItemEvent.SELECTED){
             for(int j=2; j<5; j++){
                 textValues.get(attributes[j]).setEnabled(false);
             }
+            attackList.setEnabled(true);
+            addattack.setEnabled(true);
         } else{
             for(int j=2; j<5; j++){
                 textValues.get(attributes[j]).setEnabled(true);
             }
+            attackList.setEnabled(false);
+            addattack.setEnabled(false);
         }
     }
 
     protected void creationPanel() {
-       //textValues = new HashMap<String, JTextField>();
-       attributeValues = new HashMap<String, Integer>();
-       weaponAttacks = new ArrayList<Attacks>();
-       Attacks basicAttack = new Attacks("basic",2,2);
-       weaponAttacks.add(basicAttack);
+        JTabbedPane pane = new JTabbedPane();
+        weaponAttacks = new ArrayList<Attacks>();
+        Attacks basicAttack = new Attacks("Basic",2,2);
+        weaponAttacks.add(basicAttack);
 
-        String nameTab = "Name/Image";
-        String attributeTab = "Attributes";
         String attackTab = "Weapon Attacks";
 
-//        JLabel nameLabel = new JLabel("Name");
-//        JLabel imageLabel = new JLabel("Image");
-//        JTextField itemName = new JTextField("newItem",15);
-//        JTextField imageName = new JTextField("defaultIW",15);
         JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
         isWeapon.addItemListener(this);
 
-
-        JTabbedPane itemPane = new JTabbedPane();
-//        JPanel namePanel = new JPanel(){
-//            public Dimension getPreferredSize() {
-//                Dimension size = super.getPreferredSize();
-//                size.width += 200;
-//                return size;
-//            }
-//        };
-//
-//        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
-//        namePanel.add(nameLabel);
-//        namePanel.add(itemName);
-//        namePanel.add(imageLabel);
-//        namePanel.add(imageName);
         JPanel namePanel = nameImageFields();
         namePanel.add(isWeapon);
 
         JPanel attributePanel = attributeFields();
 
-        JPanel attackPanel = new JPanel(new FlowLayout());
-        JButton addattack = new JButton("+ Attack");
+        JPanel attackPanel = new JPanel();
+        attackPanel.setLayout(new BoxLayout(attackPanel,BoxLayout.PAGE_AXIS));
+        addattack = new JButton("+ Attack");
         addattack.setActionCommand("add");
         addattack.addActionListener(this);
+        addattack.setEnabled(false);
 
         attackListModel = new DefaultListModel();
-        JList attackList = new JList(attackListModel);
+        attackList = new JList(attackListModel);
         attackList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         attackList.addMouseListener(this);
         attackList.setVisibleRowCount(4);
+        attackList.setEnabled(false);
+        attackListModel.addElement(basicAttack.getMyName());
         JScrollPane aScroll = new JScrollPane(attackList);
         attackPanel.add(addattack);
         attackPanel.add(aScroll);
 
-        itemPane.addTab(nameTab,namePanel);
-        itemPane.addTab(attributeTab,attributePanel);
-        itemPane.addTab(attackTab,attackPanel);
+        pane.addTab(nameTab, namePanel);
+        pane.addTab(attributeTab, attributePanel);
+        pane.addTab(attackTab, attackPanel);
 
-        int result = JOptionPane.showOptionDialog(null, itemPane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
+        int result = JOptionPane.showOptionDialog(null, pane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION) {
@@ -161,11 +140,14 @@ public class ItemCreation extends CommonAttributes implements ActionListener, It
     private void makeWeapon() {
         Weapon madeWeapon = new Weapon(name,image,speed,damage,weaponAttacks);
         FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
+        FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
+
     }
 
     private void makeAndSaveItem() {
         Item madeItem = new Item(name,image,attributeValues);
         FeatureManager.getWorldData().saveItem(name,madeItem);
+        FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
     }
 
 

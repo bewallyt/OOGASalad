@@ -4,11 +4,11 @@ import java.util.*;
 
 public class TileData {
 	private String myImageName;
-	private List<GridObjectData> myGridObjectDatas;
+	private List<GridObject> myGridObjectDatas;
 	
 	public TileData(String s) {
 		myImageName = s;
-		myGridObjectDatas = new ArrayList<GridObjectData>();
+		myGridObjectDatas = new ArrayList<GridObject>();
 	}
 	
 	public void setImageName(String s){
@@ -19,11 +19,11 @@ public class TileData {
 		return myImageName;
 	}
 	
-	public List<GridObjectData> getGridObjectDatas() {
+	public List<GridObject> getGridObjectDatas() {
 		return myGridObjectDatas;
 	}
 	
-	protected void addGridObjectData(GridObjectData gd){
+	protected void addGridObjectData(GridObject gd){
 		myGridObjectDatas.add(gd);
 		System.out.println(myGridObjectDatas);
 	}

@@ -5,4 +5,6 @@ package engine.dialogue;
  */
 public interface MatrixNode {
 
+	String getString();
+
 }
