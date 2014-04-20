@@ -20,4 +20,10 @@ public class MenuNode implements MatrixNode {
 
 	}
 
+	@Override
+	public String getString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

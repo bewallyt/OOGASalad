@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 
+import util.Reflection;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
 import engine.gridobject.GridObject;
@@ -20,6 +21,7 @@ public class MenuManager implements InteractionBox {
 	private AbstractState myState;
 	private boolean menuToggler = false;
 	private InteractionMatrix7x1 mySelections;
+	private String[] nodeNames;
 
 	public MenuManager() {
 		mySelections = new InteractionMatrix7x1();
@@ -57,9 +59,14 @@ public class MenuManager implements InteractionBox {
 		return menuToggler;
 	}
 
+	public void setNodeNames() {
+		nodeNames = new String[] { "PokedexNode", "PokemonNode", "BagNode",
+				"NameNode", "SaveNode", "OptionsNode", "ExitNode" };
+	}
+
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
-		
+
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font = null;
 
@@ -86,27 +93,18 @@ public class MenuManager implements InteractionBox {
 
 	public void createMenuNodes() {
 
-		MenuNode pokedexNode = new MenuNode();
-		MenuNode pokemonNode = new MenuNode();
-		MenuNode bagNode = new MenuNode();
-		MenuNode nameNode = new MenuNode();
-		MenuNode saveNode = new MenuNode();
-		MenuNode optionsNode = new OptionsNode();
-		MenuNode exitNode = new ExitNode();
+		// Creates Menu Nodes via Reflection
+		setNodeNames();
 
-		mySelections.setNode(pokedexNode, 0, 0);
-		mySelections.setNode(pokemonNode, 0, 1);
-		mySelections.setNode(bagNode, 0, 2);
-		mySelections.setNode(nameNode, 0, 3);
-		mySelections.setNode(saveNode, 0, 4);
-		mySelections.setNode(optionsNode, 0, 5);
-		mySelections.setNode(exitNode, 0, 6);
-
+		for (int i = 0; i < nodeNames.length; i++) {
+			mySelections.setNode(
+					(MenuNode) Reflection.createInstance("engine.menu."+ nodeNames[i]), 0, i);
+		}
 	}
 
 	@Override
 	public void getNextText() {
-		
+
 	}
 
 	private void drawSelector(Graphics2D g2d, int xSize, int ySize, int width,
