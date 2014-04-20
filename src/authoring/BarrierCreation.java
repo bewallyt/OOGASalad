@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 public class BarrierCreation extends CommonAttributes implements ItemListener{
 	JPanel namePanel;
@@ -24,7 +27,7 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 	JTextField xField;
 	JTextField yField;
 	JTextField imageField;
-	//JComboBox itemLister;
+	TilePanel imagePanel;
 	
 	public BarrierCreation() {
 		
@@ -43,20 +46,22 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 	    JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
         JLabel imageLabel=new JLabel("Image");
-      //  JCheckBox steppableItem=new JCheckBox("Steppable with an item?");
-       // steppableItem.setSelected(false);
-       // steppableItem.addItemListener(this);
         xField = new JTextField("",15);
         yField = new JTextField("",15);
-        imageField = new JTextField("",15);
 
         namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
         namePanel.add(xLabel);
         namePanel.add(xField);
         namePanel.add(yLabel);
         namePanel.add(yField);
-        namePanel.add(imageLabel);
-        namePanel.add(imageField);
+        
+        
+        Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+        imagePanel = new TilePanel(1,1);
+		imagePanel.setBorder(defaultBorder);
+		namePanel.add(imagePanel);
+		GridObjectImageEditor editor=new GridObjectImageEditor(imagePanel);
+        
         
         JButton createBarrier=new JButton("Create barrier");
         createBarrier.addActionListener(new createBarrierListener());
@@ -68,25 +73,8 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 		return Integer.parseInt(s);
 	}
 	
-	public void itemStateChanged(ItemEvent e){
-		if(e.getStateChange()==ItemEvent.DESELECTED){
-			Map<String, Item> itemMap=FeatureManager.getWorldData().getMyItems();
-			List<String> itemList=new ArrayList<String>();
-			for(String s: itemMap.keySet()){
-				itemList.add(s);
-			}
-			String[] array=itemList.toArray(new String[itemList.size()]);
-			//itemLister=new JComboBox(array);
-			//namePanel.add
-		}
-		else{
-			
-		}
-	}
-	
-	
 	private boolean validateText(){
-		if(!xField.getText().equals("") && !yField.getText().equals("")){
+		if(!xField.getText().equals("") && !yField.getText().equals("") && imagePanel.getComponents().length>0){
 			return true;
 		}
 		return false;

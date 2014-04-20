@@ -23,6 +23,7 @@ public class GridObjectImageEditor extends ImageEditor {
 		super();
 		myPanel=panel;
 		myWindow = new JFrame("GridObject Image Editor");
+		myWindow.setLocationRelativeTo(null);
 		myWindow.setLayout(new BorderLayout());
 		myWindow.setBounds(0, 300, 360, 360);
 		list.addListSelectionListener(new IconListener());

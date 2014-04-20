@@ -69,6 +69,7 @@ public class AddGameComponents extends Feature implements ActionListener {
 
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
         JFrame frame=new JFrame();
+        frame.setLocationRelativeTo(null);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.PAGE_AXIS));
         for(int i = 0; i<buttonNames.length; i++){
