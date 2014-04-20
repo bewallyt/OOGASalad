@@ -1,11 +1,14 @@
 package authoring;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GridObjectData {
 
 	private String myImageName;
 	private String myID;
+	private String[] myImageList;
 	private Boolean isSteppable;
 	private Boolean isTalkable;
 	private int x;
@@ -15,10 +18,19 @@ public class GridObjectData {
 	private int speed;
 	private int movementType;
 	private NPCResponseNode myRoot;
+	private List<Object> myArguments = new ArrayList<Object>();
 
 	public GridObjectData() {
 		x = -1;
 		y = -1;
+		
+		myArguments.add(myImageName);
+		myArguments.add(myImageList);
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(speed);
+		myArguments.add(movementType);
+		
 	}
 
 	public void init(){
@@ -114,5 +126,9 @@ public class GridObjectData {
 	
 	public int getMovementType(){
 		return movementType;
+	}
+	
+	public List<Object> getArguments(){
+		return myArguments;
 	}
 }
