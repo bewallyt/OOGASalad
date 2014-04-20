@@ -8,7 +8,7 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import authoring.GridObjectData;
+//import authoring.GridObjectData;
 import authoring.MapData;
 import authoring.TileData;
 
@@ -34,12 +34,13 @@ public class MapDataParser {
 	}
 
 	private void parseMap(Player p) {
-		List<GridObjectData> currData = new ArrayList<GridObjectData>();
+//		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
 			for (int j = 0; j < myMap.getMapWidth(); j++) {
 				TileData currTile = myMap.getTileData(i, j);
-				currData = currTile.getGridObjectDatas();
+//				currData = currTile.getGridObjectDatas();
 
+/*
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 					if (data.getID().equals("Barrier")) {
@@ -59,11 +60,13 @@ public class MapDataParser {
 						myGridObjectList.add(gridobject);
 					}
 				}
+*/
 				myTileImageList.add(currTile.getImageName());
 			}
 		}
 	}
 
+/*
 	private void parseMap2(Player p) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
@@ -85,4 +88,5 @@ public class MapDataParser {
 			}
 		}
 	}
+*/
 }

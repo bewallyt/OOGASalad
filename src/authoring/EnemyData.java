@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by Prit on 4/19/14.
  */
-public class EnemyData extends GridObject {
+public class EnemyData extends GridObjectData {
 
     private Map<String,Integer> myValues;
     private String[] myWeapons;

@@ -2,6 +2,7 @@ package GameView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.Main;
@@ -61,12 +62,13 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-		createPlayer();
+//		createPlayer();
 
 		for (MapData map : myWorldData.getMaps().values()) {
 
 			MapDataParser parser = new MapDataParser(map, myPlayer);
-			List<GridObject> gridObjectList = parser.getGridObjectList();
+//			List<GridObject> gridObjectList = parser.getGridObjectList();
+			List<GridObject> gridObjectList = new ArrayList<GridObject>();
 			gridObjectList.add(myPlayer);
 			List<String> TileImageList = parser.getTileImageList();
 
@@ -77,7 +79,7 @@ public class GameFrame extends RPGEngine {
 			setWorld(currWorld);
 
 			setTileImages(currWorld, TileImageList);
-			setGridObjects(currWorld, gridObjectList);
+//			setGridObjects(currWorld, gridObjectList);
 		}
 	}
 
