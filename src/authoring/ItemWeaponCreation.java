@@ -1,8 +1,6 @@
 package authoring;
 
 
-import engine.battle.Attack;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -44,10 +42,9 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     }
 
     protected void creationPanel() {
-
         JTabbedPane pane = new JTabbedPane();
         weaponAttacks = new ArrayList<Attacks>();
-        Attacks basicAttack = new Attacks("basic",2,2);
+        Attacks basicAttack = new Attacks("Basic",2,2);
         weaponAttacks.add(basicAttack);
 
         String attackTab = "Weapon Attacks";
@@ -60,7 +57,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
 
         JPanel attributePanel = attributeFields();
 
-        JPanel attackPanel = new JPanel(new FlowLayout());
+        JPanel attackPanel = new JPanel();
+        attackPanel.setLayout(new BoxLayout(attackPanel,BoxLayout.PAGE_AXIS));
         addattack = new JButton("+ Attack");
         addattack.setActionCommand("add");
         addattack.addActionListener(this);
@@ -72,6 +70,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         attackList.addMouseListener(this);
         attackList.setVisibleRowCount(4);
         attackList.setEnabled(false);
+        attackListModel.addElement(basicAttack.getMyName());
         JScrollPane aScroll = new JScrollPane(attackList);
         attackPanel.add(addattack);
         attackPanel.add(aScroll);
@@ -141,11 +140,14 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private void makeWeapon() {
         Weapon madeWeapon = new Weapon(name,image,speed,damage,weaponAttacks);
         FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
+        FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
+
     }
 
     private void makeAndSaveItem() {
         Item madeItem = new Item(name,image,attributeValues);
         FeatureManager.getWorldData().saveItem(name,madeItem);
+        FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
     }
 
 
