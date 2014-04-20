@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -21,13 +22,13 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
-public class BarrierCreation extends CommonAttributes implements ItemListener{
-	JPanel namePanel;
-	JFrame frame;
-	JTextField xField;
-	JTextField yField;
-	JTextField imageField;
-	TilePanel imagePanel;
+public class BarrierCreation extends CommonAttributes{
+	private JPanel namePanel;
+	private JFrame frame;
+	private JTextField xField;
+	private JTextField yField;
+	private TilePanel imagePanel;
+	private GridObjectImageEditor editor;
 	
 	public BarrierCreation() {
 		
@@ -60,7 +61,7 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
         imagePanel = new TilePanel(1,1);
 		imagePanel.setBorder(defaultBorder);
 		namePanel.add(imagePanel);
-		GridObjectImageEditor editor=new GridObjectImageEditor(imagePanel);
+		editor=new GridObjectImageEditor(imagePanel);
         
         
         JButton createBarrier=new JButton("Create barrier");
@@ -88,7 +89,7 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 			}			
 		}
 		private BarrierObject getBarrier(){
-			return new BarrierObject(getIntValue(xField.getText()), getIntValue(yField.getText()), imageField.getText());
+			return new BarrierObject(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription());
 		}
 	}
 }

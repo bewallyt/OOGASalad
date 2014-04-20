@@ -19,6 +19,7 @@ public class GridObjectImageEditor extends ImageEditor {
 
 	public static final String IMAGE_TYPE="GridObject";
 	private TilePanel myPanel;
+	private ImageIcon currentIcon;
 	public GridObjectImageEditor(TilePanel panel){
 		super();
 		myPanel=panel;
@@ -35,10 +36,14 @@ public class GridObjectImageEditor extends ImageEditor {
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
 			ImageIcon image = (ImageIcon) model.get(list.getSelectedIndex());
+			currentIcon=image;
 			myPanel.addGridObjectImage(image);
 			myPanel.revalidate();
 		}
 		
+	}
+	public ImageIcon getSelectedImage(){
+		return currentIcon;
 	}
 	@Override
 	public void addExistingImages() {

@@ -23,16 +23,17 @@ import javax.swing.border.MatteBorder;
 
 public class DoorCreation {
 
-	JPanel namePanel;
-	JFrame frame;
-	JTextField xField;
-	JTextField yField;
-	JTextField toXField;
-	JTextField toYField;
-	JTextField imageField;
-	List<JTextField> textFieldList=new ArrayList<JTextField>();
-	JComboBox worldList;
-	TilePanel imagePanel;
+	private JPanel namePanel;
+	private JFrame frame;
+	private JTextField xField;
+	private JTextField yField;
+	private JTextField toXField;
+	private JTextField toYField;
+	private JTextField imageField;
+	private List<JTextField> textFieldList=new ArrayList<JTextField>();
+	private JComboBox worldList;
+	private TilePanel imagePanel;
+	private GridObjectImageEditor editor;
 	
 	public DoorCreation() {
 	}
@@ -57,7 +58,6 @@ public class DoorCreation {
         yField = new JTextField("",15);
         toXField=new JTextField("", 15);
         toYField=new JTextField("", 15);
-        imageField = new JTextField("defaultIW",15);
         
         worldList=new JComboBox(getWorldArray());
 
@@ -77,7 +77,7 @@ public class DoorCreation {
         imagePanel = new TilePanel(1,1);
 		imagePanel.setBorder(defaultBorder);
 		namePanel.add(imagePanel);
-		GridObjectImageEditor editor=new GridObjectImageEditor(imagePanel);
+		editor=new GridObjectImageEditor(imagePanel);
         
         
        
@@ -126,7 +126,7 @@ public class DoorCreation {
 			}			
 		}
 		private DoorObject getDoor(){
-			return new DoorObject(getIntValue(xField.getText()), getIntValue(yField.getText()), imageField.getText(), 
+			return new DoorObject(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription(), 
 					getIntValue(toXField.getText()), getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
 		}
 	}
