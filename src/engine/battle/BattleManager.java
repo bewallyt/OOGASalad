@@ -40,7 +40,7 @@ public class BattleManager implements InteractionBox{
 	private final static int WEAPONSELECTED=4;
 	private final static int RAN=5;
 	private final static int ENEMYDEAD=6;
-	public final static int BATTLEDONE=7;
+	private final static int BATTLEDONE=7;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -50,6 +50,7 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated the Enemy!";
+	public static final int EXIT = 8;
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private int damageDealt;
@@ -65,7 +66,7 @@ public class BattleManager implements InteractionBox{
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
 		setWeaponChildrenNodes(myWeaponSelector);
-//		setBagChildrenNodes(myBagSelector);
+		//		setBagChildrenNodes(myBagSelector);
 		setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
@@ -202,19 +203,23 @@ public class BattleManager implements InteractionBox{
 			setCurrentTextToBeDisplayed();
 			myCurrentState=BATTLEDONE;
 		}
+		else if(myCurrentState==BATTLEDONE){
+			myCurrentState=EXIT;
+		}
 		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
-			
+
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED){
 			Person tempAttacker=myCurrentAttacker;
 			myCurrentAttacker=myCurrentVictim;
 			myCurrentVictim=tempAttacker;
+			setCurrentTextToBeDisplayed();
 			attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
 			myCurrentState=SECONDATTACKHAPPENED;
-			setCurrentTextToBeDisplayed();
+
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
 			BattleExecutable executable = myCurrentBattleExecutorNode.getExecutor();
@@ -234,9 +239,10 @@ public class BattleManager implements InteractionBox{
 				myCurrentVictim = attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[1];
 				myCurrentState=FIRSTATTACKHAPPENED;
-				attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
-				
 				setCurrentTextToBeDisplayed();
+				attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
+
+				
 			}
 			else if(executable instanceof Item)
 				((Item) executable).useItem();
@@ -245,8 +251,6 @@ public class BattleManager implements InteractionBox{
 				myCurrentState=RAN;
 				setCurrentTextToBeDisplayed();
 			}
-	//		myCurrentState=ATTACKHAPPENED;
-
 		}
 		else if(myCurrentState==TOPLEVEL){
 			int count=0;
@@ -264,8 +268,8 @@ public class BattleManager implements InteractionBox{
 			myCurrentBattleExecutorNode = (BattleExecutorNode) myOptions.getCurrentNode();
 			myCurrentState=BOTTOMLEVEL;
 		}
-		
-		
+
+
 
 
 	}
