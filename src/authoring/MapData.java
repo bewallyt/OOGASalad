@@ -14,6 +14,12 @@ public class MapData {
 	private List<RandomEnemy> myRandomEnemies;
 	
 	public MapData(int height, int width){
+        myWeapons = new HashMap<String, Weapon>();
+        myItems = new HashMap<String, Item>();
+        myBarriers = new ArrayList<BarrierObject>();
+        myDoors = new ArrayList<DoorObject>();
+        myRandomEnemies = new ArrayList<RandomEnemy>();
+
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){
 			List<TileData> temp = new ArrayList<TileData>();

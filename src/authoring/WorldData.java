@@ -14,9 +14,8 @@ public class WorldData {
 	private String currentMap;
 	
 	public WorldData(){
-
+        currentMap = null;
 		myLevels = new HashMap<String, MapData>();
-		// myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
 	}
 
