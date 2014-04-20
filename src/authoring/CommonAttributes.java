@@ -5,19 +5,21 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Prit on 4/19/14.
- */
 public class CommonAttributes {
-    protected Map<String,JTextField> nameImageValues;
+    protected String name;
+    protected String image;
+    protected Map<String,Integer> attributeValues;
     protected Map<String,JTextField> textValues;
     protected String[] attributes = {"Speed","Damage","Defense","Health","Level"};
     protected JTextField itemName;
     protected JTextField imageName;
+    protected String nameTab = "Name/Image";
+    protected String attributeTab = "Attributes";
 
     public CommonAttributes(){}
 
-    public JPanel attributeFields(){
+    protected JPanel attributeFields(){
+        attributeValues = new HashMap<String, Integer>();
         textValues = new HashMap<String, JTextField>();
         JPanel attributePanel = new JPanel(new SpringLayout());
         for(int i=0; i<attributes.length; i++){
@@ -37,7 +39,7 @@ public class CommonAttributes {
         return attributePanel;
     }
 
-    public JPanel nameImageFields(){
+    protected JPanel nameImageFields(){
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);

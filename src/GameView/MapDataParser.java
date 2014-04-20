@@ -21,7 +21,7 @@ public class MapDataParser {
 	public MapDataParser(MapData map, Player p) {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
-		myTileImageList = new ArrayList<String>();		
+		myTileImageList = new ArrayList<String>();
 		parseMap(p);
 	}
 
@@ -54,6 +54,28 @@ public class MapDataParser {
 								data.getSpeed(), data.getWidth(),
 								data.getHeight(), data.getMovementType(), p);
 					}
+					if (gridobject != null) {
+						gridobject.setPosition(i, j);
+						myGridObjectList.add(gridobject);
+					}
+				}
+				myTileImageList.add(currTile.getImageName());
+			}
+		}
+	}
+
+	private void parseMap2(Player p) {
+		List<GridObjectData> currData = new ArrayList<GridObjectData>();
+		for (int i = 0; i < myMap.getMapLength(); i++) {
+			for (int j = 0; j < myMap.getMapWidth(); j++) {
+				TileData currTile = myMap.getTileData(i, j);
+				currData = currTile.getGridObjectDatas();
+
+				for (GridObjectData data : currData) {
+					GridObject gridobject = null;
+
+					gridobject = (GridObject) Reflection.createInstance(data.getID(), data.getArguments());
+					
 					if (gridobject != null) {
 						gridobject.setPosition(i, j);
 						myGridObjectList.add(gridobject);

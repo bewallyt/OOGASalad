@@ -38,22 +38,22 @@ public abstract class InteractionMatrix {
 	}
 	
 	/**
-	 * Allows user to toggle up in the select box, selecting the option above the current option
+	 * Allows user to toggle up in the select box.
 	 */
 	public abstract void moveUp();
-	
+
 	/**
-	 * Allows user to toggle down in the select box, selecting the option below the current option
+	 * Allows user to toggle down in the select box.
 	 */
 	public abstract void moveDown();
 	
 	/**
-	 * Allows user to toggle left in the select box, selecting the option to the left of the current option
+	 * Allows user to toggle left in the select box.
 	 */
 	public abstract void moveLeft();
 	
 	/**
-	 * Allows user to toggle right in the select box, selecting the option to the right of the current option
+	 * Allows user to toggle right in the select box.
 	 */
 	public abstract void moveRight();
 	

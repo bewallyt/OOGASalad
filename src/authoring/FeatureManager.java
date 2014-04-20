@@ -9,6 +9,7 @@ import Data.FileStorer;
 public class FeatureManager {
 	public static List<Feature> myFeatures = new ArrayList<Feature>();
 	public static WorldData myWorld = new WorldData();
+    public static WeaponItemViewer weaponItemViewer = new WeaponItemViewer();
 	public static TileImageEditor tileEditor = new TileImageEditor();
 	public static FileStorer myDataManager = new FileStorer();
 	public static GridObjectImageEditor gridObjectImageEditor=new GridObjectImageEditor();
@@ -29,4 +30,5 @@ public class FeatureManager {
 	public static FileStorer getDataManager(){
 		return myDataManager;
 	}
+    public static WeaponItemViewer getWeaponItemViewer(){return weaponItemViewer;}
 }

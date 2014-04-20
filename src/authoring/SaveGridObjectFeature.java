@@ -33,7 +33,7 @@ public class SaveGridObjectFeature extends Feature{
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
 				((GridViewerFeature)FeatureManager.getFeature("authoring.GridViewerFeature")).tileRepaint();
-				//mySuperFeature.getView().close();
+				mySuperFeature.getView().close();
 			}
 		}
 	}

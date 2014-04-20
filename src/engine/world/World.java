@@ -5,6 +5,9 @@ import java.util.List;
 
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
+import engine.dialogue.InteractionBox;
+import engine.dialogue.TextDisplayer;
+import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 
@@ -15,6 +18,7 @@ public abstract class World {
 	private int myPlayWidth;
 	private int myPlayHeight;
 	private int[] mySavedPlayerPosition;
+	private TextDisplayer myTextDisplayer;
 
 
 
@@ -30,6 +34,7 @@ public abstract class World {
 		myPlayer = p;
 		myPlayWidth=playWidth;
 		myPlayHeight=playHeight;
+		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
 	}
 
 	public int getPlayWidth() {
@@ -57,6 +62,17 @@ public abstract class World {
 		else{
 			return Math.abs(getPlayer().getFacing()-2);
 		}
+	}
+	/**
+	 * This method will place an InteractionBox into the TextDisplayer (container for the goods).
+	 * This TextDisplayer will then be painted in every cycle.
+	 * @param b InteractionBox to put into the TextDisplayer
+	 */
+	public void setTextDisplayer(InteractionBox b) {
+		myTextDisplayer.setInteractionBox(b);
+	}
+	public TextDisplayer getTextDisplayer() {
+		return myTextDisplayer;
 	}
 
 }

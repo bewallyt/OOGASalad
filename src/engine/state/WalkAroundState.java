@@ -39,11 +39,10 @@ public class WalkAroundState extends AbstractState {
 					.checkSurroundings(myPlayer).get(0);
 			if (surrounding != null) {
 				surrounding.doAction();
-			}
-
-			if (surrounding.getPickupable() != null) {
-				(surrounding.getPickupable()).pickUp(myPlayer);
-				surrounding.setPickupable(null);
+				if(surrounding.getPickupable()!=null){
+					(surrounding.getPickupable()).pickUp(myPlayer);
+					surrounding.setPickupable(null);
+				}
 			}
 		}
 	}

@@ -19,5 +19,9 @@ public class MenuNode implements MatrixNode {
 	public void changeState() {
 
 	}
+	
+	public String getString(){
+		return null;
+	}
 
 }

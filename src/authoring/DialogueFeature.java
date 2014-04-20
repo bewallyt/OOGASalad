@@ -24,6 +24,7 @@ public class DialogueFeature extends Feature{
 	private JList myResponsesWrapper;
 	private List<String> myResponses;
 	private NPCResponseNode myRoot;
+	private List<NPCResponseNode> myPrev;
 	private NPCResponseNode myCurrent;
 	private int myModIndex;
 	private JButton newQueryOption;
@@ -32,6 +33,7 @@ public class DialogueFeature extends Feature{
 	private GridObjectCreation mySuperFeature;
 	public DialogueFeature(GridObjectCreation gridObjectCreation) {
 		mySuperFeature = gridObjectCreation;
+		myPrev = new ArrayList<NPCResponseNode>();
 		myRoot = new NPCResponseNode("Initial NPC Response");
 		myCurrent = myRoot;
 		myResponsesWrapper = new JList();
@@ -72,7 +74,8 @@ public class DialogueFeature extends Feature{
 	private class GoBackListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(myCurrent!=myRoot){
-			myCurrent=myCurrent.getParent().getParent();
+			myCurrent=myPrev.get(myPrev.size()-1);
+			myPrev.remove(myPrev.size()-1);
 			setResponses();
 			}
 		}
@@ -88,6 +91,7 @@ public class DialogueFeature extends Feature{
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
 				}
 				else{
+					myPrev.add(myCurrent);
 					myCurrent = myCurrent.getChildren().get(myResponsesWrapper.getSelectedIndex()-1).getChild();
 					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
 					setResponses();
@@ -128,9 +132,8 @@ public class DialogueFeature extends Feature{
 				myCurrent.setString(text.getText());
 				}
 				else{
-					UserQueryNode uqn = new UserQueryNode(text.getText(), myCurrent);
+					UserQueryNode uqn = new UserQueryNode(text.getText());
 					uqn.setChild(new NPCResponseNode(secondText.getText()));
-					uqn.getChild().setParent(uqn);
 					myCurrent.addChild(uqn);
 				}
 				setResponses();
