@@ -38,4 +38,7 @@ public class InteractionMatrix2x2 extends InteractionMatrix {
 			selectedNodeX++;
 		}
 	}
+	public void resetMatrixPosition(){
+		selectedNodeX=0; selectedNodeY=0;
+	}
 }
