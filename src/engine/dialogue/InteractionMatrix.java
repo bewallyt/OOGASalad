@@ -1,7 +1,5 @@
 package engine.dialogue;
 
-
-
 /**
  * This is a class that takes MatrixNodes and organizes them in such a way that
  * a user can "select" different options. The idea is that this can be used for any sort of
@@ -9,24 +7,17 @@ package engine.dialogue;
  * 
  */
 
-public class InteractionMatrix {
-
-
+public abstract class InteractionMatrix {
 	
-	private int selectedNodeX;
-	private int selectedNodeY;
+	protected int selectedNodeX;
+	protected int selectedNodeY;
+	protected int myXDimension;
+	protected int myYDimension;
 	
-	private MatrixNode[][] myNodes;
-	private static final int DIMENSION = 2;
+	protected MatrixNode[][] myNodes;
 	
-	public InteractionMatrix() {
-		selectedNodeX = 0;
-		selectedNodeY = 0;
-		myNodes = new MatrixNode[DIMENSION][DIMENSION];
-	}
-	
-	public void setNode(MatrixNode m, int x, int y) {
-		myNodes[x][y] = m;
+	public void setNode(MatrixNode mNode, int x, int y) {
+		myNodes[x][y] = mNode;
 	}
 	
 	/**
@@ -37,35 +28,38 @@ public class InteractionMatrix {
 		return myNodes[selectedNodeX][selectedNodeY];
 	}
 	
-	/**
-	 * Allows user to toggle up in the select box, selecting the option above the current option
-	 */
-	public void moveUp() {
-		if (selectedNodeY != 0) {
-			selectedNodeY--;
-		}
-		
+	public MatrixNode getNode(int i, int j) {
+		return myNodes[i][j];
+	}
+	
+	public int[] getSelectedNodeLocation() {
+		int[] ret = {selectedNodeX, selectedNodeY};
+		return ret;
 	}
 	
 	/**
-	 * Allows user to toggle down in the select box, selecting the option below the current option
+	 * Allows user to toggle up in the select box.
 	 */
-	public void moveDown() {
-		if (selectedNodeY != 1) {
-			selectedNodeY++;
-		}
-	}
+	public abstract void moveUp();
+
+	/**
+	 * Allows user to toggle down in the select box.
+	 */
+	public abstract void moveDown();
 	
-	public void moveLeft() {
-		if (selectedNodeX != 0) {
-			selectedNodeX--;
-		}
-	}
+	/**
+	 * Allows user to toggle left in the select box.
+	 */
+	public abstract void moveLeft();
 	
-	public void moveRight() {
-		if (selectedNodeX != 1) {
-			selectedNodeX++;
-		}
+	/**
+	 * Allows user to toggle right in the select box.
+	 */
+	public abstract void moveRight();
+	
+	public int[] getDimension() {
+		int[] dimensions = {myXDimension,myYDimension};
+		return dimensions;
 	}
 	
 	

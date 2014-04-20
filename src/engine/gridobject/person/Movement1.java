@@ -4,12 +4,13 @@ public class Movement1 extends Movement{
 
 	public Movement1(NPC npc, Player player) {
 		super(npc, player);
+		
+		
 	}
 
 	@Override
 	public void move() {
 		moveBackAndForth();
-		
 	}
 	
 	public void moveBackAndForth(){

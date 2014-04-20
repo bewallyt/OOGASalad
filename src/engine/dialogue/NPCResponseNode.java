@@ -2,8 +2,8 @@ package engine.dialogue;
 
 import java.util.*;
 
-import engine.gridobject.item.Item;
 import engine.gridobject.person.NPC;
+import engine.item.Item;
 
 public class NPCResponseNode {
 
@@ -15,10 +15,16 @@ public class NPCResponseNode {
 	public NPCResponseNode(NPC n, String dialogue) {
 		myNPC = n;
 		myDialogue = dialogue;
-		myChildren = new ArrayList<UserQueryNode>();
+		myChildren = new ArrayList<UserQueryNode>();		
 	}
 	
+
 	
+	/**
+	 * Method to add a response to a given node. Put <code>null</code> if you want the 
+	 * field to be blank when displayed and unselectable.
+	 * @param uqNode
+	 */
 	public void addResponseNode(UserQueryNode uqNode) {
 		myChildren.add(uqNode);
 	}
