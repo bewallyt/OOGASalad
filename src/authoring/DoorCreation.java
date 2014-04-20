@@ -45,6 +45,7 @@ public class DoorCreation {
         JLabel yLabel = new JLabel("Y");
         JLabel toXLabel=new JLabel("New world X");
         JLabel toYLabel=new JLabel("New world Y");
+        JLabel newWorld=new JLabel("Which world will this map to?");
         xField = new JTextField("",15);
         yField = new JTextField("",15);
         toXField=new JTextField("", 15);
@@ -58,11 +59,13 @@ public class DoorCreation {
         namePanel.add(xField);
         namePanel.add(yLabel);
         namePanel.add(yField);
+        namePanel.add(newWorld);
+        namePanel.add(worldList);
         namePanel.add(toXLabel);
         namePanel.add(toXField);
         namePanel.add(toYLabel);
         namePanel.add(toYField);
-        namePanel.add(worldList);
+        
         
        
         

@@ -12,6 +12,7 @@ public class DoorObject extends GridObject {
 		this.toX=toX;
 		this.toY=toY;
 		this.toMap=toMap;
+		init();
 	}
 	public int getToX(){
 		return toX;

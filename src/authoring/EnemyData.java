@@ -16,6 +16,7 @@ public class EnemyData extends GridObject {
         myName = name;
         myValues = startVals;
         myWeapons = weps;
+        init();
     }
 
     public String getMyName(){return myName;}
