@@ -6,7 +6,8 @@ import GameView.GameSelect;
 public class OptionsNode extends MenuNode {
 	public void doAction() {
 		GameFrame game = new GameFrame();
-		GameSelect select = new GameSelect(game);
+		GameSelect select = new GameSelect();
+		game.initialize(select.getSelectedGame());
 		try {
 			game.doGameLoop();
 		} catch (InterruptedException e) {
