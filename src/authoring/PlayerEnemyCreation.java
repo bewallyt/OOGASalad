@@ -52,8 +52,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
         }
     }
 
-    public void creationPanel(){
-        JTabbedPane pane = new JTabbedPane();
+    public void creationPanel(){	
+    	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
         String locationTab = "Location";
 

@@ -31,6 +31,7 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 	}
 	public void creationPanel(){
 		frame = new JFrame("Add Barrier:");
+		frame.setAlwaysOnTop(true);
 		frame.setLocationRelativeTo(null);
 
 		assembleGUI();

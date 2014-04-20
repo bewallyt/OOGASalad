@@ -78,14 +78,14 @@ public class TilePanel extends JLayeredPane{
 	}
 	
 	public void update(){
-		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
-		for(GridObjectData g : myGridObjects){
+		List<GridObject> myGridObjects = myData.getGridObjectDatas();
+		for(GridObject g : myGridObjects){
 			if(g.getImageName() != null){
 				ImageIcon i;
 				ImageManager image=new ImageManager();
 				ImageFile file=image.loadGridObjectImage(g.getImageName());
 				i=new ImageIcon(file.getImage(), g.getImageName());
-				this.addGridObjectImage(i);	
+				addGridObjectImage(i);	
 			}
 		}
 		

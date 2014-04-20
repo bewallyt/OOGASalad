@@ -12,7 +12,6 @@ public class FeatureManager {
     public static WeaponItemViewer weaponItemViewer = new WeaponItemViewer();
 	public static TileImageEditor tileEditor = new TileImageEditor();
 	public static FileStorer myDataManager = new FileStorer();
-	public static GridObjectImageEditor gridObjectImageEditor=new GridObjectImageEditor();
 	public static void addFeature(Feature f){
 		myFeatures.add(f);
 	}

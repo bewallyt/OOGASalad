@@ -17,27 +17,25 @@ import Data.ImageManager;
 
 public class GridObjectImageEditor extends ImageEditor {
 
-	private GridObjectCreation mySuperFeature;
 	public static final String IMAGE_TYPE="GridObject";
-	
-	public GridObjectImageEditor(){
+	private TilePanel myPanel;
+	public GridObjectImageEditor(TilePanel panel){
 		super();
+		myPanel=panel;
 		myWindow = new JFrame("GridObject Image Editor");
 		myWindow.setLayout(new BorderLayout());
 		myWindow.setBounds(0, 300, 360, 360);
 		list.addListSelectionListener(new IconListener());
 		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
-	}
-	public void setSuperFeature(GridObjectCreation grid){
-		mySuperFeature=grid;
+		myWindow.setVisible(true);
 	}
 	public class IconListener implements ListSelectionListener {
 
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
-			GridObjectImageFeature imageControl = (GridObjectImageFeature) (mySuperFeature.getFeature("GridObjectImageFeature"));
 			ImageIcon image = (ImageIcon) model.get(list.getSelectedIndex());
-			imageControl.setImage(image);
+			myPanel.addGridObjectImage(image);
+			myPanel.revalidate();
 		}
 		
 	}

@@ -1,5 +1,6 @@
 package authoring;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,12 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 
 public class DoorCreation {
@@ -28,11 +32,13 @@ public class DoorCreation {
 	JTextField imageField;
 	List<JTextField> textFieldList=new ArrayList<JTextField>();
 	JComboBox worldList;
+	TilePanel imagePanel;
 	
 	public DoorCreation() {
 	}
 	public void creationPanel(){
 		frame = new JFrame("Add Door:");
+		frame.setAlwaysOnTop(true);
 		frame.setLocationRelativeTo(null);
 
 		assembleGUI();
@@ -40,6 +46,7 @@ public class DoorCreation {
 		frame.setVisible(true);
 	}
 	public void assembleGUI(){
+		
 		namePanel=new JPanel();
 	    JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
@@ -66,9 +73,15 @@ public class DoorCreation {
         namePanel.add(toYLabel);
         namePanel.add(toYField);
         
+        Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+        imagePanel = new TilePanel(1,1);
+		imagePanel.setBorder(defaultBorder);
+		namePanel.add(imagePanel);
+		GridObjectImageEditor editor=new GridObjectImageEditor(imagePanel);
+        
         
        
-        
+
         JButton createBarrier=new JButton("Create Door");
         createBarrier.addActionListener(new createDoorListener());
         namePanel.add(createBarrier);

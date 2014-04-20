@@ -68,6 +68,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         FeatureManager.getWorldData().saveItem("Super Potion",potion);
 
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
+        JFrame frame=new JFrame();
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.PAGE_AXIS));
         for(int i = 0; i<buttonNames.length; i++){
@@ -77,7 +78,10 @@ public class AddGameComponents extends Feature implements ActionListener {
             b.addActionListener(this);
             buttonPanel.add(b);
         }
-        JOptionPane.showMessageDialog(null,buttonPanel,"Choose One",JOptionPane.PLAIN_MESSAGE);
+        frame.add(buttonPanel);
+        frame.pack();
+        frame.setVisible(true);
+        //JOptionPane.showMessageDialog(null,buttonPanel,"Choose One",JOptionPane.PLAIN_MESSAGE);
 
     }
 }

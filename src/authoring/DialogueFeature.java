@@ -30,9 +30,7 @@ public class DialogueFeature extends Feature{
 	private JButton newQueryOption;
 	private JButton myGoBack;
 	private JFrame frame;
-	private GridObjectCreation mySuperFeature;
-	public DialogueFeature(GridObjectCreation gridObjectCreation) {
-		mySuperFeature = gridObjectCreation;
+	public DialogueFeature() {
 		myPrev = new ArrayList<NPCResponseNode>();
 		myRoot = new NPCResponseNode("Initial NPC Response");
 		myCurrent = myRoot;
