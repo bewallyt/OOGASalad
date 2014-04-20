@@ -11,7 +11,6 @@ public class Main {
 		myFeatures.add(new MapCreatorFeature());
 		myFeatures.add(new ObjectiveFeature());
         myFeatures.add(new AddGameComponents());
-        myFeatures.add(new WeaponViewer());
 		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
