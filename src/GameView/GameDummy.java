@@ -82,7 +82,7 @@ public class GameDummy extends RPGEngine {
 						gridobject = new Barrier(currData.getImageName(), currData.getWidth(), currData.getHeight());
 					} else if (currData.getID().equals("Door")) {
 						gridobject = new Door(currData.getImageName(), currData.getWidth(), currData.getHeight());
-					} else if (currData.getID().)
+					}
 					
 				}
 			}

@@ -12,10 +12,10 @@ import engine.world.World;
 
 public class DialogueDisplayControl {
 	
-	private WalkAroundWorld myWorld;
+	private World myWorld;
 	
 	public DialogueDisplayControl(World w) {
-		myWorld = (WalkAroundWorld) w;
+		myWorld = w;
 	}
 	
 	public void setInteractionBox(InteractionBox b) {

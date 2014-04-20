@@ -2,9 +2,9 @@ package authoring;
 
 public class GridObject {
 
-	private String myImage;
-	private int x;
-	private int y;
+	protected String myImage;
+	protected int x;
+	protected int y;
 	
 	public GridObject(int x, int y, String image){
 		this.x=x;
@@ -12,7 +12,7 @@ public class GridObject {
 		myImage=image;
 	}
 	public void init(){
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 
 	public String getImage(){

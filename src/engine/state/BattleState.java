@@ -2,24 +2,51 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-public class BattleState extends AbstractState {
+import engine.Control;
+import engine.battle.BattleManager;
 
+public class BattleState extends AbstractState {
+	BattleManager myBattleManager;
+	private boolean a=false;
+
+	public BattleState(BattleManager bm){
+		myBattleManager=bm;
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
 
 	}
 
+
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getKeyCode() == Control.UP){
+			myBattleManager.moveUp();
+		}
+		if (e.getKeyCode() == Control.DOWN){
+			myBattleManager.moveDown();
+		}
+		if (e.getKeyCode() == Control.RIGHT){
+			myBattleManager.moveRight();
 
+		}
+		if (e.getKeyCode() == Control.LEFT){
+			myBattleManager.moveLeft();
+		}		
+		if (e.getKeyCode() == Control.A) {
+			if(a==false){
+				a=true;
+				myBattleManager.getNextText();
+			}
+		}	
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		a=false;
+		if (e.getKeyCode() == Control.A)
+			myBattleManager.getPlayer().setAClick(false);
 	}
+
 
 }
