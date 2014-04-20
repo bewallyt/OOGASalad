@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.battle.Attack;
 import engine.battle.Weapon;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
@@ -31,6 +32,9 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+
+	private Attack myCurrentAttack;
+
 	private DialogueDisplayControl myDialogueDisplayControl;
 
 
@@ -256,6 +260,12 @@ public abstract class Person extends GridObject {
 	}
 	public void changeMoney (int amountToChange){
 		myMoney+=amountToChange;
+	}
+	public void setCurrentAttack(Attack attack){
+		myCurrentAttack=attack;
+	}
+	public Attack getCurrentAttack(){
+		return myCurrentAttack;
 	}
 	
 }

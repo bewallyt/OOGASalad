@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
-
+/*
 public class GridObjectImageFeature extends Feature {
 
 	private TilePanel myTilePanel;
@@ -39,3 +39,4 @@ public class GridObjectImageFeature extends Feature {
 		return myImage;
 	}
 }
+*/

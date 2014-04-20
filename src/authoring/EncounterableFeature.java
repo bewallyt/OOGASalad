@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
+/*
 public class EncounterableFeature extends Feature{
 	private JCheckBox encounterableCheck;
 	
@@ -23,3 +23,4 @@ public class EncounterableFeature extends Feature{
 		myComponents.put(encounterRateWrapper,BorderLayout.SOUTH);
 	}
 }
+*/

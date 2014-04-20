@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JList;
-
+/*
 public class TalkableFeature extends Feature {
 	private JCheckBox talkableCheck;
 	private JList myHistory;
@@ -21,3 +21,4 @@ public class TalkableFeature extends Feature {
 		return talkableCheck.isSelected();
 	}
 }
+*/

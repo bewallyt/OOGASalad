@@ -6,7 +6,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -127,5 +126,6 @@ public class Music {
 		mySourceDataLine.drain();
 		mySourceDataLine.close();
 	}
+
 
 }

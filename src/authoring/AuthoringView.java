@@ -11,9 +11,9 @@ public class AuthoringView {
 	
 	private static JFrame myFrame;
 	private Map<String, JComponent> myPanels;
-	private Set<Feature> myFeatures;
+	private List<Feature> myFeatures;
 	
-	public AuthoringView(Set<Feature> features, boolean exitOnClose){
+	public AuthoringView(List<Feature> features, boolean exitOnClose){
 		myFeatures = features;
 		instantiateObjects();
 		if(exitOnClose)

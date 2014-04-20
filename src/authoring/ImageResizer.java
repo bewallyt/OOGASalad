@@ -31,10 +31,10 @@ import Data.ImageManager;
         fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
-		addToEditor(storedImage);
+		//addToEditor(storedImage);
 	}
 
-
+/*
 	private void addToEditor(ImageFile imageFile) {
 		if(imageFile.getType().equalsIgnoreCase(FeatureManager.tileEditor.IMAGE_TYPE)){
 			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
@@ -42,9 +42,9 @@ import Data.ImageManager;
 		else if(imageFile.getType().equalsIgnoreCase(FeatureManager.gridObjectImageEditor.IMAGE_TYPE)){
 			FeatureManager.gridObjectImageEditor.addImage(imageFile.getImage(), fileName);
 		}
-        
-
+   
 	}
+	*/
 	
 	private Image scaleImage(File fileName, String s){
 		BufferedImage temp;
