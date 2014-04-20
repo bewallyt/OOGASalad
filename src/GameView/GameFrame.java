@@ -67,9 +67,8 @@ public class GameFrame extends RPGEngine {
 		for (MapData map : myWorldData.getMaps().values()) {
 
 			MapDataParser parser = new MapDataParser(map, myPlayer);
-//			List<GridObject> gridObjectList = parser.getGridObjectList();
-			List<GridObject> gridObjectList = new ArrayList<GridObject>();
-			gridObjectList.add(myPlayer);
+			List<GridObject> gridObjectList = parser.getGridObjectList();
+//			gridObjectList.add(myPlayer);
 			List<String> TileImageList = parser.getTileImageList();
 
 			// tile size is default. ask engine to take it out of constructor
