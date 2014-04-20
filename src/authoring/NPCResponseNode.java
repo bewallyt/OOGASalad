@@ -6,7 +6,6 @@ import java.util.List;
 public class NPCResponseNode {
 	private String myString;
 	private List<UserQueryNode> myChildren;
-	private UserQueryNode myParent;
 	public NPCResponseNode(String s){
 		myString = s;
 		myChildren = new ArrayList<UserQueryNode>();
@@ -23,17 +22,12 @@ public class NPCResponseNode {
 				myChildren.remove(nn);
 		}
 	}
-	public void setParent(UserQueryNode n){
-		myParent = n;
-	}
+
 	
 	public String getString(){
 		return myString;
 	}
 	public List<UserQueryNode> getChildren(){
 		return myChildren;
-	}
-	public UserQueryNode getParent(){
-		return myParent;
 	}
 }
