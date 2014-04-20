@@ -86,6 +86,8 @@ public class BarrierCreation extends CommonAttributes{
 			BarrierObject myBarrier=getBarrier();
 			if(validateText()){
 				FeatureManager.getWorldData().saveBarrier(myBarrier);
+				frame.dispose();
+				editor.dispose();
 			}			
 		}
 		private BarrierObject getBarrier(){

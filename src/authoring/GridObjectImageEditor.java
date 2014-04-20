@@ -45,6 +45,9 @@ public class GridObjectImageEditor extends ImageEditor {
 	public ImageIcon getSelectedImage(){
 		return currentIcon;
 	}
+	public void dispose(){
+		myWindow.dispose();
+	}
 	@Override
 	public void addExistingImages() {
 		List<ImageFile> imageList=m.getSavedImageMap();

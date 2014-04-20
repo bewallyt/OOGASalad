@@ -122,7 +122,9 @@ public class DoorCreation {
 		public void actionPerformed(ActionEvent e) {
 			DoorObject myDoor=getDoor();
 			if(validateText(textFieldList)){
-				FeatureManager.getWorldData().saveDoor(myDoor);;
+				FeatureManager.getWorldData().saveDoor(myDoor);
+				frame.dispose();
+				editor.dispose();
 			}			
 		}
 		private DoorObject getDoor(){

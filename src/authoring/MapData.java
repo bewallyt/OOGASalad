@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MapData {
 	
-	List<List<TileData>> myTiles;
+	private List<List<TileData>> myTiles;
 	
 	public MapData(int height, int width){
 		myTiles = new ArrayList<List<TileData>>(height);

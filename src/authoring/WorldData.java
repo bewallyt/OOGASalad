@@ -11,7 +11,7 @@ public class WorldData {
     private Map<String,Weapon> myWeapons;
     private List<BarrierObject> myBarriers;
     private List<DoorObject> myDoors;
-    private PlayerData playData;
+    private PlayerData playerData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
 	protected static final int DEFAULT_MAP_WIDTH = 30;
 	protected static final int DEFAULT_MAP_HEIGHT = 30;
