@@ -55,7 +55,7 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2);
-		Attack attack = new Attack("attack");
+		Attack attack = new Attack("playerattack");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
 		List<Attack> attackList = new ArrayList<Attack>();
@@ -99,7 +99,7 @@ public class Main extends RPGEngine {
 		enemy.doBattleOnSight();
 
 		//enemy.setResponseNode(n);
-		Attack attack2 = new Attack("ck");
+		Attack attack2 = new Attack("enemyattack");
 		attack2.setSpeed(10, 100);
 		attack2.setDamage(10, 100);
 		List<Attack> attackList2 = new ArrayList<Attack>();

@@ -20,7 +20,7 @@ public class ArenaWorldLooper extends GameLooper {
 
 	@Override
 	public World doLoop() {
-		if(myWorld.getEnemy().getStatsMap().get("health").getValue()<=0){
+		if(myBattleManager.getCurrentState()==BattleManager.BATTLEDONE){
 			System.out.println("go back");
 			myWorld.getEnemy().setWasBattled();
 			return myWorld.getPrevWorld();

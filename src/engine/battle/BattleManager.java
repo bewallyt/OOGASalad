@@ -34,16 +34,22 @@ public class BattleManager implements InteractionBox{
 	private BattleExecutorNode myCurrentBattleExecutorNode;
 	private final static int TOPLEVEL=0;
 	private final static int BOTTOMLEVEL=1;
-	private final static int ATTACKHAPPENED=2;
-	private final static int WEAPONSELECTED=3;
-	private final static int RAN=4;
+	//private final static int ATTACKHAPPENED=2;
+	private final static int FIRSTATTACKHAPPENED=2;
+	private final static int SECONDATTACKHAPPENED=3;
+	private final static int WEAPONSELECTED=4;
+	private final static int RAN=5;
+	private final static int ENEMYDEAD=6;
+	public final static int BATTLEDONE=7;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
 	private static final int SYMBOL_RADIUS = 10;
-	private static final String TEXT_DISPLAYED_ATTACK_COMPLETED="You damaged the enemy by: ";
+	private static final String TEXT_DISPLAYED_ATTACK=" used ";
+	private static final String TEXT_DISPLAYED_SECOND_ATTACK_COMPLETED="second attack damaged by: ";
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
+	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated the Enemy!";
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private int damageDealt;
@@ -122,6 +128,9 @@ public class BattleManager implements InteractionBox{
 			attack.getEffect().doEffect();
 		}
 		damageDealt=total;
+		if(myCurrentVictim.getStatsMap().get("health").getValue()<=0){
+			myCurrentState=ENEMYDEAD;
+		}
 	}
 
 	public Person[] attackFirst(Person person1, Weapon weapon1, Attack attack1, Person person2, Weapon weapon2, Attack attack2){
@@ -166,8 +175,6 @@ public class BattleManager implements InteractionBox{
 		else {
 			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
 		} 
-			
-
 	}
 
 	private void printResponses(Graphics2D g2d, InteractionMatrix myResponses2, int xSize, int ySize, 
@@ -191,11 +198,23 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==RAN){
 			ran=true;
 		}
-		else if (myCurrentState==ATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
+		else if (myCurrentState==ENEMYDEAD){
+			setCurrentTextToBeDisplayed();
+			myCurrentState=BATTLEDONE;
+		}
+		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
 			
+		}
+		else if(myCurrentState==FIRSTATTACKHAPPENED){
+			Person tempAttacker=myCurrentAttacker;
+			myCurrentAttacker=myCurrentVictim;
+			myCurrentVictim=tempAttacker;
+			attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
+			myCurrentState=SECONDATTACKHAPPENED;
+			setCurrentTextToBeDisplayed();
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
 			BattleExecutable executable = myCurrentBattleExecutorNode.getExecutor();
@@ -214,9 +233,9 @@ public class BattleManager implements InteractionBox{
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[0];
 				myCurrentVictim = attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[1];
+				myCurrentState=FIRSTATTACKHAPPENED;
 				attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
-				attack(myCurrentVictim,myCurrentAttacker,myCurrentVictim.getCurrentWeapon(),myCurrentVictim.getCurrentAttack());
-				myCurrentState=ATTACKHAPPENED;
+				
 				setCurrentTextToBeDisplayed();
 			}
 			else if(executable instanceof Item)
@@ -284,16 +303,21 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==WEAPONSELECTED){
 			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
 		}
-		else if(myCurrentState==ATTACKHAPPENED){
-			textToBeDisplayed=TEXT_DISPLAYED_ATTACK_COMPLETED + damageDealt;
+		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
+			System.out.println(myCurrentAttacker);
+			textToBeDisplayed="Attacker" + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().getName();
 		}
 		else if(myCurrentState==RAN){
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;
+		}
+		else if(myCurrentState==ENEMYDEAD){
+			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD;
 		}
 	}
 	public boolean didRun(){
 		return ran;
 	}
-
-
+	public int getCurrentState(){
+		return myCurrentState;
+	}
 }
