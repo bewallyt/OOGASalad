@@ -15,14 +15,12 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 public class BarrierCreation extends CommonAttributes implements ItemListener{
 	JPanel namePanel;
-	JTabbedPane pane;
+	JFrame frame;
 	JTextField xField;
 	JTextField yField;
 	JTextField imageField;
@@ -32,28 +30,38 @@ public class BarrierCreation extends CommonAttributes implements ItemListener{
 		
 	}
 	public void creationPanel(){
-		pane = new JTabbedPane();
+		frame = new JFrame("Add Barrier:");
+		frame.setLocationRelativeTo(null);
+
 		assembleGUI();
-		pane.setVisible(true);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	public void assembleGUI(){
 		namePanel=new JPanel();
-		pane.add("Add Barrier", namePanel);
 	    JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
-        xField = new JTextField("X",15);
-        yField = new JTextField("Y",15);
-        imageField = new JTextField("defaultIW",15);
+        JLabel imageLabel=new JLabel("Image");
+      //  JCheckBox steppableItem=new JCheckBox("Steppable with an item?");
+       // steppableItem.setSelected(false);
+       // steppableItem.addItemListener(this);
+        xField = new JTextField("",15);
+        yField = new JTextField("",15);
+        imageField = new JTextField("",15);
 
         namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
         namePanel.add(xLabel);
         namePanel.add(xField);
         namePanel.add(yLabel);
         namePanel.add(yField);
+        namePanel.add(imageLabel);
+        namePanel.add(imageField);
         
         JButton createBarrier=new JButton("Create barrier");
         createBarrier.addActionListener(new createBarrierListener());
         namePanel.add(createBarrier);
+        frame.add(namePanel);
+        
 	}
 	private int getIntValue(String s){
 		return Integer.parseInt(s);
