@@ -10,17 +10,15 @@ public class MapData {
     private List<BarrierObject> myBarriers;
     private List<DoorObject> myDoors;
     private PlayerData playerData;
-    private List<EnemyData> enemyDatas;
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
-	
+
 	public MapData(int height, int width){
         myWeapons = new HashMap<String, Weapon>();
         myItems = new HashMap<String, Item>();
         myBarriers = new ArrayList<BarrierObject>();
         myDoors = new ArrayList<DoorObject>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
-        enemyDatas = new ArrayList<EnemyData>();
 
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){
@@ -75,11 +73,4 @@ public class MapData {
     
     public List<DoorObject> getDoors(){return myDoors;}
 
-
-    public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
-
-    }
-
-    public List<EnemyData> getEnemies() {return enemyDatas;
-    }
 }

@@ -168,7 +168,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
 
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames);
-        FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        madeEnemy.init();
     }
 
     @Override

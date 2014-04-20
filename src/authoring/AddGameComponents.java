@@ -82,7 +82,6 @@ public class AddGameComponents extends Feature implements ActionListener {
         frame.add(buttonPanel);
         frame.pack();
         frame.setVisible(true);
-        //JOptionPane.showMessageDialog(null,buttonPanel,"Choose One",JOptionPane.PLAIN_MESSAGE);
 
     }
 }

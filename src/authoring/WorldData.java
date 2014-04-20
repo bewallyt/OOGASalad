@@ -103,7 +103,5 @@ public class WorldData {
     	return myLevels.get(currentMap).getDoors();
     }
 
-    public void saveEnemy(EnemyData enemy) {myLevels.get(currentMap).saveEnemy(enemy);}
-    public List<EnemyData> getMyEnemyData(){ return myLevels.get(currentMap).getEnemies();}
 
 }
