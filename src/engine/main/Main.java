@@ -210,7 +210,7 @@ public class Main extends RPGEngine {
 	}
 	
 	private void initMusicTest() {
-		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
+		URL mainURL = Main.class.getResource("/music/fms.wav");
 		Music music = new Music(mainURL);
 		music.start();
 	}
