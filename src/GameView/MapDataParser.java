@@ -66,7 +66,7 @@ public class MapDataParser {
 		}
 	}
 
-/*
+
 	private void parseMap2(Player p) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
@@ -88,5 +88,5 @@ public class MapDataParser {
 			}
 		}
 	}
-*/
+
 }

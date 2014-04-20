@@ -87,19 +87,19 @@ public class WorldData {
     	return myLevels.get(currentMap).getMyRandomEnemies();
     }
 
-    public void saveBarrier(BarrierObject barrier){
+    public void saveBarrier(BarrierData barrier){
     	myLevels.get(currentMap).saveBarrier(barrier);
     }
     
-    public List<BarrierObject> getBarriers(){
+    public List<BarrierData> getBarriers(){
     	return myLevels.get(currentMap).getBarriers();
     }
     
-    public void saveDoor(DoorObject door){
+    public void saveDoor(DoorData door){
     	myLevels.get(currentMap).saveDoor(door);
     }
     
-    public List<DoorObject> getDoors(){
+    public List<DoorData> getDoors(){
     	return myLevels.get(currentMap).getDoors();
     }
 

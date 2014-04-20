@@ -43,7 +43,8 @@ public class GameFrame extends RPGEngine {
 		}
 		initMusicTest();
 		setInit(true);
-		createWorlds();
+//		createWorlds();
+		createWorlds2();
 	}
 
 	@Override
@@ -62,13 +63,13 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-//		createPlayer();
+		createPlayer();
 
 		for (MapData map : myWorldData.getMaps().values()) {
 
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
-//			gridObjectList.add(myPlayer);
+			gridObjectList.add(myPlayer);
 			List<String> TileImageList = parser.getTileImageList();
 
 			// tile size is default. ask engine to take it out of constructor
@@ -78,19 +79,39 @@ public class GameFrame extends RPGEngine {
 			setWorld(currWorld);
 
 			setTileImages(currWorld, TileImageList);
-//			setGridObjects(currWorld, gridObjectList);
+			setGridObjects(currWorld, gridObjectList);
 		}
+	}
+	
+	private void createWorlds2() {
+		List<GridObject> gridObjectList = new ArrayList<GridObject>();
+
+		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
+				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
+				"PlayerLeft1.png", "PlayerLeft2.png"};
+		myPlayer = new Player(anim, 2);
+
+		MapData map = myWorldData.getMap("defaultworldkey");
+		MapDataParser parser = new MapDataParser(map, myPlayer);
+		List<GridObject> gridObjectList = parser.getGridObjectList();
+		gridObjectList.add(myPlayer);
+		
+		gridObjectList.add(myPlayer);
+	
+		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, 40, gridObjectList);
+		setWorld(outsideWorld); // this is only called for the initial world
+		
+		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 	}
 
 	private void createPlayer() {
 		// PlayerData myPlayerData = myWorldData.getPlayData();
 
-		String[] anim = new String[] { "PlayerUp0.png", "PlayerUp1.png",
-				"PlayerUp2.png", "PlayerRight0.png", "PlayerRight1.png",
-				"PlayerRight2.png", "PlayerDown0.png", "PlayerDown1.png",
-				"PlayerDown2.png", "PlayerLeft0.png", "PlayerLeft1.png",
-				"PlayerLeft2.png" };
-
+		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
+				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
+				"PlayerLeft1.png", "PlayerLeft2.png"};
 		myPlayer = new Player(anim, 2);
 		// myPlayer = new Player(myPlayerData.getMyAnimImages(), myPlayerData.getSpeed());
 	}
