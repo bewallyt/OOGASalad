@@ -3,10 +3,6 @@ package GameView;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.TurtleInterface;
-
-import commands.Command;
-
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
@@ -78,8 +74,7 @@ public class MapDataParser {
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 
-					gridobject = Class.forName(data.getID()).getConstructor()
-							.newInstance(data.getArguments());
+					gridobject = (GridObject) Reflection.createInstance(data.getID(), data.getArguments());
 					
 					if (gridobject != null) {
 						gridobject.setPosition(i, j);
