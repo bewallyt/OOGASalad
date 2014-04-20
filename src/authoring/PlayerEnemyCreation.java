@@ -52,8 +52,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
         }
     }
 
-    public void creationPanel(){
-        JTabbedPane pane = new JTabbedPane();
+    public void creationPanel(){	
+    	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
         String locationTab = "Location";
 
@@ -168,6 +168,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
 
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames);
+        FeatureManager.getWorldData().saveEnemy(madeEnemy);
     }
 
     @Override

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class SaveGridObjectFeature extends Feature{
+	/*
 	private JButton createButton;
 	private GridObjectCreation mySuperFeature;
 	private int x;
@@ -37,4 +38,5 @@ public class SaveGridObjectFeature extends Feature{
 			}
 		}
 	}
+	*/
 }

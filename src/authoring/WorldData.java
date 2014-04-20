@@ -7,24 +7,16 @@ public class WorldData {
 
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
-    private Map<String,Item> myItems;
-    private Map<String,Weapon> myWeapons;
-    private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
 	protected static final int DEFAULT_MAP_WIDTH = 30;
 	protected static final int DEFAULT_MAP_HEIGHT = 30;
-    private List<RandomEnemy> myRandomEnemies;
 
-	private String currentMapName;
+	private String currentMap;
 	
 	public WorldData(){
-
+        currentMap = null;
 		myLevels = new HashMap<String, MapData>();
-		// myLevels.put(DEFAULT_MAP, new MapData(10, 10));
 		myImages = new HashMap<String, File>();
-		myItems = new HashMap<String, Item>();
-		myWeapons = new HashMap<String, Weapon>();
-        myRandomEnemies = new ArrayList<RandomEnemy>();
 	}
 
 	public File getImage(String fileName) {
@@ -34,19 +26,8 @@ public class WorldData {
 	public void saveImage(String s, File f) {
 		myImages.put(s, f);
 	}
-
-	public Map<String, Item> getMyItems() {
-		return myItems;
-	}
-
-    public void saveItem(String n, Item it){ myItems.put(n,it);}
-
-	public PlayerData getPlayData() {
-		return playData;
-	}
-
-	public void savePlayer(PlayerData player) {
-		playData = player;
+	public void setMap(String map){
+		currentMap=map;
 	}
 
 	public void addLevel(String s, MapData md) {
@@ -63,24 +44,66 @@ public class WorldData {
 	}
 	
 	public void setCurrentMap(String s){
-		currentMapName = s;
+		currentMap = s;
 	}
 	
 	public MapData getCurrentMap(){
-		return myLevels.get(currentMapName);
+		return myLevels.get(currentMap);
 
+	}
+	public Map<String, Item> getMyItems() {
+		return myLevels.get(currentMap).getMyItems();
+	}
+
+    public void saveItem(String n, Item it){
+    	myLevels.get(currentMap).saveItem(n, it);
+    }
+
+	public PlayerData getPlayData() {
+		return myLevels.get(currentMap).getPlayData();
+	}
+
+	public void savePlayer(PlayerData player) {
+		myLevels.get(currentMap).savePlayer(player);
 	}
 
 	protected Map<String, File> getImages() {
 		return myImages;
 	}
 
-    public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
+    public void saveWeapons(String n, Weapon wp){
+    	myLevels.get(currentMap).saveWeapons(n, wp);
+    }
 
-    public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
+    public Map<String,Weapon> getMyWeapons(){
+    	return myLevels.get(currentMap).getMyWeapons();
+    }
 
-    public void saveRandomEnemy(RandomEnemy re){myRandomEnemies.add(re);}
+    public void saveRandomEnemy(RandomEnemy re){
+    	myLevels.get(currentMap).saveRandomEnemy(re);
+    }
 
-    public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
+    public List<RandomEnemy> getMyRandomEnemies(){
+    	return myLevels.get(currentMap).getMyRandomEnemies();
+    }
+
+    public void saveBarrier(BarrierObject barrier){
+    	myLevels.get(currentMap).saveBarrier(barrier);
+    }
+    
+    public List<BarrierObject> getBarriers(){
+    	return myLevels.get(currentMap).getBarriers();
+    }
+    
+    public void saveDoor(DoorObject door){
+    	myLevels.get(currentMap).saveDoor(door);
+    }
+    
+    public List<DoorObject> getDoors(){
+    	return myLevels.get(currentMap).getDoors();
+    }
+
+    public void saveEnemy(EnemyData enemy) {myLevels.get(currentMap).saveEnemy(enemy);}
+    public List<EnemyData> getMyEnemyData(){ return myLevels.get(currentMap).getEnemies();}
 
 }

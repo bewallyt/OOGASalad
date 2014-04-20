@@ -3,7 +3,7 @@ package authoring;
 import java.awt.BorderLayout;
 
 import javax.swing.JCheckBox;
-
+/*
 public class SteppableFeature extends Feature{
 	private JCheckBox steppableCheck;
 	private GridObjectCreation mySuperFeature;
@@ -16,3 +16,4 @@ public class SteppableFeature extends Feature{
 		return steppableCheck.isSelected();
 	}
 }
+*/

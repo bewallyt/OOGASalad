@@ -1,10 +1,14 @@
 package authoring;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GridObject {
 
 	protected String myImage;
 	protected int x;
 	protected int y;
+	private List<Item> itemList=new ArrayList<Item>();
 	
 	public GridObject(int x, int y, String image){
 		this.x=x;
@@ -15,7 +19,7 @@ public class GridObject {
 		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 
-	public String getImage(){
+	public String getImageName(){
 		return myImage;
 	}
 	public int getX(){
@@ -23,5 +27,8 @@ public class GridObject {
 	}
 	public int getY(){
 		return y;
+	}
+	public void addItem(Item i){
+		
 	}
 }

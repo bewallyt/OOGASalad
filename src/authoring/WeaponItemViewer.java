@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
+import java.util.Map;
 
 public class WeaponItemViewer implements MouseListener {
 
@@ -13,8 +14,12 @@ public class WeaponItemViewer implements MouseListener {
     private JList weaponList;
     private DefaultListModel itemListModel;
     private JList itemList;
+    private Map<String,Weapon> weaponMap;
+    private Map<String,Item> itemMap;
 
     public WeaponItemViewer(){
+        weaponMap = new HashMap<String, Weapon>();
+        itemMap = new HashMap<String, Item>();
         weaponFrame = new JFrame("Existing Weapons/Items");
         weaponFrame.setLayout(new BorderLayout());
         weaponFrame.setBounds(100, 0, 300, 300);
@@ -40,14 +45,13 @@ public class WeaponItemViewer implements MouseListener {
         weaponPanel.add(itemScroll);
         weaponFrame.add(weaponPanel);
         weaponFrame.setVisible(true);
-        iterateWeaponsAndItems();
     }
 
     protected void iterateWeaponsAndItems(){
-        HashMap<String,Weapon> weaponMap = (HashMap<String, Weapon>) FeatureManager.getWorldData().getMyWeapons();
-        HashMap<String,Item> itemMap = (HashMap<String, Item>) FeatureManager.getWorldData().getMyItems();
-
+        weaponMap = FeatureManager.getWorldData().getMyWeapons();
+        itemMap = FeatureManager.getWorldData().getMyItems();
         if(weaponMap==null){} else{
+
             for(String s: weaponMap.keySet()){
                 if(weaponListModel.contains(s)){
                 } else{
@@ -56,6 +60,7 @@ public class WeaponItemViewer implements MouseListener {
             }
         }
         if(itemMap==null){} else{
+
             for(String i: itemMap.keySet()){
                 if(itemListModel.contains(i)){
                 } else{
