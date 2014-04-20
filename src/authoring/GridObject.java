@@ -15,7 +15,7 @@ public class GridObject {
 		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 
-	public String getImage(){
+	public String getImageName(){
 		return myImage;
 	}
 	public int getX(){

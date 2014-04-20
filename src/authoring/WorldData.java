@@ -9,6 +9,8 @@ public class WorldData {
 	private Map<String, File> myImages;
     private Map<String,Item> myItems;
     private Map<String,Weapon> myWeapons;
+    private List<BarrierObject> myBarriers;
+    private List<DoorObject> myDoors;
     private PlayerData playData;
 	protected static final String DEFAULT_MAP = "defaultworldkey";
 	protected static final int DEFAULT_MAP_WIDTH = 30;
@@ -25,6 +27,8 @@ public class WorldData {
 		myItems = new HashMap<String, Item>();
 		myWeapons = new HashMap<String, Weapon>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
+        myBarriers=new ArrayList<BarrierObject>();
+        myDoors=new ArrayList<DoorObject>();
 	}
 
 	public File getImage(String fileName) {
@@ -83,4 +87,13 @@ public class WorldData {
 
     public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
 
+    public void saveBarrier(BarrierObject barrier){myBarriers.add(barrier);}
+    
+    public List<BarrierObject> getBarriers(){return myBarriers;}
+    
+    public void saveDoor(DoorObject door){myDoors.add(door);}
+    
+    public List<DoorObject> getDoors(){return myDoors;}
+    
+    
 }
