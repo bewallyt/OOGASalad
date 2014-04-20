@@ -45,7 +45,6 @@ public abstract class RPGEngine{
 		myCurrentWorld = world;
 		String classname = myCurrentWorld.getClass().getName();
 		myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
-		
 	}
 
 	/**

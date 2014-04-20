@@ -246,8 +246,6 @@ public class BattleManager implements InteractionBox{
 		}
 		
 		
-
-
 	}
 	public void moveUp() {
 		myOptions.moveUp();

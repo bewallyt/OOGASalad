@@ -39,6 +39,7 @@ public class Canvas extends JComponent{
 		myHeight=height;
 		myWidth=width;
 		frame.setSize((int) width, (int) height);
+		myFrame.add(this);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
