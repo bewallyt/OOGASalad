@@ -23,7 +23,9 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.item.Item;
 import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
@@ -69,6 +71,13 @@ public class Main extends RPGEngine {
 		w2.setDamage(20, 100);
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);
+		
+		Item item1 = new StatBuffer("zeldasword.png", "item1", new Statistic("health",50,100), 10);
+		player.addItem(item1);
+		Item item2 = new StatBuffer("zeldasword.png", "item2", new Statistic("damage",30,100), 10);
+		player.addItem(item2);
+		Item item3 = new StatBuffer("zeldasword.png", "item3", new Statistic("damage",20,100), 10);
+		player.addItem(item3);
 		
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
