@@ -1,9 +1,10 @@
 package engine.item;
 
+import engine.battle.BattleExecutable;
 import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
 
-public abstract class Item implements Pickupable {
+public abstract class Item implements Pickupable, BattleExecutable {
 
 	private String myName;
 	private String myImageName;

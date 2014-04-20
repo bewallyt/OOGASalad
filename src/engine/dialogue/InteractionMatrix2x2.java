@@ -11,25 +11,30 @@ public class InteractionMatrix2x2 extends InteractionMatrix {
 	}
 	
 	public void moveUp() {
-		if (selectedNodeY != 0) {
+		if (selectedNodeY != 0 && myNodes[selectedNodeX][selectedNodeY-1] != null &&
+				myNodes[selectedNodeX][selectedNodeY-1].getString() != null) {
 			selectedNodeY--;
 		}
+		
 	}
 
 	public void moveDown() {
-		if (selectedNodeY != 1) {
+		if (selectedNodeY != 1 && myNodes[selectedNodeX][selectedNodeY+1] != null &&
+				myNodes[selectedNodeX][selectedNodeY+1].getString() != null) {
 			selectedNodeY++;
 		}
 	}
 
 	public void moveLeft() {
-		if (selectedNodeX != 0) {
+		if (selectedNodeX != 0 && myNodes[selectedNodeX-1][selectedNodeY] != null &&
+				myNodes[selectedNodeX-1][selectedNodeY].getString() != null) {
 			selectedNodeX--;
 		}
 	}
 
 	public void moveRight() {
-		if (selectedNodeX != 1) {
+		if (selectedNodeX != 1 && myNodes[selectedNodeX+1][selectedNodeY] != null 
+				&& myNodes[selectedNodeX+1][selectedNodeY].getString() != null) {
 			selectedNodeX++;
 		}
 	}

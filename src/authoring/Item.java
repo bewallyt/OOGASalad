@@ -1,35 +1,22 @@
 package authoring;
 
+import java.util.Map;
+
 public class Item {
 
     private String itemName;
-    private int mySpeed;
-    private int myAttack;
-    private int myDefense;
+    private String itemImage;
+    private Map<String,Integer> myItemValues;
 
-    public Item(String name){
+    public Item(String name, String image, Map<String,Integer> values){
         itemName = name;
-    }
-
-    public Item(String name, int speed, int attack, int defense){
-        itemName = name;
-        mySpeed = speed;
-        myAttack = attack;
-        myDefense = defense;
-
+        itemImage = image;
+        myItemValues = values;
     }
 
     public String getItemName(){
             return itemName;
     }
-
-    public int getMySpeed(){
-        return mySpeed;
-    }
-
-    public int getMyAttack(){
-        return myAttack;
-    }
-
-    public int getMyDefense() { return myDefense; }
+    public String getItemImage() {return itemImage; }
+    public Map<String,Integer> getMyItemValues() { return myItemValues; }
 }

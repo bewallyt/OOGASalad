@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
+/*
 public class WidthHeightFeature extends Feature{
 	private JLabel coordinatesLabel;
 	
@@ -44,3 +44,4 @@ public class WidthHeightFeature extends Feature{
 		}
 	}
 }
+*/

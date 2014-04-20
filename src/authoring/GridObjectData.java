@@ -1,65 +1,26 @@
 package authoring;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GridObjectData {
 
-	private String myImageName;
-	private String myID;
-	private Boolean isSteppable;
-	private Boolean isTalkable;
-	private int x;
-	private int y;
-	private int width;
-	private int height;
-	private NPCResponseNode myRoot;
+	protected String myImage;
+	protected int x;
+	protected int y;
+	private List<Item> itemList=new ArrayList<Item>();
 	
-	public GridObjectData(){
-		x = -1;
-		y = -1;
+	public GridObjectData(int x, int y, String image){
+		this.x=x;
+		this.y=y;
+		myImage=image;
 	}
 	public void init(){
-		FeatureManager.getWorldData().getMap(WorldData.DEFAULT_MAP).getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
-//	public GridObjectData(TileData td, boolean step, boolean talk, String s) {
-//		myTile = td;
-//		td.addGridObjectData(this);
-//		isSteppable = step;
-//		isTalkable = talk;
-//		myImageName = s;
-//	}
-	public Boolean isSteppable(){
-		return isSteppable;
-	}
-	public Boolean isTalkable(){
-		return isTalkable;
-	}
+
 	public String getImageName(){
-		return myImageName;
-	}
-	public String getID(){
-		if (!isSteppable) return "Barrier";
-		else if (isTalkable) return "Rule Follower";
-		return null;
-	}
-	public void setX(int xx){
-		x=xx;
-	}
-	public void setY(int yy){
-		y=yy;
-	}
-	public void setDialogue(NPCResponseNode root){
-		myRoot = root;
-	}
-	
-	public void setSteppable(boolean b){
-		isSteppable = b;
-	}
-	public void setTalkable(boolean b){
-		isTalkable = b;
-	}
-	public void setImageName(String s){
-		myImageName = s;
+		return myImage;
 	}
 	public int getX(){
 		return x;
@@ -67,27 +28,7 @@ public class GridObjectData {
 	public int getY(){
 		return y;
 	}
-	public NPCResponseNode getDialogue(){
-		return myRoot;
-	}
-	
-	public int getWidth(){
-		return width;
-	}
-	public int getHeight(){
-		return height;
-	}
-	
-	public boolean isDefined(){
-		if(x==-1||y==-1){
-			return false;
-		}
-		return true;
-	}
-	public void setWidth(int w) {
-		width = w;
-	}
-	public void setHeight(int h) {
-		height = h;
+	public void addItem(Item i){
+		
 	}
 }
