@@ -45,7 +45,6 @@ public class WeaponItemViewer implements MouseListener {
         weaponPanel.add(itemScroll);
         weaponFrame.add(weaponPanel);
         weaponFrame.setVisible(true);
-        //iterateWeaponsAndItems();
     }
 
     protected void iterateWeaponsAndItems(){
