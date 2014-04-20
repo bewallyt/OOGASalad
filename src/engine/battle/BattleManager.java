@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
 
 import engine.dialogue.AttackExecutorNode;
 import engine.dialogue.BattleExecutorNode;
@@ -50,10 +51,12 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated the Enemy!";
+	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Defeated Enemey!Picked dropped weapon!";
 	public static final int EXIT = 8;
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private int damageDealt;
+	private boolean dropWeapon = false;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -130,6 +133,13 @@ public class BattleManager implements InteractionBox{
 		}
 		damageDealt=total;
 		if(myCurrentVictim.getStatsMap().get("health").getValue()<=0){
+			if (myCurrentVictim instanceof Enemy) {
+				dropWeapon = checkDropWeaponStatus();
+				if (dropWeapon) {
+					Weapon enemyWeapon = ((Enemy) myCurrentVictim).getWorld().getDroppedWeapon();
+					enemyWeapon.pickUp(myPlayer);
+				}
+			}
 			myCurrentState=ENEMYDEAD;
 		}
 	}
@@ -315,7 +325,11 @@ public class BattleManager implements InteractionBox{
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;
 		}
 		else if(myCurrentState==ENEMYDEAD){
-			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD;
+			if (dropWeapon) {
+				textToBeDisplayed=TEXT_DISPLAYED_DROPPED_WEAPON;
+			} else {
+				textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD;
+			}
 		}
 	}
 	public boolean didRun(){
@@ -323,5 +337,15 @@ public class BattleManager implements InteractionBox{
 	}
 	public int getCurrentState(){
 		return myCurrentState;
+	}
+	private boolean checkDropWeaponStatus(){
+		boolean dropWeapon = false;
+		Random rand = new Random();
+		int randValue = rand.nextInt(10) + 1;
+		System.out.println("randvalue : " + randValue);
+		if (randValue < 7) {
+			dropWeapon = true;
+		}
+		return dropWeapon;
 	}
 }
