@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args){
-		Set myFeatures = new HashSet<Feature>();
+		List myFeatures = new ArrayList<Feature>();
 		myFeatures.add(new GridViewerFeature());
      	myFeatures.add(new GridObjectCreation());
 		myFeatures.add(new ImageChooser());

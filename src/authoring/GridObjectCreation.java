@@ -2,8 +2,10 @@ package authoring;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,7 +13,7 @@ import javax.swing.*;
 
 public class GridObjectCreation extends Feature{
 	private JButton myGridObjectButton;
-	private Set<Feature> myGridFeatures;
+	private List<Feature> myGridFeatures;
 	private GridObjectData myData;
 	private AuthoringView gridObjectView;
 	private GridObjectImageEditor imageEditor=new GridObjectImageEditor();
@@ -19,7 +21,7 @@ public class GridObjectCreation extends Feature{
 	public GridObjectCreation(){
 		myData = new GridObjectData();
 		
-		myGridFeatures = new HashSet<Feature>();
+		myGridFeatures = new ArrayList<Feature>();
 		//myGridFeatures.add(new EncounterableFeature(this));
 		myGridFeatures.add(new SaveGridObjectFeature(this));
 		myGridFeatures.add(new SteppableFeature(this));
