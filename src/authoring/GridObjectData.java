@@ -20,8 +20,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, String id) {
 		myID = id;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 	}
 	
@@ -29,8 +29,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
 		myID = id;
 
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(toX);
 		myArguments.add(toY);
@@ -41,8 +41,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
 		myID = id;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(name);
 		myArguments.add(startVals);
@@ -54,8 +54,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
 		myID = id;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(root);
 	}
