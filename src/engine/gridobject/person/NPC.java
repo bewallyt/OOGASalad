@@ -28,8 +28,8 @@ public class NPC extends Person {
 	 * @param movementType the movement type. 1=move back and forth 2=follow player if it gets close 3=stand still
 	 * @param player the player
 	 */
-	public NPC(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
-		super(animImages, speed, numTilesWidth, numTilesHeight);
+	public NPC(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+		super(animImages, name, speed, numTilesWidth, numTilesHeight);
 		myDialogue=new ArrayList<String>();
 		myPlayer=player;
 		myMovement = (Movement) Reflection.createInstance("engine.gridobject.person.Movement" + movementType,

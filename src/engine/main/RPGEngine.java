@@ -75,7 +75,7 @@ public abstract class RPGEngine{
 		if(myCurrentWorld.getPlayer().getFacing()==2) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
 		else if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 		else{
-			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]);
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), myCurrentWorld.getPlayer().getStartY());
 		}
 	}
 	
@@ -94,9 +94,9 @@ public abstract class RPGEngine{
 
 		while (isInitialized) {
 			myCanvas.repaint();
-			if(myGameLooper.doLoop()!=null){
-				System.out.println("change");
-				changeWorld(myGameLooper.doLoop(),50,100);
+			World newWorld = myGameLooper.doLoop();
+			if(newWorld!=null){
+				changeWorld(newWorld,50,100);
 				
 			}
 			Thread.sleep(10);

@@ -58,7 +58,7 @@ public class Main extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, 2);
+		Player player = new Player(anim, "Player", 2);
 		Attack attack = new Attack("playerattack");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
@@ -81,7 +81,7 @@ public class Main extends RPGEngine {
 		Item item3 = new StatBuffer("zeldasword.png", "item3", new Statistic("damage",20,100), 10);
 		player.addItem(item3);
 		
-		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
+		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"},"npc"
 								,1,1,1, 3, player);
 		
 		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
@@ -106,7 +106,7 @@ public class Main extends RPGEngine {
 
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("grassback.jpg",1,1);
-		Enemy enemy = new Enemy(anim,2,1,1,1, player);
+		Enemy enemy = new Enemy(anim,"enemy",2,1,1,1, player);
 		enemy.doBattleOnSight();
 
 		//enemy.setResponseNode(n);
@@ -181,9 +181,9 @@ public class Main extends RPGEngine {
 		player.addStatistic(new Statistic("defense",10,100));
 		enemy.setBattleImage("rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
-		enemy.addStatistic(new Statistic("damage",10,100));
+		enemy.addStatistic(new Statistic("damage",100,100));
 		enemy.addStatistic(new Statistic("speed",10,100));
-		enemy.addStatistic(new Statistic("level",10,100));
+		enemy.addStatistic(new Statistic("level",100,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
 	}
 
@@ -196,7 +196,7 @@ public class Main extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, 2);
+		Player player = new Player(anim, "player",2);
 
 
 		gridObjectList.add(player);
