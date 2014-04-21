@@ -1,42 +1,30 @@
-package engine.menu;
+package engine.menu.managers;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 
 import util.Reflection;
 import engine.dialogue.InteractionBox;
-import engine.dialogue.InteractionMatrix;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.state.AbstractState;
+import engine.menu.InteractionMatrix7x1;
+import engine.menu.nodes.MenuNode;
 
 public class MenuManager implements InteractionBox {
 
-	private AbstractState myState;
-	private boolean menuToggler = false;
 	private InteractionMatrix7x1 mySelections;
-	private String[] nodeNames;
+	private String[] names;
+	private Player myPlayer;
 
-	public MenuManager() {
+	public MenuManager(Player p) {
 		mySelections = new InteractionMatrix7x1();
-	}
-
-	public void setState(AbstractState state) {
-		myState = state;
-	}
-
-	public void keyPressed(KeyEvent e) {
-		myState.keyPressed(e);
-	}
-
-	public void keyReleased(KeyEvent e) {
-		myState.keyReleased(e);
+		myPlayer = p;
 	}
 
 	public void moveCursorUp() {
@@ -51,17 +39,9 @@ public class MenuManager implements InteractionBox {
 		((MenuNode) mySelections.getCurrentNode()).doAction();
 	}
 
-	public void toggleMenu() {
-		menuToggler = !menuToggler;
-	}
-
-	public boolean getMenuToggler() {
-		return menuToggler;
-	}
-
-	public void setNodeNames() {
-		nodeNames = new String[] { "PokedexNode", "PokemonNode", "BagNode",
-				"NameNode", "SaveNode", "OptionsNode", "ExitNode" };
+	private void setNames() {
+		names = new String[] { "Pokedex", "Pokemon", "Bag", "Name", "Save",
+				"Options", "Exit" };
 	}
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
@@ -92,15 +72,27 @@ public class MenuManager implements InteractionBox {
 	}
 
 	public void createMenuNodes() {
-
 		// Creates Menu Nodes via Reflection
-		setNodeNames();
+		setNames();
 
-		for (int i = 0; i < nodeNames.length; i++) {
+		for (int i = 0; i < names.length; i++) {
 			mySelections.setNode(
-					(MenuNode) Reflection.createInstance("engine.menu."+ nodeNames[i]), 0, i);
+					(MenuNode) Reflection.createInstance("engine.menu.nodes."
+							+ names[i] + "Node", myPlayer, this), 0, i);
 		}
 	}
+
+//	public void createManagers() {
+//
+//		// Creates Menu Managers via Reflection
+//		setNames();
+//
+//		for (int i = 0; i < names.length; i++) {
+//			mySelections.setManager((InteractionBox) Reflection.createInstance(
+//					"engine.menu.managers." + names[i] + "Manager", myPlayer,
+//					this), i);
+//		}
+//	}
 
 	@Override
 	public void getNextText() {
@@ -115,4 +107,5 @@ public class MenuManager implements InteractionBox {
 		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
 
 	}
+
 }

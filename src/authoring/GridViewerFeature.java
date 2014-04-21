@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 public class GridViewerFeature extends Feature{
 
 	private WorldData wd;
+	private Grid g;
 	private JScrollPane myViewer;
 	private JTabbedPane tabs;
 	private List<Grid> myGrids;
@@ -45,9 +46,11 @@ public class GridViewerFeature extends Feature{
 		mapSize();		
 		tabs.addTab(s, myViewer);
 	}
-
+	public Grid getGrid(){
+		return g;
+	}
 	public void gridMaker(int height, int width){
-		Grid g = new Grid(height, width);
+		g= new Grid(height, width);
 		myGrids.add(g);
 		myViewer = new JScrollPane(myGrids.get(myGrids.size() - 1));
 		myViewer.setPreferredSize(new Dimension(592, 590));

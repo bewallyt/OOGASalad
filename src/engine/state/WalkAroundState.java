@@ -7,7 +7,7 @@ import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.GridObject;
 import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
-import engine.menu.MenuManager;
+import engine.menu.managers.MenuManager;
 import engine.world.Canvas;
 import engine.world.World;
 
@@ -57,7 +57,7 @@ public class WalkAroundState extends AbstractState {
 			myPlayer.setAClick(false);
 		// Added to test menu.
 		if (e.getKeyCode() == Control.SPACE) {
-			MenuManager mm = new MenuManager();
+			MenuManager mm = new MenuManager(myPlayer);
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
 			myPlayer.setInteractionBox(mm);

@@ -26,7 +26,38 @@ public class WeaponItemViewer implements MouseListener {
         weaponListModel = new DefaultListModel();
         weaponList = new JList(weaponListModel);
         weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        weaponList.addMouseListener(this);
+        weaponList.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
+                    if (weaponList.getSelectedIndex() != -1) {
+                        String clicked = (String)weaponList.getSelectedValue();
+                        for(int i=0; i<weaponList.getModel().getSize(); i++){
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         weaponList.setVisibleRowCount(10);
         itemListModel = new DefaultListModel();
         itemList = new JList(itemListModel);

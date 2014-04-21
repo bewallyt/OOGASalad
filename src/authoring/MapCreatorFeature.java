@@ -14,7 +14,7 @@ public class MapCreatorFeature extends Feature {
 		gridMakerButton = new JButton("Add a New Map");
 		gridMakerButton.addActionListener(new GridMakerListener());
 		myComponents.put(gridMakerButton, BorderLayout.SOUTH);
-		gridView = (GridViewerFeature) FeatureManager.getFeature("authoring.GridViewerFeature");
+		gridView = (GridViewerFeature) FeatureManager.getFeature("GridViewerFeature");
 	}
 
 	public class GridMakerListener implements ActionListener{

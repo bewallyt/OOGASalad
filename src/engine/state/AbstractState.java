@@ -18,4 +18,9 @@ public abstract class AbstractState implements KeyListener {
 	@Override
 	public abstract void keyReleased(KeyEvent e);
 
+	public String getDisplayString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

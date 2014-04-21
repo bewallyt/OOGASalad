@@ -57,7 +57,7 @@ public abstract class RPGEngine{
 	 */
 	public void changeWorld(World world, int x, int y) {
 		myCurrentWorld.savePlayerPosition();
-		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().stop();
+		//if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().stop();
 		myPreviousWorld=myCurrentWorld;
 		setWorld(world);
 		if(myCurrentWorld.getSavedPlayerPosition()!=null){
