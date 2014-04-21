@@ -9,11 +9,15 @@ public class WorldData {
 	private Map<String, File> myImages;
 	private String primaryMap;
 	private String currentMap;
+    private Map<String,Item> myItems;
+    private Map<String,Weapon> myWeapons;
 	
 	public WorldData(){
         currentMap = null;
 		myLevels = new HashMap<String, MapData>();
 		myImages = new HashMap<String, File>();
+        myWeapons = new HashMap<String, Weapon>();
+        myItems = new HashMap<String, Item>();
 	}
 
 	public File getImage(String fileName) {
@@ -56,11 +60,11 @@ public class WorldData {
 
 	}
 	public Map<String, Item> getMyItems() {
-		return myLevels.get(currentMap).getMyItems();
+		return myItems;
 	}
 
     public void saveItem(String n, Item it){
-    	myLevels.get(currentMap).saveItem(n, it);
+    	myItems.put(n,it);
     }
 
 	public PlayerData getPlayData() {
@@ -76,11 +80,10 @@ public class WorldData {
 	}
 
     public void saveWeapons(String n, Weapon wp){
-    	myLevels.get(currentMap).saveWeapons(n, wp);
+    	myWeapons.put(n,wp);
     }
-
-    public Map<String,Weapon> getMyWeapons(){
-    	return myLevels.get(currentMap).getMyWeapons();
+    public Map<String,Weapon> getMyWeapons(){ 
+    	return myWeapons;
     }
 
     public void saveRandomEnemy(RandomEnemy re){

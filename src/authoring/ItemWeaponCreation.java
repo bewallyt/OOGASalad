@@ -2,21 +2,21 @@ package authoring;
 
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class ItemWeaponCreation extends CommonAttributes implements ActionListener{
+public class ItemWeaponCreation extends CommonAttributes implements ActionListener, MouseListener {
 
     private int speed;
     private int damage;
     private List<Attacks> weaponAttacks;
     private DefaultListModel attackListModel;
     private JList attackList;
-    private JButton addattack;
-    protected JCheckBox isWeapon;
-    protected JCheckBox isSpecialItem;
+    private JButton addAttack;
+    private JCheckBox isWeapon;
+    private JCheckBox isObjectiveItem;
+    private JCheckBox isItem;
 
     public ItemWeaponCreation(){
     }
@@ -24,24 +24,6 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     public void actionPerformed(ActionEvent e) {
         if("add".equals(e.getActionCommand())){
             attackCreation();
-        } else if("weapon".equals(e.getActionCommand())){
-            for(int j=2; j<5; j++){
-                textValues.get(attributes[j]).setEnabled(false);
-            }
-            attackList.setEnabled(true);
-            addattack.setEnabled(true);
-        } else if("simple".equals(e.getActionCommand())){
-            for(int j=0; j<5; j++){
-                textValues.get(attributes[j]).setEnabled(false);
-            }
-            attackList.setEnabled(false);
-            addattack.setEnabled(false);
-        } else{
-            for(int j=0; j<5; j++){
-                textValues.get(attributes[j]).setEnabled(true);
-            }
-            attackList.setEnabled(false);
-            addattack.setEnabled(false);
         }
     }
 
@@ -63,61 +45,80 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                         textValues.get(attributes[j]).setEnabled(false);
                     }
                     attackList.setEnabled(true);
-                    addattack.setEnabled(true);
+                    addAttack.setEnabled(true);
                 } else{
                     for(int j=2; j<5; j++){
                         textValues.get(attributes[j]).setEnabled(true);
                     }
                     attackList.setEnabled(false);
-                    addattack.setEnabled(false);
+                    addAttack.setEnabled(false);
                 }
             }
         });
 
-        isSpecialItem = new JCheckBox("Is Objective Item");
-        isSpecialItem.addItemListener(new ItemListener() {
+        isObjectiveItem = new JCheckBox("Is Objective Item");
+        isObjectiveItem.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    for (int j = 0; j < 5; j++) {
+                        textValues.get(attributes[j]).setEnabled(false);
+                    }
+                    attackList.setEnabled(false);
+                    addAttack.setEnabled(false);
+                } else {
+                    for (int j = 0; j < 5; j++) {
+                        textValues.get(attributes[j]).setEnabled(true);
+                    }
+                    attackList.setEnabled(false);
+                    addAttack.setEnabled(false);
+                }
+            }
+        });
+
+        isItem = new JCheckBox("Is Item");
+        isItem.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange()==ItemEvent.SELECTED){
                     for(int j=0; j<5; j++){
-                        textValues.get(attributes[j]).setEnabled(false);
-                    }
-                    attackList.setEnabled(false);
-                    addattack.setEnabled(false);
-                } else{
-                    for(int j=0; j<5; j++){
                         textValues.get(attributes[j]).setEnabled(true);
                     }
                     attackList.setEnabled(false);
-                    addattack.setEnabled(false);
+                    addAttack.setEnabled(false);
+                } else{
                 }
             }
         });
 
         JPanel namePanel = nameImageFields();
-        buttonGroup.add(isSpecialItem);
+        buttonGroup.add(isObjectiveItem);
         buttonGroup.add(isWeapon);
-        namePanel.add(isSpecialItem);
-        namePanel.add(isWeapon);
-
+        buttonGroup.add(isItem);
+        JPanel miniPanel = new JPanel();
+        miniPanel.add(isItem);
+        miniPanel.add(isObjectiveItem);
+        miniPanel.add(isWeapon);
+        namePanel.add(miniPanel);
 
         JPanel attributePanel = attributeFields();
 
         JPanel attackPanel = new JPanel();
         attackPanel.setLayout(new BoxLayout(attackPanel,BoxLayout.PAGE_AXIS));
-        addattack = new JButton("+ Attack");
-        addattack.setActionCommand("add");
-        addattack.addActionListener(this);
-        addattack.setEnabled(false);
+        addAttack = new JButton("+ Attack");
+        addAttack.setActionCommand("add");
+        addAttack.addActionListener(this);
+        addAttack.setEnabled(false);
 
         attackListModel = new DefaultListModel();
         attackList = new JList(attackListModel);
         attackList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         attackList.setVisibleRowCount(4);
         attackList.setEnabled(false);
+        attackList.addMouseListener(this);
         attackListModel.addElement(basicAttack.getMyName());
         JScrollPane aScroll = new JScrollPane(attackList);
-        attackPanel.add(addattack);
+        attackPanel.add(addAttack);
         attackPanel.add(aScroll);
 
         pane.addTab(nameTab, namePanel);
@@ -175,8 +176,12 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         if(result==JOptionPane.OK_OPTION){
              Attacks newAttack = new Attacks(nf.getText(),Integer.parseInt(sf.getText()),
                      Integer.parseInt(df.getText()));
-             weaponAttacks.add(newAttack);
-             attackListModel.addElement(nf.getText());
+             if(weaponAttacks.size()<4) {
+                 weaponAttacks.add(newAttack);
+                 attackListModel.addElement(nf.getText());
+             } else{
+                 JOptionPane.showMessageDialog(null,"Weapon cannot have more than 4 attacks");
+             }
         }
     }
 
@@ -189,7 +194,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
 
     private void makeAndSaveItem() {
         Item madeItem;
-        if(isSpecialItem.isSelected()){
+        if(!isObjectiveItem.isSelected()){
             madeItem = new Item(name,image,attributeValues);
         } else{
             madeItem = new Item(name);
@@ -198,4 +203,53 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
+            if (attackList.getSelectedIndex() != -1) {
+                String clicked = (String)attackList.getSelectedValue();
+                for(int i=0; i<weaponAttacks.size(); i++){
+                    if(weaponAttacks.get(i).getMyName().equals(clicked)){
+                        JPanel editPanel = new JPanel();
+                        JTextField name = new JTextField(clicked,10);
+                        JTextField speed = new JTextField(String.valueOf(weaponAttacks.get(i).getMySpeed()),5);
+                        JTextField damage = new JTextField(String.valueOf(weaponAttacks.get(i).getMyDamage()),5);
+                        editPanel.add(name);
+                        editPanel.add(speed);
+                        editPanel.add(damage);
+                        int edit = JOptionPane.showOptionDialog(null, editPanel, "Edit Attack",
+                                JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                        if(edit==JOptionPane.OK_OPTION){
+                            Attacks editedAttack = new Attacks(name.getText(),Integer.parseInt(speed.getText()),
+                                    Integer.parseInt(damage.getText()));
+                            weaponAttacks.remove(i);
+                            weaponAttacks.add(editedAttack);
+                            attackListModel.remove(attackList.getSelectedIndex());
+                            attackListModel.addElement(name.getText());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
