@@ -1,5 +1,6 @@
 package engine.menu;
 
+import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
 import engine.dialogue.MatrixNode;
 
@@ -12,6 +13,8 @@ import engine.dialogue.MatrixNode;
  */
 
 public class InteractionMatrix7x1 extends InteractionMatrix {
+	
+	private InteractionBox[] myInteractionBoxes;
 
 	public InteractionMatrix7x1() {
 		selectedNodeX = 0;
@@ -19,6 +22,7 @@ public class InteractionMatrix7x1 extends InteractionMatrix {
 		myNodes = new MatrixNode[1][7];
 		myXDimension = 1;
 		myYDimension = 7;
+		myInteractionBoxes = new InteractionBox[7];
 	}
 
 	/**
@@ -57,5 +61,9 @@ public class InteractionMatrix7x1 extends InteractionMatrix {
 	 * the right of the current option
 	 */
 	public void moveRight() {
+	}
+	
+	public void setManager(InteractionBox ib, int index){
+		myInteractionBoxes[index] = ib;
 	}
 }
