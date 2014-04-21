@@ -5,16 +5,12 @@ import java.util.*;
 
 public class MapData {
 
-    private List<BarrierData> myBarriers;
-    private List<DoorData> myDoors;
     private PlayerData playerData;
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
 	private List<EnemyData> enemyDatas;
 	private List<NPCData> myNPCs;
 	public MapData(int height, int width){
-        myBarriers = new ArrayList<BarrierData>();
-        myDoors = new ArrayList<DoorData>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
         myNPCs = new ArrayList<NPCData>();
@@ -56,14 +52,10 @@ public class MapData {
 
     public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
 
-    public void saveBarrier(BarrierData barrier){myBarriers.add(barrier);}
+    public void saveBarrier(BarrierData barrier){myTiles.get(barrier.getX()).get(barrier.getY()).addGridObjectData(barrier);}
     
-    public List<BarrierData> getBarriers(){return myBarriers;}
-    
-    public void saveDoor(DoorData door){myDoors.add(door);}
+    public void saveDoor(DoorData door){myTiles.get(door.getX()).get(door.getY()).addGridObjectData(door);}
 
-    public List<DoorData> getDoors(){return myDoors;}
-    
 	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
 	
 	public List<NPCData> getNPCs() { return myNPCs; }

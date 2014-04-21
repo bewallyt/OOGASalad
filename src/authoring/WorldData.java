@@ -101,16 +101,8 @@ public class WorldData {
 		myLevels.get(currentMap).saveNPC(myNPC);
 	}
     
-    public List<BarrierData> getBarriers(){
-    	return myLevels.get(currentMap).getBarriers();
-    }
-    
     public void saveDoor(DoorData door){
     	myLevels.get(currentMap).saveDoor(door);
-    }
-    
-    public List<DoorData> getDoors(){
-    	return myLevels.get(currentMap).getDoors();
     }
 
 
