@@ -2,12 +2,11 @@ package authoring;
 
 import java.util.Map;
 
-public class RandomEnemy extends PlayerData{
+public class RandomEnemy extends EnemyData{
 
 
-    public RandomEnemy(int x, int y, String image, String name, Map<String, Integer> startVals, String[] weps,
-                       String[] its) {
-        super(x, y, image, name, startVals, weps, its);
+    public RandomEnemy(int x, int y, String image, String name, Map<String, Integer> startVals, String[] weps) {
+        super(x, y, image, name, startVals, weps);
     }
 
     @Override

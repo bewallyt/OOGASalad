@@ -6,8 +6,8 @@ import java.awt.event.*;
 
 public class PlayerEnemyCreation extends CommonAttributes implements MouseListener, ActionListener {
 
-    private  JComboBox playerImages;
-    private  String[] playerImageChoices = {"Ash","Zelda"};
+    private  JComboBox playerEnemyImages;
+    private  String[] playerEnemyImageChoices = {"Ash","Zelda"};
     private  JList itemList;
     private int x;
     private int y;
@@ -25,20 +25,20 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     @Override
     public void actionPerformed(ActionEvent e) {
         if("mapenemy".equals(e.getActionCommand())){
-            playerImages.setEnabled(false);
-            imageName.setEnabled(true);
+            playerEnemyImages.setEnabled(true);
+            imageName.setEnabled(false);
             itemList.setEnabled(false);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
         } else if("random".equals(e.getActionCommand())){
-            playerImages.setEnabled(false);
+            playerEnemyImages.setEnabled(false);
             imageName.setEnabled(true);
             itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
         } else{
             imageName.setEnabled(false);
-            playerImages.setEnabled(true);
+            playerEnemyImages.setEnabled(true);
             itemList.setEnabled(true);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
@@ -76,10 +76,10 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         isRandomEnemy.setActionCommand("random");
         isRandomEnemy.addActionListener(this);
 
-        playerImages = new JComboBox(playerImageChoices);
+        playerEnemyImages = new JComboBox(playerEnemyImageChoices);
         JPanel namePanel = nameImageFields();
         imageName.setEnabled(false);
-        namePanel.add(playerImages);
+        namePanel.add(playerEnemyImages);
         JPanel personPanel = new JPanel();
         buttonChoices.add(isPlayer);
         buttonChoices.add(isEnemy);
@@ -148,6 +148,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             name = itemName.getText();
             x = Integer.parseInt(xcoor.getText());
             y = Integer.parseInt(ycoor.getText());
+            image = (String) playerEnemyImages.getSelectedItem();
 
             for(String s: textValues.keySet()){
                 attributeValues.put(s,Integer.parseInt(textValues.get(s).getText()));
@@ -167,15 +168,16 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
                 itemNames[j] = itemName;
             }
             if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
-                image = imageName.getText();
+                //image = imageName.getText();
                 if(isRandomEnemy.isSelected()){
+                    image = imageName.getText();
                     makeRandomEnemy();
                 } else {
                     movement = movementCheck.getSelection();
                     makeEnemy();
                 }
             } else{
-                image = (String) playerImages.getSelectedItem();
+                //image = (String) playerEnemyImages.getSelectedItem();
                 makePlayer();
             }
         }
@@ -183,7 +185,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 
     private void makeRandomEnemy() {
         RandomEnemy madeRandomEnemy = new RandomEnemy(Integer.parseInt(null),Integer.parseInt(null),
-                image,name,attributeValues,weaponNames,itemNames);
+                image,name,attributeValues,weaponNames);
         FeatureManager.getWorldData().saveRandomEnemy(madeRandomEnemy);
     }
 
