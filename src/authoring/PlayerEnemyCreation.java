@@ -33,18 +33,15 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     public void actionPerformed(ActionEvent e) {
         if("mapenemy".equals(e.getActionCommand())){
             playerEnemyImages.setEnabled(true);
-            imageName.setEnabled(false);
             itemList.setEnabled(false);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
         } else if("random".equals(e.getActionCommand())){
             playerEnemyImages.setEnabled(false);
-            imageName.setEnabled(true);
             itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
         } else{
-            imageName.setEnabled(false);
             playerEnemyImages.setEnabled(true);
             itemList.setEnabled(true);
             xcoor.setEnabled(true);
@@ -205,7 +202,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     }
     private void makeRandomEnemy() {
         RandomEnemy madeRandomEnemy = new RandomEnemy(Integer.parseInt(null),Integer.parseInt(null),
-                image,name,attributeValues,weaponNames);
+                editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames);
         FeatureManager.getWorldData().saveRandomEnemy(madeRandomEnemy);
     }
 

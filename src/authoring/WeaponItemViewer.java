@@ -105,9 +105,11 @@ public class WeaponItemViewer {
                                 detailItemPanel.setLayout(new BoxLayout(detailItemPanel,BoxLayout.PAGE_AXIS));
                                 JLabel details = new JLabel(dItem.getItemName());
                                 detailItemPanel.add(details);
+                                if(dItem.getMyItemValues()==null){} else{
                                 for(String v: dItem.getMyItemValues().keySet()){
                                     JLabel l = new JLabel(v+": "+String.valueOf(dItem.getMyItemValues().get(v)));
                                     detailItemPanel.add(l);
+                                }
                                 }
                                 JOptionPane.showMessageDialog(null,detailItemPanel,"Details",
                                         JOptionPane.INFORMATION_MESSAGE);
