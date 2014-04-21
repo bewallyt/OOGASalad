@@ -15,4 +15,16 @@ public class OptionsNode extends MenuNode {
 		}
 
 	}
+
+	@Override
+	void changeWorld() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void changeState() {
+		// TODO Auto-generated method stub
+		
+	}
 }

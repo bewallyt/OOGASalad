@@ -2,27 +2,16 @@ package engine.menu;
 
 import engine.dialogue.MatrixNode;
 
-public class MenuNode implements MatrixNode {
+public abstract class MenuNode implements MatrixNode {
 
 	public MenuNode() {
 
 	}
 
-	public void doAction() {
-
-	}
-
-	public void changeWorld() {
-
-	}
-
-	public void changeState() {
-
-	}
+	abstract void doAction();
+	abstract void changeWorld();
+	abstract void changeState();
 	
-	public String getString(){
-		return null;
-	}
 
 	@Override
 	public String getString() {
