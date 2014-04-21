@@ -35,6 +35,7 @@ public class Enemy extends NPC {
 //	}
 
 
+
 	/**
 	 * Sets the arena world that should be created if a battle is initiated.
 	 *
