@@ -39,6 +39,7 @@ public class MapDataParser {
 				TileData currTile = myMap.getTileData(i, j);
 				currData = currTile.getGridObjectDatas();
 
+
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 					if (data.getID().equals("Barrier")) {
@@ -58,10 +59,12 @@ public class MapDataParser {
 						myGridObjectList.add(gridobject);
 					}
 				}
+
 				myTileImageList.add(currTile.getImageName());
 			}
 		}
 	}
+
 
 	private void parseMap2(Player p) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
@@ -84,4 +87,5 @@ public class MapDataParser {
 			}
 		}
 	}
+
 }

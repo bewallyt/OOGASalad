@@ -70,6 +70,7 @@ public class ConversationManager implements InteractionBox {
 			printResponses(g2d, myResponses, xSize, ySize, width, height);
 		} else {
 			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
+			System.out.println(textToBeDisplayed);
 		}	
 	}
 
