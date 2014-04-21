@@ -93,7 +93,27 @@ public class WeaponItemViewer {
         itemList.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
+                    if (itemList.getSelectedIndex() != -1) {
+                        String itemClicked = (String) itemList.getSelectedValue();
+                        HashMap<String,Item> detailItems =
+                                (HashMap<String, Item>) FeatureManager.getWorldData().getMyItems();
+                        for(String s: detailItems.keySet()){
+                            if(itemClicked.equals(s)){
+                                Item dItem = detailItems.get(s);
+                                JPanel detailItemPanel = new JPanel();
+                                detailItemPanel.setLayout(new BoxLayout(detailItemPanel,BoxLayout.PAGE_AXIS));
+                                JLabel details = new JLabel(dItem.getItemName());
+                                detailItemPanel.add(details);
+                                for(String v: dItem.getMyItemValues().keySet()){
+                                    JLabel l = new JLabel(v+": "+String.valueOf(dItem.getMyItemValues().get(v)));
+                                    detailItemPanel.add(l);
+                                }
+                                JOptionPane.showMessageDialog(null,detailItemPanel,"Details",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
+                    }}
             }
 
             @Override
