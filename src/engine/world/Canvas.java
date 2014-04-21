@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.event.KeyListener;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -13,7 +14,6 @@ import javax.swing.JFrame;
 //import engine.AbstractGameState;
 import engine.Control;
 import engine.gridobject.GridObject;
-import engine.images.ScaledImage;
 
 public class Canvas extends JComponent{
 
@@ -25,6 +25,7 @@ public class Canvas extends JComponent{
 	private int myWorldWidth;
 	private int offsetMinX = 0;
 	private int offsetMinY=0;
+	private KeyListener myControl;
 
 	/**
 	 * Instantiates a new canvas.
@@ -39,6 +40,7 @@ public class Canvas extends JComponent{
 		myHeight=height;
 		myWidth=width;
 		frame.setSize((int) width, (int) height);
+		myFrame.add(this);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,12 +48,17 @@ public class Canvas extends JComponent{
 		frame.setFocusable(true);
 		frame.requestFocus();
 		frame.setBounds(100, 100,width, height-1);
-
+		myControl = null;
 	}
 
 	public void setWorld(World world){
 		myFrame.add(this);
-		myFrame.addKeyListener(new Control(this, world));
+		
+		if (myFrame.getKeyListeners().length != 0) {
+			myFrame.removeKeyListener(myControl);
+		}
+		myControl = new Control(this, world);
+		myFrame.addKeyListener(myControl);
 		myWorld = world;
 		myWorldHeight = myWorld.getPlayHeight();
 		myWorldWidth = myWorld.getPlayWidth();

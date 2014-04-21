@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class ItemWeaponCreation extends CommonAttributes implements ActionListener, ItemListener, MouseListener{
+public class ItemWeaponCreation extends CommonAttributes implements ActionListener{
 
     private int speed;
     private int damage;
@@ -15,6 +15,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private DefaultListModel attackListModel;
     private JList attackList;
     private JButton addattack;
+    protected JCheckBox isWeapon;
+    protected JCheckBox isSpecialItem;
 
     public ItemWeaponCreation(){
     }
@@ -22,18 +24,20 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     public void actionPerformed(ActionEvent e) {
         if("add".equals(e.getActionCommand())){
             attackCreation();
-        } else{}
-    }
-
-    public void itemStateChanged(ItemEvent e) {
-        if(e.getStateChange()==ItemEvent.SELECTED){
+        } else if("weapon".equals(e.getActionCommand())){
             for(int j=2; j<5; j++){
                 textValues.get(attributes[j]).setEnabled(false);
             }
             attackList.setEnabled(true);
             addattack.setEnabled(true);
+        } else if("simple".equals(e.getActionCommand())){
+            for(int j=0; j<5; j++){
+                textValues.get(attributes[j]).setEnabled(false);
+            }
+            attackList.setEnabled(false);
+            addattack.setEnabled(false);
         } else{
-            for(int j=2; j<5; j++){
+            for(int j=0; j<5; j++){
                 textValues.get(attributes[j]).setEnabled(true);
             }
             attackList.setEnabled(false);
@@ -49,11 +53,53 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
 
         String attackTab = "Weapon Attacks";
 
-        JCheckBox isWeapon = new JCheckBox("Is A Weapon?");
-        isWeapon.addItemListener(this);
+        ButtonGroup buttonGroup = new ButtonGroup();
+        isWeapon = new JCheckBox("Is Weapon");
+        isWeapon.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange()==ItemEvent.SELECTED){
+                    for(int j=2; j<5; j++){
+                        textValues.get(attributes[j]).setEnabled(false);
+                    }
+                    attackList.setEnabled(true);
+                    addattack.setEnabled(true);
+                } else{
+                    for(int j=2; j<5; j++){
+                        textValues.get(attributes[j]).setEnabled(true);
+                    }
+                    attackList.setEnabled(false);
+                    addattack.setEnabled(false);
+                }
+            }
+        });
+
+        isSpecialItem = new JCheckBox("Is Objective Item");
+        isSpecialItem.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange()==ItemEvent.SELECTED){
+                    for(int j=0; j<5; j++){
+                        textValues.get(attributes[j]).setEnabled(false);
+                    }
+                    attackList.setEnabled(false);
+                    addattack.setEnabled(false);
+                } else{
+                    for(int j=0; j<5; j++){
+                        textValues.get(attributes[j]).setEnabled(true);
+                    }
+                    attackList.setEnabled(false);
+                    addattack.setEnabled(false);
+                }
+            }
+        });
 
         JPanel namePanel = nameImageFields();
+        buttonGroup.add(isSpecialItem);
+        buttonGroup.add(isWeapon);
+        namePanel.add(isSpecialItem);
         namePanel.add(isWeapon);
+
 
         JPanel attributePanel = attributeFields();
 
@@ -67,7 +113,6 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         attackListModel = new DefaultListModel();
         attackList = new JList(attackListModel);
         attackList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        attackList.addMouseListener(this);
         attackList.setVisibleRowCount(4);
         attackList.setEnabled(false);
         attackListModel.addElement(basicAttack.getMyName());
@@ -87,7 +132,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
             name = itemName.getText();
             image = imageName.getText();
 
-            if(isWeapon.isSelected()){
+            if (isWeapon.isSelected()) {
                 speed = Integer.parseInt(textValues.get(attributes[0]).getText());
                 damage = Integer.parseInt(textValues.get(attributes[1]).getText());
                 makeWeapon();
@@ -99,7 +144,6 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
             }
 
         }
-
 
     }
 
@@ -133,7 +177,6 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                      Integer.parseInt(df.getText()));
              weaponAttacks.add(newAttack);
              attackListModel.addElement(nf.getText());
-
         }
     }
 
@@ -145,15 +188,14 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     }
 
     private void makeAndSaveItem() {
-        Item madeItem = new Item(name,image,attributeValues);
+        Item madeItem;
+        if(isSpecialItem.isSelected()){
+            madeItem = new Item(name,image,attributeValues);
+        } else{
+            madeItem = new Item(name);
+        }
         FeatureManager.getWorldData().saveItem(name,madeItem);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
     }
 
-
-    public void mouseClicked(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
 }

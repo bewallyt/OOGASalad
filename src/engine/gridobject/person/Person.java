@@ -36,9 +36,10 @@ public abstract class Person extends GridObject {
 	private Attack myCurrentAttack;
 
 	private DialogueDisplayControl myDialogueDisplayControl;
+	private String myName;
 
 
-	public Person(String[] animImages, double speed, int numTilesWidth, int numTilesHeight) {
+	public Person(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
 		resetMax();
@@ -46,6 +47,7 @@ public abstract class Person extends GridObject {
 		myItems = new ArrayList<Item>();
 		currentImageFile=getAnimImages()[myFacing];
 		myMoney=0;
+		myName=name;
 	}
 
 	private boolean isAnim(String[] animImages) {
@@ -266,6 +268,9 @@ public abstract class Person extends GridObject {
 	}
 	public Attack getCurrentAttack(){
 		return myCurrentAttack;
+	}
+	public String toString(){
+		return myName;
 	}
 	
 }

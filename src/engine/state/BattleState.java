@@ -10,6 +10,7 @@ public class BattleState extends AbstractState {
 	private boolean a=false;
 
 	public BattleState(BattleManager bm){
+		super();
 		myBattleManager=bm;
 	}
 	@Override

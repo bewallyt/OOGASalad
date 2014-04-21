@@ -83,15 +83,15 @@ public class BarrierCreation extends CommonAttributes{
 	private class createBarrierListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BarrierObject myBarrier=getBarrier();
+			BarrierData myBarrier=getBarrier();
 			if(validateText()){
 				FeatureManager.getWorldData().saveBarrier(myBarrier);
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
-		private BarrierObject getBarrier(){
-			return new BarrierObject(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription());
+		private BarrierData getBarrier(){
+			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription());
 		}
 	}
 }

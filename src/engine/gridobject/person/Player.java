@@ -25,9 +25,11 @@ public class Player extends Person {
 	private String[] myAnimImages;
 	private Door enteredDoor = null;
 	private double originalSpeed;
+	private String[] myItems;
+	private String[] myWeapons;
 
-	public Player(String[] animImages, double speed) {
-		super(animImages, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
+	public Player(String[] animImages, String name, double speed) {
+		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
 		myState = new WalkAroundState(this);
 		//setMyItems(null);
 	}
