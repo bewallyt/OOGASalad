@@ -23,7 +23,6 @@ public class EnemyData extends GridObjectData {
         myValues = startVals;
         myWeapons = weps;
         myMovement = movement;
-        init();
     }
     
     public EnemyData(List<Object> arguments) {

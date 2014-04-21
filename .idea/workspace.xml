@@ -110,22 +110,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnemyData.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="EnemyData.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/authoring/EnemyData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="690">
+            <state vertical-scroll-proportion="0.4329897" vertical-offset="48" max-vertical-offset="675">
               <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding>
-                <element signature="e#985#993#0" expanded="true" />
+                <element signature="e#969#977#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerData.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PlayerData.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28350514" vertical-offset="0" max-vertical-offset="582">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
               <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
               <folding />
             </state>
@@ -184,10 +184,10 @@
         <option value="$PROJECT_DIR$/src/authoring/Item.java" />
         <option value="$PROJECT_DIR$/src/authoring/ItemWeaponCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/GridObjectData.java" />
-        <option value="$PROJECT_DIR$/src/authoring/EnemyData.java" />
         <option value="$PROJECT_DIR$/src/authoring/PlayerEnemyCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/MapData.java" />
         <option value="$PROJECT_DIR$/src/authoring/PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/authoring/EnemyData.java" />
       </list>
     </option>
   </component>
@@ -746,12 +746,12 @@
       <workItem from="1397969377473" duration="1913000" />
       <workItem from="1398012952583" duration="1866000" />
       <workItem from="1398026891809" duration="389000" />
-      <workItem from="1398027830892" duration="14669000" />
+      <workItem from="1398027830892" duration="14901000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130081000" />
+    <option name="totallyTimeSpent" value="130313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="991" extended-state="6" />
@@ -1208,21 +1208,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/authoring/EnemyData.java">
+    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="690">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="e#985#993#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/authoring/PlayerData.java">
+    <entry file="file://$PROJECT_DIR$/src/authoring/EnemyData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28350514" vertical-offset="0" max-vertical-offset="582">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-          <folding />
+        <state vertical-scroll-proportion="0.4329897" vertical-offset="48" max-vertical-offset="675">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding>
+            <element signature="e#969#977#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
