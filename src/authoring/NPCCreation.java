@@ -99,12 +99,13 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 		myTextWindow.setPreferredSize(new Dimension(200,100));
 		newQueryOption = new JButton("New Query Option");
 		newQueryOption.addActionListener(new QueryListener());
-		newItemResponse = new JButton("New Query Option");
+		newItemResponse = new JButton("New Item Response");
 		newItemResponse.addActionListener(new ItemResponseListener());
 		myGoBack = new JButton("Go Up A Level");
 		myGoBack.addActionListener(new GoBackListener());
 		dialoguePanel.add(myTextWindow);
 		dialoguePanel.add(newQueryOption);
+		dialoguePanel.add(newItemResponse);
 		dialoguePanel.add(myGoBack);
 
         pane.add(nameTab,namePanel);
@@ -130,7 +131,12 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 		myResponses = new ArrayList<String>();
 		myResponses.add(0,myCurrent.getString());
 		for(UserQueryNode q: myCurrent.getChildren()){
-			myResponses.add("   "+q.getString());
+			if(q.getString()!=null){
+				myResponses.add("   "+q.getString());
+			}
+			else{
+				myResponses.add("   Item:"+q.getItem());
+			}
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
@@ -152,18 +158,23 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	}
 	private class ItemResponseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-//			if(myCurrent.getChildren().size()<4){
-//			frame = new JOptionPane("Input Dialogue");
-//			List<String> myItems = new List<String>();
-//			FeatureManager.getWorldData().getCurrentMap().get
-//			JComboBox myItems = new JComboBox(myItems);
-//			frame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
-//			UserQueryNode uqn = new UserQueryNode(s);
-//			String ss = frame.showInputDialog("Enter NPC Response");
-//			uqn.setChild(new NPCResponseNode(ss));
-//			myCurrent.addChild(uqn);
-//			setResponses();
-//			}
+			boolean alreadyItem=false;
+			for(UserQueryNode n: myCurrent.getChildren()){
+				if(n.getItem()!=null)
+					alreadyItem=true;
+			}
+			if(myCurrent.getChildren().size()<4&&!alreadyItem){
+			frame = new JOptionPane("Input Dialogue");
+			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
+			JComboBox myItemBox = new JComboBox(myItems.toArray());
+			frame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
+			UserQueryNode uqn = new UserQueryNode();
+			uqn.setItem((String)myItemBox.getSelectedItem());
+			String ss = frame.showInputDialog("Enter NPC Response");
+			uqn.setChild(new NPCResponseNode(ss));
+			myCurrent.addChild(uqn);
+			setResponses();
+			}
 		}
 	}
 	private class GoBackListener implements ActionListener{

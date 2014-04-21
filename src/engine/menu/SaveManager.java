@@ -9,7 +9,8 @@ public class SaveManager implements InteractionBox {
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,
 			int yOffset) {
-		// TODO Auto-generated method stub
+		g.drawString("Save dis shit", (int) xSize/10, ySize/2+120);
+		System.out.println("Save dis shit");
 		
 	}
 
