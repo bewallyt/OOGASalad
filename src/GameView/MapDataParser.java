@@ -24,7 +24,7 @@ public class MapDataParser {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
 		myTileImageList = new ArrayList<String>();
-		parseMap2(p);
+		parseMap(p);
 	}
 
 	public List<GridObject> getGridObjectList() {

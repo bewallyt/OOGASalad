@@ -14,10 +14,8 @@ public class ScaledImage {
 	private int myHeight;
 	private String myFile;
 	public ScaledImage(int width, int height, String filename){
-//		myWidth = width;
-//		myHeight = height;
-		myWidth = Constants.TILE_SIZE;
-		myHeight = Constants.TILE_SIZE;
+		myWidth = width;
+		myHeight = height;
 		myFile = filename;
 	}
 	
