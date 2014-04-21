@@ -47,7 +47,9 @@ public class MapDataParser {
 					/*gridobject = (GridObject) Reflection.createInstance(
 							data.getID(), data.getArguments());*/
 					try {
-						gridobject = (GridObject) Class.forName(data.getID())
+						String classname = data.getID();
+						
+						gridobject = (GridObject) Class.forName(classname)
 								.getConstructor().newInstance(data.getArguments());
 					} catch (Exception e) {
 						e.printStackTrace();
