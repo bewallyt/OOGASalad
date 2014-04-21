@@ -8,7 +8,7 @@ public class GridObjectData {
 	protected String myImage;
 	protected int x;
 	protected int y;
-	private List<Item> itemList=new ArrayList<Item>();
+	private List<Item> itemList = new ArrayList<Item>();
 	
 	public GridObjectData(int x, int y, String image){
 		this.x=x;
