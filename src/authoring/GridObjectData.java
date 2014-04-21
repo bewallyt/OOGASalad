@@ -9,8 +9,8 @@ import util.Constants;
 public class GridObjectData {
 
 	protected String myImage;
-	protected int x;
-	protected int y;
+	protected int width;
+	protected int height;
 
 	private List<Item> itemList=new ArrayList<Item>();
 	private String myID;
@@ -65,7 +65,7 @@ public class GridObjectData {
     }
 
     public void init(){
-		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
 	
 	public String getID() {
@@ -76,10 +76,10 @@ public class GridObjectData {
 		return myImage;
 	}
 	public int getX(){
-		return x;
+		return width;
 	}
 	public int getY(){
-		return y;
+		return height;
 	}
 	public void addItem(Item i){
 		

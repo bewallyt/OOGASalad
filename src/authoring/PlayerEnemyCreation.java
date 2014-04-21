@@ -1,6 +1,8 @@
 package authoring;
 
 import javax.swing.*;
+
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -19,6 +21,11 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     private JCheckBox two;
     private JCheckBox three;
     private Object movement;
+    private JFrame frame;
+    private JList weaponList;
+    private JRadioButton isRandomEnemy;
+    private JRadioButton isEnemy;
+    private ButtonGroup movementCheck;
 
     public PlayerEnemyCreation(){}
 
@@ -55,7 +62,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         isPlayer.setSelected(true);
         isPlayer.setActionCommand("player");
         isPlayer.addActionListener(this);
-        JRadioButton isEnemy = new JRadioButton("Map Enemy");
+        isEnemy = new JRadioButton("Map Enemy");
         isEnemy.setActionCommand("mapenemy");
         isEnemy.addActionListener(this);
         isEnemy.addItemListener(new ItemListener() {
@@ -72,13 +79,12 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
                 }
             }
         });
-        JRadioButton isRandomEnemy = new JRadioButton("Random Enemy");
+        isRandomEnemy = new JRadioButton("Random Enemy");
         isRandomEnemy.setActionCommand("random");
         isRandomEnemy.addActionListener(this);
 
         playerEnemyImages = new JComboBox(playerEnemyImageChoices);
         JPanel namePanel = nameImageFields();
-        imageName.setEnabled(false);
         namePanel.add(playerEnemyImages);
         JPanel personPanel = new JPanel();
         buttonChoices.add(isPlayer);
@@ -90,7 +96,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         namePanel.add(personPanel);
 
         JPanel movementPanel = new JPanel();
-        ButtonGroup movementCheck = new ButtonGroup();
+        movementCheck = new ButtonGroup();
         one = new JCheckBox("1: Side-Side");
         two = new JCheckBox("2: Player Follow");
         three = new JCheckBox("3: Stand-Still");
@@ -120,7 +126,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 
         JPanel weaponItemPanel = new JPanel(new FlowLayout());
         DefaultListModel listModelWeapon = new DefaultListModel();
-        JList weaponList = new JList(listModelWeapon);
+        weaponList = new JList(listModelWeapon);
         weaponList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         weaponList.addMouseListener(this);
         weaponList.setVisibleRowCount(5);
@@ -141,48 +147,62 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         pane.add(attributeTab,attributeFields());
         pane.add(weaponItemTab,weaponItemPanel);
 
-        int result = JOptionPane.showOptionDialog(null, pane, "New Player/Enemy", JOptionPane.CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, null, null);
+        frame=new JFrame("Player/Enemy Creation");
+        frame.setLayout(new FlowLayout());
+        frame.add(pane);
+        JButton createNPC=new JButton("Create Player/Enemy");
+        createNPC.addActionListener(new PlayerEnemyActionListener());
+        frame.add(createNPC);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        editor.dispose();
 
-        if(result == JOptionPane.OK_OPTION){
-            name = itemName.getText();
-            x = Integer.parseInt(xcoor.getText());
-            y = Integer.parseInt(ycoor.getText());
-            image = (String) playerEnemyImages.getSelectedItem();
-
-            for(String s: textValues.keySet()){
-                attributeValues.put(s,Integer.parseInt(textValues.get(s).getText()));
-            }
-            int wListSize = weaponList.getModel().getSize();
-            int iListSize = itemList.getModel().getSize();
-            weaponNames = new String[wListSize];
-            itemNames = new String[iListSize];
-            for(int i=0;i<wListSize;i++){
-                Object weapon = weaponList.getModel().getElementAt(i);
-                String weaponName = (String)weapon;
-                weaponNames[i] = weaponName;
-            }
-            for(int j=0;j<iListSize;j++){
-                Object item = itemList.getModel().getElementAt(j);
-                String itemName = (String)item;
-                itemNames[j] = itemName;
-            }
-            if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
-                //image = imageName.getText();
-                if(isRandomEnemy.isSelected()){
-                    image = imageName.getText();
-                    makeRandomEnemy();
-                } else {
-                    movement = movementCheck.getSelection();
-                    makeEnemy();
-                }
-            } else{
-                //image = (String) playerEnemyImages.getSelectedItem();
-                makePlayer();
-            }
-        }
+        
     }
+    private class PlayerEnemyActionListener implements ActionListener{
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			 name = itemName.getText();
+	            x = Integer.parseInt(xcoor.getText());
+	            y = Integer.parseInt(ycoor.getText());
+	            image = (String) playerEnemyImages.getSelectedItem();
+
+	            for(String s: textValues.keySet()){
+	                attributeValues.put(s,Integer.parseInt(textValues.get(s).getText()));
+	            }
+	            int wListSize = weaponList.getModel().getSize();
+	            int iListSize = itemList.getModel().getSize();
+	            weaponNames = new String[wListSize];
+	            itemNames = new String[iListSize];
+	            for(int i=0;i<wListSize;i++){
+	                Object weapon = weaponList.getModel().getElementAt(i);
+	                String weaponName = (String)weapon;
+	                weaponNames[i] = weaponName;
+	            }
+	            for(int j=0;j<iListSize;j++){
+	                Object item = itemList.getModel().getElementAt(j);
+	                String itemName = (String)item;
+	                itemNames[j] = itemName;
+	            }
+	            if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
+	                //image = imageName.getText();
+	                if(isRandomEnemy.isSelected()){
+	                    image = imageName.getText();
+	                    makeRandomEnemy();
+	                } else {
+	                    movement = movementCheck.getSelection();
+	                    makeEnemy();
+	                }
+	            } else{
+	                //image = (String) playerEnemyImages.getSelectedItem();
+	                makePlayer();
+	            }
+		        frame.dispose();
+		}
+    	
+    }
     private void makeRandomEnemy() {
         RandomEnemy madeRandomEnemy = new RandomEnemy(Integer.parseInt(null),Integer.parseInt(null),
                 image,name,attributeValues,weaponNames);

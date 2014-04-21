@@ -1,6 +1,9 @@
 package authoring;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +18,8 @@ public class CommonAttributes {
     protected JTextField imageName;
     protected String nameTab = "Name/Image";
     protected String attributeTab = "Attributes";
+    protected GridObjectImageEditor editor;
+    protected TilePanel imagePanel;
 
     public CommonAttributes(){}
 
@@ -43,7 +48,6 @@ public class CommonAttributes {
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);
-        imageName = new JTextField("defaultIW",15);
         JPanel namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
@@ -56,7 +60,13 @@ public class CommonAttributes {
         namePanel.add(nameLabel);
         namePanel.add(itemName);
         namePanel.add(imageLabel);
-        namePanel.add(imageName);
+        
+        
+        Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+        imagePanel = new TilePanel(1,1);
+		imagePanel.setBorder(defaultBorder);
+		namePanel.add(imagePanel);
+		editor=new GridObjectImageEditor(imagePanel);
         return namePanel;
     }
 }
