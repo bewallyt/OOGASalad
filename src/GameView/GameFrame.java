@@ -43,8 +43,8 @@ public class GameFrame extends RPGEngine {
 		}
 		initMusicTest();
 		setInit(true);
-//		createWorlds();
-		createWorlds2();
+		createWorlds();
+//		createWorlds2();
 	}
 
 	@Override
@@ -61,48 +61,29 @@ public class GameFrame extends RPGEngine {
 	/**
 	 * Communication between Data and Engine
 	 */
-
+	
 	private void createWorlds() {
+
 		createPlayer();
-
+		
 		for (MapData map : myWorldData.getMaps().values()) {
-
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
-			gridObjectList.add(myPlayer);
 			List<String> TileImageList = parser.getTileImageList();
+			gridObjectList.add(myPlayer);
 
-			// tile size is default. ask engine to take it out of constructor
 			WalkAroundWorld currWorld = new WalkAroundWorld(
-					map.getMapLength() * 40, map.getMapWidth() * 40, myPlayer,
+					map.getMapLength()*Constants.TILE_SIZE, 
+					map.getMapWidth()*Constants.TILE_SIZE, myPlayer, 
 					Constants.TILE_SIZE, gridObjectList);
-			setWorld(currWorld);
+			setWorld(currWorld); // this is only called for the initial world
 
+			currWorld.setTileObject(gridObjectList.get(0), 1, 6);
 			setTileImages(currWorld, TileImageList);
-			setGridObjects(currWorld, gridObjectList);
 		}
-	}
-	
-	private void createWorlds2() {
-		List<GridObject> gridObjectList = new ArrayList<GridObject>();
-
-		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
-				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
-				"PlayerLeft1.png", "PlayerLeft2.png"};
-		myPlayer = new Player(anim, 2);
-
-		MapData map = myWorldData.getMap("defaultworldkey");
-		MapDataParser parser = new MapDataParser(map, myPlayer);
-		List<GridObject> gridObjectList = parser.getGridObjectList();
-		gridObjectList.add(myPlayer);
 		
-		gridObjectList.add(myPlayer);
 	
-		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, myPlayer, 40, gridObjectList);
-		setWorld(outsideWorld); // this is only called for the initial world
 		
-		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 	}
 
 	private void createPlayer() {
@@ -125,8 +106,11 @@ public class GameFrame extends RPGEngine {
 
 	private void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
+		System.out.println("height: "+world.getTileGridHeight());
+		System.out.println("width: "+world.getTileGridWidth());
 		for (int i = 0; i < world.getTileGridHeight(); i++) {
 			for (int j = 0; j < world.getTileGridWidth(); j++) {
+//				System.out.println(list.get(n)+" i: "+i+" j: " + j + " n: " +n);
 				world.setTileImage(j, i, list.get(n));
 				n++;
 			}
