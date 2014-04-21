@@ -1,5 +1,7 @@
 package authoring;
 
+import java.util.List;
+
 import util.Constants;
 
 public class DoorData extends GridObjectData {
@@ -10,12 +12,13 @@ public class DoorData extends GridObjectData {
 	private String toMap;
 	
 	public DoorData(int x, int y, String image, int toX, int toY, String toMap) {
-		super(x,y,image, Constants.DOOR);
+		super(x, y, image, toX, toY, toMap, Constants.DOOR);
 		this.toX=toX;
 		this.toY=toY;
 		this.toMap=toMap;
 		init();
 	}
+	
 	public int getToX(){
 		return toX;
 	}

@@ -32,13 +32,14 @@ public class Constants {
     public static final int Y_CONST = 1;
     public static final int IMAGE_CONST = 2;
     public static final int NAME_CONST = 3;
-    public static final int STARTVALS_CONST = 4;
-    public static final int WEPS_CONST = 5;
+    public static final int VALUES_CONST = 4;
+    public static final int WEAPONS_CONST = 5;
     
-    public static final int TO_X_CONST = 3;
-    public static final int TO_Y_CONST = 4;
-    public static final int TO_MAP_CONST = 5;
+    public static final int TO_X_CONST = 6;
+    public static final int TO_Y_CONST = 7;
+    public static final int TO_MAP_CONST = 8;
     
+    public static final int ROOT_CONST = 9;
     
     
     // data
