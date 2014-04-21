@@ -11,14 +11,15 @@ public class GridObjectData {
 	protected String myImage;
 	protected int x;
 	protected int y;
+
 	private List<Item> itemList=new ArrayList<Item>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
 	// BarrierData
 	public GridObjectData(int x, int y, String image, String id) {
-
-		myArguments.add(id);
+		myID = id;
+		
 		myArguments.add(x);
 		myArguments.add(y);
 		myArguments.add(image);
@@ -26,8 +27,8 @@ public class GridObjectData {
 	
 	// DoorData
 	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
+		myID = id;
 
-		myArguments.add(id);
 		myArguments.add(x);
 		myArguments.add(y);
 		myArguments.add(image);
@@ -38,12 +39,25 @@ public class GridObjectData {
 	
 	// EnemyData
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
+		myID = id;
 		
+		myArguments.add(x);
+		myArguments.add(y);
+		myArguments.add(image);
+		myArguments.add(name);
+		myArguments.add(startVals);
+		myArguments.add(weps);
+		myArguments.add(movement);
 	}
 	
 	// NPCData
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
+		myID = id;
 		
+		myArguments.add(x);
+		myArguments.add(y);
+		myArguments.add(image);
+		myArguments.add(root);
 	}
 
     // Base empty constructor
