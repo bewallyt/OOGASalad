@@ -1,4 +1,4 @@
-package engine.menu;
+package engine.menu.nodes;
 
 import engine.dialogue.MatrixNode;
 
@@ -8,9 +8,9 @@ public abstract class MenuNode implements MatrixNode {
 
 	}
 
-	abstract void doAction();
-	abstract void changeWorld();
-	abstract void changeState();
+	public abstract void doAction();
+	public abstract void changeWorld();
+	public abstract void changeState();
 	
 
 	@Override

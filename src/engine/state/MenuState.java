@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import engine.Control;
 import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.person.Player;
-import engine.menu.MenuManager;
+import engine.menu.managers.MenuManager;
 
 public class MenuState extends AbstractState {
 

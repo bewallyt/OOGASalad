@@ -1,6 +1,7 @@
-package engine.menu;
+package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
+import engine.menu.managers.MenuManager;
 import engine.state.MenuState;
 import engine.state.SaveState;
 import Data.DataManager;
@@ -21,13 +22,13 @@ public class SaveNode extends MenuNode {
 	}
 
 	@Override
-	void changeWorld() {
+	public void changeWorld() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	void changeState() {
+	public void changeState() {
 		myPlayer.setState(new SaveState(myPlayer, myMenuManager));
 		
 	}
