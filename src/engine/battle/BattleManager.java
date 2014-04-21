@@ -99,7 +99,7 @@ public class BattleManager implements InteractionBox{
 		}
 	}
 	private void setNextChild(BattleSelectorNode node, BattleExecutable attack) {
-		BattleExecutorNode executorNode = new AttackExecutorNode(attack);
+		BattleExecutorNode executorNode = new BattleExecutorNode(attack);
 		node.setChild(executorNode);
 	}
 
