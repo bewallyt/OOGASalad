@@ -7,10 +7,7 @@ public class WorldData {
 
 	private Map<String, MapData> myLevels;
 	private Map<String, File> myImages;
-	protected static final String DEFAULT_MAP = "defaultworldkey";
-	protected static final int DEFAULT_MAP_WIDTH = 30;
-	protected static final int DEFAULT_MAP_HEIGHT = 30;
-
+	private String primaryMap;
 	private String currentMap;
 	
 	public WorldData(){
@@ -43,10 +40,17 @@ public class WorldData {
 		return myLevels;
 	}
 	
+	public void setPrimaryMap(String s){
+		primaryMap = s;
+	}
+	
 	public void setCurrentMap(String s){
 		currentMap = s;
 	}
 	
+	public String getCurrentMapName(){
+		return currentMap;
+	}
 	public MapData getCurrentMap(){
 		return myLevels.get(currentMap);
 
@@ -106,7 +110,5 @@ public class WorldData {
     	return myLevels.get(currentMap).getDoors();
     }
 
-    public void saveEnemy(EnemyData enemy) {myLevels.get(currentMap).saveEnemy(enemy);}
-    public List<EnemyData> getMyEnemyData(){ return myLevels.get(currentMap).getEnemies();}
 
 }
