@@ -134,7 +134,7 @@ public class Canvas extends JComponent{
 		for(int i=0; i<world.getGridObjectList().size(); i++) {
 			if(isInView(world.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
 				world.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
-				world.getGridObjectList().get(i).paintDialoge(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
+				world.getGridObjectList().get(i).paintDialogue(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
 		

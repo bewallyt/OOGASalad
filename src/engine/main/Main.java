@@ -58,7 +58,7 @@ public class Main extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, "Player", 2);
+		Player player = new Player(anim, "Player", 2, new String[1], new String[1]);
 		Attack attack = new Attack("playerattack");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
@@ -196,7 +196,7 @@ public class Main extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		Player player = new Player(anim, "player",2);
+		Player player = new Player(anim, "player",2, new String[1], new String[1]);
 
 
 		gridObjectList.add(player);
