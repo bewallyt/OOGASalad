@@ -11,7 +11,7 @@ package util;
 
 public class Constants {
 	// player
-	public static final int CANVASWIDTH = 400, CANVASHEIGHT = 400;
+	public static final int CANVASWIDTH = 500, CANVASHEIGHT = 500;
 	public static final int TILE_SIZE = 40;
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
