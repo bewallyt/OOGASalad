@@ -15,7 +15,7 @@ public class RunExecutorNode extends BattleExecutorNode {
 	}
 	@Override
 	public String getString() {
-		return "ran";
+		return "You Ran Away";
 	}
 
 }
