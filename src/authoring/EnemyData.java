@@ -31,7 +31,7 @@ public class EnemyData extends GridObjectData {
     	myValues = (Map<String, Integer>) arguments.get(4);
     	myWeapons = (String[]) arguments.get(5);
     }
-    
+
     private List<Object> makeArguments() {
     	List<Object> blah = new ArrayList<Object>();
     	return null;
@@ -40,4 +40,5 @@ public class EnemyData extends GridObjectData {
     public String getMyName(){return myName;}
     public Map<String,Integer> getMyValues(){return myValues;}
     public String[] getMyWeapons(){return myWeapons;}
+    public int getMyMovement(){return myMovement;}
 }
