@@ -44,6 +44,9 @@ public class MapDataParser {
 
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
+					
+					List<Object> myList = data.getArguments();
+					System.out.println(myList);
 
 					/*gridobject = (GridObject) Reflection.createInstance(
 							data.getID(), data.getArguments());*/
@@ -51,7 +54,7 @@ public class MapDataParser {
 						String classname = data.getID();
 						
 						gridobject = (GridObject) Class.forName(classname)
-								.getConstructor().newInstance(data.getArguments());
+								.getConstructor(List.class).newInstance(data.getArguments());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
