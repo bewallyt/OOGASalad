@@ -87,13 +87,15 @@ public class GameFrame extends RPGEngine {
 	}
 
 	private void createPlayer() {
-		// PlayerData myPlayerData = myWorldData.getPlayData();
+		PlayerData myPlayerData = myWorldData.getPlayData();
 
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		myPlayer = new Player(anim, "Brandon", 2);
+		String[] items = myPlayerData.getMyItems();
+		String[] weapons = myPlayerData.getMyWeapons();
+		myPlayer = new Player(anim, "Brandon", 2, items, weapons);
 		// myPlayer = new Player(myPlayerData.getMyAnimImages(), myPlayerData.getSpeed());
 	}
 
