@@ -39,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/authoring/ItemWeaponCreation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2927" max-vertical-offset="3870">
-              <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
+              <caret line="232" column="9" selection-start-line="207" selection-start-column="8" selection-end-line="232" selection-end-column="9" />
               <folding>
                 <element signature="e#1103#1800#0" expanded="true" />
                 <element signature="e#1789#1790#0" expanded="true" />
@@ -55,15 +55,9 @@
       <file leaf-file-name="WeaponItemViewer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/authoring/WeaponItemViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7427101" vertical-offset="182" max-vertical-offset="1335">
-              <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-              <folding>
-                <element signature="method#mouseClicked#0;class#WeaponItemViewer#0" expanded="false" />
-                <element signature="method#mousePressed#0;class#WeaponItemViewer#0" expanded="false" />
-                <element signature="method#mouseReleased#0;class#WeaponItemViewer#0" expanded="false" />
-                <element signature="method#mouseEntered#0;class#WeaponItemViewer#0" expanded="false" />
-                <element signature="method#mouseExited#0;class#WeaponItemViewer#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-1.5986278" vertical-offset="1367" max-vertical-offset="1950">
+              <caret line="34" column="77" selection-start-line="34" selection-start-column="77" selection-end-line="34" selection-end-column="77" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/authoring/FeatureManager.java" />
         <option value="$PROJECT_DIR$/src/authoring/NPCResponseNode.java" />
         <option value="$PROJECT_DIR$/src/authoring/DoorObject.java" />
-        <option value="$PROJECT_DIR$/src/authoring/WeaponItemViewer.java" />
         <option value="$PROJECT_DIR$/src/authoring/AddGameComponents.java" />
         <option value="$PROJECT_DIR$/src/authoring/WorldData.java" />
         <option value="$PROJECT_DIR$/src/authoring/GridObject.java" />
@@ -136,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/authoring/EnemyData.java" />
         <option value="$PROJECT_DIR$/src/authoring/PlayerEnemyCreation.java" />
         <option value="$PROJECT_DIR$/src/authoring/ItemWeaponCreation.java" />
+        <option value="$PROJECT_DIR$/src/authoring/WeaponItemViewer.java" />
       </list>
     </option>
   </component>
@@ -697,12 +691,12 @@
       <workItem from="1398027830892" duration="15426000" />
       <workItem from="1398045989427" duration="863000" />
       <workItem from="1398052474634" duration="58000" />
-      <workItem from="1398053019073" duration="5267000" />
+      <workItem from="1398053019073" duration="5590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137026000" />
+    <option name="totallyTimeSpent" value="137349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="991" extended-state="6" />
@@ -1123,8 +1117,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/ItemWeaponCreation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="992" max-vertical-offset="3870">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2927" max-vertical-offset="3870">
+          <caret line="232" column="9" selection-start-line="207" selection-start-column="8" selection-end-line="232" selection-end-column="9" />
           <folding>
             <element signature="e#1103#1800#0" expanded="true" />
             <element signature="e#1789#1790#0" expanded="true" />
@@ -1138,15 +1132,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/authoring/WeaponItemViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7427101" vertical-offset="182" max-vertical-offset="1335">
-          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-          <folding>
-            <element signature="method#mouseClicked#0;class#WeaponItemViewer#0" expanded="false" />
-            <element signature="method#mousePressed#0;class#WeaponItemViewer#0" expanded="false" />
-            <element signature="method#mouseReleased#0;class#WeaponItemViewer#0" expanded="false" />
-            <element signature="method#mouseEntered#0;class#WeaponItemViewer#0" expanded="false" />
-            <element signature="method#mouseExited#0;class#WeaponItemViewer#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.5986278" vertical-offset="1367" max-vertical-offset="1950">
+          <caret line="34" column="77" selection-start-line="34" selection-start-column="77" selection-end-line="34" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
