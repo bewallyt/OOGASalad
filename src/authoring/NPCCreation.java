@@ -48,6 +48,7 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	private int myModIndex;
 	private JButton newQueryOption;
 	private JButton myGoBack;
+	private JButton newItemResponse;
 	private JOptionPane frame;
 
     public NPCCreation(){}
@@ -98,6 +99,8 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 		myTextWindow.setPreferredSize(new Dimension(200,100));
 		newQueryOption = new JButton("New Query Option");
 		newQueryOption.addActionListener(new QueryListener());
+		newItemResponse = new JButton("New Query Option");
+		newItemResponse.addActionListener(new ItemResponseListener());
 		myGoBack = new JButton("Go Up A Level");
 		myGoBack.addActionListener(new GoBackListener());
 		dialoguePanel.add(myTextWindow);
@@ -145,6 +148,22 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 			myCurrent.addChild(uqn);
 			setResponses();
 			}
+		}
+	}
+	private class ItemResponseListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+//			if(myCurrent.getChildren().size()<4){
+//			frame = new JOptionPane("Input Dialogue");
+//			List<String> myItems = new List<String>();
+//			FeatureManager.getWorldData().getCurrentMap().get
+//			JComboBox myItems = new JComboBox(myItems);
+//			frame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
+//			UserQueryNode uqn = new UserQueryNode(s);
+//			String ss = frame.showInputDialog("Enter NPC Response");
+//			uqn.setChild(new NPCResponseNode(ss));
+//			myCurrent.addChild(uqn);
+//			setResponses();
+//			}
 		}
 	}
 	private class GoBackListener implements ActionListener{
