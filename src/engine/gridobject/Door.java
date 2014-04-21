@@ -2,6 +2,7 @@ package engine.gridobject;
 
 import java.util.List;
 
+import util.Constants;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
@@ -18,7 +19,7 @@ public class Door extends GridObject{
 	}
 	
 	public Door(List<Object> list){
-		super((String) list.get(0), (int) list.get(2), (int) list.get(3));
+		super((String) list.get(Constants.IMAGE_CONST), (int) list.get(Constants.WIDTH_CONST), (int) list.get(Constants.HEIGHT_CONST));
 	}
 	
 	/**
