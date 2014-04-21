@@ -73,18 +73,19 @@ public class MapData {
     public List<BarrierData> getBarriers(){return myBarriers;}
     
     public void saveDoor(DoorData door){myDoors.add(door);}
-    
+
     public List<DoorData> getDoors(){return myDoors;}
     
 	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
 	
 	public List<NPCData> getNPCs() { return myNPCs; }
-
+	
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
 
     }
 
     public List<EnemyData> getEnemies() {return enemyDatas;
     }
+
 
 }
