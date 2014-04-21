@@ -1,5 +1,7 @@
 package engine.gridobject;
 
+import java.util.List;
+
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
@@ -13,6 +15,10 @@ public class Door extends GridObject{
 	 */
 	public Door(String image, int numTilesWidth, int numTilesHeight) {
 		super(image, numTilesWidth, numTilesHeight);
+	}
+	
+	public Door(List<Object> list){
+		super((String) list.get(0), (int) list.get(2), (int) list.get(3));
 	}
 	
 	/**

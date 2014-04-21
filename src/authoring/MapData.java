@@ -1,12 +1,27 @@
 package authoring;
 
+import java.io.File;
 import java.util.*;
 
 public class MapData {
 	
-	List<List<TileData>> myTiles;
+    private Map<String,Item> myItems;
+    private Map<String,Weapon> myWeapons;
+    private List<BarrierData> myBarriers;
+    private List<DoorData> myDoors;
+    private PlayerData playerData;
+    private List<EnemyData> enemyDatas;
+	private List<List<TileData>> myTiles;
+	private List<RandomEnemy> myRandomEnemies;
 	
 	public MapData(int height, int width){
+        myWeapons = new HashMap<String, Weapon>();
+        myItems = new HashMap<String, Item>();
+        myBarriers = new ArrayList<BarrierData>();
+        myDoors = new ArrayList<DoorData>();
+        myRandomEnemies = new ArrayList<RandomEnemy>();
+        enemyDatas = new ArrayList<EnemyData>();
+
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){
 			List<TileData> temp = new ArrayList<TileData>();
@@ -27,9 +42,44 @@ public class MapData {
 	public int getMapWidth(){
 		return myTiles.get(0).size();
 	}
-	
+	public Map<String, Item> getMyItems() {
+		return myItems;
+	}
+
+    public void saveItem(String n, Item it){ myItems.put(n,it);}
+
+	public PlayerData getPlayData() {
+		return playerData;
+	}
+
+	public void savePlayer(PlayerData player) {
+		playerData = player;
+	}
+
 	public int getMapLength(){
 		return myTiles.size();
 	}
-	
+	public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
+
+    public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
+
+    public void saveRandomEnemy(RandomEnemy re){myRandomEnemies.add(re);}
+
+    public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
+
+    public void saveBarrier(BarrierData barrier){myBarriers.add(barrier);}
+    
+    public List<BarrierData> getBarriers(){return myBarriers;}
+    
+    public void saveDoor(DoorData door){myDoors.add(door);}
+    
+    public List<DoorData> getDoors(){return myDoors;}
+
+
+    public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
+
+    }
+
+    public List<EnemyData> getEnemies() {return enemyDatas;
+    }
 }

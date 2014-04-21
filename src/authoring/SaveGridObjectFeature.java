@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class SaveGridObjectFeature extends Feature{
+	/*
 	private JButton createButton;
 	private GridObjectCreation mySuperFeature;
 	private int x;
@@ -33,8 +34,9 @@ public class SaveGridObjectFeature extends Feature{
 			if(mySuperFeature.getData().isDefined()){
 				mySuperFeature.getData().init();
 				((GridViewerFeature)FeatureManager.getFeature("authoring.GridViewerFeature")).tileRepaint();
-				//mySuperFeature.getView().close();
+				mySuperFeature.getView().close();
 			}
 		}
 	}
+	*/
 }

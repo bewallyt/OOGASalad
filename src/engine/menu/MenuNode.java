@@ -19,5 +19,15 @@ public class MenuNode implements MatrixNode {
 	public void changeState() {
 
 	}
+	
+	public String getString(){
+		return null;
+	}
+
+	@Override
+	public String getString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
