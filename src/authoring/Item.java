@@ -14,6 +14,10 @@ public class Item {
         myItemValues = values;
     }
 
+    public Item(String name){
+        itemName = name;
+    }
+
     public String getItemName(){
             return itemName;
     }
