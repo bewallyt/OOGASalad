@@ -1,6 +1,6 @@
 package authoring;
 
-public class DoorObject extends GridObject {
+public class DoorObject extends GridObjectData {
  
 	
 	private int toX;

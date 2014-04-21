@@ -1,5 +1,7 @@
 package engine.gridobject.person;
 
+import java.util.List;
+
 import engine.ProximityChecker;
 import engine.battle.Attack;
 import engine.world.ArenaWorld;
@@ -10,6 +12,7 @@ public class Enemy extends NPC {
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
 	private ArenaWorld myWorld;
+	boolean wasBattled=false;
 
 
 	/**
@@ -25,6 +28,12 @@ public class Enemy extends NPC {
 	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
+	
+	public Enemy(List<Object> list) {
+		super((String[]) list.get(1), (int) list.get(4), (int) list.get(2),
+				(int) list.get(3), (int) list.get(5), (Player) list.get(6));
+	}
+
 
 	/**
 	 * Sets the arena world that should be created if a battle is initiated.
@@ -36,6 +45,7 @@ public class Enemy extends NPC {
 	}
 
 	public ArenaWorld getWorld(){
+	
 		return myWorld;
 	}
 
@@ -77,6 +87,12 @@ public class Enemy extends NPC {
 				ProximityChecker.isTopProximity(this, getPlayer())>=-2 && getFacing()==0)
 			return true;
 		return false;
+	}
+	public boolean getWasBattled(){
+		return wasBattled;
+	}
+	public void setWasBattled(){
+		wasBattled=true;
 	}
 	
 	

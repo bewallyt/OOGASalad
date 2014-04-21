@@ -23,7 +23,10 @@ public class Constants {
     public static final String TILEIMAGEPATH = "TileImage/";
     
     // authoring
-    
+    public static final String BARRIER = "Barrier";
+    public static final String DOOR = "Door";
+    public static final String NPC = "NPC";
+    public static final String ENEMY = "ENEMY";
     // data
     
     // util

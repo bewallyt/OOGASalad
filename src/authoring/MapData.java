@@ -7,18 +7,19 @@ public class MapData {
 	
     private Map<String,Item> myItems;
     private Map<String,Weapon> myWeapons;
-    private List<BarrierObject> myBarriers;
-    private List<DoorObject> myDoors;
+    private List<BarrierData> myBarriers;
+    private List<DoorData> myDoors;
     private PlayerData playerData;
     private List<EnemyData> enemyDatas;
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
+	private List<NPCData> myNPCs;
 	
 	public MapData(int height, int width){
         myWeapons = new HashMap<String, Weapon>();
         myItems = new HashMap<String, Item>();
-        myBarriers = new ArrayList<BarrierObject>();
-        myDoors = new ArrayList<DoorObject>();
+        myBarriers = new ArrayList<BarrierData>();
+        myDoors = new ArrayList<DoorData>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
 
@@ -67,14 +68,17 @@ public class MapData {
 
     public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
 
-    public void saveBarrier(BarrierObject barrier){myBarriers.add(barrier);}
+    public void saveBarrier(BarrierData barrier){myBarriers.add(barrier);}
     
-    public List<BarrierObject> getBarriers(){return myBarriers;}
+    public List<BarrierData> getBarriers(){return myBarriers;}
     
-    public void saveDoor(DoorObject door){myDoors.add(door);}
-    
-    public List<DoorObject> getDoors(){return myDoors;}
+    public void saveDoor(DoorData door){myDoors.add(door);}
 
+    public List<DoorData> getDoors(){return myDoors;}
+    
+	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
+	
+	public List<NPCData> getNPCs() { return myNPCs; }
 
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
 
