@@ -1,19 +1,23 @@
 package engine.menu;
 
+import engine.gridobject.person.Player;
+import engine.state.MenuState;
+import engine.state.SaveState;
 import Data.DataManager;
 
 public class SaveNode extends MenuNode {
 	
+	private Player myPlayer;
+	private MenuManager myMenuManager;
 	
-	
+	public SaveNode(Player p, MenuManager mm){
+		myPlayer = p;
+		myMenuManager = mm;
+		
+	}
 	@Override
 	public void doAction() {
-		// TODO Auto-generated method stub
-	}
-
-	public void save(String saveFile){
-		DataManager dm = new DataManager();
-		dm.saveWorldDataToFile(saveFile);
+		changeState();
 	}
 
 	@Override
@@ -24,7 +28,14 @@ public class SaveNode extends MenuNode {
 
 	@Override
 	void changeState() {
-		// TODO Auto-generated method stub
+		myPlayer.setState(new SaveState(myPlayer, myMenuManager));
 		
 	}
+	
+
+	public void save(String saveFile){
+		DataManager dm = new DataManager();
+		dm.saveWorldDataToFile(saveFile);
+	}
+
 }

@@ -1,7 +1,17 @@
 package engine.menu;
 
-public class NameNode extends MenuNode {
+import engine.gridobject.person.Player;
 
+public class NameNode extends MenuNode {
+	
+	private Player myPlayer;
+	private MenuManager myMenuManager;
+	
+	public NameNode(Player p, MenuManager mm){
+		myPlayer = p;
+		myMenuManager = mm;
+		
+	}
 	@Override
 	void doAction() {
 		// TODO Auto-generated method stub
