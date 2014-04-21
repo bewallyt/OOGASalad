@@ -76,10 +76,10 @@ public class GridObjectData {
 		return myImage;
 	}
 	public int getX(){
-		return x;
+		return 1;
 	}
 	public int getY(){
-		return y;
+		return 1;
 	}
 	public void addItem(Item i){
 		
