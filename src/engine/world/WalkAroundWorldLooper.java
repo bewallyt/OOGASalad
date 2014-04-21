@@ -7,6 +7,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.menu.MenuManager;
+import engine.state.WalkAroundState;
 import engine.gridobject.person.Person;
 
 
@@ -18,6 +19,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 		super(currentWorld);
 		myWorld = (WalkAroundWorld) getWorld();
 		getWorld().getPlayer().setSurroundingsChecker(new SurroundingChecker(myWorld));
+		getWorld().getPlayer().setState(new WalkAroundState(getWorld().getPlayer()));
 		setDialogueDisplayControl();
 		setMenuControl();
 	}
@@ -47,7 +49,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 			}
 			if(go instanceof Enemy){
 				if(((Enemy) go).isBattle()){
-					return ((Enemy) go).getWorld();
+					
+					if(!((Enemy) go).getWasBattled()){
+						return ((Enemy) go).getWorld();
+					}
 				}	
 			}
 			

@@ -25,7 +25,9 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.item.Item;
 import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 
@@ -57,7 +59,7 @@ public class Main extends RPGEngine {
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
 		Player player = new Player(anim, 2);
-		Attack attack = new Attack("attack");
+		Attack attack = new Attack("playerattack");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
 		List<Attack> attackList = new ArrayList<Attack>();
@@ -71,6 +73,13 @@ public class Main extends RPGEngine {
 		w2.setDamage(20, 100);
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);
+		
+		Item item1 = new StatBuffer("zeldasword.png", "item1", new Statistic("health",50,100), 10);
+		player.addItem(item1);
+		Item item2 = new StatBuffer("zeldasword.png", "item2", new Statistic("damage",30,100), 10);
+		player.addItem(item2);
+		Item item3 = new StatBuffer("zeldasword.png", "item3", new Statistic("damage",20,100), 10);
+		player.addItem(item3);
 		
 		NPC bafm = new NPC(new String[] {"rival.png","rival.png","rival.png","rival.png"}
 								,1,1,1, 3, player);
@@ -101,7 +110,7 @@ public class Main extends RPGEngine {
 		enemy.doBattleOnSight();
 
 		//enemy.setResponseNode(n);
-		Attack attack2 = new Attack("ck");
+		Attack attack2 = new Attack("enemyattack");
 		attack2.setSpeed(10, 100);
 		attack2.setDamage(10, 100);
 		List<Attack> attackList2 = new ArrayList<Attack>();
@@ -201,7 +210,7 @@ public class Main extends RPGEngine {
 	}
 	
 	private void initMusicTest() {
-		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
+		URL mainURL = Main.class.getResource("/music/fms.wav");
 		Music music = new Music(mainURL);
 		music.start();
 	}
