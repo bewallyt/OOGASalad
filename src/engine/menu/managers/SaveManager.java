@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
 
-import Data.DataManager;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
@@ -60,8 +59,7 @@ public class SaveManager implements InteractionBox {
 			if (displayString != null) {
 				g2d.drawString(displayString, 20, height + 150);
 			}
-		}
-		else{
+		} else {
 			g2d.drawString(displayString, 20, height + 115);
 		}
 	}

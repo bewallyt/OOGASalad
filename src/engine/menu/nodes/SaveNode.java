@@ -4,7 +4,6 @@ import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
 import engine.menu.managers.SaveManager;
 import engine.state.SaveState;
-import Data.DataManager;
 
 public class SaveNode extends MenuNode {
 	

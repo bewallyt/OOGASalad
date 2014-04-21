@@ -7,16 +7,16 @@ import engine.Control;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
 
-public class SaveState extends AbstractState {
+public class LoadState extends AbstractState {
 
 	private Player myPlayer;
 	private MenuManager myMenuManager;
-	private String saveFile;
 	private StringBuffer buffer = new StringBuffer();
 	private String displayString;
-	public final static String SAVE_FINISHED = "Save Complete!";
+	private String loadFile;
+	public final static String LOAD_FINISHED = "Load Complete!";
 
-	public SaveState(Player p, MenuManager mm) {
+	public LoadState(Player p, MenuManager mm) {
 		super();
 		myPlayer = p;
 		myMenuManager = mm;
@@ -35,7 +35,7 @@ public class SaveState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (saveFile == null) {
+		if (loadFile == null) {
 			if (e.getKeyCode() == Control.ESC) {
 				myPlayer.setState(new MenuState(myPlayer, myMenuManager));
 				myPlayer.setInteractionBox(myMenuManager);
@@ -46,8 +46,9 @@ public class SaveState extends AbstractState {
 				displayString = new String(buffer.toString());
 				
 			} else if (e.getKeyCode() == Control.ENTER) {
-				saveFile = buffer.toString();
-				save(saveFile);
+				loadFile = buffer.toString();
+				load(loadFile);
+				
 			}
 		} else {
 			myPlayer.setState(new MenuState(myPlayer, myMenuManager));
@@ -57,15 +58,15 @@ public class SaveState extends AbstractState {
 	}
 
 	public String getDisplayString() {
-		if (saveFile != null) {
-			displayString = "Save Complete!";
+		if (loadFile != null) {
+			displayString = "Load Complete!";
 		}
 		return displayString;
 	}
 
-	public void save(String saveFile) {
+	public void load(String loadFile) {
 		DataManager dm = new DataManager();
-		dm.saveWorldDataToFile(saveFile + ".json");
+		dm.loadWorldDataFromFile(loadFile + ".json");
 	}
 
 }

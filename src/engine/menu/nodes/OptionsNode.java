@@ -2,13 +2,15 @@ package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
-import GameView.GameFrame;
-import GameView.GameSelect;
+import engine.menu.managers.OptionsManager;
+import engine.state.LoadState;
+
 
 public class OptionsNode extends MenuNode {
 	
 	private Player myPlayer;
 	private MenuManager myMenuManager;
+	private OptionsManager myOptionsManager;
 	
 	public OptionsNode(Player p, MenuManager mm){
 		myPlayer = p;
@@ -17,26 +19,20 @@ public class OptionsNode extends MenuNode {
 	}
 	
 	public void doAction() {
-		GameFrame game = new GameFrame();
-		GameSelect select = new GameSelect();
-		game.initialize(select.getSelectedGame());
-		try {
-			game.doGameLoop();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
+		changeWorld();
+		changeState();
 	}
 
 	@Override
 	public void changeWorld() {
-		// TODO Auto-generated method stub
+		myOptionsManager = new OptionsManager(myPlayer);
+		myPlayer.setInteractionBox(myOptionsManager);
 		
 	}
 
 	@Override
 	public void changeState() {
-		// TODO Auto-generated method stub
+		myPlayer.setState(new LoadState(myPlayer, myMenuManager));
 		
 	}
 }
