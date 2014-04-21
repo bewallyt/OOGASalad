@@ -43,6 +43,9 @@ public class Grid extends JPanel{
 		drawGrid();
 	}
 
+	public TilePanel getTilePanel(int x, int y){
+		return world[x][y];
+	}
 	private void mapMaker(){
 		world = new TilePanel[myNumRows][myNumCols];
 
