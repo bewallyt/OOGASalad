@@ -1,10 +1,10 @@
-package engine.menu;
+package engine.menu.managers;
 
 import java.awt.Graphics2D;
 
 import engine.dialogue.InteractionBox;
 
-public class SaveManager implements InteractionBox {
+public class OptionsManager implements InteractionBox {
 
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,

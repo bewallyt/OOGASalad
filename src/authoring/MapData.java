@@ -9,11 +9,9 @@ public class MapData {
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
 	private List<EnemyData> enemyDatas;
-	private List<NPCData> myNPCs;
 	public MapData(int height, int width){
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
-        myNPCs = new ArrayList<NPCData>();
 
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){
@@ -56,9 +54,7 @@ public class MapData {
     
     public void saveDoor(DoorData door){myTiles.get(door.getX()).get(door.getY()).addGridObjectData(door);}
 
-	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
-	
-	public List<NPCData> getNPCs() { return myNPCs; }
+	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);}
 	
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
 

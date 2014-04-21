@@ -14,7 +14,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 //import engine.menu.MenuDisplayer;
-import engine.menu.MenuManager;
+import engine.menu.managers.MenuManager;
 
 public class WalkAroundWorld extends World {
 
