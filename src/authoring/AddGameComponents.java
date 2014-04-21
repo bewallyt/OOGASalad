@@ -15,6 +15,7 @@ public class AddGameComponents extends Feature implements ActionListener {
     private DoorCreation doorCreation;
     private BarrierCreation barrierCreation;
     private NPCCreation npcCreation;
+    private JFrame frame;
 
 
     public AddGameComponents(){
@@ -36,14 +37,19 @@ public class AddGameComponents extends Feature implements ActionListener {
             showCreationOptions();
         } else if("item/weapon".equals(e.getActionCommand())){
             itemWeaponCreation.creationPanel();
+            frame.dispose();
         } else if("player/enemy".equals(e.getActionCommand())){
             playerEnemyCreation.creationPanel();
+            frame.dispose();
         } else if("barrier".equals(e.getActionCommand())){
         	barrierCreation.creationPanel();
+        	frame.dispose();
         } else if ("door".equals(e.getActionCommand())){
         	doorCreation.creationPanel();
+        	frame.dispose();
         } else if ("npc".equals(e.getActionCommand())){
         	npcCreation.creationPanel();
+        	frame.dispose();
         }
         
     }
@@ -73,7 +79,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         FeatureManager.getWorldData().saveItem("Super Potion",potion);
 
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
-        JFrame frame=new JFrame();
+        frame=new JFrame();
         frame.setLocationRelativeTo(null);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel,BoxLayout.PAGE_AXIS));
