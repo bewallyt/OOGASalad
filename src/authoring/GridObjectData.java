@@ -58,8 +58,12 @@ public class GridObjectData {
 		myArguments.add(image);
 		myArguments.add(root);
 	}
-	
-	public void init(){
+
+    // Base empty constructor
+    public GridObjectData() {
+    }
+
+    public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 	

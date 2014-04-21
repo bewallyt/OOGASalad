@@ -12,7 +12,6 @@ public class PlayerData extends EnemyData{
                       String[] its) {
         super();
         myItems = its;
-        init();
     }
 
     public String[] getMyItems(){ return myItems;}
