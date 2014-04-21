@@ -93,7 +93,7 @@ public class GameFrame extends RPGEngine {
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
-		myPlayer = new Player(anim, 2);
+		myPlayer = new Player(anim, "player", 2);
 		// myPlayer = new Player(myPlayerData.getMyAnimImages(), myPlayerData.getSpeed());
 	}
 

@@ -28,18 +28,20 @@ public class Constants {
     public static final String NPC = "NPC";
     public static final String ENEMY = "ENEMY";
     
-    public static final int X_CONST = 0;
-    public static final int Y_CONST = 1;
+    public static final int WIDTH_CONST = 0;
+    public static final int HEIGHT_CONST = 1;
     public static final int IMAGE_CONST = 2;
+
     public static final int NAME_CONST = 3;
     public static final int VALUES_CONST = 4;
     public static final int WEAPONS_CONST = 5;
-    
-    public static final int TO_X_CONST = 6;
-    public static final int TO_Y_CONST = 7;
-    public static final int TO_MAP_CONST = 8;
-    
-    public static final int ROOT_CONST = 9;
+    public static final int MOVEMENT_CONST = 6;
+
+    public static final int TO_X_CONST = 3;
+    public static final int TO_Y_CONST = 4;
+    public static final int TO_MAP_CONST = 5;
+
+    public static final int ROOT_CONST = 3;
     
     
     // data

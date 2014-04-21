@@ -43,7 +43,7 @@ public class MapDataParser {
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 
-//					gridobject = (GridObject) Reflection.createInstance(data.getID(), data.getArguments());
+					gridobject = (GridObject) Reflection.createInstance(data.getID(), data.getArguments());
 					
 					if (gridobject != null) {
 						gridobject.setPosition(i, j);
