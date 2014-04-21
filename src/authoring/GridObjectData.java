@@ -12,6 +12,8 @@ public class GridObjectData {
 	protected int width;
 	protected int height;
 
+	private int myX;
+	private int myY;
 	private List<Item> itemList=new ArrayList<Item>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
@@ -19,6 +21,8 @@ public class GridObjectData {
 	// BarrierData
 	public GridObjectData(int x, int y, String image, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
 		myArguments.add(1);
 		myArguments.add(1);
@@ -76,10 +80,10 @@ public class GridObjectData {
 		return myImage;
 	}
 	public int getX(){
-		return 1;
+		return myX;
 	}
 	public int getY(){
-		return 1;
+		return myY;
 	}
 	public void addItem(Item i){
 		
