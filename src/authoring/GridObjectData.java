@@ -45,8 +45,12 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
 		
 	}
-	
-	public void init(){
+
+    // Base empty constructor
+    public GridObjectData() {
+    }
+
+    public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
 	}
 	

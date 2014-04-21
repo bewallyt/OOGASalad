@@ -24,6 +24,10 @@ public class EnemyData extends GridObjectData {
         myMovement = movement;
     }
 
+    public EnemyData() {
+        myMovement=Integer.parseInt(null);
+    }
+
     public String getMyName(){return myName;}
     public Map<String,Integer> getMyValues(){return myValues;}
     public String[] getMyWeapons(){return myWeapons;}
