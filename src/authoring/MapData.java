@@ -22,6 +22,7 @@ public class MapData {
         myDoors = new ArrayList<DoorData>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
+        myNPCs = new ArrayList<NPCData>();
 
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){

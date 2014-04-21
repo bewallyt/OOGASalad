@@ -115,17 +115,12 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
             name = itemName.getText();
             x = Integer.parseInt(xcoor.getText());
             y = Integer.parseInt(ycoor.getText());
-
-            for(String s: textValues.keySet()){
-                attributeValues.put(s,Integer.parseInt(textValues.get(s).getText()));
-            }
-            image = (String) playerImages.getSelectedItem();
             makeNPC();
         }
     }
 
     private void makeNPC(){
-    	NPCData myNPC = new NPCData(x,y,image,null);
+    	NPCData myNPC = new NPCData(x,y,image,myRoot);
     	FeatureManager.getWorldData().saveNPC(myNPC);
     }
 	private void setResponses(){
