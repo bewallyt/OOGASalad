@@ -10,7 +10,7 @@ public class PlayerData extends EnemyData{
 
     public PlayerData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
                       String[] its) {
-        super(x, y, image, name, startVals, weps);
+        super(x, y, image, name, startVals, weps, movement);
         myItems = its;
         init();
     }

@@ -18,6 +18,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     private JCheckBox one;
     private JCheckBox two;
     private JCheckBox three;
+    private String movement;
 
     public PlayerEnemyCreation(){}
 
@@ -170,6 +171,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
                 if(isRandomEnemy.isSelected()){
                     makeRandomEnemy();
                 } else {
+                    movement = movementCheck.getSelection().toString();
                     makeEnemy();
                 }
             } else{
@@ -191,8 +193,9 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     }
 
     private void makeEnemy() {
-        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames);
-        madeEnemy.init();
+        System.out.println(movement);
+        //EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames);
+        //madeEnemy.init();
     }
 
     @Override

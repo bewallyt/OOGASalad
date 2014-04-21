@@ -14,12 +14,15 @@ public class EnemyData extends GridObjectData {
     private Map<String,Integer> myValues;
     private String[] myWeapons;
     private String myName;
+    private int myMovement;
 
-    public EnemyData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps) {
+    public EnemyData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
+                     int movement) {
     	super(x, y, image, Constants.ENEMY);
         myName = name;
         myValues = startVals;
         myWeapons = weps;
+        myMovement = movement;
         init();
     }
     
