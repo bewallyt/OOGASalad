@@ -31,6 +31,7 @@ public class ImageManager {
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
 	public static final String DEFAULT_IMAGE_EXTENSION="gif";
 	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject", "TileImage"};
+	public static final String PLAYER_IMAGE_FOLDER="src/PlayerImages/";
 	
 	public ImageManager() {	
 	}
@@ -150,6 +151,18 @@ public class ImageManager {
 	public ImageFile loadTileImage(String name){
 		return loadImage(name, IMAGE_FOLDER_OPTIONS[1]);
 	}
+	public ImageFile loadPlayerImage(String name){
+		FileLister f=new FileLister();
+		List<String> playerImageFolders=f.getFileList(PLAYER_IMAGE_FOLDER);
+		for(String s: playerImageFolders){
+			//System.out.println("Initial Child: "+s+"/");
+			if(f.getFileList(PLAYER_IMAGE_FOLDER+s).contains(name)){
+				//System.out.println("FUll Path: "+ PLAYER_IMAGE_FOLDER+s+"/"+name);
+				return new ImageFile(name, PLAYER_IMAGE_FOLDER+s+"/"+name);
+			}
+		}
+		return null;
+	}
 	/**
 	 * Returns a list of all the names of currently saved images in the default image
 	 * folder. 
@@ -159,18 +172,16 @@ public class ImageManager {
 		return new FileLister().getFileList(path);
 	}
 	public static void main(String[] args){
+		/*
 		ImageManager image=new ImageManager();
 		JFileChooser chooser=new JFileChooser();
 		FileNameExtensionFilter filter=new FileNameExtensionFilter("jpg", "JPG", "png", "PNG", "gif");
 		chooser.setFileFilter(filter);
 		int returnVal=chooser.showOpenDialog(null);
 		File f=chooser.getSelectedFile();
-		//try {
-			//image.storeImage("TestImage2", f, "TileImage");
-		//} catch (IOException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}
+		*/
+		ImageManager image=new ImageManager();
+		image.loadPlayerImage("PlayerDown0.png");
 			
 	}
 }
