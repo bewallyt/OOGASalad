@@ -16,6 +16,7 @@ public class Music {
 	private AudioFormat myAudioFormat;
 	private SourceDataLine mySourceDataLine;
 	private Thread myThread;
+	private Thread myPlayThread;
 	
 	private int BUFFER_SIZE = 12800000;
 	
@@ -53,13 +54,18 @@ public class Music {
 			System.exit(1);
 		}
 	}
+	
+	public void setPlayThread(){
+		myPlayThread = myThread;
+	}
 
 	/**
 	 * Starts sound
 	 */
 	
 	public void start() {
-		myThread.start();
+		setPlayThread();
+		myPlayThread.start();
 	}
 
 	/**
@@ -68,7 +74,7 @@ public class Music {
 	
 	@SuppressWarnings("deprecation")
 	public void stop() {
-		myThread.stop();
+		myPlayThread.stop();
 	}
 
 	private Thread getLoopingThread() {

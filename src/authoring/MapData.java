@@ -4,24 +4,16 @@ import java.io.File;
 import java.util.*;
 
 public class MapData {
-	
-    private Map<String,Item> myItems;
-    private Map<String,Weapon> myWeapons;
-    private List<BarrierData> myBarriers;
-    private List<DoorData> myDoors;
+
     private PlayerData playerData;
-    private List<EnemyData> enemyDatas;
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
+	private List<EnemyData> enemyDatas;
 	private List<NPCData> myNPCs;
-	
 	public MapData(int height, int width){
-        myWeapons = new HashMap<String, Weapon>();
-        myItems = new HashMap<String, Item>();
-        myBarriers = new ArrayList<BarrierData>();
-        myDoors = new ArrayList<DoorData>();
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
+        myNPCs = new ArrayList<NPCData>();
 
 		myTiles = new ArrayList<List<TileData>>(height);
 		for(int i = 0; i < height; i++){
@@ -43,11 +35,6 @@ public class MapData {
 	public int getMapWidth(){
 		return myTiles.get(0).size();
 	}
-	public Map<String, Item> getMyItems() {
-		return myItems;
-	}
-
-    public void saveItem(String n, Item it){ myItems.put(n,it);}
 
 	public PlayerData getPlayData() {
 		return playerData;
@@ -60,30 +47,25 @@ public class MapData {
 	public int getMapLength(){
 		return myTiles.size();
 	}
-	public void saveWeapons(String n, Weapon wp){ myWeapons.put(n,wp);}
-
-    public Map<String,Weapon> getMyWeapons(){ return myWeapons;}
 
     public void saveRandomEnemy(RandomEnemy re){myRandomEnemies.add(re);}
 
     public List<RandomEnemy> getMyRandomEnemies(){ return myRandomEnemies;}
 
-    public void saveBarrier(BarrierData barrier){myBarriers.add(barrier);}
+    public void saveBarrier(BarrierData barrier){myTiles.get(barrier.getX()).get(barrier.getY()).addGridObjectData(barrier);}
     
-    public List<BarrierData> getBarriers(){return myBarriers;}
-    
-    public void saveDoor(DoorData door){myDoors.add(door);}
+    public void saveDoor(DoorData door){myTiles.get(door.getX()).get(door.getY()).addGridObjectData(door);}
 
-    public List<DoorData> getDoors(){return myDoors;}
-    
 	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
 	
 	public List<NPCData> getNPCs() { return myNPCs; }
-
+	
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
 
     }
 
     public List<EnemyData> getEnemies() {return enemyDatas;
     }
+
+
 }

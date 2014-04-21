@@ -6,14 +6,13 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
 
-public class BattleCalculate {
-	private int damageDealt;
+public class BattleCalculator {
 	private Player myPlayer;
 	private Enemy myEnemy;
 	private BattleAI myBattleAI;
 	private boolean dropWeapon = false;
 
-	public BattleCalculate(Player player, Enemy enemy){
+	public BattleCalculator(Player player, Enemy enemy){
 		myPlayer=player;
 		myBattleAI=new BattleAI(enemy);
 		myEnemy = enemy;
@@ -30,10 +29,6 @@ public class BattleCalculate {
 		return (person.getStatsMap().get("speed").getValue()+weapon.getSpeed().getValue()+attack.getSpeed().getValue());
 	}
 
-	public void chooseEnemyMove(){
-		Weapon weapon = myBattleAI.chooseWeapon();
-		Attack attack = myBattleAI.chooseAttack(weapon);
-	}
 	public void attack(Person attacker, Person victim, Weapon weapon, Attack attack){
 		int level = attacker.getStatsMap().get("level").getValue();
 		int playerDamage = attacker.getStatsMap().get("damage").getValue();
@@ -47,14 +42,13 @@ public class BattleCalculate {
 		if(attack.getEffect()!=null){
 			attack.getEffect().doEffect();
 		}
-		damageDealt=total;
+		System.out.println(myPlayer.getStatsMap().get("health").getValue());
 
 	}
 	private boolean checkDropWeaponStatus(){
 		boolean dropWeapon = false;
 		Random rand = new Random();
 		int randValue = rand.nextInt(10) + 1;
-		System.out.println("randvalue : " + randValue);
 		if (randValue < 7) {
 			dropWeapon = true;
 		}
@@ -72,6 +66,11 @@ public class BattleCalculate {
 			return true;
 		}
 		return false;
-
+	}
+	public boolean playerIsDead(){
+		if(myPlayer.getStatsMap().get("health").getValue()<=0){
+			return true;
+		}
+		return false;
 	}
 }
