@@ -90,6 +90,9 @@ public class WorldData {
     public void saveBarrier(BarrierData barrier){
     	myLevels.get(currentMap).saveBarrier(barrier);
     }
+	public void saveNPC(NPCData myNPC) {
+		myLevels.get(currentMap).saveNPC(myNPC);
+	}
     
     public List<BarrierData> getBarriers(){
     	return myLevels.get(currentMap).getBarriers();
