@@ -53,10 +53,13 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated ";
 	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Picked dropped weapon!";
 	private static final String TEXT_DISPLAYED_PLAYER_DEAD="You have been defeated!";
+	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
 	public static final int EXITWON = 8;
 	private static final int PLAYERDEAD = 9;
 	public static final int EXITLOST=11;
 	private static final int BATTLELOST = 10;
+	private final static int ITEMUSED=12;
+	private String itemUsedName = "";
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private boolean dropWeapon = false;
@@ -72,7 +75,7 @@ public class BattleManager implements InteractionBox{
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
 		setWeaponChildrenNodes(myWeaponSelector);
-		//		setBagChildrenNodes(myBagSelector);
+		setBagChildrenNodes(myBagSelector);
 		setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
@@ -181,7 +184,7 @@ public class BattleManager implements InteractionBox{
 		else if(myCurrentState==BATTLELOST){
 			myCurrentState=EXITLOST;
 		}
-		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
+		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED || myCurrentState==ITEMUSED){
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
@@ -231,8 +234,12 @@ public class BattleManager implements InteractionBox{
 					myCurrentState=PLAYERDEAD;
 				
 			}
-			else if(executable instanceof Item)
+			else if(executable instanceof Item){
 				((Item) executable).useItem();
+				myCurrentState=ITEMUSED;
+				itemUsedName=((Item) executable).getName();
+				setCurrentTextToBeDisplayed();
+			}
 			else if(executable instanceof Run){
 				//ran=true;
 				myCurrentState=RAN;
@@ -294,6 +301,9 @@ public class BattleManager implements InteractionBox{
 	private void setCurrentTextToBeDisplayed() {
 		if(myCurrentState==WEAPONSELECTED){
 			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
+		}
+		else if(myCurrentState==ITEMUSED){
+			textToBeDisplayed=TEXT_DISPLAYED_ITEM_USED + itemUsedName;
 		}
 		else if (myCurrentState==PLAYERDEAD){
 			textToBeDisplayed=TEXT_DISPLAYED_PLAYER_DEAD;
