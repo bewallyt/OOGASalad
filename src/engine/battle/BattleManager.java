@@ -23,7 +23,7 @@ import engine.gridobject.person.Player;
 import engine.item.Item;
 
 public class BattleManager implements InteractionBox{
-	BattleCalculate myBattleCalculate;
+	BattleCalculator myBattleCalculate;
 	private Player myPlayer;
 	private Enemy myEnemy;
 	private BattleAI myBattleAI;
@@ -41,7 +41,7 @@ public class BattleManager implements InteractionBox{
 	private final static int WEAPONSELECTED=4;
 	private final static int RAN=5;
 	public final static int ENEMYDEAD=6;
-	private final static int BATTLEDONE=7;
+	private final static int BATTLEWON=7;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -50,9 +50,13 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_SECOND_ATTACK_COMPLETED="second attack damaged by: ";
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
-	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated the Enemy!";
-	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Defeated Enemey!Picked dropped weapon!";
-	public static final int EXIT = 8;
+	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated ";
+	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Picked dropped weapon!";
+	private static final String TEXT_DISPLAYED_PLAYER_DEAD="You have been defeated!";
+	public static final int EXITWON = 8;
+	private static final int PLAYERDEAD = 9;
+	public static final int EXITLOST=11;
+	private static final int BATTLELOST = 10;
 	private String textToBeDisplayed;
 	private boolean ran=false;
 	private boolean dropWeapon = false;
@@ -163,12 +167,19 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==RAN){
 			ran=true;
 		}
+		else if(myCurrentState==PLAYERDEAD){
+			setCurrentTextToBeDisplayed();
+			myCurrentState=BATTLELOST;
+		}
 		else if (myCurrentState==ENEMYDEAD){
 			setCurrentTextToBeDisplayed();
-			myCurrentState=BATTLEDONE;
+			myCurrentState=BATTLEWON;
 		}
-		else if(myCurrentState==BATTLEDONE){
-			myCurrentState=EXIT;
+		else if(myCurrentState==BATTLEWON){
+			myCurrentState=EXITWON;
+		}
+		else if(myCurrentState==BATTLELOST){
+			myCurrentState=EXITLOST;
 		}
 		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
 			setOriginalNodes();
@@ -182,9 +193,13 @@ public class BattleManager implements InteractionBox{
 			myCurrentVictim=tempAttacker;
 			setCurrentTextToBeDisplayed();
 			myBattleCalculate.attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
+			myCurrentState=SECONDATTACKHAPPENED;
 			if(myBattleCalculate.enemyIsDead())
 				myCurrentState=ENEMYDEAD;
-			myCurrentState=SECONDATTACKHAPPENED;
+			if(myBattleCalculate.playerIsDead()){
+				myCurrentState=PLAYERDEAD;
+			}
+			
 
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
@@ -192,10 +207,11 @@ public class BattleManager implements InteractionBox{
 			if(executable instanceof Weapon){
 				myPlayer.setCurrentWeapon((Weapon) executable);
 				myCurrentState=WEAPONSELECTED;
+				updateAttackList();
 				setCurrentTextToBeDisplayed();
 			}
 			else if(executable instanceof Attack){
-				myBattleCalculate=new BattleCalculate(myPlayer, myEnemy);
+				myBattleCalculate=new BattleCalculator(myPlayer, myEnemy);
 				Weapon enemyWeapon = myBattleAI.chooseWeapon();
 				myEnemy.setCurrentWeapon(enemyWeapon);
 				myEnemy.setCurrentAttack(myBattleAI.chooseAttack(enemyWeapon));
@@ -211,6 +227,8 @@ public class BattleManager implements InteractionBox{
 				myBattleCalculate.attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
 				if(myBattleCalculate.enemyIsDead())
 					myCurrentState=ENEMYDEAD;
+				if(myBattleCalculate.playerIsDead())
+					myCurrentState=PLAYERDEAD;
 				
 			}
 			else if(executable instanceof Item)
@@ -277,19 +295,22 @@ public class BattleManager implements InteractionBox{
 		if(myCurrentState==WEAPONSELECTED){
 			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
 		}
+		else if (myCurrentState==PLAYERDEAD){
+			textToBeDisplayed=TEXT_DISPLAYED_PLAYER_DEAD;
+		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
-			System.out.println(myCurrentAttacker);
-			textToBeDisplayed="Attacker" + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().getName();
+			textToBeDisplayed=myCurrentAttacker.toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().getName();
 		}
 		else if(myCurrentState==RAN){
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;
 		}
 		else if(myCurrentState==ENEMYDEAD){
+			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD + myEnemy.toString();
 			if (dropWeapon) {
 				textToBeDisplayed=TEXT_DISPLAYED_DROPPED_WEAPON;
-			} else {
-				textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD;
-			}
+			} 
+				
+			
 		}
 	}
 	public boolean didRun(){

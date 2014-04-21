@@ -10,11 +10,10 @@ public class MapData {
     private List<BarrierData> myBarriers;
     private List<DoorData> myDoors;
     private PlayerData playerData;
-    private List<EnemyData> enemyDatas;
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
+	private List<EnemyData> enemyDatas;
 	private List<NPCData> myNPCs;
-	
 	public MapData(int height, int width){
         myWeapons = new HashMap<String, Weapon>();
         myItems = new HashMap<String, Item>();
@@ -80,11 +79,13 @@ public class MapData {
 	public void saveNPC(NPCData myNPC) { myNPCs.add(myNPC); }
 	
 	public List<NPCData> getNPCs() { return myNPCs; }
-
+	
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);
 
     }
 
     public List<EnemyData> getEnemies() {return enemyDatas;
     }
+
+
 }
