@@ -20,6 +20,7 @@ public class Control implements KeyListener{
 	public static int RIGHT = 39;
 	public static int A = 65;
 	public static int SPACE = 32;
+	public static int ESC = 27;
 	Set<Integer> pressedKeys = new HashSet<Integer>();
 
 	
