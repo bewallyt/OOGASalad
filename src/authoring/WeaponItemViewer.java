@@ -4,12 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WeaponItemViewer implements MouseListener {
+public class WeaponItemViewer {
 
     private JFrame weaponFrame;
+    private JFrame detailFrame;
     private DefaultListModel weaponListModel;
     private JList weaponList;
     private DefaultListModel itemListModel;
@@ -20,6 +22,7 @@ public class WeaponItemViewer implements MouseListener {
     public WeaponItemViewer(){
         weaponMap = new HashMap<String, Weapon>();
         itemMap = new HashMap<String, Item>();
+        detailFrame = new JFrame();
         weaponFrame = new JFrame("Existing Weapons/Items");
         weaponFrame.setLayout(new BorderLayout());
         weaponFrame.setBounds(100, 0, 300, 300);
@@ -32,7 +35,32 @@ public class WeaponItemViewer implements MouseListener {
                 if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     if (weaponList.getSelectedIndex() != -1) {
                         String clicked = (String)weaponList.getSelectedValue();
-                        for(int i=0; i<weaponList.getModel().getSize(); i++){
+                        HashMap<String,Weapon> detailsWeaponMap =
+                                (HashMap<String, Weapon>) FeatureManager.getWorldData().getMyWeapons();
+                        for(String s: detailsWeaponMap.keySet()){
+                            if(clicked.equals(s)){
+                                Weapon editWeapon = detailsWeaponMap.get(s);
+                                JPanel detailsPanel = new JPanel();
+                                detailsPanel.setLayout(new BoxLayout(detailsPanel,BoxLayout.PAGE_AXIS));
+                                ArrayList<Attacks> detailAttacks = (ArrayList<Attacks>) editWeapon.getMyAttacks();
+                                JLabel dWeapon = new JLabel(editWeapon.getMyName()+" -"+" Speed:"+
+                                        String.valueOf(editWeapon.getMySpeed())+" -"+" Damage:"+
+                                        String.valueOf(editWeapon.getMyDamage()));
+                                detailsPanel.add(dWeapon);
+                                JLabel newLine = new JLabel("<html><br></html>");
+                                JLabel attack = new JLabel("Attacks:");
+                                detailsPanel.add(newLine);
+                                detailsPanel.add(attack);
+                                for(int i=0;i<detailAttacks.size();i++){
+                                    JLabel dAttack = new JLabel(detailAttacks.get(i).getMyName()+" -"+" Speed:"+
+                                    String.valueOf(detailAttacks.get(i).getMySpeed())+" -"+" Damage:"+
+                                    String.valueOf(detailAttacks.get(i).getMyDamage()));
+                                    detailsPanel.add(dAttack);
+                                }
+                                JOptionPane.showMessageDialog(detailFrame,detailsPanel,"Details",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                            }
+
                         }
                     }
                 }
@@ -62,7 +90,32 @@ public class WeaponItemViewer implements MouseListener {
         itemListModel = new DefaultListModel();
         itemList = new JList(itemListModel);
         itemList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        itemList.addMouseListener(this);
+        itemList.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         itemList.setVisibleRowCount(10);
         JScrollPane weaponScroll = new JScrollPane(weaponList);
         JScrollPane itemScroll = new JScrollPane(itemList);
@@ -99,31 +152,6 @@ public class WeaponItemViewer implements MouseListener {
                 }
             }
         }
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
 
     }
 }
