@@ -6,7 +6,7 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.NPC;
-import engine.menu.MenuManager;
+import engine.menu.managers.MenuManager;
 import engine.state.WalkAroundState;
 import engine.gridobject.person.Person;
 

@@ -1,4 +1,4 @@
-package engine.menu;
+package engine.menu.managers;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +13,8 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
+import engine.menu.InteractionMatrix7x1;
+import engine.menu.nodes.MenuNode;
 
 public class MenuManager implements InteractionBox {
 
@@ -76,7 +78,7 @@ public class MenuManager implements InteractionBox {
 
 		for (int i = 0; i < names.length; i++) {
 			mySelections.setNode(
-					(MenuNode) Reflection.createInstance("engine.menu."+ names[i] + "Node", myPlayer, this), 0, i);
+					(MenuNode) Reflection.createInstance("engine.menu.nodes."+ names[i] + "Node", myPlayer, this), 0, i);
 		}
 	}
 	
@@ -87,7 +89,7 @@ public class MenuManager implements InteractionBox {
 
 		for (int i = 0; i < names.length; i++) {
 			mySelections.setManager(
-					(InteractionBox) Reflection.createInstance("engine.menu."+ names[i] +"Manager"), i);
+					(InteractionBox) Reflection.createInstance("engine.menu.managers."+ names[i] +"Manager"), i);
 		}
 	}
 	
