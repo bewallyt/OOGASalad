@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PlayerEnemyCreation extends CommonAttributes implements ItemListener, MouseListener, ActionListener {
+public class PlayerEnemyCreation extends CommonAttributes implements MouseListener, ActionListener {
 
     private  JComboBox playerImages;
     private  String[] playerImageChoices = {"Ash","Zelda"};
@@ -15,21 +15,11 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
     private String[] itemNames;
     private JTextField xcoor;
     private JTextField ycoor;
+    private JCheckBox one;
+    private JCheckBox two;
+    private JCheckBox three;
 
     public PlayerEnemyCreation(){}
-
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-        if(e.getStateChange()==ItemEvent.SELECTED){
-            playerImages.setEnabled(false);
-            imageName.setEnabled(true);
-            itemList.setEnabled(false);
-        } else{
-            imageName.setEnabled(false);
-            playerImages.setEnabled(true);
-            itemList.setEnabled(true);
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,13 +32,15 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
         } else if("random".equals(e.getActionCommand())){
             playerImages.setEnabled(false);
             imageName.setEnabled(true);
-            itemList.setEnabled(true);
+            itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
         } else{
             imageName.setEnabled(false);
             playerImages.setEnabled(true);
             itemList.setEnabled(true);
+            xcoor.setEnabled(true);
+            ycoor.setEnabled(true);
         }
     }
 
@@ -65,6 +57,20 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
         JRadioButton isEnemy = new JRadioButton("Map Enemy");
         isEnemy.setActionCommand("mapenemy");
         isEnemy.addActionListener(this);
+        isEnemy.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange()==ItemEvent.SELECTED){
+                    one.setEnabled(true);
+                    two.setEnabled(true);
+                    three.setEnabled(true);
+                } else{
+                    one.setEnabled(false);
+                    two.setEnabled(false);
+                    three.setEnabled(false);
+                }
+            }
+        });
         JRadioButton isRandomEnemy = new JRadioButton("Random Enemy");
         isRandomEnemy.setActionCommand("random");
         isRandomEnemy.addActionListener(this);
@@ -73,12 +79,30 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
         JPanel namePanel = nameImageFields();
         imageName.setEnabled(false);
         namePanel.add(playerImages);
+        JPanel personPanel = new JPanel();
         buttonChoices.add(isPlayer);
         buttonChoices.add(isEnemy);
         buttonChoices.add(isRandomEnemy);
-        namePanel.add(isPlayer);
-        namePanel.add(isEnemy);
-        namePanel.add(isRandomEnemy);
+        personPanel.add(isPlayer);
+        personPanel.add(isEnemy);
+        personPanel.add(isRandomEnemy);
+        namePanel.add(personPanel);
+
+        JPanel movementPanel = new JPanel();
+        ButtonGroup movementCheck = new ButtonGroup();
+        one = new JCheckBox("1: Side-Side");
+        two = new JCheckBox("2: Player Follow");
+        three = new JCheckBox("3: Stand-Still");
+        one.setEnabled(false);
+        two.setEnabled(false);
+        three.setEnabled(false);
+        movementCheck.add(one);
+        movementCheck.add(two);
+        movementCheck.add(three);
+        movementPanel.add(one);
+        movementPanel.add(two);
+        movementPanel.add(three);
+        namePanel.add(movementPanel);
 
         JPanel locationPanel = new JPanel(new SpringLayout());
         JLabel xcoordinate = new JLabel("X");
@@ -168,7 +192,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ItemListene
 
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames);
-        FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        madeEnemy.init();
     }
 
     @Override

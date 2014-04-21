@@ -1,5 +1,7 @@
 package authoring;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import util.Constants;
@@ -14,11 +16,23 @@ public class EnemyData extends GridObjectData {
     private String myName;
 
     public EnemyData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps) {
-        super(x, y, image, Constants.ENEMY);
+    	super(x, y, image, Constants.ENEMY);
         myName = name;
         myValues = startVals;
         myWeapons = weps;
         init();
+    }
+    
+    public EnemyData(List<Object> arguments) {
+    	super(arguments);
+    	myName = (String) arguments.get(Constants.NAME_CONST);
+    	myValues = (Map<String, Integer>) arguments.get(4);
+    	myWeapons = (String[]) arguments.get(5);
+    }
+    
+    private List<Object> makeArguments() {
+    	List<Object> blah = new ArrayList<Object>();
+    	return null;
     }
 
     public String getMyName(){return myName;}

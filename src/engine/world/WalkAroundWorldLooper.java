@@ -73,5 +73,4 @@ public class WalkAroundWorldLooper extends GameLooper {
 			}
 		}
 	}
-
 }
