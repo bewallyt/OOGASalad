@@ -7,11 +7,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Random;
 
 import engine.dialogue.AttackExecutorNode;
 import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
+import engine.dialogue.DialogueListeningState;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix;
 import engine.dialogue.InteractionMatrix2x2;
@@ -53,6 +53,8 @@ public class BattleManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated ";
 	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Picked dropped weapon!";
 	private static final String TEXT_DISPLAYED_PLAYER_DEAD="You have been defeated!";
+	//DialogueListeningState PlayerDead = new DialogueListeningState("You have been defeated!",);
+	
 	public static final int EXITWON = 8;
 	private static final int PLAYERDEAD = 9;
 	public static final int EXITLOST=11;
@@ -92,30 +94,30 @@ public class BattleManager implements InteractionBox{
 	}
 
 	private void setAttackChildrenNodes(BattleSelectorNode node){
-		for(Attack attack : myPlayer.getCurrentWeapon().getAttackList()){
-			BattleExecutorNode executorNode = new AttackExecutorNode(attack);
-			node.setChild(executorNode);
+		for(BattleExecutable attack : myPlayer.getCurrentWeapon().getAttackList()){
+			setNextChild(node, attack);
 		}
+	}
+	private void setNextChild(BattleSelectorNode node, BattleExecutable attack) {
+		BattleExecutorNode executorNode = new AttackExecutorNode(attack);
+		node.setChild(executorNode);
 	}
 
 	private void setWeaponChildrenNodes(BattleSelectorNode node){
-		for(Weapon weapon : myPlayer.getWeaponList()){
-			BattleExecutorNode executorNode = new WeaponExecutorNode(weapon);
-			node.setChild(executorNode);
+		for(BattleExecutable weapon : myPlayer.getWeaponList()){
+			setNextChild(node, weapon);
 		}
 	}
 
 	private void setBagChildrenNodes(BattleSelectorNode node){
-		for(Item item : myPlayer.getItems()){
-			BattleExecutorNode executorNode = new BagExecutorNode(item);
-			node.setChild(executorNode);
+		for(BattleExecutable item : myPlayer.getItems()){
+			setNextChild(node, item);
 		}
 	}
 
 	private void setRunChildrenNodes(BattleSelectorNode node){
-		Run run = new Run();
-		BattleExecutorNode executorNode = new RunExecutorNode(run);
-		node.setChild(executorNode);
+		BattleExecutable run = new Run();
+		setNextChild(node, run);
 
 	}
 
@@ -153,7 +155,7 @@ public class BattleManager implements InteractionBox{
 		for (int i = 0; i < myOptions.getDimension()[0]; i++) {
 			for (int j = 0; j < myOptions.getDimension()[1]; j++) {
 				MatrixNode qn = (MatrixNode) myOptions.getNode(j, i);
-				if(qn!=null)g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				if(qn!=null)g2d.drawString(qn.toString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 			}
 		}
 
@@ -179,6 +181,7 @@ public class BattleManager implements InteractionBox{
 			myCurrentState=EXITWON;
 		}
 		else if(myCurrentState==BATTLELOST){
+			
 			myCurrentState=EXITLOST;
 		}
 		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED){
@@ -293,13 +296,13 @@ public class BattleManager implements InteractionBox{
 	}
 	private void setCurrentTextToBeDisplayed() {
 		if(myCurrentState==WEAPONSELECTED){
-			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().getString();
+			textToBeDisplayed=TEXT_DISPLAYED_WEAPON_SELECTED + myPlayer.getCurrentWeapon().toString();
 		}
 		else if (myCurrentState==PLAYERDEAD){
 			textToBeDisplayed=TEXT_DISPLAYED_PLAYER_DEAD;
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
-			textToBeDisplayed=myCurrentAttacker.toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().getName();
+			textToBeDisplayed=myCurrentAttacker.toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString();
 		}
 		else if(myCurrentState==RAN){
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;

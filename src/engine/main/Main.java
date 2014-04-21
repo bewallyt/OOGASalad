@@ -152,7 +152,8 @@ public class Main extends RPGEngine {
 		tallGrass.setWorld(new ArenaWorld("battlebackground.png",800,800,player,outsideWorld
 								.getRandomEncounter(),outsideWorld));
 		
-
+		outsideWorld.setMusic("/music/pokeTest.wav");
+		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
@@ -185,6 +186,8 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("speed",10,100));
 		enemy.addStatistic(new Statistic("level",100,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
+		enemy.getWorld().setMusic("/music/pokeBattle.wav");
+		buildingWorld.setMusic("/music/pokeCenter.wav");
 	}
 
 
@@ -218,7 +221,7 @@ public class Main extends RPGEngine {
 	@Override
 	public void initializeGame() {
 		setInit(true);
-		initMusicTest();
+		//initMusicTest();
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
 	}

@@ -22,10 +22,7 @@ public class Attack implements MatrixNode,BattleExecutable {
 	public Statistic getSpeed(){
 		return mySpeed;
 	}
-	
-	public String getName(){
-		return myName;
-	}
+
 	public void setEffect(String statistic, Person personToActOn, int change){
 		myEffect = new Effect(statistic, personToActOn, change);
 	}
@@ -40,7 +37,7 @@ public class Attack implements MatrixNode,BattleExecutable {
 	}
 
 	@Override
-	public String getString() {
+	public String toString() {
 		return myName;
 	}
 	

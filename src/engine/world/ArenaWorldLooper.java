@@ -31,7 +31,7 @@ public class ArenaWorldLooper extends GameLooper {
 			return myWorld.getPrevWorld();
 		}
 		if(myBattleManager.getCurrentState()==BattleManager.EXITLOST){
-			
+			myBattleManager.setCurrentState(0);
 			return myWorld.getPrevWorld();
 		}
 		return null;

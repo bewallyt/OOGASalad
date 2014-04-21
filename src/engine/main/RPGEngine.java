@@ -45,6 +45,7 @@ public abstract class RPGEngine{
 		myCurrentWorld = world;
 		String classname = myCurrentWorld.getClass().getName();
 		myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
+		
 	}
 
 	/**
@@ -56,6 +57,7 @@ public abstract class RPGEngine{
 	 */
 	public void changeWorld(World world, int x, int y) {
 		myCurrentWorld.savePlayerPosition();
+		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().stop();
 		myPreviousWorld=myCurrentWorld;
 		setWorld(world);
 		if(myCurrentWorld.getSavedPlayerPosition()!=null){
@@ -65,6 +67,7 @@ public abstract class RPGEngine{
 			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
 					myCurrentWorld.getPlayer().getStartY());
 		}
+		//if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().start();
 	}
 
 	/**
@@ -91,7 +94,9 @@ public abstract class RPGEngine{
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void doGameLoop() throws InterruptedException {
-
+		if(myCurrentWorld.getMusic()!=null){
+			myCurrentWorld.getMusic().start();
+		}
 		while (isInitialized) {
 			myCanvas.repaint();
 			World newWorld = myGameLooper.doLoop();

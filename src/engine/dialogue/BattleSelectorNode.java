@@ -17,7 +17,7 @@ public class BattleSelectorNode implements MatrixNode{
 		myChildren.add(node);
 	}
 	
-	public String getString(){
+	public String toString(){
 		return myName;
 	}
 	

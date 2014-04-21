@@ -10,6 +10,7 @@ public abstract class GameLooper {
 	
 	public GameLooper(World currentWorld){
 		myWorld=currentWorld;
+		
 	}
 	
 	public abstract World doLoop();

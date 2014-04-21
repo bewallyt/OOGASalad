@@ -24,7 +24,7 @@ public class UserQueryNode implements MatrixNode {
 			return myPlayer.hasItem(myItemName);
 		}
 		
-		public String getString() {
+		public String toString() {
 			return myDialogue;
 		}
 

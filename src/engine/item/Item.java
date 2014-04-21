@@ -15,7 +15,7 @@ public abstract class Item implements Pickupable, BattleExecutable {
 		myImageName = image;
 	}
 
-	public String getName() {
+	public String toString() {
 		return myName;
 	}
 

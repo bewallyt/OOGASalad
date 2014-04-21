@@ -31,7 +31,7 @@ public class ConversationManager implements InteractionBox {
 	private static final int X_OFFSET = 5/10;
 	private static final int Y_OFFSET = 3/10;
 	private static final int SYMBOL_RADIUS = 10;
-
+	//private DialogueListeingState Listening = new DialogueListeningState();
 
 	public ConversationManager(Player p, NPC n, NPCResponseNode nrNode) {
 		currentResponseNode = nrNode;
@@ -82,8 +82,8 @@ public class ConversationManager implements InteractionBox {
 		for (int i = 0; i < myResponses.getDimension()[0]; i++) {
 			for (int j = 0; j < myResponses.getDimension()[1]; j++) {
 				UserQueryNode qn = (UserQueryNode) myResponses.getNode(j, i);
-				if (qn != null && qn.getString()!=null) {
-					g2d.drawString(qn.getString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
+				if (qn != null && qn.toString()!=null) {
+					g2d.drawString(qn.toString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 				} else {
 					g2d.drawString("     -", (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
 				}
@@ -156,32 +156,23 @@ public class ConversationManager implements InteractionBox {
 	}
 
 	public void moveUp() {
-		if (RESPONDING) {
 			myResponses.moveUp();
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
-		}
-
 	}
 
 	public void moveDown() {
-		if (RESPONDING) {
 			myResponses.moveDown();
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
-		}
 	}
 
 	public void moveLeft() {
-		if (RESPONDING) {
 			myResponses.moveLeft(); 
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
-		}
 	}
 
 	public void moveRight() {
-		if (RESPONDING) {
 			myResponses.moveRight();
 			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
-		}
 	}
 
 

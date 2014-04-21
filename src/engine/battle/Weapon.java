@@ -57,7 +57,7 @@ public class Weapon implements Pickupable, MatrixNode, BattleExecutable{
 	}
 
 	@Override
-	public String getString() {
+	public String toString() {
 		return myName;
 	}
 

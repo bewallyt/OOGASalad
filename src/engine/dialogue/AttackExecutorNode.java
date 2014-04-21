@@ -5,9 +5,9 @@ import engine.battle.BattleExecutable;
 
 public class AttackExecutorNode extends BattleExecutorNode {
 
-	private Attack myAttack;
+	private BattleExecutable myAttack;
 
-	public AttackExecutorNode(Attack attack){
+	public AttackExecutorNode(BattleExecutable attack){
 		myAttack = attack;
 	}
 
@@ -17,11 +17,7 @@ public class AttackExecutorNode extends BattleExecutorNode {
 	}
 
 	@Override
-	public String getString() {
-		return myAttack.getName();
+	public String toString() {
+		return ((Attack) myAttack).toString();
 	}
-
-
-
-
 }

@@ -163,7 +163,7 @@ public abstract class Person extends GridObject {
 	 */
 	public void removeItem(Item it) {
 		for (Item current : getItems()) {
-			if (current.getName().equals(it.getName())) {
+			if (current.toString().equals(it.toString())) {
 				getItems().remove(current);
 			}
 		}

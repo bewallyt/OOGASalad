@@ -5,8 +5,8 @@ import engine.item.Item;
 
 public class BagExecutorNode extends BattleExecutorNode {
 
-	Item myItem;
-	public BagExecutorNode(Item item) {
+	BattleExecutable myItem;
+	public BagExecutorNode(BattleExecutable item) {
 		myItem = item;
 	}
 	@Override
@@ -14,8 +14,8 @@ public class BagExecutorNode extends BattleExecutorNode {
 		return myItem;
 	}
 	@Override
-	public String getString() {
-		return myItem.getName();
+	public String toString() {
+		return myItem.toString();
 	}
 
 }

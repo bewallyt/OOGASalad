@@ -4,8 +4,8 @@ import engine.dialogue.BattleExecutorNode;
 
 public class WeaponExecutorNode extends BattleExecutorNode {
 
-	private Weapon myWeapon;
-	public WeaponExecutorNode(Weapon weapon){
+	private BattleExecutable myWeapon;
+	public WeaponExecutorNode(BattleExecutable weapon){
 		myWeapon = weapon;
 	}
 	@Override
@@ -13,8 +13,8 @@ public class WeaponExecutorNode extends BattleExecutorNode {
 		return myWeapon;
 	}
 	@Override
-	public String getString() {
-		return myWeapon.getString();
+	public String toString() {
+		return ((Weapon) myWeapon).toString();
 	}
 
 }

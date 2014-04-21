@@ -4,9 +4,9 @@ import engine.dialogue.BattleExecutorNode;
 
 public class RunExecutorNode extends BattleExecutorNode {
 	
-	Run myRun;
+	BattleExecutable myRun;
 	
-	public RunExecutorNode(Run run){
+	public RunExecutorNode(BattleExecutable run){
 		myRun = run;
 	}
 	@Override
@@ -14,7 +14,7 @@ public class RunExecutorNode extends BattleExecutorNode {
 		return myRun;
 	}
 	@Override
-	public String getString() {
+	public String toString() {
 		return "You Ran Away";
 	}
 

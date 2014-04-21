@@ -75,7 +75,7 @@ public class Player extends Person {
 	public boolean hasItem(String myItemName) {
 		if (myItemName != null) {
 			for (Item i : super.getItems()) {
-				if (i.getName().equals(myItemName))
+				if (i.toString().equals(myItemName))
 					return true;
 			}
 		}

@@ -1,8 +1,10 @@
 package engine.world;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Music;
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.InteractionBox;
@@ -10,6 +12,7 @@ import engine.dialogue.TextDisplayer;
 import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
+import engine.main.Main;
 
 public abstract class World {
 
@@ -19,6 +22,7 @@ public abstract class World {
 	private int myPlayHeight;
 	private int[] mySavedPlayerPosition;
 	private TextDisplayer myTextDisplayer;
+	private Music myMusic;
 
 
 
@@ -73,6 +77,14 @@ public abstract class World {
 	}
 	public TextDisplayer getTextDisplayer() {
 		return myTextDisplayer;
+	}
+	public void setMusic(String musicFile){
+		URL mainURL = Main.class.getResource(musicFile);
+		myMusic= new Music(mainURL);
+		
+	}
+	public Music getMusic(){
+		return myMusic;
 	}
 
 }
