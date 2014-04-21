@@ -40,40 +40,6 @@ public class MapDataParser {
 				TileData currTile = myMap.getTileData(i, j);
 				currData = currTile.getGridObjectDatas();
 
-
-				for (GridObjectData data : currData) {
-					GridObject gridobject = null;
-					if (data.getID().equals("Barrier")) {
-						gridobject = new Barrier(data.getImageName(),
-								data.getWidth(), data.getHeight());
-					} else if (data.getID().equals("Door")) {
-						gridobject = new Door(data.getImageName(),
-								data.getWidth(), data.getHeight());
-					} else if (data.getID().equals("NPC")) {
-						gridobject = new NPC(
-								new String[] { data.getImageName() },
-								data.getSpeed(), data.getWidth(),
-								data.getHeight(), data.getMovementType(), p);
-					}
-					if (gridobject != null) {
-						gridobject.setPosition(i, j);
-						myGridObjectList.add(gridobject);
-					}
-				}
-
-				myTileImageList.add(currTile.getImageName());
-			}
-		}
-	}
-
-/*
-	private void parseMap2(Player p) {
-		List<GridObjectData> currData = new ArrayList<GridObjectData>();
-		for (int i = 0; i < myMap.getMapLength(); i++) {
-			for (int j = 0; j < myMap.getMapWidth(); j++) {
-				TileData currTile = myMap.getTileData(i, j);
-				currData = currTile.getGridObjectDatas();
-
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 
@@ -84,9 +50,67 @@ public class MapDataParser {
 						myGridObjectList.add(gridobject);
 					}
 				}
+				
 				myTileImageList.add(currTile.getImageName());
 			}
 		}
 	}
-*/
+	
+	private void parseMap2(Player p) {
+		List<GridObjectData> currData = new ArrayList<GridObjectData>();
+		for (int i = 0; i < myMap.getMapLength(); i++) {
+			for (int j = 0; j < myMap.getMapWidth(); j++) {
+				TileData currTile = myMap.getTileData(i, j);
+				currData = currTile.getGridObjectDatas();
+
+
+//				for (GridObjectData data : currData) {
+//					GridObject gridobject = null;
+//					if (data.getID().equals("Barrier")) {
+//						gridobject = new Barrier(data.getImageName(),
+//								data.getWidth(), data.getHeight());
+//					} else if (data.getID().equals("Door")) {
+//						gridobject = new Door(data.getImageName(),
+//								data.getWidth(), data.getHeight());
+//					} else if (data.getID().equals("NPC")) {
+//						gridobject = new NPC(
+//								new String[] { data.getImageName() },
+//								data.getSpeed(), data.getWidth(),
+//								data.getHeight(), data.getMovementType(), p);
+//					}
+//					if (gridobject != null) {
+//						gridobject.setPosition(i, j);
+//						myGridObjectList.add(gridobject);
+//					}
+//				}
+
+				myTileImageList.add(currTile.getImageName());
+			}
+		}
+	}
+	
+	private void parseMap3(Player p) {
+		List<GridObjectData> currData = new ArrayList<GridObjectData>();
+		for (int i = 0; i < myMap.getMapLength(); i++) {
+			for (int j = 0; j < myMap.getMapWidth(); j++) {
+				TileData currTile = myMap.getTileData(i, j);
+				currData = currTile.getGridObjectDatas();
+
+				for (GridObjectData data : currData) {
+					GridObject gridobject = null;
+
+//					gridobject = (GridObject) Reflection.createInstance(data.getID(), data.getArguments());
+//					
+//					if (gridobject != null) {
+//						gridobject.setPosition(i, j);
+//						myGridObjectList.add(gridobject);
+//					}
+				}
+				
+				myTileImageList.add(currTile.getImageName());
+			}
+		}
+	}
+
+
 }

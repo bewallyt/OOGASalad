@@ -12,6 +12,7 @@ public class Enemy extends NPC {
 	private boolean battleOnSight=false;
 	private boolean battleInitiated=false;
 	private ArenaWorld myWorld;
+	boolean wasBattled=false;
 
 
 	/**
@@ -24,14 +25,14 @@ public class Enemy extends NPC {
 	 * @param movementType the movement type. 1=back and forth 2=follow player 3=stand still
 	 * @param player the player
 	 */
-	public Enemy(String[] animImages, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
-		super(animImages,speed, numTilesWidth, numTilesHeight,movementType,player);
+	public Enemy(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+		super(animImages,name, speed, numTilesWidth, numTilesHeight,movementType,player);
 	}
 	
-	public Enemy(List<Object> list) {
-		super((String[]) list.get(1), (int) list.get(4), (int) list.get(2),
-				(int) list.get(3), (int) list.get(5), (Player) list.get(6));
-	}
+//	public Enemy(List<Object> list) {
+//		super((String[]) list.get(1), (int) list.get(4), (int) list.get(2),
+//				(int) list.get(3), (int) list.get(5), (Player) list.get(6));
+//	}
 
 
 	/**
@@ -44,6 +45,7 @@ public class Enemy extends NPC {
 	}
 
 	public ArenaWorld getWorld(){
+		battleInitiated=false;
 		return myWorld;
 	}
 
@@ -68,6 +70,7 @@ public class Enemy extends NPC {
 	@Override 
 	public void doAction(){
 		//doDialogue();
+		
 		battleInitiated=true;
 	}
 
@@ -85,6 +88,12 @@ public class Enemy extends NPC {
 				ProximityChecker.isTopProximity(this, getPlayer())>=-2 && getFacing()==0)
 			return true;
 		return false;
+	}
+	public boolean getWasBattled(){
+		return wasBattled;
+	}
+	public void setWasBattled(){
+		wasBattled=true;
 	}
 	
 	

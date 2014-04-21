@@ -14,7 +14,6 @@ public class CollisionMatrix {
 	}
 
 	private CollisionHandler[][] makeCollisionMatrix() {
-		System.out.println(myGridObjectList.size());
 		CollisionHandler[][] collisionMatrix = new CollisionHandler[myGridObjectList.size()]
 																   [myGridObjectList.size()];
 		for (int i = 0; i < myGridObjectList.size(); i++) {
