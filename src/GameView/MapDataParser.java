@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Constants;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
@@ -23,7 +24,7 @@ public class MapDataParser {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
 		myTileImageList = new ArrayList<String>();
-		parseMap(p);
+		parseMap2(p);
 	}
 
 	public List<GridObject> getGridObjectList() {
@@ -76,25 +77,16 @@ public class MapDataParser {
 				TileData currTile = myMap.getTileData(i, j);
 				currData = currTile.getGridObjectDatas();
 
-				// for (GridObjectData data : currData) {
-				// GridObject gridobject = null;
-				// if (data.getID().equals("Barrier")) {
-				// gridobject = new Barrier(data.getImageName(),
-				// data.getWidth(), data.getHeight());
-				// } else if (data.getID().equals("Door")) {
-				// gridobject = new Door(data.getImageName(),
-				// data.getWidth(), data.getHeight());
-				// } else if (data.getID().equals("NPC")) {
-				// gridobject = new NPC(
-				// new String[] { data.getImageName() },
-				// data.getSpeed(), data.getWidth(),
-				// data.getHeight(), data.getMovementType(), p);
-				// }
-				// if (gridobject != null) {
-				// gridobject.setPosition(i, j);
-				// myGridObjectList.add(gridobject);
-				// }
-				// }
+				for (GridObjectData data : currData) {
+					GridObject gridobject = null;
+					if (data.getID().equals(Constants.BARRIER)) {
+						gridobject = new Barrier((String) data.getArguments().get(Constants.IMAGE_CONST), 1, 1);
+					}
+					if (gridobject != null) {
+						gridobject.setPosition(i, j);
+						myGridObjectList.add(gridobject);
+					}
+				}
 
 				myTileImageList.add(currTile.getImageName());
 			}

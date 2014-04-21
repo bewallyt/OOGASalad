@@ -1,6 +1,7 @@
-package engine.menu;
+package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
+import engine.menu.managers.MenuManager;
 
 public class PokedexNode extends MenuNode {
 
@@ -14,19 +15,19 @@ public class PokedexNode extends MenuNode {
 	}
 
 	@Override
-	void doAction() {
+	public void doAction() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	void changeWorld() {
+	public void changeWorld() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	void changeState() {
+	public void changeState() {
 		// TODO Auto-generated method stub
 		
 	}

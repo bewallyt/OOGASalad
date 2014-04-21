@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 
 import engine.Control;
 import engine.gridobject.person.Player;
-import engine.menu.MenuManager;
-import engine.menu.SaveManager;
+import engine.menu.managers.MenuManager;
+import engine.menu.managers.SaveManager;
 
 public class SaveState extends AbstractState {
 

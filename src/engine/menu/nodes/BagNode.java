@@ -1,33 +1,35 @@
-package engine.menu;
+package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
+import engine.menu.managers.MenuManager;
 
-public class NameNode extends MenuNode {
-	
+public class BagNode extends MenuNode {
+
 	private Player myPlayer;
 	private MenuManager myMenuManager;
-	
-	public NameNode(Player p, MenuManager mm){
+
+	public BagNode(Player p, MenuManager mm) {
 		myPlayer = p;
 		myMenuManager = mm;
-		
-	}
-	@Override
-	void doAction() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	void changeWorld() {
+	public void doAction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	void changeState() {
+	public void changeWorld() {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void changeState() {
+		// TODO Auto-generated method stub
+
 	}
 
 }
