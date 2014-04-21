@@ -8,7 +8,6 @@ import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import authoring.GridObjectData;
 import authoring.MapData;
 import authoring.TileData;
 
