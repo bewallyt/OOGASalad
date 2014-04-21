@@ -37,10 +37,4 @@ public class SaveNode extends MenuNode {
 		
 	}
 	
-
-	public void save(String saveFile){
-		DataManager dm = new DataManager();
-		dm.saveWorldDataToFile(saveFile);
-	}
-
 }

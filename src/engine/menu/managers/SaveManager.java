@@ -8,10 +8,12 @@ import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
 
+import Data.DataManager;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
+import engine.state.SaveState;
 
 public class SaveManager implements InteractionBox {
 
@@ -50,11 +52,17 @@ public class SaveManager implements InteractionBox {
 		drawSelector(g2d, xSize, ySize, width, height);
 		Image boxImg = new ScaledImage(width, 150, "textbox.png").scaleImage();
 		g2d.drawImage(boxImg, 0, height + 70, null);
-		g2d.drawString("Save as (.json):", 20, height + 115);
 
-		updateText();
-		if (displayString != null) {
-			g2d.drawString(displayString, 20, height + 150);
+		if (displayString != SaveState.SAVE_FINISHED) {
+			g2d.drawString("Save as (w/o extension):", 20, height + 115);
+
+			updateText();
+			if (displayString != null) {
+				g2d.drawString(displayString, 20, height + 150);
+			}
+		}
+		else{
+			g2d.drawString(displayString, 20, height + 115);
 		}
 	}
 
