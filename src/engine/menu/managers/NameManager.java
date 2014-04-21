@@ -3,8 +3,15 @@ package engine.menu.managers;
 import java.awt.Graphics2D;
 
 import engine.dialogue.InteractionBox;
+import engine.gridobject.person.Player;
 
 public class NameManager implements InteractionBox  {
+	
+	private Player myPlayer;
+	
+	public NameManager(Player p){
+		myPlayer = p;
+	}
 
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,

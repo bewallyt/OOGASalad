@@ -42,6 +42,10 @@ public class Player extends Person {
 		myState = state;
 	}
 
+	public AbstractState getState() {
+		return myState;
+	}
+
 	public void keyPressed(KeyEvent e) {
 		myState.keyPressed(e);
 	}

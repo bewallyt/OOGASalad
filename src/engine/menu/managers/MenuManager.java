@@ -38,12 +38,11 @@ public class MenuManager implements InteractionBox {
 	public void select() {
 		((MenuNode) mySelections.getCurrentNode()).doAction();
 	}
-	
-	public void setNames() {
-		names = new String[] { "Pokedex", "Pokemon", "Bag",
-				"Name", "Save", "Options", "Exit" };
+
+	private void setNames() {
+		names = new String[] { "Pokedex", "Pokemon", "Bag", "Name", "Save",
+				"Options", "Exit" };
 	}
-	
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
@@ -78,22 +77,22 @@ public class MenuManager implements InteractionBox {
 
 		for (int i = 0; i < names.length; i++) {
 			mySelections.setNode(
-					(MenuNode) Reflection.createInstance("engine.menu.nodes."+ names[i] + "Node", myPlayer, this), 0, i);
+					(MenuNode) Reflection.createInstance("engine.menu.nodes."
+							+ names[i] + "Node", myPlayer, this), 0, i);
 		}
 	}
-	
-	public void createManagers() {
 
-		// Creates Menu Nodes via Reflection
-		setNames();
-
-		for (int i = 0; i < names.length; i++) {
-			mySelections.setManager(
-					(InteractionBox) Reflection.createInstance("engine.menu.managers."+ names[i] +"Manager"), i);
-		}
-	}
-	
-	
+//	public void createManagers() {
+//
+//		// Creates Menu Managers via Reflection
+//		setNames();
+//
+//		for (int i = 0; i < names.length; i++) {
+//			mySelections.setManager((InteractionBox) Reflection.createInstance(
+//					"engine.menu.managers." + names[i] + "Manager", myPlayer,
+//					this), i);
+//		}
+//	}
 
 	@Override
 	public void getNextText() {
@@ -108,4 +107,5 @@ public class MenuManager implements InteractionBox {
 		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
 
 	}
+
 }

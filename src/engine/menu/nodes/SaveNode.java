@@ -2,7 +2,7 @@ package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
-import engine.state.MenuState;
+import engine.menu.managers.SaveManager;
 import engine.state.SaveState;
 import Data.DataManager;
 
@@ -10,6 +10,7 @@ public class SaveNode extends MenuNode {
 	
 	private Player myPlayer;
 	private MenuManager myMenuManager;
+	private SaveManager mySaveManager;
 	
 	public SaveNode(Player p, MenuManager mm){
 		myPlayer = p;
@@ -19,11 +20,14 @@ public class SaveNode extends MenuNode {
 	@Override
 	public void doAction() {
 		changeState();
+		changeWorld();
 	}
 
 	@Override
 	public void changeWorld() {
-		// TODO Auto-generated method stub
+		mySaveManager = new SaveManager(myPlayer);
+		myPlayer.setInteractionBox(mySaveManager);
+		
 		
 	}
 
