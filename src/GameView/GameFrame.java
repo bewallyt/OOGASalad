@@ -78,8 +78,8 @@ public class GameFrame extends RPGEngine {
 					Constants.TILE_SIZE, gridObjectList);
 			setWorld(currWorld); // this is only called for the initial world
 
-			currWorld.setTileObject(gridObjectList.get(0), 1, 6);
 			setTileImages(currWorld, TileImageList);
+			setGridObjects(currWorld, gridObjectList);
 		}
 		
 	
