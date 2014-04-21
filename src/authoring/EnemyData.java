@@ -24,10 +24,11 @@ public class EnemyData extends GridObjectData {
         myMovement = movement;
     }
 
+    /*
     public EnemyData() {
         myMovement=Integer.parseInt(null);
     }
-
+*/
     //accomodate Random Enemy constructor
     public EnemyData(int x, int y, String image, String name, Map<String, Integer> startVals, String[] weps) {}
 

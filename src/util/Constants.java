@@ -11,7 +11,7 @@ package util;
 
 public class Constants {
 	// player
-	public static final int CANVASWIDTH = 400, CANVASHEIGHT = 400;
+	public static final int CANVASWIDTH = 500, CANVASHEIGHT = 500;
 	public static final int TILE_SIZE = 40;
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
@@ -23,10 +23,10 @@ public class Constants {
     public static final String TILEIMAGEPATH = "TileImage/";
     
     // authoring
-    public static final String BARRIER = "Barrier";
-    public static final String DOOR = "Door";
-    public static final String NPC = "NPC";
-    public static final String ENEMY = "ENEMY";
+    public static final String BARRIER = "engine.gridobject.Barrier";
+    public static final String DOOR = "engine.gridobject.Door";
+    public static final String NPC = "engine.gridobject.person.NPC";
+    public static final String ENEMY = "engine.gridobject.person.Enemy";
     
     public static final int WIDTH_CONST = 0;
     public static final int HEIGHT_CONST = 1;

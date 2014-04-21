@@ -2,9 +2,11 @@ package authoring;
 
 
 import javax.swing.*;
+
+
+import java.awt.FlowLayout;
 import java.awt.event.*;
 import java.util.*;
-import java.util.List;
 
 public class ItemWeaponCreation extends CommonAttributes implements ActionListener, MouseListener {
 
@@ -17,6 +19,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private JCheckBox isWeapon;
     private JCheckBox isObjectiveItem;
     private JCheckBox isItem;
+    private JFrame frame;
 
     public ItemWeaponCreation(){
     }
@@ -125,29 +128,40 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         pane.addTab(attributeTab, attributePanel);
         pane.addTab(attackTab, attackPanel);
 
-        int result = JOptionPane.showOptionDialog(null, pane, "New Item/Weapon", JOptionPane.CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, null, null);
-
-        if(result == JOptionPane.OK_OPTION) {
-
-            name = itemName.getText();
-            image = imageName.getText();
-
-            if (isWeapon.isSelected()) {
-                speed = Integer.parseInt(textValues.get(attributes[0]).getText());
-                damage = Integer.parseInt(textValues.get(attributes[1]).getText());
-                makeWeapon();
-            } else {
-                for (String s : textValues.keySet()) {
-                    attributeValues.put(s, Integer.parseInt(textValues.get(s).getText()));
-                }
-                makeAndSaveItem();
-            }
-
-        }
+        
+        frame=new JFrame("New Item/Weapon");
+        frame.setLayout(new FlowLayout());
+        frame.add(pane);
+        JButton createNPC=new JButton("Create Item/Weapon");
+        createNPC.addActionListener(new ItemWeaponActionListener());
+        frame.add(createNPC);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+  
 
     }
+    private class ItemWeaponActionListener implements ActionListener{
+    	 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			  name = itemName.getText();
 
+	           if (isWeapon.isSelected()) {
+	               speed = Integer.parseInt(textValues.get(attributes[0]).getText());
+	               damage = Integer.parseInt(textValues.get(attributes[1]).getText());
+	               makeWeapon();
+	           } else {
+	               for (String s : textValues.keySet()) {
+	                   attributeValues.put(s, Integer.parseInt(textValues.get(s).getText()));
+	               }
+	               makeAndSaveItem();
+	           }
+			
+	           editor.dispose();
+	           frame.dispose();
+		}
+    }
     private void attackCreation(){
         JPanel attackPanel = new JPanel(new SpringLayout());
         JLabel n = new JLabel("Name");
@@ -171,6 +185,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                      6,6,
                      6,6);
 
+        
         int result = JOptionPane.showOptionDialog(null, attackPanel, "New Attack", JOptionPane.CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE, null, null, null);
         if(result==JOptionPane.OK_OPTION){
@@ -186,7 +201,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     }
 
     private void makeWeapon() {
-        Weapon madeWeapon = new Weapon(name,image,speed,damage,weaponAttacks);
+        Weapon madeWeapon = new Weapon(name,editor.getSelectedImage().getDescription(),speed,damage,weaponAttacks);
         FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
 
@@ -195,7 +210,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private void makeAndSaveItem() {
         Item madeItem;
         if(!isObjectiveItem.isSelected()){
-            madeItem = new Item(name,image,attributeValues);
+            madeItem = new Item(name,editor.getSelectedImage().getDescription(),attributeValues);
         } else{
             madeItem = new Item(name);
         }

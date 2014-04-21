@@ -104,7 +104,7 @@ public abstract class GridObject{
 	}
 	
 
-	public void paintDialoge(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
+	public void paintDialogue(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
 		if(myDialogue!=null){
 			myDialogue.setSize((int) (xSize*.9), ySize/4);
 			g.drawImage(myDialogue.getImage(),(int) (xSize*.05),(int) (ySize-ySize/4-ySize*.1),null);

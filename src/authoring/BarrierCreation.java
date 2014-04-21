@@ -92,6 +92,8 @@ public class BarrierCreation extends CommonAttributes{
 			}			
 		}
 		private BarrierData getBarrier(){
+			System.out.println("xField"+xField.getText());
+			System.out.println("yField"+yField.getText());
 			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription());
 		}
 	}

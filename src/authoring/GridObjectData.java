@@ -9,9 +9,11 @@ import util.Constants;
 public class GridObjectData {
 
 	protected String myImage;
-	protected int x;
-	protected int y;
+	protected int width;
+	protected int height;
 
+	private int myX;
+	private int myY;
 	private List<Item> itemList=new ArrayList<Item>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
@@ -19,9 +21,11 @@ public class GridObjectData {
 	// BarrierData
 	public GridObjectData(int x, int y, String image, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 	}
 	
@@ -29,8 +33,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
 		myID = id;
 
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(toX);
 		myArguments.add(toY);
@@ -41,8 +45,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
 		myID = id;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(name);
 		myArguments.add(startVals);
@@ -54,8 +58,8 @@ public class GridObjectData {
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
 		myID = id;
 		
-		myArguments.add(x);
-		myArguments.add(y);
+		myArguments.add(1);
+		myArguments.add(1);
 		myArguments.add(image);
 		myArguments.add(root);
 	}
@@ -65,7 +69,7 @@ public class GridObjectData {
     }
 
     public void init(){
-		FeatureManager.getWorldData().getCurrentMap().getTileData(x,y).addGridObjectData(this);
+		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
 	
 	public String getID() {
@@ -76,10 +80,10 @@ public class GridObjectData {
 		return myImage;
 	}
 	public int getX(){
-		return x;
+		return myX;
 	}
 	public int getY(){
-		return y;
+		return myY;
 	}
 	public void addItem(Item i){
 		
