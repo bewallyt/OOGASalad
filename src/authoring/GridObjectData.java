@@ -37,7 +37,7 @@ public class GridObjectData {
 	}
 	
 	// EnemyData
-	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, String id) {
+	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
 		
 	}
 	
