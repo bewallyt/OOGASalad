@@ -158,7 +158,12 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	}
 	private class ItemResponseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			if(myCurrent.getChildren().size()<4){
+			boolean alreadyItem=false;
+			for(UserQueryNode n: myCurrent.getChildren()){
+				if(n.getItem()!=null)
+					alreadyItem=true;
+			}
+			if(myCurrent.getChildren().size()<4&&!alreadyItem){
 			frame = new JOptionPane("Input Dialogue");
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
 			JComboBox myItemBox = new JComboBox(myItems.toArray());

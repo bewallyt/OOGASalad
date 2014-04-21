@@ -86,6 +86,7 @@ public class BarrierCreation extends CommonAttributes{
 			BarrierData myBarrier=getBarrier();
 			if(validateText()){
 				FeatureManager.getWorldData().saveBarrier(myBarrier);
+				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage());
 				frame.dispose();
 				editor.dispose();
 			}			
