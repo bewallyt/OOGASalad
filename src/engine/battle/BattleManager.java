@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 
-import engine.dialogue.AttackExecutorNode;
 import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.DialogueListeningState;
@@ -240,7 +239,7 @@ public class BattleManager implements InteractionBox{
 			else if(executable instanceof Item){
 				((Item) executable).useItem();
 				myCurrentState=ITEMUSED;
-				itemUsedName=((Item) executable).getName();
+				itemUsedName=((Item) executable).toString();
 				setCurrentTextToBeDisplayed();
 			}
 			else if(executable instanceof Run){
