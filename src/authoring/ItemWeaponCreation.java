@@ -4,9 +4,10 @@ package authoring;
 import javax.swing.*;
 
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.util.List;
 
 public class ItemWeaponCreation extends CommonAttributes implements ActionListener, MouseListener {
 
