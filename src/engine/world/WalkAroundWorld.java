@@ -139,6 +139,7 @@ public class WalkAroundWorld extends World {
 	 */
 	public void addRandomEncounter(Enemy enemy){
 		myRandomEncounters.add(enemy);
+		enemy.setRandom();
 	}
 
 	/**
