@@ -81,14 +81,12 @@ public class NPC extends Person {
 	}
 	
 	@Override
-	public Dialogue doDialogue(){
-		Dialogue d = null;		
+	public void doDialogue(){
 		System.out.println("Conversation Mode");
 		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
 		System.out.println("creation of conversationmanager");
 		myPlayer.setState(new DialogueState(conversation));
 		super.setInteractionBox(conversation);
-		return d;
 	}
 	
 

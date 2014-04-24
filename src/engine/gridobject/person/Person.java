@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Attack;
-import engine.battle.Weapon;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
+import engine.item.Weapon;
 
 public abstract class Person extends GridObject {
 

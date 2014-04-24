@@ -14,7 +14,6 @@ import authoring.PlayerData;
 import authoring.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
-import engine.battle.Weapon;
 import engine.collision.BattleCollision;
 import engine.collision.EnterCollision;
 import engine.dialogue.NPCResponseNode;
@@ -28,6 +27,7 @@ import engine.gridobject.person.Player;
 import engine.item.Item;
 import engine.item.KeyItem;
 import engine.item.StatBuffer;
+import engine.item.Weapon;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 

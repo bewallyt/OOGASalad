@@ -2,10 +2,10 @@ package engine.world;
 
 import java.awt.Image;
 
-import engine.battle.Weapon;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
+import engine.item.Weapon;
 
 public class ArenaWorld extends World {
 	ScaledImage myBackground;
