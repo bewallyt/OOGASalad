@@ -13,6 +13,7 @@ public class Enemy extends NPC {
 	private boolean battleInitiated=false;
 	private ArenaWorld myWorld;
 	boolean wasBattled=false;
+	private boolean isRandom;
 
 
 	/**
@@ -27,6 +28,7 @@ public class Enemy extends NPC {
 	 */
 	public Enemy(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,name, speed, numTilesWidth, numTilesHeight,movementType,player);
+		isRandom=false;
 	}
 	
 //	public Enemy(List<Object> list) {
@@ -76,17 +78,13 @@ public class Enemy extends NPC {
 	}
 
 	private boolean inSight(){
-		if(Math.abs(ProximityChecker.isLeftProximity(this, getPlayer()))<100 && 
-				ProximityChecker.isTopProximity(this, getPlayer())<=2 && getFacing() == 1)
+		if(Math.abs(ProximityChecker.isLeftProximity(this, getPlayer()))<100 && getFacing() == 1)
 			return true;
-		if(Math.abs(ProximityChecker.isRightProximity(this,  getPlayer()))<100 && 
-				ProximityChecker.isRightProximity(this, getPlayer())>=-2 && getFacing()==3)
+		if(Math.abs(ProximityChecker.isRightProximity(this,  getPlayer()))<100 && getFacing()==3)
 			return true;
-		if(Math.abs(ProximityChecker.isTopProximity(this, getPlayer()))<100 && 
-				ProximityChecker.isTopProximity(this, getPlayer())<=2 && getFacing()==2)
+		if(Math.abs(ProximityChecker.isTopProximity(this, getPlayer()))<100 && getFacing()==2)
 			return true;
-		if(Math.abs(ProximityChecker.isBottomProximity(this, getPlayer()))<100 && 
-				ProximityChecker.isTopProximity(this, getPlayer())>=-2 && getFacing()==0)
+		if(Math.abs(ProximityChecker.isBottomProximity(this, getPlayer()))<100 && getFacing()==0)
 			return true;
 		return false;
 	}
@@ -95,6 +93,13 @@ public class Enemy extends NPC {
 	}
 	public void setWasBattled(){
 		wasBattled=true;
+	}
+
+	public void setRandom() {
+		isRandom=true;	
+	}
+	public boolean isRandom(){
+		return isRandom;
 	}
 	
 	
