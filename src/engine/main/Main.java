@@ -108,6 +108,7 @@ public class Main extends RPGEngine {
 		Door door2 = new Door("cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,"enemy",2,1,1,1, player);
+		Enemy grassEnemy = new Enemy(anim,"grassenemy",2,1,1,1,player);
 		enemy.doBattleOnSight();
 
 		//enemy.setResponseNode(n);
@@ -121,6 +122,7 @@ public class Main extends RPGEngine {
 		weapon2.setDamage(10, 100);
 		weapon2.setSpeed(10, 100);
 		enemy.addWeapon(weapon2);
+		grassEnemy.addWeapon(weapon2);
 		
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("pokecenter.png",4, 4));
@@ -143,7 +145,7 @@ public class Main extends RPGEngine {
 
 		WalkAroundWorld outsideWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
-		outsideWorld.addRandomEncounter(enemy);
+		outsideWorld.addRandomEncounter(grassEnemy);
 		enemy.setWorld(new ArenaWorld("battlebackground.png", 800, 800, player,enemy,outsideWorld));
 
 		WalkAroundWorld buildingWorld = new WalkAroundWorld(1000, 1000, player, 40, gridObjectList2);
@@ -183,12 +185,19 @@ public class Main extends RPGEngine {
 		player.addStatistic(new Statistic("defense",10,100));
 		enemy.setBattleImage("rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
-		enemy.addStatistic(new Statistic("damage",100,100));
+		enemy.addStatistic(new Statistic("damage",10,100));
 		enemy.addStatistic(new Statistic("speed",10,100));
-		enemy.addStatistic(new Statistic("level",100,100));
+		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
-		enemy.getWorld().setMusic("/music/pokeBattle.wav");
+		enemy.getWorld().setMusic("/music/fms.wav");
 		buildingWorld.setMusic("/music/pokeCenter.wav");
+		
+		grassEnemy.setBattleImage("player.png");
+		grassEnemy.addStatistic(new Statistic("health",50,100));
+		grassEnemy.addStatistic(new Statistic("damage",10,100));
+		grassEnemy.addStatistic(new Statistic("speed",10,100));
+		grassEnemy.addStatistic(new Statistic("level",10,100));
+		grassEnemy.addStatistic(new Statistic("defense",10,100));
 	}
 
 

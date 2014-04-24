@@ -78,7 +78,7 @@ public abstract class RPGEngine{
 		if(myCurrentWorld.getPlayer().getFacing()==2) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
 		else if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
 		else{
-			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), myCurrentWorld.getPlayer().getStartY());
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]);
 		}
 	}
 	

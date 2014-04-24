@@ -23,7 +23,12 @@ public class ArenaWorldLooper extends GameLooper {
 		System.out.println(myBattleManager.getCurrentState());
 		if(myBattleManager.getCurrentState()==BattleManager.EXITWON){
 			System.out.println("go back");
-			myWorld.getEnemy().setWasBattled();
+			if(myWorld.getEnemy().isRandom()){
+				myWorld.getEnemy().getStatsMap().get("health").setToMax();
+			}
+			else{
+				myWorld.getEnemy().setWasBattled();
+			} 
 			return myWorld.getPrevWorld();
 		}	
 		if(myBattleManager.didRun()){
@@ -35,10 +40,10 @@ public class ArenaWorldLooper extends GameLooper {
 			return myWorld.getPrevWorld();
 		}
 		return null;
-//		System.out.println("Conversation Mode");
-//		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
-//		myWorld.getPlayer().setState(new DialogueState(conversation));
-//		super.setInteractionBox(conversation);
+		//		System.out.println("Conversation Mode");
+		//		ConversationManager conversation = new ConversationManager(myPlayer, this, myResponseNode);
+		//		myWorld.getPlayer().setState(new DialogueState(conversation));
+		//		super.setInteractionBox(conversation);
 	}
 
 }

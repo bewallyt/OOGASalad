@@ -33,14 +33,14 @@ public class BattleManager implements InteractionBox{
 	private BattleSelectorNode myRunSelector;
 	private BattleSelectorNode myCurrentBattleSelector;
 	private BattleExecutorNode myCurrentBattleExecutorNode;
-	private final static int TOPLEVEL=0;
-	private final static int BOTTOMLEVEL=1;
-	private final static int FIRSTATTACKHAPPENED=2;
-	private final static int SECONDATTACKHAPPENED=3;
-	private final static int WEAPONSELECTED=4;
-	private final static int RAN=5;
+	public final static int TOPLEVEL=0;
+	public final static int BOTTOMLEVEL=1;
+	public final static int FIRSTATTACKHAPPENED=2;
+	public final static int SECONDATTACKHAPPENED=3;
+	public final static int WEAPONSELECTED=4;
+	public final static int RAN=5;
 	public final static int ENEMYDEAD=6;
-	private final static int BATTLEWON=7;
+	public final static int BATTLEWON=7;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -56,12 +56,12 @@ public class BattleManager implements InteractionBox{
 	
 	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
 	public static final int EXITWON = 8;
-	private static final int PLAYERDEAD = 9;
+	public static final int PLAYERDEAD = 9;
 	public static final int EXITLOST=11;
-	private static final int BATTLELOST = 10;
-	private final static int ITEMUSED=12;
+	public static final int BATTLELOST = 10;
+	public final static int ITEMUSED=12;
 	private String itemUsedName = "";
-	private String textToBeDisplayed;
+	private String textToBeDisplayed="";
 	private boolean ran=false;
 	private boolean dropWeapon = false;
 
@@ -72,6 +72,7 @@ public class BattleManager implements InteractionBox{
 		myOptions = new InteractionMatrix2x2();
 		setOriginalNodes();
 		initializeChildrenNodes();
+		myCurrentState=0;
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
