@@ -48,8 +48,6 @@ public class MapDataParser {
 					List<Object> myList = data.getArguments();
 					System.out.println(myList);
 
-					/*gridobject = (GridObject) Reflection.createInstance(
-							data.getID(), data.getArguments());*/
 					try {
 						String classname = data.getID();
 						

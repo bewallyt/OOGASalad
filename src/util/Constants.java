@@ -18,6 +18,8 @@ public class Constants {
 	public static final String SELECTGAMETEXT = "Select a Game";
 		
     // engine
+	public static final int DEF_TIL = 1;
+	public static final int SPEED = 1;
     public static final String IMAGEPATH = "ImageFiles/";
     public static final String GRIDOBJECTPATH = "gridobject/";
     public static final String TILEIMAGEPATH = "TileImage/";
