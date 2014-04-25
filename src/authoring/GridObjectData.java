@@ -71,7 +71,8 @@ public class GridObjectData {
 		
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
+//		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(root);
 	}
 
