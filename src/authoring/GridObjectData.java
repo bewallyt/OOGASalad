@@ -32,6 +32,8 @@ public class GridObjectData {
 	// DoorData
 	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 
 		myArguments.add(1);
 		myArguments.add(1);
@@ -44,6 +46,8 @@ public class GridObjectData {
 	// EnemyData
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
 		myArguments.add(1);
 		myArguments.add(1);
@@ -57,6 +61,8 @@ public class GridObjectData {
 	// NPCData
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
 		myArguments.add(1);
 		myArguments.add(1);
