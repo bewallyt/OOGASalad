@@ -1,4 +1,6 @@
 package engine.battle;
+import java.awt.Image;
+
 import engine.dialogue.AbstractManager;
 import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
@@ -8,6 +10,7 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
 import engine.item.Item;
+import engine.item.Weapon;
 
 public class BattleManager extends AbstractManager implements InteractionBox{
 	BattleCalculator myBattleCalculate;
@@ -37,6 +40,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated ";
 	private static final String TEXT_DISPLAYED_DROPPED_WEAPON = "Picked dropped weapon!";
 	private static final String TEXT_DISPLAYED_PLAYER_DEAD="You have been defeated!";
+	private Image myCurrentPlayerBattleImage;
+	private Image myCurrentEnemyBattleImage;
 	//DialogueListeningState PlayerDead = new DialogueListeningState("You have been defeated!",);
 	
 	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
@@ -57,6 +62,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		setOriginalNodes();
 		initializeChildrenNodes();
 		myCurrentState=0;
+		myCurrentPlayerBattleImage=myPlayer.getBattleImage();
+		myCurrentEnemyBattleImage = myEnemy.getBattleImage();
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
@@ -133,6 +140,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			setOriginalNodes();
 			initializeChildrenNodes();
 			myCurrentState=TOPLEVEL;
+			myCurrentPlayerBattleImage=myPlayer.getBattleImage();
+			myCurrentEnemyBattleImage=myEnemy.getBattleImage();
 
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED){
@@ -142,6 +151,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			setCurrentTextToBeDisplayed();
 			myBattleCalculate.attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
 			myCurrentState=SECONDATTACKHAPPENED;
+			if(myCurrentAttacker instanceof Player)myCurrentPlayerBattleImage=myPlayer.getCurrentWeapon().getImage();
+			else{myCurrentEnemyBattleImage=myEnemy.getCurrentWeapon().getImage();}
 			if(myBattleCalculate.enemyIsDead())
 				myCurrentState=ENEMYDEAD;
 			if(myBattleCalculate.playerIsDead()){
@@ -173,6 +184,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 				myCurrentState=FIRSTATTACKHAPPENED;
 				setCurrentTextToBeDisplayed();
 				myBattleCalculate.attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
+				if(myCurrentAttacker instanceof Player)myCurrentPlayerBattleImage=myPlayer.getCurrentWeapon().getImage();
+				else{myCurrentEnemyBattleImage=myEnemy.getCurrentWeapon().getImage();}
 				if(myBattleCalculate.enemyIsDead())
 					myCurrentState=ENEMYDEAD;
 				if(myBattleCalculate.playerIsDead())
@@ -230,7 +243,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			textToBeDisplayed=TEXT_DISPLAYED_PLAYER_DEAD;
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
-			textToBeDisplayed=myCurrentAttacker.toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString();
+			textToBeDisplayed=myCurrentAttacker.getCurrentWeapon().toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString();
 		}
 		else if(myCurrentState==RAN){
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;
@@ -261,5 +274,11 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	@Override
 	public String getTextToBeDisplayed() {
 		return textToBeDisplayed;
+	}
+	public Image getCurrentPlayerBattleImage(){
+		return myCurrentPlayerBattleImage;
+	}
+	public Image getCurrentEnemyBattleImage(){
+		return myCurrentEnemyBattleImage;
 	}
 }

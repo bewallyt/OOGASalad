@@ -40,4 +40,4 @@ public class EnemyData extends GridObjectData {
     public String[] getImages(){
     	return myImages;
     }
-}
+ }

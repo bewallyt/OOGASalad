@@ -52,4 +52,5 @@ public class Door extends GridObject{
 	public World getWorld(){
 		return myBuildingWorld;
 	}
+
 }
