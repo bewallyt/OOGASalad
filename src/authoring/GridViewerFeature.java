@@ -14,7 +14,7 @@ import java.awt.*;
 public class GridViewerFeature extends Feature{
 
 	private WorldData wd;
-	private Grid g;
+	//private Grid g;
 	private JScrollPane myViewer;
 	private JTabbedPane tabs;
 	private Map<String, Grid> myGrids;
@@ -35,19 +35,27 @@ public class GridViewerFeature extends Feature{
 		for(Grid g : myGrids.values())
 			g.tileRepaint();
 	}
-
+	public Grid getCurrentGrid(){
+		System.out.println(mapName);
+		return myGrids.get(mapName);
+		
+	}
 	public void addMap(String s){
-		mapName = s;
-		mapSize();		
-		tabs.addTab(s, myViewer);
+		if(myGrids.isEmpty()){
+			mapName = s;		
+			wd.setCurrentMap(mapName);
+		}
+		mapSize(s);		
+		tabs.addTab(s, myViewer);	
 	}
 	public Grid getGrid(String s){
 		return myGrids.get(s);
 	}
-	public void gridMaker(int height, int width){
-		g= new Grid(height, width);
-		myGrids.put(mapName, g);
-		myViewer = new JScrollPane(myGrids.get(mapName));
+	
+	public void gridMaker(int height, int width, String name){
+		Grid g= new Grid(height, width);
+		myGrids.put(name, g);
+		myViewer = new JScrollPane(myGrids.get(name));
 		myViewer.setPreferredSize(new Dimension(592, 590));
 	}
 	
@@ -68,7 +76,7 @@ public class GridViewerFeature extends Feature{
 		}
 	}
 	
-	public void mapSize(){
+	public void mapSize(String s){
 		JPanel mapSizer = new JPanel();
 		JTextField rowEntry = new JTextField(5);
 		JTextField colEntry = new JTextField(5);
@@ -84,14 +92,13 @@ public class GridViewerFeature extends Feature{
 			
 			if(row < 15 || col < 15){
 				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error", JOptionPane.ERROR_MESSAGE);
-				mapSize();
+				mapSize(s);
 				return;
 			}
 		}
 		MapData md = new MapData(row, col);
-		wd.addLevel(mapName, md);
-		wd.setCurrentMap(mapName);
-		gridMaker(row, col);
+		wd.addLevel(s, md);
+		gridMaker(row, col, s);
 	}
 
 	public class TabbedPaneListener implements ChangeListener{
@@ -99,7 +106,9 @@ public class GridViewerFeature extends Feature{
 		@Override
 		public void stateChanged(ChangeEvent arg0) {
 			wd.setCurrentMap(tabs.getTitleAt(tabs.getSelectedIndex()));
-			g = myGrids.get(tabs.getTitleAt(tabs.getSelectedIndex()));
+			mapName=tabs.getTitleAt(tabs.getSelectedIndex());
+			//g = myGrids.get(tabs.getTitleAt(tabs.getSelectedIndex()));
+			//System.out.println("New Map: "+tabs.getTitleAt(tabs.getSelectedIndex()));
 		}
 	}
 
