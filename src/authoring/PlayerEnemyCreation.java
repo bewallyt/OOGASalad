@@ -2,7 +2,6 @@ package authoring;
 
 import javax.swing.*;
 
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -208,6 +207,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 
     private void makePlayer() {
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);
+        FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());	
         FeatureManager.getWorldData().savePlayer(madePlayer);
     }
 

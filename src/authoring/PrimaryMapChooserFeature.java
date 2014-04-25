@@ -20,8 +20,7 @@ public class PrimaryMapChooserFeature extends Feature{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());
-			
+			FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());		
 		}
 		
 	}
