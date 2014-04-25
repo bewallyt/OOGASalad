@@ -1,22 +1,9 @@
 package engine.battle;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.io.IOException;
-import java.io.InputStream;
-
 import engine.dialogue.AbstractManager;
 import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
-import engine.dialogue.DialogueListeningState;
 import engine.dialogue.InteractionBox;
-import engine.dialogue.InteractionMatrix;
 import engine.dialogue.InteractionMatrix2x2;
-import engine.dialogue.MatrixNode;
-import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
@@ -44,9 +31,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
-	private static final int SYMBOL_RADIUS = 10;
 	private static final String TEXT_DISPLAYED_ATTACK=" used ";
-	private static final String TEXT_DISPLAYED_SECOND_ATTACK_COMPLETED="second attack damaged by: ";
 	private static final String TEXT_DISPLAYED_WEAPON_SELECTED="weapon selected :: ";
 	private static final String TEXT_DISPLAYED_RAN="Got away safely!";
 	private static final String TEXT_DISPLAYED_ENEMY_DEAD = "You defeated ";

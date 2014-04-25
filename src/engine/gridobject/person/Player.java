@@ -1,11 +1,6 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
-
-import engine.dialogue.InteractionBox;
-
-import engine.dialogue.DialogueDisplayControl;
-
 import engine.gridobject.Door;
 import engine.item.Item;
 import engine.state.AbstractState;
@@ -15,25 +10,18 @@ import engine.world.SurroundingChecker;
 //import engine.AbstractGameState;
 
 public class Player extends Person {
-	private int count = 0;
 
 	private static final int DEFAULT_PLAYER_HEIGHT = 1;
 	private static final int DEFAULT_PLAYER_WIDTH = 1;
 	public boolean aClick = false;
 	private AbstractState myState;
 	private SurroundingChecker mySurroundingChecker;
-	private String[] myAnimImages;
 	private Door enteredDoor = null;
 	private double originalSpeed;
-	private String[] myItems;
-	private String[] myWeapons;
 
 	public Player(String[] animImages, String name, double speed, String[] items, String[] weps) {
 		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
 		myState = new WalkAroundState(this);
-		myItems = items;
-		myWeapons = weps;
-		//setMyItems(null);
 	}
 
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker) {
