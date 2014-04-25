@@ -13,10 +13,8 @@ import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.MapData;
 import authoring.PlayerData;
-//import authoring.PlayerData;
 import authoring.WorldData;
 import Data.DataManager;
-//import Data.DataManager;
 import util.Constants;
 import util.Music;
 
@@ -84,13 +82,12 @@ public class GameFrame extends RPGEngine {
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
 
-			WalkAroundWorld currWorld = new WalkAroundWorld("mapName",
+			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
-			// currWorld.setID(mapName);
 
-//			if (myWorldData.getPrimaryMap().equals(mapName))
+			if (myWorldData.getPrimaryMap().equals(mapName))
 				setWorld(currWorld); // this is only called for the initial
 										// world
 

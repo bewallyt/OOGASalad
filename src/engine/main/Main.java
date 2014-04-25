@@ -140,7 +140,7 @@ public class Main extends RPGEngine {
 		gridObjectList.add(enemy);
 		gridObjectList.add(tallGrass);
 		Barrier cab = new Barrier("ImageFiles/zeldasword.png",1,1);
-	//	cab.setPickupable(new Weapon("grassback.jpg", "weapon", null));
+	//	cab.setPickupable(new Weapon("ImageFiles/grassback.jpg", "weapon", null));
 		cab.setPickupable(new KeyItem("ImageFiles/zeldasword.png", "sword"));
 		
 		gridObjectList.add(cab);
