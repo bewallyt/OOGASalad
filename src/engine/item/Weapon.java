@@ -1,5 +1,6 @@
 package engine.item;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +9,13 @@ import engine.battle.Attack;
 import engine.battle.BattleExecutable;
 import engine.dialogue.MatrixNode;
 import engine.gridobject.person.Player;
+import engine.images.ScaledImage;
 
 public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 	private Statistic myDamage;
 	private Statistic mySpeed;
 	private List<Attack> myAttacks;
+	private String myImage;
 	public final static int DEFAULT_SPEED=1;
 	public final static int DEFAULT_DAMAGE=1;
 	public final static int DEFAULT_MAX=100;
@@ -20,8 +23,7 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 	public Weapon(String image, String name, List<Attack> attacks) {
 		super(name, image);
 		myAttacks = attacks;
-		mySpeed = new Statistic("Speed", DEFAULT_SPEED,DEFAULT_MAX);
-		myDamage = new Statistic("Damage",DEFAULT_DAMAGE,DEFAULT_MAX);
+		myImage=image;
 	}
 
 	public void addAttack(Attack attack){
@@ -52,6 +54,11 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 	@Override
 	public void pickUp(Player player) {
 		player.addWeapon(this);
+	}
+
+	@Override
+	public Image getImage() {
+		return new ScaledImage(150,150,myImage).scaleImage();
 	}
 
 }

@@ -101,8 +101,8 @@ public class Canvas extends JComponent{
 	private void paintArenaWorld(Graphics2D g2d) {
 		ArenaWorld world = (ArenaWorld) myWorld;
 		g2d.drawImage(world.getBackground().scaleImage(),0,0, null);
-		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight*.45), null);
-		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.7), myHeight/7, null);
+		g2d.drawImage(world.getPlayerImage(), myWidth/10, (int) (myHeight*.45), null);
+		g2d.drawImage(world.getEnemyImage(), (int) (myWidth/1.7), myHeight/7, null);
 		
 		drawStatusBars(g2d, world);
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, 0,0);

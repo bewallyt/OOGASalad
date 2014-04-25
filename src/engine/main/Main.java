@@ -65,17 +65,18 @@ public class Main extends RPGEngine {
 				"ImageFiles/PlayerLeft2.png"};
 
 		Player player = new Player(anim, "Player", 2, new String[1], new String[1]);
-		Attack attack = new Attack("playerattack");
+		Attack attack = new Attack("flamethrower");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
 		List<Attack> attackList = new ArrayList<Attack>();
 		attackList.add(attack);
 
-		Weapon weapon = new Weapon("ImageFiles/cabinets.jpg", "wep", attackList);
+		Weapon w2 = new Weapon("ImageFiles/zeldasword.png", "sword", attackList);
+		Weapon weapon = new Weapon("ImageFiles/Charmander.png", "charmander", attackList);
 		weapon.setDamage(10, 100);
 		weapon.setSpeed(10, 100);
 		player.addWeapon(weapon);
-		Weapon w2 = new Weapon("ImageFiles/cabinets.jpg", "wep2", attackList);
+		
 		w2.setDamage(20, 100);
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);

@@ -20,6 +20,8 @@ public class ArenaWorldLooper extends GameLooper {
 
 	@Override
 	public World doLoop() {
+		myWorld.setPlayerImage(myBattleManager.getCurrentPlayerBattleImage());
+		myWorld.setEnemyImage(myBattleManager.getCurrentEnemyBattleImage());
 		System.out.println(myBattleManager.getCurrentState());
 		if(myBattleManager.getCurrentState()==BattleManager.EXITWON){
 			System.out.println("go back");
