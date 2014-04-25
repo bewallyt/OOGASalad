@@ -62,7 +62,7 @@ public class MapDataParser {
 						myGridObjectList.add(gridobject);
 					}
 				}
-
+				
 				myTileImageList.add(currTile.getImageName());
 			}
 		}

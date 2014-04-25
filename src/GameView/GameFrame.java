@@ -85,12 +85,26 @@ public class GameFrame extends RPGEngine {
 	private void createPlayer() {
 		PlayerData myPlayerData = myWorldData.getPlayData();
 		
-		System.out.println(myPlayerData.getImages().toString());
+//		System.out.println(myPlayerData.getImages().toString());
 		
-		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
-				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
-				"PlayerLeft1.png", "PlayerLeft2.png"};
+//		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
+//				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+//				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
+//				"PlayerLeft1.png", "PlayerLeft2.png"};
+		String[] anim = new String[]{
+				"PlayerImages/Ash/PlayerUp0.png",
+				"PlayerImages/Ash/PlayerUp1.png",
+				"PlayerImages/Ash/PlayerUp2.png",
+				"PlayerImages/Ash/PlayerRight0.png",
+				"PlayerImages/Ash/PlayerRight1.png",
+				"PlayerImages/Ash/PlayerRight2.png",
+				"PlayerImages/Ash/PlayerDown0.png",
+				"PlayerImages/Ash/PlayerDown1.png",
+				"PlayerImages/Ash/PlayerDown2.png",
+				"PlayerImages/Ash/PlayerLeft0.png",
+				"PlayerImages/Ash/PlayerLeft1.png",
+				"PlayerImages/Ash/PlayerLeft2.png",
+		};
 
 		String[] items = new String[1];//myPlayerData.getMyItems();
 		String[] weapons = new String[1];//myPlayerData.getMyWeapons();
