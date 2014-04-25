@@ -4,7 +4,6 @@ import java.util.List;
 
 import util.Constants;
 import engine.gridobject.person.Player;
-import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Door extends GridObject{

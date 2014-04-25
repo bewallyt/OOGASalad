@@ -989,7 +989,27 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              {
+                "toX": 4,
+                "toY": 4,
+                "toMap": "first",
+                "width": 0,
+                "height": 0,
+                "myX": 0,
+                "myY": 0,
+                "itemList": [],
+                "myID": "engine.gridobject.Door",
+                "myArguments": [
+                  1,
+                  1,
+                  "gridobject/Mountain.gif",
+                  4,
+                  4,
+                  "first"
+                ]
+              }
+            ]
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
