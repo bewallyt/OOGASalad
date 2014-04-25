@@ -118,16 +118,19 @@ public class Canvas extends JComponent{
 					.getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").
 					getMaxValue())), 10));
 		g2d.setColor(Color.black);
-//		g2d.setPaint(Font.BOLD);
+
 		g2d.setFont(new Font(getFont().getFontName(),Font.BOLD,20));
 		g2d.drawString(world.getPlayer().toString()+"  lv " + 
 		world.getPlayer().getStatsMap().get("level").getValue(), (int)(myWidth/1.75), (int) (myHeight*.45+53));
 		
+		g2d.drawImage(img, (int) (myWidth/15), (int) (myHeight/8), null);
 		g2d.setColor(Color.green);
-		g2d.draw(new Rectangle((int) (myWidth/15),myHeight/5, myWidth/4, 10));
-		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy()
+		g2d.draw(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, myWidth/5, 10));
+		g2d.fill(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, (int) (myWidth/5*((float) world.getEnemy()
 					.getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health")
 					.getMaxValue())), 10));
+		g2d.setColor(Color.black);
+		g2d.drawString(world.getEnemy().toString() +"  lv " + world.getEnemy().getStatsMap().get("level").getValue(), myWidth/15+10, myHeight/8+20);
 	}
 	
 	
