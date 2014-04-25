@@ -3,8 +3,7 @@ package authoring;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.awt.*;
 
 /**
@@ -18,35 +17,22 @@ public class GridViewerFeature extends Feature{
 	private Grid g;
 	private JScrollPane myViewer;
 	private JTabbedPane tabs;
-	private List<Grid> myGrids;
+	private Map<String, Grid> myGrids;
 	private String mapName;
 	private int row;
 	private int col;
 
 	public GridViewerFeature() {
 		wd = FeatureManager.getWorldData();
-		myGrids = new ArrayList<Grid>();
+		myGrids = new HashMap<String, Grid>();
 		tabs = new JTabbedPane();
 		tabs.addChangeListener(new TabbedPaneListener());
 		myComponents.put(tabs, BorderLayout.CENTER);
-		
-		JPanel mapNamer = new JPanel();
-		JTextField nameEntry = new JTextField(20);
-		mapNamer.add(new JLabel("Name: "));
-		mapNamer.add(nameEntry);
-		String name = "";
-		int result = JOptionPane.showConfirmDialog(null, mapNamer, "Name your map:", JOptionPane.OK_CANCEL_OPTION);
-		if(result == JOptionPane.OK_OPTION){
-			name = nameEntry.getText();
-			//JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
-			//return;				
-		}
-
-		this.addMap(name);
+		this.addMap(this.mapNamer());
 	}
 
 	public void tileRepaint(){
-		for(Grid g : myGrids)
+		for(Grid g : myGrids.values())
 			g.tileRepaint();
 	}
 
@@ -55,16 +41,33 @@ public class GridViewerFeature extends Feature{
 		mapSize();		
 		tabs.addTab(s, myViewer);
 	}
-	public Grid getGrid(){
-		return g;
+	public Grid getGrid(String s){
+		return myGrids.get(s);
 	}
 	public void gridMaker(int height, int width){
 		g= new Grid(height, width);
-		myGrids.add(g);
+		myGrids.put(mapName, g);
 		myViewer = new JScrollPane(myGrids.get(myGrids.size() - 1));
 		myViewer.setPreferredSize(new Dimension(592, 590));
 	}
-
+	
+	public String mapNamer(){
+		JPanel mn = new JPanel();
+		JTextField nameEntry = new JTextField(20);
+		mn.add(new JLabel("Name: "));
+		mn.add(nameEntry);
+		String name = "";
+		int result = JOptionPane.showConfirmDialog(null, mn, "Name your map:", JOptionPane.OK_CANCEL_OPTION);
+		if(result == JOptionPane.OK_OPTION){
+			name = nameEntry.getText();
+			return name;
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			return mapNamer();
+		}
+	}
+	
 	public void mapSize(){
 		JPanel mapSizer = new JPanel();
 		JTextField rowEntry = new JTextField(5);
@@ -96,6 +99,7 @@ public class GridViewerFeature extends Feature{
 		@Override
 		public void stateChanged(ChangeEvent arg0) {
 			wd.setCurrentMap(tabs.getTitleAt(tabs.getSelectedIndex()));
+			g = myGrids.get(tabs.getTitleAt(tabs.getSelectedIndex()));
 		}
 	}
 
