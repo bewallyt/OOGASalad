@@ -13,6 +13,7 @@ import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.MapData;
+import authoring.PlayerData;
 import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
@@ -101,33 +102,13 @@ public class GameFrame extends RPGEngine {
 	}
 
 	private void createPlayer() {
-/*		PlayerData myPlayerData = myWorldData.getPlayData();
-		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
-				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
-				"PlayerLeft1.png", "PlayerLeft2.png"};
-*/
-		String[] anim = new String[]{
-				Constants.PLAYERASHPATH+"PlayerUp0.png",
-				Constants.PLAYERASHPATH+"PlayerUp1.png",
-				Constants.PLAYERASHPATH+"PlayerUp2.png",
-				Constants.PLAYERASHPATH+"PlayerRight0.png",
-				Constants.PLAYERASHPATH+"PlayerRight1.png",
-				Constants.PLAYERASHPATH+"PlayerRight2.png",
-				Constants.PLAYERASHPATH+"PlayerDown0.png",
-				Constants.PLAYERASHPATH+"PlayerDown1.png",
-				Constants.PLAYERASHPATH+"PlayerDown2.png",
-				Constants.PLAYERASHPATH+"PlayerLeft0.png",
-				Constants.PLAYERASHPATH+"PlayerLeft1.png",
-				Constants.PLAYERASHPATH+"PlayerLeft2.png",
-		};
+		PlayerData myPlayerData = myWorldData.getPlayData();
+		String[] anim = myPlayerData.getImages();
 
-		String[] items = new String[1];//myPlayerData.getMyItems();
-		String[] weapons = new String[1];//myPlayerData.getMyWeapons();
+		String[] items = myPlayerData.getMyItems();
+		String[] weapons = myPlayerData.getMyWeapons();
 
-		myPlayer = new Player(anim, "Brandon", 2, items, weapons);
-		// myPlayer = new Player(myPlayerData.getMyAnimImages(),
-		// myPlayerData.getSpeed());
+		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons);
 	}
 
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {

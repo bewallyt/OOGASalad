@@ -27,7 +27,13 @@ public class SpriteImageChooser {
 	 * @return Returns a list of the sprite images for a given sprite in a String array
 	 */
 	public String[] getSpriteImages(String sprite){
-		return convertedFileList(PLAYER_IMAGE_FOLDER+sprite);
+		String[] temp = convertedFileList(PLAYER_IMAGE_FOLDER+sprite);
+		for(int i = 0; i < temp.length; i++){
+			temp[i]="PlayerImages/"+sprite+"/"+temp[i];
+			System.out.println(temp[i]);
+		}
+		
+		return temp;
 	}
 	/**
 	 * @return Returns the possible sprite options available to animate players and enemies. Use in conjunction with
@@ -40,7 +46,7 @@ public class SpriteImageChooser {
 		String[] array=new String[list.size()];
         int i=0;
         for(String s: list){
-        	System.out.println(s);
+//        	System.out.println(s);
         	array[i]=s;
         	i++;
         }
