@@ -16,12 +16,11 @@ import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.state.WalkAroundState;
 
-public class ConversationManager implements InteractionBox {
+public class ConversationManager extends AbstractManager implements InteractionBox {
 
 	private NPCResponseNode currentResponseNode;
 	private UserQueryNode currentUserQueryNode;
 	private String textToBeDisplayed;
-	private InteractionMatrix2x2 myResponses;
 	private int widthOfText;
 	private Player myPlayer;
 	private NPC myNPC;
@@ -39,62 +38,8 @@ public class ConversationManager implements InteractionBox {
 		myPlayer = p;
 		myNPC = n;
 		System.out.println(textToBeDisplayed);
-		myResponses = new InteractionMatrix2x2();
 		RESPONDING = false;
 	}
-
-	@Override
-	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width, int height) {
-		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
-		Font font=null;
-
-		try {
-			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
-			} catch (FontFormatException e) {
-				e.printStackTrace();
-			}
-			Font sizedFont = font.deriveFont(16f);
-			g2d.setFont(sizedFont);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		g2d.setColor(Color.white);
-		Image img = new ScaledImage(width, 150,"textbox.png").scaleImage();
-		g2d.drawImage(img, 0, height + 70, null);
-		//g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
-		g2d.setColor(Color.black);
-
-		if (RESPONDING) {
-			printResponses(g2d, myResponses, xSize, ySize, width, height);
-		} else {
-			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
-	//		System.out.println(textToBeDisplayed);
-		}	
-	}
-
-	private void printResponses(Graphics2D g2d, InteractionMatrix myResponses2, int xSize, int ySize, 
-								int width, int height) {
-		int xCornerLoc = xSize/10;
-		int yCornerLoc = ySize/2 + 120;
-
-		for (int i = 0; i < myResponses.getDimension()[0]; i++) {
-			for (int j = 0; j < myResponses.getDimension()[1]; j++) {
-				UserQueryNode qn = (UserQueryNode) myResponses.getNode(j, i);
-				if (qn != null && qn.toString()!=null) {
-					g2d.drawString(qn.toString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
-				} else {
-					g2d.drawString("     -", (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
-				}
-			}
-		}
-		
-		int[] selectedOptionLoc = myResponses.getSelectedNodeLocation();
-		g2d.fillOval((int) (xCornerLoc-10 + selectedOptionLoc[0]*(xSize-25)*5/10) - SYMBOL_RADIUS, 
-					(int) (yCornerLoc + selectedOptionLoc[1]*(height-15)*3/10) - SYMBOL_RADIUS, SYMBOL_RADIUS, SYMBOL_RADIUS);
-	}
-
 
 	@Override
 	public void getNextText() {
@@ -133,11 +78,11 @@ public class ConversationManager implements InteractionBox {
 		if (currentResponseNode.getUserQueryNodes().isEmpty()) return false;
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 2; j++) {
-				myResponses.setNode(currentResponseNode.getUserQueryNodes().get(count), j, i);
+				getMatrix().setNode(currentResponseNode.getUserQueryNodes().get(count), j, i);
 				count++;
 			}
 		}	
-		currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
+		currentUserQueryNode = (UserQueryNode) getMatrix().getCurrentNode();
 		RESPONDING = true;
 		return true;
 	}
@@ -155,25 +100,22 @@ public class ConversationManager implements InteractionBox {
 		return myPlayer;
 	}
 
-	public void moveUp() {
-			myResponses.moveUp();
-			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
+	@Override
+	public void setCurrentNode() {
+		currentUserQueryNode = (UserQueryNode) getMatrix().getCurrentNode();
 	}
 
-	public void moveDown() {
-			myResponses.moveDown();
-			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
+	@Override
+	public boolean isResponding() {
+		return RESPONDING;
 	}
 
-	public void moveLeft() {
-			myResponses.moveLeft(); 
-			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
+	@Override
+	public String getTextToBeDisplayed() {
+		return textToBeDisplayed;
 	}
 
-	public void moveRight() {
-			myResponses.moveRight();
-			currentUserQueryNode = (UserQueryNode) myResponses.getCurrentNode();
-	}
+
 
 
 }

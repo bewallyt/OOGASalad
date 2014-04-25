@@ -117,6 +117,8 @@ public class Main extends RPGEngine {
 		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("ImageFiles/grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,"enemy",2,1,1,1, player);
+		NPCResponseNode ne = new NPCResponseNode(enemy, "Let's Battle!!!!(");
+		enemy.setResponseNode(ne);
 		Enemy grassEnemy = new Enemy(anim,"grassenemy",2,1,1,1,player);
 		enemy.doBattleOnSight();
 
