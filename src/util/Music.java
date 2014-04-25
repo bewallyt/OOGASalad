@@ -17,6 +17,7 @@ public class Music {
 	private SourceDataLine mySourceDataLine;
 	private Thread myThread;
 	private Thread myPlayThread;
+	private URL myURL;
 	
 	private int BUFFER_SIZE = 12800000;
 	
@@ -35,6 +36,7 @@ public class Music {
 	 */
 	
 	public Music(URL url) {
+		myURL = url;
 		String fileURL = url.toString().substring(5);
 		setSound(fileURL.replaceAll("%20", " "));
 	}
@@ -56,6 +58,7 @@ public class Music {
 	}
 	
 	public void setPlayThread(){
+		
 		myPlayThread = myThread;
 	}
 
@@ -64,6 +67,8 @@ public class Music {
 	 */
 	
 	public void start() {
+		String fileURL = myURL.toString().substring(5);
+		setSound(fileURL.replaceAll("%20", " "));
 		setPlayThread();
 		myPlayThread.start();
 	}

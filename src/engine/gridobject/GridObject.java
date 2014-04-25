@@ -196,6 +196,7 @@ public abstract class GridObject{
 	public void setPickupable(Pickupable pickupable){
 		myPickupable=pickupable;
 	}
+	
 	public Pickupable getPickupable(){
 		return myPickupable;
 	}
