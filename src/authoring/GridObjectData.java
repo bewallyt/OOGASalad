@@ -26,7 +26,7 @@ public class GridObjectData {
 		
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(image);
+		myArguments.add(Constants.GRIDOBJECTPATH+image);
 	}
 	
 	// DoorData
@@ -35,7 +35,7 @@ public class GridObjectData {
 
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(image);
+		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(toX);
 		myArguments.add(toY);
 		myArguments.add(toMap);
@@ -47,7 +47,7 @@ public class GridObjectData {
 		
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(image);
+		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(name);
 		myArguments.add(startVals);
 		myArguments.add(weps);
@@ -60,7 +60,7 @@ public class GridObjectData {
 		
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(image);
+		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(root);
 	}
 
