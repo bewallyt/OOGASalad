@@ -22,6 +22,7 @@ public class Constants {
 	public static final int SPEED = 1;
     public static final String IMAGEPATH = "ImageFiles/";
     public static final String GRIDOBJECTPATH = "gridobject/";
+    public static final String PLAYERASHPATH = "PlayerImages/Ash/";
     public static final String TILEIMAGEPATH = "TileImage/";
     
     // authoring

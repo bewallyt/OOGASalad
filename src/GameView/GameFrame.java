@@ -89,7 +89,8 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 			// currWorld.setID(mapName);
-			if (myWorldData.getPrimaryMap().equals(mapName))
+
+//			if (myWorldData.getPrimaryMap().equals(mapName))
 				setWorld(currWorld); // this is only called for the initial
 										// world
 
@@ -109,18 +110,18 @@ public class GameFrame extends RPGEngine {
 //				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 //				"PlayerLeft1.png", "PlayerLeft2.png"};
 		String[] anim = new String[]{
-				"PlayerImages/Ash/PlayerUp0.png",
-				"PlayerImages/Ash/PlayerUp1.png",
-				"PlayerImages/Ash/PlayerUp2.png",
-				"PlayerImages/Ash/PlayerRight0.png",
-				"PlayerImages/Ash/PlayerRight1.png",
-				"PlayerImages/Ash/PlayerRight2.png",
-				"PlayerImages/Ash/PlayerDown0.png",
-				"PlayerImages/Ash/PlayerDown1.png",
-				"PlayerImages/Ash/PlayerDown2.png",
-				"PlayerImages/Ash/PlayerLeft0.png",
-				"PlayerImages/Ash/PlayerLeft1.png",
-				"PlayerImages/Ash/PlayerLeft2.png",
+				Constants.PLAYERASHPATH+"PlayerUp0.png",
+				Constants.PLAYERASHPATH+"PlayerUp1.png",
+				Constants.PLAYERASHPATH+"PlayerUp2.png",
+				Constants.PLAYERASHPATH+"PlayerRight0.png",
+				Constants.PLAYERASHPATH+"PlayerRight1.png",
+				Constants.PLAYERASHPATH+"PlayerRight2.png",
+				Constants.PLAYERASHPATH+"PlayerDown0.png",
+				Constants.PLAYERASHPATH+"PlayerDown1.png",
+				Constants.PLAYERASHPATH+"PlayerDown2.png",
+				Constants.PLAYERASHPATH+"PlayerLeft0.png",
+				Constants.PLAYERASHPATH+"PlayerLeft1.png",
+				Constants.PLAYERASHPATH+"PlayerLeft2.png",
 		};
 
 		String[] items = new String[1];//myPlayerData.getMyItems();
