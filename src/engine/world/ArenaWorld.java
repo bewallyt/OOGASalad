@@ -16,7 +16,7 @@ public class ArenaWorld extends World {
 	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy, WalkAroundWorld prevWorld) {
 		super(playWidth, playHeight, p);
 		myEnemy = enemy;
-		myBackground = new ScaledImage(playWidth,playHeight,backgroundImage);
+		myBackground = new ScaledImage(Canvas.CANVAS_SIZE,(int) (Canvas.CANVAS_SIZE*.65),backgroundImage);
 		myPrevWorld=prevWorld;
 	}
 	

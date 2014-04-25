@@ -162,7 +162,7 @@ public class Main extends RPGEngine {
 		tallGrass.setWorld(new ArenaWorld("ImageFiles/battlebackground.png",800,800,player,outsideWorld
 								.getRandomEncounter(),outsideWorld));
 
-		outsideWorld.setMusic("/music/pokeTest.wav");
+//		outsideWorld.setMusic("/music/pokeTest.wav");
 
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
@@ -196,8 +196,8 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("speed",10,100));
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
-		enemy.getWorld().setMusic("/music/fms.wav");
-		buildingWorld.setMusic("/music/pokeCenter.wav");
+//		enemy.getWorld().setMusic("/music/fms.wav");
+//		buildingWorld.setMusic("/music/pokeCenter.wav");
 
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
@@ -239,15 +239,8 @@ public class Main extends RPGEngine {
 		setWorld(outsideWorld); // this is only called for the initial world
 
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
-
-
 	}
 
-	private void initMusicTest() {
-		URL mainURL = Main.class.getResource("/music/fms.wav");
-		Music music = new Music(mainURL);
-		music.start();
-	}
 
 	@Override
 	public void initializeGame() {
