@@ -20,6 +20,7 @@ public class CommonAttributes {
     protected String attributeTab = "Attributes";
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
+    protected JPanel namePanel;
 
     public CommonAttributes(){}
 
@@ -48,7 +49,7 @@ public class CommonAttributes {
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);
-        JPanel namePanel = new JPanel(){
+        namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
                 size.width += 200;
@@ -60,7 +61,6 @@ public class CommonAttributes {
         namePanel.add(nameLabel);
         namePanel.add(itemName);
         namePanel.add(imageLabel);
-        
         
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
         imagePanel = new TilePanel(1,1);

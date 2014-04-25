@@ -35,16 +35,20 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             itemList.setEnabled(false);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
+            
         } else if("random".equals(e.getActionCommand())){
             playerEnemyImages.setEnabled(false);
             itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
+          
+            
         } else{
             playerEnemyImages.setEnabled(true);
             itemList.setEnabled(true);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
+            
         }
     }
 
@@ -152,7 +156,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        editor.dispose();
+       // editor.dispose();
 
         
     }
