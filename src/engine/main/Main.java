@@ -1,6 +1,5 @@
 package engine.main;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +7,6 @@ import java.util.List;
 import util.Constants;
 import util.Music;
 import Data.FileStorer;
-import GameView.MapDataParser;
-import authoring.MapData;
-import authoring.PlayerData;
 import authoring.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
@@ -49,7 +45,7 @@ public class Main extends RPGEngine {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void makeOutsideWorld(){
 		List<GridObject> gridObjectList = new ArrayList<GridObject>();
 		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
@@ -74,7 +70,7 @@ public class Main extends RPGEngine {
 		attack.setDamage(10, 100);
 		List<Attack> attackList = new ArrayList<Attack>();
 		attackList.add(attack);
-		
+
 		Weapon weapon = new Weapon("ImageFiles/cabinets.jpg", "wep", attackList);
 		weapon.setDamage(10, 100);
 		weapon.setSpeed(10, 100);
@@ -83,17 +79,17 @@ public class Main extends RPGEngine {
 		w2.setDamage(20, 100);
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);
-		
+
 		Item item1 = new StatBuffer("ImageFiles/zeldasword.png", "item1", new Statistic("health",50,100), 10);
 		player.addItem(item1);
 		Item item2 = new StatBuffer("ImageFiles/zeldasword.png", "item2", new Statistic("damage",30,100), 10);
 		player.addItem(item2);
 		Item item3 = new StatBuffer("ImageFiles/zeldasword.png", "item3", new Statistic("damage",20,100), 10);
 		player.addItem(item3);
-		
+
 		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
 								,1,1,1, 3, player);
-		
+
 		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
 		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
 		NPCResponseNode n1 = new NPCResponseNode(bafm, "Yeah it sucks");
@@ -128,13 +124,13 @@ public class Main extends RPGEngine {
 		attack2.setDamage(10, 100);
 		List<Attack> attackList2 = new ArrayList<Attack>();
 		attackList2.add(attack2);
-		
+
 		Weapon weapon2 = new Weapon("ImageFiles/cabinets.jpg", "wp", attackList2);
 		weapon2.setDamage(10, 100);
 		weapon2.setSpeed(10, 100);
 		enemy.addWeapon(weapon2);
 		grassEnemy.addWeapon(weapon2);
-		
+
 		gridObjectList.add(player);
 		gridObjectList.add(new Barrier("ImageFiles/pokecenter.png",4, 4));
 		gridObjectList.add(door);
@@ -144,7 +140,7 @@ public class Main extends RPGEngine {
 		Barrier cab = new Barrier("ImageFiles/zeldasword.png",1,1);
 	//	cab.setPickupable(new Weapon("ImageFiles/grassback.jpg", "weapon", null));
 		cab.setPickupable(new KeyItem("ImageFiles/zeldasword.png", "sword"));
-		
+
 		gridObjectList.add(cab);
 
 		gridObjectList2.add(player);
@@ -162,12 +158,12 @@ public class Main extends RPGEngine {
 		WalkAroundWorld buildingWorld = new WalkAroundWorld("buildingWorld",1000, 1000, player, 40, gridObjectList2);
 		door.setWorld(buildingWorld);
 		door2.setWorld(outsideWorld);
-		
+
 		tallGrass.setWorld(new ArenaWorld("ImageFiles/battlebackground.png",800,800,player,outsideWorld
 								.getRandomEncounter(),outsideWorld));
-		
+
 		outsideWorld.setMusic("/music/pokeTest.wav");
-		
+
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
 		outsideWorld.setTileObject(gridObjectList.get(2), 4, 5);
@@ -202,7 +198,7 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("defense",10,100));
 		enemy.getWorld().setMusic("/music/fms.wav");
 		buildingWorld.setMusic("/music/pokeCenter.wav");
-		
+
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
 		grassEnemy.addStatistic(new Statistic("damage",10,100));
@@ -212,7 +208,7 @@ public class Main extends RPGEngine {
 	}
 
 
-	
+
 	private void makeOutsideWorld2(){
 		List<GridObject> gridObjectList = new ArrayList<GridObject>();
 
@@ -236,40 +232,17 @@ public class Main extends RPGEngine {
 		};
 		Player player = new Player(anim, "player",2, new String[1], new String[1]);
 
-		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
-				,1,1,1, 3, player);
-
-//		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
-//		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
-//		NPCResponseNode n1 = new NPCResponseNode(bafm, "Yeah it sucks");
-//		NPCResponseNode n2 = new NPCResponseNode(bafm, "Thats not nice...");
-//		NPCResponseNode n3 = new NPCResponseNode(bafm, "You found it! Thanks");
-//		UserQueryNode q0 = new UserQueryNode(player, null, "I'll help!", n0);
-//		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
-//		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
-//		UserQueryNode q3 = new UserQueryNode(player, "sword", null, n3);
-//
-//		n.addResponseNode(q0);
-//		n.addResponseNode(q1);
-//		n.addResponseNode(q2);
-//		n.addResponseNode(q3);
-
-
-//		bafm.setResponseNode(n);
-
 
 		gridObjectList.add(player);
-		gridObjectList.add(bafm);
-	
+
 		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld",1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
-		
+
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
-		outsideWorld.setTileObject(gridObjectList.get(1), 3, 3);
-		
-		
+
+
 	}
-	
+
 	private void initMusicTest() {
 		URL mainURL = Main.class.getResource("/music/fms.wav");
 		Music music = new Music(mainURL);
@@ -281,6 +254,6 @@ public class Main extends RPGEngine {
 		setInit(true);
 		//initMusicTest();
 		initializeCanvas(500, 500);
-		makeOutsideWorld2();
+		makeOutsideWorld();
 	}
 }
