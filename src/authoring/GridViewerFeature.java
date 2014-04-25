@@ -60,15 +60,21 @@ public class GridViewerFeature extends Feature{
 		JPanel mapSizer = new JPanel();
 		JTextField rowEntry = new JTextField(5);
 		JTextField colEntry = new JTextField(5);
-		mapSizer.add(new JLabel("Rows:"));
+		mapSizer.add(new JLabel("Rows: (>15)"));
 		mapSizer.add(rowEntry);
-		mapSizer.add(new JLabel("Columns:"));
+		mapSizer.add(new JLabel("Columns: (>15)"));
 		mapSizer.add(colEntry);
 
 		int result = JOptionPane.showConfirmDialog(null, mapSizer, "Please enter the size of your map", JOptionPane.OK_CANCEL_OPTION);
 		if(result == JOptionPane.OK_OPTION){
 			row = Integer.parseInt(rowEntry.getText());
 			col = Integer.parseInt(colEntry.getText());
+			
+			if(row < 15 || col < 15){
+				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error", JOptionPane.ERROR_MESSAGE);
+				mapSize();
+				return;
+			}
 		}
 		MapData md = new MapData(row, col);
 		wd.addLevel(mapName, md);
