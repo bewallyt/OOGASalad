@@ -18,6 +18,11 @@ public class GridObjectData {
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
+	protected String[] createSpriteImages(){
+	    	SpriteImageChooser sprite=new SpriteImageChooser();
+			sprite.getSpriteOptions();
+			return sprite.getSpriteImages("Ash");
+	    }
 	// BarrierData
 	public GridObjectData(int x, int y, String image, String id) {
 		myID = id;
