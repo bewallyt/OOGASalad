@@ -36,7 +36,7 @@ public class GameFrame extends RPGEngine {
 	}
 
 	/**
-	 * Initalizes the game world from the data contained in WorldData
+	 * Initializes the game world from the data contained in WorldData
 	 * @param fileName String that represents which save file to load
 	 * 
 	 */
