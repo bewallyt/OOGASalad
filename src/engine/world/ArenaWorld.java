@@ -2,22 +2,25 @@ package engine.world;
 
 import java.awt.Image;
 
-import engine.battle.Weapon;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
+import engine.item.Weapon;
 
 public class ArenaWorld extends World {
-	ScaledImage myBackground;
-	Enemy myEnemy;
-	WalkAroundWorld myPrevWorld;
-	boolean randomEncounter=false;
+	private ScaledImage myBackground;
+	private Enemy myEnemy;
+	private WalkAroundWorld myPrevWorld;
+	private boolean randomEncounter=false;
+	private Image myPlayerImage;
+	private Image myEnemyImage;
 	
 	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy, WalkAroundWorld prevWorld) {
 		super(playWidth, playHeight, p);
 		myEnemy = enemy;
-		myBackground = new ScaledImage(playWidth,playHeight,backgroundImage);
+		myBackground = new ScaledImage(Canvas.CANVAS_SIZE,(int) (Canvas.CANVAS_SIZE*.65),backgroundImage);
 		myPrevWorld=prevWorld;
+		
 	}
 	
 	public Enemy getEnemy(){
@@ -38,6 +41,20 @@ public class ArenaWorld extends World {
 	
 	public WalkAroundWorld getPrevWorld(){
 		return myPrevWorld;
+	}
+
+	public void setPlayerImage(Image currentPlayerBattleImage) {
+		myPlayerImage=currentPlayerBattleImage;	
+	}
+
+	public void setEnemyImage(Image currentEnemyBattleImage) {
+		myEnemyImage=currentEnemyBattleImage;	
+	}
+	public Image getPlayerImage(){
+		return myPlayerImage;
+	}
+	public Image getEnemyImage(){
+		return myEnemyImage;
 	}
 
 }

@@ -6,9 +6,9 @@ import engine.battle.BattleCalculator;
 import engine.battle.BattleExecutable;
 import engine.battle.BattleManager;
 import engine.battle.Run;
-import engine.battle.Weapon;
 import engine.gridobject.person.Player;
 import engine.item.Item;
+import engine.item.Weapon;
 
 public class BottomLevel implements BattleState {
 

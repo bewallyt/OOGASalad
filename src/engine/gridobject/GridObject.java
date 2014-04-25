@@ -12,11 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.ImageIcon;
+
+import util.Constants;
 import engine.Dialogue;
 import engine.Statistic;
-import engine.battle.Weapon;
 import engine.images.ScaledImage;
 import engine.item.Item;
+import engine.item.Pickupable;
+import engine.item.Weapon;
 
 public abstract class GridObject{
 
@@ -27,6 +31,7 @@ public abstract class GridObject{
 
 	private Image myImage;
 	private String myImageName;
+	private String myAnimImagesPath;
 	private String[] myAnimImages;
 	private Map<String,Statistic> myStatsMap = new HashMap<String,Statistic>();
 	private int myNumTilesWidth;
@@ -65,6 +70,16 @@ public abstract class GridObject{
 		myDialogue=null;
 		myDialogueList=new ArrayList<String>();
 		myImageName=animImages[2];
+	}
+	
+	public GridObject(String animImagesPath, Boolean isAnim, int numTilesWidth, int numTilesHeight) {
+		myNumTilesWidth=numTilesWidth;
+		myNumTilesHeight = numTilesHeight;
+		myAnimImagesPath = animImagesPath;
+		myAnimImages=getAnimImages();
+		myDialogue=null;
+		myDialogueList=new ArrayList<String>();
+		myImageName=myAnimImages[2];	
 	}
 
 	public int[] getNumTiles(){
@@ -170,15 +185,8 @@ public abstract class GridObject{
 		doDialogue();
 	}
 
-	public Dialogue doDialogue(){
-		Dialogue d = null;
-		for(String str : myDialogueList){
-			d = new Dialogue("Dialogue.png",str);
-			System.out.println(str);
-		}
-
-		this.myDialogue=d;
-		return d;
+	public void doDialogue() {
+		
 	}
 
 	public void move() {}; // default is to do nothing
@@ -210,6 +218,16 @@ public abstract class GridObject{
 
 
 	public String[] getAnimImages(){
+		return myAnimImages;
+	}
+	
+	private String[] makeAnimImages(){
+		String[] animTemp = new String[Constants.ANIMIMAGES.length];
+		
+		for(int i = 0; i < animTemp.length; i++){
+			animTemp[i]=myAnimImagesPath+Constants.ANIMIMAGES[i];
+		}
+		
 		return myAnimImages;
 	}
 

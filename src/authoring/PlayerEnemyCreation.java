@@ -1,9 +1,16 @@
 package authoring;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
 
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerEnemyCreation extends CommonAttributes implements MouseListener, ActionListener {
 
@@ -25,6 +32,10 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
+//    private Map<String,Weapon> weaponMap;
+//    private Map<String,Item> itemMap;
+//    private DefaultListModel listModelItems;
+//    private DefaultListModel listModelWeapon;
 
     public PlayerEnemyCreation(){}
 
@@ -52,7 +63,11 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         }
     }
 
-    public void creationPanel(){	
+    public void creationPanel(){
+//        weaponMap = new HashMap<String, Weapon>();
+//        itemMap = new HashMap<String, Item>();
+//        listModelItems = new DefaultListModel();
+//        listModelWeapon = new DefaultListModel();
     	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
         String locationTab = "Location";
@@ -124,16 +139,70 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         locationPanel.add(ycoor);
         SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
 
+        JLabel playInfo = new JLabel("Player: max - 4 weapons & 4 items",JLabel.CENTER);
+        JLabel meneInfo = new JLabel("Map Enemy: max - 4 weapons & no items",JLabel.CENTER);
+        JLabel randInfo = new JLabel("Random Enemy: max - 1 weapon & no items",JLabel.CENTER);
+        JPanel infoPanel = new JPanel();
+        infoPanel.setLayout(new BoxLayout(infoPanel,BoxLayout.PAGE_AXIS));
+        infoPanel.add(playInfo);
+        infoPanel.add(meneInfo);
+        infoPanel.add(randInfo);
+
+        JPanel overPanel = new JPanel();
+        overPanel.setLayout(new BoxLayout(overPanel,BoxLayout.PAGE_AXIS));
+
         JPanel weaponItemPanel = new JPanel(new FlowLayout());
-        DefaultListModel listModelWeapon = new DefaultListModel();
-        weaponList = new JList(listModelWeapon);
-        weaponList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        //DefaultListModel listModelWeapon = new DefaultListModel();
+        //weaponList = new JList(listModelWeapon);
+        weaponList = new JList(weaponListModel);
+        weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         weaponList.addMouseListener(this);
         weaponList.setVisibleRowCount(5);
+        weaponList.setTransferHandler(new TransferHandler(){
+            public boolean canImport(TransferSupport info){
+                if(!info.isDataFlavorSupported(DataFlavor.stringFlavor)){
+                    return false;
+                }
+                JList.DropLocation dl = (JList.DropLocation)info.getDropLocation();
+                if(dl.getIndex()==-1){
+                    return false;
+                }
+                return true;
+            }
 
-        DefaultListModel listModelItems = new DefaultListModel();
-        itemList = new JList(listModelItems);
-        itemList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            public boolean importData(TransferSupport info){
+                if(!info.isDrop()){
+                    return false;
+                }
+                if(!info.isDataFlavorSupported(DataFlavor.stringFlavor)){
+                    return false;
+                }
+
+                JList.DropLocation dl = (JList.DropLocation)info.getDropLocation();
+                DefaultListModel listModel = (DefaultListModel) weaponList.getModel();
+                int index = dl.getIndex();
+                boolean insert = dl.isInsert();
+                //String value = (String)listModel.getElementAt(index);
+                Transferable t = info.getTransferable();
+                String data;
+                try{
+                    data = (String)t.getTransferData(DataFlavor.stringFlavor);
+                } catch (Exception e){
+                    return false;
+                }
+                if(insert){
+                    listModel.add(index,data);
+                } else{
+                    listModel.set(index,data);
+                }
+                return true;
+            }
+        });
+
+        //DefaultListModel listModelItems = new DefaultListModel();
+        //itemList = new JList(listModelItems);
+        itemList = new JList(itemListModel);
+        itemList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         itemList.addMouseListener(this);
         itemList.setVisibleRowCount(5);
 
@@ -142,10 +211,13 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         weaponItemPanel.add(weaponScroll);
         weaponItemPanel.add(itemScroll);
 
+        overPanel.add(infoPanel);
+        overPanel.add(weaponItemPanel);
+
         pane.add(nameTab,namePanel);
         pane.add(locationTab,locationPanel);
         pane.add(attributeTab,attributeFields());
-        pane.add(weaponItemTab,weaponItemPanel);
+        pane.add(weaponItemTab,overPanel);
 
         frame=new JFrame("Player/Enemy Creation");
         frame.setLayout(new FlowLayout());
@@ -158,8 +230,10 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         frame.setVisible(true);
        // editor.dispose();
 
+        iterateWeaponsAndItems();
         
     }
+
     private class PlayerEnemyActionListener implements ActionListener{
 
 		@Override
@@ -174,18 +248,31 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 	            }
 	            int wListSize = weaponList.getModel().getSize();
 	            int iListSize = itemList.getModel().getSize();
+                int wCounter = 0;
+                int iCounter = 0;
 	            weaponNames = new String[wListSize];
 	            itemNames = new String[iListSize];
-	            for(int i=0;i<wListSize;i++){
-	                Object weapon = weaponList.getModel().getElementAt(i);
-	                String weaponName = (String)weapon;
-	                weaponNames[i] = weaponName;
-	            }
-	            for(int j=0;j<iListSize;j++){
-	                Object item = itemList.getModel().getElementAt(j);
-	                String itemName = (String)item;
-	                itemNames[j] = itemName;
-	            }
+                for(Object o: weaponList.getSelectedValuesList()){
+                    String weaponName = (String)o;
+                    weaponNames[wCounter] = weaponName;
+                    wCounter++;
+                }
+//	            for(int i=0;i<wListSize;i++){
+//                    weaponList.getSelectedValuesList();
+//	                Object weapon = weaponList.getModel().getElementAt(i);
+//	                String weaponName = (String)weapon;
+//	                weaponNames[i] = weaponName;
+//	            }
+                for(Object p: itemList.getSelectedValuesList()){
+                    String item = (String)p;
+                    itemNames[iCounter] = item;
+                    iCounter++;
+                }
+//	            for(int j=0;j<iListSize;j++){
+//	                Object item = itemList.getModel().getElementAt(j);
+//	                String itemName = (String)item;
+//	                itemNames[j] = itemName;
+//	            }
 	            if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
 	                //image = imageName.getText();
 	                if(isRandomEnemy.isSelected()){

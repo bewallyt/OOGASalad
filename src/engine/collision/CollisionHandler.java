@@ -2,8 +2,8 @@ package engine.collision;
 
 import java.util.List;
 
-import engine.battle.Weapon;
 import engine.gridobject.GridObject;
+import engine.item.Weapon;
 
 public abstract class CollisionHandler {
 	
