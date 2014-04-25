@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
+
+import util.Constants;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
@@ -38,7 +40,7 @@ public abstract class AbstractManager implements InteractionBox{
 		}
 
 		g2d.setColor(Color.white);
-		Image img = new ScaledImage(width, 150,"ImageFiles/textbox.png").scaleImage();
+		Image img = new ScaledImage(width, 150,Constants.IMAGEPATH+"textbox.png").scaleImage();
 		g2d.drawImage(img, 0, height + 70, null);
 		//g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
 		g2d.setColor(Color.black);

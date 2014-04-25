@@ -1,19 +1,16 @@
 package authoring;
 import java.awt.Dimension;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
-
 import Data.ImageFile;
 import Data.ImageManager;
-
 import java.util.List;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
+/**
+ * 
+ * @author Richard Cao
+ *
+ */
 public class TilePanel extends JLayeredPane{
 	
 	private TileData myData;
@@ -38,16 +35,10 @@ public class TilePanel extends JLayeredPane{
 		this(row, col);
 		this.setTileImage(bg);
 	}
-	
-	/*public void tileResize(){
-		System.out.println("resized");
-		myDimension = new Dimension(100, 100);
-		this.repaint();
-		this.revalidate();
-	}*/
+
 	@Override
 	public void setPreferredSize(Dimension size){
-		//return myDimension;
+		
 	}
 	
 	@Override
