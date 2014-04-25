@@ -41,7 +41,7 @@ public class MainInGameTest extends RPGEngine {
 		Player player = new Player(anim, "Player", 2, new String[1], new String[1]);
 
 		TitleWorld titleScreen = new TitleWorld(1000, 1000, player);
-		titleScreen.setBackground("rival.png");
+		titleScreen.setBackground("PalletTown.png");
 		setWorld(titleScreen); // this is only called for the initial world
 		
 		titleScreen.setMusic("/music/pokeTest.wav");
