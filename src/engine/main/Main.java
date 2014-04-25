@@ -186,13 +186,13 @@ public class Main extends RPGEngine {
 		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
 				gridObjectList2.get(2)),0,2);
 
-		player.setBattleImage("PlayerRight0.png");
+		player.setBattleImage("ImageFiles/PlayerRight0.png");
 		player.addStatistic(new Statistic("health",100,100));
 		player.addStatistic(new Statistic("damage",10,100));
 		player.addStatistic(new Statistic("speed",10,100));
 		player.addStatistic(new Statistic("level",10,100));
 		player.addStatistic(new Statistic("defense",10,100));
-		enemy.setBattleImage("rival.png");
+		enemy.setBattleImage("ImageFiles/rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
 		enemy.addStatistic(new Statistic("damage",10,100));
 		enemy.addStatistic(new Statistic("speed",10,100));
@@ -201,7 +201,7 @@ public class Main extends RPGEngine {
 		enemy.getWorld().setMusic("/music/fms.wav");
 		buildingWorld.setMusic("/music/pokeCenter.wav");
 		
-		grassEnemy.setBattleImage("player.png");
+		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
 		grassEnemy.addStatistic(new Statistic("damage",10,100));
 		grassEnemy.addStatistic(new Statistic("speed",10,100));
