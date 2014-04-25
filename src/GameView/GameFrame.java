@@ -14,6 +14,7 @@ import authoring.MapData;
 import authoring.PlayerData;
 //import authoring.PlayerData;
 import authoring.WorldData;
+import Data.DataManager;
 //import Data.DataManager;
 import Data.FileStorer;
 import util.Constants;
@@ -21,11 +22,11 @@ import util.Music;
 
 public class GameFrame extends RPGEngine {
 	private WorldData myWorldData;
-	private FileStorer myData;
+	private DataManager myData;
 	private Player myPlayer;
 
 	public GameFrame() {
-		myData = new FileStorer();
+		myData = new DataManager();
 		initializeGame();
 	}
 
@@ -36,11 +37,8 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	public void initialize(String fileName) {
-		try {
-			myWorldData = myData.getWorldData(fileName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
 		setInit(true);
 		createWorlds();
@@ -76,6 +74,9 @@ public class GameFrame extends RPGEngine {
 					map.getMapLength()*Constants.TILE_SIZE, 
 					map.getMapWidth()*Constants.TILE_SIZE, myPlayer, 
 					Constants.TILE_SIZE, gridObjectList);
+			
+			
+			
 			setWorld(currWorld); // this is only called for the initial world
 
 			setTileImages(currWorld, TileImageList);
