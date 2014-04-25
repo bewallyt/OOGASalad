@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Attack;
-import engine.battle.Weapon;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
+import engine.item.Weapon;
 
 public abstract class Person extends GridObject {
 
@@ -89,20 +89,20 @@ public abstract class Person extends GridObject {
 			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName = switchAnim(3, 4, 5, getAnimImages());
+			imageName = switchAnim(6, 7, 8, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName = switchAnim(9, 10, 11, getAnimImages());
+			imageName = switchAnim(3, 4, 5, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName = switchAnim(6, 7, 8, getAnimImages());
+			imageName = switchAnim(0, 1, 2, getAnimImages());
 
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName = switchAnim(0, 1, 2, getAnimImages());
+			imageName = switchAnim(9, 10, 11, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;

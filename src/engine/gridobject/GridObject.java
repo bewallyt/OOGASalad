@@ -17,9 +17,10 @@ import javax.swing.ImageIcon;
 import util.Constants;
 import engine.Dialogue;
 import engine.Statistic;
-import engine.battle.Weapon;
 import engine.images.ScaledImage;
 import engine.item.Item;
+import engine.item.Pickupable;
+import engine.item.Weapon;
 
 public abstract class GridObject{
 
@@ -184,15 +185,8 @@ public abstract class GridObject{
 		doDialogue();
 	}
 
-	public Dialogue doDialogue(){
-		Dialogue d = null;
-		for(String str : myDialogueList){
-			d = new Dialogue("Dialogue.png",str);
-			System.out.println(str);
-		}
-
-		this.myDialogue=d;
-		return d;
+	public void doDialogue() {
+		
 	}
 
 	public void move() {}; // default is to do nothing
