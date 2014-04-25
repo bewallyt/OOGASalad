@@ -105,9 +105,4 @@ public class Enemy extends NPC {
 	public boolean isRandom(){
 		return isRandom;
 	}
-
-
-
-
-
 }
