@@ -3,6 +3,7 @@ package engine.gridobject.person;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Constants;
 import engine.Dialogue;
 import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
@@ -37,6 +38,10 @@ public class NPC extends Person {
 		
 		// CHANGE THIS
 		myResponseNode = null;
+	}
+	
+	public NPC(List<Object> list) {
+		super((String[]) list.get(Constants.IMAGE_CONST), (String) list.get(Constants.NAME_CONST), Constants.SPEED, Constants.DEF_TIL, Constants.DEF_TIL);
 	}
 
 	public void setResponseNode(NPCResponseNode n) {

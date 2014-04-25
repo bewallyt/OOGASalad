@@ -27,7 +27,8 @@ public class ScaledImage {
 	public Image scaleImage() {
 		BufferedImage bi = null;
 		try {
-			ImageIcon ii = new ImageIcon(this.getClass().getClassLoader().getResource(Constants.IMAGEPATH+myFile));
+//			ImageIcon ii = new ImageIcon(this.getClass().getClassLoader().getResource(Constants.IMAGEPATH+myFile));
+			ImageIcon ii = new ImageIcon(this.getClass().getClassLoader().getResource(myFile));
 			bi = new BufferedImage(myWidth, myHeight, BufferedImage.TYPE_INT_ARGB);
 			Graphics2D g2d = (Graphics2D) bi.createGraphics();
 			g2d.addRenderingHints(new RenderingHints(

@@ -18,7 +18,7 @@ import engine.menu.managers.MenuManager;
 
 public class WalkAroundWorld extends World {
 
-
+	private String myID;
 	private int myNumTileWidth;
 	private int myNumTileHeight;
 	private int myTileSize;
@@ -36,12 +36,13 @@ public class WalkAroundWorld extends World {
 	 * @param tileSize the size of each tile
 	 * @param gridObjects the list of grid objects in every world
 	 */
-	public WalkAroundWorld(int playWidth, int playHeight, Player p,int tileSize, List<GridObject> gridObjects) {
+	public WalkAroundWorld(String id, int playWidth, int playHeight, Player p,int tileSize, List<GridObject> gridObjects) {
 		super(playWidth, playHeight, p);
 		myNumTileWidth = playWidth/tileSize;
 		myNumTileHeight = playHeight/tileSize;
 		myGridObjectList = gridObjects;
 		myTileSize=tileSize;
+		myID = id;
 		makeTileMatrix();
 		myCollisionMatrix = new CollisionMatrix(myGridObjectList);
 	}
@@ -72,6 +73,10 @@ public class WalkAroundWorld extends World {
 	 */
 	public int getTileGridWidth() {
 		return myNumTileWidth;
+	}
+	
+	public String getID(){
+		return myID;
 	}
 	
 	public void setTileImage(int i, int j, String fileName) {
@@ -139,6 +144,7 @@ public class WalkAroundWorld extends World {
 	 */
 	public void addRandomEncounter(Enemy enemy){
 		myRandomEncounters.add(enemy);
+		enemy.setRandom();
 	}
 
 	/**
@@ -150,6 +156,6 @@ public class WalkAroundWorld extends World {
 		int rand = new Random().nextInt(myRandomEncounters.size());
 		return myRandomEncounters.get(rand);
 	}
-
+	
 
 }

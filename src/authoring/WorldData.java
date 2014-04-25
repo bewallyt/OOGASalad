@@ -48,6 +48,10 @@ public class WorldData {
 		primaryMap = s;
 	}
 	
+	public String getPrimaryMap() {
+		return primaryMap;
+	}
+	
 	public void setCurrentMap(String s){
 		currentMap = s;
 	}

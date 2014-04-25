@@ -1,31 +1,33 @@
 package GameView;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import main.Main;
+import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
+import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.MapData;
-import authoring.PlayerData;
-//import authoring.PlayerData;
 import authoring.WorldData;
-//import Data.DataManager;
-import Data.FileStorer;
+import Data.DataManager;
 import util.Constants;
 import util.Music;
 
 public class GameFrame extends RPGEngine {
+
 	private WorldData myWorldData;
-	private FileStorer myData;
+	private DataManager myData;
 	private Player myPlayer;
 
+	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
+
 	public GameFrame() {
-		myData = new FileStorer();
+		myData = new DataManager();
 		initializeGame();
 	}
 
@@ -36,15 +38,24 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	public void initialize(String fileName) {
-		try {
-			myWorldData = myData.getWorldData(fileName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
 		setInit(true);
 		createWorlds();
-//		createWorlds2();
+		setDoors();
+	}
+
+	private void setDoors() {
+		for (WalkAroundWorld map : myMaps.values()) {
+			for (int i = 0; i < map.getGridObjectList().size(); i++) {
+				GridObject g = map.getGridObjectList().get(i);
+				if (g instanceof Door) {
+					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
+					map.setCollisionHandler(new EnterCollision(myPlayer, ((Door) g)), i, map.getGridObjectList().size()-1);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -61,43 +72,62 @@ public class GameFrame extends RPGEngine {
 	/**
 	 * Communication between Data and Engine
 	 */
-	
+
 	private void createWorlds() {
 
 		createPlayer();
-		
-		for (MapData map : myWorldData.getMaps().values()) {
+
+		for (String mapName : myWorldData.getMaps().keySet()) {
+			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
-			
-			WalkAroundWorld currWorld = new WalkAroundWorld(
-					map.getMapLength()*Constants.TILE_SIZE, 
-					map.getMapWidth()*Constants.TILE_SIZE, myPlayer, 
+
+			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
+					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
+					* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
-			setWorld(currWorld); // this is only called for the initial world
+
+			if (myWorldData.getPrimaryMap().equals(mapName))
+				setWorld(currWorld); // this is only called for the initial
+			// world
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
+			myMaps.put(mapName, currWorld);
 		}
-		
-	
-		
+
 	}
 
 	private void createPlayer() {
-		PlayerData myPlayerData = myWorldData.getPlayData();
-
+/*		PlayerData myPlayerData = myWorldData.getPlayData();
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
 				"PlayerLeft1.png", "PlayerLeft2.png"};
+*/
+		String[] anim = new String[]{
+				Constants.PLAYERASHPATH+"PlayerUp0.png",
+				Constants.PLAYERASHPATH+"PlayerUp1.png",
+				Constants.PLAYERASHPATH+"PlayerUp2.png",
+				Constants.PLAYERASHPATH+"PlayerRight0.png",
+				Constants.PLAYERASHPATH+"PlayerRight1.png",
+				Constants.PLAYERASHPATH+"PlayerRight2.png",
+				Constants.PLAYERASHPATH+"PlayerDown0.png",
+				Constants.PLAYERASHPATH+"PlayerDown1.png",
+				Constants.PLAYERASHPATH+"PlayerDown2.png",
+				Constants.PLAYERASHPATH+"PlayerLeft0.png",
+				Constants.PLAYERASHPATH+"PlayerLeft1.png",
+				Constants.PLAYERASHPATH+"PlayerLeft2.png",
+		};
 
 		String[] items = new String[1];//myPlayerData.getMyItems();
 		String[] weapons = new String[1];//myPlayerData.getMyWeapons();
+
 		myPlayer = new Player(anim, "Brandon", 2, items, weapons);
-		// myPlayer = new Player(myPlayerData.getMyAnimImages(), myPlayerData.getSpeed());
+		// myPlayer = new Player(myPlayerData.getMyAnimImages(),
+		// myPlayerData.getSpeed());
 	}
 
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
@@ -109,11 +139,10 @@ public class GameFrame extends RPGEngine {
 
 	private void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
-		System.out.println("height: "+world.getTileGridHeight());
-		System.out.println("width: "+world.getTileGridWidth());
+		System.out.println("height: " + world.getTileGridHeight());
+		System.out.println("width: " + world.getTileGridWidth());
 		for (int i = 0; i < world.getTileGridHeight(); i++) {
 			for (int j = 0; j < world.getTileGridWidth(); j++) {
-//				System.out.println(list.get(n)+" i: "+i+" j: " + j + " n: " +n);
 				world.setTileImage(j, i, list.get(n));
 				n++;
 			}

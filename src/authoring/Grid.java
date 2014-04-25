@@ -1,10 +1,6 @@
 package authoring;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
-import java.util.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -12,6 +8,11 @@ import javax.swing.border.MatteBorder;
 import Data.ImageFile;
 import Data.ImageManager;
 
+/**
+ * 
+ * @author Richard Cao
+ *
+ */
 public class Grid extends JPanel{
 	
 	private JPopupMenu popup;
@@ -91,7 +92,6 @@ public class Grid extends JPanel{
 				gbc.gridy = row;
 				TilePanel cell = world[row][col];
 				cell.setBorder(defaultBorder);
-				//cell.setMinimumSize(new Dimension(36, 36));
 				cell.addMouseListener(new SelectedCellListener());
 				cell.addMouseMotionListener(new SelectedCellListener());
 				this.add(cell, gbc);

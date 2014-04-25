@@ -1,86 +1,14 @@
 {
   "myLevels": {
-    "first": {
+    "map3": {
       "myTiles": [
         [
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-			  {
-                "width": 0,
-                "height": 0,
-                "myX": 1,
-                "myY": 1,
-                "itemList": [],
-                "myID": "engine.gridobject.Barrier",
-                "myArguments": [
-                  1,
-                  1,
-                  "gridobject/Charmander.jpg"
-                ]
-              }            
-            ]
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -142,7 +70,7 @@
         ],
         [
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -178,73 +106,15 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -266,7 +136,7 @@
         ],
         [
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -298,19 +168,23 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -328,29 +202,7 @@
         ],
         [
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "width": 0,
-                "height": 0,
-                "myX": 5,
-                "myY": 1,
-                "itemList": [],
-                "myID": "engine.gridobject.Barrier",
-                "myArguments": [
-                  1,
-                  1,
-                  "gridobject/Charmander.jpg"
-                ]
-              }
-            ]
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -365,22 +217,22 @@
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
               {
-                "toX": 5,
-                "toY": 5,
-                "toMap": "doorArea",
+                "toX": 3,
+                "toY": 3,
+                "toMap": "map1",
                 "width": 0,
                 "height": 0,
-                "myX": 5,
-                "myY": 5,
+                "myX": 3,
+                "myY": 3,
                 "itemList": [],
                 "myID": "engine.gridobject.Door",
                 "myArguments": [
                   1,
                   1,
                   "gridobject/Mountain.gif",
-                  5,
-                  5,
-                  "doorArea"
+                  3,
+                  3,
+                  "map1"
                 ]
               }
             ]
@@ -398,6 +250,546 @@
             "myGridObjectDatas": []
           },
           {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
@@ -482,64 +874,6 @@
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -551,64 +885,6 @@
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
@@ -730,64 +1006,6 @@
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -799,126 +1017,6 @@
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
@@ -984,9 +1082,223 @@
       "myRandomEnemies": [],
       "enemyDatas": []
     },
-    "doorArea": {
+    "map2": {
       "myTiles": [
         [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
           {
             "myImageName": "TileImage/MountainPath.jpg",
             "myGridObjectDatas": []
@@ -1009,22 +1321,219 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-			  {
-                "width": 0,
-                "height": 0,
-                "myX": 1,
-                "myY": 1,
-                "itemList": [],
-                "myID": "engine.gridobject.Barrier",
-                "myArguments": [
-                  1,
-                  1,
-                  "gridobject/Charmander.jpg"
-                ]
-              }
-
-            ]
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/MountainPath.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ]
+      ],
+      "myRandomEnemies": [],
+      "enemyDatas": []
+    },
+    "map1": {
+      "myTiles": [
+        [
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -1065,36 +1574,213 @@
         ],
         [
           {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
               {
-                "toX": 4,
-                "toY": 4,
-                "toMap": "first",
+                "toX": 3,
+                "toY": 3,
+                "toMap": "map3",
                 "width": 0,
                 "height": 0,
-                "myX": 5,
-                "myY": 5,
+                "myX": 3,
+                "myY": 3,
                 "itemList": [],
                 "myID": "engine.gridobject.Door",
                 "myArguments": [
                   1,
                   1,
                   "gridobject/Mountain.gif",
-                  5,
-                  5,
-                  "first"
+                  3,
+                  3,
+                  "map2"
                 ]
               }
-
             ]
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1118,7 +1804,69 @@
             "myGridObjectDatas": []
           },
           {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1138,7 +1886,77 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1156,15 +1974,11 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1176,7 +1990,11 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1188,263 +2006,15 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1466,7 +2036,11 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1482,27 +2056,23 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1532,19 +2102,11 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1556,15 +2118,23 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1598,15 +2168,11 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1618,15 +2184,19 @@
             "myGridObjectDatas": []
           },
           {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
             "myGridObjectDatas": []
           },
           {
@@ -1660,7 +2230,23 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/char.gif",
             "myGridObjectDatas": []
           },
           {
@@ -1677,22 +2263,6 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
             "myGridObjectDatas": []
           },
           {
@@ -1718,10 +2288,6 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
@@ -1754,11 +2320,15 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
           },
           {
@@ -1776,69 +2346,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/MountainPath.jpg",
             "myGridObjectDatas": []
           },
           {
@@ -1958,8 +2466,8 @@
     }
   },
   "myImages": {},
-  "primaryMap": "first",
-  "currentMap": "first",
+  "primaryMap": "map1",
+  "currentMap": "map3",
   "myItems": {
     "Super Potion": {
       "itemName": "Super Potion",

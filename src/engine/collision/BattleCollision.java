@@ -20,6 +20,7 @@ public class BattleCollision extends CollisionHandler{
 			if(chance==10){
 				((Player) myObj1).enterDoor((Door) myObj2);
 				((ArenaWorld) ((Door) myObj2).getWorld()).setRandomEncounter();
+				chance=0;
 			}
 			
 			else{
