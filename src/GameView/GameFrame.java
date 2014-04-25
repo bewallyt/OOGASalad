@@ -1,8 +1,6 @@
 package GameView;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import main.Main;
@@ -16,7 +14,6 @@ import authoring.PlayerData;
 import authoring.WorldData;
 import Data.DataManager;
 //import Data.DataManager;
-import Data.FileStorer;
 import util.Constants;
 import util.Music;
 
@@ -42,7 +39,6 @@ public class GameFrame extends RPGEngine {
 		initMusicTest();
 		setInit(true);
 		createWorlds();
-//		createWorlds2();
 	}
 
 	@Override
@@ -63,8 +59,9 @@ public class GameFrame extends RPGEngine {
 	private void createWorlds() {
 
 		createPlayer();
-		
-		for (MapData map : myWorldData.getMaps().values()) {
+				
+		for (String mapName : myWorldData.getMaps().keySet()) {
+			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
@@ -75,21 +72,21 @@ public class GameFrame extends RPGEngine {
 					map.getMapWidth()*Constants.TILE_SIZE, myPlayer, 
 					Constants.TILE_SIZE, gridObjectList);
 			
-			
-			
-			setWorld(currWorld); // this is only called for the initial world
+			if(myWorldData.getPrimaryMap().equals(mapName))
+				setWorld(currWorld); // this is only called for the initial world
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 		}
-		
 	
 		
 	}
 
 	private void createPlayer() {
 		PlayerData myPlayerData = myWorldData.getPlayData();
-
+		
+		System.out.println(myPlayerData.getImages().toString());
+		
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 

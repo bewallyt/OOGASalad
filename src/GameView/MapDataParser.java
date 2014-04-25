@@ -20,18 +20,18 @@ public class MapDataParser {
 	private List<String> myTileImageList;
 	private MapData myMap;
 
-	public MapDataParser(MapData map, Player p) {
+	protected MapDataParser(MapData map, Player p) {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
 		myTileImageList = new ArrayList<String>();
 		parseMap(p);
 	}
 
-	public List<GridObject> getGridObjectList() {
+	protected List<GridObject> getGridObjectList() {
 		return myGridObjectList;
 	}
 
-	public List<String> getTileImageList() {
+	protected List<String> getTileImageList() {
 		return myTileImageList;
 	}
 
@@ -91,29 +91,5 @@ public class MapDataParser {
 		}
 	}
 
-	private void parseMap3(Player p) {
-		List<GridObjectData> currData = new ArrayList<GridObjectData>();
-		for (int i = 0; i < myMap.getMapLength(); i++) {
-			for (int j = 0; j < myMap.getMapWidth(); j++) {
-				TileData currTile = myMap.getTileData(i, j);
-				currData = currTile.getGridObjectDatas();
-
-				for (GridObjectData data : currData) {
-					GridObject gridobject = null;
-
-					// gridobject = (GridObject)
-					// Reflection.createInstance(data.getID(),
-					// data.getArguments());
-					//
-					// if (gridobject != null) {
-					// gridobject.setPosition(i, j);
-					// myGridObjectList.add(gridobject);
-					// }
-				}
-
-				myTileImageList.add(currTile.getImageName());
-			}
-		}
-	}
 
 }
