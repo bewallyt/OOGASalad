@@ -14,6 +14,7 @@ public class Enemy extends NPC {
 	private ArenaWorld myWorld;
 	boolean wasBattled=false;
 	private boolean isRandom;
+	private boolean wasTalked=false;
 
 
 	/**
@@ -30,11 +31,7 @@ public class Enemy extends NPC {
 		super(animImages,name, speed, numTilesWidth, numTilesHeight,movementType,player);
 		isRandom=false;
 	}
-	
-//	public Enemy(List<Object> list) {
-//		super();
-//
-//	}
+
 
 
 
@@ -72,9 +69,11 @@ public class Enemy extends NPC {
 
 	@Override 
 	public void doAction(){
-		//doDialogue();
-		
-		battleInitiated=true;
+		if(!wasBattled && !wasTalked){
+			doDialogue();
+			battleInitiated=true;
+			wasTalked=true;
+		}
 	}
 
 	private boolean inSight(){
@@ -93,6 +92,7 @@ public class Enemy extends NPC {
 	}
 	public void setWasBattled(){
 		wasBattled=true;
+		wasTalked=true;
 	}
 
 	public void setRandom() {
@@ -101,9 +101,4 @@ public class Enemy extends NPC {
 	public boolean isRandom(){
 		return isRandom;
 	}
-	
-	
-
-
-
 }
