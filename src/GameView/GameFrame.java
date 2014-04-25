@@ -1,7 +1,6 @@
 package GameView;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.MapData;
-import authoring.PlayerData;
 import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
@@ -45,8 +43,6 @@ public class GameFrame extends RPGEngine {
 		initMusicTest();
 		setInit(true);
 		createWorlds();
-//		createWorlds2();
-//		createWorlds3();
 		setDoors();
 	}
 
@@ -90,12 +86,12 @@ public class GameFrame extends RPGEngine {
 
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
-							* Constants.TILE_SIZE, myPlayer,
+					* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
 			if (myWorldData.getPrimaryMap().equals(mapName))
 				setWorld(currWorld); // this is only called for the initial
-										// world
+			// world
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
@@ -103,103 +99,14 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
-	
-	private void createWorlds3() {
-		createPlayer();
-		
-		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
-		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
-		
-		List<GridObject> gridObjectList = new ArrayList<GridObject>();
-		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
-		
-		gridObjectList.add(myPlayer);
-		gridObjectList.add(door);
-		gridObjectList2.add(myPlayer);
-		gridObjectList2.add(door2);
-		
-		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld", 1000, 1000, myPlayer, 40, gridObjectList);
-		setWorld(outsideWorld); // this is only called for the initial world
 
-		WalkAroundWorld buildingWorld = new WalkAroundWorld("buildingWorld",1000, 1000, myPlayer, 40, gridObjectList2);
-		door.setWorld(buildingWorld);
-		door2.setWorld(outsideWorld);
-		
-		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
-		outsideWorld.setTileObject(gridObjectList.get(1), 4, 5);
-		outsideWorld.setCollisionHandler(new EnterCollision(myPlayer, 
-				door),0,1);
-
-		buildingWorld.setTileObject(gridObjectList2.get(0), 1, 6);
-		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
-		buildingWorld.setCollisionHandler(new EnterCollision(myPlayer, door2), 0, 1);
-
-		
-	}
-
-	private void createWorlds2() {
-
-		createPlayer();
-		
-		String mapName = "first";
-		MapData map = myWorldData.getMap(mapName);
-		MapDataParser parser = new MapDataParser(map, myPlayer);
-		List<GridObject> gridObjectList = new ArrayList<GridObject>();		
-		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
-		gridObjectList.add(door);		
-		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
-		List<String> TileImageList = parser.getTileImageList();
-		gridObjectList.add(myPlayer);
-
-		WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
-				map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
-				* Constants.TILE_SIZE, myPlayer,
-				Constants.TILE_SIZE, gridObjectList);
-
-		setWorld(currWorld);
-		setTileImages(currWorld, TileImageList);
-//		setGridObjects(currWorld, gridObjectList);
-		currWorld.setTileObject(gridObjectList.get(0), 3, 3);
-		currWorld.setTileObject(gridObjectList.get(1), 1, 1);
-		myMaps.put(mapName, currWorld);
-
-		String mapName2 = "doorArea";
-		MapData map2 = myWorldData.getMap(mapName2);
-		MapDataParser parser2 = new MapDataParser(map2, myPlayer);
-		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
-		List<String> TileImageList2 = parser2.getTileImageList();
-		gridObjectList2.add(door2);
-		gridObjectList2.add(myPlayer);
-
-		WalkAroundWorld currWorld2 = new WalkAroundWorld(mapName2,
-				map2.getMapLength() * Constants.TILE_SIZE, map2.getMapWidth()
-				* Constants.TILE_SIZE, myPlayer,
-				Constants.TILE_SIZE, gridObjectList2);
-
-		door.setWorld(currWorld2);
-		door2.setWorld(currWorld);
-		
-//		setWorld(currWorld2);
-		
-		setTileImages(currWorld2, TileImageList2);
-		currWorld2.setTileObject(gridObjectList2.get(0), 3, 3);
-		currWorld2.setTileObject(gridObjectList2.get(1), 1, 1);
-		myMaps.put(mapName2, currWorld2);
-
-		
-		
-		
-		
-	}
-
-	
-	
 	private void createPlayer() {
-//		PlayerData myPlayerData = myWorldData.getPlayData();
-//		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
-//				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
-//				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
-//				"PlayerLeft1.png", "PlayerLeft2.png"};
+/*		PlayerData myPlayerData = myWorldData.getPlayData();
+		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
+				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
+				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
+				"PlayerLeft1.png", "PlayerLeft2.png"};
+*/
 		String[] anim = new String[]{
 				Constants.PLAYERASHPATH+"PlayerUp0.png",
 				Constants.PLAYERASHPATH+"PlayerUp1.png",
@@ -236,8 +143,6 @@ public class GameFrame extends RPGEngine {
 		System.out.println("width: " + world.getTileGridWidth());
 		for (int i = 0; i < world.getTileGridHeight(); i++) {
 			for (int j = 0; j < world.getTileGridWidth(); j++) {
-				// System.out.println(list.get(n)+" i: "+i+" j: " + j + " n: "
-				// +n);
 				world.setTileImage(j, i, list.get(n));
 				n++;
 			}
