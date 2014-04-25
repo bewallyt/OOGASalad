@@ -234,13 +234,36 @@ public class Main extends RPGEngine {
 		};
 		Player player = new Player(anim, "player",2, new String[1], new String[1]);
 
+		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
+				,1,1,1, 3, player);
+
+//		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
+//		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
+//		NPCResponseNode n1 = new NPCResponseNode(bafm, "Yeah it sucks");
+//		NPCResponseNode n2 = new NPCResponseNode(bafm, "Thats not nice...");
+//		NPCResponseNode n3 = new NPCResponseNode(bafm, "You found it! Thanks");
+//		UserQueryNode q0 = new UserQueryNode(player, null, "I'll help!", n0);
+//		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
+//		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
+//		UserQueryNode q3 = new UserQueryNode(player, "sword", null, n3);
+//
+//		n.addResponseNode(q0);
+//		n.addResponseNode(q1);
+//		n.addResponseNode(q2);
+//		n.addResponseNode(q3);
+
+
+//		bafm.setResponseNode(n);
+
 
 		gridObjectList.add(player);
+		gridObjectList.add(bafm);
 	
 		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld",1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
+		outsideWorld.setTileObject(gridObjectList.get(1), 3, 3);
 		
 		
 	}
@@ -256,6 +279,6 @@ public class Main extends RPGEngine {
 		setInit(true);
 		//initMusicTest();
 		initializeCanvas(500, 500);
-		makeOutsideWorld();
+		makeOutsideWorld2();
 	}
 }

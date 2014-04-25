@@ -120,10 +120,12 @@ public class DoorCreation {
 	private class createDoorListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			DoorData myDoor=getDoor();
+			
 			if(validateText(textFieldList)){
-				FeatureManager.getWorldData().saveDoor(myDoor);
 				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage());
+				DoorData myDoor=getDoor();
+				FeatureManager.getWorldData().saveDoor(myDoor);
+				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+ getIntValue(yField.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			
