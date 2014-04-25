@@ -9,7 +9,7 @@ public class NPCData extends GridObjectData{
 	private String[] myImages;
 	
 	public NPCData(int x, int y, int width, int height, String image, NPCResponseNode root) {
-		super(x, y, image, root, Constants.NPC);
+		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
 		init();
 		myImages=createSpriteImages();
