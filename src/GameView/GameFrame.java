@@ -42,7 +42,8 @@ public class GameFrame extends RPGEngine {
 		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
 		setInit(true);
-		createWorlds();
+//		createWorlds();
+		createWorlds2();
 		setDoors();
 	}
 
@@ -98,10 +99,60 @@ public class GameFrame extends RPGEngine {
 
 	}
 
-	private void createPlayer() {
-		PlayerData myPlayerData = myWorldData.getPlayData();
-//		System.out.println(myPlayerData.getImages().toString());
+	private void createWorlds2() {
+
+		createPlayer();
 		
+		String mapName = "first";
+		MapData map = myWorldData.getMap(mapName);
+		MapDataParser parser = new MapDataParser(map, myPlayer);
+		List<GridObject> gridObjectList = parser.getGridObjectList();
+		
+		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
+		gridObjectList.add(door);
+		
+		List<String> TileImageList = parser.getTileImageList();
+		gridObjectList.add(myPlayer);
+
+		WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
+				map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
+				* Constants.TILE_SIZE, myPlayer,
+				Constants.TILE_SIZE, gridObjectList);
+
+		if (myWorldData.getPrimaryMap().equals(mapName))
+			setWorld(currWorld); // this is only called for the initial
+		// world
+
+		setTileImages(currWorld, TileImageList);
+		setGridObjects(currWorld, gridObjectList);
+		myMaps.put(mapName, currWorld);
+
+		String mapName2 = "doorArea";
+		MapData map2 = myWorldData.getMap(mapName2);
+		MapDataParser parser2 = new MapDataParser(map2, myPlayer);
+		List<GridObject> gridObjectList2 = parser2.getGridObjectList();
+		List<String> TileImageList2 = parser2.getTileImageList();
+		gridObjectList2.add(myPlayer);
+
+		WalkAroundWorld currWorld2 = new WalkAroundWorld(mapName2,
+				map2.getMapLength() * Constants.TILE_SIZE, map2.getMapWidth()
+				* Constants.TILE_SIZE, myPlayer,
+				Constants.TILE_SIZE, gridObjectList2);
+
+		setTileImages(currWorld2, TileImageList2);
+		setGridObjects(currWorld2, gridObjectList2);
+		myMaps.put(mapName2, currWorld2);
+
+		
+		
+		
+		
+	}
+
+	
+	
+	private void createPlayer() {
+//		PlayerData myPlayerData = myWorldData.getPlayData();
 //		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
 //				"PlayerRight0.png", "PlayerRight1.png", "PlayerRight2.png",
 //				"PlayerDown0.png", "PlayerDown1.png", "PlayerDown2.png", "PlayerLeft0.png", 
