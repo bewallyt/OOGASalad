@@ -3,13 +3,9 @@ package engine.state;
 import java.awt.event.KeyEvent;
 
 import engine.Control;
-import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.item.Pickupable;
 import engine.menu.managers.MenuManager;
-import engine.world.Canvas;
-import engine.world.World;
 
 public class WalkAroundState extends AbstractState {
 
