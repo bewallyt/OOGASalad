@@ -12,7 +12,7 @@ public class DoorData extends GridObjectData {
 	private String toMap;
 
 	public DoorData(int x, int y, int width, int height, String image, int toX, int toY, String toMap) {
-		super(x, y, image, toX, toY, toMap, Constants.DOOR);
+		super(x, y, width, height, image, toX, toY, toMap, Constants.DOOR);
 		this.toX=toX;
 		this.toY=toY;
 		this.toMap=toMap;

@@ -25,24 +25,24 @@ public class GridObjectData {
 			return sprite.getSpriteImages("Ash");
 	    }
 	// BarrierData
-	public GridObjectData(int x, int y, String image, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 		
-		myArguments.add(1);
-		myArguments.add(1);
+		myArguments.add(width);
+		myArguments.add(height);
 		myArguments.add(Constants.GRIDOBJECTPATH+image);
 	}
 	
 	// DoorData
-	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
+	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 
-		myArguments.add(1);
-		myArguments.add(1);
+		myArguments.add(width);
+		myArguments.add(height);
 		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(toX);
 		myArguments.add(toY);
@@ -65,13 +65,13 @@ public class GridObjectData {
 	}
 	
 	// NPCData
-	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNode root, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 		
-		myArguments.add(1);
-		myArguments.add(1);
+		myArguments.add(width);
+		myArguments.add(height);
 		myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
 //		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(root);

@@ -17,7 +17,9 @@ public class Grid extends JPanel{
 	
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
-	private String[] popupMenuItems = { "Tile Image Editor"};
+	private TilePanel currentPanel;
+	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates"};
+	private JMenuItem myCoordinates;
 	private Border defaultBorder;
 	private Border selectBorder;
 	private TilePanel[][] world;
@@ -70,6 +72,7 @@ public class Grid extends JPanel{
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
 			JMenuItem menuItem = new JMenuItem(popupMenuItems[i]);
+			if(i==1) myCoordinates = menuItem;
 			menuItem.setActionCommand(popupMenuItems[i]);
 			menuItem.addActionListener(new PopupMenuListener());
 			popup.add(menuItem);
@@ -99,7 +102,7 @@ public class Grid extends JPanel{
 		}
 	}
 
-	public class PopupMenuListener implements ActionListener {
+	private class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			showImageMenu();
 		}
@@ -109,19 +112,20 @@ public class Grid extends JPanel{
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON3)
+				myCoordinates.setText("Coordinates: " + currentPanel.getRow() + ", " + currentPanel.getCol());
 				showPopupMenu(e);
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			TilePanel current = (TilePanel) e.getComponent();
-			current.setBorder(selectBorder);
+			currentPanel = (TilePanel) e.getComponent();
+			currentPanel.setBorder(selectBorder);
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			TilePanel current = (TilePanel) e.getComponent();
-			current.setBorder(defaultBorder);
+			currentPanel = (TilePanel) e.getComponent();
+			currentPanel.setBorder(defaultBorder);
 		}
 
 		public void mousePressed(MouseEvent e) {
@@ -135,7 +139,7 @@ public class Grid extends JPanel{
 
 		@Override
 		public void mouseDragged(MouseEvent e){
-			TilePanel currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
+			currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
 			placeImage(currentPanel);
 		}
 
