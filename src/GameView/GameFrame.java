@@ -17,7 +17,11 @@ import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
 import util.Music;
-
+/**
+ * The GameFrame class parses data from WorldData to initialize a new game.
+ * @author Brandon
+ *
+ */
 public class GameFrame extends RPGEngine {
 
 	private WorldData myWorldData;
@@ -32,9 +36,9 @@ public class GameFrame extends RPGEngine {
 	}
 
 	/**
+	 * Initalizes the game world from the data contained in WorldData
+	 * @param fileName String that represents which save file to load
 	 * 
-	 * @param fileName
-	 *            defines which saved game to load or re load
 	 */
 
 	public void initialize(String fileName) {
@@ -45,7 +49,9 @@ public class GameFrame extends RPGEngine {
 		createWorlds();
 		setDoors();
 	}
-
+/**
+ * Loops through all maps and grid objects to set doors to their corresponding map
+ */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
 			for (int i = 0; i < map.getGridObjectList().size(); i++) {
@@ -68,9 +74,9 @@ public class GameFrame extends RPGEngine {
 		Music music = new Music(mainURL);
 		music.start();
 	}
-
+	
 	/**
-	 * Communication between Data and Engine
+	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in each world
 	 */
 
 	private void createWorlds() {
@@ -99,7 +105,9 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
-
+/**
+ * Creates the player based on PlayerData
+ */
 	private void createPlayer() {
 /*		PlayerData myPlayerData = myWorldData.getPlayData();
 		String[] anim = new String[]{"PlayerUp0.png", "PlayerUp1.png", "PlayerUp2.png", 
@@ -130,6 +138,11 @@ public class GameFrame extends RPGEngine {
 		// myPlayerData.getSpeed());
 	}
 
+	/**
+	 * Sets the GridObjects to their location in their respective worlds
+	 * @param world WalkAroundWorld to set GridObjects in
+	 * @param list List of all GridObjects in a given world
+	 */
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
@@ -137,6 +150,11 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
+	/**
+	 * Set the images for the tiles in a world
+	 * @param world WalkAroundWorld to set tile images in
+	 * @param list List of tile images to set
+	 */
 	private void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
 		System.out.println("height: " + world.getTileGridHeight());
