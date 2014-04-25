@@ -1,22 +1,17 @@
 package engine.item;
 
+import java.awt.Image;
+
 import engine.battle.BattleExecutable;
-import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
+import engine.images.ScaledImage;
 
-public abstract class Item implements Pickupable, BattleExecutable {
+public abstract class Item extends Pickupable implements BattleExecutable {
 
-	private String myName;
-	private String myImageName;
-
-	
+	private String myImage;
 	public Item(String image, String name) {
-		myName = name;
-		myImageName = image;
-	}
-
-	public String toString() {
-		return myName;
+		super(name, image);
+		myImage=image;
 	}
 
 	public abstract void useItem();
@@ -25,5 +20,13 @@ public abstract class Item implements Pickupable, BattleExecutable {
 	public void pickUp(Player player){
 		player.addItem(this);
 	}
+	@Override
+	public Image getImage() {
+		return new ScaledImage(150,150,myImage).scaleImage();
+	}
+	
+//	public String toString() {
+//		return super.getName();
+//	}
 	
 }

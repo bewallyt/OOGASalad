@@ -5,6 +5,7 @@ import java.util.Random;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
+import engine.item.Weapon;
 
 public class BattleCalculator {
 	private Player myPlayer;

@@ -20,8 +20,17 @@ public class CommonAttributes {
     protected String attributeTab = "Attributes";
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
+    protected Map<String,Weapon> weaponMap;
+    protected Map<String,Item> itemMap;
+    protected DefaultListModel weaponListModel;
+    protected DefaultListModel itemListModel;
 
-    public CommonAttributes(){}
+    public CommonAttributes(){
+        weaponMap = new HashMap<String, Weapon>();
+        itemMap = new HashMap<String, Item>();
+        weaponListModel = new DefaultListModel();
+        itemListModel = new DefaultListModel();
+    }
 
     protected JPanel attributeFields(){
         attributeValues = new HashMap<String, Integer>();
@@ -69,4 +78,29 @@ public class CommonAttributes {
 		editor=new GridObjectImageEditor(imagePanel);
         return namePanel;
     }
+
+    protected void iterateWeaponsAndItems(){
+        weaponMap = FeatureManager.getWorldData().getMyWeapons();
+        itemMap = FeatureManager.getWorldData().getMyItems();
+        if(weaponMap==null){} else{
+
+            for(String s: weaponMap.keySet()){
+                if(weaponListModel.contains(s)){
+                } else{
+                    weaponListModel.addElement(s);
+                }
+            }
+        }
+        if(itemMap==null){} else{
+
+            for(String i: itemMap.keySet()){
+                if(itemListModel.contains(i)){
+                } else{
+                    itemListModel.addElement(i);
+                }
+            }
+        }
+
+    }
+
 }
