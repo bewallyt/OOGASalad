@@ -2,9 +2,13 @@ package authoring;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
+/**
+ * 
+ * @author Richard Cao
+ *
+ */
 public class MapCreatorFeature extends Feature {
 
 	private JButton gridMakerButton;

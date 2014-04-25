@@ -3,13 +3,15 @@ package authoring;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * 
+ * @author Richard Cao
+ *
+ */
 public class GridViewerFeature extends Feature{
 
 	private WorldData wd;
@@ -27,10 +29,17 @@ public class GridViewerFeature extends Feature{
 		tabs = new JTabbedPane();
 		tabs.addChangeListener(new TabbedPaneListener());
 		myComponents.put(tabs, BorderLayout.CENTER);
-		String name = JOptionPane.showInputDialog("Name your map:");
-		if(name.equals("")){
-			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
-			return;				
+		
+		JPanel mapNamer = new JPanel();
+		JTextField nameEntry = new JTextField(20);
+		mapNamer.add(new JLabel("Name: "));
+		mapNamer.add(nameEntry);
+		String name = "";
+		int result = JOptionPane.showConfirmDialog(null, mapNamer, "Name your map:", JOptionPane.OK_CANCEL_OPTION);
+		if(result == JOptionPane.OK_OPTION){
+			name = nameEntry.getText();
+			//JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			//return;				
 		}
 
 		this.addMap(name);
