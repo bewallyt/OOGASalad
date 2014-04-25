@@ -1,11 +1,13 @@
 package GameView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import main.Main;
+import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Player;
@@ -42,16 +44,19 @@ public class GameFrame extends RPGEngine {
 		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
 		setInit(true);
-//		createWorlds();
-		createWorlds2();
+		createWorlds();
+//		createWorlds2();
+//		createWorlds3();
 		setDoors();
 	}
 
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
-			for (GridObject g : map.getGridObjectList()) {
+			for (int i = 0; i < map.getGridObjectList().size(); i++) {
+				GridObject g = map.getGridObjectList().get(i);
 				if (g instanceof Door) {
 					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
+					map.setCollisionHandler(new EnterCollision(myPlayer, ((Door) g)), i, map.getGridObjectList().size()-1);
 				}
 			}
 		}
@@ -98,6 +103,39 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
+	
+	private void createWorlds3() {
+		createPlayer();
+		
+		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
+		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
+		
+		List<GridObject> gridObjectList = new ArrayList<GridObject>();
+		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
+		
+		gridObjectList.add(myPlayer);
+		gridObjectList.add(door);
+		gridObjectList2.add(myPlayer);
+		gridObjectList2.add(door2);
+		
+		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld", 1000, 1000, myPlayer, 40, gridObjectList);
+		setWorld(outsideWorld); // this is only called for the initial world
+
+		WalkAroundWorld buildingWorld = new WalkAroundWorld("buildingWorld",1000, 1000, myPlayer, 40, gridObjectList2);
+		door.setWorld(buildingWorld);
+		door2.setWorld(outsideWorld);
+		
+		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
+		outsideWorld.setTileObject(gridObjectList.get(1), 4, 5);
+		outsideWorld.setCollisionHandler(new EnterCollision(myPlayer, 
+				door),0,1);
+
+		buildingWorld.setTileObject(gridObjectList2.get(0), 1, 6);
+		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
+		buildingWorld.setCollisionHandler(new EnterCollision(myPlayer, door2), 0, 1);
+
+		
+	}
 
 	private void createWorlds2() {
 
@@ -106,11 +144,10 @@ public class GameFrame extends RPGEngine {
 		String mapName = "first";
 		MapData map = myWorldData.getMap(mapName);
 		MapDataParser parser = new MapDataParser(map, myPlayer);
-		List<GridObject> gridObjectList = parser.getGridObjectList();
-		
+		List<GridObject> gridObjectList = new ArrayList<GridObject>();		
 		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
-		gridObjectList.add(door);
-		
+		gridObjectList.add(door);		
+		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
 		List<String> TileImageList = parser.getTileImageList();
 		gridObjectList.add(myPlayer);
 
@@ -119,19 +156,19 @@ public class GameFrame extends RPGEngine {
 				* Constants.TILE_SIZE, myPlayer,
 				Constants.TILE_SIZE, gridObjectList);
 
-		if (myWorldData.getPrimaryMap().equals(mapName))
-			setWorld(currWorld); // this is only called for the initial
-		// world
-
+		setWorld(currWorld);
 		setTileImages(currWorld, TileImageList);
-		setGridObjects(currWorld, gridObjectList);
+//		setGridObjects(currWorld, gridObjectList);
+		currWorld.setTileObject(gridObjectList.get(0), 3, 3);
+		currWorld.setTileObject(gridObjectList.get(1), 1, 1);
 		myMaps.put(mapName, currWorld);
 
 		String mapName2 = "doorArea";
 		MapData map2 = myWorldData.getMap(mapName2);
 		MapDataParser parser2 = new MapDataParser(map2, myPlayer);
-		List<GridObject> gridObjectList2 = parser2.getGridObjectList();
+		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
 		List<String> TileImageList2 = parser2.getTileImageList();
+		gridObjectList2.add(door2);
 		gridObjectList2.add(myPlayer);
 
 		WalkAroundWorld currWorld2 = new WalkAroundWorld(mapName2,
@@ -139,8 +176,14 @@ public class GameFrame extends RPGEngine {
 				* Constants.TILE_SIZE, myPlayer,
 				Constants.TILE_SIZE, gridObjectList2);
 
+		door.setWorld(currWorld2);
+		door2.setWorld(currWorld);
+		
+//		setWorld(currWorld2);
+		
 		setTileImages(currWorld2, TileImageList2);
-		setGridObjects(currWorld2, gridObjectList2);
+		currWorld2.setTileObject(gridObjectList2.get(0), 3, 3);
+		currWorld2.setTileObject(gridObjectList2.get(1), 1, 1);
 		myMaps.put(mapName2, currWorld2);
 
 		
