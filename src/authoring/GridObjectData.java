@@ -9,8 +9,9 @@ import util.Constants;
 public class GridObjectData {
 
 	protected String myImage;
-	protected int width;
-	protected int height;
+	public static final int DEFAULT_DIMENSION=1;
+	protected int width=DEFAULT_DIMENSION;
+	protected int height=DEFAULT_DIMENSION;
 
 	private int myX;
 	private int myY;
@@ -97,8 +98,17 @@ public class GridObjectData {
 	public int getY(){
 		return myY;
 	}
-	public void addItem(Item i){
-		
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
+	}
+	protected void setHeight(int x){
+		height=x;
+	}
+	protected void setWidth(int x){
+		width=x;
 	}
 	
 	public List<Object> getArguments(){
