@@ -124,6 +124,7 @@ public class DoorCreation {
 			if(validateText(textFieldList)){
 				FeatureManager.getWorldData().saveDoor(myDoor);
 				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage());
+				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+ getIntValue(yField.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			

@@ -44,6 +44,9 @@ public class GridViewerFeature extends Feature{
 	public Grid getGrid(String s){
 		return myGrids.get(s);
 	}
+	public Grid getCurrentGrid(){
+		return g;
+	}
 	public void gridMaker(int height, int width){
 		g= new Grid(height, width);
 		myGrids.put(mapName, g);
