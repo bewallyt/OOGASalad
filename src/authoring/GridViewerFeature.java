@@ -50,7 +50,7 @@ public class GridViewerFeature extends Feature{
 	public void gridMaker(int height, int width){
 		g= new Grid(height, width);
 		myGrids.put(mapName, g);
-		myViewer = new JScrollPane(myGrids.get(myGrids.size() - 1));
+		myViewer = new JScrollPane(myGrids.get(mapName));
 		myViewer.setPreferredSize(new Dimension(592, 590));
 	}
 	
