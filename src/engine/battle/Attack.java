@@ -1,5 +1,7 @@
 package engine.battle;
 
+import java.awt.Image;
+
 import engine.Statistic;
 import engine.dialogue.MatrixNode;
 import engine.gridobject.person.Person;
@@ -36,10 +38,21 @@ public class Attack implements MatrixNode,BattleExecutable {
 	public Effect getEffect(){
 		return myEffect;
 	}
+	public String getEffectMessage(){
+		if(myEffect!=null)
+			return myEffect.toString();
+		return "";
+	}
 
 	@Override
 	public String toString() {
 		return myName;
+	}
+
+	@Override
+	public Image getImage() {
+		//no image
+		return null;
 	}
 	
 	
