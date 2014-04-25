@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
 
-import engine.dialogue.AttackExecutorNode;
+import engine.dialogue.AbstractManager;
 import engine.dialogue.BattleExecutorNode;
 import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.DialogueListeningState;
@@ -22,26 +22,25 @@ import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
 import engine.item.Item;
 
-public class BattleManager implements InteractionBox{
+public class BattleManager extends AbstractManager implements InteractionBox{
 	BattleCalculator myBattleCalculate;
 	private Player myPlayer;
 	private Enemy myEnemy;
 	private BattleAI myBattleAI;
-	private InteractionMatrix myOptions;
 	private BattleSelectorNode myAttackSelector;
 	private BattleSelectorNode myBagSelector;
 	private BattleSelectorNode myWeaponSelector;
 	private BattleSelectorNode myRunSelector;
 	private BattleSelectorNode myCurrentBattleSelector;
 	private BattleExecutorNode myCurrentBattleExecutorNode;
-	private final static int TOPLEVEL=0;
-	private final static int BOTTOMLEVEL=1;
-	private final static int FIRSTATTACKHAPPENED=2;
-	private final static int SECONDATTACKHAPPENED=3;
-	private final static int WEAPONSELECTED=4;
-	private final static int RAN=5;
+	public final static int TOPLEVEL=0;
+	public final static int BOTTOMLEVEL=1;
+	public final static int FIRSTATTACKHAPPENED=2;
+	public final static int SECONDATTACKHAPPENED=3;
+	public final static int WEAPONSELECTED=4;
+	public final static int RAN=5;
 	public final static int ENEMYDEAD=6;
-	private final static int BATTLEWON=7;
+	public final static int BATTLEWON=7;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -57,22 +56,22 @@ public class BattleManager implements InteractionBox{
 	
 	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
 	public static final int EXITWON = 8;
-	private static final int PLAYERDEAD = 9;
+	public static final int PLAYERDEAD = 9;
 	public static final int EXITLOST=11;
-	private static final int BATTLELOST = 10;
-	private final static int ITEMUSED=12;
+	public static final int BATTLELOST = 10;
+	public final static int ITEMUSED=12;
 	private String itemUsedName = "";
-	private String textToBeDisplayed;
+	private String textToBeDisplayed="";
 	private boolean ran=false;
 	private boolean dropWeapon = false;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
 		myEnemy=enemy;
-		myBattleAI=new BattleAI(enemy);
-		myOptions = new InteractionMatrix2x2();
+		myBattleAI=new BattleAI(enemy);		
 		setOriginalNodes();
 		initializeChildrenNodes();
+		myCurrentState=0;
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
@@ -89,11 +88,11 @@ public class BattleManager implements InteractionBox{
 		myWeaponSelector = new BattleSelectorNode("Weapon");
 		myRunSelector = new BattleSelectorNode("Run");
 
-		myOptions.setNode(myAttackSelector, 0, 0);
-		myOptions.setNode(myBagSelector, 1, 0);
-		myOptions.setNode(myWeaponSelector, 0, 1);
-		myOptions.setNode(myRunSelector, 1, 1);
-		myCurrentBattleSelector=(BattleSelectorNode) myOptions.getCurrentNode();
+		getMatrix().setNode(myAttackSelector, 0, 0);
+		getMatrix().setNode(myBagSelector, 1, 0);
+		getMatrix().setNode(myWeaponSelector, 0, 1);
+		getMatrix().setNode(myRunSelector, 1, 1);
+		myCurrentBattleSelector=(BattleSelectorNode) getMatrix().getCurrentNode();
 	}
 
 	private void setAttackChildrenNodes(BattleSelectorNode node){
@@ -102,7 +101,7 @@ public class BattleManager implements InteractionBox{
 		}
 	}
 	private void setNextChild(BattleSelectorNode node, BattleExecutable attack) {
-		BattleExecutorNode executorNode = new AttackExecutorNode(attack);
+		BattleExecutorNode executorNode = new BattleExecutorNode(attack);
 		node.setChild(executorNode);
 	}
 
@@ -125,50 +124,8 @@ public class BattleManager implements InteractionBox{
 	}
 
 	@Override
-	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,int height) {
-		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
-		Font font=null;
-		try {
-			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
-			} catch (FontFormatException e) {
-				e.printStackTrace();
-			}
-			Font sizedFont = font.deriveFont(12f);
-			g2d.setFont(sizedFont);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		g2d.setColor(Color.white);
-		g2d.fill(new Rectangle((int) ((int) 0), ySize/2+60, width , height));
-		g2d.setColor(Color.black);
-		if(myCurrentState==TOPLEVEL || myCurrentState==BOTTOMLEVEL){
-			printResponses(g2d, myOptions, xSize, ySize, width, height);
-		}
-		else {
-			g2d.drawString(textToBeDisplayed, (int) xSize/10, ySize/2+120);
-		} 
-	}
-
-	private void printResponses(Graphics2D g2d, InteractionMatrix myResponses2, int xSize, int ySize, 
-			int width, int height) {
-		int xCornerLoc = xSize/10;
-		int yCornerLoc = ySize/2 + 120;
-		for (int i = 0; i < myOptions.getDimension()[0]; i++) {
-			for (int j = 0; j < myOptions.getDimension()[1]; j++) {
-				MatrixNode qn = (MatrixNode) myOptions.getNode(j, i);
-				if(qn!=null)g2d.drawString(qn.toString(), (int) (xCornerLoc + j*(xSize*5/10)), (int)(yCornerLoc + i*(height*3/10)));
-			}
-		}
-
-		int[] selectedOptionLoc = myOptions.getSelectedNodeLocation();
-		g2d.fillOval((int) (xCornerLoc-10 + selectedOptionLoc[0]*(xSize-25)*5/10) - SYMBOL_RADIUS, 
-				(int) (yCornerLoc + selectedOptionLoc[1]*(height-15)*3/10) - SYMBOL_RADIUS, SYMBOL_RADIUS, SYMBOL_RADIUS);
-	}
-	@Override
 	public void getNextText() {
-		((InteractionMatrix2x2) myOptions).resetMatrixPosition();
+		((InteractionMatrix2x2) getMatrix()).resetMatrixPosition();
 		if(myCurrentState==RAN){
 			ran=true;
 		}
@@ -240,7 +197,7 @@ public class BattleManager implements InteractionBox{
 			else if(executable instanceof Item){
 				((Item) executable).useItem();
 				myCurrentState=ITEMUSED;
-				itemUsedName=((Item) executable).getName();
+				itemUsedName=((Item) executable).toString();
 				setCurrentTextToBeDisplayed();
 			}
 			else if(executable instanceof Run){
@@ -252,50 +209,26 @@ public class BattleManager implements InteractionBox{
 		else if(myCurrentState==TOPLEVEL){
 			int count=0;
 			myCurrentBattleSelector.getChildren().size();
-			for(int i=0; i<myOptions.getDimension()[0]; i++){
-				for(int j=0; j<myOptions.getDimension()[1]; j++){
+			for(int i=0; i<getMatrix().getDimension()[0]; i++){
+				for(int j=0; j<getMatrix().getDimension()[1]; j++){
 					if(myCurrentBattleSelector.getChildren().size()>count)
-						myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
+						getMatrix().setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
 					else{
-						myOptions.setNode(null, i, j);
+						getMatrix().setNode(null, i, j);
 					}
 					count++;
 				}
 			}
-			myCurrentBattleExecutorNode = (BattleExecutorNode) myOptions.getCurrentNode();
+			myCurrentBattleExecutorNode = (BattleExecutorNode) getMatrix().getCurrentNode();
 			myCurrentState=BOTTOMLEVEL;
 		}
-
-
-
-
-
 	}
-	public void moveUp() {
-		myOptions.moveUp();
-		setCurrentNode();
-	}
-
-	public void moveDown() {
-		myOptions.moveDown();
-		setCurrentNode();
-	}
-
-	public void moveLeft() {
-		myOptions.moveLeft();
-		setCurrentNode();
-	}
-
-	public void moveRight() {
-		myOptions.moveRight();
-		setCurrentNode();
-	}
-	private void setCurrentNode() {
+	public void setCurrentNode() {
 		if(myCurrentState==TOPLEVEL){
-			myCurrentBattleSelector=(BattleSelectorNode) myOptions.getCurrentNode();
+			myCurrentBattleSelector=(BattleSelectorNode) getMatrix().getCurrentNode();
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
-			myCurrentBattleExecutorNode=(BattleExecutorNode) myOptions.getCurrentNode();
+			myCurrentBattleExecutorNode=(BattleExecutorNode) getMatrix().getCurrentNode();
 		}
 	}
 	public Player getPlayer() {
@@ -334,5 +267,14 @@ public class BattleManager implements InteractionBox{
 	}
 	public void setCurrentState(int state){
 		myCurrentState=state;
+	}
+	@Override
+	public boolean isResponding() {
+		 return (myCurrentState==TOPLEVEL || myCurrentState==BOTTOMLEVEL);
+	
+	}
+	@Override
+	public String getTextToBeDisplayed() {
+		return textToBeDisplayed;
 	}
 }

@@ -2,8 +2,21 @@ package engine.dialogue;
 
 import engine.battle.BattleExecutable;
 
-public abstract class BattleExecutorNode implements MatrixNode{
+public class BattleExecutorNode implements MatrixNode{
 
 
-	public abstract BattleExecutable getExecutor();
+	private BattleExecutable myExecutable;
+
+	public BattleExecutorNode(BattleExecutable executable){
+		myExecutable = executable;
+	}
+
+	public BattleExecutable getExecutor() {
+		return myExecutable;
+	}
+
+	@Override
+	public String toString() {
+		return (myExecutable).toString();
+	}
 }

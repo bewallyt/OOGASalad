@@ -3,6 +3,8 @@ package engine.state;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import engine.dialogue.InteractionMatrix;
+
 public abstract class AbstractState implements KeyListener {
 
 	public AbstractState() {
@@ -22,5 +24,6 @@ public abstract class AbstractState implements KeyListener {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
