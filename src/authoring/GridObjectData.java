@@ -18,6 +18,11 @@ public class GridObjectData {
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
+	protected String[] createSpriteImages(){
+	    	SpriteImageChooser sprite=new SpriteImageChooser();
+			sprite.getSpriteOptions();
+			return sprite.getSpriteImages("Ash");
+	    }
 	// BarrierData
 	public GridObjectData(int x, int y, String image, String id) {
 		myID = id;
@@ -32,6 +37,8 @@ public class GridObjectData {
 	// DoorData
 	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 
 		myArguments.add(1);
 		myArguments.add(1);
@@ -44,6 +51,8 @@ public class GridObjectData {
 	// EnemyData
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
 		myArguments.add(1);
 		myArguments.add(1);
@@ -57,10 +66,13 @@ public class GridObjectData {
 	// NPCData
 	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
 		myID = id;
+		myX = x;
+		myY = y;
 		
 		myArguments.add(1);
 		myArguments.add(1);
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
+//		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(root);
 	}
 

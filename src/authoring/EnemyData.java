@@ -26,11 +26,7 @@ public class EnemyData extends GridObjectData {
         myMovement = movement;
         myImages=createSpriteImages();
     }
-    private String[] createSpriteImages(){
-    	SpriteImageChooser sprite=new SpriteImageChooser();
-		sprite.getSpriteOptions();
-		return sprite.getSpriteImages("Ash");
-    }
+   
     //accomodate Random Enemy constructor
     public EnemyData(int x, int y, String image, String name, Map<String, Integer> startVals, String[] weps) {}
 
