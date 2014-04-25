@@ -17,8 +17,10 @@ public class StatBuffer extends Item {
 	@Override
 	public void useItem() {
 		changeStatistic(myAmountToChange);
+		
 	}
 	public void changeStatistic(int amountToChange){
 		myStatistic.changeValue(amountToChange);
+		
 	}
 }

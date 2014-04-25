@@ -84,12 +84,7 @@ public class Main extends RPGEngine {
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);
 		
-		Item item1 = new StatBuffer("ImageFiles/zeldasword.png", "item1", new Statistic("health",50,100), 10);
-		player.addItem(item1);
-		Item item2 = new StatBuffer("ImageFiles/zeldasword.png", "item2", new Statistic("damage",30,100), 10);
-		player.addItem(item2);
-		Item item3 = new StatBuffer("ImageFiles/zeldasword.png", "item3", new Statistic("damage",20,100), 10);
-		player.addItem(item3);
+		
 		
 		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
 								,1,1,1, 3, player);
@@ -200,8 +195,11 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("speed",10,100));
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
-		enemy.getWorld().setMusic("/music/fms.wav");
+		enemy.getWorld().setMusic("/music/pokeBattle.wav");
 		buildingWorld.setMusic("/music/pokeCenter.wav");
+		Item item1 = new StatBuffer("ImageFiles/zeldasword.png", "item1", player.getStatsMap().get("health"), 10);
+		player.addItem(item1);
+		
 		
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
