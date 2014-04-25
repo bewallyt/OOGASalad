@@ -2,10 +2,10 @@ package engine.world;
 
 import java.awt.Image;
 
-import engine.battle.Weapon;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
+import engine.item.Weapon;
 
 public class ArenaWorld extends World {
 	ScaledImage myBackground;
@@ -16,7 +16,7 @@ public class ArenaWorld extends World {
 	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy, WalkAroundWorld prevWorld) {
 		super(playWidth, playHeight, p);
 		myEnemy = enemy;
-		myBackground = new ScaledImage(playWidth,playHeight,backgroundImage);
+		myBackground = new ScaledImage(Canvas.CANVAS_SIZE,(int) (Canvas.CANVAS_SIZE*.65),backgroundImage);
 		myPrevWorld=prevWorld;
 	}
 	

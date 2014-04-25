@@ -3,6 +3,7 @@ package engine.battle;
 import engine.Statistic;
 import engine.dialogue.MatrixNode;
 import engine.gridobject.person.Person;
+import engine.item.Weapon;
 
 public class Attack implements MatrixNode,BattleExecutable {
 	private String myName;

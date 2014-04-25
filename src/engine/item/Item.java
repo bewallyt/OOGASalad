@@ -1,22 +1,13 @@
 package engine.item;
 
 import engine.battle.BattleExecutable;
-import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
 
-public abstract class Item implements Pickupable, BattleExecutable {
-
-	private String myName;
-	private String myImageName;
+public abstract class Item extends Pickupable implements BattleExecutable {
 
 	
 	public Item(String image, String name) {
-		myName = name;
-		myImageName = image;
-	}
-
-	public String toString() {
-		return myName;
+		super(name, image);
 	}
 
 	public abstract void useItem();
@@ -25,5 +16,9 @@ public abstract class Item implements Pickupable, BattleExecutable {
 	public void pickUp(Player player){
 		player.addItem(this);
 	}
+	
+//	public String toString() {
+//		return super.getName();
+//	}
 	
 }
