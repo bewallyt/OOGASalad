@@ -151,7 +151,8 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	}
 	
     private void makeNPC(){
-    	NPCData myNPC = new NPCData(x,y,editor.getSelectedImage().getDescription(),myRoot);
+    	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+    			editor.getSelectedImage().getDescription(),myRoot);
     	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
     			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
