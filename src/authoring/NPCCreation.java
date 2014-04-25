@@ -51,7 +51,8 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	private JButton newItemResponse;
 	private JOptionPane optionFrame;
 	private JFrame frame;
-
+	private JTextField widthField;
+	private JTextField heightField;
 
     public NPCCreation(){}
 
@@ -79,15 +80,23 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
         JPanel locationPanel = new JPanel(new SpringLayout());
         JLabel xcoordinate = new JLabel("X");
         JLabel ycoordinate = new JLabel("Y");
+        JLabel widthLabel=new JLabel("Width");
+        JLabel heightLabel=new JLabel("Height");
         xcoor = new JTextField("2",5);
         ycoor = new JTextField("2",5);
+        widthField=new JTextField("1", 15);
+        heightField=new JTextField("1", 15); 
         locationPanel.add(xcoordinate);
         xcoordinate.setLabelFor(xcoor);
         locationPanel.add(xcoor);
         locationPanel.add(ycoordinate);
         ycoordinate.setLabelFor(ycoor);
         locationPanel.add(ycoor);
-        SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
+        locationPanel.add(widthLabel);
+        locationPanel.add(widthField);
+        locationPanel.add(heightLabel);
+        locationPanel.add(heightField);
+        SpringUtilities.makeCompactGrid(locationPanel,4,2,6,6,6,6);
         
         JPanel dialoguePanel = new JPanel();
 		myPrev = new ArrayList<NPCResponseNode>();
@@ -137,9 +146,15 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 		}
     	
     }
+    private int getIntValue(String s){
+		return Integer.parseInt(s);
+	}
+	
     private void makeNPC(){
-    	NPCData myNPC = new NPCData(x,y,editor.getSelectedImage().getDescription(),myRoot);
-    	new GridObjectPainter(x, y, editor.getSelectedImage());
+    	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+    			editor.getSelectedImage().getDescription(),myRoot);
+    	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
+    			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
     }
 	private void setResponses(){

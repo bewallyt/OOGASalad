@@ -27,6 +27,8 @@ public class BarrierCreation extends CommonAttributes{
 	private JFrame frame;
 	private JTextField xField;
 	private JTextField yField;
+	private JTextField widthField;
+	private JTextField heightField;
 	private TilePanel imagePanel;
 	private GridObjectImageEditor editor;
 	
@@ -46,15 +48,23 @@ public class BarrierCreation extends CommonAttributes{
 		namePanel=new JPanel();
 	    JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
+        JLabel widthLabel=new JLabel("Width");
+        JLabel heightLabel=new JLabel("Height");
         JLabel imageLabel=new JLabel("Image");
         xField = new JTextField("",15);
         yField = new JTextField("",15);
+        widthField=new JTextField("1", 15);
+        heightField=new JTextField("1", 15); 
 
         namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
         namePanel.add(xLabel);
         namePanel.add(xField);
         namePanel.add(yLabel);
         namePanel.add(yField);
+        namePanel.add(widthLabel);
+        namePanel.add(widthField);
+        namePanel.add(heightLabel);
+        namePanel.add(heightField);
         
         
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
@@ -86,7 +96,7 @@ public class BarrierCreation extends CommonAttributes{
 			BarrierData myBarrier=getBarrier();
 			if(validateText()){
 				FeatureManager.getWorldData().saveBarrier(myBarrier);
-				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage());
+				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), editor.getSelectedImage());
 				frame.dispose();
 				editor.dispose();
 			}			
@@ -94,7 +104,9 @@ public class BarrierCreation extends CommonAttributes{
 		private BarrierData getBarrier(){
 			System.out.println("xField"+xField.getText());
 			System.out.println("yField"+yField.getText());
-			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription());
+			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()),
+					getIntValue(heightField.getText()),
+					editor.getSelectedImage().getDescription());
 		}
 	}
 }
