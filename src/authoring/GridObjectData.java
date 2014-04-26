@@ -35,7 +35,8 @@ public class GridObjectData {
 	}
 	
 	// DoorData
-	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap, String id) {
+	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap,
+                          String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -49,7 +50,8 @@ public class GridObjectData {
 	}
 	
 	// EnemyData
-	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement, String id) {
+	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
+                          int movement, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -71,7 +73,14 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
+
+		myArguments.add(createSpriteImages());
+		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image,
+		// Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
+//		myArguments.add(Constants.GRIDOBJECTPATH+image);
+
 		myArguments.add(Constants.SPRITEPATH+"/"+image+"/");
+
 		myArguments.add(root);
 	}
 

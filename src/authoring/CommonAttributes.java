@@ -35,6 +35,8 @@ public class CommonAttributes {
     protected TilePanel imagePanel;
     protected JPanel namePanel;
     protected JFrame frame;
+    protected JList weaponList;
+    protected JList itemList;
     protected DefaultListModel weaponListModel;
     protected DefaultListModel itemListModel;
     protected int x;
