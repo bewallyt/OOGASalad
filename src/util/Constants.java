@@ -22,6 +22,7 @@ public class Constants {
 	public static final int SPEED = 1;
     public static final String IMAGEPATH = "engine/images/";
     public static final String GRIDOBJECTPATH = "gridobject/";
+    public static final String SPRITEPATH="PlayerImages/";
     public static final String PLAYERASHPATH = "PlayerImages/Ash/";
     public static final String TILEIMAGEPATH = "TileImage/";
     public static final String[] ANIMIMAGES = {				

@@ -49,13 +49,13 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if("barrier".equals(e.getActionCommand())){
         	barrierCreation.creationPanel();
         	frame.dispose();
-        } else if ("door".equals(e.getActionCommand())){
+        } else if("door".equals(e.getActionCommand())){
         	doorCreation.creationPanel();
         	frame.dispose();
-        } else if ("npc".equals(e.getActionCommand())){
+        } else if("npc".equals(e.getActionCommand())){
         	npcCreation.creationPanel();
         	frame.dispose();
-        } else if ("encountertile".equals(e.getActionCommand())){
+        } else if("encountertile".equals(e.getActionCommand())){
         	encounterCreation.creationPanel();
         	frame.dispose();
         }
