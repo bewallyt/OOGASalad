@@ -168,6 +168,11 @@ public abstract class Person extends GridObject {
 			}
 		}
 	}
+	
+	public void useItem(Item it) {
+		it.useItem();
+		removeItem(it);
+	}
 
 	public double getDY() {
 		return myDY;
@@ -272,5 +277,7 @@ public abstract class Person extends GridObject {
 	public String toString(){
 		return myName;
 	}
+	
+	
 	
 }
