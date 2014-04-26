@@ -2,38 +2,39 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import GameView.GameSelectManager;
-import engine.Control;
+import GameView.TitleManager;
 import engine.gridobject.person.Player;
 
-public class TitleState extends AbstractState{
-	
+public class TitleState extends AbstractState {
+
 	private Player myPlayer;
-	private GameSelectManager myGSM;
-	
-	public TitleState(GameSelectManager gsm) {
+	private TitleManager myTM;
+
+	public TitleState(Player p, TitleManager tm) {
 		super();
-		myGSM = gsm;
+		myTM = tm;
+		myPlayer = p;
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.SPACE) {
-			
+		if (e.getKeyCode() < 100) {
+			myTM.toggleStartPressed();
+			myPlayer.setState(new GameSelectState(myTM, myPlayer));
 		}
-		
+
 	}
 
 }

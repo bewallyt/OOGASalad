@@ -1,7 +1,7 @@
 package main;
 
 
-import GameView.GameSelectManager;
+import GameView.TitleManager;
 import engine.gridobject.person.Player;
 import engine.main.RPGEngine;
 import engine.world.TitleWorld;
@@ -32,7 +32,7 @@ public class MainInGameTest extends RPGEngine {
 		setWorld(titleScreen); // this is only called for the initial world
 		
 		
-		//titleScreen.setMusic("/music/pokeTest.wav");
+		titleScreen.setMusic("/music/PokemonIntro.wav");
 }
 
 	@Override

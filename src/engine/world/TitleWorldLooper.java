@@ -1,22 +1,22 @@
 package engine.world;
 
 
-import GameView.GameSelectManager;
+import GameView.TitleManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.state.TitleState;
 
 public class TitleWorldLooper extends GameLooper {
 	
 	TitleWorld myWorld;
-	GameSelectManager myGSM;
+	TitleManager myGSM;
 
 	public TitleWorldLooper(TitleWorld currentWorld) {
 		super(currentWorld);
 		myWorld = (TitleWorld) getWorld();
-		myGSM   = new GameSelectManager();
+		myGSM   = new TitleManager(myWorld.getPlayer());
 		myWorld.getPlayer().setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 		myWorld.getPlayer().setInteractionBox(myGSM);
-		//myWorld.getPlayer().setState(new TitleState(myGSM));
+		myWorld.getPlayer().setState(new TitleState(myWorld.getPlayer(), myGSM));
 	}
 
 	@Override
