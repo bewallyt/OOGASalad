@@ -90,6 +90,9 @@ public class Canvas extends JComponent{
 		else if (myWorld instanceof ArenaWorld){
 			paintArenaWorld(g2d);
 		}
+		else if (myWorld instanceof TitleWorld){
+			paintTitleWorld(g2d);
+		}
 
 	}
 
@@ -101,6 +104,11 @@ public class Canvas extends JComponent{
 		drawStatusBars(g2d, world);
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, 0,0);
 
+	}
+	
+	private void paintTitleWorld(Graphics2D g2d){
+		TitleWorld world = (TitleWorld) myWorld;
+		g2d.drawImage(world.getBackground(), 0, 0, null);
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {

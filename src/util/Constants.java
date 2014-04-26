@@ -20,7 +20,7 @@ public class Constants {
     // engine
 	public static final int DEF_TIL = 1;
 	public static final int SPEED = 1;
-    public static final String IMAGEPATH = "ImageFiles/";
+    public static final String IMAGEPATH = "engine/images/";
     public static final String GRIDOBJECTPATH = "gridobject/";
     public static final String PLAYERASHPATH = "PlayerImages/Ash/";
     public static final String TILEIMAGEPATH = "TileImage/";
