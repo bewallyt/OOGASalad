@@ -1,11 +1,11 @@
 package engine.world;
 
 import engine.collision.CollisionMatrix;
+import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Person;
 import engine.state.WalkAroundState;
 
 
@@ -53,6 +53,9 @@ public class WalkAroundWorldLooper extends GameLooper {
 						}
 					}	
 				}	
+			}
+			if(myWorld.getPlayer().getWeaponList().size()>4){
+				//ConversationManager c= new ConversationManager();
 			}
 		}
 		return null;
