@@ -5,7 +5,7 @@ package authoring;
  * @ Davis Treybig
  * */
 
- import javax.swing.*;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("ALL")
-public class CommonAttributes {
+public abstract class CommonAttributes {
     protected String name;
     protected String image;
     protected String nameTab = "Name/Image";
@@ -35,12 +35,12 @@ public class CommonAttributes {
     protected TilePanel imagePanel;
     protected JPanel namePanel;
     protected JFrame frame;
+    protected JList weaponList;
+    protected JList itemList;
     protected DefaultListModel weaponListModel;
     protected DefaultListModel itemListModel;
     protected int x;
     protected int y;
-
-
 
     public CommonAttributes(){
         weaponMap = new HashMap<String, Weapon>();

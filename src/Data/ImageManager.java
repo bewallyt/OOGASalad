@@ -29,7 +29,7 @@ public class ImageManager {
 	public static final String SRC="src/";
 	//public static final String DEFAULT_IMAGE_PACKAGE="TestImageFiles/";
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
-	public static final String DEFAULT_IMAGE_EXTENSION="gif";
+	public static final String DEFAULT_IMAGE_EXTENSION="png";
 	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject", "TileImage"};
 	public static final String PLAYER_IMAGE_FOLDER="src/PlayerImages/";
 	

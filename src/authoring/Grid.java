@@ -17,8 +17,9 @@ public class Grid extends JPanel{
 	
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
+    private WeaponItemViewer weaponItemViewer;
 	private TilePanel currentPanel;
-	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates"};
+	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates", "Weapon/Item Viewer"};
 	private JMenuItem myCoordinates;
 	private Border defaultBorder;
 	private Border selectBorder;
@@ -40,6 +41,7 @@ public class Grid extends JPanel{
 		mapMaker();		
 		this.setOpaque(false);
 		imageEditor = FeatureManager.tileEditor;
+        weaponItemViewer = FeatureManager.weaponItemViewer;
 		popupMenuMaker();
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
@@ -104,12 +106,20 @@ public class Grid extends JPanel{
 
 	private class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+            if("Tile Image Editor".equals(e.getActionCommand())){
 			showImageMenu();
+            } else if("Weapon/Item Viewer".equals(e.getActionCommand())){
+            showWIViewer();
+            }
 		}
 	}
 
+    private void showWIViewer() {
+        weaponItemViewer.weaponFrame.setVisible(true);
+    }
 
-	public class SelectedCellListener extends MouseAdapter{
+
+    public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON3)
 				myCoordinates.setText("Coordinates: " + currentPanel.getRow() + ", " + currentPanel.getCol());

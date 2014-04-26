@@ -6,29 +6,25 @@ package authoring;
  * */
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.xml.crypto.Data;
+
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
-import java.util.HashMap;
-import java.util.Map;
 
-public class PlayerEnemyCreation extends CommonAttributes implements MouseListener, ActionListener {
 
-    private  JComboBox playerEnemyImages;
-    private  String[] playerEnemyImageChoices = {"Ash","Zelda"};
-    private  JList itemList;
+@SuppressWarnings("ALL")
+public class PlayerEnemyCreation extends CommonAttributes implements ActionListener {
+
+    private JComboBox<String> playerEnemyImages;
+    private String[] playerEnemyImageChoices = {"Ash","Zelda"};
     private String[] weaponNames;
     private String[] itemNames;
     private JCheckBox one;
     private JCheckBox two;
     private JCheckBox three;
     private Object movement;
-    private JList weaponList;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
@@ -44,7 +40,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             itemList.setEnabled(false);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
-
             mon.setEnabled(true);
             exp.setEnabled(true);
 
@@ -53,7 +48,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
-
             mon.setEnabled(true);
             exp.setEnabled(true);
 
@@ -62,7 +56,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             itemList.setEnabled(true);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
-
             mon.setEnabled(false);
             exp.setEnabled(false);
 
@@ -72,8 +65,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     public void creationPanel(){
     	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
-        //String locationTab = "Location";
-
         ButtonGroup buttonChoices = new ButtonGroup();
         JRadioButton isPlayer = new JRadioButton("Player");
         isPlayer.setSelected(true);
@@ -100,7 +91,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         isRandomEnemy.setActionCommand("random");
         isRandomEnemy.addActionListener(this);
 
-        playerEnemyImages = new JComboBox(playerEnemyImageChoices);
+        playerEnemyImages = new JComboBox<String>(playerEnemyImageChoices);
         JPanel namePanel = nameImageFields();
         JPanel superNamePanel = new JPanel();
         superNamePanel.setLayout(new BoxLayout(superNamePanel,BoxLayout.PAGE_AXIS));
@@ -170,7 +161,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         weaponItemPanel.setLayout(new BoxLayout(weaponItemPanel,BoxLayout.LINE_AXIS));
         weaponList = new JList(weaponListModel);
         weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        weaponList.addMouseListener(this);
         weaponList.setVisibleRowCount(5);
         weaponList.setTransferHandler(new TransferHandler(){
             public boolean canImport(TransferSupport info){
@@ -196,7 +186,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
                 DefaultListModel listModel = (DefaultListModel) weaponList.getModel();
                 int index = dl.getIndex();
                 boolean insert = dl.isInsert();
-                //String value = (String)listModel.getElementAt(index);
                 Transferable t = info.getTransferable();
                 String data;
                 try{
@@ -215,7 +204,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 
         itemList = new JList(itemListModel);
         itemList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        itemList.addMouseListener(this);
         itemList.setVisibleRowCount(5);
 
         JScrollPane weaponScroll = new JScrollPane(weaponList);
@@ -314,31 +302,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,move,
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         madeEnemy.init();
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 
 

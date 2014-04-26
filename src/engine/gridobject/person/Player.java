@@ -82,6 +82,7 @@ public class Player extends Person {
 	}
 	public void increaseExperience(int increase){
 		myExperience+=increase;
+		if(myExperience<0)myExperience=0;
 		if(myExperience>100){
 			levelUp();
 		}

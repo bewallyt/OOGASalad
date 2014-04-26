@@ -12,7 +12,8 @@ public class NPCData extends GridObjectData{
 		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
 		init();
-		myImages=getMyImages(image);
+		SpriteImageChooser imageChoose=new SpriteImageChooser();
+		myImages=imageChoose.getSpriteImages("Ash");
 		setHeight(height);
 		setWidth(width);
 	}
@@ -24,7 +25,5 @@ public class NPCData extends GridObjectData{
 	public String[] getImages(){
 		return myImages;
 	}
-	private String[] getMyImages(String image){
-		return new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image};
-	}
+	
 }

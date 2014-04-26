@@ -18,6 +18,7 @@ import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
+import engine.gridobject.person.Healer;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.item.Item;
@@ -139,6 +140,8 @@ public class Main extends RPGEngine {
 		gridObjectList2.add(player);
 		gridObjectList2.add(new Barrier("ImageFiles/pokecenter.png",4, 4));
 		gridObjectList2.add(door2);
+		gridObjectList2.add(new Healer(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"healer"
+								,1,1,1, 3, player));
 
 
 
@@ -172,11 +175,12 @@ public class Main extends RPGEngine {
 		buildingWorld.setTileObject(gridObjectList2.get(0), 4, 13);
 		buildingWorld.setTileObject(gridObjectList2.get(1), 2, 2);
 		buildingWorld.setTileObject(gridObjectList2.get(2), 4, 14);
+		buildingWorld.setTileObject(gridObjectList2.get(3), 12, 2);
 
 		buildingWorld.paintFullBackround("ImageFiles/pokecenterfloor.png");
 		buildingWorld.setCollisionHandler(new EnterCollision(gridObjectList2.get(0), 
 				gridObjectList2.get(2)),0,2);
-
+		
 		player.setBattleImage("ImageFiles/PlayerRight0.png");
 		player.addStatistic(new Statistic("health",100,100));
 		player.addStatistic(new Statistic("damage",10,100));
@@ -191,7 +195,9 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("defense",10,100));
 
 		enemy.getWorld().setMusic("/music/pokeBattle.wav");
+
 		buildingWorld.setMusic("/music/pokeCenter.wav");
+
 
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));

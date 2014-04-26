@@ -16,11 +16,17 @@ import authoring.WorldData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * This class handles the loading and storing of saved games, allowing interfacing between
+ * the authoring environment and the player. 
+ * @author Davis Treybig
+ *
+ */
 public class FileStorer {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_SAVED_GAME_PACKAGE="SavedGames/";
 	private String savedGamesPath;
-	//private Gson gson=new Gson();
+	
 	public FileStorer() {
 		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
 		savedGamesPath = path.replaceAll("\\\\", "/");	
