@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,12 +13,13 @@ import java.util.HashMap;
 
 public class AddGameComponents extends Feature implements ActionListener {
 
-    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC"};
+    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "Encounter Tile"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
     private BarrierCreation barrierCreation;
     private NPCCreation npcCreation;
+    private EncounterCreation encounterCreation;
     private JFrame frame;
 
 
@@ -28,7 +33,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         barrierCreation=new BarrierCreation();
         doorCreation=new DoorCreation();
         npcCreation=new NPCCreation();
-
+        encounterCreation = new EncounterCreation();
     }
 
     @Override
@@ -50,10 +55,12 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if ("npc".equals(e.getActionCommand())){
         	npcCreation.creationPanel();
         	frame.dispose();
+        } else if ("encounter tile".equals(e.getActionCommand())){
+        	encounterCreation.creationPanel();
+        	frame.dispose();
         }
         
     }
-
 
     private void showCreationOptions() {
 

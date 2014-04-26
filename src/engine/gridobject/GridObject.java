@@ -17,6 +17,8 @@ import javax.swing.ImageIcon;
 import util.Constants;
 import engine.Dialogue;
 import engine.Statistic;
+import engine.dialogue.DialogueDisplayControl;
+import engine.dialogue.InteractionBox;
 import engine.images.ScaledImage;
 import engine.item.Item;
 import engine.item.Pickupable;
@@ -40,6 +42,9 @@ public abstract class GridObject{
 	private Dialogue myDialogue;
 	private boolean initiateBattle=false;
 	private Pickupable myPickupable;
+	
+	private DialogueDisplayControl myDialogueDisplayControl;
+
 
 	/**
 	 * Instantiates a new grid object.
@@ -216,7 +221,6 @@ public abstract class GridObject{
 	}
 
 
-
 	public String[] getAnimImages(){
 		return myAnimImages;
 	}
@@ -237,4 +241,23 @@ public abstract class GridObject{
 	public int getNumTilesWidth(){
 		return myNumTilesWidth;
 	}
+	
+	
+	/**
+	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
+	 * 
+	 * @param ddc the DialogueDisplayControl
+	 */
+	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
+		myDialogueDisplayControl = ddc;
+	}
+	
+	public DialogueDisplayControl getDialogueDisplayControl() {
+		return myDialogueDisplayControl;
+	}
+	
+	public void setInteractionBox(InteractionBox box) {
+		myDialogueDisplayControl.setInteractionBox(box);
+	}
+	
 }

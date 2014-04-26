@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,22 +39,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
             imageFilePanel();
 
-			//fileName = JOptionPane.showInputDialog("Name your image:");
-
-            //String determineImage = (String)JOptionPane.showInputDialog(frame,"What type of image is this?","Image determination.",JOptionPane.PLAIN_MESSAGE,null,choices,"Grid Object");
-            //identifier = determineImage.replaceAll("\\s","").toLowerCase();
-
-			//if(fileName.equals("")){
-			//	JOptionPane.showMessageDialog(frame, "Must name image.", "Error Message", JOptionPane.ERROR_MESSAGE);
-				//fileName = JOptionPane.showInputDialog("Please name the image:");
-				//try {
-
-				//} catch (IOException e1) {}
-			//} else{
-				//try {
-				//	chooseImage(e);
-				//} catch (IOException e1) {}
-			//}
             if(result==JOptionPane.OK_OPTION){
                 try {
                     chooseImage();
@@ -75,6 +63,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 		}
 		File imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile, identifier);
+		
 	}
 
     private void imageFilePanel(){
