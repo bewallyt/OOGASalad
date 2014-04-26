@@ -221,7 +221,6 @@ public abstract class GridObject{
 	}
 
 
-
 	public String[] getAnimImages(){
 		return myAnimImages;
 	}
@@ -243,9 +242,6 @@ public abstract class GridObject{
 		return myNumTilesWidth;
 	}
 	
-	public void setInteractionBox(InteractionBox box) {
-		myDialogueDisplayControl.setInteractionBox(box);
-	}
 	
 	/**
 	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
@@ -259,4 +255,9 @@ public abstract class GridObject{
 	public DialogueDisplayControl getDialogueDisplayControl() {
 		return myDialogueDisplayControl;
 	}
+	
+	public void setInteractionBox(InteractionBox box) {
+		myDialogueDisplayControl.setInteractionBox(box);
+	}
+	
 }
