@@ -49,8 +49,8 @@ public class BattleCalculator {
 	private boolean checkDropWeaponStatus(){
 		boolean dropWeapon = false;
 		Random rand = new Random();
-		int randValue = rand.nextInt(10) + 1;
-		if (randValue < 7) {
+		int randValue = rand.nextInt(10);
+		if (randValue < 74) {
 			dropWeapon = true;
 		}
 		return dropWeapon;
@@ -60,8 +60,8 @@ public class BattleCalculator {
 		if(myEnemy.getStatsMap().get("health").getValue()<=0){
 
 			dropWeapon = checkDropWeaponStatus();
-			if (dropWeapon) {
-				Weapon enemyWeapon = myEnemy.getWorld().getDroppedWeapon();
+			if (dropWeapon && myEnemy.isRandom()) {
+				Weapon enemyWeapon = myEnemy.getWeaponList().get(0);
 				enemyWeapon.pickUp(myPlayer);
 			}
 			return true;
