@@ -20,4 +20,8 @@ public class NPCData extends GridObjectData{
 	public NPCResponseNode getDialogue(){
 		return myRoot;
 	}
+	
+	public String[] getImages(){
+		return myImages;
+	}
 }

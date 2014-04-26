@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args){
-		List myFeatures = new ArrayList<Feature>();
+		List<Feature> myFeatures = new ArrayList<Feature>();
 		myFeatures.add(new GridViewerFeature());
 		myFeatures.add(new ImageChooser());
 		myFeatures.add(new SaveGameFeature());
