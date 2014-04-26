@@ -56,6 +56,6 @@ public class SpriteImageChooser {
 	public static void main(String[] args){
 		SpriteImageChooser sprite=new SpriteImageChooser();
 		sprite.getSpriteOptions();
-		sprite.getSpriteImages("Ash");
+		sprite.getSpriteImages("Zelda");
 	}
 }

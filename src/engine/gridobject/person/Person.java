@@ -51,10 +51,6 @@ public abstract class Person extends GridObject {
 		myName=name;
 	}
 
-	private boolean isAnim(String[] animImages) {
-		return animImages.length == 12;
-	}
-
 	public void setMaxX(int maxX){
 		myMaxX=maxX;
 	}
@@ -90,35 +86,30 @@ public abstract class Person extends GridObject {
 			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName = switchAnim(6, 7, 8, getAnimImages());
+			imageName = switchAnim(4, 5, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName = switchAnim(3, 4, 5, getAnimImages());
+			imageName = switchAnim(2, 3, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName = switchAnim(0, 1, 2, getAnimImages());
+			imageName = switchAnim(0, 1, getAnimImages());
 
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName = switchAnim(9, 10, 11, getAnimImages());
+			imageName = switchAnim(6, 7, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;
 	}
 
-	private String switchAnim(int still, int start, int end, String[] anim){
-		if(isAnim(anim)) {
-			if(count < 25)
-				return anim[start];
-			else
-				return anim[end];
-		}
-		else {
-			return anim[still];
-		}
+	private String switchAnim(int start, int end, String[] anim){
+		if(count < 25)
+			return anim[start];
+		else
+			return anim[end];
 	}
 
 	/**

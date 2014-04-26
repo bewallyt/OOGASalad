@@ -10,12 +10,7 @@ public class Healer extends NPC {
 	public Healer(String[] animImages, String name, double speed, int numTilesWidth,
 			int numTilesHeight, int movementType, Player player) {
 		super(animImages, name, speed, numTilesWidth, numTilesHeight, movementType, player);
-		NPCResponseNode n = new NPCResponseNode(this, "I will heal you.");
-		
-
-		
-
-
+		NPCResponseNode n = new NPCResponseNode(this, "You are fully healed");
 		this.setResponseNode(n);
 	}
 

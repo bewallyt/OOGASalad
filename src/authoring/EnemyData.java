@@ -27,13 +27,10 @@ public class EnemyData extends GridObjectData {
         myValues = startVals;
         myWeapons = weps;
         myMovement = movement;
-        myImages=createSpriteImages();
+        myImages=createSpriteImages(image);
         myMoney = money;
         myExperience = exp;
     }
-   
-    //accomodate Random Enemy constructor
-    public EnemyData(int x, int y, String image, String name, Map<String, Integer> startVals, String[] weps) {}
 
     public String getMyName(){return myName;}
     public Map<String,Integer> getMyValues(){return myValues;}

@@ -104,15 +104,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         JPanel namePanel = nameImageFields();
         JPanel superNamePanel = new JPanel();
         superNamePanel.setLayout(new BoxLayout(superNamePanel,BoxLayout.PAGE_AXIS));
-//        namePanel.add(playerEnemyImages);
-//        JPanel personPanel = new JPanel();
-//        buttonChoices.add(isPlayer);
-//        buttonChoices.add(isEnemy);
-//        buttonChoices.add(isRandomEnemy);
-//        personPanel.add(isPlayer);
-//        personPanel.add(isEnemy);
-//        personPanel.add(isRandomEnemy);
-//        namePanel.add(personPanel);
+
         superNamePanel.add(namePanel);
         superNamePanel.add(playerEnemyImages);
         JPanel personPanel = new JPanel();
@@ -245,7 +237,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         overPanel.add(infoPanel);
         overPanel.add(weaponItemPanel);
 
-        //pane.add(nameTab,namePanel);
         pane.add(nameTab,superNamePanel);
         pane.add(locationTab,combinePanel);
         pane.add(attributeTab,attributeFields());

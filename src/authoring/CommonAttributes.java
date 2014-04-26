@@ -67,17 +67,6 @@ public class CommonAttributes {
             }
         };
 
-//        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
-//        namePanel.add(nameLabel);
-//        namePanel.add(itemName);
-//        namePanel.add(imageLabel);
-//
-//
-//        Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-//        imagePanel = new TilePanel(1,1);
-//		imagePanel.setBorder(defaultBorder);
-//		namePanel.add(imagePanel);
-
 
         namePanel.setLayout(new SpringLayout());
         namePanel.add(nameLabel);
@@ -90,6 +79,7 @@ public class CommonAttributes {
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
         imagePanel = new TilePanel(1,1);
         imagePanel.setBorder(defaultBorder);
+        imagePanel.setToolTipText("Image here is only used for Random Enemies.");
         namePanel.add(imagePanel);
 		editor=new GridObjectImageEditor(imagePanel);
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
