@@ -63,7 +63,7 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		Image img = new ScaledImage(200, height + 50, "startmenu.png")
+		Image img = new ScaledImage(200, height + 50, "ImageFiles/startmenu.png")
 				.scaleImage();
 		g2d.drawImage(img, width - 200, 0, null);
 		g2d.setColor(Color.black);
@@ -103,7 +103,7 @@ public class MenuManager implements InteractionBox {
 			int height) {
 
 		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
-		Image img = new ScaledImage(200, 45, "redrectangle.png").scaleImage();
+		Image img = new ScaledImage(200, 45, "ImageFiles/redrectangle.png").scaleImage();
 		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
 
 	}
