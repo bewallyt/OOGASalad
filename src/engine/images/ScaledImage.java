@@ -32,7 +32,6 @@ public class ScaledImage {
 
 			ii = new ImageIcon(this.getClass().getClassLoader()
 					.getResource(myFile));
-
 		} catch (Exception e) {
 			ii = new ImageIcon(this.getClass().getClassLoader()
 					.getResource(Constants.IMAGEPATH + myFile));

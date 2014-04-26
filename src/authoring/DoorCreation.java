@@ -1,16 +1,16 @@
 package authoring;
 
 import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -30,6 +30,8 @@ public class DoorCreation {
 	private JTextField toXField;
 	private JTextField toYField;
 	private JTextField imageField;
+	private JTextField widthField;
+	private JTextField heightField;
 	private List<JTextField> textFieldList=new ArrayList<JTextField>();
 	private JComboBox worldList;
 	private TilePanel imagePanel;
@@ -51,11 +53,15 @@ public class DoorCreation {
 		namePanel=new JPanel();
 	    JLabel xLabel = new JLabel("X");
         JLabel yLabel = new JLabel("Y");
+        JLabel widthLabel=new JLabel("Width");
+        JLabel heightLabel=new JLabel("Height");
         JLabel toXLabel=new JLabel("New world X");
         JLabel toYLabel=new JLabel("New world Y");
         JLabel newWorld=new JLabel("Which world will this map to?");
         xField = new JTextField("",15);
         yField = new JTextField("",15);
+        widthField=new JTextField("1", 15);
+        heightField=new JTextField("1", 15); 
         toXField=new JTextField("", 15);
         toYField=new JTextField("", 15);
         
@@ -66,6 +72,10 @@ public class DoorCreation {
         namePanel.add(xField);
         namePanel.add(yLabel);
         namePanel.add(yField);
+        namePanel.add(widthLabel);
+        namePanel.add(widthField);
+        namePanel.add(heightLabel);
+        namePanel.add(heightField);
         namePanel.add(newWorld);
         namePanel.add(worldList);
         namePanel.add(toXLabel);
@@ -94,6 +104,8 @@ public class DoorCreation {
 		textFieldList.add(yField);
 		textFieldList.add(toXField);
 		textFieldList.add(toYField);
+		textFieldList.add(widthField);
+		textFieldList.add(heightField);
 	}
 	private int getIntValue(String s){
 		return Integer.parseInt(s);
@@ -122,17 +134,26 @@ public class DoorCreation {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(validateText(textFieldList)){
-				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage());
+				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+						editor.getSelectedImage());
 				DoorData myDoor=getDoor();
 				FeatureManager.getWorldData().saveDoor(myDoor);
-				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+ getIntValue(yField.getText()));
+				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+
+                        getIntValue(yField.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
+
+        /**
+         * unique no refac needed
+         * */
 		private DoorData getDoor(){
-			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()), editor.getSelectedImage().getDescription(), 
-					getIntValue(toXField.getText()), getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
+			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                    getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+					editor.getSelectedImage().getDescription(), getIntValue(toXField.getText()),
+                    getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
 		}
 	}
 

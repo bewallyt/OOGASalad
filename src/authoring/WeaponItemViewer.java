@@ -1,34 +1,49 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.List;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class WeaponItemViewer {
+public class WeaponItemViewer extends CommonAttributes{
 
     private JFrame weaponFrame;
     private JFrame detailFrame;
-    private DefaultListModel weaponListModel;
+
     private JList weaponList;
-    private DefaultListModel itemListModel;
+
     private JList itemList;
-    private Map<String,Weapon> weaponMap;
-    private Map<String,Item> itemMap;
+
 
     public WeaponItemViewer(){
-        weaponMap = new HashMap<String, Weapon>();
-        itemMap = new HashMap<String, Item>();
+
         detailFrame = new JFrame();
         weaponFrame = new JFrame("Existing Weapons/Items");
         weaponFrame.setLayout(new BorderLayout());
         weaponFrame.setBounds(100, 0, 300, 300);
-        weaponListModel = new DefaultListModel();
+
         weaponList = new JList(weaponListModel);
         weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        weaponList.setDragEnabled(true);
+        weaponList.setTransferHandler(new TransferHandler(){
+            public int getSourceActions(JComponent c){
+                return COPY;
+            }
+
+            protected Transferable createTransferable(JComponent c){
+                JList list = (JList)c;
+                String chosenWeapon = (String)list.getSelectedValue();
+                return new StringSelection(chosenWeapon);
+            }
+        });
         weaponList.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -55,7 +70,11 @@ public class WeaponItemViewer {
                                     JLabel dAttack = new JLabel(detailAttacks.get(i).getMyName()+" -"+" Speed:"+
                                     String.valueOf(detailAttacks.get(i).getMySpeed())+" -"+" Damage:"+
                                     String.valueOf(detailAttacks.get(i).getMyDamage()));
+                                    JLabel subAttack = new JLabel(detailAttacks.get(i).getAffectAttribute()+":"+
+                                    detailAttacks.get(i).getAffectValue()+" -"+" "+
+                                    String.valueOf(detailAttacks.get(i).getAffectWho()));
                                     detailsPanel.add(dAttack);
+                                    detailsPanel.add(subAttack);
                                 }
                                 JOptionPane.showMessageDialog(detailFrame,detailsPanel,"Details",
                                         JOptionPane.INFORMATION_MESSAGE);
@@ -87,7 +106,7 @@ public class WeaponItemViewer {
             }
         });
         weaponList.setVisibleRowCount(10);
-        itemListModel = new DefaultListModel();
+
         itemList = new JList(itemListModel);
         itemList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         itemList.addMouseListener(new MouseListener() {
@@ -153,27 +172,5 @@ public class WeaponItemViewer {
         weaponFrame.setVisible(true);
     }
 
-    protected void iterateWeaponsAndItems(){
-        weaponMap = FeatureManager.getWorldData().getMyWeapons();
-        itemMap = FeatureManager.getWorldData().getMyItems();
-        if(weaponMap==null){} else{
 
-            for(String s: weaponMap.keySet()){
-                if(weaponListModel.contains(s)){
-                } else{
-                    weaponListModel.addElement(s);
-                }
-            }
-        }
-        if(itemMap==null){} else{
-
-            for(String i: itemMap.keySet()){
-                if(itemListModel.contains(i)){
-                } else{
-                    itemListModel.addElement(i);
-                }
-            }
-        }
-
-    }
 }

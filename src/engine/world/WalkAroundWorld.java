@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import engine.battle.Weapon;
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.InteractionBox;
@@ -13,6 +12,7 @@ import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
+import engine.item.Weapon;
 //import engine.menu.MenuDisplayer;
 import engine.menu.managers.MenuManager;
 

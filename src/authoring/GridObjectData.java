@@ -9,8 +9,9 @@ import util.Constants;
 public class GridObjectData {
 
 	protected String myImage;
-	protected int width;
-	protected int height;
+	public static final int DEFAULT_DIMENSION=1;
+	protected int width=DEFAULT_DIMENSION;
+	protected int height=DEFAULT_DIMENSION;
 
 	private int myX;
 	private int myY;
@@ -18,30 +19,30 @@ public class GridObjectData {
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
-	protected String[] createSpriteImages(){
+	protected String[] createSpriteImages(String image){
 	    	SpriteImageChooser sprite=new SpriteImageChooser();
 			sprite.getSpriteOptions();
-			return sprite.getSpriteImages("Ash");
+			return sprite.getSpriteImages(image);
 	    }
 	// BarrierData
-	public GridObjectData(int x, int y, String image, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 		
-		myArguments.add(1);
-		myArguments.add(1);
+		myArguments.add(width);
+		myArguments.add(height);
 		myArguments.add(Constants.GRIDOBJECTPATH+image);
 	}
 	
 	// DoorData
-	public GridObjectData(int x, int y, String image, int toX, int toY, String toMap, String id) {
+	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 
-		myArguments.add(1);
-		myArguments.add(1);
+		myArguments.add(width);
+		myArguments.add(height);
 		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(toX);
 		myArguments.add(toY);
@@ -64,14 +65,15 @@ public class GridObjectData {
 	}
 	
 	// NPCData
-	public GridObjectData(int x, int y, String image, NPCResponseNode root, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNode root, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 		
-		myArguments.add(1);
-		myArguments.add(1);
-		myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(createSpriteImages());
+		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
 //		myArguments.add(Constants.GRIDOBJECTPATH+image);
 		myArguments.add(root);
 	}
@@ -97,8 +99,17 @@ public class GridObjectData {
 	public int getY(){
 		return myY;
 	}
-	public void addItem(Item i){
-		
+	public int getWidth(){
+		return width;
+	}
+	public int getHeight(){
+		return height;
+	}
+	protected void setHeight(int x){
+		height=x;
+	}
+	protected void setWidth(int x){
+		width=x;
 	}
 	
 	public List<Object> getArguments(){

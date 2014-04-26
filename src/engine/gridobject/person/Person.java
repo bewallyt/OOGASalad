@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Attack;
-import engine.battle.Weapon;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
+import engine.item.Weapon;
 
 public abstract class Person extends GridObject {
 
@@ -32,6 +32,7 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+	
 
 	private Attack myCurrentAttack;
 
@@ -48,10 +49,6 @@ public abstract class Person extends GridObject {
 		currentImageFile=getAnimImages()[myFacing];
 		myMoney=0;
 		myName=name;
-	}
-
-	private boolean isAnim(String[] animImages) {
-		return animImages.length == 12;
 	}
 
 	public void setMaxX(int maxX){
@@ -89,35 +86,30 @@ public abstract class Person extends GridObject {
 			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName = switchAnim(3, 4, 5, getAnimImages());
+			imageName = switchAnim(4, 5, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName = switchAnim(9, 10, 11, getAnimImages());
+			imageName = switchAnim(2, 3, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName = switchAnim(6, 7, 8, getAnimImages());
+			imageName = switchAnim(0, 1, getAnimImages());
 
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName = switchAnim(0, 1, 2, getAnimImages());
+			imageName = switchAnim(6, 7, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;
 	}
 
-	private String switchAnim(int still, int start, int end, String[] anim){
-		if(isAnim(anim)) {
-			if(count < 25)
-				return anim[start];
-			else
-				return anim[end];
-		}
-		else {
-			return anim[still];
-		}
+	private String switchAnim(int start, int end, String[] anim){
+		if(count < 25)
+			return anim[start];
+		else
+			return anim[end];
 	}
 
 	/**
@@ -141,7 +133,9 @@ public abstract class Person extends GridObject {
 	 * @param an item to the person's item list
 	 */
 	public void addItem(Item it) {
-		myItems.add(it);
+		if (it != null) {
+			myItems.add(it);
+		}
 	}
 
 	public List<Item> getItems() {
@@ -167,6 +161,11 @@ public abstract class Person extends GridObject {
 				getItems().remove(current);
 			}
 		}
+	}
+	
+	public void useItem(Item it) {
+		it.useItem();
+		removeItem(it);
 	}
 
 	public double getDY() {
@@ -233,22 +232,7 @@ public abstract class Person extends GridObject {
 		super.setPosition((int) (getX()+myDX), getY());
 	}
 	
-	/**
-	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
-	 * 
-	 * @param ddc the DialogueDisplayControl
-	 */
-	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
-		myDialogueDisplayControl = ddc;
-	}
 	
-	public DialogueDisplayControl getDialogueDisplayControl() {
-		return myDialogueDisplayControl;
-	}
-	
-	public void setInteractionBox(InteractionBox box) {
-		myDialogueDisplayControl.setInteractionBox(box);
-	}
 	public void setCurrentWeapon(Weapon weapon){
 		myCurrentWeapon=weapon;
 	}
@@ -272,5 +256,7 @@ public abstract class Person extends GridObject {
 	public String toString(){
 		return myName;
 	}
+	
+	
 	
 }

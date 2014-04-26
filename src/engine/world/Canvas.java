@@ -2,8 +2,10 @@
 package engine.world;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.KeyListener;
@@ -11,9 +13,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import util.Constants;
 //import engine.AbstractGameState;
 import engine.Control;
 import engine.gridobject.GridObject;
+import engine.images.ScaledImage;
 
 public class Canvas extends JComponent{
 
@@ -26,6 +30,7 @@ public class Canvas extends JComponent{
 	private int offsetMinX = 0;
 	private int offsetMinY=0;
 	private KeyListener myControl;
+	public final static int CANVAS_SIZE = 500;
 
 	/**
 	 * Instantiates a new canvas.
@@ -98,9 +103,10 @@ public class Canvas extends JComponent{
 
 	private void paintArenaWorld(Graphics2D g2d) {
 		ArenaWorld world = (ArenaWorld) myWorld;
-		g2d.drawImage(world.getBackground().scaleImage(),0,-myWidth/4, null);
-		g2d.drawImage(world.getPlayer().getBattleImage(), myWidth/10, (int) (myHeight/2), null);
-		g2d.drawImage(world.getEnemy().getBattleImage(), (int) (myWidth/1.5), myHeight/5, null);
+		g2d.drawImage(world.getBackground().scaleImage(),0,0, null);
+		g2d.drawImage(world.getPlayerImage(), myWidth/10, (int) (myHeight*.45), null);
+		g2d.drawImage(world.getEnemyImage(), (int) (myWidth/1.7), myHeight/7, null);
+		
 		drawStatusBars(g2d, world);
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, 0,0);
 
@@ -112,17 +118,27 @@ public class Canvas extends JComponent{
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
-		g2d.setColor(Color.yellow);
-		g2d.fill(new Rectangle((int) (myWidth/1.5-10),myHeight/2+40, myWidth/3, 40));
+		Image img = new ScaledImage((int) (myWidth/2.5), myHeight/10,Constants.IMAGEPATH+"status bar.png").scaleImage();
+		g2d.drawImage(img, (int) (myWidth/1.5-60), (int) (myHeight*.45+35), null);
 		g2d.setColor(Color.green);
-		g2d.draw(new Rectangle((int) (myWidth/1.5),myHeight/2+60, myWidth/4, 10));
-		g2d.fill(new Rectangle((int) (myWidth/1.5),myHeight/2+60, (int) (myWidth/4*((float)world.getPlayer()
+		g2d.draw(new Rectangle((int) (myWidth/1.4),(int) (myHeight*.45+58), myWidth/5, 10));
+		g2d.fill(new Rectangle((int) (myWidth/1.4),(int) (myHeight*.45+58), (int) (myWidth/5*((float)world.getPlayer()
 					.getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").
 					getMaxValue())), 10));
-		g2d.draw(new Rectangle((int) (myWidth/15),myHeight/5, myWidth/4, 10));
-		g2d.fill(new Rectangle((int) (myWidth/15),myHeight/5, (int) (myWidth/4*((float) world.getEnemy()
+		g2d.setColor(Color.black);
+
+		g2d.setFont(new Font(getFont().getFontName(),Font.BOLD,20));
+		g2d.drawString(world.getPlayer().toString()+"  lv " + 
+		world.getPlayer().getStatsMap().get("level").getValue(), (int)(myWidth/1.75), (int) (myHeight*.45+53));
+		
+		g2d.drawImage(img, (int) (myWidth/15), (int) (myHeight/8), null);
+		g2d.setColor(Color.green);
+		g2d.draw(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, myWidth/5, 10));
+		g2d.fill(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, (int) (myWidth/5*((float) world.getEnemy()
 					.getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health")
 					.getMaxValue())), 10));
+		g2d.setColor(Color.black);
+		g2d.drawString(world.getEnemy().toString() +"  lv " + world.getEnemy().getStatsMap().get("level").getValue(), myWidth/15+10, myHeight/8+20);
 	}
 	
 	
