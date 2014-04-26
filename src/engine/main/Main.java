@@ -51,18 +51,14 @@ public class Main extends RPGEngine {
 		List<GridObject> gridObjectList2 = new ArrayList<GridObject>();
 
 		String[] anim = new String[]{
-				"ImageFiles/PlayerUp0.png", 
-				"ImageFiles/PlayerUp1.png", 
-				"ImageFiles/PlayerUp2.png", 
-				"ImageFiles/PlayerRight0.png", 
-				"ImageFiles/PlayerRight1.png", 
-				"ImageFiles/PlayerRight2.png",
-				"ImageFiles/PlayerDown0.png", 
 				"ImageFiles/PlayerDown1.png", 
 				"ImageFiles/PlayerDown2.png", 
-				"ImageFiles/PlayerLeft0.png", 
 				"ImageFiles/PlayerLeft1.png", 
-				"ImageFiles/PlayerLeft2.png"};
+				"ImageFiles/PlayerLeft2.png",
+				"ImageFiles/PlayerRight1.png", 
+				"ImageFiles/PlayerRight2.png",
+				"ImageFiles/PlayerUp1.png", 
+				"ImageFiles/PlayerUp2.png"};
 
 		Player player = new Player(anim, "Player", 2, new String[1], new String[1]);
 		Attack attack = new Attack("flamethrower");
@@ -192,8 +188,8 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
 
-//		enemy.getWorld().setMusic("/music/fms.wav");
-		buildingWorld.setMusic("/music/fms.wav");
+		enemy.getWorld().setMusic("/music/pokeBattle.wav");
+		buildingWorld.setMusic("/music/pokeCenter.wav");
 
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
