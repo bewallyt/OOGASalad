@@ -95,9 +95,9 @@ public class ImageManager {
 		return null;
 	}
 	public RenderedImage imageToRenderedImage(Image image){
-		BufferedImage bImage= new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+		BufferedImage bImage= new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D bImageGraphics = bImage.createGraphics();
-		bImageGraphics.drawImage(image, null, null);
+		bImageGraphics.drawImage(image, 0, 0, null);
 		return (RenderedImage)bImage;
 	}
 	/**
