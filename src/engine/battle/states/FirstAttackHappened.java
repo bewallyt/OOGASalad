@@ -30,9 +30,11 @@ public class FirstAttackHappened implements BattleState{
 
 	private void checkIfDead(BattleManager manager,
 			BattleCalculator battleCalculate) {
-		if(battleCalculate.enemyIsDead())
+		if(battleCalculate.enemyIsDead() && battleCalculate.weaponDropped())
+			manager.setCurrentState("WeaponDropped");
+		else if(battleCalculate.enemyIsDead())
 			manager.setCurrentState("EnemyDead");
-		if(battleCalculate.playerIsDead())
+		else if(battleCalculate.playerIsDead())
 			manager.setCurrentState("PlayerDead");
 	}
 

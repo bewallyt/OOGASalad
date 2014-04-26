@@ -40,7 +40,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		setAttackChildrenNodes(myAttackSelector);
 		setWeaponChildrenNodes(myWeaponSelector);
 		setBagChildrenNodes(myBagSelector);
-		setRunChildrenNodes(myRunSelector);
+		if(myEnemy.isRandom())setRunChildrenNodes(myRunSelector);
 	}
 	private void updateAttackList(){
 		setAttackChildrenNodes(myAttackSelector);
@@ -49,11 +49,11 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		myAttackSelector = new BattleSelectorNode("Attack");
 		myBagSelector = new BattleSelectorNode("Bag");
 		myWeaponSelector = new BattleSelectorNode("Weapon");
-		myRunSelector = new BattleSelectorNode("Run");
+		if(myEnemy.isRandom())myRunSelector = new BattleSelectorNode("Run");
 		getMatrix().setNode(myAttackSelector, 0, 0);
 		getMatrix().setNode(myBagSelector, 1, 0);
 		getMatrix().setNode(myWeaponSelector, 0, 1);
-		getMatrix().setNode(myRunSelector, 1, 1);
+		if(myEnemy.isRandom())getMatrix().setNode(myRunSelector, 1, 1);
 		myCurrentBattleSelector=(BattleSelectorNode) getMatrix().getCurrentNode();
 	}
 

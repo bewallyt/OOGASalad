@@ -7,7 +7,7 @@ public class EnemyDead implements BattleState {
 	@Override
 	public void doState(BattleManager manager) {
 		manager.setCurrentTextToBeDisplayed("You have defeated " + manager.getEnemy().toString());
-		manager.setCurrentState("BattleWon");
+		manager.setCurrentState("BattleSpoils");
 	}
 
 }

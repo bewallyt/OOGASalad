@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Attack;
+import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.NPCResponseNode;
+import engine.dialogue.NotificationManager;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
@@ -123,9 +125,7 @@ public abstract class Person extends GridObject {
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
 		myCurrentWeapon=myWeapons.get(0);
-		if(myWeapons.size()>4){
-			
-		}
+		
 		
 	}
 
@@ -252,6 +252,7 @@ public abstract class Person extends GridObject {
 	}
 	public void changeMoney (int amountToChange){
 		myMoney+=amountToChange;
+		if(myMoney<0)myMoney=0;
 	}
 	public void setCurrentAttack(Attack attack){
 		myCurrentAttack=attack;

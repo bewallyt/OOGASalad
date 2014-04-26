@@ -10,7 +10,7 @@ public class KeyItem extends Item {
 
 	@Override
 	public void useItem() {
-
+		//don't use
 	}
 	
 

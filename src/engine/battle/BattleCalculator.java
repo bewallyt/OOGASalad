@@ -62,8 +62,8 @@ public class BattleCalculator {
 		boolean dropWeapon = false;
 		Random rand = new Random();
 
-		int randValue = rand.nextInt(10) + 1;
-		if (randValue < 78) {
+		int randValue = rand.nextInt(10);
+		if (randValue < 25) {
 
 			dropWeapon = true;
 		}

@@ -55,7 +55,7 @@ public abstract class RPGEngine{
 	 * @param x X location of the player at spawn time (pixels)
 	 * @param y Y location of the player at spawn time (pixels)
 	 */
-	public void changeWorld(World world, int x, int y) {
+	public void changeWorld(World world) {
 		myCurrentWorld.savePlayerPosition();
 		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().stop();
 		myPreviousWorld=myCurrentWorld;
@@ -101,7 +101,7 @@ public abstract class RPGEngine{
 			myCanvas.repaint();
 			World newWorld = myGameLooper.doLoop();
 			if(newWorld!=null){
-				changeWorld(newWorld,50,100);
+				changeWorld(newWorld);
 				
 			}
 			Thread.sleep(10);

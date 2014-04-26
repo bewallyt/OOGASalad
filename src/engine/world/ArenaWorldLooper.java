@@ -22,7 +22,6 @@ public class ArenaWorldLooper extends GameLooper {
 	public World doLoop() {
 		myWorld.setPlayerImage(myBattleManager.getCurrentPlayerBattleImage());
 		myWorld.setEnemyImage(myBattleManager.getCurrentEnemyBattleImage());
-		System.out.println(myBattleManager.getCurrentState());
 		if(myBattleManager.getCurrentState().equals("ExitWon")){
 			myBattleManager.setCurrentState("TopLevel");
 			System.out.println("go back");
@@ -34,8 +33,9 @@ public class ArenaWorldLooper extends GameLooper {
 			} 
 			return myWorld.getPrevWorld();
 		}	
-		if(myBattleManager.didRun()){
-			myWorld.getEnemy().setWasBattled();
+		if(myBattleManager.getCurrentState().equals("Ran")){
+			myBattleManager.setCurrentState("TopLevel");
+			myWorld.getEnemy().getStatsMap().get("health").setToMax();
 			return myWorld.getPrevWorld();
 		}
 		if(myBattleManager.getCurrentState().equals("ExitLost")){
