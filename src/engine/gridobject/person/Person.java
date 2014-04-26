@@ -246,6 +246,7 @@ public abstract class Person extends GridObject {
 	public void setInteractionBox(InteractionBox box) {
 		myDialogueDisplayControl.setInteractionBox(box);
 	}
+	
 	public void setCurrentWeapon(Weapon weapon){
 		myCurrentWeapon=weapon;
 	}

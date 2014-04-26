@@ -12,6 +12,7 @@ import java.util.*;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
+import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.state.WalkAroundState;
@@ -23,7 +24,7 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	private String textToBeDisplayed;
 	private int widthOfText;
 	private Player myPlayer;
-	private NPC myNPC;
+	private GridObject myNPC;
 	private static boolean RESPONDING = true;
 	private int selectedOptionX;
 	private int selectedOptionY;
@@ -32,7 +33,7 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	private static final int SYMBOL_RADIUS = 10;
 	//private DialogueListeingState Listening = new DialogueListeningState();
 
-	public ConversationManager(Player p, NPC n, NPCResponseNode nrNode) {
+	public ConversationManager(Player p, GridObject n, NPCResponseNode nrNode) {
 		currentResponseNode = nrNode;
 		textToBeDisplayed = currentResponseNode.getDialogue();
 		myPlayer = p;

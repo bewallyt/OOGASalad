@@ -12,12 +12,16 @@ public class NPCData extends GridObjectData{
 		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
 		init();
-		myImages=createSpriteImages();
+		myImages=getMyImages(image);
 		setHeight(height);
 		setWidth(width);
 	}
 	
 	public NPCResponseNode getDialogue(){
 		return myRoot;
+	}
+	
+	private String[] getMyImages(String image){
+		return new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image};
 	}
 }
