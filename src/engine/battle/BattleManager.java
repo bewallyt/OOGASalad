@@ -27,6 +27,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private Image myCurrentEnemyBattleImage;
 	private String textToBeDisplayed="";
 	private boolean ran=false;
+	private boolean didDrop=false;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -154,5 +155,14 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	}
 	public void setEnemyBattleImage(Image image){
 		myCurrentEnemyBattleImage=image;
+	}
+	public void setBattleSelector(){
+		myCurrentBattleSelector=myWeaponSelector;
+	}
+	public boolean didDrop(){
+		return didDrop;
+	}
+	public void setDidDrop(){
+		didDrop=true;
 	}
 }

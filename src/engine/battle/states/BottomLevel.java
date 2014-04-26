@@ -13,22 +13,29 @@ import engine.item.Weapon;
 
 public class BottomLevel implements BattleState {
 
-//	private BattleExecutable myExecutable;
-//	private Player myPlayer;
-//	private BattleCalculator myBattleCalculate;
-//	private BattleAI myBattleAI;
-//	public BottomLevel(BattleExecutable executable, Player player,BattleCalculator battleCalculate){
-//		
-//		myExecutable = executable;
-//		myPlayer=player;
-//	}
+	//	private BattleExecutable myExecutable;
+	//	private Player myPlayer;
+	//	private BattleCalculator myBattleCalculate;
+	//	private BattleAI myBattleAI;
+	//	public BottomLevel(BattleExecutable executable, Player player,BattleCalculator battleCalculate){
+	//		
+	//		myExecutable = executable;
+	//		myPlayer=player;
+	//	}
 	@Override
 	public void doState(BattleManager manager) {
 		BattleExecutable executable = manager.getCurrentBattleExecutorNode().getExecutor();
 		if(executable instanceof Weapon){
-			manager.getPlayer().setCurrentWeapon((Weapon) executable);
-			manager.setCurrentTextToBeDisplayed("CurrentWeapon: " + executable.toString());
-			manager.setCurrentState("BackToTop");
+			if(manager.didDrop()){
+				manager.getPlayer().removeWeapon((Weapon) executable);
+				manager.setCurrentTextToBeDisplayed("You dropped: " + executable.toString());
+				manager.setCurrentState("BattleWon");
+			}
+			else{
+				manager.getPlayer().setCurrentWeapon((Weapon) executable);
+				manager.setCurrentTextToBeDisplayed("CurrentWeapon: " + executable.toString());
+				manager.setCurrentState("BackToTop");
+			}
 		}
 		else if(executable instanceof Attack){
 			BattleCalculator battleCalculate=new BattleCalculator(manager.getPlayer(), manager.getEnemy());
@@ -41,7 +48,7 @@ public class BottomLevel implements BattleState {
 			if(currentAttacker instanceof Player)manager.setPlayerBattleImage(manager.getPlayer().getCurrentWeapon().getImage());
 			else{manager.setEnemyBattleImage(manager.getEnemy().getCurrentWeapon().getImage());}
 			checkIfDead(manager, battleCalculate);
-			
+
 		}
 		else if(executable instanceof Item){
 			((Item) executable).useItem();
@@ -54,15 +61,15 @@ public class BottomLevel implements BattleState {
 		}
 	}
 
-private void checkIfDead(BattleManager manager, BattleCalculator battleCalculate) {
-	if(battleCalculate.enemyIsDead() && battleCalculate.weaponDropped())
-		manager.setCurrentState("WeaponDropped");
-	else if(battleCalculate.enemyIsDead())
-		manager.setCurrentState("EnemyDead");
-	else if(battleCalculate.playerIsDead())
-		manager.setCurrentState("PlayerDead");
-}
-	
-	
+	private void checkIfDead(BattleManager manager, BattleCalculator battleCalculate) {
+		if(battleCalculate.enemyIsDead() && battleCalculate.weaponDropped())
+			manager.setCurrentState("WeaponDropped");
+		else if(battleCalculate.enemyIsDead())
+			manager.setCurrentState("EnemyDead");
+		else if(battleCalculate.playerIsDead())
+			manager.setCurrentState("PlayerDead");
+	}
+
+
 
 }
