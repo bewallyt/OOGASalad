@@ -5,21 +5,17 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
-import util.Constants;
 
-public class GameSelectTest implements InteractionBox {
+public class GameSelectManager implements InteractionBox {
+	
+	public GameSelectManager(){
+		
+	}
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
@@ -39,11 +35,11 @@ public class GameSelectTest implements InteractionBox {
 			e.printStackTrace();
 		}
 
-		g2d.setColor(Color.white);
+		//g2d.setColor(Color.white);
 		Image img = new ScaledImage(200, height + 50, "startmenu.png")
 				.scaleImage();
 		g2d.drawImage(img, width - 200, 0, null);
-		g2d.setColor(Color.black);
+		//g2d.setColor(Color.black);
 
 		//drawSelector(g2d, xSize, ySize, width, height);
 	}

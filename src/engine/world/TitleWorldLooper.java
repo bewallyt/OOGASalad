@@ -1,10 +1,15 @@
 package engine.world;
 
-public class TitleWorldLooper extends GameLooper {
+import engine.dialogue.DialogueDisplayControl;
 
-	public TitleWorldLooper(World currentWorld) {
+public class TitleWorldLooper extends GameLooper {
+	
+	TitleWorld myWorld;
+
+	public TitleWorldLooper(TitleWorld currentWorld) {
 		super(currentWorld);
-		// TODO Auto-generated constructor stub
+		myWorld = (TitleWorld) getWorld();
+		myWorld.getPlayer().setDialogueDisplayControl(new DialogueDisplayControl(currentWorld));
 	}
 
 	@Override
