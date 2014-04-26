@@ -11,7 +11,11 @@ public class ImageFile {
 	private String imageType;
 	private String name;
 	public static final String SRC="src/";
-	
+	/**
+	 * Class that encapsulates information relevant to a given image. 
+	 * @param name Name of the image file
+	 * @param imageType
+	 */
 	public ImageFile(String name, String imageType) {
 		this.name=name;
 		this.imageType=imageType;

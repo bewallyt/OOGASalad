@@ -5,16 +5,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import engine.Control;
-import engine.dialogue.ConversationManager;
-import engine.gridobject.GridObject;
+import engine.dialogue.AbstractManager;
 
 public class DialogueState extends AbstractState {
 
-	ConversationManager myConversationManager;
+	AbstractManager myConversationManager;
 	Set<Integer> pressedKeys = new HashSet<Integer>();
 
 
-	public DialogueState(ConversationManager cm) {
+	public DialogueState(AbstractManager cm) {
 		super();
 		myConversationManager = cm;
 	}

@@ -79,8 +79,10 @@ public class Main extends RPGEngine {
 		w2.setSpeed(20, 100);
 		player.addWeapon(w2);
 
+//		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
+//								,1,1,1, 3, player);
 		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
-								,1,1,1, 3, player);
+				,1,1,1, 3, player);
 
 		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
 		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");

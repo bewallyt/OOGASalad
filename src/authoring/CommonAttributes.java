@@ -13,23 +13,33 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class CommonAttributes {
     protected String name;
     protected String image;
-    protected Map<String,Integer> attributeValues;
-    protected Map<String,JTextField> textValues;
-    protected String[] attributes = {"Speed","Damage","Defense","Health","Level"};
-    protected JTextField itemName;
-    protected JTextField imageName;
     protected String nameTab = "Name/Image";
     protected String attributeTab = "Attributes";
+    protected String locationTab = "Location";
+    protected String[] attributes = {"Speed","Damage","Defense","Health","Level"};
+    protected Map<String,Integer> attributeValues;
+    protected Map<String,JTextField> textValues;
+    protected Map<String,Weapon> weaponMap;
+    protected Map<String,Item> itemMap;
+    protected JTextField itemName;
+    protected JTextField imageName;
+    protected JTextField xcoor;
+    protected JTextField ycoor;
+    protected JTextField widthField;
+    protected JTextField heightField;
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
     protected JPanel namePanel;
-    protected Map<String,Weapon> weaponMap;
-    protected Map<String,Item> itemMap;
+    protected JFrame frame;
     protected DefaultListModel weaponListModel;
     protected DefaultListModel itemListModel;
+    protected int x;
+    protected int y;
+
 
 
     public CommonAttributes(){
@@ -89,6 +99,38 @@ public class CommonAttributes {
 		editor=new GridObjectImageEditor(imagePanel);
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
+    }
+
+    protected JPanel locationFields(){
+        JPanel locationPanel = new JPanel(new SpringLayout());
+        JLabel xcoordinate = new JLabel("X");
+        JLabel ycoordinate = new JLabel("Y");
+        xcoor = new JTextField("2",5);
+        ycoor = new JTextField("2",5);
+        locationPanel.add(xcoordinate);
+        xcoordinate.setLabelFor(xcoor);
+        locationPanel.add(xcoor);
+        locationPanel.add(ycoordinate);
+        ycoordinate.setLabelFor(ycoor);
+        locationPanel.add(ycoor);
+        SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
+        return locationPanel;
+    }
+
+    protected JPanel sizeFields(){
+        JPanel sizePanel = new JPanel(new SpringLayout());
+        JLabel widthLabel=new JLabel("Width");
+        JLabel heightLabel=new JLabel("Height");
+        widthField=new JTextField("1", 15);
+        heightField=new JTextField("1", 15);
+        sizePanel.add(widthLabel);
+        widthLabel.setLabelFor(widthField);
+        sizePanel.add(widthField);
+        sizePanel.add(heightLabel);
+        heightLabel.setLabelFor(heightField);
+        sizePanel.add(heightField);
+        SpringUtilities.makeCompactGrid(sizePanel,2,2,5,5,5,5);
+        return sizePanel;
     }
 
     protected void iterateWeaponsAndItems(){

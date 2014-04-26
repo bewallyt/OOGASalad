@@ -31,7 +31,6 @@ public class EncounterCreation extends CommonAttributes{
     public void creationPanel(){	
     	JTabbedPane pane = new JTabbedPane();
         String locationTab = "Location";
-        String dialogueTab = "Dialogue";
 
         JPanel namePanel = nameImageFields();
       //  imageName.setEnabled(false);
@@ -56,17 +55,14 @@ public class EncounterCreation extends CommonAttributes{
         locationPanel.add(heightLabel);
         locationPanel.add(heightField);
         SpringUtilities.makeCompactGrid(locationPanel,4,2,6,6,6,6);
-        
-        JPanel dialoguePanel = new JPanel();
 
         pane.add(nameTab,namePanel);
         pane.add(locationTab,locationPanel);
-        pane.add(dialogueTab,dialoguePanel);
 
-        frame=new JFrame("New NPC");
+        frame=new JFrame("New Encounterable");
         frame.setLayout(new FlowLayout());
         frame.add(pane);
-        JButton createNPC=new JButton("Create NPC");
+        JButton createNPC=new JButton("Create Encounterable");
         createNPC.addActionListener(new NPCActionListener());
         frame.add(createNPC);
         frame.pack();
@@ -80,7 +76,7 @@ public class EncounterCreation extends CommonAttributes{
 			name = itemName.getText();
             x = Integer.parseInt(xcoor.getText());
             y = Integer.parseInt(ycoor.getText());
-            makeNPC();
+            makeEncounterable();
 			frame.dispose();
 			editor.dispose();
 		}
@@ -89,11 +85,11 @@ public class EncounterCreation extends CommonAttributes{
 		return Integer.parseInt(s);
 	}
 	
-    private void makeNPC(){
-//    	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-//    			editor.getSelectedImage().getDescription(),myRoot);
-//    	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
-//    			, editor.getSelectedImage());
-//    	FeatureManager.getWorldData().saveNPC(myNPC);
+    private void makeEncounterable(){
+    	EncounterData myEncounter = new EncounterData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+    			editor.getSelectedImage().getDescription());
+    	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
+    			, editor.getSelectedImage());
+    	FeatureManager.getWorldData().saveEncounter(myEncounter);
     }
 }
