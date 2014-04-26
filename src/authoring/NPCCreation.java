@@ -12,22 +12,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -35,10 +20,6 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 
     private  JComboBox playerImages;
     private  JList itemList;
-    private int x;
-    private int y;
-    private JTextField xcoor;
-    private JTextField ycoor;
 	private JScrollPane myTextWindow;
 	private JList myResponsesWrapper;
 	private List<String> myResponses;
@@ -50,9 +31,6 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 	private JButton myGoBack;
 	private JButton newItemResponse;
 	private JOptionPane optionFrame;
-	private JFrame frame;
-	private JTextField widthField;
-	private JTextField heightField;
 
     public NPCCreation(){}
 
@@ -71,32 +49,16 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 
     public void creationPanel(){	
     	JTabbedPane pane = new JTabbedPane();
-        String locationTab = "Location";
         String dialogueTab = "Dialogue";
 
         JPanel namePanel = nameImageFields();
-      //  imageName.setEnabled(false);
 
-        JPanel locationPanel = new JPanel(new SpringLayout());
-        JLabel xcoordinate = new JLabel("X");
-        JLabel ycoordinate = new JLabel("Y");
-        JLabel widthLabel=new JLabel("Width");
-        JLabel heightLabel=new JLabel("Height");
-        xcoor = new JTextField("2",5);
-        ycoor = new JTextField("2",5);
-        widthField=new JTextField("1", 15);
-        heightField=new JTextField("1", 15); 
-        locationPanel.add(xcoordinate);
-        xcoordinate.setLabelFor(xcoor);
-        locationPanel.add(xcoor);
-        locationPanel.add(ycoordinate);
-        ycoordinate.setLabelFor(ycoor);
-        locationPanel.add(ycoor);
-        locationPanel.add(widthLabel);
-        locationPanel.add(widthField);
-        locationPanel.add(heightLabel);
-        locationPanel.add(heightField);
-        SpringUtilities.makeCompactGrid(locationPanel,4,2,6,6,6,6);
+        JPanel locationPanel = locationFields();
+        JPanel sizePanel = sizeFields();
+        JPanel combinedPanel = new JPanel();
+        combinedPanel.setLayout(new BoxLayout(combinedPanel,BoxLayout.PAGE_AXIS));
+        combinedPanel.add(locationPanel);
+        combinedPanel.add(sizePanel);
         
         JPanel dialoguePanel = new JPanel();
 		myPrev = new ArrayList<NPCResponseNode>();
@@ -120,7 +82,7 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 		dialoguePanel.add(myGoBack);
 
         pane.add(nameTab,namePanel);
-        pane.add(locationTab,locationPanel);
+        pane.add(locationTab,combinedPanel);
         pane.add(dialogueTab,dialoguePanel);
 
         frame=new JFrame("New NPC");
@@ -198,7 +160,8 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 			optionFrame = new JOptionPane("Input Dialogue");
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
 			JComboBox myItemBox = new JComboBox(myItems.toArray());
-			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
+			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to",
+                    JOptionPane.QUESTION_MESSAGE);
 			UserQueryNode uqn = new UserQueryNode();
 			uqn.setItem((String)myItemBox.getSelectedItem());
 			String ss = optionFrame.showInputDialog("Enter NPC Response");
@@ -224,12 +187,14 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 					optionFrame = new JOptionPane("Input Dialogue");
 					myCurrent.setString(optionFrame.showInputDialog("Input NPC Dialog"));
 					setResponses();
-					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
+					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(),
+                            myResponsesWrapper.getSelectedIndex());
 				}
 				else{
 					myPrev.add(myCurrent);
 					myCurrent = myCurrent.getChildren().get(myResponsesWrapper.getSelectedIndex()-1).getChild();
-					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(), myResponsesWrapper.getSelectedIndex());
+					myResponsesWrapper.removeSelectionInterval(myResponsesWrapper.getSelectedIndex(),
+                            myResponsesWrapper.getSelectedIndex());
 					setResponses();
 				}
 			}

@@ -22,17 +22,12 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     private  JComboBox playerEnemyImages;
     private  String[] playerEnemyImageChoices = {"Ash","Zelda"};
     private  JList itemList;
-    private int x;
-    private int y;
     private String[] weaponNames;
     private String[] itemNames;
-    private JTextField xcoor;
-    private JTextField ycoor;
     private JCheckBox one;
     private JCheckBox two;
     private JCheckBox three;
     private Object movement;
-    private JFrame frame;
     private JList weaponList;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
@@ -77,7 +72,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     public void creationPanel(){
     	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
-        String locationTab = "Location";
+        //String locationTab = "Location";
 
         ButtonGroup buttonChoices = new ButtonGroup();
         JRadioButton isPlayer = new JRadioButton("Player");
@@ -137,18 +132,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         movementPanel.add(three);
         superNamePanel.add(movementPanel);
 
-        JPanel locationPanel = new JPanel(new SpringLayout());
-        JLabel xcoordinate = new JLabel("X");
-        JLabel ycoordinate = new JLabel("Y");
-        xcoor = new JTextField("2",5);
-        ycoor = new JTextField("2",5);
-        locationPanel.add(xcoordinate);
-        xcoordinate.setLabelFor(xcoor);
-        locationPanel.add(xcoor);
-        locationPanel.add(ycoordinate);
-        ycoordinate.setLabelFor(ycoor);
-        locationPanel.add(ycoor);
-        SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
+        JPanel locationPanel = locationFields();
 
         JPanel obtainPanel = new JPanel(new SpringLayout());
         JLabel money = new JLabel("Money:");
@@ -256,7 +240,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-       // editor.dispose();
 
         iterateWeaponsAndItems();
         
