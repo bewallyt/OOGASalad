@@ -12,6 +12,7 @@ import java.util.List;
 
 import util.Constants;
 import engine.gridobject.GridObject;
+import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 
 public abstract class AbstractManager implements InteractionBox{
@@ -25,6 +26,7 @@ public abstract class AbstractManager implements InteractionBox{
 	public AbstractManager(){
 		myMatrix = new InteractionMatrix2x2();
 	}
+	
 	@Override
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width, int height) {
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
@@ -147,4 +149,5 @@ public abstract class AbstractManager implements InteractionBox{
 	public abstract void setCurrentNode();
 	public abstract boolean isResponding();
 	public abstract String getTextToBeDisplayed();
+	public abstract Player getPlayer();
 }

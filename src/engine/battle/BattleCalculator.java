@@ -74,4 +74,11 @@ public class BattleCalculator {
 		}
 		return false;
 	}
+	
+	public boolean weaponDropped(){
+		if(dropWeapon){
+			return true;
+		}
+		return false;
+	}
 }

@@ -1,16 +1,16 @@
 package authoring;
 
 import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -134,18 +134,26 @@ public class DoorCreation {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(validateText(textFieldList)){
-				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
 						editor.getSelectedImage());
 				DoorData myDoor=getDoor();
 				FeatureManager.getWorldData().saveDoor(myDoor);
-				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+ getIntValue(yField.getText()));
+				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+
+                        getIntValue(yField.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
+
+        /**
+         * unique no refac needed
+         * */
 		private DoorData getDoor(){
-			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-					editor.getSelectedImage().getDescription(), getIntValue(toXField.getText()), getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
+			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                    getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+					editor.getSelectedImage().getDescription(), getIntValue(toXField.getText()),
+                    getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
 		}
 	}
 
