@@ -17,6 +17,11 @@ import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.state.WalkAroundState;
 
+/**
+ * A class that handles the flow of a conversation, dealing with who is responding and what to do in the
+ * backend in order to provide the correct information to print to the screen.
+ *
+ */
 public class ConversationManager extends AbstractManager implements InteractionBox {
 
 	private NPCResponseNode currentResponseNode;
@@ -34,6 +39,7 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	//private DialogueListeingState Listening = new DialogueListeningState();
 
 	public ConversationManager(Player p, GridObject n, NPCResponseNode nrNode) {
+		super();
 		currentResponseNode = nrNode;
 		textToBeDisplayed = currentResponseNode.getDialogue();
 		myPlayer = p;

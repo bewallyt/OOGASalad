@@ -21,6 +21,9 @@ public class NPCData extends GridObjectData{
 		return myRoot;
 	}
 	
+	public String[] getImages(){
+		return myImages;
+	}
 	private String[] getMyImages(String image){
 		return new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image};
 	}

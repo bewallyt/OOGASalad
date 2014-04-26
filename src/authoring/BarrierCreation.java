@@ -96,15 +96,22 @@ public class BarrierCreation extends CommonAttributes{
 			BarrierData myBarrier=getBarrier();
 			if(validateText()){
 				FeatureManager.getWorldData().saveBarrier(myBarrier);
-				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), editor.getSelectedImage());
+				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+                        editor.getSelectedImage());
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
+
+        /**
+         * unique no refac needed
+         * */
 		private BarrierData getBarrier(){
 			System.out.println("xField"+xField.getText());
 			System.out.println("yField"+yField.getText());
-			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()),
+			return new BarrierData(getIntValue(xField.getText()), getIntValue(yField.getText()),
+                    getIntValue(widthField.getText()),
 					getIntValue(heightField.getText()),
 					editor.getSelectedImage().getDescription());
 		}
