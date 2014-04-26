@@ -1,19 +1,13 @@
 package authoring;
 
 import java.awt.BorderLayout;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Data.ImageFile;
-import Data.ImageManager;
 
 public class GridObjectImageEditor extends ImageEditor {
 
@@ -35,7 +29,7 @@ public class GridObjectImageEditor extends ImageEditor {
 
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
-			ImageIcon image = (ImageIcon) model.get(list.getSelectedIndex());
+			ImageIcon image = model.get(list.getSelectedIndex());
 			currentIcon=image;
 			myPanel.addGridObjectImage(image);
 			myPanel.revalidate();
