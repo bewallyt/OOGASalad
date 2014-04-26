@@ -15,6 +15,7 @@ public class SaveState extends AbstractState {
 	private StringBuffer buffer = new StringBuffer();
 	private String displayString;
 	public final static String SAVE_FINISHED = "Save Complete!";
+	private boolean isSavingState = false;
 
 	public SaveState(Player p, MenuManager mm) {
 		super();
@@ -64,8 +65,19 @@ public class SaveState extends AbstractState {
 	}
 
 	public void save(String saveFile) {
-		DataManager dm = new DataManager();
-		dm.saveWorldDataToFile(saveFile + ".json");
+		isSavingState = true;
+	}
+	
+	public boolean isSavingState() {
+		return isSavingState;
+	}
+	
+	public void setSavingState(boolean status) {
+		isSavingState = status;
+	}
+	
+	public String getSaveFileName() {
+		return saveFile;
 	}
 
 }
