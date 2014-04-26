@@ -59,13 +59,13 @@ public class WalkAroundWorldLooper extends GameLooper {
 					}	
 				}	
 			}
-			if(myWorld.getPlayer().getWeaponList().size()>2){
-				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
-//				System.out.println("Item found alert");
-				AbstractManager conversation = new NotificationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
-				myWorld.getPlayer().setState(new DialogueState(conversation));
-				myWorld.getPlayer().setInteractionBox(conversation);
-			}
+//			if(myWorld.getPlayer().getWeaponList().size()>2){
+//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
+////				System.out.println("Item found alert");
+//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
+//				myWorld.getPlayer().setState(new DialogueState(conversation));
+//				myWorld.getPlayer().setInteractionBox(conversation);
+//			}
 		}
 		return null;
 	}
