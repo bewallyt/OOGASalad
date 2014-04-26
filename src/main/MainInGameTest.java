@@ -1,7 +1,6 @@
 package main;
 
 
-import GameView.TitleManager;
 import engine.gridobject.person.Player;
 import engine.main.RPGEngine;
 import engine.world.TitleWorld;
