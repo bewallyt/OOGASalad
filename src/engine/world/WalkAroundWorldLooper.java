@@ -61,15 +61,15 @@ public class WalkAroundWorldLooper extends GameLooper {
 				}	
 			} 
 				
-			} else if(myWorld.getPlayer().getState() instanceof SaveState){
-				//	System.out.println("in instance of SaveState");
-				SaveState saveState = (SaveState) myWorld.getPlayer().getState();
-				if (saveState.isSavingState()) {
-					saveState.setSavingState(false);
-				//	System.out.println("saveWorld");
-				    /// save world data 
-				}
+		} else if(myWorld.getPlayer().getState() instanceof SaveState){
+			//	System.out.println("in instance of SaveState");
+			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
+			if (saveState.isSavingState()) {
+				saveState.setSavingState(false);
+			//	System.out.println("saveWorld");
+			    /// save world data 
 			}
+		}
 //			if(myWorld.getPlayer().getWeaponList().size()>2){
 //				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
 ////				System.out.println("Item found alert");
