@@ -149,7 +149,6 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
     private int getIntValue(String s){
 		return Integer.parseInt(s);
 	}
-	
     private void makeNPC(){
     	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
     			editor.getSelectedImage().getDescription(),myRoot);
@@ -195,12 +194,16 @@ public class NPCCreation extends CommonAttributes implements ItemListener{
 					alreadyItem=true;
 			}
 			if(myCurrent.getChildren().size()<4&&!alreadyItem){
-			optionFrame = new JOptionPane("Input Dialogue");
+//			optionFrame = new JOptionPane("Input Dialogue");
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
-			JComboBox myItemBox = new JComboBox(myItems.toArray());
-			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
+//			JComboBox myItemBox = new JComboBox(myItems.toArray());
+//			myItemBox.setEditable(true);
+//			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
+			String myItem = (String)JOptionPane.showInputDialog(null, "Select a User Item for NPC to react to",
+					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
 			UserQueryNode uqn = new UserQueryNode();
-			uqn.setItem((String)myItemBox.getSelectedItem());
+			uqn.setItem(myItem);
+//			uqn.setItem((String)myItemBox.getSelectedItem());
 			String ss = optionFrame.showInputDialog("Enter NPC Response");
 			uqn.setChild(new NPCResponseNode(ss));
 			myCurrent.addChild(uqn);
