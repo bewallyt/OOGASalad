@@ -1,10 +1,5 @@
 package authoring;
 
-/**
- * @ Davis T.
- * @ Pritam M.
- * */
-
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -36,20 +31,16 @@ import Data.ImageManager;
         fileId = id;
         Image m=scaleImage(imageFile, fileName);
         storedImage=myImageManager.storeScaledImage(fileName, m, fileId);
-		//addToEditor(storedImage);
+		addToEditor(storedImage);
 	}
 
-/*
+
 	private void addToEditor(ImageFile imageFile) {
 		if(imageFile.getType().equalsIgnoreCase(FeatureManager.tileEditor.IMAGE_TYPE)){
 			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
 		}
-		else if(imageFile.getType().equalsIgnoreCase(FeatureManager.gridObjectImageEditor.IMAGE_TYPE)){
-			FeatureManager.gridObjectImageEditor.addImage(imageFile.getImage(), fileName);
-		}
-   
 	}
-	*/
+	
 	
 	private Image scaleImage(File fileName, String s){
 		BufferedImage temp;
@@ -58,7 +49,7 @@ import Data.ImageManager;
 		} catch (IOException e) {
 			temp = null;
 		}
-		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_FAST);
+		Image scaledImage = temp.getScaledInstance(36, 36, Image.SCALE_SMOOTH);
 		return scaledImage;
 	}
 }
