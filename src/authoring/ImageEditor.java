@@ -6,15 +6,15 @@ import Data.ImageManager;
 
 public abstract class ImageEditor {
 	
-	protected JList list;
+	protected JList<ImageIcon> list;
 	protected JScrollPane scroll;
-	protected DefaultListModel model;
+	protected DefaultListModel<ImageIcon> model;
 	protected JFrame myWindow;
 	ImageManager m=new ImageManager();
 	
 	public ImageEditor() {
-		model = new DefaultListModel();
-		list = new JList(model);
+		model = new DefaultListModel<ImageIcon>();
+		list = new JList<ImageIcon>(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
@@ -29,14 +29,14 @@ public abstract class ImageEditor {
 		model.addElement(x);
 	}
 	
-	public void imageRefresh(){
-		model.clear();
-		this.addExistingImages();
-	}
+//	public void imageRefresh(){
+//		model.clear();
+//		this.addExistingImages();
+//	}
 	
 	public ImageIcon selectImage(){
 		if(list.getSelectedIndex()!=-1){
-			return (ImageIcon) model.get(list.getSelectedIndex());
+			return model.get(list.getSelectedIndex());
 		}	
 		return null;
 	}

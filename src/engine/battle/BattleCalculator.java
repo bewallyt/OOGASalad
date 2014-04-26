@@ -19,8 +19,20 @@ public class BattleCalculator {
 		myEnemy = enemy;
 	}
 
+	public Person[] getAttackersInOrder(Attack attack){
+		BattleAI battleAI = new BattleAI(myEnemy);
+		Weapon enemyWeapon = battleAI.chooseWeapon();
+		myEnemy.setCurrentWeapon(enemyWeapon);
+		myEnemy.setCurrentAttack(battleAI.chooseAttack(enemyWeapon));
+		myPlayer.setCurrentAttack(attack);
 
-	public Person[] attackFirst(Person person1, Weapon weapon1, Attack attack1, Person person2, Weapon weapon2, Attack attack2){
+		Person currentAttacker = attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
+				attack, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[0];
+		Person currentVictim = attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
+				attack, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[1];
+		return new Person[] {currentAttacker, currentVictim};
+	}
+	private Person[] attackFirst(Person person1, Weapon weapon1, Attack attack1, Person person2, Weapon weapon2, Attack attack2){
 		if(calcSpeed(person1,weapon1,attack1)>=calcSpeed(person2,weapon2,attack2))
 			return new Person[] {person1,person2};
 		return new Person[] {person2,person1};
@@ -49,8 +61,10 @@ public class BattleCalculator {
 	private boolean checkDropWeaponStatus(){
 		boolean dropWeapon = false;
 		Random rand = new Random();
-		int randValue = rand.nextInt(10) + 1;
-		if (randValue < 7) {
+
+		int randValue = rand.nextInt(10);
+		if (randValue < 25) {
+
 			dropWeapon = true;
 		}
 		return dropWeapon;
@@ -60,8 +74,8 @@ public class BattleCalculator {
 		if(myEnemy.getStatsMap().get("health").getValue()<=0){
 
 			dropWeapon = checkDropWeaponStatus();
-			if (dropWeapon) {
-				Weapon enemyWeapon = myEnemy.getWorld().getDroppedWeapon();
+			if (dropWeapon && myEnemy.isRandom()) {
+				Weapon enemyWeapon = myEnemy.getWeaponList().get(0);
 				enemyWeapon.pickUp(myPlayer);
 			}
 			return true;
