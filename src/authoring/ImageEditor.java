@@ -10,7 +10,7 @@ public abstract class ImageEditor {
 	protected JScrollPane scroll;
 	protected DefaultListModel<ImageIcon> model;
 	protected JFrame myWindow;
-	ImageManager m=new ImageManager();
+	protected ImageManager m=new ImageManager();
 	
 	public ImageEditor() {
 		model = new DefaultListModel<ImageIcon>();
@@ -28,11 +28,6 @@ public abstract class ImageEditor {
 		ImageIcon x = new ImageIcon(m, s);
 		model.addElement(x);
 	}
-	
-//	public void imageRefresh(){
-//		model.clear();
-//		this.addExistingImages();
-//	}
 	
 	public ImageIcon selectImage(){
 		if(list.getSelectedIndex()!=-1){
