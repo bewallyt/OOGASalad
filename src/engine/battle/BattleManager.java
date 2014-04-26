@@ -193,7 +193,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 
 			}
 			else if(executable instanceof Item){
-				((Item) executable).useItem();
+				myPlayer.useItem(((Item) executable));
 				myCurrentState=ITEMUSED;
 				itemUsedName=((Item) executable).toString();
 				setCurrentTextToBeDisplayed();
@@ -253,11 +253,11 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		}
 		else if(myCurrentState==ENEMYDEAD){
 			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD + myEnemy.toString();
+			myPlayer.increaseExperience(myEnemy.getExperience());
+			myPlayer.changeMoney(myEnemy.getMoney());
 			if (dropWeapon) {
 				textToBeDisplayed=TEXT_DISPLAYED_DROPPED_WEAPON;
 			} 
-
-
 		}
 	}
 	public boolean didRun(){

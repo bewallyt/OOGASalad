@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * @ Davis Treybig
+ * */
 
 import javax.swing.*;
 
@@ -34,7 +38,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     protected void creationPanel() {
         JTabbedPane pane = new JTabbedPane();
         weaponAttacks = new ArrayList<Attacks>();
-        Attacks basicAttack = new Attacks("Basic",2,2);
+        Attacks basicAttack = new Attacks("Basic",2,2,"Health",5,false);
         weaponAttacks.add(basicAttack);
 
         String attackTab = "Weapon Attacks";
@@ -96,6 +100,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         });
 
         JPanel namePanel = nameImageFields();
+        JPanel combinedPanel = new JPanel();
+        combinedPanel.setLayout(new BoxLayout(combinedPanel,BoxLayout.PAGE_AXIS));
         buttonGroup.add(isObjectiveItem);
         buttonGroup.add(isWeapon);
         buttonGroup.add(isItem);
@@ -103,7 +109,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         miniPanel.add(isItem);
         miniPanel.add(isObjectiveItem);
         miniPanel.add(isWeapon);
-        namePanel.add(miniPanel);
+        combinedPanel.add(namePanel);
+        combinedPanel.add(miniPanel);
 
         JPanel attributePanel = attributeFields();
 
@@ -125,7 +132,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         attackPanel.add(addAttack);
         attackPanel.add(aScroll);
 
-        pane.addTab(nameTab, namePanel);
+        pane.addTab(nameTab, combinedPanel);
         pane.addTab(attributeTab, attributePanel);
         pane.addTab(attackTab, attackPanel);
 
@@ -168,9 +175,13 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         JLabel n = new JLabel("Name");
         JLabel s = new JLabel("Speed");
         JLabel d = new JLabel("Damage");
+        JLabel amount = new JLabel("Amount");
         JTextField nf = new JTextField("newAttack",15);
         JTextField sf = new JTextField("5",15);
         JTextField df = new JTextField("5",15);
+        JTextField ef = new JTextField("5",15);
+        JComboBox aAt = new JComboBox(attributes);
+        JCheckBox affectsWho = new JCheckBox("Affects Player? (Default - Affects Enemy)");
         attackPanel.add(n);
         n.setLabelFor(nf);
         attackPanel.add(nf);
@@ -181,17 +192,29 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         d.setLabelFor(df);
         attackPanel.add(df);
 
+
         SpringUtilities.makeCompactGrid(attackPanel,
                      3,2,
                      6,6,
                      6,6);
 
+        JPanel effectPanel = new JPanel(new FlowLayout());
+        effectPanel.add(aAt);
+        effectPanel.add(amount);
+        effectPanel.add(ef);
+
+        JPanel overPanel = new JPanel();
+        overPanel.setLayout(new BoxLayout(overPanel,BoxLayout.PAGE_AXIS));
+        overPanel.add(attackPanel);
+        overPanel.add(effectPanel);
+        overPanel.add(affectsWho);
         
-        int result = JOptionPane.showOptionDialog(null, attackPanel, "New Attack", JOptionPane.CANCEL_OPTION,
+        int result = JOptionPane.showOptionDialog(null, overPanel, "New Attack", JOptionPane.CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE, null, null, null);
         if(result==JOptionPane.OK_OPTION){
              Attacks newAttack = new Attacks(nf.getText(),Integer.parseInt(sf.getText()),
-                     Integer.parseInt(df.getText()));
+                     Integer.parseInt(df.getText()),(String)aAt.getSelectedItem(),Integer.parseInt(ef.getText()),
+                     affectsWho.isSelected());
              if(weaponAttacks.size()<4) {
                  weaponAttacks.add(newAttack);
                  attackListModel.addElement(nf.getText());
@@ -230,14 +253,22 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                         JTextField name = new JTextField(clicked,10);
                         JTextField speed = new JTextField(String.valueOf(weaponAttacks.get(i).getMySpeed()),5);
                         JTextField damage = new JTextField(String.valueOf(weaponAttacks.get(i).getMyDamage()),5);
+                        JComboBox affects = new JComboBox(attributes);
+                        JTextField amount = new JTextField(String.valueOf(weaponAttacks.get(i).getAffectValue()),5);
+                        JCheckBox affectsWho = new JCheckBox("Player");
                         editPanel.add(name);
                         editPanel.add(speed);
                         editPanel.add(damage);
+                        editPanel.add(affects);
+                        editPanel.add(amount);
+                        editPanel.add(affectsWho);
                         int edit = JOptionPane.showOptionDialog(null, editPanel, "Edit Attack",
                                 JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                         if(edit==JOptionPane.OK_OPTION){
                             Attacks editedAttack = new Attacks(name.getText(),Integer.parseInt(speed.getText()),
-                                    Integer.parseInt(damage.getText()));
+                                    Integer.parseInt(damage.getText()),(String)affects.getSelectedItem(),
+                                    Integer.parseInt(amount.getText()),
+                                    affectsWho.isSelected());
                             weaponAttacks.remove(i);
                             weaponAttacks.add(editedAttack);
                             attackListModel.remove(attackList.getSelectedIndex());

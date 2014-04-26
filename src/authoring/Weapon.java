@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import java.util.List;
 
 public class Weapon {
