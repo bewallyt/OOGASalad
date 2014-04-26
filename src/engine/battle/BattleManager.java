@@ -193,7 +193,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 
 			}
 			else if(executable instanceof Item){
-				((Item) executable).useItem();
+				myPlayer.useItem(((Item) executable));
 				myCurrentState=ITEMUSED;
 				itemUsedName=((Item) executable).toString();
 				setCurrentTextToBeDisplayed();
