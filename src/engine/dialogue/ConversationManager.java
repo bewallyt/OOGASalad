@@ -37,6 +37,7 @@ public class ConversationManager extends AbstractManager implements InteractionB
 		currentResponseNode = nrNode;
 		textToBeDisplayed = currentResponseNode.getDialogue();
 		myPlayer = p;
+		myPlayer.addItem(currentResponseNode.getItem());
 		myNPC = n;
 		System.out.println(textToBeDisplayed);
 		RESPONDING = false;

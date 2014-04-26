@@ -133,7 +133,9 @@ public abstract class Person extends GridObject {
 	 * @param an item to the person's item list
 	 */
 	public void addItem(Item it) {
-		myItems.add(it);
+		if (it != null) {
+			myItems.add(it);
+		}
 	}
 
 	public List<Item> getItems() {
@@ -230,22 +232,6 @@ public abstract class Person extends GridObject {
 		super.setPosition((int) (getX()+myDX), getY());
 	}
 	
-	/**
-	 * Allows for the DialogueDisplayContorl to be updated when a World is changed.
-	 * 
-	 * @param ddc the DialogueDisplayControl
-	 */
-	public void setDialogueDisplayControl(DialogueDisplayControl ddc) {
-		myDialogueDisplayControl = ddc;
-	}
-	
-	public DialogueDisplayControl getDialogueDisplayControl() {
-		return myDialogueDisplayControl;
-	}
-	
-	public void setInteractionBox(InteractionBox box) {
-		myDialogueDisplayControl.setInteractionBox(box);
-	}
 	
 	public void setCurrentWeapon(Weapon weapon){
 		myCurrentWeapon=weapon;
