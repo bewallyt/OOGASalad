@@ -116,5 +116,9 @@ public class WorldData {
     	myLevels.get(currentMap).saveDoor(door);
     }
 
+	public void saveEncounter(EncounterData myEncounter) {
+		myLevels.get(currentMap).saveEncounter(myEncounter);
+	}
+
 
 }

@@ -1,41 +1,18 @@
 package authoring;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
+public class DoorCreation extends CommonAttributes{
 
-
-public class DoorCreation {
-
-	private JPanel namePanel;
-	private JFrame frame;
-	private JTextField xField;
-	private JTextField yField;
 	private JTextField toXField;
 	private JTextField toYField;
-	private JTextField imageField;
-	private JTextField widthField;
-	private JTextField heightField;
 	private List<JTextField> textFieldList=new ArrayList<JTextField>();
 	private JComboBox worldList;
-	private TilePanel imagePanel;
-	private GridObjectImageEditor editor;
 	
 	public DoorCreation() {
 	}
@@ -43,69 +20,57 @@ public class DoorCreation {
 		frame = new JFrame("Add Door:");
 		frame.setAlwaysOnTop(true);
 		frame.setLocationRelativeTo(null);
-
 		assembleGUI();
 		frame.pack();
 		frame.setVisible(true);
 	}
 	public void assembleGUI(){
-		
-		namePanel=new JPanel();
-	    JLabel xLabel = new JLabel("X");
-        JLabel yLabel = new JLabel("Y");
-        JLabel widthLabel=new JLabel("Width");
-        JLabel heightLabel=new JLabel("Height");
-        JLabel toXLabel=new JLabel("New world X");
-        JLabel toYLabel=new JLabel("New world Y");
-        JLabel newWorld=new JLabel("Which world will this map to?");
-        xField = new JTextField("",15);
-        yField = new JTextField("",15);
-        widthField=new JTextField("1", 15);
-        heightField=new JTextField("1", 15); 
+
+        JLabel toXLabel=new JLabel("New world X:");
+        JLabel toYLabel=new JLabel("New world Y:");
+        JLabel newWorld=new JLabel("Connected Map:");
         toXField=new JTextField("", 15);
         toYField=new JTextField("", 15);
         
         worldList=new JComboBox(getWorldArray());
 
-        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
-        namePanel.add(xLabel);
-        namePanel.add(xField);
-        namePanel.add(yLabel);
-        namePanel.add(yField);
-        namePanel.add(widthLabel);
-        namePanel.add(widthField);
-        namePanel.add(heightLabel);
-        namePanel.add(heightField);
-        namePanel.add(newWorld);
-        namePanel.add(worldList);
-        namePanel.add(toXLabel);
-        namePanel.add(toXField);
-        namePanel.add(toYLabel);
-        namePanel.add(toYField);
-        
-        Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-        imagePanel = new TilePanel(1,1);
-		imagePanel.setBorder(defaultBorder);
-		namePanel.add(imagePanel);
-		editor=new GridObjectImageEditor(imagePanel);
-        
-        
-       
+        JPanel combinedPanel = new JPanel();
+        combinedPanel.setLayout(new BoxLayout(combinedPanel,BoxLayout.PAGE_AXIS));
+        JPanel namePanel = nameImageFields();
+        JPanel locationPanel = locationFields();
+        JPanel sizePanel = sizeFields();
+        combinedPanel.add(namePanel);
+        combinedPanel.add(locationPanel);
+        combinedPanel.add(sizePanel);
+        JPanel nextWorldPanel = new JPanel();
+        nextWorldPanel.setLayout(new SpringLayout());
+        nextWorldPanel.add(newWorld);
+        newWorld.setLabelFor(worldList);
+        nextWorldPanel.add(worldList);
+        nextWorldPanel.add(toXLabel);
+        toXLabel.setLabelFor(toXField);
+        nextWorldPanel.add(toXField);
+        nextWorldPanel.add(toYLabel);
+        toYLabel.setLabelFor(toYField);
+        nextWorldPanel.add(toYField);
+        SpringUtilities.makeCompactGrid(nextWorldPanel,3,2,5,5,5,5);
+        combinedPanel.add(nextWorldPanel);
 
         JButton createBarrier=new JButton("Create Door");
         createBarrier.addActionListener(new createDoorListener());
-        namePanel.add(createBarrier);
-        frame.add(namePanel);
+        combinedPanel.add(createBarrier);
+        frame.add(combinedPanel);
         createFieldList();
         
 	}
 	private void createFieldList(){
-		textFieldList.add(xField);
-		textFieldList.add(yField);
+        textFieldList.add(xcoor);
+        textFieldList.add(ycoor);
+        textFieldList.add(widthField);
+        textFieldList.add(heightField);
 		textFieldList.add(toXField);
 		textFieldList.add(toYField);
-		textFieldList.add(widthField);
-		textFieldList.add(heightField);
+
 	}
 	private int getIntValue(String s){
 		return Integer.parseInt(s);
@@ -134,18 +99,23 @@ public class DoorCreation {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(validateText(textFieldList)){
-				new GridObjectPainter(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+				new GridObjectPainter(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
+                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
 						editor.getSelectedImage());
 				DoorData myDoor=getDoor();
 				FeatureManager.getWorldData().saveDoor(myDoor);
-				System.out.println("X Data: "+getIntValue(xField.getText())+"    Y Data : "+ getIntValue(yField.getText()));
+				System.out.println("X Data: "+getIntValue(xcoor.getText())+"    Y Data : "+
+                        getIntValue(ycoor.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			
 		}
+
 		private DoorData getDoor(){
-			return new DoorData(getIntValue(xField.getText()), getIntValue(yField.getText()), getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-					editor.getSelectedImage().getDescription(), getIntValue(toXField.getText()), getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
+			return new DoorData(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
+                    getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+					editor.getSelectedImage().getDescription(), getIntValue(toXField.getText()),
+                    getIntValue(toYField.getText()), worldList.getSelectedItem().toString());
 		}
 	}
 

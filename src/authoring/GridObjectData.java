@@ -21,7 +21,6 @@ public class GridObjectData {
 	
 	protected String[] createSpriteImages(String image){
 	    	SpriteImageChooser sprite=new SpriteImageChooser();
-			sprite.getSpriteOptions();
 			return sprite.getSpriteImages(image);
 	    }
 	// BarrierData
@@ -74,8 +73,9 @@ public class GridObjectData {
 		myArguments.add(height);
 		myArguments.add(createSpriteImages(image));
 		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		// myArguments.add(Constants.GRIDOBJECTPATH+image);
 		// myArguments.add(name);
+		myArguments.add(Constants.SPRITEPATH+"/"+image+"/");
 		myArguments.add(root);
 		// myArguments.add(movementType);
 		// myArguments.add(player);
