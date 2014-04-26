@@ -74,8 +74,11 @@ public class GridObjectData {
 		myArguments.add(height);
 		myArguments.add(createSpriteImages());
 		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
-//		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		// myArguments.add(name);
 		myArguments.add(root);
+		// myArguments.add(movementType);
+		// myArguments.add(player);
 	}
 
     // Base empty constructor
