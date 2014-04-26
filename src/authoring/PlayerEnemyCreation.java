@@ -288,16 +288,13 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
                 }
 
 	            if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
-	                //image = imageName.getText();
 	                if(isRandomEnemy.isSelected()){
-	                    image = imageName.getText();
 	                    makeRandomEnemy();
 	                } else {
 	                    movement = movementCheck.getSelection();
 	                    makeEnemy();
 	                }
 	            } else{
-	                //image = (String) playerEnemyImages.getSelectedItem();
 	                makePlayer();
 	            }
 		        frame.dispose();
