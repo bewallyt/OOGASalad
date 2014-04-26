@@ -1,5 +1,12 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * @ Jacob L.
+ * @ Richard Cao.
+ * @ Davis T.
+ * */
+
 import java.io.File;
 import java.util.*;
 
