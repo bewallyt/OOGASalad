@@ -1,6 +1,11 @@
 package authoring;
 
-import javax.swing.*;
+/**
+ * @ Pritam M.
+ * @ Davis Treybig
+ * */
+
+ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
@@ -20,8 +25,19 @@ public class CommonAttributes {
     protected String attributeTab = "Attributes";
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
+    protected JPanel namePanel;
+    protected Map<String,Weapon> weaponMap;
+    protected Map<String,Item> itemMap;
+    protected DefaultListModel weaponListModel;
+    protected DefaultListModel itemListModel;
 
-    public CommonAttributes(){}
+
+    public CommonAttributes(){
+        weaponMap = new HashMap<String, Weapon>();
+        itemMap = new HashMap<String, Item>();
+        weaponListModel = new DefaultListModel();
+        itemListModel = new DefaultListModel();
+    }
 
     protected JPanel attributeFields(){
         attributeValues = new HashMap<String, Integer>();
@@ -48,7 +64,7 @@ public class CommonAttributes {
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);
-        JPanel namePanel = new JPanel(){
+        namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
                 size.width += 200;
@@ -56,17 +72,47 @@ public class CommonAttributes {
             }
         };
 
-        namePanel.setLayout(new BoxLayout(namePanel,BoxLayout.PAGE_AXIS));
+
+        namePanel.setLayout(new SpringLayout());
         namePanel.add(nameLabel);
+        nameLabel.setLabelFor(itemName);
         namePanel.add(itemName);
         namePanel.add(imageLabel);
-        
-        
+
+        imageLabel.setLabelFor(imagePanel);
+
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
         imagePanel = new TilePanel(1,1);
-		imagePanel.setBorder(defaultBorder);
-		namePanel.add(imagePanel);
+        imagePanel.setBorder(defaultBorder);
+        imagePanel.setToolTipText("Image here is only used for Random Enemies.");
+        namePanel.add(imagePanel);
 		editor=new GridObjectImageEditor(imagePanel);
+        SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
     }
+
+    protected void iterateWeaponsAndItems(){
+        weaponMap = FeatureManager.getWorldData().getMyWeapons();
+        itemMap = FeatureManager.getWorldData().getMyItems();
+        if(weaponMap==null){} else{
+
+            for(String s: weaponMap.keySet()){
+                if(weaponListModel.contains(s)){
+                } else{
+                    weaponListModel.addElement(s);
+                }
+            }
+        }
+        if(itemMap==null){} else{
+
+            for(String i: itemMap.keySet()){
+                if(itemListModel.contains(i)){
+                } else{
+                    itemListModel.addElement(i);
+                }
+            }
+        }
+
+    }
+
 }

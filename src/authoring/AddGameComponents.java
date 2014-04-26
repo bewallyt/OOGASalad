@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,8 +64,8 @@ public class AddGameComponents extends Feature implements ActionListener {
         //some default weapons and items
         ArrayList<Attacks> fSwordAttack = new ArrayList<Attacks>();
         ArrayList<Attacks> iSwordAttack = new ArrayList<Attacks>();
-        Attacks fireStab = new Attacks("Fire Stab",10,10);
-        Attacks iceSlash = new Attacks("Ice Slash",10,10);
+        Attacks fireStab = new Attacks("Fire Stab",10,10,"Damage",10,true);
+        Attacks iceSlash = new Attacks("Ice Slash",10,10,"Speed",10,true);
         fSwordAttack.add(fireStab);
         iSwordAttack.add(iceSlash);
         Weapon fireSword = new Weapon("Fire Sword","FSword",10,10,fSwordAttack);

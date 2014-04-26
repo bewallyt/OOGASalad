@@ -1,9 +1,21 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * @ Davis Treybig
+ * */
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.crypto.Data;
 
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerEnemyCreation extends CommonAttributes implements MouseListener, ActionListener {
 
@@ -25,6 +37,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
+    private JTextField mon;
+    private JTextField exp;
 
     public PlayerEnemyCreation(){}
 
@@ -35,20 +49,32 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
             itemList.setEnabled(false);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
+
+            mon.setEnabled(true);
+            exp.setEnabled(true);
+
         } else if("random".equals(e.getActionCommand())){
             playerEnemyImages.setEnabled(false);
             itemList.setEnabled(false);
             xcoor.setEnabled(false);
             ycoor.setEnabled(false);
+
+            mon.setEnabled(true);
+            exp.setEnabled(true);
+
         } else{
             playerEnemyImages.setEnabled(true);
             itemList.setEnabled(true);
             xcoor.setEnabled(true);
             ycoor.setEnabled(true);
+
+            mon.setEnabled(false);
+            exp.setEnabled(false);
+
         }
     }
 
-    public void creationPanel(){	
+    public void creationPanel(){
     	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
         String locationTab = "Location";
@@ -81,7 +107,11 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 
         playerEnemyImages = new JComboBox(playerEnemyImageChoices);
         JPanel namePanel = nameImageFields();
-        namePanel.add(playerEnemyImages);
+        JPanel superNamePanel = new JPanel();
+        superNamePanel.setLayout(new BoxLayout(superNamePanel,BoxLayout.PAGE_AXIS));
+
+        superNamePanel.add(namePanel);
+        superNamePanel.add(playerEnemyImages);
         JPanel personPanel = new JPanel();
         buttonChoices.add(isPlayer);
         buttonChoices.add(isEnemy);
@@ -89,7 +119,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         personPanel.add(isPlayer);
         personPanel.add(isEnemy);
         personPanel.add(isRandomEnemy);
-        namePanel.add(personPanel);
+        superNamePanel.add(personPanel);
 
         JPanel movementPanel = new JPanel();
         movementCheck = new ButtonGroup();
@@ -105,7 +135,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         movementPanel.add(one);
         movementPanel.add(two);
         movementPanel.add(three);
-        namePanel.add(movementPanel);
+        superNamePanel.add(movementPanel);
 
         JPanel locationPanel = new JPanel(new SpringLayout());
         JLabel xcoordinate = new JLabel("X");
@@ -120,16 +150,87 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         locationPanel.add(ycoor);
         SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
 
-        JPanel weaponItemPanel = new JPanel(new FlowLayout());
-        DefaultListModel listModelWeapon = new DefaultListModel();
-        weaponList = new JList(listModelWeapon);
-        weaponList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JPanel obtainPanel = new JPanel(new SpringLayout());
+        JLabel money = new JLabel("Money:");
+        JLabel experience = new JLabel("Experience:");
+        mon = new JTextField("100",5);
+        exp = new JTextField("50",5);
+        mon.setEnabled(false);
+        exp.setEnabled(false);
+        obtainPanel.add(money);
+        money.setLabelFor(mon);
+        obtainPanel.add(mon);
+        obtainPanel.add(experience);
+        experience.setLabelFor(exp);
+        obtainPanel.add(exp);
+        SpringUtilities.makeCompactGrid(obtainPanel,2,2,6,10,6,10);
+
+        JPanel combinePanel = new JPanel();
+        combinePanel.setLayout(new BoxLayout(combinePanel,BoxLayout.PAGE_AXIS));
+        combinePanel.add(locationPanel);
+        combinePanel.add(obtainPanel);
+
+        JLabel playInfo = new JLabel("Player: max - 4 weapons & 4 items",JLabel.CENTER);
+        JLabel meneInfo = new JLabel("Map Enemy: max - 4 weapons & no items",JLabel.CENTER);
+        JLabel randInfo = new JLabel("Random Enemy: max - 1 weapon & no items",JLabel.CENTER);
+        JPanel infoPanel = new JPanel();
+        infoPanel.setLayout(new BoxLayout(infoPanel,BoxLayout.PAGE_AXIS));
+        infoPanel.add(playInfo);
+        infoPanel.add(meneInfo);
+        infoPanel.add(randInfo);
+
+        JPanel overPanel = new JPanel();
+        overPanel.setLayout(new BoxLayout(overPanel,BoxLayout.PAGE_AXIS));
+
+        JPanel weaponItemPanel = new JPanel();
+        weaponItemPanel.setLayout(new BoxLayout(weaponItemPanel,BoxLayout.LINE_AXIS));
+        weaponList = new JList(weaponListModel);
+        weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         weaponList.addMouseListener(this);
         weaponList.setVisibleRowCount(5);
+        weaponList.setTransferHandler(new TransferHandler(){
+            public boolean canImport(TransferSupport info){
+                if(!info.isDataFlavorSupported(DataFlavor.stringFlavor)){
+                    return false;
+                }
+                JList.DropLocation dl = (JList.DropLocation)info.getDropLocation();
+                if(dl.getIndex()==-1){
+                    return false;
+                }
+                return true;
+            }
 
-        DefaultListModel listModelItems = new DefaultListModel();
-        itemList = new JList(listModelItems);
-        itemList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            public boolean importData(TransferSupport info){
+                if(!info.isDrop()){
+                    return false;
+                }
+                if(!info.isDataFlavorSupported(DataFlavor.stringFlavor)){
+                    return false;
+                }
+
+                JList.DropLocation dl = (JList.DropLocation)info.getDropLocation();
+                DefaultListModel listModel = (DefaultListModel) weaponList.getModel();
+                int index = dl.getIndex();
+                boolean insert = dl.isInsert();
+                //String value = (String)listModel.getElementAt(index);
+                Transferable t = info.getTransferable();
+                String data;
+                try{
+                    data = (String)t.getTransferData(DataFlavor.stringFlavor);
+                } catch (Exception e){
+                    return false;
+                }
+                if(insert){
+                    listModel.add(index,data);
+                } else{
+                    listModel.set(index,data);
+                }
+                return true;
+            }
+        });
+
+        itemList = new JList(itemListModel);
+        itemList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         itemList.addMouseListener(this);
         itemList.setVisibleRowCount(5);
 
@@ -138,10 +239,13 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         weaponItemPanel.add(weaponScroll);
         weaponItemPanel.add(itemScroll);
 
-        pane.add(nameTab,namePanel);
-        pane.add(locationTab,locationPanel);
+        overPanel.add(infoPanel);
+        overPanel.add(weaponItemPanel);
+
+        pane.add(nameTab,superNamePanel);
+        pane.add(locationTab,combinePanel);
         pane.add(attributeTab,attributeFields());
-        pane.add(weaponItemTab,weaponItemPanel);
+        pane.add(weaponItemTab,overPanel);
 
         frame=new JFrame("Player/Enemy Creation");
         frame.setLayout(new FlowLayout());
@@ -152,10 +256,12 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        editor.dispose();
+       // editor.dispose();
 
+        iterateWeaponsAndItems();
         
     }
+
     private class PlayerEnemyActionListener implements ActionListener{
 
 		@Override
@@ -170,29 +276,30 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
 	            }
 	            int wListSize = weaponList.getModel().getSize();
 	            int iListSize = itemList.getModel().getSize();
+                int wCounter = 0;
+                int iCounter = 0;
 	            weaponNames = new String[wListSize];
 	            itemNames = new String[iListSize];
-	            for(int i=0;i<wListSize;i++){
-	                Object weapon = weaponList.getModel().getElementAt(i);
-	                String weaponName = (String)weapon;
-	                weaponNames[i] = weaponName;
-	            }
-	            for(int j=0;j<iListSize;j++){
-	                Object item = itemList.getModel().getElementAt(j);
-	                String itemName = (String)item;
-	                itemNames[j] = itemName;
-	            }
+                for(Object o: weaponList.getSelectedValuesList()){
+                    String weaponName = (String)o;
+                    weaponNames[wCounter] = weaponName;
+                    wCounter++;
+                }
+
+                for(Object p: itemList.getSelectedValuesList()){
+                    String item = (String)p;
+                    itemNames[iCounter] = item;
+                    iCounter++;
+                }
+
 	            if(isEnemy.isSelected()||isRandomEnemy.isSelected()){
-	                //image = imageName.getText();
 	                if(isRandomEnemy.isSelected()){
-	                    image = imageName.getText();
 	                    makeRandomEnemy();
 	                } else {
 	                    movement = movementCheck.getSelection();
 	                    makeEnemy();
 	                }
 	            } else{
-	                //image = (String) playerEnemyImages.getSelectedItem();
 	                makePlayer();
 	            }
 		        frame.dispose();
@@ -201,7 +308,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
     }
     private void makeRandomEnemy() {
         RandomEnemy madeRandomEnemy = new RandomEnemy(Integer.parseInt(null),Integer.parseInt(null),
-                editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames);
+                editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames,Integer.parseInt(null),
+                Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         FeatureManager.getWorldData().saveRandomEnemy(madeRandomEnemy);
     }
 
@@ -220,7 +328,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements MouseListen
         } else{
             move=3;
         }
-        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,move);
+        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,move,
+                Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         madeEnemy.init();
     }
 
