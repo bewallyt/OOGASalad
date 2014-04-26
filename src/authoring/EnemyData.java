@@ -16,8 +16,11 @@ public class EnemyData extends GridObjectData {
     private String myName;
     private int myMovement;
     private String[] myImages;
+    private int myMoney;
+    private int myExperience;
     
-    public EnemyData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps, int movement) {
+    public EnemyData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
+                     int movement,int money, int exp) {
     	super(x, y, image, name, startVals, weps, movement, Constants.ENEMY);
 
         myName = name;
@@ -25,6 +28,8 @@ public class EnemyData extends GridObjectData {
         myWeapons = weps;
         myMovement = movement;
         myImages=createSpriteImages();
+        myMoney = money;
+        myExperience = exp;
     }
    
     //accomodate Random Enemy constructor
@@ -40,4 +45,6 @@ public class EnemyData extends GridObjectData {
     public String[] getImages(){
     	return myImages;
     }
+    public int getMyMoney(){return myMoney;}
+    public int getMyExperience(){return myExperience;}
 }
