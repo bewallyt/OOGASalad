@@ -33,7 +33,7 @@ public class BottomLevel implements BattleState {
 			}
 			else{
 				manager.getPlayer().setCurrentWeapon((Weapon) executable);
-				manager.setCurrentTextToBeDisplayed("CurrentWeapon: " + executable.toString());
+				manager.setCurrentTextToBeDisplayed("Current " + manager.getLabels()[1] + ":" + executable.toString());
 				manager.setCurrentState("BackToTop");
 			}
 		}

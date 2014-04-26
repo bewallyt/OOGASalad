@@ -28,10 +28,12 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private String textToBeDisplayed="";
 	private boolean ran=false;
 	private boolean didDrop=false;
+	String[] myLabels;
 
-	public BattleManager(Player player, Enemy enemy){
+	public BattleManager(Player player, Enemy enemy, String[] labels){
 		myPlayer = player;
 		myEnemy=enemy;	
+		myLabels = labels;
 		setOriginalNodes();
 		initializeChildrenNodes();
 		myCurrentPlayerBattleImage=myPlayer.getBattleImage();
@@ -47,10 +49,10 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		setAttackChildrenNodes(myAttackSelector);
 	}
 	private void setOriginalNodes(){
-		myAttackSelector = new BattleSelectorNode("Attack");
-		myBagSelector = new BattleSelectorNode("Bag");
-		myWeaponSelector = new BattleSelectorNode("Weapon");
-		if(myEnemy.isRandom())myRunSelector = new BattleSelectorNode("Run");
+		myAttackSelector = new BattleSelectorNode(myLabels[0]);
+		myBagSelector = new BattleSelectorNode(myLabels[2]);
+		myWeaponSelector = new BattleSelectorNode(myLabels[1]);
+		if(myEnemy.isRandom())myRunSelector = new BattleSelectorNode(myLabels[3]);
 		getMatrix().setNode(myAttackSelector, 0, 0);
 		getMatrix().setNode(myBagSelector, 1, 0);
 		getMatrix().setNode(myWeaponSelector, 0, 1);
@@ -156,7 +158,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	public void setEnemyBattleImage(Image image){
 		myCurrentEnemyBattleImage=image;
 	}
-	public void setBattleSelector(){
+	public void setToWeaponSelector(){
 		myCurrentBattleSelector=myWeaponSelector;
 	}
 	public boolean didDrop(){
@@ -164,5 +166,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	}
 	public void setDidDrop(){
 		didDrop=true;
+	}
+	public String[] getLabels(){
+		return myLabels;
 	}
 }

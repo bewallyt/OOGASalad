@@ -6,8 +6,8 @@ public class BattleWon implements BattleState {
 
 	@Override
 	public void doState(BattleManager manager) {
-		if(manager.getPlayer().getWeaponList().size()>2){
-			manager.setBattleSelector();
+		if(manager.getPlayer().getWeaponList().size()>4){
+			manager.setToWeaponSelector();
 			manager.setCurrentState("PromptToDrop");
 			manager.setCurrentTextToBeDisplayed("You have too many weapons! Choose a weapon to drop:");
 			int count=0;
