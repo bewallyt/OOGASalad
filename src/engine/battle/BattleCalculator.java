@@ -50,7 +50,7 @@ public class BattleCalculator {
 		boolean dropWeapon = false;
 		Random rand = new Random();
 		int randValue = rand.nextInt(10) + 1;
-		if (randValue < 7) {
+		if (randValue < 78) {
 			dropWeapon = true;
 		}
 		return dropWeapon;

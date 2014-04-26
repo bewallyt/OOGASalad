@@ -31,6 +31,12 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	public final static int RAN=5;
 	public final static int ENEMYDEAD=6;
 	public final static int BATTLEWON=7;
+	public static final int EXITWON = 8;
+	public static final int PLAYERDEAD = 9;
+	public static final int EXITLOST=11;
+	public static final int BATTLELOST = 10;
+	public final static int ITEMUSED=12;
+	public final static int CHOOSETOPICK=13;
 	private static int myCurrentState=0;
 	private Person myCurrentAttacker;
 	private Person myCurrentVictim;
@@ -45,11 +51,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	//DialogueListeningState PlayerDead = new DialogueListeningState("You have been defeated!",);
 
 	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
-	public static final int EXITWON = 8;
-	public static final int PLAYERDEAD = 9;
-	public static final int EXITLOST=11;
-	public static final int BATTLELOST = 10;
-	public final static int ITEMUSED=12;
+	
 	private String itemUsedName = "";
 	private String textToBeDisplayed="";
 	private boolean ran=false;
@@ -125,8 +127,10 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			myCurrentState=BATTLELOST;
 		}
 		else if (myCurrentState==ENEMYDEAD){
+			
 			setCurrentTextToBeDisplayed();
 			myCurrentState=BATTLEWON;
+			
 		}
 		else if(myCurrentState==BATTLEWON){
 			myCurrentState=EXITWON;

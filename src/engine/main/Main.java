@@ -181,7 +181,7 @@ public class Main extends RPGEngine {
 		
 		player.setBattleImage("ImageFiles/PlayerRight0.png");
 		player.addStatistic(new Statistic("health",100,100));
-		player.addStatistic(new Statistic("damage",10,100));
+		player.addStatistic(new Statistic("damage",90,100));
 		player.addStatistic(new Statistic("speed",10,100));
 		player.addStatistic(new Statistic("level",10,100));
 		player.addStatistic(new Statistic("defense",10,100));
