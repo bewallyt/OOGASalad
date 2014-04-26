@@ -9,6 +9,13 @@ import authoring.GridObjectData;
 import authoring.MapData;
 import authoring.TileData;
 
+/**
+ * Class used to parse an instance of MapData into the GridObjects and Tile
+ * images that MapData contains.
+ * 
+ * @author Brandon
+ * 
+ */
 public class MapDataParser {
 
 	private List<GridObject> myGridObjectList;
@@ -30,6 +37,14 @@ public class MapDataParser {
 		return myTileImageList;
 	}
 
+	/**
+	 * Parses myMap into a list of GridObjects and sets position of GridObjects,
+	 * GridObjects are created using their String ID using Reflection. Also,
+	 * adds images for each tile to a list.
+	 * 
+	 * @param p
+	 *            Player
+	 */
 	private void parseMap(Player p) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
@@ -39,14 +54,14 @@ public class MapDataParser {
 
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
-					
-					List<Object> myList = data.getArguments();
-					System.out.println(myList);
+
+					// List<Object> myList = data.getArguments();
+					// System.out.println(myList);
 
 					try {
-//						String classname = data.getID();
 						gridobject = (GridObject) Class.forName(data.getID())
-								.getConstructor(List.class).newInstance(data.getArguments());
+								.getConstructor(List.class)
+								.newInstance(data.getArguments());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -56,11 +71,9 @@ public class MapDataParser {
 						myGridObjectList.add(gridobject);
 					}
 				}
-				
+
 				myTileImageList.add(currTile.getImageName());
 			}
 		}
 	}
-
-
 }

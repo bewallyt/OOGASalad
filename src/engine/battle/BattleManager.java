@@ -43,7 +43,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private Image myCurrentPlayerBattleImage;
 	private Image myCurrentEnemyBattleImage;
 	//DialogueListeningState PlayerDead = new DialogueListeningState("You have been defeated!",);
-	
+
 	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
 	public static final int EXITWON = 8;
 	public static final int PLAYERDEAD = 9;
@@ -133,7 +133,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			myCurrentState=EXITWON;
 		}
 		else if(myCurrentState==BATTLELOST){
-			
+
 			myCurrentState=EXITLOST;
 		}
 		else if (myCurrentState==SECONDATTACKHAPPENED || myCurrentState==WEAPONSELECTED || myCurrentState==ITEMUSED){
@@ -158,7 +158,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			if(myBattleCalculate.playerIsDead()){
 				myCurrentState=PLAYERDEAD;
 			}
-			
+
 
 		}
 		else if(myCurrentState==BOTTOMLEVEL){
@@ -180,7 +180,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[0];
 				myCurrentVictim = myBattleCalculate.attackFirst(myPlayer, myPlayer.getCurrentWeapon(), 
 						(Attack) executable, myEnemy, enemyWeapon, myEnemy.getCurrentAttack())[1];
-				
+
 				myCurrentState=FIRSTATTACKHAPPENED;
 				setCurrentTextToBeDisplayed();
 				myBattleCalculate.attack(myCurrentAttacker,myCurrentVictim,myCurrentAttacker.getCurrentWeapon(),myCurrentAttacker.getCurrentAttack());
@@ -190,7 +190,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 					myCurrentState=ENEMYDEAD;
 				if(myBattleCalculate.playerIsDead())
 					myCurrentState=PLAYERDEAD;
-				
+
 			}
 			else if(executable instanceof Item){
 				((Item) executable).useItem();
@@ -206,19 +206,20 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		}
 		else if(myCurrentState==TOPLEVEL){
 			int count=0;
-			myCurrentBattleSelector.getChildren().size();
-			for(int i=0; i<getMatrix().getDimension()[0]; i++){
-				for(int j=0; j<getMatrix().getDimension()[1]; j++){
-					if(myCurrentBattleSelector.getChildren().size()>count)
-						getMatrix().setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
-					else{
-						getMatrix().setNode(null, i, j);
+			if(myCurrentBattleSelector.getChildren().size()>0){
+				for(int i=0; i<getMatrix().getDimension()[0]; i++){
+					for(int j=0; j<getMatrix().getDimension()[1]; j++){
+						if(myCurrentBattleSelector.getChildren().size()>count)
+							getMatrix().setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
+						else{
+							getMatrix().setNode(null, i, j);
+						}
+						count++;
 					}
-					count++;
 				}
+				myCurrentBattleExecutorNode = (BattleExecutorNode) getMatrix().getCurrentNode();
+				myCurrentState=BOTTOMLEVEL;
 			}
-			myCurrentBattleExecutorNode = (BattleExecutorNode) getMatrix().getCurrentNode();
-			myCurrentState=BOTTOMLEVEL;
 		}
 	}
 	public void setCurrentNode() {
@@ -243,18 +244,20 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			textToBeDisplayed=TEXT_DISPLAYED_PLAYER_DEAD;
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
-			textToBeDisplayed=myCurrentAttacker.getCurrentWeapon().toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString();
+			textToBeDisplayed=myCurrentAttacker.getCurrentWeapon().toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString()
+					+ myCurrentAttacker.getCurrentAttack().getEffectMessage();
+			
 		}
 		else if(myCurrentState==RAN){
 			textToBeDisplayed=TEXT_DISPLAYED_RAN;
 		}
 		else if(myCurrentState==ENEMYDEAD){
 			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD + myEnemy.toString();
+			myPlayer.increaseExperience(myEnemy.getExperience());
+			myPlayer.changeMoney(myEnemy.getMoney());
 			if (dropWeapon) {
 				textToBeDisplayed=TEXT_DISPLAYED_DROPPED_WEAPON;
 			} 
-				
-			
 		}
 	}
 	public boolean didRun(){
@@ -268,8 +271,8 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	}
 	@Override
 	public boolean isResponding() {
-		 return (myCurrentState==TOPLEVEL || myCurrentState==BOTTOMLEVEL);
-	
+		return (myCurrentState==TOPLEVEL || myCurrentState==BOTTOMLEVEL);
+
 	}
 	@Override
 	public String getTextToBeDisplayed() {

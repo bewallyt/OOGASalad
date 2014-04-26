@@ -32,6 +32,7 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+	
 
 	private Attack myCurrentAttack;
 
@@ -89,20 +90,20 @@ public abstract class Person extends GridObject {
 			count = 0;
 		if(getDX()>0){
 			myFacing=1;
-			imageName = switchAnim(3, 4, 5, getAnimImages());
+			imageName = switchAnim(6, 7, 8, getAnimImages());
 		}
 		else if(getDX()<0){
 			myFacing=3;
-			imageName = switchAnim(9, 10, 11, getAnimImages());
+			imageName = switchAnim(3, 4, 5, getAnimImages());
 		}
 		else if(getDY()>0){
 			myFacing=2;
-			imageName = switchAnim(6, 7, 8, getAnimImages());
+			imageName = switchAnim(0, 1, 2, getAnimImages());
 
 		}
 		else if(getDY()<0){
 			myFacing=0;
-			imageName = switchAnim(0, 1, 2, getAnimImages());
+			imageName = switchAnim(9, 10, 11, getAnimImages());
 		}
 		setImage(imageName);
 		currentImageFile=imageName;

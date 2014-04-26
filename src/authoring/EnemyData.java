@@ -45,6 +45,10 @@ public class EnemyData extends GridObjectData {
     public String[] getImages(){
     	return myImages;
     }
+<<<<<<< HEAD
     public int getMyMoney(){return myMoney;}
     public int getMyExperience(){return myExperience;}
 }
+=======
+ }
+>>>>>>> f43f60c3fc327495bd4af98c0a5af24a99a354a5

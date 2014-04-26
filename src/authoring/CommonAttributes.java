@@ -20,10 +20,12 @@ public class CommonAttributes {
     protected String attributeTab = "Attributes";
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
+    protected JPanel namePanel;
     protected Map<String,Weapon> weaponMap;
     protected Map<String,Item> itemMap;
     protected DefaultListModel weaponListModel;
     protected DefaultListModel itemListModel;
+
 
     public CommonAttributes(){
         weaponMap = new HashMap<String, Weapon>();
@@ -57,7 +59,7 @@ public class CommonAttributes {
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
         itemName = new JTextField("newItem",15);
-        JPanel namePanel = new JPanel(){
+        namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
                 size.width += 200;
@@ -82,7 +84,11 @@ public class CommonAttributes {
         nameLabel.setLabelFor(itemName);
         namePanel.add(itemName);
         namePanel.add(imageLabel);
+<<<<<<< HEAD
         imageLabel.setLabelFor(imagePanel);
+=======
+        
+>>>>>>> f43f60c3fc327495bd4af98c0a5af24a99a354a5
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
         imagePanel = new TilePanel(1,1);
         imagePanel.setBorder(defaultBorder);
