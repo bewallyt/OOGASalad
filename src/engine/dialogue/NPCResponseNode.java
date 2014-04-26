@@ -20,8 +20,6 @@ public class NPCResponseNode {
 		myChildren = new ArrayList<UserQueryNode>();		
 	}
 	
-
-	
 	/**
 	 * Method to add a response to a given node. Put <code>null</code> if you want the 
 	 * field to be blank when displayed and unselectable.
@@ -42,7 +40,10 @@ public class NPCResponseNode {
 	
 	public Item getItem() {
 		// just gets first item in list for now
-		return ((NPC) myNPC).getItems().get(0);
+		if (!((NPC) myNPC).getItems().isEmpty()) {
+			return ((NPC) myNPC).getItems().get(0);
+		}
+		return null;
 	}
 	
 	

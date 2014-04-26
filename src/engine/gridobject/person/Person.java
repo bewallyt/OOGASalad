@@ -133,7 +133,9 @@ public abstract class Person extends GridObject {
 	 * @param an item to the person's item list
 	 */
 	public void addItem(Item it) {
-		myItems.add(it);
+		if (it != null) {
+			myItems.add(it);
+		}
 	}
 
 	public List<Item> getItems() {
