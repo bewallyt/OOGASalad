@@ -64,6 +64,7 @@ public class Main extends RPGEngine {
 		Attack attack = new Attack("flamethrower");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
+		attack.setEffect("health", player, 10);
 		List<Attack> attackList = new ArrayList<Attack>();
 		attackList.add(attack);
 
