@@ -19,10 +19,10 @@ public class GridObjectData {
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
-	protected String[] createSpriteImages(){
+	protected String[] createSpriteImages(String image){
 	    	SpriteImageChooser sprite=new SpriteImageChooser();
 			sprite.getSpriteOptions();
-			return sprite.getSpriteImages("Ash");
+			return sprite.getSpriteImages(image);
 	    }
 	// BarrierData
 	public GridObjectData(int x, int y, int width, int height, String image, String id) {

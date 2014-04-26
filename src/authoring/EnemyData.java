@@ -24,7 +24,7 @@ public class EnemyData extends GridObjectData {
         myValues = startVals;
         myWeapons = weps;
         myMovement = movement;
-        myImages=createSpriteImages();
+        myImages=createSpriteImages(image);
     }
    
     //accomodate Random Enemy constructor

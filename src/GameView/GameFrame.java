@@ -20,7 +20,7 @@ import util.Constants;
 import util.Music;
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.
- * @author Brandon
+ * @author Peter, Brandon
  *
  */
 public class GameFrame extends RPGEngine {
@@ -50,9 +50,9 @@ public class GameFrame extends RPGEngine {
 		createWorlds();
 		setDoors();
 	}
-/**
- * Loops through all maps and grid objects to set doors to their corresponding map
- */
+	/**
+	 * Loops through all maps and grid objects to set doors to their corresponding map
+	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
 			for (int i = 0; i < map.getGridObjectList().size(); i++) {
@@ -75,7 +75,7 @@ public class GameFrame extends RPGEngine {
 		Music music = new Music(mainURL);
 		music.start();
 	}
-	
+
 	/**
 	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in each world
 	 */
@@ -106,9 +106,9 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
-/**
- * Creates the player based on PlayerData
- */
+	/**
+	 * Creates the player based on PlayerData
+	 */
 	private void createPlayer() {
 		PlayerData myPlayerData = myWorldData.getPlayData();
 		String[] anim = myPlayerData.getImages();
