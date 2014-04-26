@@ -22,7 +22,7 @@ import util.Music;
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.
  * 
- * @author Brandon
+ * @author Brandon, Peter
  * 
  */
 public class GameFrame extends RPGEngine {
