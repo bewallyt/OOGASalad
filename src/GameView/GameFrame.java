@@ -54,10 +54,8 @@ public class GameFrame extends RPGEngine {
 		createWorlds();
 		setDoors();
 	}
-
 	/**
-	 * Loops through all maps and grid objects to set doors to their
-	 * corresponding map
+	 * Loops through all maps and grid objects to set doors to their corresponding map
 	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
@@ -114,7 +112,6 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
-
 	/**
 	 * Creates the player based on PlayerData
 	 */

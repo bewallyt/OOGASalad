@@ -6,6 +6,12 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Class that handles the painting of Grid Objects on the map after their creation. Splits images
+ * as necesarry to handle objects that span multiple tiles
+ * @author Davis Treybig
+ *
+ */
 public class GridObjectPainter {
 
 	public GridObjectPainter(int x, int y, int width, int height, ImageIcon image) {
