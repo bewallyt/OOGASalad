@@ -11,6 +11,6 @@ public class Run implements BattleExecutable{
 	@Override
 	public Image getImage() {
 		//none
-		return null
+		return null;
 	}
 }

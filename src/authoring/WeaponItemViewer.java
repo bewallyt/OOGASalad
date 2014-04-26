@@ -68,7 +68,11 @@ public class WeaponItemViewer extends CommonAttributes{
                                     JLabel dAttack = new JLabel(detailAttacks.get(i).getMyName()+" -"+" Speed:"+
                                     String.valueOf(detailAttacks.get(i).getMySpeed())+" -"+" Damage:"+
                                     String.valueOf(detailAttacks.get(i).getMyDamage()));
+                                    JLabel subAttack = new JLabel(detailAttacks.get(i).getAffectAttribute()+":"+
+                                    detailAttacks.get(i).getAffectValue()+" -"+" "+
+                                    String.valueOf(detailAttacks.get(i).getAffectWho()));
                                     detailsPanel.add(dAttack);
+                                    detailsPanel.add(subAttack);
                                 }
                                 JOptionPane.showMessageDialog(detailFrame,detailsPanel,"Details",
                                         JOptionPane.INFORMATION_MESSAGE);

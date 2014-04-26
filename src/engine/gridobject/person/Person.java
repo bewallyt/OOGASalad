@@ -32,6 +32,7 @@ public abstract class Person extends GridObject {
 	private int count = 0;
 	private String currentImageFile;
 	private Image myBattleImage;
+	
 
 	private Attack myCurrentAttack;
 
