@@ -2,7 +2,9 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
+import authoring.WorldData;
 import Data.DataManager;
+import GameView.GameFrame;
 import engine.Control;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
@@ -65,8 +67,10 @@ public class LoadState extends AbstractState {
 	}
 
 	public void load(String loadFile) {
-		DataManager dm = new DataManager();
-		dm.loadWorldDataFromFile(loadFile + ".json");
+//		DataManager dm = new DataManager();
+//		WorldData loadedData = dm.loadWorldDataFromFile(loadFile + ".json");
+		GameFrame gm = new GameFrame();
+		gm.initialize(loadFile);
 	}
 
 }

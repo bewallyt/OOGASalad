@@ -13,33 +13,39 @@ public class ScaledImage {
 	private int myWidth;
 	private int myHeight;
 	private String myFile;
-	public ScaledImage(int width, int height, String filename){
+
+	public ScaledImage(int width, int height, String filename) {
 		myWidth = width;
 		myHeight = height;
 		myFile = filename;
 	}
-	
+
 	/**
 	 * Scale image to a specified size.
-	 *
+	 * 
 	 * @return the image
 	 */
 	public Image scaleImage() {
 		BufferedImage bi = null;
+		ImageIcon ii = null;
 		try {
-//			ImageIcon ii = new ImageIcon(this.getClass().getClassLoader().getResource(Constants.IMAGEPATH+myFile));
-			ImageIcon ii = new ImageIcon(this.getClass().getClassLoader().getResource(myFile));
-			bi = new BufferedImage(myWidth, myHeight, BufferedImage.TYPE_INT_ARGB);
-			Graphics2D g2d = (Graphics2D) bi.createGraphics();
-			g2d.addRenderingHints(new RenderingHints(
-					RenderingHints.KEY_RENDERING,
-					RenderingHints.VALUE_RENDER_QUALITY));
-			g2d.drawImage(ii.getImage(), 0, 0, myWidth, myHeight, null);
 
+			ii = new ImageIcon(this.getClass().getClassLoader()
+					.getResource(myFile));
 		} catch (Exception e) {
-			e.printStackTrace();
-			
+			ii = new ImageIcon(this.getClass().getClassLoader()
+					.getResource(Constants.IMAGEPATH + myFile));
+
 		}
+		bi = new BufferedImage(myWidth, myHeight, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = (Graphics2D) bi.createGraphics();
+
+		g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,
+				RenderingHints.VALUE_RENDER_QUALITY));
+
+		g2d.drawImage(ii.getImage(), 0, 0, myWidth, myHeight, null);
+
 		return bi;
 
 	}

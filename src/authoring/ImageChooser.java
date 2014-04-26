@@ -63,6 +63,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 		}
 		File imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile, identifier);
+		
 	}
 
     private void imageFilePanel(){

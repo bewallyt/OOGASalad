@@ -53,7 +53,6 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private String itemUsedName = "";
 	private String textToBeDisplayed="";
 	private boolean ran=false;
-	private boolean dropWeapon = false;
 
 	public BattleManager(Player player, Enemy enemy){
 		myPlayer = player;
@@ -255,7 +254,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			textToBeDisplayed=TEXT_DISPLAYED_ENEMY_DEAD + myEnemy.toString();
 			myPlayer.increaseExperience(myEnemy.getExperience());
 			myPlayer.changeMoney(myEnemy.getMoney());
-			if (dropWeapon) {
+			if (myBattleCalculate.weaponDropped()) {
 				textToBeDisplayed=TEXT_DISPLAYED_DROPPED_WEAPON;
 			} 
 		}

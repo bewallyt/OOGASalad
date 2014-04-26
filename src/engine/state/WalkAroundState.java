@@ -3,6 +3,7 @@ package engine.state;
 import java.awt.event.KeyEvent;
 
 import engine.Control;
+import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
@@ -37,6 +38,7 @@ public class WalkAroundState extends AbstractState {
 				surrounding.doAction();
 				if(surrounding.getPickupable()!=null){
 					(surrounding.getPickupable()).pickUp(myPlayer);
+					((Barrier) surrounding).displayAlertBox(myPlayer, surrounding.getPickupable());
 					surrounding.setPickupable(null);
 				}
 			}
@@ -51,7 +53,6 @@ public class WalkAroundState extends AbstractState {
 			myPlayer.setDX(0);
 		if (e.getKeyCode() == Control.A)
 			myPlayer.setAClick(false);
-		// Added to test menu.
 		if (e.getKeyCode() == Control.SPACE) {
 			MenuManager mm = new MenuManager(myPlayer);
 			mm.createMenuNodes();

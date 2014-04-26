@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class AddGameComponents extends Feature implements ActionListener {
 
-    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "Encounter Tile"};
+    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
@@ -49,13 +49,13 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if("barrier".equals(e.getActionCommand())){
         	barrierCreation.creationPanel();
         	frame.dispose();
-        } else if ("door".equals(e.getActionCommand())){
+        } else if("door".equals(e.getActionCommand())){
         	doorCreation.creationPanel();
         	frame.dispose();
-        } else if ("npc".equals(e.getActionCommand())){
+        } else if("npc".equals(e.getActionCommand())){
         	npcCreation.creationPanel();
         	frame.dispose();
-        } else if ("encounter tile".equals(e.getActionCommand())){
+        } else if("encountertile".equals(e.getActionCommand())){
         	encounterCreation.creationPanel();
         	frame.dispose();
         }

@@ -64,6 +64,9 @@ public class MapData {
 
     public List<EnemyData> getEnemies() {return enemyDatas;
     }
+	public void saveEncounter(EncounterData myEncounter) {
+		myTiles.get(myEncounter.getX()).get(myEncounter.getY()).addGridObjectData(myEncounter);
+	}
 
     public void addSong(String s){
     	mySong = s;
