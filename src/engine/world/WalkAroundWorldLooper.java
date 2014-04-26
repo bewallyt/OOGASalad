@@ -24,9 +24,9 @@ public class WalkAroundWorldLooper extends GameLooper {
 
 	private void setDialogueDisplayControl() {
 		for (GridObject go : (myWorld.getGridObjectList())) {
-			if (go instanceof Person) {
-				((Person) go).setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
-			}
+			//if (go instanceof Person) {
+				go.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			//}
 		}
 	}
 
