@@ -14,7 +14,7 @@ import Data.ImageManager;
  *
  */
 public class Grid extends JPanel{
-	
+
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
 	private TilePanel currentPanel;
@@ -28,7 +28,7 @@ public class Grid extends JPanel{
 	private ImageIcon defaultBackground;
 	private int myNumRows;
 	private int myNumCols;
-	
+
 	public Grid(int row, int col) {
 		ImageManager m = new ImageManager();
 		ImageFile i = m.loadTileImage(DEFAULT_TILE_IMAGE);
@@ -58,7 +58,7 @@ public class Grid extends JPanel{
 			}
 		}
 	}
-	
+
 	public void tileRepaint(){
 		for(int row = 0; row < world.length; row++)
 			for(int col = 0; col < world.length; col++){
@@ -67,7 +67,7 @@ public class Grid extends JPanel{
 				world[row][col] = temp;
 			}
 	}
-	
+
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -111,9 +111,11 @@ public class Grid extends JPanel{
 
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
-			if(e.getButton() == MouseEvent.BUTTON3)
+			if(e.getButton() == MouseEvent.BUTTON3){
 				myCoordinates.setText("Coordinates: " + currentPanel.getRow() + ", " + currentPanel.getCol());
 				showPopupMenu(e);
+			}
+
 		}
 
 		@Override
@@ -129,8 +131,10 @@ public class Grid extends JPanel{
 		}
 
 		public void mousePressed(MouseEvent e) {
-			TilePanel selected = (TilePanel) e.getComponent();
-			placeImage(selected);
+			if(e.getButton() == MouseEvent.BUTTON1){
+				TilePanel selected = (TilePanel) e.getComponent();
+				placeImage(selected);
+			}
 		}
 
 		public void mouseReleased(MouseEvent e) {
