@@ -84,11 +84,9 @@ public class CommonAttributes {
         nameLabel.setLabelFor(itemName);
         namePanel.add(itemName);
         namePanel.add(imageLabel);
-<<<<<<< HEAD
+
         imageLabel.setLabelFor(imagePanel);
-=======
-        
->>>>>>> f43f60c3fc327495bd4af98c0a5af24a99a354a5
+
         Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
         imagePanel = new TilePanel(1,1);
         imagePanel.setBorder(defaultBorder);
