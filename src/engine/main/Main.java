@@ -81,6 +81,7 @@ public class Main extends RPGEngine {
 
 		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
 								,1,1,1, 3, player);
+		
 
 		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
 		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
