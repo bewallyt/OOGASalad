@@ -96,6 +96,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         });
 
         JPanel namePanel = nameImageFields();
+        JPanel combinedPanel = new JPanel();
+        combinedPanel.setLayout(new BoxLayout(combinedPanel,BoxLayout.PAGE_AXIS));
         buttonGroup.add(isObjectiveItem);
         buttonGroup.add(isWeapon);
         buttonGroup.add(isItem);
@@ -103,7 +105,9 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         miniPanel.add(isItem);
         miniPanel.add(isObjectiveItem);
         miniPanel.add(isWeapon);
-        namePanel.add(miniPanel);
+        combinedPanel.add(namePanel);
+        combinedPanel.add(miniPanel);
+        //namePanel.add(miniPanel);
 
         JPanel attributePanel = attributeFields();
 
@@ -125,7 +129,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         attackPanel.add(addAttack);
         attackPanel.add(aScroll);
 
-        pane.addTab(nameTab, namePanel);
+        pane.addTab(nameTab, combinedPanel);
         pane.addTab(attributeTab, attributePanel);
         pane.addTab(attackTab, attackPanel);
 
