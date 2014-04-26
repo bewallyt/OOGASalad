@@ -248,7 +248,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		}
 		else if(myCurrentState==FIRSTATTACKHAPPENED || myCurrentState==SECONDATTACKHAPPENED){
 			textToBeDisplayed=myCurrentAttacker.getCurrentWeapon().toString() + TEXT_DISPLAYED_ATTACK + myCurrentAttacker.getCurrentAttack().toString()
-					+ myCurrentAttacker.getCurrentAttack().getEffectMessage();
+					+ "\n" + myCurrentAttacker.getCurrentAttack().getEffectMessage();
 			
 		}
 		else if(myCurrentState==RAN){
