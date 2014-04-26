@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Oracle Corporation
+ * */
+
 import javax.swing.*;
 import javax.swing.SpringLayout;
 import java.awt.*;

@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * @ Davis Treybig
+ * */
 
 import javax.swing.*;
 
@@ -107,7 +111,6 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         miniPanel.add(isWeapon);
         combinedPanel.add(namePanel);
         combinedPanel.add(miniPanel);
-        //namePanel.add(miniPanel);
 
         JPanel attributePanel = attributeFields();
 

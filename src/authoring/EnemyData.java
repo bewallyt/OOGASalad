@@ -7,7 +7,7 @@ import Data.FileLister;
 import util.Constants;
 
 /**
- * Created by Prit on 4/19/14.
+ * @ Pritam M.
  */
 public class EnemyData extends GridObjectData {
 
@@ -42,7 +42,6 @@ public class EnemyData extends GridObjectData {
     public String[] getImages(){
     	return myImages;
     }
-
     public int getMyMoney(){return myMoney;}
     public int getMyExperience(){return myExperience;}
 }
