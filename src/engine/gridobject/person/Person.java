@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import engine.battle.Attack;
+import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
+import engine.dialogue.NPCResponseNode;
 import engine.gridobject.GridObject;
 import engine.images.ScaledImage;
 import engine.item.Item;
 import engine.item.Weapon;
+import engine.state.DialogueState;
 
 public abstract class Person extends GridObject {
 
@@ -120,7 +123,10 @@ public abstract class Person extends GridObject {
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
 		myCurrentWeapon=myWeapons.get(0);
-		System.out.println(myWeapons.size());
+		if(myWeapons.size()>4){
+			
+		}
+		
 	}
 
 	public List<Weapon> getWeaponList(){

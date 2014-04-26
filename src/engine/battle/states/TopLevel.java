@@ -2,38 +2,31 @@ package engine.battle.states;
 
 import engine.battle.BattleManager;
 import engine.dialogue.BattleExecutorNode;
-import engine.dialogue.BattleSelectorNode;
-import engine.dialogue.InteractionMatrix;
 
 public class TopLevel implements BattleState{
 
-	private BattleSelectorNode myCurrentBattleSelector;
-	private InteractionMatrix myOptions;
-
-	public TopLevel(BattleSelectorNode currentBattleSelector, InteractionMatrix options){
-		myCurrentBattleSelector = currentBattleSelector;
-		myOptions = options;
-	}
 
 	@Override
-	public int doState() {
-		int count=0;
-		myCurrentBattleSelector.getChildren().size();
-		for(int i=0; i<myOptions.getDimension()[0]; i++){
-			for(int j=0; j<myOptions.getDimension()[1]; j++){
-				if(myCurrentBattleSelector.getChildren().size()>count)
-					myOptions.setNode(myCurrentBattleSelector.getChildren().get(count), i, j);
-				else{
-					myOptions.setNode(null, i, j);
+	public void doState(BattleManager manager) {
+		if(manager.getCurrentBattleSelector().getChildren().size()>0){
+			int count=0;
+
+			for(int i=0; i<manager.getMatrix().getDimension()[0]; i++){
+				for(int j=0; j<manager.getMatrix().getDimension()[1]; j++){
+					if(manager.getCurrentBattleSelector().getChildren().size()>count)
+						manager.getMatrix().setNode(manager.getCurrentBattleSelector().getChildren().get(count), i, j);
+					else{
+						manager.getMatrix().setNode(null, i, j);
+					}
+					count++;
 				}
-				count++;
 			}
+			manager.setCurrentBattleExecutorNode((BattleExecutorNode) manager.getMatrix().getCurrentNode());
+			manager.setCurrentState("BottomLevel");
 		}
-		return BattleManager.BOTTOMLEVEL;		
+
 	}
 
-	public BattleExecutorNode getCurrentBattleExecutorNode(){
-		return (BattleExecutorNode) myOptions.getCurrentNode();
-	}
+
 
 }
