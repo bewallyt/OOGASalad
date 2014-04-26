@@ -3,6 +3,7 @@ package engine.battle;
 import java.util.Random;
 
 import engine.gridobject.person.Enemy;
+import engine.item.Weapon;
 
 public class BattleAI {
 	public Enemy myEnemy;

@@ -1,5 +1,9 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,12 +13,13 @@ import java.util.HashMap;
 
 public class AddGameComponents extends Feature implements ActionListener {
 
-    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC"};
+    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
     private BarrierCreation barrierCreation;
     private NPCCreation npcCreation;
+    private EncounterCreation encounterCreation;
     private JFrame frame;
 
 
@@ -28,7 +33,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         barrierCreation=new BarrierCreation();
         doorCreation=new DoorCreation();
         npcCreation=new NPCCreation();
-
+        encounterCreation = new EncounterCreation();
     }
 
     @Override
@@ -44,24 +49,26 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if("barrier".equals(e.getActionCommand())){
         	barrierCreation.creationPanel();
         	frame.dispose();
-        } else if ("door".equals(e.getActionCommand())){
+        } else if("door".equals(e.getActionCommand())){
         	doorCreation.creationPanel();
         	frame.dispose();
-        } else if ("npc".equals(e.getActionCommand())){
+        } else if("npc".equals(e.getActionCommand())){
         	npcCreation.creationPanel();
+        	frame.dispose();
+        } else if("encountertile".equals(e.getActionCommand())){
+        	encounterCreation.creationPanel();
         	frame.dispose();
         }
         
     }
-
 
     private void showCreationOptions() {
 
         //some default weapons and items
         ArrayList<Attacks> fSwordAttack = new ArrayList<Attacks>();
         ArrayList<Attacks> iSwordAttack = new ArrayList<Attacks>();
-        Attacks fireStab = new Attacks("Fire Stab",10,10);
-        Attacks iceSlash = new Attacks("Ice Slash",10,10);
+        Attacks fireStab = new Attacks("Fire Stab",10,10,"Damage",10,true);
+        Attacks iceSlash = new Attacks("Ice Slash",10,10,"Speed",10,true);
         fSwordAttack.add(fireStab);
         iSwordAttack.add(iceSlash);
         Weapon fireSword = new Weapon("Fire Sword","FSword",10,10,fSwordAttack);

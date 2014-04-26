@@ -1,30 +1,156 @@
 {
   "myLevels": {
     "first": {
+      "playerData": {
+        "myItems": [
+          null
+        ],
+        "myValues": {
+          "Damage": 5,
+          "Speed": 5,
+          "Defense": 5,
+          "Health": 5,
+          "Level": 5
+        },
+        "myWeapons": [
+          null,
+          null
+        ],
+        "myName": "newItem",
+        "myMovement": 0,
+        "myImages": [
+          "PlayerImages/Ash/PlayerDown1.png",
+          "PlayerImages/Ash/PlayerDown2.png",
+          "PlayerImages/Ash/PlayerLeft1.png",
+          "PlayerImages/Ash/PlayerLeft2.png",
+          "PlayerImages/Ash/PlayerRight1.png",
+          "PlayerImages/Ash/PlayerRight2.png",
+          "PlayerImages/Ash/PlayerUp1.png",
+          "PlayerImages/Ash/PlayerUp2.png"
+        ],
+        "myMoney": 0,
+        "myExperience": 0,
+        "width": 1,
+        "height": 1,
+        "myX": 2,
+        "myY": 2,
+        "itemList": [],
+        "myID": "engine.gridobject.person.Enemy",
+        "myArguments": [
+          1,
+          1,
+          "gridobject/Ash",
+          "newItem",
+          {
+            "Damage": 5,
+            "Speed": 5,
+            "Defense": 5,
+            "Health": 5,
+            "Level": 5
+          },
+          [
+            null,
+            null
+          ],
+          0
+        ]
+      },
       "myTiles": [
         [
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
               {
                 "myRoot": {
                   "myString": "Initial NPC Response",
                   "myChildren": []
                 },
-                "width": 0,
-                "height": 0,
-                "myX": 2,
-                "myY": 2,
+                "myImages": [
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg"
+                ],
+                "width": 1,
+                "height": 1,
+                "myX": 3,
+                "myY": 3,
                 "itemList": [],
                 "myID": "engine.gridobject.person.NPC",
                 "myArguments": [
                   1,
                   1,
                   [
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif"
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg"
                   ],
                   {
                     "myString": "Initial NPC Response",
@@ -85,10 +211,6 @@
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
           }
         ],
         [
@@ -154,6 +276,10 @@
           }
         ],
         [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
@@ -170,20 +296,26 @@
                   "myString": "Initial NPC Response",
                   "myChildren": []
                 },
-                "width": 0,
-                "height": 0,
-                "myX": 2,
-                "myY": 2,
+                "myImages": [
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg",
+                  "gridobject/NPCSprite.jpg"
+                ],
+                "width": 1,
+                "height": 1,
+                "myX": 3,
+                "myY": 3,
                 "itemList": [],
                 "myID": "engine.gridobject.person.NPC",
                 "myArguments": [
                   1,
                   1,
                   [
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif",
-                    "gridobject/Mountain.gif"
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg",
+                    "gridobject/NPCSprite.jpg"
                   ],
                   {
                     "myString": "Initial NPC Response",
@@ -192,72 +324,6 @@
                 ]
               }
             ]
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -992,6 +1058,7 @@
     }
   },
   "myImages": {},
+  "primaryMap": "first",
   "currentMap": "first",
   "myItems": {
     "Super Potion": {
@@ -1014,7 +1081,10 @@
         {
           "myName": "Ice Slash",
           "mySpeed": 10,
-          "myDamage": 10
+          "myDamage": 10,
+          "affectAttribute": "Speed",
+          "affectValue": 10,
+          "affectWho": true
         }
       ],
       "mySpeed": 15,
@@ -1027,7 +1097,10 @@
         {
           "myName": "Fire Stab",
           "mySpeed": 10,
-          "myDamage": 10
+          "myDamage": 10,
+          "affectAttribute": "Damage",
+          "affectValue": 10,
+          "affectWho": true
         }
       ],
       "mySpeed": 10,

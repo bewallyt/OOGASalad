@@ -5,6 +5,7 @@ import java.util.Random;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
+import engine.item.Weapon;
 
 public class BattleCalculator {
 	private Player myPlayer;
@@ -69,6 +70,13 @@ public class BattleCalculator {
 	}
 	public boolean playerIsDead(){
 		if(myPlayer.getStatsMap().get("health").getValue()<=0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean weaponDropped(){
+		if(dropWeapon){
 			return true;
 		}
 		return false;

@@ -1,5 +1,12 @@
 package authoring;
 
+/**
+ * @ Pritam M.
+ * @ Jacob L.
+ * @ Richard Cao.
+ * @ Davis T.
+ * */
+
 import java.io.File;
 import java.util.*;
 
@@ -108,6 +115,10 @@ public class WorldData {
     public void saveDoor(DoorData door){
     	myLevels.get(currentMap).saveDoor(door);
     }
+
+	public void saveEncounter(EncounterData myEncounter) {
+		myLevels.get(currentMap).saveEncounter(myEncounter);
+	}
 
 
 }

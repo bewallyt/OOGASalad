@@ -86,5 +86,10 @@ public class TilePanel extends JLayeredPane{
 		MapData md = FeatureManager.getWorldData().getCurrentMap();
 		md.addTileData(this.myRow, this.myCol, this.myData);
 	}
-
+	public int getRow(){
+		return myRow;
+	}
+	public int getCol(){
+		return myCol;
+	}
 }

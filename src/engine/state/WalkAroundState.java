@@ -3,13 +3,10 @@ package engine.state;
 import java.awt.event.KeyEvent;
 
 import engine.Control;
-import engine.dialogue.DialogueDisplayControl;
+import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
-import engine.gridobject.Pickupable;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
-import engine.world.Canvas;
-import engine.world.World;
 
 public class WalkAroundState extends AbstractState {
 
@@ -41,6 +38,7 @@ public class WalkAroundState extends AbstractState {
 				surrounding.doAction();
 				if(surrounding.getPickupable()!=null){
 					(surrounding.getPickupable()).pickUp(myPlayer);
+					((Barrier) surrounding).displayAlertBox(myPlayer, surrounding.getPickupable());
 					surrounding.setPickupable(null);
 				}
 			}

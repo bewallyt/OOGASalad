@@ -22,8 +22,23 @@ public class Constants {
 	public static final int SPEED = 1;
     public static final String IMAGEPATH = "ImageFiles/";
     public static final String GRIDOBJECTPATH = "gridobject/";
+    public static final String SPRITEPATH="PlayerImages/";
     public static final String PLAYERASHPATH = "PlayerImages/Ash/";
     public static final String TILEIMAGEPATH = "TileImage/";
+    public static final String[] ANIMIMAGES = {				
+    	"PlayerUp0.png",
+		"PlayerUp1.png",
+		"PlayerUp2.png",
+		"PlayerRight0.png",
+		"PlayerRight1.png",
+		"PlayerRight2.png",
+		"PlayerDown0.png",
+		"PlayerDown1.png",
+		"PlayerDown2.png",
+		"PlayerLeft0.png",
+		"PlayerLeft1.png",
+		"PlayerLeft2.png",
+};
     
     // authoring
     public static final String BARRIER = "engine.gridobject.Barrier";
