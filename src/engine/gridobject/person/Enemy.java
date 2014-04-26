@@ -15,6 +15,8 @@ public class Enemy extends NPC {
 	boolean wasBattled=false;
 	private boolean isRandom;
 	private boolean wasTalked=false;
+	private int myExperience=0;
+	
 
 
 	/**
@@ -100,5 +102,13 @@ public class Enemy extends NPC {
 	}
 	public boolean isRandom(){
 		return isRandom;
+	}
+
+	public void setExperience(int experience){
+		myExperience=experience;
+	}
+	
+	public int getExperience(){
+		return myExperience;
 	}
 }

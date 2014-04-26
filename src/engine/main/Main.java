@@ -157,7 +157,7 @@ public class Main extends RPGEngine {
 		tallGrass.setWorld(new ArenaWorld("ImageFiles/battlebackground.png",800,800,player,outsideWorld
 								.getRandomEncounter(),outsideWorld));
 
-//		outsideWorld.setMusic("/music/pokeTest.wav");
+		outsideWorld.setMusic("/music/pokeTest.wav");
 
 		outsideWorld.setTileObject(gridObjectList.get(0), 1, 6);
 		outsideWorld.setTileObject(gridObjectList.get(1), 2, 2);
@@ -193,7 +193,7 @@ public class Main extends RPGEngine {
 		enemy.addStatistic(new Statistic("defense",10,100));
 
 //		enemy.getWorld().setMusic("/music/fms.wav");
-//		buildingWorld.setMusic("/music/pokeCenter.wav");
+		buildingWorld.setMusic("/music/fms.wav");
 
 		grassEnemy.setBattleImage("ImageFiles/player.png");
 		grassEnemy.addStatistic(new Statistic("health",50,100));
