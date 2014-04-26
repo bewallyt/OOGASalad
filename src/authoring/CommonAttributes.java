@@ -13,6 +13,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class CommonAttributes {
     protected String name;
     protected String image;
@@ -24,24 +25,18 @@ public class CommonAttributes {
     protected Map<String,JTextField> textValues;
     protected Map<String,Weapon> weaponMap;
     protected Map<String,Item> itemMap;
-
     protected JTextField itemName;
     protected JTextField imageName;
     protected JTextField xcoor;
     protected JTextField ycoor;
     protected JTextField widthField;
     protected JTextField heightField;
-
     protected GridObjectImageEditor editor;
-
     protected TilePanel imagePanel;
-
     protected JPanel namePanel;
     protected JFrame frame;
-
     protected DefaultListModel weaponListModel;
     protected DefaultListModel itemListModel;
-
     protected int x;
     protected int y;
 
