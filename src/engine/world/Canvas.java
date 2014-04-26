@@ -115,6 +115,7 @@ public class Canvas extends JComponent{
 	private void paintTitleWorld(Graphics2D g2d){
 		TitleWorld world = (TitleWorld) myWorld;
 		g2d.drawImage(world.getBackground(), 0, 0, null);
+		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, 0,0);
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {

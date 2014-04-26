@@ -4,17 +4,18 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
+
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
-import engine.images.ScaledImage;
 
 public class GameSelectManager implements InteractionBox {
 	
-	public GameSelectManager(){
-		
+	private int colorMod = 0;
+
+	public GameSelectManager() {
+
 	}
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
@@ -35,14 +36,23 @@ public class GameSelectManager implements InteractionBox {
 			e.printStackTrace();
 		}
 
-		//g2d.setColor(Color.white);
-		Image img = new ScaledImage(200, height + 50, "startmenu.png")
-				.scaleImage();
-		g2d.drawImage(img, width - 200, 0, null);
-		//g2d.setColor(Color.black);
-
-		//drawSelector(g2d, xSize, ySize, width, height);
+		g2d.setColor(changeColor());
+		g2d.drawString("Press Start", 178, 238);
 	}
+	
+	public Color changeColor(){
+		colorMod = colorMod % 60;
+		Color startColor;
+		if(colorMod < 30){
+			startColor = Color.black;
+		}
+		else{
+			startColor = Color.white;
+		}
+		colorMod++;
+		return startColor;
+	}
+
 	//
 	// private String[] games;
 	// public GameSelectTest() {
@@ -84,7 +94,7 @@ public class GameSelectManager implements InteractionBox {
 	@Override
 	public void getNextText() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

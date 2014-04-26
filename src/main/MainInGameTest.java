@@ -2,13 +2,11 @@ package main;
 
 
 import GameView.GameSelectManager;
-import authoring.WorldData;
 import engine.gridobject.person.Player;
 import engine.main.RPGEngine;
 import engine.world.TitleWorld;
 
 public class MainInGameTest extends RPGEngine {
-	private WorldData myWorldData;
 
 	public static void main(String[] args) {
 		MainInGameTest engine = new MainInGameTest();
@@ -29,12 +27,10 @@ public class MainInGameTest extends RPGEngine {
 
 		Player player = new Player(anim, "Player", 2, new String[1], new String[1]);
 
-		TitleWorld titleScreen = new TitleWorld(1000, 1000, null);
+		TitleWorld titleScreen = new TitleWorld(1000, 1000, player);
 		titleScreen.setBackground("PokemonBackground.png");
 		setWorld(titleScreen); // this is only called for the initial world
-		GameSelectManager gsm = new GameSelectManager();
-		System.out.println(gsm);
-		player.setInteractionBox(gsm);
+		
 		
 		//titleScreen.setMusic("/music/pokeTest.wav");
 }
