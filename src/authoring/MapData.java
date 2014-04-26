@@ -9,6 +9,8 @@ public class MapData {
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
 	private List<EnemyData> enemyDatas;
+	private String mySong;
+	
 	public MapData(int height, int width){
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
@@ -63,5 +65,8 @@ public class MapData {
     public List<EnemyData> getEnemies() {return enemyDatas;
     }
 
+    public void addSong(String s){
+    	mySong = s;
+    }
 
 }

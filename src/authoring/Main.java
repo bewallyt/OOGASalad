@@ -9,6 +9,7 @@ public class Main {
 		myFeatures.add(new SaveGameFeature());
 		myFeatures.add(new MapCreatorFeature());
 		myFeatures.add(new PrimaryMapChooserFeature());
+		myFeatures.add(new AddMusicFeature());
         myFeatures.add(new AddGameComponents());
 		
 		AuthoringView view = new AuthoringView(myFeatures, true);
