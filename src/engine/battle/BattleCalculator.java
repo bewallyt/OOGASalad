@@ -49,13 +49,10 @@ public class BattleCalculator {
 	private boolean checkDropWeaponStatus(){
 		boolean dropWeapon = false;
 		Random rand = new Random();
-<<<<<<< HEAD
+
 		int randValue = rand.nextInt(10) + 1;
 		if (randValue < 78) {
-=======
-		int randValue = rand.nextInt(10);
-		if (randValue < 74) {
->>>>>>> engine
+
 			dropWeapon = true;
 		}
 		return dropWeapon;
