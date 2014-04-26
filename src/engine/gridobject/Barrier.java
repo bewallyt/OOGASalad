@@ -3,10 +3,11 @@ package engine.gridobject;
 import java.util.List;
 
 import util.Constants;
+import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
 import engine.dialogue.NPCResponseNode;
+import engine.dialogue.NotificationManager;
 import engine.gridobject.person.Player;
-import engine.item.Item;
 import engine.item.Pickupable;
 import engine.state.DialogueState;
 
@@ -23,7 +24,7 @@ public class Barrier extends GridObject {
 	public void displayAlertBox(Player p, Pickupable it) {
 		NPCResponseNode n = new NPCResponseNode(this, "You found: " + it.toString() + "!");
 		System.out.println("Item found alert");
-		ConversationManager conversation = new ConversationManager(p, this, n);
+		AbstractManager conversation = new NotificationManager(p, this, n);
 		p.setState(new DialogueState(conversation));
 		super.setInteractionBox(conversation);
 	}
