@@ -9,7 +9,6 @@ import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix2x2;
 import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
 import engine.item.StatBuffer;
 
@@ -23,15 +22,9 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private BattleSelectorNode myRunSelector;
 	private BattleSelectorNode myCurrentBattleSelector;
 	private BattleExecutorNode myCurrentBattleExecutorNode;
-	
 	private static String myCurrentState="TopLevel";
 	private Image myCurrentPlayerBattleImage;
 	private Image myCurrentEnemyBattleImage;
-	//DialogueListeningState PlayerDead = new DialogueListeningState("You have been defeated!",);
-
-	private static final String TEXT_DISPLAYED_ITEM_USED = "Item used!";
-	
-	private String itemUsedName = "";
 	private String textToBeDisplayed="";
 	private boolean ran=false;
 
@@ -105,6 +98,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 			myCurrentBattleExecutorNode=(BattleExecutorNode) getMatrix().getCurrentNode();
 		}
 	}
+
 	public Player getPlayer() {
 		return myPlayer;
 	}
@@ -141,7 +135,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	public void setCurrentBattleExecutorNode(BattleExecutorNode node){
 		myCurrentBattleExecutorNode = node;
 	}
-	
+
 	public BattleExecutorNode getCurrentBattleExecutorNode(){
 		return myCurrentBattleExecutorNode;
 	}

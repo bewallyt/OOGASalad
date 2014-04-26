@@ -15,16 +15,8 @@ public class FirstAttackHappened implements BattleState{
 	public void doState(BattleManager manager) {
 		BattleExecutable executable = manager.getCurrentBattleExecutorNode().getExecutor();
 		BattleCalculator battleCalculate=new BattleCalculator(manager.getPlayer(), manager.getEnemy());
-		BattleAI battleAI = new BattleAI(manager.getEnemy());
-		Weapon enemyWeapon = battleAI.chooseWeapon();
-		manager.getEnemy().setCurrentWeapon(enemyWeapon);
-		manager.getEnemy().setCurrentAttack(battleAI.chooseAttack(enemyWeapon));
-		manager.getPlayer().setCurrentAttack((Attack) executable);
-
-		Person currentAttacker = battleCalculate.attackFirst(manager.getPlayer(), manager.getPlayer().getCurrentWeapon(), 
-				(Attack) executable, manager.getEnemy(), enemyWeapon, manager.getEnemy().getCurrentAttack())[1];
-		Person currentVictim = battleCalculate.attackFirst(manager.getPlayer(), manager.getPlayer().getCurrentWeapon(), 
-				(Attack) executable, manager.getEnemy(), enemyWeapon, manager.getEnemy().getCurrentAttack())[0];
+		Person currentAttacker=battleCalculate.getAttackersInOrder((Attack) executable)[1];
+		Person currentVictim=battleCalculate.getAttackersInOrder((Attack) executable)[0];
 		manager.setCurrentState("BackToTop");
 		manager.setCurrentTextToBeDisplayed(currentAttacker.getCurrentWeapon().toString() + " used " + currentAttacker.getCurrentAttack().toString()
 				+ "\n" + currentAttacker.getCurrentAttack().getEffectMessage());
@@ -32,11 +24,16 @@ public class FirstAttackHappened implements BattleState{
 		
 		if(currentAttacker instanceof Player)manager.setPlayerBattleImage(manager.getPlayer().getCurrentWeapon().getImage());
 		else{manager.setEnemyBattleImage(manager.getEnemy().getCurrentWeapon().getImage());}
+		checkIfDead(manager, battleCalculate);
+		
+	}
+
+	private void checkIfDead(BattleManager manager,
+			BattleCalculator battleCalculate) {
 		if(battleCalculate.enemyIsDead())
 			manager.setCurrentState("EnemyDead");
 		if(battleCalculate.playerIsDead())
 			manager.setCurrentState("PlayerDead");
-		
 	}
 
 }
