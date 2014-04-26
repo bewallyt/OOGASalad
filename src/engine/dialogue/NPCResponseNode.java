@@ -1,18 +1,20 @@
 package engine.dialogue;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import engine.gridobject.person.NPC;
+import engine.gridobject.GridObject;
 import engine.item.Item;
+import engine.gridobject.person.*;
 
 public class NPCResponseNode {
 
 	private String myDialogue;
 //	private Map<UserQueryNode, NPCResponseNode> myChildren;
 	private List<UserQueryNode> myChildren;
-	private NPC myNPC;
+	private GridObject myNPC;
 	
-	public NPCResponseNode(NPC n, String dialogue) {
+	public NPCResponseNode(GridObject n, String dialogue) {
 		myNPC = n;
 		myDialogue = dialogue;
 		myChildren = new ArrayList<UserQueryNode>();		
@@ -40,7 +42,7 @@ public class NPCResponseNode {
 	
 	public Item getItem() {
 		// just gets first item in list for now
-		return myNPC.getItems().get(0);
+		return ((NPC) myNPC).getItems().get(0);
 	}
 	
 	
