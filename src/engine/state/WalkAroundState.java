@@ -54,7 +54,7 @@ public class WalkAroundState extends AbstractState {
 		if (e.getKeyCode() == Control.A)
 			myPlayer.setAClick(false);
 		if (e.getKeyCode() == Control.SPACE) {
-			MenuManager mm = new MenuManager(myPlayer);
+			MenuManager mm = new MenuManager(myPlayer, new String[] {"Weapon", "Bag", "Name", "Save", "Exit"});
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
 			myPlayer.setInteractionBox(mm);

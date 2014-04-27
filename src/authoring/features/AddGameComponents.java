@@ -6,16 +6,16 @@ package authoring.features;
 
 import javax.swing.*;
 
-import authoring.gameObjects.Attacks;
+import authoring.gameObjects.AttacksData;
 import authoring.gameObjects.BarrierCreation;
 import authoring.gameObjects.DoorCreation;
 import authoring.gameObjects.EncounterCreation;
-import authoring.gameObjects.Item;
+import authoring.gameObjects.ItemData;
 import authoring.gameObjects.ItemWeaponCreation;
 import authoring.gameObjects.LabelsCreation;
 import authoring.gameObjects.NPCCreation;
 import authoring.gameObjects.PlayerEnemyCreation;
-import authoring.gameObjects.Weapon;
+import authoring.gameObjects.WeaponData;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -84,14 +84,14 @@ public class AddGameComponents extends Feature implements ActionListener {
     private void showCreationOptions() {
 
         //some default weapons and items
-        ArrayList<Attacks> fSwordAttack = new ArrayList<Attacks>();
-        ArrayList<Attacks> iSwordAttack = new ArrayList<Attacks>();
-        Attacks fireStab = new Attacks("Fire Stab",10,10,"Damage",10,true);
-        Attacks iceSlash = new Attacks("Ice Slash",10,10,"Speed",10,true);
+        ArrayList<AttacksData> fSwordAttack = new ArrayList<AttacksData>();
+        ArrayList<AttacksData> iSwordAttack = new ArrayList<AttacksData>();
+        AttacksData fireStab = new AttacksData("Fire Stab",10,10,"Damage",10,true);
+        AttacksData iceSlash = new AttacksData("Ice Slash",10,10,"Speed",10,true);
         fSwordAttack.add(fireStab);
         iSwordAttack.add(iceSlash);
-        Weapon fireSword = new Weapon("Fire Sword","FSword",10,10,fSwordAttack);
-        Weapon iceSword = new Weapon("Ice Sword","ISword",15,15,iSwordAttack);
+        WeaponData fireSword = new WeaponData("Fire Sword","FSword",10,10,fSwordAttack);
+        WeaponData iceSword = new WeaponData("Ice Sword","ISword",15,15,iSwordAttack);
         FeatureManager.getWorldData().saveWeapons("Fire Sword",fireSword);
         FeatureManager.getWorldData().saveWeapons("Ice Sword",iceSword);
 
@@ -101,7 +101,7 @@ public class AddGameComponents extends Feature implements ActionListener {
             potionValues.put(valueLabels[j],j+10);
         }
 
-        Item potion = new Item("Super Potion","Jar",potionValues);
+        ItemData potion = new ItemData("Super Potion","Jar",potionValues);
         FeatureManager.getWorldData().saveItem("Super Potion",potion);
 
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();

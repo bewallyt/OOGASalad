@@ -6,19 +6,19 @@ package authoring.gameObjects;
 
 import java.util.Map;
 
-public class Item {
+public class ItemData {
 
     private String itemName;
     private String itemImage;
     private Map<String,Integer> myItemValues;
 
-    public Item(String name, String image, Map<String,Integer> values){
+    public ItemData(String name, String image, Map<String,Integer> values){
         itemName = name;
         itemImage = image;
         myItemValues = values;
     }
 
-    public Item(String name){
+    public ItemData(String name){
         itemName = name;
     }
 
