@@ -47,6 +47,10 @@ public class GridViewerFeature extends Feature{
 		}
 		mapSize(s);		
 		tabs.addTab(s, myViewer);	
+		if(tabs.getTabCount() > 1 && tabs.getSelectedIndex() >= 0){
+			tabs.setSelectedIndex(tabs.getSelectedIndex() + 1);
+		}
+			
 	}
 	public Grid getGrid(String s){
 		return myGrids.get(s);
@@ -89,7 +93,7 @@ public class GridViewerFeature extends Feature{
 		if(result == JOptionPane.OK_OPTION){
 			row = Integer.parseInt(rowEntry.getText());
 			col = Integer.parseInt(colEntry.getText());
-			
+
 			if(row < 15 || col < 15){
 				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error", JOptionPane.ERROR_MESSAGE);
 				mapSize(s);
@@ -98,6 +102,7 @@ public class GridViewerFeature extends Feature{
 		}
 		MapData md = new MapData(row, col);
 		wd.addLevel(s, md);
+		wd.setCurrentMap(s);
 		gridMaker(row, col, s);
 	}
 
@@ -107,8 +112,6 @@ public class GridViewerFeature extends Feature{
 		public void stateChanged(ChangeEvent arg0) {
 			wd.setCurrentMap(tabs.getTitleAt(tabs.getSelectedIndex()));
 			mapName=tabs.getTitleAt(tabs.getSelectedIndex());
-			//g = myGrids.get(tabs.getTitleAt(tabs.getSelectedIndex()));
-			//System.out.println("New Map: "+tabs.getTitleAt(tabs.getSelectedIndex()));
 		}
 	}
 

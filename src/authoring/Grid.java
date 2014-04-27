@@ -31,6 +31,7 @@ public class Grid extends JPanel{
 	private int myNumCols;
 
 	public Grid(int row, int col) {
+
 		ImageManager m = new ImageManager();
 		ImageFile i = m.loadTileImage(DEFAULT_TILE_IMAGE);
 		defaultBackground = new ImageIcon(i.getImage(), DEFAULT_TILE_IMAGE);
