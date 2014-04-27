@@ -256,9 +256,9 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         ItemData madeItem;
         if(!isObjectiveItem.isSelected()){
             madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues,
-                    Integer.parseInt(priceField.getText()));
+                    Integer.parseInt(priceField.getText()),"statbuffer");
         } else{
-            madeItem = new ItemData(name,Integer.parseInt(priceField.getText()));
+            madeItem = new ItemData(name,Integer.parseInt(priceField.getText()),"objective");
         }
         FeatureManager.getWorldData().saveItem(name,madeItem);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
