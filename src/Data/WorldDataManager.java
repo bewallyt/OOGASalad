@@ -72,11 +72,15 @@ public class WorldDataManager {
 			String[] pAnimImages = p.getAnimImages();
 			
 			Map<String,Integer> attributeValues = new HashMap<String,Integer>();
-			attributeValues.put("damage", p.getStatsMap().get("damage").getValue());
-			attributeValues.put("speed", p.getStatsMap().get("speed").getValue());
-			attributeValues.put("defense", p.getStatsMap().get("defense").getValue());
-			attributeValues.put("health", p.getStatsMap().get("health").getValue());
-			attributeValues.put("level", p.getStatsMap().get("level").getValue());
+			for (String key : p.getStatsMap().keySet()) {
+				attributeValues.put(key,  p.getStatsMap().get(key).getValue());
+			}
+			
+		//	attributeValues.put("damage", p.getStatsMap().get("damage").getValue());
+		//	attributeValues.put("speed", p.getStatsMap().get("speed").getValue());
+		//	attributeValues.put("defense", p.getStatsMap().get("defense").getValue());
+		//	attributeValues.put("health", p.getStatsMap().get("health").getValue());
+		//	attributeValues.put("level", p.getStatsMap().get("level").getValue());
 			
 			List<Weapon> pWeaponNames = p.getWeaponList();
 			String [] pWeps = new String[pWeaponNames.size()];
