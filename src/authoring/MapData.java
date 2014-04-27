@@ -9,6 +9,8 @@ public class MapData {
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
 	private List<EnemyData> enemyDatas;
+	private String mySong;
+	
 	public MapData(int height, int width){
         myRandomEnemies = new ArrayList<RandomEnemy>();
         enemyDatas = new ArrayList<EnemyData>();
@@ -66,5 +68,12 @@ public class MapData {
 		myTiles.get(myEncounter.getX()).get(myEncounter.getY()).addGridObjectData(myEncounter);
 	}
 
+    public void addSong(String s){
+    	mySong = s;
+    }
+    
+    public String getSong(){
+    	return mySong;
+    }
 
 }

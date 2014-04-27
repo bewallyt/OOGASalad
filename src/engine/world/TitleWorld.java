@@ -15,7 +15,7 @@ public class TitleWorld extends World {
 
 	public TitleWorld(int playWidth, int playHeight, Player p) {		
 		super(playWidth, playHeight, p);
-
+		
 	}
 
 

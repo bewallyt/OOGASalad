@@ -1,28 +1,42 @@
 package engine.world;
 
+import GameView.GameFrame;
 import GameView.TitleManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.state.TitleState;
 
 public class TitleWorldLooper extends GameLooper {
 
-	TitleWorld myWorld;
-	TitleManager myGSM;
+	private TitleWorld myWorld;
+	private TitleManager myTM;
+	private boolean isGameLoaded;
+	
 
 	public TitleWorldLooper(TitleWorld currentWorld) {
 		super(currentWorld);
 		myWorld = (TitleWorld) getWorld();
-		myGSM = new TitleManager(myWorld.getPlayer());
+		myTM = new TitleManager(myWorld.getPlayer());
 		myWorld.getPlayer().setDialogueDisplayControl(
 				new DialogueDisplayControl(myWorld));
-		myWorld.getPlayer().setInteractionBox(myGSM);
+		myWorld.getPlayer().setInteractionBox(myTM);
 		myWorld.getPlayer()
-				.setState(new TitleState(myWorld.getPlayer(), myGSM));
+				.setState(new TitleState(myWorld.getPlayer(), myTM));
+		
+		isGameLoaded = myTM.getIsGameLoaded();
+		
 	}
 
 	@Override
 	public World doLoop() {
-		// TODO Auto-generated method stub
+		isGameLoaded =myTM.getIsGameLoaded();
+		if(isGameLoaded){
+			// Load new world
+			
+			GameFrame gm = new GameFrame();
+			gm.initialize(myTM.getLoadFile());
+			return gm.getInitialWorld();
+			
+		}
 		return null;
 	}
 

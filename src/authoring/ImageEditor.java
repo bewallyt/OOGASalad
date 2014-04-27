@@ -1,30 +1,20 @@
 package authoring;
 
-import java.awt.BorderLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import Data.ImageFile;
 import Data.ImageManager;
 
 public abstract class ImageEditor {
 	
-	protected JList list;
+	protected JList<ImageIcon> list;
 	protected JScrollPane scroll;
-	protected DefaultListModel model;
+	protected DefaultListModel<ImageIcon> model;
 	protected JFrame myWindow;
-	ImageManager m=new ImageManager();
+	protected ImageManager m=new ImageManager();
 	
 	public ImageEditor() {
-		model = new DefaultListModel();
-		list = new JList(model);
+		model = new DefaultListModel<ImageIcon>();
+		list = new JList<ImageIcon>(model);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1);
@@ -39,14 +29,9 @@ public abstract class ImageEditor {
 		model.addElement(x);
 	}
 	
-	public void imageRefresh(){
-		model.clear();
-		this.addExistingImages();
-	}
-	
 	public ImageIcon selectImage(){
 		if(list.getSelectedIndex()!=-1){
-			return (ImageIcon) model.get(list.getSelectedIndex());
+			return model.get(list.getSelectedIndex());
 		}	
 		return null;
 	}

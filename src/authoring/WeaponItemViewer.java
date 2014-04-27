@@ -6,29 +6,26 @@ package authoring;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.List;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
+@SuppressWarnings("ALL")
 public class WeaponItemViewer extends CommonAttributes{
 
-    private JFrame weaponFrame;
+    protected JFrame weaponFrame;
     private JFrame detailFrame;
-
     private JList weaponList;
-
     private JList itemList;
-
 
     public WeaponItemViewer(){
 
         detailFrame = new JFrame();
         weaponFrame = new JFrame("Existing Weapons/Items");
         weaponFrame.setLayout(new BorderLayout());
-        weaponFrame.setBounds(100, 0, 300, 300);
+        weaponFrame.setBounds(1050, 600, 300, 300);
 
         weaponList = new JList(weaponListModel);
         weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -52,35 +49,33 @@ public class WeaponItemViewer extends CommonAttributes{
                         String clicked = (String)weaponList.getSelectedValue();
                         HashMap<String,Weapon> detailsWeaponMap =
                                 (HashMap<String, Weapon>) FeatureManager.getWorldData().getMyWeapons();
-                        for(String s: detailsWeaponMap.keySet()){
-                            if(clicked.equals(s)){
+                        for(String s: detailsWeaponMap.keySet())
+                            if (clicked.equals(s)) {
                                 Weapon editWeapon = detailsWeaponMap.get(s);
                                 JPanel detailsPanel = new JPanel();
-                                detailsPanel.setLayout(new BoxLayout(detailsPanel,BoxLayout.PAGE_AXIS));
+                                detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.PAGE_AXIS));
                                 ArrayList<Attacks> detailAttacks = (ArrayList<Attacks>) editWeapon.getMyAttacks();
-                                JLabel dWeapon = new JLabel(editWeapon.getMyName()+" -"+" Speed:"+
-                                        String.valueOf(editWeapon.getMySpeed())+" -"+" Damage:"+
+                                JLabel dWeapon = new JLabel(editWeapon.getMyName() + " -" + " Speed:" +
+                                        String.valueOf(editWeapon.getMySpeed()) + " -" + " Damage:" +
                                         String.valueOf(editWeapon.getMyDamage()));
                                 detailsPanel.add(dWeapon);
                                 JLabel newLine = new JLabel("<html><br></html>");
                                 JLabel attack = new JLabel("Attacks:");
                                 detailsPanel.add(newLine);
                                 detailsPanel.add(attack);
-                                for(int i=0;i<detailAttacks.size();i++){
-                                    JLabel dAttack = new JLabel(detailAttacks.get(i).getMyName()+" -"+" Speed:"+
-                                    String.valueOf(detailAttacks.get(i).getMySpeed())+" -"+" Damage:"+
-                                    String.valueOf(detailAttacks.get(i).getMyDamage()));
-                                    JLabel subAttack = new JLabel(detailAttacks.get(i).getAffectAttribute()+":"+
-                                    detailAttacks.get(i).getAffectValue()+" -"+" "+
-                                    String.valueOf(detailAttacks.get(i).getAffectWho()));
+                                for (Attacks detailAttack : detailAttacks) {
+                                    JLabel dAttack = new JLabel(detailAttack.getMyName() + " -" + " Speed:" +
+                                            String.valueOf(detailAttack.getMySpeed()) + " -" + " Damage:" +
+                                            String.valueOf(detailAttack.getMyDamage()));
+                                    JLabel subAttack = new JLabel(detailAttack.getAffectAttribute() + ":" +
+                                            detailAttack.getAffectValue() + " -" + " " +
+                                            String.valueOf(detailAttack.getAffectWho()));
                                     detailsPanel.add(dAttack);
                                     detailsPanel.add(subAttack);
                                 }
-                                JOptionPane.showMessageDialog(detailFrame,detailsPanel,"Details",
+                                JOptionPane.showMessageDialog(detailFrame, detailsPanel, "Details",
                                         JOptionPane.INFORMATION_MESSAGE);
                             }
-
-                        }
                     }
                 }
             }
@@ -169,6 +164,7 @@ public class WeaponItemViewer extends CommonAttributes{
         weaponPanel.add(itemLabel);
         weaponPanel.add(itemScroll);
         weaponFrame.add(weaponPanel);
+//        weaponFrame.setLocationRelativeTo();
         weaponFrame.setVisible(true);
     }
 

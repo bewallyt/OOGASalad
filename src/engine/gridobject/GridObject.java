@@ -86,6 +86,10 @@ public abstract class GridObject{
 		myDialogueList=new ArrayList<String>();
 		myImageName=myAnimImages[2];	
 	}
+	
+	public GridObject(){
+		
+	}
 
 	public int[] getNumTiles(){
 		return new int[] {myNumTilesWidth, myNumTilesHeight};

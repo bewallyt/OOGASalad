@@ -55,6 +55,10 @@ public abstract class Person extends GridObject {
 		myMoney=0;
 		myName=name;
 	}
+	
+	public Person(){
+		super();
+	}
 
 	public void setMaxX(int maxX){
 		myMaxX=maxX;

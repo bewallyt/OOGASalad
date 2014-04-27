@@ -1,5 +1,6 @@
 package engine.world;
 
+import Data.WorldDataManager;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
@@ -11,6 +12,8 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.state.DialogueState;
+import engine.state.ExitState;
+import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
 
@@ -30,7 +33,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 	private void setDialogueDisplayControl() {
 		for (GridObject go : (myWorld.getGridObjectList())) {
 			//if (go instanceof Person) {
-				go.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			go.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			//}
 		}
 	}
@@ -58,9 +61,27 @@ public class WalkAroundWorldLooper extends GameLooper {
 						}
 					}	
 				}	
-			}
+			} 
 
+		} else if(myWorld.getPlayer().getState() instanceof SaveState){
+			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
+			if (saveState.isSavingState()) {
+				saveState.setSavingState(false);
+				saveWorld(saveState.getSaveFileName());			
+			}
+		} else if(myWorld.getPlayer().getState() instanceof ExitState){
+			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
+			titleScreen.setBackground("PokemonBackground.png");
+			titleScreen.setMusic("/music/PokemonIntro.wav");
+			return titleScreen;
 		}
+		//			if(myWorld.getPlayer().getWeaponList().size()>2){
+		//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
+		////				System.out.println("Item found alert");
+		//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
+		//				myWorld.getPlayer().setState(new DialogueState(conversation));
+		//				myWorld.getPlayer().setInteractionBox(conversation);
+		//			}
 		return null;
 	}
 
@@ -75,5 +96,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 				}
 			}
 		}
+	}
+
+	private void saveWorld(String filename) {
+		//	WorldDataManager wdManager = new WorldDataManager();
+		//	wdManager.saveWorld(myWorld, filename);
 	}
 }

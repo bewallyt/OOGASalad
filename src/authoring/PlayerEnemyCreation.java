@@ -42,6 +42,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
             ycoor.setEnabled(true);
             mon.setEnabled(true);
             exp.setEnabled(true);
+            worldList.setEnabled(false);
 
         } else if("random".equals(e.getActionCommand())){
             playerEnemyImages.setEnabled(false);
@@ -50,7 +51,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
             ycoor.setEnabled(false);
             mon.setEnabled(true);
             exp.setEnabled(true);
-
+            worldList.setEnabled(true);
         } else{
             playerEnemyImages.setEnabled(true);
             itemList.setEnabled(true);
@@ -58,7 +59,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
             ycoor.setEnabled(true);
             mon.setEnabled(false);
             exp.setEnabled(false);
-
+            worldList.setEnabled(false);
         }
     }
 
@@ -91,12 +92,15 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         isRandomEnemy.setActionCommand("random");
         isRandomEnemy.addActionListener(this);
 
+        worldList = new JComboBox(getWorldArray());
+        worldList.setEnabled(false);
         playerEnemyImages = new JComboBox<String>(playerEnemyImageChoices);
         JPanel namePanel = nameImageFields();
         JPanel superNamePanel = new JPanel();
         superNamePanel.setLayout(new BoxLayout(superNamePanel,BoxLayout.PAGE_AXIS));
 
         superNamePanel.add(namePanel);
+        superNamePanel.add(worldList);
         superNamePanel.add(playerEnemyImages);
         JPanel personPanel = new JPanel();
         buttonChoices.add(isPlayer);
@@ -186,7 +190,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
                 DefaultListModel listModel = (DefaultListModel) weaponList.getModel();
                 int index = dl.getIndex();
                 boolean insert = dl.isInsert();
-                //String value = (String)listModel.getElementAt(index);
                 Transferable t = info.getTransferable();
                 String data;
                 try{
@@ -279,10 +282,11 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     	
     }
     private void makeRandomEnemy() {
-        RandomEnemy madeRandomEnemy = new RandomEnemy(Integer.parseInt(null),Integer.parseInt(null),
-                editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames,Integer.parseInt(null),
+        RandomEnemy madeRandomEnemy = new RandomEnemy(0,0,
+                editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames,0,
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         FeatureManager.getWorldData().saveRandomEnemy(madeRandomEnemy);
+        FeatureManager.getWorldData().getMap((String)worldList.getSelectedItem()).saveRandomEnemy(madeRandomEnemy);
     }
 
     private void makePlayer() {

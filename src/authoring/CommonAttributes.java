@@ -31,6 +31,7 @@ public abstract class CommonAttributes {
     protected JTextField ycoor;
     protected JTextField widthField;
     protected JTextField heightField;
+    protected JComboBox worldList;
     protected GridObjectImageEditor editor;
     protected TilePanel imagePanel;
     protected JPanel namePanel;
@@ -156,5 +157,16 @@ public abstract class CommonAttributes {
         }
 
     }
+
+    protected String[] getWorldArray(){
+		Map<String, MapData> maps=FeatureManager.getWorldData().getMaps();
+		String[] mapArray=new String[maps.keySet().size()];
+		int i=0;
+		for(String s : maps.keySet()){
+			mapArray[i]=s;
+			i++;
+		}
+		return mapArray;
+	}
 
 }

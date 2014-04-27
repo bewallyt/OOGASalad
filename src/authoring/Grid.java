@@ -14,11 +14,12 @@ import Data.ImageManager;
  *
  */
 public class Grid extends JPanel{
-	
+
 	private JPopupMenu popup;
 	private TileImageEditor imageEditor;
+    private WeaponItemViewer weaponItemViewer;
 	private TilePanel currentPanel;
-	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates"};
+	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates", "Weapon/Item Viewer"};
 	private JMenuItem myCoordinates;
 	private Border defaultBorder;
 	private Border selectBorder;
@@ -28,8 +29,9 @@ public class Grid extends JPanel{
 	private ImageIcon defaultBackground;
 	private int myNumRows;
 	private int myNumCols;
-	
+
 	public Grid(int row, int col) {
+
 		ImageManager m = new ImageManager();
 		ImageFile i = m.loadTileImage(DEFAULT_TILE_IMAGE);
 		defaultBackground = new ImageIcon(i.getImage(), DEFAULT_TILE_IMAGE);
@@ -40,6 +42,7 @@ public class Grid extends JPanel{
 		mapMaker();		
 		this.setOpaque(false);
 		imageEditor = FeatureManager.tileEditor;
+        weaponItemViewer = FeatureManager.weaponItemViewer;
 		popupMenuMaker();
 		defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
 		selectBorder = new MatteBorder(2, 2, 2, 2, Color.BLUE);
@@ -58,7 +61,7 @@ public class Grid extends JPanel{
 			}
 		}
 	}
-	
+
 	public void tileRepaint(){
 		for(int row = 0; row < world.length; row++)
 			for(int col = 0; col < world.length; col++){
@@ -67,7 +70,7 @@ public class Grid extends JPanel{
 				world[row][col] = temp;
 			}
 	}
-	
+
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -104,16 +107,26 @@ public class Grid extends JPanel{
 
 	private class PopupMenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+            if("Tile Image Editor".equals(e.getActionCommand())){
 			showImageMenu();
+            } else if("Weapon/Item Viewer".equals(e.getActionCommand())){
+            showWIViewer();
+            }
 		}
 	}
 
+    private void showWIViewer() {
+        weaponItemViewer.weaponFrame.setVisible(true);
+    }
 
-	public class SelectedCellListener extends MouseAdapter{
+
+    public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
-			if(e.getButton() == MouseEvent.BUTTON3)
+			if(e.getButton() == MouseEvent.BUTTON3){
 				myCoordinates.setText("Coordinates: " + currentPanel.getRow() + ", " + currentPanel.getCol());
 				showPopupMenu(e);
+			}
+
 		}
 
 		@Override
@@ -129,8 +142,10 @@ public class Grid extends JPanel{
 		}
 
 		public void mousePressed(MouseEvent e) {
-			TilePanel selected = (TilePanel) e.getComponent();
-			placeImage(selected);
+			if(e.getButton() == MouseEvent.BUTTON1){
+				TilePanel selected = (TilePanel) e.getComponent();
+				placeImage(selected);
+			}
 		}
 
 		public void mouseReleased(MouseEvent e) {

@@ -47,6 +47,10 @@ public class GridViewerFeature extends Feature{
 		}
 		mapSize(s);		
 		tabs.addTab(s, myViewer);	
+		if(tabs.getTabCount() > 1 && tabs.getSelectedIndex() >= 0){
+			tabs.setSelectedIndex(tabs.getSelectedIndex() + 1);
+		}
+			
 	}
 	public Grid getGrid(String s){
 		return myGrids.get(s);
@@ -71,7 +75,8 @@ public class GridViewerFeature extends Feature{
 			return name;
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
 			return mapNamer();
 		}
 	}
@@ -85,19 +90,22 @@ public class GridViewerFeature extends Feature{
 		mapSizer.add(new JLabel("Columns: (>15)"));
 		mapSizer.add(colEntry);
 
-		int result = JOptionPane.showConfirmDialog(null, mapSizer, "Please enter the size of your map", JOptionPane.OK_CANCEL_OPTION);
+		int result = JOptionPane.showConfirmDialog(null, mapSizer, "Please enter the size of your map",
+                JOptionPane.OK_CANCEL_OPTION);
 		if(result == JOptionPane.OK_OPTION){
 			row = Integer.parseInt(rowEntry.getText());
 			col = Integer.parseInt(colEntry.getText());
-			
+
 			if(row < 15 || col < 15){
-				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error",
+                        JOptionPane.ERROR_MESSAGE);
 				mapSize(s);
 				return;
 			}
 		}
 		MapData md = new MapData(row, col);
 		wd.addLevel(s, md);
+		wd.setCurrentMap(s);
 		gridMaker(row, col, s);
 	}
 
@@ -107,8 +115,6 @@ public class GridViewerFeature extends Feature{
 		public void stateChanged(ChangeEvent arg0) {
 			wd.setCurrentMap(tabs.getTitleAt(tabs.getSelectedIndex()));
 			mapName=tabs.getTitleAt(tabs.getSelectedIndex());
-			//g = myGrids.get(tabs.getTitleAt(tabs.getSelectedIndex()));
-			//System.out.println("New Map: "+tabs.getTitleAt(tabs.getSelectedIndex()));
 		}
 	}
 
