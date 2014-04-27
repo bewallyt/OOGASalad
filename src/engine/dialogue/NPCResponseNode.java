@@ -15,6 +15,11 @@ public class NPCResponseNode {
 	private GridObject myNPC;
 	private Item myItem;
 	
+	/**
+	 * Holds info for what NPC says in a conversation
+	 * @param dialogue
+	 * @param it item that will be given to Player, should be <code>null</code> if no item
+	 */
 	public NPCResponseNode(String dialogue, Item it) {
 		//myNPC = n;
 		myDialogue = dialogue;

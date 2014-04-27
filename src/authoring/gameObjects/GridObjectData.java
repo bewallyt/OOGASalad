@@ -59,12 +59,13 @@ public class GridObjectData {
 		myX = x;
 		myY = y;
 		
-		myArguments.add(1);
-		myArguments.add(1);
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(createSpriteImages(image));
 		myArguments.add(name);
 		myArguments.add(startVals);
 		myArguments.add(weps);
+		myArguments.add(weps.length);
 		myArguments.add(movement);
 	}
 	
@@ -76,17 +77,13 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
+		
+		myArguments.add(createSpriteImages("Ash"));
 
-//		myArguments.add(createSpriteImages());
-		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image,
-		// Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
-//		myArguments.add(Constants.GRIDOBJECTPATH+image);
-
-		myArguments.add(Constants.SPRITEPATH+"/"+image+"/");
-
+		// myArguments.add(createSpriteImages(image));
+		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
-		// myArguments.add(movementType);
-		// myArguments.add(player);
+		myArguments.add((int) 1); // default movement type until given movementType
 	}
 
     // Base empty constructor

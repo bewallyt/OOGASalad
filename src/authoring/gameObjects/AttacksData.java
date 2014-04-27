@@ -11,14 +11,15 @@ public class AttacksData {
     private int myDamage;
     private String affectAttribute;
     private int affectValue;
-    private boolean affectWho;
+    private boolean affectPlayer;
+    
     public AttacksData(String name, int speed, int damage, String selected, int value, boolean affect){
         myName = name;
         mySpeed = speed;
         myDamage = damage;
         affectAttribute = selected;
         affectValue = value;
-        affectWho = affect;
+        affectPlayer = affect;
 
     }
 
@@ -27,5 +28,5 @@ public class AttacksData {
     public int getMyDamage(){return myDamage;}
     public String getAffectAttribute(){return affectAttribute;}
     public int getAffectValue(){return affectValue;}
-    public boolean getAffectWho(){return affectWho;}
+    public boolean getAffectPlayer(){return affectPlayer;}
 }

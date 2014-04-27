@@ -1,7 +1,9 @@
 package engine.gridobject.person;
 
 import java.util.List;
+import java.util.Map;
 
+import util.Constants;
 import engine.ProximityChecker;
 import engine.battle.Attack;
 import engine.world.ArenaWorld;
@@ -32,6 +34,28 @@ public class Enemy extends NPC {
 	public Enemy(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight, int movementType, Player player) {
 		super(animImages,name, speed, numTilesWidth, numTilesHeight,movementType,player);
 		isRandom=false;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Enemy(List<Object> list) {
+		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
+				.toArray(new String[12]), (String) list
+				.get(Constants.NAME_CONST), Constants.SPEED,
+				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
+				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue(),
+				(int) ((Double) list.get(Constants.ENEMY_MOVEMENT_CONST)).intValue(),
+				(Player) list.get(Constants.ENEMY_PLAYER_CONST));
+		
+		Map<String, Double> startVals = (Map<String, Double>) list.get(Constants.VALUES_CONST);
+		addAllStatistics(startVals);
+		
+		String[] weapons = (String[]) ((List<String>) list.get(Constants.WEAPONS_CONST)).toArray(new String[(int) ((Double) list.get(Constants.WEP_LENGTH_CONST)).intValue()]);
+		// need a map of all of the weapons
+//		addAllWeapons(null, weapons);
+		
+		isRandom = false;
+		// will probably have to set doBattleOnSight() as default
+//		doBattleOnSight();
 	}
 
 

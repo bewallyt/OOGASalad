@@ -12,10 +12,18 @@ public class Attack implements MatrixNode,BattleExecutable {
 	private Statistic myDamage;
 	private Statistic mySpeed;
 	private Effect myEffect;
+	
 	public Attack(String name){
 		myName=name;
 		mySpeed = new Statistic("Speed", Weapon.DEFAULT_SPEED,Weapon.DEFAULT_MAX);
 		myDamage = new Statistic("Damage",Weapon.DEFAULT_DAMAGE,Weapon.DEFAULT_MAX);
+	}
+	
+	public Attack(String name, int damage, int speed, String selected, int value, boolean affect){
+		myName = name;
+		mySpeed = new Statistic("Speed", speed, Weapon.DEFAULT_MAX);
+		myDamage = new Statistic("Damage", damage, Weapon.DEFAULT_MAX);
+		setEffect(selected, null, value);
 	}
 	
 	public Statistic getDamage(){
