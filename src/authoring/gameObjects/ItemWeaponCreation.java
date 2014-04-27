@@ -28,6 +28,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private JCheckBox isObjectiveItem;
     private JCheckBox isItem;
     private JFrame frame;
+    private JTextField priceField;
 
     public ItemWeaponCreation(){
     }
@@ -45,6 +46,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         weaponAttacks.add(basicAttack);
 
         String attackTab = "Weapon Attacks";
+        String priceTab = "Price";
 
         ButtonGroup buttonGroup = new ButtonGroup();
         isWeapon = new JCheckBox("Is Weapon");
@@ -57,6 +59,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                     }
                     attackList.setEnabled(true);
                     addAttack.setEnabled(true);
+                    priceField.setEnabled(false);
                 } else{
                     for(int j=2; j<5; j++){
                         textValues.get(attributes[j]).setEnabled(true);
@@ -77,12 +80,14 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                     }
                     attackList.setEnabled(false);
                     addAttack.setEnabled(false);
+                    priceField.setEnabled(true);
                 } else {
                     for (int j = 0; j < 5; j++) {
                         textValues.get(attributes[j]).setEnabled(true);
                     }
                     attackList.setEnabled(false);
                     addAttack.setEnabled(false);
+
                 }
             }
         });
@@ -97,6 +102,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                     }
                     attackList.setEnabled(false);
                     addAttack.setEnabled(false);
+                    priceField.setEnabled(true);
                 } else{
                 }
             }
@@ -135,9 +141,20 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         attackPanel.add(addAttack);
         attackPanel.add(aScroll);
 
+        JPanel pricePanel = new JPanel();
+        pricePanel.setLayout(new SpringLayout());
+        priceField = new JTextField("10",15);
+        priceField.setToolTipText("Buying price from a shopkeeper.");
+        JLabel priceLabel = new JLabel("Price");
+        pricePanel.add(priceLabel);
+        priceLabel.setLabelFor(priceField);
+        pricePanel.add(priceField);
+        SpringUtilities.makeCompactGrid(pricePanel,1,2,6,6,6,6);
+
         pane.addTab(nameTab, combinedPanel);
         pane.addTab(attributeTab, attributePanel);
         pane.addTab(attackTab, attackPanel);
+        pane.add(priceTab,pricePanel);
 
         
         frame=new JFrame("New Item/Weapon");
@@ -185,6 +202,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         JTextField ef = new JTextField("5",15);
         JComboBox aAt = new JComboBox(attributes);
         JCheckBox affectsWho = new JCheckBox("Affects Player? (Default - Affects Enemy)");
+        affectsWho.setSelected(true);
         attackPanel.add(n);
         n.setLabelFor(nf);
         attackPanel.add(nf);
@@ -228,7 +246,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     }
 
     private void makeWeapon() {
-        WeaponData madeWeapon = new WeaponData(name,editor.getSelectedImage().getDescription(),speed,damage,weaponAttacks);
+        WeaponData madeWeapon = new WeaponData(name,editor.getSelectedImage().getDescription(),speed,damage,
+                weaponAttacks);
         FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
 
@@ -237,9 +256,10 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private void makeAndSaveItem() {
         ItemData madeItem;
         if(!isObjectiveItem.isSelected()){
-            madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues);
+            madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues,
+                    Integer.parseInt(priceField.getText()),"statbuffer");
         } else{
-            madeItem = new ItemData(name);
+            madeItem = new ItemData(name,Integer.parseInt(priceField.getText()),"objective");
         }
         FeatureManager.getWorldData().saveItem(name,madeItem);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();

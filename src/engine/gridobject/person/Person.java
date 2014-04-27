@@ -158,6 +158,7 @@ public abstract class Person extends GridObject {
 	public void addItem(Item it) {
 		if (it != null) {
 			myItems.add(it);
+			myMoney-=it.getPrice();
 		}
 	}
 

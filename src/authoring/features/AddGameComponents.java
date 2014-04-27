@@ -101,7 +101,7 @@ public class AddGameComponents extends Feature implements ActionListener {
             potionValues.put(valueLabels[j],j+10);
         }
 
-        ItemData potion = new ItemData("Super Potion","Jar",potionValues);
+        ItemData potion = new ItemData("Super Potion","Jar",potionValues,10,"statbuffer");
         FeatureManager.getWorldData().saveItem("Super Potion",potion);
 
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
