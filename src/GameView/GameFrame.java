@@ -1,27 +1,22 @@
 package GameView;
 
-import java.net.URL;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.Main;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
-import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.world.WalkAroundWorld;
-import engine.world.World;
-import engine.main.RPGEngine;
 import engine.item.Weapon;
+import engine.world.WalkAroundWorld;
+import engine.main.RPGEngine;
 import authoring.MapData;
 import authoring.PlayerData;
-//import authoring.Weapon;
 import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
-import util.Music;
 
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.
@@ -37,11 +32,11 @@ public class GameFrame extends RPGEngine {
 	private WalkAroundWorld outsideWorld;
 	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
 
+
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
 	public GameFrame() {
 		myData = new DataManager();
-		initializeGame();
 	}
 
 	/**
@@ -55,13 +50,13 @@ public class GameFrame extends RPGEngine {
 	public void initialize(String fileName) {
 
 		myWorldData = myData.getWorldData(fileName);
-		initMusicTest();
-		setInit(true);
-		createPlayer();
 		createWorlds();
+		setDoors();
 	}
+
 	/**
-	 * Loops through all maps and grid objects to set doors to their corresponding map
+	 * Loops through all maps and grid objects to set doors to their
+	 * corresponding map
 	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
@@ -81,22 +76,14 @@ public class GameFrame extends RPGEngine {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 	}
 
-	private void initMusicTest() {
-		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
-		Music music = new Music(mainURL);
-		music.start();
-	}
-
 	/**
-	 * Creates all of the WalkAroundWorlds and the GridObjects in
+	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in
 	 * each world
 	 */
 
 	private void createWorlds() {
-//		Map<String,Weapon> weapons = myWorldData.getMyWeapons();
-//		myWeapons = myWorldData.getMyWeapons();
-		
-		
+
+		createPlayer();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
@@ -110,22 +97,17 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if (myWorldData.getPrimaryMap().equals(mapName)){
-				setWorld(currWorld);
+			if (myWorldData.getPrimaryMap().equals(mapName)) {
 				outsideWorld = currWorld;
-				System.out.println(outsideWorld + " within loop");
 			}
-				//setWorld(currWorld); // this is only called for the initial
-			// world
-				
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-		setDoors();
 
 	}
+
 	/**
 	 * Creates the player based on PlayerData
 	 */
@@ -176,21 +158,23 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	private Map<String, Weapon> makeWeapons() {
-		for(String wep : myWorldData.getMyWeapons().keySet()){
-			System.out.println(wep);
-			myWeapons.put(wep, new Weapon(
-					myWorldData.getMyWeapons().get(wep).getMyName(),
-					myWorldData.getMyWeapons().get(wep).getMyImage(),
-					myWorldData.getMyWeapons().get(wep).getMySpeed(),
-					myWorldData.getMyWeapons().get(wep).getMyDamage(),
-					myWorldData.getMyWeapons().get(wep).getMyAttacks()
-					));
-		}
+	for(String wep : myWorldData.getMyWeapons().keySet()){
+		System.out.println(wep);
+//		myWeapons.put(wep, new Weapon(
+//				myWorldData.getMyWeapons().get(wep).getMyName(),
+//				myWorldData.getMyWeapons().get(wep).getMyImage(),
+//				myWorldData.getMyWeapons().get(wep).getMySpeed(),
+//				myWorldData.getMyWeapons().get(wep).getMyDamage(),
+//				myWorldData.getMyWeapons().get(wep).getMyAttacks()
+//				));
 	}
-	
-	public WalkAroundWorld getInitialWorld(){
-		System.out.println(outsideWorld + " within getInitial");
+	return null;
+}
+
+
+	public WalkAroundWorld getInitialWorld() {
+		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
-		
+
 	}
 }

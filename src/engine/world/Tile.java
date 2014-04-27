@@ -15,6 +15,7 @@ public class Tile {
 	private int myY;
 	private GridObject myObject;
 	private Image myBackgroundImage;
+	private String myBackgroundImageName;
 
 
 	/**
@@ -28,6 +29,7 @@ public class Tile {
 		myX = x;
 		myY=y;
 		myBackgroundImage = null;
+		myBackgroundImageName = null;
 	}
 	
 	/**
@@ -41,6 +43,7 @@ public class Tile {
 	public Tile(int size, int x, int y, String bgImage) {
 		this(size, x, y);
 		myBackgroundImage = new ScaledImage(x, y, bgImage).scaleImage();
+		myBackgroundImageName = bgImage;
 	}
 	
 	/**
@@ -71,6 +74,23 @@ public class Tile {
 	 */
 	public void setBackgroundImage(String bgImage) {
 		myBackgroundImage = new ScaledImage(mySize, mySize, bgImage).scaleImage();
+		myBackgroundImageName = bgImage;
+	}
+	
+	/**
+	 * Gets background Image of tile
+	 * @return bgImage Image referencing the file of the image
+	 */
+	public Image getBackgroundImage() {
+		return myBackgroundImage;
+	}
+	
+	/**
+	 * Gets background Image of tile
+	 * @return bgImage String referencing the file of the image
+	 */
+	public String getBackgroundImageName() {
+		return myBackgroundImageName;
 	}
 	
 	

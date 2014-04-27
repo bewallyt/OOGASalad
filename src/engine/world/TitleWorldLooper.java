@@ -33,7 +33,7 @@ public class TitleWorldLooper extends GameLooper {
 			// Load new world
 			
 			GameFrame gm = new GameFrame();
-			gm.initialize("PeterTest");
+			gm.initialize(myTM.getLoadFile());
 			return gm.getInitialWorld();
 			
 		}

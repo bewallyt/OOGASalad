@@ -149,14 +149,16 @@ public class Main extends RPGEngine {
 		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld", 1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		outsideWorld.addRandomEncounter(grassEnemy);
-		enemy.setWorld(new ArenaWorld("ImageFiles/battlebackground.png", 800, 800, player,enemy,outsideWorld));
+		String[] labels = new String[]{"Attack","Pokemon","Bag","Run"};
+		enemy.setWorld(new ArenaWorld("ImageFiles/battlebackground.png", 800, 800, player,enemy,outsideWorld,labels));
 
 		WalkAroundWorld buildingWorld = new WalkAroundWorld("buildingWorld",1000, 1000, player, 40, gridObjectList2);
 		door.setWorld(buildingWorld);
 		door2.setWorld(outsideWorld);
 
+		String[] labels2 = new String[]{"Attack","Pokemon","Bag","Run"};
 		tallGrass.setWorld(new ArenaWorld("ImageFiles/battlebackground.png",800,800,player,outsideWorld
-								.getRandomEncounter(),outsideWorld));
+								.getRandomEncounter(),outsideWorld,labels2));
 
 		outsideWorld.setMusic("/music/pokeTest.wav");
 

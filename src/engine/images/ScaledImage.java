@@ -33,8 +33,15 @@ public class ScaledImage {
 			ii = new ImageIcon(this.getClass().getClassLoader()
 					.getResource(myFile));
 		} catch (Exception e) {
+			int i = myFile.lastIndexOf('/');
+			if ((i != -1) && (i+1 < myFile.length())) {
+				String f = myFile.substring(i+1);
+				ii = new ImageIcon(this.getClass().getClassLoader()
+						.getResource(Constants.IMAGEPATH + f));
+			} else {
 			ii = new ImageIcon(this.getClass().getClassLoader()
 					.getResource(Constants.IMAGEPATH + myFile));
+			}
 
 		}
 		bi = new BufferedImage(myWidth, myHeight, BufferedImage.TYPE_INT_ARGB);

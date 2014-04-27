@@ -12,11 +12,10 @@ public class TitleWorld extends World {
 	private int myWidth = 500;
 	private int myHeight = 500;
 	private Image myBackground;
-	private boolean isGameLoaded = false;
 
 	public TitleWorld(int playWidth, int playHeight, Player p) {		
 		super(playWidth, playHeight, p);
-
+		
 	}
 
 

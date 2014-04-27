@@ -31,7 +31,7 @@ public class WorldData {
         arenaLabels = null;
 	}
 
-	protected void addLevel(String s, MapData md) {
+	public void addLevel(String s, MapData md) {
 		myLevels.put(s, md);
 	}
 
@@ -60,10 +60,10 @@ public class WorldData {
 	public Map<String, MapData> getMaps() {
 		return myLevels;
 	}
-	protected Map<String, Item> getMyItems() {
+	public Map<String, Item> getMyItems() {
 		return myItems;
 	}
-	protected List<RandomEnemy> getMyRandomEnemies(){
+	public List<RandomEnemy> getMyRandomEnemies(){
 		return myLevels.get(currentMap).getMyRandomEnemies();
 	}
 	public PlayerData getPlayData() {
@@ -115,7 +115,7 @@ public class WorldData {
     public void setMap(String map){
         currentMap=map;
     }
-    protected void setPrimaryMap(String s){
+    public void setPrimaryMap(String s){
         primaryMap = s;
     }
 
