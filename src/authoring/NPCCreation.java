@@ -139,9 +139,9 @@ public class NPCCreation extends CommonAttributes{
 //			optionFrame = new JOptionPane("Input Dialogue");
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
 
-			JComboBox myItemBox = new JComboBox(myItems.toArray());
-			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to",
-                    JOptionPane.QUESTION_MESSAGE);
+//			JComboBox myItemBox = new JComboBox(myItems.toArray());
+//			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to",
+//                    JOptionPane.QUESTION_MESSAGE);
 
 //			JComboBox myItemBox = new JComboBox(myItems.toArray());
 //			myItemBox.setEditable(true);
