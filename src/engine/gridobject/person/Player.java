@@ -21,7 +21,7 @@ public class Player extends Person {
 	private Door enteredDoor = null;
 	private double originalSpeed;
 	private int myExperience;
-	private Random myRandom;
+	private Random myRandom = new Random();
 
 	public Player(String[] animImages, String name, double speed, String[] items, String[] weps) {
 		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
@@ -87,7 +87,7 @@ public class Player extends Person {
 	public void increaseExperience(int increase){
 		myExperience+=increase;
 		if(myExperience<0)myExperience=0;
-		if(myExperience>100){
+		if(myExperience>=100){
 			levelUp();
 		}
 	}

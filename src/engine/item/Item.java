@@ -9,9 +9,11 @@ import engine.images.ScaledImage;
 public abstract class Item extends Pickupable implements BattleExecutable {
 
 	private String myImage;
+	private int myPrice;
 	public Item(String image, String name) {
 		super(name, image);
 		myImage=image;
+		myPrice=0;
 	}
 
 	public abstract void useItem();
@@ -25,8 +27,22 @@ public abstract class Item extends Pickupable implements BattleExecutable {
 		return new ScaledImage(150,150,myImage).scaleImage();
 	}
 	
-//	public String toString() {
-//		return super.getName();
-//	}
+	/**
+	 * Sets the price.
+	 *
+	 * @param price the new price
+	 */
+	public void setPrice(int price){
+		myPrice=price;
+	}
+	
+	/**
+	 * Gets the price.
+	 *
+	 * @return the price
+	 */
+	public int getPrice(){
+		return myPrice;
+	}
 	
 }
