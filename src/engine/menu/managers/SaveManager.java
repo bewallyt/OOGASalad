@@ -18,6 +18,7 @@ public class SaveManager implements InteractionBox {
 
 	private Player myPlayer;
 	private String displayString;
+	private final static String SAVE_FINISHED = "Save Complete!";
 
 	public SaveManager(Player p) {
 		myPlayer = p;
@@ -53,7 +54,7 @@ public class SaveManager implements InteractionBox {
 		Image boxImg = new ScaledImage(width, 150, "ImageFiles/textbox.png").scaleImage();
 		g2d.drawImage(boxImg, 0, height + 70, null);
 
-		if (displayString != SaveState.SAVE_FINISHED) {
+		if (displayString != SAVE_FINISHED) {
 			g2d.drawString("Save as (w/o extension):", 20, height + 115);
 
 			updateText();

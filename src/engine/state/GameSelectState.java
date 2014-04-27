@@ -68,8 +68,6 @@ public class GameSelectState extends AbstractState {
 
 	private void load(String loadFile) {
 		File f = new File("./src/SavedGames/" + loadFile);
-		System.out.println("f.exists(): " + f.exists());
-		//System.out.println("f.isDirectory: " + f.isDirectory());
 		if (f.exists()) {
 			isLoaded = true;
 			myTM.setLoadFile(loadFile);
