@@ -14,11 +14,11 @@ public class RandomEnemy extends EnemyData{
     }
 
     @Override
-    public int getX(){return Integer.parseInt(null);}
+    public int getX(){return 0;}
     @Override
-    public int getY(){return Integer.parseInt(null);}
+    public int getY(){return 0;}
     @Override
     public void init(){}
     @Override
-    public int getMyMovement(){return Integer.parseInt(null);}
+    public int getMyMovement(){return 0;}
 }

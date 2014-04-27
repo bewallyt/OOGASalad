@@ -17,7 +17,6 @@ public class DoorCreation extends CommonAttributes{
 	private JTextField toXField;
 	private JTextField toYField;
 	private List<JTextField> textFieldList=new ArrayList<JTextField>();
-	private JComboBox worldList;
 	
 	public DoorCreation() {
 	}
@@ -79,16 +78,6 @@ public class DoorCreation extends CommonAttributes{
 	}
 	private int getIntValue(String s){
 		return Integer.parseInt(s);
-	}
-	private String[] getWorldArray(){
-		Map<String, MapData> maps=FeatureManager.getWorldData().getMaps();
-		String[] mapArray=new String[maps.keySet().size()];
-		int i=0;
-		for(String s : maps.keySet()){
-			mapArray[i]=s;
-			i++;
-		}
-		return mapArray;
 	}
 	
 	private boolean validateText(List<JTextField> fieldList){
