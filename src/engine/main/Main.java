@@ -1,7 +1,9 @@
 package engine.main;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import util.Constants;
 import Data.FileStorer;
@@ -20,7 +22,10 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Healer;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.gridobject.person.ShopKeeper;
+import engine.item.Item;
 import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
@@ -102,10 +107,14 @@ public class Main extends RPGEngine {
 
 		bafm.setResponseNode(n);
 
-		NPC shopKeeper = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"shopKeepr"
-				,1,1,1, 3, player);
+		StatBuffer potion = new StatBuffer("ImageFiles/cabinets.jpg", "potion", player.getStatsMap().get("health"), 10);
+		potion.setPrice(10);
+		Set<Item> itemSet = new HashSet<Item>();
+		itemSet.add(potion);
+		ShopKeeper shopKeeper = new ShopKeeper(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"shopKeepr"
+				,1,1,1, 3, player, itemSet);
 		
-		
+		player.changeMoney(100);
 		Door door = new Door("ImageFiles/cabinets.jpg", 1, 1);
 
 		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
@@ -218,27 +227,26 @@ public class Main extends RPGEngine {
 		
 		
 
-		StatBuffer potion = new StatBuffer("ImageFiles/cabinets.jpg", "potion", player.getStatsMap().get("health"), 10);
-		potion.setPrice(10);
-		NPCResponseNode nshp = new NPCResponseNode("What do you want to purchase?", null);
-		NPCResponseNode n0shp = new NPCResponseNode("You purchased a potion", potion);
-		NPCResponseNode n1shp = new NPCResponseNode("Seeya Later!", null);
-//		NPCResponseNode n1 = new NPCResponseNode("Yeah it sucks", null);
-//		NPCResponseNode n2 = new NPCResponseNode("Thats not nice...", null);
-//		NPCResponseNode n3 = new NPCResponseNode("You found it! Thanks", null);
-		UserQueryNode q0shp = new UserQueryNode(player, null, "Potion", n0shp);
-		UserQueryNode q1shp = new UserQueryNode(player, null, "Leave Shop", n1shp);
-//		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
-//		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
-//		UserQueryNode q3 = new UserQueryNode(player, "sword", null, n3);
-
-		nshp.addResponseNode(q0shp);
-		nshp.addResponseNode(q1shp);
-		nshp.addResponseNode(null);
-		nshp.addResponseNode(null);
-
-		player.changeMoney(10);
-		shopKeeper.setResponseNode(nshp);
+		
+//		NPCResponseNode nshp = new NPCResponseNode("What do you want to purchase?", null);
+//		NPCResponseNode n0shp = new NPCResponseNode("You purchased a potion", potion);
+//		NPCResponseNode n1shp = new NPCResponseNode("Seeya Later!", null);
+////		NPCResponseNode n1 = new NPCResponseNode("Yeah it sucks", null);
+////		NPCResponseNode n2 = new NPCResponseNode("Thats not nice...", null);
+////		NPCResponseNode n3 = new NPCResponseNode("You found it! Thanks", null);
+//		UserQueryNode q0shp = new UserQueryNode(player, null, "Potion", n0shp);
+//		UserQueryNode q1shp = new UserQueryNode(player, null, "Leave Shop", n1shp);
+////		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
+////		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
+////		UserQueryNode q3 = new UserQueryNode(player, "sword", null, n3);
+//
+//		nshp.addResponseNode(q0shp);
+//		nshp.addResponseNode(q1shp);
+//		nshp.addResponseNode(null);
+//		nshp.addResponseNode(null);
+//
+//		player.changeMoney(10);
+//		shopKeeper.setResponseNode(nshp);
 	}
 
 
