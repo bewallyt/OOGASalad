@@ -72,7 +72,7 @@ public class WeaponItemViewer extends CommonAttributes{
                                             String.valueOf(detailAttack.getMyDamage()));
                                     JLabel subAttack = new JLabel(detailAttack.getAffectAttribute() + ":" +
                                             detailAttack.getAffectValue() + " -" + " " +
-                                            String.valueOf(detailAttack.getAffectWho()));
+                                            String.valueOf(detailAttack.getAffectPlayer()));
                                     detailsPanel.add(dAttack);
                                     detailsPanel.add(subAttack);
                                 }
