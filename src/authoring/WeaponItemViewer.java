@@ -25,7 +25,7 @@ public class WeaponItemViewer extends CommonAttributes{
         detailFrame = new JFrame();
         weaponFrame = new JFrame("Existing Weapons/Items");
         weaponFrame.setLayout(new BorderLayout());
-        weaponFrame.setBounds(100, 0, 300, 300);
+        weaponFrame.setBounds(1050, 600, 300, 300);
 
         weaponList = new JList(weaponListModel);
         weaponList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -164,6 +164,7 @@ public class WeaponItemViewer extends CommonAttributes{
         weaponPanel.add(itemLabel);
         weaponPanel.add(itemScroll);
         weaponFrame.add(weaponPanel);
+//        weaponFrame.setLocationRelativeTo();
         weaponFrame.setVisible(true);
     }
 

@@ -78,7 +78,7 @@ public class SaveManager implements InteractionBox {
 
 	}
 
-	public void updateText() {
+	private void updateText() {
 		displayString = myPlayer.getState().getDisplayString();
 	}
 

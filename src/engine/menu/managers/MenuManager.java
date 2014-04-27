@@ -82,17 +82,6 @@ public class MenuManager implements InteractionBox {
 		}
 	}
 
-//	public void createManagers() {
-//
-//		// Creates Menu Managers via Reflection
-//		setNames();
-//
-//		for (int i = 0; i < names.length; i++) {
-//			mySelections.setManager((InteractionBox) Reflection.createInstance(
-//					"engine.menu.managers." + names[i] + "Manager", myPlayer,
-//					this), i);
-//		}
-//	}
 
 	@Override
 	public void getNextText() {

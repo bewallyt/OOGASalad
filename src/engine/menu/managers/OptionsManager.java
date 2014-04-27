@@ -12,12 +12,12 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.state.LoadState;
 
 public class OptionsManager implements InteractionBox {
 	
 	private Player myPlayer;
 	private String displayString;
+	private final static String LOAD_FINISHED = "Load Complete!";
 	
 	public OptionsManager(Player p){
 		myPlayer = p;
@@ -52,7 +52,7 @@ public class OptionsManager implements InteractionBox {
 		Image boxImg = new ScaledImage(width, 150, "ImageFiles/textbox.png").scaleImage();
 		g2d.drawImage(boxImg, 0, height + 70, null);
 
-		if (displayString != LoadState.LOAD_FINISHED) {
+		if (displayString != LOAD_FINISHED) {
 			g2d.drawString("Load from (w/o extension):", 20, height + 115);
 
 			updateText();

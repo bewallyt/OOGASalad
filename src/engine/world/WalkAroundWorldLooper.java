@@ -11,6 +11,9 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.state.DialogueState;
+import engine.state.ExitState;
+import engine.state.LoadState;
+import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
 
@@ -58,7 +61,23 @@ public class WalkAroundWorldLooper extends GameLooper {
 						}
 					}	
 				}	
+			} 
+				
+		} else if(myWorld.getPlayer().getState() instanceof SaveState){
+			//	System.out.println("in instance of SaveState");
+			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
+			if (saveState.isSavingState()) {
+				saveState.setSavingState(false);
+			//	System.out.println("saveWorld");
+			    /// save world data 
 			}
+		} else if(myWorld.getPlayer().getState() instanceof ExitState){
+			System.out.println("WalkAroundWorlLoop in ExitState");
+			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
+			titleScreen.setBackground("PokemonBackground.png");
+			titleScreen.setMusic("/music/PokemonIntro.wav");
+			return titleScreen;
+		}
 //			if(myWorld.getPlayer().getWeaponList().size()>2){
 //				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
 ////				System.out.println("Item found alert");
@@ -66,7 +85,6 @@ public class WalkAroundWorldLooper extends GameLooper {
 //				myWorld.getPlayer().setState(new DialogueState(conversation));
 //				myWorld.getPlayer().setInteractionBox(conversation);
 //			}
-		}
 		return null;
 	}
 
