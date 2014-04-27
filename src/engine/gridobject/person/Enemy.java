@@ -60,6 +60,10 @@ public class Enemy extends NPC {
 		
 		// battle response
 		setResponseNode(new NPCResponseNode("Let's Battle!", null));
+		
+		changeMoney(50);
+		setExperience(100);
+		setBattleImage("ImageFiles/rival.png");
 	}
 
 
