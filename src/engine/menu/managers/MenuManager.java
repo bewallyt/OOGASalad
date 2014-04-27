@@ -3,6 +3,7 @@ package engine.menu.managers;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.IOException;
@@ -40,32 +41,13 @@ public class MenuManager implements InteractionBox {
 	}
 
 	private void setNames() {
-		names = new String[] {"Pokemon", "Bag", "Name", "Save", "Exit" };
+		names = new String[] {"Weapon", "Bag", "Name", "Save", "Exit" };
 	}
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
 
-		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
-		Font font = null;
-
-		try {
-			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
-			} catch (FontFormatException e) {
-				e.printStackTrace();
-			}
-			Font sizedFont = font.deriveFont(16f);
-			g2d.setFont(sizedFont);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		g2d.setColor(Color.white);
-		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
-				.scaleImage();
-		g2d.drawImage(img, width - 170, 0, null);
-		g2d.setColor(Color.black);
+		paintMenu(g2d, height, width);
 
 		drawSelector(g2d, xSize, ySize, width, height);
 	}
@@ -93,6 +75,30 @@ public class MenuManager implements InteractionBox {
 		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
 		Image img = new ScaledImage(170, 55, "ImageFiles/redrectangle.png").scaleImage();
 		g2d.drawImage(img, width - 170, 48 * selectedOptionLoc[1], null);
+
+	}
+	
+	protected void paintMenu(Graphics g2d, int height, int width){
+		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
+		Font font = null;
+
+		try {
+			try {
+				font = Font.createFont(Font.TRUETYPE_FONT, is);
+			} catch (FontFormatException e) {
+				e.printStackTrace();
+			}
+			Font sizedFont = font.deriveFont(16f);
+			g2d.setFont(sizedFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		g2d.setColor(Color.white);
+		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
+				.scaleImage();
+		g2d.drawImage(img, width - 170, 0, null);
+		g2d.setColor(Color.black);
 
 	}
 

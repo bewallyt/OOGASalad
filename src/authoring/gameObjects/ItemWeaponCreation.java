@@ -20,7 +20,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
 
     private int speed;
     private int damage;
-    private List<Attacks> weaponAttacks;
+    private List<AttacksData> weaponAttacks;
     private DefaultListModel attackListModel;
     private JList attackList;
     private JButton addAttack;
@@ -40,8 +40,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
 
     public void creationPanel() {
         JTabbedPane pane = new JTabbedPane();
-        weaponAttacks = new ArrayList<Attacks>();
-        Attacks basicAttack = new Attacks("Basic",2,2,"Health",5,false);
+        weaponAttacks = new ArrayList<AttacksData>();
+        AttacksData basicAttack = new AttacksData("Basic",2,2,"Health",5,false);
         weaponAttacks.add(basicAttack);
 
         String attackTab = "Weapon Attacks";
@@ -215,7 +215,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         int result = JOptionPane.showOptionDialog(null, overPanel, "New Attack", JOptionPane.CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE, null, null, null);
         if(result==JOptionPane.OK_OPTION){
-             Attacks newAttack = new Attacks(nf.getText(),Integer.parseInt(sf.getText()),
+             AttacksData newAttack = new AttacksData(nf.getText(),Integer.parseInt(sf.getText()),
                      Integer.parseInt(df.getText()),(String)aAt.getSelectedItem(),Integer.parseInt(ef.getText()),
                      affectsWho.isSelected());
              if(weaponAttacks.size()<4) {
@@ -228,18 +228,18 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     }
 
     private void makeWeapon() {
-        Weapon madeWeapon = new Weapon(name,editor.getSelectedImage().getDescription(),speed,damage,weaponAttacks);
+        WeaponData madeWeapon = new WeaponData(name,editor.getSelectedImage().getDescription(),speed,damage,weaponAttacks);
         FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
 
     }
 
     private void makeAndSaveItem() {
-        Item madeItem;
+        ItemData madeItem;
         if(!isObjectiveItem.isSelected()){
-            madeItem = new Item(name,editor.getSelectedImage().getDescription(),attributeValues);
+            madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues);
         } else{
-            madeItem = new Item(name);
+            madeItem = new ItemData(name);
         }
         FeatureManager.getWorldData().saveItem(name,madeItem);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
@@ -268,7 +268,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                         int edit = JOptionPane.showOptionDialog(null, editPanel, "Edit Attack",
                                 JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                         if(edit==JOptionPane.OK_OPTION){
-                            Attacks editedAttack = new Attacks(name.getText(),Integer.parseInt(speed.getText()),
+                            AttacksData editedAttack = new AttacksData(name.getText(),Integer.parseInt(speed.getText()),
                                     Integer.parseInt(damage.getText()),(String)affects.getSelectedItem(),
                                     Integer.parseInt(amount.getText()),
                                     affectsWho.isSelected());

@@ -129,7 +129,6 @@ public class GameFrame extends RPGEngine {
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
-			System.out.println("x: " + g.getX() + " y: " + g.getY());
 		}
 	}
 
@@ -143,8 +142,6 @@ public class GameFrame extends RPGEngine {
 	 */
 	private void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
-		System.out.println("height: " + world.getTileGridHeight());
-		System.out.println("width: " + world.getTileGridWidth());
 		for (int i = 0; i < world.getTileGridHeight(); i++) {
 			for (int j = 0; j < world.getTileGridWidth(); j++) {
 				world.setTileImage(j, i, list.get(n));

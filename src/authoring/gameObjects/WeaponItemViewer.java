@@ -50,14 +50,14 @@ public class WeaponItemViewer extends CommonAttributes{
                 if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     if (weaponList.getSelectedIndex() != -1) {
                         String clicked = (String)weaponList.getSelectedValue();
-                        HashMap<String,Weapon> detailsWeaponMap =
-                                (HashMap<String, Weapon>) FeatureManager.getWorldData().getMyWeapons();
+                        HashMap<String,WeaponData> detailsWeaponMap =
+                                (HashMap<String, WeaponData>) FeatureManager.getWorldData().getMyWeapons();
                         for(String s: detailsWeaponMap.keySet())
                             if (clicked.equals(s)) {
-                                Weapon editWeapon = detailsWeaponMap.get(s);
+                                WeaponData editWeapon = detailsWeaponMap.get(s);
                                 JPanel detailsPanel = new JPanel();
                                 detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.PAGE_AXIS));
-                                ArrayList<Attacks> detailAttacks = (ArrayList<Attacks>) editWeapon.getMyAttacks();
+                                ArrayList<AttacksData> detailAttacks = (ArrayList<AttacksData>) editWeapon.getMyAttacks();
                                 JLabel dWeapon = new JLabel(editWeapon.getMyName() + " -" + " Speed:" +
                                         String.valueOf(editWeapon.getMySpeed()) + " -" + " Damage:" +
                                         String.valueOf(editWeapon.getMyDamage()));
@@ -66,13 +66,13 @@ public class WeaponItemViewer extends CommonAttributes{
                                 JLabel attack = new JLabel("Attacks:");
                                 detailsPanel.add(newLine);
                                 detailsPanel.add(attack);
-                                for (Attacks detailAttack : detailAttacks) {
+                                for (AttacksData detailAttack : detailAttacks) {
                                     JLabel dAttack = new JLabel(detailAttack.getMyName() + " -" + " Speed:" +
                                             String.valueOf(detailAttack.getMySpeed()) + " -" + " Damage:" +
                                             String.valueOf(detailAttack.getMyDamage()));
                                     JLabel subAttack = new JLabel(detailAttack.getAffectAttribute() + ":" +
                                             detailAttack.getAffectValue() + " -" + " " +
-                                            String.valueOf(detailAttack.getAffectWho()));
+                                            String.valueOf(detailAttack.getAffectPlayer()));
                                     detailsPanel.add(dAttack);
                                     detailsPanel.add(subAttack);
                                 }
@@ -113,11 +113,11 @@ public class WeaponItemViewer extends CommonAttributes{
                 if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
                     if (itemList.getSelectedIndex() != -1) {
                         String itemClicked = (String) itemList.getSelectedValue();
-                        HashMap<String,Item> detailItems =
-                                (HashMap<String, Item>) FeatureManager.getWorldData().getMyItems();
+                        HashMap<String,ItemData> detailItems =
+                                (HashMap<String, ItemData>) FeatureManager.getWorldData().getMyItems();
                         for(String s: detailItems.keySet()){
                             if(itemClicked.equals(s)){
-                                Item dItem = detailItems.get(s);
+                                ItemData dItem = detailItems.get(s);
                                 JPanel detailItemPanel = new JPanel();
                                 detailItemPanel.setLayout(new BoxLayout(detailItemPanel,BoxLayout.PAGE_AXIS));
                                 JLabel details = new JLabel(dItem.getItemName());
