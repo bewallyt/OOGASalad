@@ -12,17 +12,19 @@ import engine.dialogue.MatrixNode;
  * 
  */
 
-public class InteractionMatrix5x1 extends InteractionMatrix {
+public class MenuInteractionMatrix extends InteractionMatrix {
 	
 	private InteractionBox[] myInteractionBoxes;
+	private int myYMax;
 
-	public InteractionMatrix5x1() {
+	public MenuInteractionMatrix(int w, int h) {
+		myYMax = h - 1;
+		myXDimension = w;
+		myYDimension = h;
 		selectedNodeX = 0;
 		selectedNodeY = 0;
-		myNodes = new MatrixNode[1][5];
-		myXDimension = 1;
-		myYDimension = 5;
-		myInteractionBoxes = new InteractionBox[5];
+		myNodes = new MatrixNode[myXDimension][myYDimension];
+		myInteractionBoxes = new InteractionBox[myYDimension];
 	}
 
 	/**
@@ -33,7 +35,7 @@ public class InteractionMatrix5x1 extends InteractionMatrix {
 		if (selectedNodeY != 0) {
 			selectedNodeY--;
 		} else {
-			selectedNodeY = 4;
+			selectedNodeY = myYMax;
 		}
 	}
 
@@ -42,7 +44,7 @@ public class InteractionMatrix5x1 extends InteractionMatrix {
 	 * the current option
 	 */
 	public void moveDown() {
-		if (selectedNodeY != 4) {
+		if (selectedNodeY != myYMax) {
 			selectedNodeY++;
 		} else {
 			selectedNodeY = 0;

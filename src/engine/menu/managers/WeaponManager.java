@@ -12,7 +12,7 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 	private Player myPlayer;
 	
 	public WeaponManager(Player p){
-		super(p);
+		super(p, null);
 		myPlayer = p;
 	}
 
