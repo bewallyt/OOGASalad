@@ -202,6 +202,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         JTextField ef = new JTextField("5",15);
         JComboBox aAt = new JComboBox(attributes);
         JCheckBox affectsWho = new JCheckBox("Affects Player? (Default - Affects Enemy)");
+        affectsWho.setSelected(true);
         attackPanel.add(n);
         n.setLabelFor(nf);
         attackPanel.add(nf);
