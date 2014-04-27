@@ -82,6 +82,8 @@ public class GridObjectData {
 		myArguments.add(Constants.SPRITEPATH+"/"+image+"/");
 
 		myArguments.add(root);
+		// myArguments.add(movementType);
+		// myArguments.add(player);
 	}
 
     // Base empty constructor

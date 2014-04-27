@@ -16,11 +16,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  public class ImageChooser extends Feature implements ActionListener{
 
 	private String fileName;
-
     private String identifier;
-    private JFrame frame;
     private int result;
-
 	private ImageResizer myImResizer;
 
 	
@@ -75,11 +72,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
         panel.add(fn);
         panel.add(go);
         panel.add(ti);
-        result = JOptionPane.showOptionDialog(null, panel, "Name Image", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        result = JOptionPane.showOptionDialog(null, panel, "Name Image", JOptionPane.CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, null, null);
 
         if(result == JOptionPane.OK_OPTION){
             if(fn.getText().equals("") || !(go.isSelected()) && !(ti.isSelected())){
-                JOptionPane.showMessageDialog(frame, "Complete required fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Complete required fields.", "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
                 imageFilePanel();
             }
         } else{}

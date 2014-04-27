@@ -18,10 +18,10 @@ public class GridObjectPainter {
 		GridViewerFeature gridViewer=(GridViewerFeature)FeatureManager.getFeature("GridViewerFeature");
 		Grid grid=gridViewer.getCurrentGrid();
 		
-		ImageIcon[] images=splitImage(width, height, image);
+		ImageIcon[] images=splitImage(height, width, image);
 		int i=0;
-		for(int r=x; r<(x+width); r++){
-			for(int c=y; c<(y+height); c++){
+		for(int r=x; r<(x+height); r++){
+			for(int c=y; c<(y+width); c++){
 				TilePanel panel=grid.getTilePanel(r, c);
 				panel.addGridObjectImage(images[i]);
 				panel.revalidate();
