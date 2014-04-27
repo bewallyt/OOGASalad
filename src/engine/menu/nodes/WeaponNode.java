@@ -33,7 +33,7 @@ public class WeaponNode extends MenuNode {
 
 	@Override
 	public void changeState() {
-		myPlayer.setState(new WeaponState(myPlayer, myMenuManager));
+		myPlayer.setState(new WeaponState(myPlayer, myMenuManager, myWeaponManager));
 		
 	}
 
