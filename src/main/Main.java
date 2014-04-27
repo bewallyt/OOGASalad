@@ -16,7 +16,7 @@ public class Main extends RPGEngine {
 		}
 	}
 
-	private void makeTitleScreen() {
+	public void makeTitleScreen() {
 
 		Player playerDummy = new Player();
 		TitleWorld titleScreen = new TitleWorld(1000, 1000, playerDummy);

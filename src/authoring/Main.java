@@ -11,6 +11,7 @@ public class Main {
 		myFeatures.add(new AddMusicFeature());
         myFeatures.add(new ImageChooser());
         myFeatures.add(new AddGameComponents());
+        myFeatures.add(new RunGameFeature());
 		
 		AuthoringView view = new AuthoringView(myFeatures, true);
 	}
