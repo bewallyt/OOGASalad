@@ -19,7 +19,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import authoring.UserQueryNode;
+import authoring.UserQueryNodeData;
 import authoring.gameObjects.NPCResponseNodeData;
 
 public class DialogueFeature extends Feature{
@@ -54,7 +54,7 @@ public class DialogueFeature extends Feature{
 	private void setResponses(){
 		myResponses = new ArrayList<String>();
 		myResponses.add(0,myCurrent.getString());
-		for(UserQueryNode q: myCurrent.getChildren()){
+		for(UserQueryNodeData q: myCurrent.getChildren()){
 			myResponses.add("   "+q.getString());
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
@@ -133,7 +133,7 @@ public class DialogueFeature extends Feature{
 				myCurrent.setString(text.getText());
 				}
 				else{
-					UserQueryNode uqn = new UserQueryNode(text.getText());
+					UserQueryNodeData uqn = new UserQueryNodeData(text.getText());
 					uqn.setChild(new NPCResponseNodeData(secondText.getText()));
 					myCurrent.addChild(uqn);
 				}
