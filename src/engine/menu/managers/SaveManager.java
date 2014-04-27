@@ -43,10 +43,11 @@ public class SaveManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		Image menuImg = new ScaledImage(200, height + 50, "ImageFiles/startmenu.png")
+		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
 				.scaleImage();
-		g2d.drawImage(menuImg, width - 200, 0, null);
+		g2d.drawImage(img, width - 170, 0, null);
 		g2d.setColor(Color.black);
+
 
 		drawSelector(g2d, xSize, ySize, width, height);
 		Image boxImg = new ScaledImage(width, 150, "ImageFiles/textbox.png").scaleImage();
@@ -72,9 +73,9 @@ public class SaveManager implements InteractionBox {
 
 	private void drawSelector(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
-
-		Image img = new ScaledImage(200, 45, "ImageFiles/redrectangle.png").scaleImage();
-		g2d.drawImage(img, width - 200, 7 + 40 * 4, null);
+		
+		Image img = new ScaledImage(170, 55, "ImageFiles/redrectangle.png").scaleImage();
+		g2d.drawImage(img, width - 170, 48 * 3, null);
 
 	}
 

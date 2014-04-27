@@ -39,10 +39,10 @@ public class MenuState extends AbstractState {
 		if (e.getKeyCode() == Control.DOWN) {
 			myMenu.moveCursorDown();
 		}
-		if (e.getKeyCode() == Control.A) {
+		if (e.getKeyCode() == Control.A || e.getKeyCode() == Control.ENTER) {
 			myMenu.select();
 		}
-		if (e.getKeyCode() == Control.SPACE) {
+		if (e.getKeyCode() == Control.SPACE || e.getKeyCode() == Control.ESC) {
 			myPlayer.setState(new WalkAroundState(myPlayer));
 			myPlayer.setInteractionBox(new TransparentDisplayer());
 		}
