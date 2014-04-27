@@ -65,8 +65,9 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
                         JOptionPane.ERROR_MESSAGE);
 				musicUploader();
 			}
+			else
+				chooseMusic(name.getText());
 		}
-		chooseMusic(name.getText());
 	}
 
 	private void chooseMusic(String fileName) {
@@ -83,16 +84,13 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 				File savedFile = m.storeMusicFile(fileName, songFile);
 				FeatureManager.getWorldData().saveSong(fileName, savedFile);
 				model.addElement(fileName);
+				myWindow.pack();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!",
                         JOptionPane.ERROR_MESSAGE);
 				chooseMusic(fileName);
 			}
 		}		
-	}
-
-	private void populateList(){
-		
 	}
 	
 	@Override

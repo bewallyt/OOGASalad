@@ -70,7 +70,10 @@ public class MapData {
 
     public void addSong(String s){
     	mySong = s;
-    	System.out.println(mySong);
+    }
+    
+    public String getSong(){
+    	return mySong;
     }
 
 }
