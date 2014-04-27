@@ -34,8 +34,8 @@ public class Attack implements MatrixNode,BattleExecutable {
 		return mySpeed;
 	}
 
-	public void setEffect(String statistic, Person personToActOn, int change){
-		myEffect = new Effect(statistic, personToActOn, change);
+	public void setEffect(String statistic, boolean affectsSelf, int change){
+		myEffect = new Effect(statistic, affectsSelf, change);
 	}
 	public void setDamage(int value, int max){
 		myDamage = new Statistic("damage",value, max);
