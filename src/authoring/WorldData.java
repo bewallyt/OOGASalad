@@ -18,6 +18,7 @@ public class WorldData {
 	private String currentMap;
     private Map<String,Item> myItems;
     private Map<String,Weapon> myWeapons;
+    private String[] arenaLabels;
 	
 	public WorldData(){
         currentMap = null;
@@ -25,6 +26,7 @@ public class WorldData {
 		myImages = new HashMap<String, File>();
         myWeapons = new HashMap<String, Weapon>();
         myItems = new HashMap<String, Item>();
+        arenaLabels = null;
 	}
 
 	protected void addLevel(String s, MapData md) {
@@ -35,6 +37,7 @@ public class WorldData {
 		return myLevels.get(currentMap);
 
 	}
+    public String[] getArenaLabels(){return arenaLabels;}
     protected String getCurrentMapName(){
         return currentMap;
     }
@@ -66,6 +69,7 @@ public class WorldData {
     	return myWeapons;
     }
 
+
     protected void saveBarrier(BarrierData barrier){
     	myLevels.get(currentMap).saveBarrier(barrier);
     }
@@ -94,6 +98,7 @@ public class WorldData {
         myWeapons.put(n,wp);
     }
 
+    protected void setArenaLabels(String[] al){ arenaLabels=al;}
     protected void setCurrentMap(String s){
         currentMap = s;
     }

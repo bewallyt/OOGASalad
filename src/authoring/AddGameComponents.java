@@ -13,13 +13,15 @@ import java.util.HashMap;
 
 public class AddGameComponents extends Feature implements ActionListener {
 
-    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile"};
+    private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile",
+            "Arena Labels"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
     private BarrierCreation barrierCreation;
     private NPCCreation npcCreation;
     private EncounterCreation encounterCreation;
+    private LabelsCreation labelsCreation;
     private JFrame frame;
 
 
@@ -34,6 +36,8 @@ public class AddGameComponents extends Feature implements ActionListener {
         doorCreation=new DoorCreation();
         npcCreation=new NPCCreation();
         encounterCreation = new EncounterCreation();
+        labelsCreation = new LabelsCreation();
+
     }
 
     @Override
@@ -58,6 +62,9 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if("encountertile".equals(e.getActionCommand())){
         	encounterCreation.creationPanel();
         	frame.dispose();
+        } else if("arenalabels".equals(e.getActionCommand())){
+            labelsCreation.creationPanel();
+            frame.dispose();
         }
         
     }
