@@ -1,6 +1,8 @@
 package Data;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import engine.gridobject.person.Player;
 import engine.item.Item;
@@ -69,6 +71,13 @@ public class WorldDataManager {
 			
 			String[] pAnimImages = p.getAnimImages();
 			
+			Map<String,Integer> attributeValues = new HashMap<String,Integer>();
+			attributeValues.put("damage", p.getStatsMap().get("damage").getValue());
+			attributeValues.put("speed", p.getStatsMap().get("speed").getValue());
+			attributeValues.put("defense", p.getStatsMap().get("defense").getValue());
+			attributeValues.put("health", p.getStatsMap().get("health").getValue());
+			attributeValues.put("level", p.getStatsMap().get("level").getValue());
+			
 			List<Weapon> pWeaponNames = p.getWeaponList();
 			String [] pWeps = new String[pWeaponNames.size()];
 			int wCounter = 0;
@@ -86,7 +95,7 @@ public class WorldDataManager {
 				iCounter++;
 			}
 
-			PlayerData playerData = new PlayerData(pX, pY, pImageName, pName, null, pWeps, pItems);
+			PlayerData playerData = new PlayerData(pX, pY, pImageName, pName, attributeValues, pWeps, pItems);
 			playerData.setImages(pAnimImages);
 			md.savePlayer(playerData);
 			worldData.addLevel(mapName, md);
