@@ -1,8 +1,9 @@
 package authoring;
-import main.Main;
-
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
+
+import GameView.Main;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

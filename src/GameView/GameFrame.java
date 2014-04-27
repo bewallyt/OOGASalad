@@ -1,24 +1,21 @@
 package GameView;
 
-import java.net.URL;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.Main;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
-import engine.world.World;
 import engine.main.RPGEngine;
 import authoring.MapData;
 import authoring.PlayerData;
 import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
-import util.Music;
 
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.

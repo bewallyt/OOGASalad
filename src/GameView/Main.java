@@ -1,4 +1,4 @@
-package main;
+package GameView;
 
 import engine.gridobject.person.Player;
 import engine.main.RPGEngine;
