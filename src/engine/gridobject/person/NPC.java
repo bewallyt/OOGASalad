@@ -2,6 +2,7 @@ package engine.gridobject.person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import util.Constants;
 import engine.Dialogue;
@@ -9,7 +10,10 @@ import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.TransparentDisplayer;
+import engine.item.Item;
 import engine.state.DialogueState;
+import authoring.gameObjects.ItemData;
+import authoring.gameObjects.NPCResponseNodeData;
 
 public class NPC extends Person {
 
@@ -57,19 +61,29 @@ public class NPC extends Person {
 				.get(Constants.NAME_CONST), Constants.SPEED,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
+
 		myDialogue = new ArrayList<String>();
 		myPlayer = (Player) list.get(Constants.NPC_PLAYER_CONST);
-		System.out.println(list.size());
 		myMovement = (Movement) Reflection.createInstance(
 				"engine.gridobject.person.Movement"
-						+ (int) ((Double) list.get(Constants.NPC_MOVEMENT_CONST))
-								.intValue(), this,
-				list.get(Constants.NPC_PLAYER_CONST));
-		myResponseNode = null;
+						+ (int) ((Double) list
+								.get(Constants.NPC_MOVEMENT_CONST)).intValue(),
+				this, myPlayer);
+		myResponseNode = parseResponse(
+				(NPCResponseNodeData) list.get(Constants.RESPONSE_ROOT_CONST),
+				(Map<String, ItemData>) list.get(Constants.NPC_ITEMS_CONST));
 	}
 
 	public void setResponseNode(NPCResponseNode n) {
 		myResponseNode = n;
+	}
+
+	public NPCResponseNode parseResponse(NPCResponseNodeData n,
+			Map<String, ItemData> items) {
+		//Item myItem = new Item(items.get(n.getItem()).getItemImage(),items.get(n.getItem()).getItemName());
+		//myResponseNode = new NPCResponseNode(n.getString(), items.get(n.getItem()));
+		
+		return null;
 	}
 
 	public Player getPlayer() {

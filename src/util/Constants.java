@@ -62,9 +62,10 @@ public class Constants {
     public static final int TO_Y_CONST = 4;
     public static final int TO_MAP_CONST = 5;
 
-    public static final int ROOT_CONST = 3;
+    public static final int RESPONSE_ROOT_CONST = 4;
     
     public static final int NPC_PLAYER_CONST = 6;
+    public static final int NPC_ITEMS_CONST = 7;
     public static final int ENEMY_PLAYER_CONST = 8;
 
     

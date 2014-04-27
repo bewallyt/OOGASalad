@@ -20,22 +20,22 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import authoring.UserQueryNode;
-import authoring.gameObjects.NPCResponseNode;
+import authoring.gameObjects.NPCResponseNodeData;
 
 public class DialogueFeature extends Feature{
 	private JScrollPane myTextWindow;
 	private JList myResponsesWrapper;
 	private List<String> myResponses;
-	private NPCResponseNode myRoot;
-	private List<NPCResponseNode> myPrev;
-	private NPCResponseNode myCurrent;
+	private NPCResponseNodeData myRoot;
+	private List<NPCResponseNodeData> myPrev;
+	private NPCResponseNodeData myCurrent;
 	private int myModIndex;
 	private JButton newQueryOption;
 	private JButton myGoBack;
 	private JFrame frame;
 	public DialogueFeature() {
-		myPrev = new ArrayList<NPCResponseNode>();
-		myRoot = new NPCResponseNode("Initial NPC Response");
+		myPrev = new ArrayList<NPCResponseNodeData>();
+		myRoot = new NPCResponseNodeData("Initial NPC Response");
 		myCurrent = myRoot;
 		myResponsesWrapper = new JList();
 		setResponses();
@@ -59,7 +59,7 @@ public class DialogueFeature extends Feature{
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
-	public NPCResponseNode getDialogue() {
+	public NPCResponseNodeData getDialogue() {
 		return myRoot;
 	}
 	private class QueryListener implements ActionListener{
@@ -134,7 +134,7 @@ public class DialogueFeature extends Feature{
 				}
 				else{
 					UserQueryNode uqn = new UserQueryNode(text.getText());
-					uqn.setChild(new NPCResponseNode(secondText.getText()));
+					uqn.setChild(new NPCResponseNodeData(secondText.getText()));
 					myCurrent.addChild(uqn);
 				}
 				setResponses();

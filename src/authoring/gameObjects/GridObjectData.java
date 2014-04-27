@@ -70,7 +70,7 @@ public class GridObjectData {
 	}
 	
 	// NPCData
-	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNode root, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNodeData root, String id) {
 		myID = id;
 		myX = x;
 		myY = y;

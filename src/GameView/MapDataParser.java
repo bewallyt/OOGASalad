@@ -1,13 +1,16 @@
 package GameView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import authoring.gameObjects.GridObjectData;
 import authoring.gameObjects.MapData;
 import authoring.gameObjects.TileData;
+import authoring.gameObjects.ItemData;
 
 /**
  * Class used to parse an instance of MapData into the GridObjects and Tile
@@ -22,11 +25,11 @@ public class MapDataParser {
 	private List<String> myTileImageList;
 	private MapData myMap;
 
-	protected MapDataParser(MapData map, Player p) {
+	protected MapDataParser(MapData map, Player p, Map<String, ItemData> items) {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
 		myTileImageList = new ArrayList<String>();
-		parseMap(p);
+		parseMap(p, items);
 	}
 
 	protected List<GridObject> getGridObjectList() {
@@ -45,7 +48,7 @@ public class MapDataParser {
 	 * @param p
 	 *            Player
 	 */
-	private void parseMap(Player p) {
+	private void parseMap(Player p, Map<String, ItemData> items) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
 			for (int j = 0; j < myMap.getMapWidth(); j++) {
@@ -55,6 +58,7 @@ public class MapDataParser {
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
 					data.getArguments().add(p);
+					data.getArguments().add(items);
 
 					System.out.println(data.getArguments());
 
