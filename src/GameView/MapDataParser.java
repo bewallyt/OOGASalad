@@ -7,6 +7,7 @@ import java.util.Map;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
+import engine.item.Weapon;
 import authoring.gameObjects.GridObjectData;
 import authoring.gameObjects.MapData;
 import authoring.gameObjects.TileData;
@@ -25,11 +26,11 @@ public class MapDataParser {
 	private List<String> myTileImageList;
 	private MapData myMap;
 
-	protected MapDataParser(MapData map, Player p, Map<String, ItemData> items) {
+	protected MapDataParser(MapData map, Player p, Map<String, Weapon> weapons, Map<String, ItemData> items) {
 		myMap = map;
 		myGridObjectList = new ArrayList<GridObject>();
 		myTileImageList = new ArrayList<String>();
-		parseMap(p, items);
+		parseMap(p, weapons, items);
 	}
 
 	protected List<GridObject> getGridObjectList() {
@@ -48,7 +49,7 @@ public class MapDataParser {
 	 * @param p
 	 *            Player
 	 */
-	private void parseMap(Player p, Map<String, ItemData> items) {
+	private void parseMap(Player p, Map<String, Weapon> weapons, Map<String, ItemData> items) {
 		List<GridObjectData> currData = new ArrayList<GridObjectData>();
 		for (int i = 0; i < myMap.getMapLength(); i++) {
 			for (int j = 0; j < myMap.getMapWidth(); j++) {
@@ -59,8 +60,9 @@ public class MapDataParser {
 					GridObject gridobject = null;
 					data.getArguments().add(p);
 					data.getArguments().add(items);
-
-					System.out.println(data.getArguments());
+					data.getArguments().add(weapons);
+					
+//					System.out.println("data size "+ data.getArguments().size());
 
 					try {
 						gridobject = (GridObject) Class.forName(data.getID())

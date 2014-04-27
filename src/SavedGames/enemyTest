@@ -145,8 +145,7 @@
                   "Level": 5
                 },
                 "myWeapons": [
-                  null,
-                  null
+                  "Ice Sword",
                 ],
                 "myName": "newItem",
                 "myMovement": 3,
@@ -190,8 +189,7 @@
                     "Level": 5
                   },
                   [
-                    null,
-                    null
+                    "Ice Sword"
                   ],
                   2,
                   3

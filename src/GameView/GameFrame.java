@@ -7,8 +7,10 @@ import java.util.Map;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
+import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.item.Weapon;
+import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.gameObjects.ItemData;
@@ -69,6 +71,9 @@ public class GameFrame extends RPGEngine {
 					map.setCollisionHandler(new EnterCollision(myPlayer,
 							((Door) g)), i, map.getGridObjectList().size() - 1);
 				}
+				if (g instanceof Enemy) {
+					((Enemy) g).setWorld(new ArenaWorld("ImageFiles/battlebackground.png", 800, 800, myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS));
+				}
 			}
 		}
 	}
@@ -86,10 +91,11 @@ public class GameFrame extends RPGEngine {
 	private void createWorlds() {
 		
 		myItems = myWorldData.getMyItems();
+		myWeapons = makeWeapons();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
-			MapDataParser parser = new MapDataParser(map, myPlayer, myItems);
+			MapDataParser parser = new MapDataParser(map, myPlayer, myWeapons, myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
@@ -156,14 +162,16 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
-	private Map<String, Weapon> makeWeapons() {
+	private HashMap<String, Weapon> makeWeapons() {
+		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
 		myWeaponData = myWorldData.getMyWeapons();
 		for(String wep : myWeaponData.keySet()){
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
-			myWeapons.put(wep, currWeapon);
+			wepRet.put(wep, currWeapon);
 		}
-		return null;
+//		System.out.println("wepDamage "+wepRet.get("Ice Sword").getDamage().getValue());
+		return wepRet;
 	}
 
 	public WalkAroundWorld getInitialWorld() {

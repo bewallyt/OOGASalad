@@ -40,7 +40,7 @@ public class WeaponData {
     				getMyAttacks().get(i).getMySpeed(),
     				getMyAttacks().get(i).getAffectAttribute(),
     				getMyAttacks().get(i).getAffectValue(),
-    				true);
+    				getMyAttacks().get(i).getAffectPlayer());
     		retAttacks.add(currAttack);
     	}
     	return null;

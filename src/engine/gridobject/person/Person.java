@@ -140,6 +140,9 @@ public abstract class Person extends GridObject {
 	public void addAllWeapons(Map<String, Weapon> weaponTypes, String[] weaponArr) {
 		for(int i = 0; i < weaponArr.length; i++){
 			addWeapon(weaponTypes.get(weaponArr[i]));
+			System.out.println("weaponTypes "+weaponArr[i]);
+			System.out.println("wep "+weaponTypes.get("Ice Sword").getDamage().getValue());
+//			System.out.println(weaponArr[i]+" damage: "+weaponTypes.get(weaponArr[i]).getDamage().getValue());
 		}
 	}
 
