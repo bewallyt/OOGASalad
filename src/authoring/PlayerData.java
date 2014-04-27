@@ -18,5 +18,9 @@ public class PlayerData extends EnemyData{
     }
    
     public String[] getMyItems(){ return myItems;}
+    
+    public void setItems(String[] items) {
+    	myItems = items;
+    }
 
 }

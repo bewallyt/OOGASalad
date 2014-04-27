@@ -1,11 +1,17 @@
 package engine.world;
 
 import engine.collision.CollisionMatrix;
+import engine.dialogue.AbstractManager;
+import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
+import engine.dialogue.NPCResponseNode;
+import engine.dialogue.NotificationManager;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Person;
+import engine.gridobject.person.Player;
+import engine.state.DialogueState;
+import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
 
@@ -53,8 +59,24 @@ public class WalkAroundWorldLooper extends GameLooper {
 						}
 					}	
 				}	
+			} 
+				
+		} else if(myWorld.getPlayer().getState() instanceof SaveState){
+			//	System.out.println("in instance of SaveState");
+			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
+			if (saveState.isSavingState()) {
+				saveState.setSavingState(false);
+			//	System.out.println("saveWorld");
+			    /// save world data 
 			}
 		}
+//			if(myWorld.getPlayer().getWeaponList().size()>2){
+//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
+////				System.out.println("Item found alert");
+//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
+//				myWorld.getPlayer().setState(new DialogueState(conversation));
+//				myWorld.getPlayer().setInteractionBox(conversation);
+//			}
 		return null;
 	}
 

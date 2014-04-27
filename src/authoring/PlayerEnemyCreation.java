@@ -186,7 +186,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
                 DefaultListModel listModel = (DefaultListModel) weaponList.getModel();
                 int index = dl.getIndex();
                 boolean insert = dl.isInsert();
-                //String value = (String)listModel.getElementAt(index);
                 Transferable t = info.getTransferable();
                 String data;
                 try{

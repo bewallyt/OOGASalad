@@ -16,6 +16,6 @@ public class Effect {
 		myPerson.getStatsMap().get(myStatistic).changeValue(myAmountToChange);
 	}
 	public String toString(){
-		return myPerson.toString() + "'s " + myStatistic + " changed by " + myAmountToChange; 
+		return " " + myPerson.toString() + "'s " + myStatistic + " changed by " + myAmountToChange; 
 	}
 }
