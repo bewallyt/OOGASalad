@@ -53,7 +53,7 @@ public class BattleCalculator {
 		if(attackDamage!=0)
 			victim.getStatsMap().get("health").changeValue(-total);
 		if(attack.getEffect()!=null){
-			attack.getEffect().doEffect();
+			attack.getEffect().doEffect(attacker,victim);	
 		}
 		System.out.println(myPlayer.getStatsMap().get("health").getValue());
 

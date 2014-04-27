@@ -3,19 +3,28 @@ package engine.battle;
 import engine.gridobject.person.Person;
 
 public class Effect {
-	String myStatistic;
-	Person myPerson;
-	int myAmountToChange;
-	public Effect(String statistic, Person person, int amountToChange){
+	private String myStatistic;
+	private Person myPerson;
+	private int myAmountToChange;
+	private boolean myAffectsSelf;
+	public Effect(String statistic,boolean affectsSelf, int amountToChange){
 		myStatistic=statistic;
-		myPerson=person;
+		myAffectsSelf=affectsSelf;
 		myAmountToChange=amountToChange;
 	}
 	
-	public void doEffect(){
-		myPerson.getStatsMap().get(myStatistic).changeValue(myAmountToChange);
+	public void doEffect(Person self, Person other){
+		if(myAffectsSelf)
+			self.getStatsMap().get(myStatistic).changeValue(myAmountToChange);
+		else{
+			other.getStatsMap().get(myStatistic).changeValue(myAmountToChange);
+		}
 	}
 	public String toString(){
-		return " " + myPerson.toString() + "'s " + myStatistic + " changed by " + myAmountToChange; 
+		if(myAffectsSelf)return " Attacker's " + myStatistic + " changed by " + myAmountToChange; 
+		else{
+			return " Victim's " + myStatistic + " changed by " + myAmountToChange; 
+		}
+		
 	}
 }
