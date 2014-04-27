@@ -85,7 +85,6 @@ public class GameFrame extends RPGEngine {
 
 	private void createWorlds() {
 		
-		myWeapons = myWorldData.getMyWeapons();
 		myItems = myWorldData.getMyItems();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
@@ -161,12 +160,7 @@ public class GameFrame extends RPGEngine {
 		myWeaponData = myWorldData.getMyWeapons();
 		for(String wep : myWeaponData.keySet()){
 			WeaponData currWeaponData = myWeaponData.get(wep);
-			Weapon currWeapon = new Weapon(
-					currWeaponData.getMyName(),
-					currWeaponData.getMyImage(),
-					currWeaponData.getMySpeed(),
-					currWeaponData.getMyDamage(),
-					null);
+			Weapon currWeapon = currWeaponData.makeWeapon();
 			myWeapons.put(wep, currWeapon);
 		}
 		return null;
