@@ -5,11 +5,11 @@ import java.util.List;
 
 import authoring.UserQueryNode;
 
-public class NPCResponseNode {
+public class NPCResponseNodeData {
 	private String myString;
 	private List<UserQueryNode> myChildren;
 	private String myItem;
-	public NPCResponseNode(String s){
+	public NPCResponseNodeData(String s){
 		myString = s;
 		myChildren = new ArrayList<UserQueryNode>();
 	}

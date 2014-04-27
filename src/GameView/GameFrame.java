@@ -11,6 +11,7 @@ import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
+import authoring.gameObjects.ItemData;
 import authoring.gameObjects.MapData;
 import authoring.gameObjects.PlayerData;
 import authoring.gameObjects.WeaponData;
@@ -32,6 +33,7 @@ public class GameFrame extends RPGEngine {
 	private WalkAroundWorld outsideWorld;
 	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
 	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
+	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -82,10 +84,13 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
+		
+		myWeapons = myWorldData.getMyWeapons();
+		myItems = myWorldData.getMyItems();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
-			MapDataParser parser = new MapDataParser(map, myPlayer);
+			MapDataParser parser = new MapDataParser(map, myPlayer, myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
