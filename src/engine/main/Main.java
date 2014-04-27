@@ -1,13 +1,12 @@
 package engine.main;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import util.Constants;
-import util.Music;
 import Data.FileStorer;
 import authoring.gameObjects.WorldData;
+//import authoring.gameObjects.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
 import engine.collision.BattleCollision;
@@ -21,9 +20,7 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Healer;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
-import engine.item.Item;
 import engine.item.KeyItem;
-import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;
@@ -192,10 +189,11 @@ public class Main extends RPGEngine {
 		enemy.setBattleImage("ImageFiles/rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
 		enemy.addStatistic(new Statistic("damage",10,100));
-		enemy.addStatistic(new Statistic("speed",10,100));
+		enemy.addStatistic(new Statistic("speed",100,100));
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
-
+		enemy.changeMoney(50);
+		enemy.setExperience(100);
 		enemy.getWorld().setMusic("/music/pokeBattle.wav");
 
 		buildingWorld.setMusic("/music/pokeCenter.wav");
