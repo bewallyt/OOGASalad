@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.Constants;
 import engine.Statistic;
 import engine.battle.Attack;
 import engine.battle.BattleExecutable;
@@ -22,6 +23,14 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 	
 	public Weapon(String image, String name, List<Attack> attacks) {
 		super(name, image);
+		myAttacks = attacks;
+		myImage=image;
+	}
+	
+	public Weapon(String name, String image, int speed, int damage, List<Attack> attacks) {
+		super(name, image);
+		setDamage(damage, Constants.DEF_MAX_STAT);
+		setSpeed(speed, Constants.DEF_MAX_STAT);
 		myAttacks = attacks;
 		myImage=image;
 	}

@@ -10,6 +10,11 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * This class handles the storing and loading of music for the game. 
+ * @author Davis Treybig
+ *
+ */
 public class MusicManager extends AbstractFileManager{
 
 	public static final String DEFAULT_MUSIC_EXTENSION="wav";
@@ -48,13 +53,18 @@ public class MusicManager extends AbstractFileManager{
 		return null;
 	}
 	
+	public File loadMusicFile(String songName){
+		return new File(DEFAULT_MUSIC_FOLDER+songName);
+	}
 
 	public static void main(String[] args) throws IOException{
 		MusicManager m=new MusicManager();
-		JFileChooser chooser=new JFileChooser();
-		int returnVal=chooser.showOpenDialog(null);
-		File f=chooser.getSelectedFile();
-		m.storeMusicFile("testSong", f);
+		//JFileChooser chooser=new JFileChooser();
+		//int returnVal=chooser.showOpenDialog(null);
+		//File f=chooser.getSelectedFile();
+		//m.storeMusicFile("testSong", f);
+		File fil=m.loadMusicFile("testSong");
+		System.out.println(fil.getAbsolutePath());
 	}
 
 }

@@ -3,6 +3,7 @@ package engine.menu.managers;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.IOException;
@@ -13,17 +14,18 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.menu.InteractionMatrix7x1;
+import engine.menu.MenuInteractionMatrix;
 import engine.menu.nodes.MenuNode;
 
 public class MenuManager implements InteractionBox {
 
-	private InteractionMatrix7x1 mySelections;
+	private MenuInteractionMatrix mySelections;
 	private String[] names;
 	private Player myPlayer;
 
-	public MenuManager(Player p) {
-		mySelections = new InteractionMatrix7x1();
+	public MenuManager(Player p, String[] menuItems) {
+		names = menuItems;
+		mySelections = new MenuInteractionMatrix(1, 5);
 		myPlayer = p;
 	}
 
@@ -39,14 +41,41 @@ public class MenuManager implements InteractionBox {
 		((MenuNode) mySelections.getCurrentNode()).doAction();
 	}
 
-	private void setNames() {
-		names = new String[] { "Pokedex", "Pokemon", "Bag", "Name", "Save",
-				"Options", "Exit" };
-	}
-
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
 			int height) {
 
+		paintMenu(g2d, height, width);
+
+		drawSelector(g2d, xSize, ySize, width, height, 48);
+	}
+
+	public void createMenuNodes() {
+		// Creates Menu Nodes via Reflection
+		if (!(this instanceof WeaponManager)) {
+			for (int i = 0; i < names.length; i++) {
+				mySelections.setNode((MenuNode) Reflection.createInstance(
+						"engine.menu.nodes." + names[i] + "Node", myPlayer,
+						this), 0, i);
+			}
+		}
+	}
+
+	@Override
+	public void getNextText() {
+
+	}
+
+	protected void drawSelector(Graphics2D g2d, int xSize, int ySize,
+			int width, int height, int scale) {
+
+		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
+		Image img = new ScaledImage(170, 55, "ImageFiles/redrectangle.png")
+				.scaleImage();
+		g2d.drawImage(img, width - 170, scale * selectedOptionLoc[1], null);
+
+	}
+
+	protected void paintMenu(Graphics g2d, int height, int width) {
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
 		Font font = null;
 
@@ -63,48 +92,10 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		Image img = new ScaledImage(200, height + 50, "ImageFiles/startmenu.png")
+		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
 				.scaleImage();
-		g2d.drawImage(img, width - 200, 0, null);
+		g2d.drawImage(img, width - 170, 0, null);
 		g2d.setColor(Color.black);
-
-		drawSelector(g2d, xSize, ySize, width, height);
-	}
-
-	public void createMenuNodes() {
-		// Creates Menu Nodes via Reflection
-		setNames();
-
-		for (int i = 0; i < names.length; i++) {
-			mySelections.setNode(
-					(MenuNode) Reflection.createInstance("engine.menu.nodes."
-							+ names[i] + "Node", myPlayer, this), 0, i);
-		}
-	}
-
-//	public void createManagers() {
-//
-//		// Creates Menu Managers via Reflection
-//		setNames();
-//
-//		for (int i = 0; i < names.length; i++) {
-//			mySelections.setManager((InteractionBox) Reflection.createInstance(
-//					"engine.menu.managers." + names[i] + "Manager", myPlayer,
-//					this), i);
-//		}
-//	}
-
-	@Override
-	public void getNextText() {
-
-	}
-
-	private void drawSelector(Graphics2D g2d, int xSize, int ySize, int width,
-			int height) {
-
-		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
-		Image img = new ScaledImage(200, 45, "ImageFiles/redrectangle.png").scaleImage();
-		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
 
 	}
 

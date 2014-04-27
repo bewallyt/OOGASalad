@@ -11,7 +11,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import authoring.WorldData;
+import authoring.gameObjects.WorldData;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,10 +28,14 @@ public class FileStorer {
 	private String savedGamesPath;
 	
 	public FileStorer() {
-		String path = System.getProperty("user.dir")+"/"+DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
+		String path =DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
 		savedGamesPath = path.replaceAll("\\\\", "/");	
-		init();
+		File theDir = new File(savedGamesPath);
+		  if (!theDir.exists()) {
+		    theDir.mkdir();  
+		  }
 	}
+
 	/**
 	 * Method used to store an instance of the WorldData class into a JSON data file. This allows
 	 * users to save games they have created. 
@@ -110,18 +114,5 @@ public class FileStorer {
 		f.writeFile("test.txt", "Hi");
 	}
 	
-	private void init() {
-		File theDir = new File(savedGamesPath);
-
-		  // if the directory does not exist, create it
-		  if (!theDir.exists()) {
-		    //System.out.println("creating directory: " + savedGamesPath);
-		    boolean result = theDir.mkdir();  
-
-		     if(result) {    
-		      // System.out.println("DIR created");  
-		     }
-		  }
-	}
 }
 

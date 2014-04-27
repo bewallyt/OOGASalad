@@ -52,7 +52,7 @@ public class BottomLevel implements BattleState {
 
 		}
 		else if(executable instanceof Item){
-			((Item) executable).useItem();
+			manager.getPlayer().useItem((Item) executable);
 			manager.setCurrentState("BackToTop");
 			manager.setCurrentTextToBeDisplayed("Used " + ((Item) executable).toString());
 		}

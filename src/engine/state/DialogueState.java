@@ -6,6 +6,7 @@ import java.util.Set;
 
 import engine.Control;
 import engine.dialogue.AbstractManager;
+import engine.dialogue.TransparentDisplayer;
 
 public class DialogueState extends AbstractState {
 
@@ -42,6 +43,12 @@ public class DialogueState extends AbstractState {
 			if (e.getKeyCode() == Control.A) {
 				myConversationManager.getNextText();
 				pressedKeys.add(e.getKeyCode());
+			}
+			
+			if (e.getKeyCode() == Control.ESC) {
+				myConversationManager.getPlayer().setState(new WalkAroundState(myConversationManager.getPlayer()));
+				myConversationManager.getPlayer().getDialogueDisplayControl().setInteractionBox(new TransparentDisplayer());
+				//pressedKeys.add(e.getKeyCode());
 			}
 	//	}
 

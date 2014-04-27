@@ -106,7 +106,6 @@ public abstract class AbstractManager implements InteractionBox{
 					(int)(yCornerLoc + xLoc*(height*3/10) + (lineCount*g2d.getFont().getSize())));
 			lineCount++;
 		}
-		
 	}
 	
 	private List<String> createTextLines(String textToBeDisplayed, int charactersPerLine) {

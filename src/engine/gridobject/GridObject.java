@@ -86,6 +86,10 @@ public abstract class GridObject{
 		myDialogueList=new ArrayList<String>();
 		myImageName=myAnimImages[2];	
 	}
+	
+	public GridObject(){
+		
+	}
 
 	public int[] getNumTiles(){
 		return new int[] {myNumTilesWidth, myNumTilesHeight};
@@ -168,6 +172,12 @@ public abstract class GridObject{
 	 */
 	public void addStatistic(String name, int value,int maxValue){
 		myStatsMap.put(name,new Statistic(name,value,maxValue));
+	}
+	
+	public void addAllStatistics(Map<String, Double> startVals){
+		for(String stat : startVals.keySet()){
+			myStatsMap.put(stat, new Statistic(stat, startVals.get(stat).intValue(), Constants.DEF_MAX_STAT));
+		}
 	}
 
 	public Map<String,Statistic> getStatsMap(){

@@ -28,6 +28,10 @@ public class Player extends Person {
 		myState = new WalkAroundState(this);
 		myExperience=0;
 	}
+	
+	public Player(){
+		super();
+	}
 
 	public void setSurroundingsChecker(SurroundingChecker surroundingChecker) {
 		mySurroundingChecker = surroundingChecker;

@@ -1,5 +1,6 @@
 package engine.world;
 
+import GameView.GameFrame;
 import GameView.TitleManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.state.TitleState;
@@ -30,6 +31,11 @@ public class TitleWorldLooper extends GameLooper {
 		isGameLoaded =myTM.getIsGameLoaded();
 		if(isGameLoaded){
 			// Load new world
+			
+			GameFrame gm = new GameFrame();
+			gm.initialize(myTM.getLoadFile());
+			return gm.getInitialWorld();
+			
 		}
 		return null;
 	}

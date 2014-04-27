@@ -7,30 +7,38 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Class that encapsulates information relevant to a given image. 
+ * @Author Davis treybig
+ */
 public class ImageFile {
 	private String imageType;
 	private String name;
 	public static final String SRC="src/";
-	/**
-	 * Class that encapsulates information relevant to a given image. 
-	 * @param name Name of the image file
-	 * @param imageType
-	 */
+	
 	public ImageFile(String name, String imageType) {
 		this.name=name;
 		this.imageType=imageType;
-	//	System.out.println("Name: "+name + "   Type: "+ imageType);
 	}
 
+	/**
+	 * Returns the name of the image
+	 */
 	public String getName(){
 		return name;
 	}
 	public void changeName(String s){
 		name=s;
 	}
+	/**
+	 * Returns the image type of the image. IE, "TileImage"
+	 */
 	public String getType(){
 		return imageType;
 	}
+	/**
+	 * Returns the Image version of the image
+	 */
 	public Image getImage(){
 		File file=getFile();
 		BufferedImage temp;
@@ -42,6 +50,9 @@ public class ImageFile {
 		return (Image)temp;
 		
 	}
+	/**
+	 * Gets the File version of the image
+	 */
 	public File getFile(){
 		return new File(SRC+imageType+"/"+name);
 	}

@@ -1,5 +1,6 @@
 package engine.world;
 
+import Data.WorldDataManager;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
@@ -11,6 +12,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.state.DialogueState;
+import engine.state.ExitState;
 import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
@@ -62,28 +64,47 @@ public class WalkAroundWorldLooper extends GameLooper {
 			} 
 
 		} else if(myWorld.getPlayer().getState() instanceof SaveState){
-			//	System.out.println("in instance of SaveState");
 			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
 			if (saveState.isSavingState()) {
 				saveState.setSavingState(false);
-				//	System.out.println("saveWorld");
-				/// save world data 
+
+				saveWorld(saveState.getSaveFileName());			
 			}
+		} else if(myWorld.getPlayer().getState() instanceof ExitState){
+			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
+			titleScreen.setBackground("PokemonBackground.png");
+			titleScreen.setMusic("/music/PokemonIntro.wav");
+			return titleScreen;
 		}
+		//			if(myWorld.getPlayer().getWeaponList().size()>2){
+		//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
+		////				System.out.println("Item found alert");
+		//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
+		//				myWorld.getPlayer().setState(new DialogueState(conversation));
+		//				myWorld.getPlayer().setInteractionBox(conversation);
+		//			}
+		return null;
+	}
 
-			return null;
-		}
 
-		private void checkCollisions(CollisionMatrix cm) {
-			for (int i = 0; i < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); i++) {
-				for (int j = 0; j < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); j++) {
-					if (myWorld.getGridObjectList().get(i).getBounds().intersects(
-							myWorld.getGridObjectList().get(j).getBounds())) {
-						if(cm!=null) {
-							cm.getMatrix()[i][j].doCollision();
-						}
+	private void checkCollisions(CollisionMatrix cm) {
+		for (int i = 0; i < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); i++) {
+			for (int j = 0; j < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); j++) {
+				if (myWorld.getGridObjectList().get(i).getBounds().intersects(
+						myWorld.getGridObjectList().get(j).getBounds())) {
+					if(cm!=null) {
+						cm.getMatrix()[i][j].doCollision();
 					}
 				}
 			}
 		}
 	}
+
+
+
+	private void saveWorld(String filename) {
+		WorldDataManager wdManager = new WorldDataManager();
+		wdManager.saveWorld(myWorld, filename);
+	}
+}
+

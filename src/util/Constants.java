@@ -20,6 +20,7 @@ public class Constants {
     // engine
 	public static final int DEF_TIL = 1;
 	public static final int SPEED = 1;
+	public static final int DEF_MAX_STAT = 100;
     public static final String IMAGEPATH = "engine/images/";
     public static final String GRIDOBJECTPATH = "gridobject/";
     public static final String SPRITEPATH="PlayerImages/";
@@ -52,14 +53,20 @@ public class Constants {
 
     public static final int NAME_CONST = 3;
     public static final int VALUES_CONST = 4;
+    public static final int ENEMY_MOVEMENT_CONST = 7;
+    public static final int NPC_MOVEMENT_CONST = 5;
     public static final int WEAPONS_CONST = 5;
-    public static final int MOVEMENT_CONST = 6;
+    public static final int WEP_LENGTH_CONST = 6;
 
     public static final int TO_X_CONST = 3;
     public static final int TO_Y_CONST = 4;
     public static final int TO_MAP_CONST = 5;
 
     public static final int ROOT_CONST = 3;
+    
+    public static final int NPC_PLAYER_CONST = 6;
+    public static final int ENEMY_PLAYER_CONST = 8;
+
     
     
     // data
