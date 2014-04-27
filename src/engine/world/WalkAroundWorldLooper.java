@@ -11,6 +11,8 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.state.DialogueState;
+import engine.state.ExitState;
+import engine.state.LoadState;
 import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
@@ -69,6 +71,12 @@ public class WalkAroundWorldLooper extends GameLooper {
 			//	System.out.println("saveWorld");
 			    /// save world data 
 			}
+		} else if(myWorld.getPlayer().getState() instanceof ExitState){
+			System.out.println("WalkAroundWorlLoop in ExitState");
+			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
+			titleScreen.setBackground("PokemonBackground.png");
+			titleScreen.setMusic("/music/PokemonIntro.wav");
+			return titleScreen;
 		}
 //			if(myWorld.getPlayer().getWeaponList().size()>2){
 //				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");

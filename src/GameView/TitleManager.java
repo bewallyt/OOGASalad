@@ -12,15 +12,16 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.state.GameSelectState;
 
 public class TitleManager implements InteractionBox {
 
 	private int colorMod = 0;
-	public static boolean startPressed = false;
-	private String displayString;
 	private Player myPlayer;
+	private String myLoadFile;
+	private String displayString;
+	private boolean startPressed = false;
 	private boolean isGameLoaded = false;
+	private final static String LOAD_FINISHED = "Load Complete!";
 
 	public TitleManager(Player p) {
 		myPlayer = p;
@@ -55,7 +56,7 @@ public class TitleManager implements InteractionBox {
 					.scaleImage();
 			g2d.drawImage(boxImg, 0, height + 70, null);
 
-			if (displayString != GameSelectState.LOAD_FINISHED) {
+			if (displayString != LOAD_FINISHED) {
 				g2d.drawString("Load from (w/o extension):", 20, height + 115);
 
 				updateText();
@@ -68,13 +69,12 @@ public class TitleManager implements InteractionBox {
 
 		}
 	}
-	
-	public void updateText() {
+
+	private void updateText() {
 		displayString = myPlayer.getState().getDisplayString();
 	}
 
-
-	public Color changeColor() {
+	private Color changeColor() {
 		colorMod = colorMod % 60;
 		Color startColor;
 		if (colorMod < 30) {
@@ -87,33 +87,35 @@ public class TitleManager implements InteractionBox {
 	}
 
 	public void toggleStartPressed() {
-		if(startPressed){
+		if (startPressed) {
 			startPressed = false;
-		}
-		else{
+		} else {
 			startPressed = true;
 		}
 	}
-	
-	
-	public void toggleIsGameLoaded(){
-		if(isGameLoaded){
-			isGameLoaded = false;	
-		}
-		else{ 
+
+	public void toggleIsGameLoaded() {
+		if (isGameLoaded) {
+			isGameLoaded = false;
+		} else {
 			isGameLoaded = true;
 		}
+	}
+
+	public void setLoadFile(String loadFile){
+		myLoadFile = loadFile;
+	}
+	
+	public String getLoadFile(){
+		return myLoadFile;
 	}
 	
 	public boolean getIsGameLoaded(){
 		return isGameLoaded;
 	}
-	
-
 
 	@Override
 	public void getNextText() {
-		// TODO Auto-generated method stub
 
 	}
 

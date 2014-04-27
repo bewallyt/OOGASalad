@@ -2,8 +2,6 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import authoring.WorldData;
-import Data.DataManager;
 import GameView.GameFrame;
 import engine.Control;
 import engine.gridobject.person.Player;
@@ -16,7 +14,6 @@ public class LoadState extends AbstractState {
 	private StringBuffer buffer = new StringBuffer();
 	private String displayString;
 	private String loadFile;
-	public final static String LOAD_FINISHED = "Load Complete!";
 
 	public LoadState(Player p, MenuManager mm) {
 		super();

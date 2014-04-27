@@ -37,7 +37,6 @@ public class GameFrame extends RPGEngine {
 
 	public GameFrame() {
 		myData = new DataManager();
-		//initializeGame();
 	}
 
 	/**
@@ -51,13 +50,13 @@ public class GameFrame extends RPGEngine {
 	public void initialize(String fileName) {
 
 		myWorldData = myData.getWorldData(fileName);
-		initMusicTest();
-		//setInit(true);
 		createWorlds();
 		setDoors();
 	}
+
 	/**
-	 * Loops through all maps and grid objects to set doors to their corresponding map
+	 * Loops through all maps and grid objects to set doors to their
+	 * corresponding map
 	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
@@ -75,12 +74,6 @@ public class GameFrame extends RPGEngine {
 	@Override
 	public void initializeGame() {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
-	}
-
-	private void initMusicTest() {
-		URL mainURL = Main.class.getResource("/music/pokeTest.wav");
-		Music music = new Music(mainURL);
-		music.start();
 	}
 
 	/**
@@ -104,13 +97,9 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if (myWorldData.getPrimaryMap().equals(mapName)){
+			if (myWorldData.getPrimaryMap().equals(mapName)) {
 				outsideWorld = currWorld;
-				System.out.println(outsideWorld + " within loop");
 			}
-				//setWorld(currWorld); // this is only called for the initial
-			// world
-				
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
@@ -118,6 +107,7 @@ public class GameFrame extends RPGEngine {
 		}
 
 	}
+
 	/**
 	 * Creates the player based on PlayerData
 	 */
@@ -166,10 +156,10 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-	
-	public WalkAroundWorld getInitialWorld(){
-		System.out.println(outsideWorld + " within getInitial");
+
+	public WalkAroundWorld getInitialWorld() {
+		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
-		
+
 	}
 }

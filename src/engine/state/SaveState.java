@@ -2,7 +2,6 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import Data.DataManager;
 import engine.Control;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
