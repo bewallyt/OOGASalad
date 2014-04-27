@@ -13,13 +13,14 @@ public class ArenaWorldLooper extends GameLooper {
 		//myWorld.getEnemy().setWasBattled();
 		myWorld = (ArenaWorld) getWorld();
 		myWorld.getPlayer().setDialogueDisplayControl(new DialogueDisplayControl(currentWorld));
-		myBattleManager = new BattleManager(myWorld.getPlayer(),myWorld.getEnemy());
+		myBattleManager = new BattleManager(myWorld.getPlayer(),myWorld.getEnemy(),myWorld.getLabels());
 		myWorld.getPlayer().setInteractionBox(myBattleManager);
 		myWorld.getPlayer().setState(new BattleState(myBattleManager));
 	}
 
 	@Override
 	public World doLoop() {
+		System.out.println(myBattleManager.getCurrentState());
 		myWorld.setPlayerImage(myBattleManager.getCurrentPlayerBattleImage());
 		myWorld.setEnemyImage(myBattleManager.getCurrentEnemyBattleImage());
 		if(myBattleManager.getCurrentState().equals("ExitWon")){

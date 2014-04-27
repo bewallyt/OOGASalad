@@ -129,9 +129,13 @@ public abstract class Person extends GridObject {
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
 		myCurrentWeapon=myWeapons.get(0);
-		
-		
 	}
+	public void removeWeapon(Weapon weapon){
+		myWeapons.remove(weapon);
+		myCurrentWeapon=myWeapons.get(0);
+	}
+		
+	
 
 	public List<Weapon> getWeaponList(){
 		return myWeapons;

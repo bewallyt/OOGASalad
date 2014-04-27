@@ -15,13 +15,25 @@ public class ArenaWorld extends World {
 	private boolean randomEncounter=false;
 	private Image myPlayerImage;
 	private Image myEnemyImage;
+	private String[] myLabels;
 	
-	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy, WalkAroundWorld prevWorld) {
+	/**
+	 * Instantiates a new arena world.
+	 *
+	 * @param backgroundImage the background image
+	 * @param playWidth the play width
+	 * @param playHeight the play height
+	 * @param p the player
+	 * @param enemy the enemy
+	 * @param prevWorld the previous world to go back to
+	 * @param labels the labels used for battling. 0=attack 1=weapon 2=bag 3=run
+	 */
+	public ArenaWorld(String backgroundImage, int playWidth, int playHeight, Player p, Enemy enemy, WalkAroundWorld prevWorld, String[] labels) {
 		super(playWidth, playHeight, p);
 		myEnemy = enemy;
 		myBackground = new ScaledImage(Constants.CANVASWIDTH,(int) (Constants.CANVASHEIGHT*.65),backgroundImage);
 		myPrevWorld=prevWorld;
-		
+		myLabels=labels;
 	}
 	
 	public Enemy getEnemy(){
@@ -57,5 +69,10 @@ public class ArenaWorld extends World {
 	public Image getEnemyImage(){
 		return myEnemyImage;
 	}
+
+	public String[] getLabels() {
+		return myLabels;
+	}
+	
 
 }
