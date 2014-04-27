@@ -7,7 +7,7 @@ import java.util.List;
 import util.Constants;
 import util.Music;
 import Data.FileStorer;
-import authoring.WorldData;
+import authoring.gameObjects.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
 import engine.collision.BattleCollision;
@@ -84,11 +84,11 @@ public class Main extends RPGEngine {
 		NPC bafm = new NPC(new String[] {"ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png","ImageFiles/rival.png"},"npc"
 				,1,1,1, 3, player);
 
-		NPCResponseNode n = new NPCResponseNode(bafm, "I can't seem to find my sword :(");
-		NPCResponseNode n0 = new NPCResponseNode(bafm, "Let me know when you find it!");
-		NPCResponseNode n1 = new NPCResponseNode(bafm, "Yeah it sucks");
-		NPCResponseNode n2 = new NPCResponseNode(bafm, "Thats not nice...");
-		NPCResponseNode n3 = new NPCResponseNode(bafm, "You found it! Thanks");
+		NPCResponseNode n = new NPCResponseNode("I can't seem to find my sword :(", null);
+		NPCResponseNode n0 = new NPCResponseNode("Let me know when you find it!", null);
+		NPCResponseNode n1 = new NPCResponseNode("Yeah it sucks", null);
+		NPCResponseNode n2 = new NPCResponseNode("Thats not nice...", null);
+		NPCResponseNode n3 = new NPCResponseNode("You found it! Thanks", null);
 		UserQueryNode q0 = new UserQueryNode(player, null, "I'll help!", n0);
 		UserQueryNode q1 = new UserQueryNode(player, null, "Sorry to hear...", n1);
 		UserQueryNode q2 = new UserQueryNode(player, null, "Nice", n2);
@@ -107,7 +107,7 @@ public class Main extends RPGEngine {
 		Door door2 = new Door("ImageFiles/cabinets.jpg", 1, 1);
 		Door tallGrass = new Door("ImageFiles/grassback.jpg",1,1);
 		Enemy enemy = new Enemy(anim,"enemy",2,1,1,1, player);
-		NPCResponseNode ne = new NPCResponseNode(enemy, "Let's Battle!!!!(");
+		NPCResponseNode ne = new NPCResponseNode("Let's Battle!!!!(", null);
 		enemy.setResponseNode(ne);
 		Enemy grassEnemy = new Enemy(anim,"grassenemy",2,1,1,1,player);
 		enemy.doBattleOnSight();

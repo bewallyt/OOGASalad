@@ -22,7 +22,7 @@ public class Barrier extends GridObject {
 	}
 	
 	public void displayAlertBox(Player p, Pickupable it) {
-		NPCResponseNode n = new NPCResponseNode(this, "You found: " + it.toString() + "!");
+		NPCResponseNode n = new NPCResponseNode("You found: " + it.toString() + "!", null);
 		System.out.println("Item found alert");
 		AbstractManager conversation = new NotificationManager(p, this, n);
 		p.setState(new DialogueState(conversation));
