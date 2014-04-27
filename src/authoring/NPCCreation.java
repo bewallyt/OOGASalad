@@ -54,11 +54,14 @@ public class NPCCreation extends CommonAttributes{
 		newQueryOption.addActionListener(new QueryListener());
 		JButton newItemResponse = new JButton("New Item Response");
 		newItemResponse.addActionListener(new ItemResponseListener());
+		JButton newItemGiven = new JButton("New NPC Giving User Item");
+		newItemGiven.addActionListener(new ItemGiveListener());
 		JButton myGoBack = new JButton("Go Up A Level");
 		myGoBack.addActionListener(new GoBackListener());
 		dialoguePanel.add(myTextWindow);
 		dialoguePanel.add(newQueryOption);
 		dialoguePanel.add(newItemResponse);
+		dialoguePanel.add(newItemGiven);
 		dialoguePanel.add(myGoBack);
 
         pane.add(nameTab,namePanel);
@@ -100,7 +103,11 @@ public class NPCCreation extends CommonAttributes{
     }
 	private void setResponses(){
 		List<String> myResponses = new ArrayList<String>();
-		myResponses.add(0,myCurrent.getString());
+		if(myCurrent.getItem()!=null){
+			myResponses.add(0,myCurrent.getString() + ", Item:" + myCurrent.getItem());
+		}else{
+			myResponses.add(0,myCurrent.getString());
+		}
 		for(UserQueryNode q: myCurrent.getChildren()){
 			if(q.getString()!=null){
 				myResponses.add("   "+q.getString());
@@ -136,25 +143,30 @@ public class NPCCreation extends CommonAttributes{
 					alreadyItem=true;
 			}
 			if(myCurrent.getChildren().size()<4&&!alreadyItem){
-//			optionFrame = new JOptionPane("Input Dialogue");
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
 
-			JComboBox myItemBox = new JComboBox(myItems.toArray());
-			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to",
-                    JOptionPane.QUESTION_MESSAGE);
-
-//			JComboBox myItemBox = new JComboBox(myItems.toArray());
-//			myItemBox.setEditable(true);
-//			optionFrame.showMessageDialog(null, myItems, "Enter User Item for NPC to react to", JOptionPane.QUESTION_MESSAGE);
 			String myItem = (String)JOptionPane.showInputDialog(null, "Select a User Item for NPC to react to",
 					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
 
 			UserQueryNode uqn = new UserQueryNode();
 			uqn.setItem(myItem);
-//			uqn.setItem((String)myItemBox.getSelectedItem());
 			String ss = optionFrame.showInputDialog("Enter NPC Response");
 			uqn.setChild(new NPCResponseNode(ss));
 			myCurrent.addChild(uqn);
+			setResponses();
+			}
+		}
+	}
+	private class ItemGiveListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+
+			if(myCurrent.getItem()==null){
+			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
+
+			String myItem = (String)JOptionPane.showInputDialog(null, "Select an item for NPC to give to user",
+					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
+
+			myCurrent.setItem(myItem);
 			setResponses();
 			}
 		}
