@@ -11,15 +11,18 @@ public class ItemData {
     private String itemName;
     private String itemImage;
     private Map<String,Integer> myItemValues;
+    private int myPrice;
 
-    public ItemData(String name, String image, Map<String,Integer> values){
+    public ItemData(String name, String image, Map<String,Integer> values, int price){
         itemName = name;
         itemImage = image;
         myItemValues = values;
+        myPrice = price;
     }
 
-    public ItemData(String name){
+    public ItemData(String name, int price){
         itemName = name;
+        myPrice = price;
     }
 
     public String getItemName(){
