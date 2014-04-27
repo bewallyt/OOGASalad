@@ -38,7 +38,7 @@ public class GameFrame extends RPGEngine {
 
 	public GameFrame() {
 		myData = new DataManager();
-		//initializeGame();
+		initializeGame();
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class GameFrame extends RPGEngine {
 
 		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
-		//setInit(true);
+		setInit(true);
 		createPlayer();
 		createWorlds();
 	}
@@ -104,6 +104,7 @@ public class GameFrame extends RPGEngine {
 					Constants.TILE_SIZE, gridObjectList);
 
 			if (myWorldData.getPrimaryMap().equals(mapName)){
+				setWorld(currWorld);
 				outsideWorld = currWorld;
 				System.out.println(outsideWorld + " within loop");
 			}
