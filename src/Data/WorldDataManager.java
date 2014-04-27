@@ -51,18 +51,20 @@ public class WorldDataManager {
 		WorldData worldData = new WorldData();		
 		if (w instanceof WalkAroundWorld) {
 			String mapName = ((WalkAroundWorld) w).getID();
-			int rows = ((WalkAroundWorld) w).getTileGridWidth();
-			int cols = ((WalkAroundWorld) w).getTileGridHeight();
-			MapData md = new MapData(rows, cols);
+		
+			int width = ((WalkAroundWorld) w).getTileGridWidth();
+			int height = ((WalkAroundWorld) w).getTileGridHeight();
+			MapData md = new MapData(width, height);
 			Tile[][] tileMatrix = ((WalkAroundWorld) w).getTileMatrix();
 			
-			for (int i = 0; i < rows; i++) {
-				for (int j = 0; j< cols; j++) {
-					Tile t = tileMatrix[i][j];
+			for (int i = 0; i < height; i++) {
+				for (int j = 0; j < width; j++) {
+					Tile t = tileMatrix[j][i];
 					String s = t.getBackgroundImageName();
 					md.getTileData(i, j).setImageName(s);
 				}
 			}
+			
 			Player p = w.getPlayer();
 			int pX = p.getX();
 			int pY = p.getY();
