@@ -31,7 +31,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 	private void setDialogueDisplayControl() {
 		for (GridObject go : (myWorld.getGridObjectList())) {
 			//if (go instanceof Person) {
-				go.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
+			go.setDialogueDisplayControl(new DialogueDisplayControl(myWorld));
 			//}
 		}
 	}
@@ -60,41 +60,30 @@ public class WalkAroundWorldLooper extends GameLooper {
 					}	
 				}	
 			} 
-				
+
 		} else if(myWorld.getPlayer().getState() instanceof SaveState){
 			//	System.out.println("in instance of SaveState");
 			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
 			if (saveState.isSavingState()) {
 				saveState.setSavingState(false);
-			//	System.out.println("saveWorld");
-			    /// save world data 
+				//	System.out.println("saveWorld");
+				/// save world data 
 			}
-<<<<<<< HEAD
-
 		}
-=======
-		}
-//			if(myWorld.getPlayer().getWeaponList().size()>2){
-//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
-////				System.out.println("Item found alert");
-//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
-//				myWorld.getPlayer().setState(new DialogueState(conversation));
-//				myWorld.getPlayer().setInteractionBox(conversation);
-//			}
->>>>>>> 13c0e33d77834a4fe8c0a6d583f1eb0dc4ec75d5
-		return null;
-	}
 
-	private void checkCollisions(CollisionMatrix cm) {
-		for (int i = 0; i < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); i++) {
-			for (int j = 0; j < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); j++) {
-				if (myWorld.getGridObjectList().get(i).getBounds().intersects(
-						myWorld.getGridObjectList().get(j).getBounds())) {
-					if(cm!=null) {
-						cm.getMatrix()[i][j].doCollision();
+			return null;
+		}
+
+		private void checkCollisions(CollisionMatrix cm) {
+			for (int i = 0; i < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); i++) {
+				for (int j = 0; j < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); j++) {
+					if (myWorld.getGridObjectList().get(i).getBounds().intersects(
+							myWorld.getGridObjectList().get(j).getBounds())) {
+						if(cm!=null) {
+							cm.getMatrix()[i][j].doCollision();
+						}
 					}
 				}
 			}
 		}
 	}
-}
