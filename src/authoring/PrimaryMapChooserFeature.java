@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * 
+ * @author Richard Cao
+ * Allows the user the set the map that is loaded on game startup
+ */
 public class PrimaryMapChooserFeature extends Feature{
 	
 	private JButton myButton;

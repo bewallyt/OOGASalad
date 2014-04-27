@@ -12,7 +12,7 @@ import java.awt.*;
  *
  */
 public class TilePanel extends JLayeredPane{
-	
+
 	private TileData myData;
 	private ImageIcon myTileImage;
 	private ImageIcon myGridObjectImage;
@@ -30,7 +30,7 @@ public class TilePanel extends JLayeredPane{
 		this.setLayout(new BorderLayout());
 		this.setVisible(true);
 	}
-	
+
 	public TilePanel(int row, int col, ImageIcon bg){
 		this(row, col);
 		this.setTileImage(bg);
@@ -38,9 +38,9 @@ public class TilePanel extends JLayeredPane{
 
 	@Override
 	public void setPreferredSize(Dimension size){
-		
+
 	}
-	
+
 	@Override
 	public Dimension getPreferredSize() {
 		return myDimension;
@@ -49,7 +49,7 @@ public class TilePanel extends JLayeredPane{
 	public void setTileImage(ImageIcon imageFile) {	
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
-		
+
 		myTileImage = imageFile;
 		myTileLabel = new JLabel(myTileImage);
 		myTileLabel.setLayout(null);
@@ -57,7 +57,7 @@ public class TilePanel extends JLayeredPane{
 		this.add(myTileLabel, 1);
 		saveImage(myTileImage.getDescription());
 	}
-	
+
 	public void addGridObjectImage(ImageIcon imageFile){
 		myGridObjectImage = imageFile;
 		myGridObjectLabel = new JLabel(myGridObjectImage);
@@ -67,7 +67,7 @@ public class TilePanel extends JLayeredPane{
 		this.revalidate();
 		this.repaint();
 	}
-	
+
 	public void update(){
 		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
 		for(GridObjectData g : myGridObjects){
@@ -79,7 +79,7 @@ public class TilePanel extends JLayeredPane{
 				addGridObjectImage(i);	
 			}
 		}
-		
+
 	}
 	public void saveImage(String s){
 		myData.setImageName(s);

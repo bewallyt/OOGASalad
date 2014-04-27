@@ -57,12 +57,12 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		JPanel panel = new JPanel();
 		panel.add(name);
 		int result = JOptionPane.showOptionDialog(null, panel, "Name Your Song",
-                JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
 		if(result == JOptionPane.OK_OPTION){
 			if(name.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Complete required fields.", "Error Message",
-                        JOptionPane.ERROR_MESSAGE);
+						JOptionPane.ERROR_MESSAGE);
 				musicUploader();
 			}
 			else
@@ -87,12 +87,12 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 				myWindow.pack();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!",
-                        JOptionPane.ERROR_MESSAGE);
+						JOptionPane.ERROR_MESSAGE);
 				chooseMusic(fileName);
 			}
 		}		
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("addmusic"))
@@ -105,7 +105,7 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 	public void valueChanged(ListSelectionEvent arg0) {
 		String name = model.get(availableMusic.getSelectedIndex());
 		JOptionPane.showConfirmDialog(null, "Would you like to make " + name + " the song for this map?",
-                "Confirm", JOptionPane.OK_OPTION);
+				"Confirm", JOptionPane.OK_OPTION);
 		MapData cm = FeatureManager.getWorldData().getCurrentMap();
 		cm.addSong(name);
 	}

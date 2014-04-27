@@ -30,7 +30,6 @@ public class MapCreatorFeature extends Feature {
 				JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
 				return;				
 			}
-			
 			gridView.addMap(mapName);
 		}
 	}

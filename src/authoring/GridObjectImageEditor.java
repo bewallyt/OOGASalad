@@ -2,11 +2,9 @@ package authoring;
 
 import java.awt.BorderLayout;
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import Data.ImageFile;
 
 public class GridObjectImageEditor extends ImageEditor {
