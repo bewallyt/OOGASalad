@@ -18,7 +18,7 @@ public class GridObjectData {
 
 	private int myX;
 	private int myY;
-	private List<Item> itemList=new ArrayList<Item>();
+	private List<ItemData> itemList=new ArrayList<ItemData>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
@@ -34,7 +34,7 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(getGridObjectPathValue(image));
 	}
 	
 	// DoorData
@@ -46,7 +46,7 @@ public class GridObjectData {
 
 		myArguments.add(width);
 		myArguments.add(height);
-		myArguments.add(Constants.GRIDOBJECTPATH+image);
+		myArguments.add(getGridObjectPathValue(image));
 		myArguments.add(toX);
 		myArguments.add(toY);
 		myArguments.add(toMap);
@@ -122,5 +122,23 @@ public class GridObjectData {
 	
 	public List<Object> getArguments(){
 		return myArguments;
+	}
+	
+	private boolean prependGridObjectPath(String s) {
+		boolean prepend = true;
+		if (s != null) {
+			if (s.startsWith(Constants.GRIDOBJECTPATH)) {
+				prepend = false;
+			} 
+		} 
+		return prepend;
+	}
+	
+	private String getGridObjectPathValue(String s) {
+		if (prependGridObjectPath(s)) {
+			return Constants.GRIDOBJECTPATH+s;
+		} else {
+			return s;
+		}
 	}
 }

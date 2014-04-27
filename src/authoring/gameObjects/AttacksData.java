@@ -4,7 +4,7 @@ package authoring.gameObjects;
  * @ Pritam M.
  * */
 
-public class Attacks {
+public class AttacksData {
 
     private String myName;
     private int mySpeed;
@@ -12,7 +12,8 @@ public class Attacks {
     private String affectAttribute;
     private int affectValue;
     private boolean affectPlayer;
-    public Attacks(String name, int speed, int damage, String selected, int value, boolean affect){
+    
+    public AttacksData(String name, int speed, int damage, String selected, int value, boolean affect){
         myName = name;
         mySpeed = speed;
         myDamage = damage;
