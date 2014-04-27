@@ -1,5 +1,6 @@
 package engine.world;
 
+import Data.WorldDataManager;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
@@ -63,12 +64,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 			} 
 				
 		} else if(myWorld.getPlayer().getState() instanceof SaveState){
-			//	System.out.println("in instance of SaveState");
 			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
 			if (saveState.isSavingState()) {
 				saveState.setSavingState(false);
-			//	System.out.println("saveWorld");
-			    /// save world data 
+				saveWorld(saveState.getSaveFileName());			
 			}
 		} else if(myWorld.getPlayer().getState() instanceof ExitState){
 			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
@@ -97,5 +96,10 @@ public class WalkAroundWorldLooper extends GameLooper {
 				}
 			}
 		}
+	}
+	
+	private void saveWorld(String filename) {
+	//	WorldDataManager wdManager = new WorldDataManager();
+	//	wdManager.saveWorld(myWorld, filename);
 	}
 }
