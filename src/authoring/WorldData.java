@@ -31,7 +31,7 @@ public class WorldData {
         arenaLabels = null;
 	}
 
-	protected void addLevel(String s, MapData md) {
+	public void addLevel(String s, MapData md) {
 		myLevels.put(s, md);
 	}
 
@@ -115,7 +115,7 @@ public class WorldData {
     public void setMap(String map){
         currentMap=map;
     }
-    protected void setPrimaryMap(String s){
+    public void setPrimaryMap(String s){
         primaryMap = s;
     }
 
