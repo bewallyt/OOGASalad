@@ -38,7 +38,7 @@ public class GameFrame extends RPGEngine {
 
 	public GameFrame() {
 		myData = new DataManager();
-		// initializeGame();
+		//initializeGame();
 	}
 
 	/**
@@ -53,14 +53,12 @@ public class GameFrame extends RPGEngine {
 
 		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
-		// setInit(true);
+		//setInit(true);
 		createPlayer();
 		createWorlds();
 	}
-
 	/**
-	 * Loops through all maps and grid objects to set doors to their
-	 * corresponding map
+	 * Loops through all maps and grid objects to set doors to their corresponding map
 	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
@@ -70,10 +68,6 @@ public class GameFrame extends RPGEngine {
 					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
 					map.setCollisionHandler(new EnterCollision(myPlayer,
 							((Door) g)), i, map.getGridObjectList().size() - 1);
-				} else if (g instanceof NPC) {
-					((NPC) g).setPlayerMovement(myPlayer);
-
-					// set response nodes...
 				}
 			}
 		}
@@ -91,7 +85,8 @@ public class GameFrame extends RPGEngine {
 	}
 
 	/**
-	 * Creates all of the WalkAroundWorlds and the GridObjects in each world
+	 * Creates all of the WalkAroundWorlds and the GridObjects in
+	 * each world
 	 */
 
 	private void createWorlds() {
@@ -108,20 +103,21 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if (myWorldData.getPrimaryMap().equals(mapName)) {
+			if (myWorldData.getPrimaryMap().equals(mapName)){
 				outsideWorld = currWorld;
 				System.out.println(outsideWorld + " within loop");
 			}
-			// setWorld(currWorld); // this is only called for the initial
+				//setWorld(currWorld); // this is only called for the initial
 			// world
+				
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
 		setDoors();
-	}
 
+	}
 	/**
 	 * Creates the player based on PlayerData
 	 */
@@ -170,10 +166,10 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-
-	public WalkAroundWorld getInitialWorld() {
+	
+	public WalkAroundWorld getInitialWorld(){
 		System.out.println(outsideWorld + " within getInitial");
 		return outsideWorld;
-
+		
 	}
 }

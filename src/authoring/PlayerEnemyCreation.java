@@ -291,7 +291,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     }
 
     private void makeEnemy() {
-        int move;
+        int move = 1;
         if(movement.equals(one)){
             move=1;
         } else if(movement.equals(two)){

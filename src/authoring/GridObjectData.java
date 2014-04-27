@@ -73,9 +73,11 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
+		
+		myArguments.add(createSpriteImages("Ash"));
 
-		myArguments.add(createSpriteImages(image));
-		myArguments.add((String) "DEFAULT_NAME");
+		// myArguments.add(createSpriteImages(image));
+		myArguments.add("DEFAULT_NAME");
 		// myArguments.add(new String[] {Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image,
 		// Constants.GRIDOBJECTPATH+image, Constants.GRIDOBJECTPATH+image});
 //		myArguments.add(Constants.GRIDOBJECTPATH+image);
@@ -83,7 +85,7 @@ public class GridObjectData {
 //		myArguments.add(Constants.SPRITEPATH+"/"+image+"/");
 
 //		myArguments.add(root);
-		myArguments.add(1); // default movement type until given movementType
+		myArguments.add((int) 1); // default movement type until given movementType
 	}
 
     // Base empty constructor

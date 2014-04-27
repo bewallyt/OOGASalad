@@ -16,7 +16,7 @@
           null,
           null
         ],
-        "myName": "asdf",
+        "myName": "asdfqwer",
         "myMovement": 0,
         "myImages": [
           "PlayerImages/Ash/PlayerDown1.png",
@@ -40,7 +40,7 @@
           1,
           1,
           "gridobject/Ash",
-          "asdf",
+          "asdfqwer",
           {
             "Damage": 5,
             "Speed": 5,
@@ -128,6 +128,7 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
+                  "myString": "Initial NPC Response",
                   "myChildren": []
                 },
                 "myImages": [
@@ -149,10 +150,18 @@
                 "myArguments": [
                   1,
                   1,
-                  "PlayerImages//Charmander.jpg/",
-                  {
-                    "myChildren": []
-                  }
+                  [
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
+                  ],
+                  "DEFAULT_NAME",
+                  1
                 ]
               }
             ]
@@ -224,6 +233,7 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
+                  "myString": "Initial NPC Response",
                   "myChildren": []
                 },
                 "myImages": [
@@ -245,10 +255,18 @@
                 "myArguments": [
                   1,
                   1,
-                  "PlayerImages//Charmander.jpg/",
-                  {
-                    "myChildren": []
-                  }
+                  [
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
+                  ],
+                  "DEFAULT_NAME",
+                  1
                 ]
               }
             ]

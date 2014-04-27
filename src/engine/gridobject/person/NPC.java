@@ -60,19 +60,14 @@ public class NPC extends Person {
 		myDialogue = new ArrayList<String>();
 		myMovement = (Movement) Reflection.createInstance(
 				"engine.gridobject.person.Movement"
-						+ list.get(Constants.MOVEMENT_CONST), this,
+						+ (int) ((Double) list.get(Constants.MOVEMENT_CONST))
+								.intValue(), this,
 				list.get(Constants.PLAYER_CONST));
 		myResponseNode = null;
 	}
 
 	public void setResponseNode(NPCResponseNode n) {
 		myResponseNode = n;
-	}
-
-	public void setPlayerMovement(Player p) {
-		myPlayer = p;
-		myMovement = (Movement) Reflection.createInstance(
-				"engine.gridobject.person.Movement" + myMovementType, this, p);
 	}
 
 	public Player getPlayer() {
