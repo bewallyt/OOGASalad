@@ -25,16 +25,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Davis Treybig
  *
  */
-public class ImageManager {
-	public static final String SRC="src/";
-	//public static final String DEFAULT_IMAGE_PACKAGE="TestImageFiles/";
+public class ImageManager extends AbstractFileManager {
 	public static final String[] VALID_IMAGE_EXTENSIONS={".jpg", ".gif", ".JPG", ".GIF", ".png", ".PNG"};
 	public static final String DEFAULT_IMAGE_EXTENSION="png";
 	public static final String[] IMAGE_FOLDER_OPTIONS={"gridobject", "TileImage"};
 	public static final String PLAYER_IMAGE_FOLDER="src/PlayerImages/";
 	
 	public ImageManager() {	
+		super(VALID_IMAGE_EXTENSIONS, DEFAULT_IMAGE_EXTENSION);
 	}
+	/**
+	 * Returns a list of currently saved images
+	 */
 	public List<ImageFile> getSavedImageMap(){
 		List<ImageFile> imageList=new ArrayList<ImageFile>();
 		for(String s: IMAGE_FOLDER_OPTIONS){
@@ -53,79 +55,34 @@ public class ImageManager {
 	 * @throws IOException
 	 * @return Returns the new File stored in the project
 	 */
-	/*
-	public File storeImage(String fileName, File imageFile, String imageType) throws IOException{
-		String extension=getFileExtension(imageFile);
-		if(checkImageExtension(extension)){
-			Path source=Paths.get(imageFile.getAbsolutePath());
-			String newParentPath=SRC+imageType;
-			String fullPath=newParentPath+"/"+fileName+extension;
-			
-			Path newDirectory=Paths.get(fullPath);
-			File newImageFile=new File(fullPath);
-			File parentFolderFile=new File(newParentPath);
-			parentFolderFile.mkdirs();
-			try{
-				Files.copy(source, newDirectory);
-			}
-			catch(FileAlreadyExistsException e){
-				return null;
-			}
-			return (newImageFile);
-		}
-		return null;
-	}
-	*/
 	public ImageFile storeScaledImage(String filename, Image image, String imageType) throws IOException{
 		String newParentPath=SRC+imageType+"/";
-		String fullName=filename+"."+DEFAULT_IMAGE_EXTENSION;
+		String fullName=filename+"."+DEFAULT_FILE_EXTENSION;
 		String fullPath=newParentPath+fullName;
-	//	System.out.println("Full Path: "+ fullPath);
 		
 		File newImageFile=new File(fullPath);
-		if(checkImageExtension(getFileExtension(newImageFile))){
+		if(checkFileExtension(getFileExtension(newImageFile))){
 			File parentFolderFile=new File(newParentPath);
 			parentFolderFile.mkdirs();
 
 			RenderedImage rendered=imageToRenderedImage(image);
-			ImageIO.write(rendered, DEFAULT_IMAGE_EXTENSION, newImageFile);
-			//return newImageFile;
+			ImageIO.write(rendered, DEFAULT_FILE_EXTENSION, newImageFile);
 			return new ImageFile(fullName, imageType);
 		}
 		return null;
 	}
-	public RenderedImage imageToRenderedImage(Image image){
+	/**
+	 * Converts an image to a RenderedImage. Used to save the image to file. 
+	 * @param image Image to be saved
+	 * @return RenderedImage of the input image. 
+	 */
+	private RenderedImage imageToRenderedImage(Image image){
 		BufferedImage bImage= new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D bImageGraphics = bImage.createGraphics();
 		bImageGraphics.drawImage(image, 0, 0, null);
 		return (RenderedImage)bImage;
 	}
-	/**
-	 * Returns the file extension of a given file. For instance, "tester.txt" would return ".txt"
-	 * @param f File to be analyzed
-	 * @return Extension of the file
-	 */
-	private String getFileExtension(File f){
-		String extension="";
-		int i=f.getName().lastIndexOf('.');
-		if(i>0){
-			extension=f.getName().substring(i);
-		}
-		return extension;
-	}
-	/**
-	 * Checks the extension of the loaded image file to ensure it is an image. 
-	 * @param s String version of the file extension
-	 * @return Returns true if the extension is a valid image extension
-	 */
-	private boolean checkImageExtension(String s){
-		for(String validExtension: VALID_IMAGE_EXTENSIONS){
-			if(s.equals(validExtension)){
-				return true;
-			}
-		}
-		return false;
-	}
+
 	/**
 	 * Loads the image corresponding to the file name within the default Image resource package. 
 	 * @param s String name of the image file
@@ -151,13 +108,16 @@ public class ImageManager {
 	public ImageFile loadTileImage(String name){
 		return loadImage(name, IMAGE_FOLDER_OPTIONS[1]);
 	}
+	/**
+	 * Loads the player images with the given string name, ie "Ash" 
+	 * @param s String name of the image file
+	 * @return ImageFile ImageFile of the given image
+	 */
 	public ImageFile loadPlayerImage(String name){
 		FileLister f=new FileLister();
 		List<String> playerImageFolders=f.getFileList(PLAYER_IMAGE_FOLDER);
 		for(String s: playerImageFolders){
-			//System.out.println("Initial Child: "+s+"/");
 			if(f.getFileList(PLAYER_IMAGE_FOLDER+s).contains(name)){
-				//System.out.println("FUll Path: "+ PLAYER_IMAGE_FOLDER+s+"/"+name);
 				return new ImageFile(name, PLAYER_IMAGE_FOLDER+s+"/"+name);
 			}
 		}
