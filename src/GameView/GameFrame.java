@@ -14,6 +14,7 @@ import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.gameObjects.MapData;
 import authoring.gameObjects.PlayerData;
+import authoring.gameObjects.WeaponData;
 import authoring.gameObjects.WorldData;
 import Data.DataManager;
 import util.Constants;
@@ -30,6 +31,7 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
+	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
 	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
 
 
@@ -158,17 +160,18 @@ public class GameFrame extends RPGEngine {
 	}
 	
 	private Map<String, Weapon> makeWeapons() {
-	for(String wep : myWorldData.getMyWeapons().keySet()){
-		System.out.println(wep);
-//		myWeapons.put(wep, new Weapon(
-//				myWorldData.getMyWeapons().get(wep).getMyName(),
-//				myWorldData.getMyWeapons().get(wep).getMyImage(),
-//				myWorldData.getMyWeapons().get(wep).getMySpeed(),
-//				myWorldData.getMyWeapons().get(wep).getMyDamage(),
-//				myWorldData.getMyWeapons().get(wep).getMyAttacks()
-//				));
-	}
-	return null;
+		myWeaponData = myWorldData.getMyWeapons();
+		for(String wep : myWeaponData.keySet()){
+			WeaponData currWeaponData = myWeaponData.get(wep);
+			Weapon currWeapon = new Weapon(
+					currWeaponData.getMyName(),
+					currWeaponData.getMyImage(),
+					currWeaponData.getMySpeed(),
+					currWeaponData.getMyDamage(),
+					null);
+			myWeapons.put(wep, currWeapon);
+		}
+		return null;
 }
 
 
