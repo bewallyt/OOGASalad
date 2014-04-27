@@ -1,6 +1,5 @@
 package GameView;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,8 +29,7 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
-	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
-
+	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -50,8 +48,8 @@ public class GameFrame extends RPGEngine {
 	public void initialize(String fileName) {
 
 		myWorldData = myData.getWorldData(fileName);
+		createPlayer();
 		createWorlds();
-		setDoors();
 	}
 
 	/**
@@ -83,8 +81,6 @@ public class GameFrame extends RPGEngine {
 
 	private void createWorlds() {
 
-		createPlayer();
-
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);
@@ -105,7 +101,7 @@ public class GameFrame extends RPGEngine {
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-
+		setDoors();
 	}
 
 	/**
@@ -156,21 +152,20 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-	
-	private Map<String, Weapon> makeWeapons() {
-	for(String wep : myWorldData.getMyWeapons().keySet()){
-		System.out.println(wep);
-//		myWeapons.put(wep, new Weapon(
-//				myWorldData.getMyWeapons().get(wep).getMyName(),
-//				myWorldData.getMyWeapons().get(wep).getMyImage(),
-//				myWorldData.getMyWeapons().get(wep).getMySpeed(),
-//				myWorldData.getMyWeapons().get(wep).getMyDamage(),
-//				myWorldData.getMyWeapons().get(wep).getMyAttacks()
-//				));
-	}
-	return null;
-}
 
+	private Map<String, Weapon> makeWeapons() {
+		for (String wep : myWorldData.getMyWeapons().keySet()) {
+			System.out.println(wep);
+			// myWeapons.put(wep, new Weapon(
+			// myWorldData.getMyWeapons().get(wep).getMyName(),
+			// myWorldData.getMyWeapons().get(wep).getMyImage(),
+			// myWorldData.getMyWeapons().get(wep).getMySpeed(),
+			// myWorldData.getMyWeapons().get(wep).getMyDamage(),
+			// myWorldData.getMyWeapons().get(wep).getMyAttacks()
+			// ));
+		}
+		return null;
+	}
 
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");
