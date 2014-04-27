@@ -36,9 +36,10 @@ public class WalkAroundState extends AbstractState {
 					.checkSurroundings(myPlayer).get(0);
 			if (surrounding != null) {
 				surrounding.doAction();
-				if(surrounding.getPickupable()!=null){
+				if (surrounding.getPickupable() != null) {
 					(surrounding.getPickupable()).pickUp(myPlayer);
-					((Barrier) surrounding).displayAlertBox(myPlayer, surrounding.getPickupable());
+					((Barrier) surrounding).displayAlertBox(myPlayer,
+							surrounding.getPickupable());
 					surrounding.setPickupable(null);
 				}
 			}
@@ -54,7 +55,8 @@ public class WalkAroundState extends AbstractState {
 		if (e.getKeyCode() == Control.A)
 			myPlayer.setAClick(false);
 		if (e.getKeyCode() == Control.SPACE) {
-			MenuManager mm = new MenuManager(myPlayer, new String[] {"Weapon", "Bag", "Name", "Save", "Exit"});
+			MenuManager mm = new MenuManager(myPlayer, new String[] { "Weapon",
+					"Bag", "Name", "Save", "Exit" });
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
 			myPlayer.setInteractionBox(mm);
