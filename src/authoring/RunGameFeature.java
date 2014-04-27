@@ -23,7 +23,8 @@ public class RunGameFeature extends Feature implements ActionListener {
     }
 
     public void runGame(){
-        mainGame.initializeGame();
+        mainGame.startEngine();
+     
     }
 
     @Override

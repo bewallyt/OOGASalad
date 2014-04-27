@@ -15,6 +15,16 @@ public class Main extends RPGEngine {
 			e.printStackTrace();
 		}
 	}
+	
+//	public void startEngine() {
+//		Main engine = new Main();
+//		engine.initializeGame();
+//		try {
+//			engine.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public void makeTitleScreen() {
 
