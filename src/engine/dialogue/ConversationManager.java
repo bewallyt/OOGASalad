@@ -30,13 +30,13 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	private int widthOfText;
 	private Player myPlayer;
 	private GridObject myNPC;
-	private static boolean RESPONDING = true;
+	private static boolean responding = true;
 	private int selectedOptionX;
 	private int selectedOptionY;
 	private static final int X_OFFSET = 5/10;
 	private static final int Y_OFFSET = 3/10;
 	private static final int SYMBOL_RADIUS = 10;
-	//private DialogueListeingState Listening = new DialogueListeningState();
+	private ConversationState myCurrentState;
 
 	public ConversationManager(Player p, GridObject n, NPCResponseNode nrNode) {
 		super();
@@ -45,64 +45,16 @@ public class ConversationManager extends AbstractManager implements InteractionB
 		myPlayer = p;
 		myPlayer.addItem(currentResponseNode.getItem());
 		myNPC = n;
-		System.out.println(textToBeDisplayed);
-		RESPONDING = false;
+		responding = false;
+		myCurrentState = new ListeningState();
 	}
 
 	@Override
 	public void getNextText() {
-		boolean itemNodePresent = false;
-		boolean newNodes = false;
-		if (RESPONDING) {
-			currentResponseNode = currentUserQueryNode.getMyNPCResponseNode();
-			textToBeDisplayed = currentResponseNode.getDialogue();
-			System.out.println(textToBeDisplayed);
-			RESPONDING = false;
-			newNodes = true;
-		} else if (hasItemNode()) {
-			for (UserQueryNode node : currentResponseNode.getUserQueryNodes()) {
-				if (node != null && node.hasItem()) {
-					currentResponseNode = node.getMyNPCResponseNode();
-					textToBeDisplayed = currentResponseNode.getDialogue();
-					System.out.println(textToBeDisplayed);
-					itemNodePresent = true;
-					newNodes = true;
-					break;
-				}
-			}
-		} else {
-			newNodes = createAvailableResponses(newNodes);
-		}
+		myCurrentState.doState(this);
 
-		// we exit the conversation here
-		if (!newNodes) {
-			myPlayer.setState(new WalkAroundState(myPlayer));
-			myNPC.getDialogueDisplayControl().setInteractionBox(new TransparentDisplayer());
-		}
 	}
 
-	private boolean createAvailableResponses(boolean nNodes) {
-		int count = 0;
-		if (currentResponseNode.getUserQueryNodes().isEmpty()) return false;
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 2; j++) {
-				getMatrix().setNode(currentResponseNode.getUserQueryNodes().get(count), j, i);
-				count++;
-			}
-		}	
-		currentUserQueryNode = (UserQueryNode) getMatrix().getCurrentNode();
-		RESPONDING = true;
-		return true;
-	}
-
-	private boolean hasItemNode() {
-		for (UserQueryNode node : currentResponseNode.getUserQueryNodes()) {
-			if (node != null && node.hasItem()) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	public Player getPlayer() {
 		return myPlayer;
@@ -112,18 +64,44 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	public void setCurrentNode() {
 		currentUserQueryNode = (UserQueryNode) getMatrix().getCurrentNode();
 	}
+	
+	public void setCurrentNPCResponseNode(NPCResponseNode n) {
+		currentResponseNode = n;
+	}
+	
+	public NPCResponseNode getCurrentNPCResponseNode() {
+		return currentResponseNode;
+	}
+	
+	public UserQueryNode getCurrentUserQueryNode() {
+		return currentUserQueryNode;
+	}
 
 	@Override
 	public boolean isResponding() {
-		return RESPONDING;
+		return responding;
+	}
+	
+	public void setResponding(boolean b) {
+		responding = b;
 	}
 
 	@Override
 	public String getTextToBeDisplayed() {
 		return textToBeDisplayed;
 	}
+	
+	public void setTextToBeDisplayed(String text) {
+		textToBeDisplayed = text;
+	}
 
-
+	public void setCurrentState(ConversationState state) {
+		myCurrentState = state;
+	}
+	
+	public void setCurrentUserQueryNode(UserQueryNode currentNode) {
+		currentUserQueryNode =  currentNode;
+	}
 
 
 }
