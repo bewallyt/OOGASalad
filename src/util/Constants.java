@@ -52,7 +52,8 @@ public class Constants {
 
     public static final int NAME_CONST = 3;
     public static final int VALUES_CONST = 4;
-    public static final int MOVEMENT_CONST = 5;
+    public static final int MOVEMENT_CONST = 4;
+    public static final int PLAYER_CONST = 5;
     public static final int WEAPONS_CONST = 6;
 
     public static final int TO_X_CONST = 3;

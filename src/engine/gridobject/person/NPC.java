@@ -38,7 +38,8 @@ public class NPC extends Person {
 	 *            the player
 	 */
 	public NPC(String[] animImages, String name, double speed,
-			int numTilesWidth, int numTilesHeight, int movementType, Player player) {
+			int numTilesWidth, int numTilesHeight, int movementType,
+			Player player) {
 		super(animImages, name, speed, numTilesWidth, numTilesHeight);
 		myDialogue = new ArrayList<String>();
 		myPlayer = player;
@@ -52,11 +53,15 @@ public class NPC extends Person {
 	@SuppressWarnings("unchecked")
 	public NPC(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
-				.toArray(new String[12]), "name", Constants.SPEED,
+				.toArray(new String[12]), (String) list
+				.get(Constants.NAME_CONST), Constants.SPEED,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
 		myDialogue = new ArrayList<String>();
-		myMovementType = (int) list.get(Constants.MOVEMENT_CONST);
+		myMovement = (Movement) Reflection.createInstance(
+				"engine.gridobject.person.Movement"
+						+ list.get(Constants.MOVEMENT_CONST), this,
+				list.get(Constants.PLAYER_CONST));
 		myResponseNode = null;
 	}
 
