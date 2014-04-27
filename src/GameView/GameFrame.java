@@ -1,6 +1,5 @@
 package GameView;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,6 @@ public class GameFrame extends RPGEngine {
 	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
 	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
 
-
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
 	public GameFrame() {
@@ -52,8 +50,8 @@ public class GameFrame extends RPGEngine {
 	public void initialize(String fileName) {
 
 		myWorldData = myData.getWorldData(fileName);
+		createPlayer();
 		createWorlds();
-		setDoors();
 	}
 
 	/**
@@ -85,8 +83,6 @@ public class GameFrame extends RPGEngine {
 
 	private void createWorlds() {
 
-		createPlayer();
-
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);
@@ -96,7 +92,7 @@ public class GameFrame extends RPGEngine {
 
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
-							* Constants.TILE_SIZE, myPlayer,
+					* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
 			if (myWorldData.getPrimaryMap().equals(mapName)) {
@@ -107,7 +103,7 @@ public class GameFrame extends RPGEngine {
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-
+		setDoors();
 	}
 
 	/**
@@ -135,7 +131,6 @@ public class GameFrame extends RPGEngine {
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
 			world.setTileObject(g, g.getX(), g.getY());
-			System.out.println("x: " + g.getX() + " y: " + g.getY());
 		}
 	}
 
@@ -149,8 +144,6 @@ public class GameFrame extends RPGEngine {
 	 */
 	private void setTileImages(WalkAroundWorld world, List<String> list) {
 		int n = 0;
-		System.out.println("height: " + world.getTileGridHeight());
-		System.out.println("width: " + world.getTileGridWidth());
 		for (int i = 0; i < world.getTileGridHeight(); i++) {
 			for (int j = 0; j < world.getTileGridWidth(); j++) {
 				world.setTileImage(j, i, list.get(n));
@@ -158,7 +151,7 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-	
+
 	private Map<String, Weapon> makeWeapons() {
 		myWeaponData = myWorldData.getMyWeapons();
 		for(String wep : myWeaponData.keySet()){
@@ -172,8 +165,7 @@ public class GameFrame extends RPGEngine {
 			myWeapons.put(wep, currWeapon);
 		}
 		return null;
-}
-
+	}
 
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");
