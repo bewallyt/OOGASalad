@@ -10,12 +10,14 @@ public class ListeningState implements ConversationState{
 	public void doState(ConversationManager cm) {
 		
 		boolean newNodes = true;
+		boolean itemNode = false;
 		
 		if (hasItemNode(cm)) {
 			for (UserQueryNode node : cm.getCurrentNPCResponseNode().getUserQueryNodes()) {
 				if (node != null && node.hasItem()) {
 					cm.setCurrentNPCResponseNode(node.getMyNPCResponseNode());
 					cm.setTextToBeDisplayed(cm.getCurrentNPCResponseNode().getDialogue());
+					itemNode = true;
 					break;
 				}
 			}
@@ -27,11 +29,13 @@ public class ListeningState implements ConversationState{
 		if (!newNodes) {
 			cm.getPlayer().setState(new WalkAroundState(cm.getPlayer()));
 			cm.getPlayer().getDialogueDisplayControl().setInteractionBox(new TransparentDisplayer());
+		} else if (itemNode) {
+			cm.setCurrentState(new ListeningState());
 		} else {
 			cm.setCurrentState(new RespondingState());
+			cm.setResponding(true);
 		}
 		
-		cm.setResponding(true);
 		
 	}
 	

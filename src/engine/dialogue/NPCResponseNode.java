@@ -13,11 +13,13 @@ public class NPCResponseNode {
 //	private Map<UserQueryNode, NPCResponseNode> myChildren;
 	private List<UserQueryNode> myChildren;
 	private GridObject myNPC;
+	private Item myItem;
 	
-	public NPCResponseNode(GridObject n, String dialogue) {
-		myNPC = n;
+	public NPCResponseNode(String dialogue, Item it) {
+		//myNPC = n;
 		myDialogue = dialogue;
-		myChildren = new ArrayList<UserQueryNode>();		
+		myChildren = new ArrayList<UserQueryNode>();
+		myItem = it;
 	}
 	
 	/**
@@ -40,9 +42,15 @@ public class NPCResponseNode {
 	
 	public Item getItem() {
 		// just gets first item in list for now
-		if (!((NPC) myNPC).getItems().isEmpty()) {
-			return ((NPC) myNPC).getItems().get(0);
+//		if (!((NPC) myNPC).getItems().isEmpty()) {
+//			return ((NPC) myNPC).getItems().get(0);
+//		}
+//		return null;
+		
+		if (myItem != null) {
+			return myItem;
 		}
+		
 		return null;
 	}
 	
