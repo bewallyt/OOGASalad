@@ -58,11 +58,13 @@ public class NPC extends Person {
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
 		myDialogue = new ArrayList<String>();
+		myPlayer = (Player) list.get(Constants.NPC_PLAYER_CONST);
+		System.out.println(list.size());
 		myMovement = (Movement) Reflection.createInstance(
 				"engine.gridobject.person.Movement"
-						+ (int) ((Double) list.get(Constants.MOVEMENT_CONST))
+						+ (int) ((Double) list.get(Constants.NPC_MOVEMENT_CONST))
 								.intValue(), this,
-				list.get(Constants.PLAYER_CONST));
+				list.get(Constants.NPC_PLAYER_CONST));
 		myResponseNode = null;
 	}
 

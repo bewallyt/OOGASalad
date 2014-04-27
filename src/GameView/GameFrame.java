@@ -90,7 +90,6 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);

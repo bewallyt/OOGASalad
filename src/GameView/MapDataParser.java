@@ -56,7 +56,7 @@ public class MapDataParser {
 					GridObject gridobject = null;
 					data.getArguments().add(p);
 
-					 System.out.println(data.getArguments());
+					System.out.println(data.getArguments());
 
 					try {
 						gridobject = (GridObject) Class.forName(data.getID())
