@@ -12,7 +12,7 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.state.LoadState;
+import engine.state.GameSelectState;
 
 public class TitleManager implements InteractionBox {
 
@@ -20,6 +20,7 @@ public class TitleManager implements InteractionBox {
 	public static boolean startPressed = false;
 	private String displayString;
 	private Player myPlayer;
+	private boolean isGameLoaded = false;
 
 	public TitleManager(Player p) {
 		myPlayer = p;
@@ -54,7 +55,7 @@ public class TitleManager implements InteractionBox {
 					.scaleImage();
 			g2d.drawImage(boxImg, 0, height + 70, null);
 
-			if (displayString != LoadState.LOAD_FINISHED) {
+			if (displayString != GameSelectState.LOAD_FINISHED) {
 				g2d.drawString("Load from (w/o extension):", 20, height + 115);
 
 				updateText();
@@ -93,6 +94,21 @@ public class TitleManager implements InteractionBox {
 			startPressed = true;
 		}
 	}
+	
+	
+	public void toggleIsGameLoaded(){
+		if(isGameLoaded){
+			isGameLoaded = false;	
+		}
+		else{ 
+			isGameLoaded = true;
+		}
+	}
+	
+	public boolean getIsGameLoaded(){
+		return isGameLoaded;
+	}
+	
 
 
 	@Override

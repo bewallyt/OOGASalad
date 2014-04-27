@@ -192,10 +192,11 @@ public class Main extends RPGEngine {
 		enemy.setBattleImage("ImageFiles/rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
 		enemy.addStatistic(new Statistic("damage",10,100));
-		enemy.addStatistic(new Statistic("speed",10,100));
+		enemy.addStatistic(new Statistic("speed",100,100));
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
-
+		enemy.changeMoney(50);
+		enemy.setExperience(100);
 		enemy.getWorld().setMusic("/music/pokeBattle.wav");
 
 		buildingWorld.setMusic("/music/pokeCenter.wav");

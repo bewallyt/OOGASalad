@@ -50,6 +50,7 @@ public class GameSelectState extends AbstractState {
 			} else if (e.getKeyCode() == Control.ENTER) {
 				loadFile = buffer.toString();
 				load(loadFile);
+				myTM.toggleIsGameLoaded();
 
 			}
 		} else {
