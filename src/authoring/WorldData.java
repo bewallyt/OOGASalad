@@ -60,10 +60,10 @@ public class WorldData {
 	public Map<String, MapData> getMaps() {
 		return myLevels;
 	}
-	protected Map<String, Item> getMyItems() {
+	public Map<String, Item> getMyItems() {
 		return myItems;
 	}
-	protected List<RandomEnemy> getMyRandomEnemies(){
+	public List<RandomEnemy> getMyRandomEnemies(){
 		return myLevels.get(currentMap).getMyRandomEnemies();
 	}
 	public PlayerData getPlayData() {
@@ -72,7 +72,7 @@ public class WorldData {
 	public String getPrimaryMap() {
 		return primaryMap;
 	}
-	protected Map<String,Weapon> getMyWeapons(){
+	public Map<String,Weapon> getMyWeapons(){
 		return myWeapons;
 	}
 
