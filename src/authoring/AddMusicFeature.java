@@ -81,7 +81,6 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 				File savedFile = m.storeMusicFile(fileName, songFile);
 				FeatureManager.getWorldData().saveSong(fileName, savedFile);
 				model.addElement(fileName);
-				System.out.println(fileName);
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!", JOptionPane.ERROR_MESSAGE);
 				chooseMusic(fileName);
