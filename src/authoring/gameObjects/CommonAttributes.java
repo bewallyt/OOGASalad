@@ -29,8 +29,8 @@ public abstract class CommonAttributes {
     protected String[] attributes = {"Speed","Damage","Defense","Health","Level"};
     protected Map<String,Integer> attributeValues;
     protected Map<String,JTextField> textValues;
-    protected Map<String,Weapon> weaponMap;
-    protected Map<String,Item> itemMap;
+    protected Map<String,WeaponData> weaponMap;
+    protected Map<String,ItemData> itemMap;
     protected JTextField itemName;
     protected JTextField imageName;
     protected JTextField xcoor;
@@ -50,8 +50,8 @@ public abstract class CommonAttributes {
     protected int y;
 
     public CommonAttributes(){
-        weaponMap = new HashMap<String, Weapon>();
-        itemMap = new HashMap<String, Item>();
+        weaponMap = new HashMap<String, WeaponData>();
+        itemMap = new HashMap<String, ItemData>();
         weaponListModel = new DefaultListModel();
         itemListModel = new DefaultListModel();
     }

@@ -17,8 +17,8 @@ public class WorldData {
 	private Map<String, File> mySongs;
 	private String primaryMap;
 	private String currentMap;
-    private Map<String,Item> myItems;
-    private Map<String,Weapon> myWeapons;
+    private Map<String,ItemData> myItems;
+    private Map<String,WeaponData> myWeapons;
     private String[] arenaLabels;
 	
 	public WorldData(){
@@ -26,8 +26,8 @@ public class WorldData {
 		myLevels = new HashMap<String, MapData>();
 		myImages = new HashMap<String, File>();
 		mySongs = new HashMap<String, File>();
-        myWeapons = new HashMap<String, Weapon>();
-        myItems = new HashMap<String, Item>();
+        myWeapons = new HashMap<String, WeaponData>();
+        myItems = new HashMap<String, ItemData>();
         arenaLabels = null;
 	}
 
@@ -60,7 +60,7 @@ public class WorldData {
 	public Map<String, MapData> getMaps() {
 		return myLevels;
 	}
-	public Map<String, Item> getMyItems() {
+	public Map<String, ItemData> getMyItems() {
 		return myItems;
 	}
 	public List<RandomEnemy> getMyRandomEnemies(){
@@ -72,7 +72,7 @@ public class WorldData {
 	public String getPrimaryMap() {
 		return primaryMap;
 	}
-	public Map<String,Weapon> getMyWeapons(){
+	public Map<String,WeaponData> getMyWeapons(){
 		return myWeapons;
 	}
 
@@ -91,7 +91,7 @@ public class WorldData {
 	public void saveSong(String s, File f) {
 		mySongs.put(s, f);
 	}
-	public void saveItem(String n, Item it){
+	public void saveItem(String n, ItemData it){
 		myItems.put(n,it);
 	}
 	protected void saveNPC(NPCData myNPC) {
@@ -103,7 +103,7 @@ public class WorldData {
 	protected void saveRandomEnemy(RandomEnemy re){
 		myLevels.get(currentMap).saveRandomEnemy(re);
 	}
-	public void saveWeapons(String n, Weapon wp){
+	public void saveWeapons(String n, WeaponData wp){
 		myWeapons.put(n,wp);
 	}
 

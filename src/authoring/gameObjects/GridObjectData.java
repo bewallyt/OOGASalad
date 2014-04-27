@@ -18,7 +18,7 @@ public class GridObjectData {
 
 	private int myX;
 	private int myY;
-	private List<Item> itemList=new ArrayList<Item>();
+	private List<ItemData> itemList=new ArrayList<ItemData>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
