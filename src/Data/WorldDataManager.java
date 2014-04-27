@@ -10,9 +10,9 @@ import engine.item.Weapon;
 import engine.world.Tile;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
-import authoring.MapData;
-import authoring.PlayerData;
-import authoring.WorldData;
+import authoring.gameObjects.MapData;
+import authoring.gameObjects.PlayerData;
+import authoring.gameObjects.WorldData;
 
 public class WorldDataManager {
 	public WorldDataManager() {}

@@ -173,6 +173,12 @@ public abstract class GridObject{
 	public void addStatistic(String name, int value,int maxValue){
 		myStatsMap.put(name,new Statistic(name,value,maxValue));
 	}
+	
+	public void addAllStatistics(Map<String, Double> startVals){
+		for(String stat : startVals.keySet()){
+			myStatsMap.put(stat, new Statistic(stat, startVals.get(stat).intValue(), Constants.DEF_MAX_STAT));
+		}
+	}
 
 	public Map<String,Statistic> getStatsMap(){
 		return myStatsMap;

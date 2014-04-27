@@ -2,6 +2,8 @@ package authoring;
 
 import javax.swing.*;
 
+import authoring.features.FeatureManager;
+
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.*;

@@ -7,7 +7,7 @@ import java.util.List;
 import util.Constants;
 import util.Music;
 import Data.FileStorer;
-import authoring.WorldData;
+import authoring.gameObjects.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
 import engine.collision.BattleCollision;
