@@ -1,5 +1,7 @@
 package authoring;
 
+import authoring.gameObjects.NPCResponseNode;
+
 public class UserQueryNode {
 	private String myString;
 	private NPCResponseNode myChild;

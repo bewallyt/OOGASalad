@@ -6,6 +6,8 @@ import java.util.*;
 
 import javax.swing.*;
 
+import authoring.features.Feature;
+
 public class AuthoringView {
 	public static final String MENU_BAR = "menu bar";
 	

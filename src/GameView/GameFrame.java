@@ -9,11 +9,12 @@ import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Player;
+import engine.item.Weapon;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
-import authoring.MapData;
-import authoring.PlayerData;
-import authoring.WorldData;
+import authoring.gameObjects.MapData;
+import authoring.gameObjects.PlayerData;
+import authoring.gameObjects.WorldData;
 import Data.DataManager;
 import util.Constants;
 
@@ -29,6 +30,8 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
+	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
+
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -150,6 +153,21 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
+	
+	private Map<String, Weapon> makeWeapons() {
+	for(String wep : myWorldData.getMyWeapons().keySet()){
+		System.out.println(wep);
+//		myWeapons.put(wep, new Weapon(
+//				myWorldData.getMyWeapons().get(wep).getMyName(),
+//				myWorldData.getMyWeapons().get(wep).getMyImage(),
+//				myWorldData.getMyWeapons().get(wep).getMySpeed(),
+//				myWorldData.getMyWeapons().get(wep).getMyDamage(),
+//				myWorldData.getMyWeapons().get(wep).getMyAttacks()
+//				));
+	}
+	return null;
+}
+
 
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");

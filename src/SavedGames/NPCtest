@@ -1,6 +1,6 @@
 {
   "myLevels": {
-    "first": {
+    "map1": {
       "playerData": {
         "myItems": [
           null
@@ -16,7 +16,7 @@
           null,
           null
         ],
-        "myName": "newItem",
+        "myName": "asdfqwer",
         "myMovement": 0,
         "myImages": [
           "PlayerImages/Ash/PlayerDown1.png",
@@ -40,7 +40,7 @@
           1,
           1,
           "gridobject/Ash",
-          "newItem",
+          "asdfqwer",
           {
             "Damage": 5,
             "Speed": 5,
@@ -132,30 +132,36 @@
                   "myChildren": []
                 },
                 "myImages": [
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg"
+                  "PlayerImages/Ash/PlayerDown1.png",
+                  "PlayerImages/Ash/PlayerDown2.png",
+                  "PlayerImages/Ash/PlayerLeft1.png",
+                  "PlayerImages/Ash/PlayerLeft2.png",
+                  "PlayerImages/Ash/PlayerRight1.png",
+                  "PlayerImages/Ash/PlayerRight2.png",
+                  "PlayerImages/Ash/PlayerUp1.png",
+                  "PlayerImages/Ash/PlayerUp2.png"
                 ],
                 "width": 1,
                 "height": 1,
-                "myX": 3,
-                "myY": 3,
+                "myX": 2,
+                "myY": 2,
                 "itemList": [],
                 "myID": "engine.gridobject.person.NPC",
                 "myArguments": [
                   1,
                   1,
                   [
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg"
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
                   ],
-                  {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
-                  }
+                  "DEFAULT_NAME",
+                  1
                 ]
               }
             ]
@@ -214,72 +220,6 @@
           }
         ],
         [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
@@ -297,33 +237,105 @@
                   "myChildren": []
                 },
                 "myImages": [
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg",
-                  "gridobject/NPCSprite.jpg"
+                  "PlayerImages/Ash/PlayerDown1.png",
+                  "PlayerImages/Ash/PlayerDown2.png",
+                  "PlayerImages/Ash/PlayerLeft1.png",
+                  "PlayerImages/Ash/PlayerLeft2.png",
+                  "PlayerImages/Ash/PlayerRight1.png",
+                  "PlayerImages/Ash/PlayerRight2.png",
+                  "PlayerImages/Ash/PlayerUp1.png",
+                  "PlayerImages/Ash/PlayerUp2.png"
                 ],
                 "width": 1,
                 "height": 1,
-                "myX": 3,
-                "myY": 3,
+                "myX": 2,
+                "myY": 2,
                 "itemList": [],
                 "myID": "engine.gridobject.person.NPC",
                 "myArguments": [
                   1,
                   1,
                   [
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg",
-                    "gridobject/NPCSprite.jpg"
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
                   ],
-                  {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
-                  }
+                  "DEFAULT_NAME",
+                  1
                 ]
               }
             ]
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -1058,8 +1070,9 @@
     }
   },
   "myImages": {},
-  "primaryMap": "first",
-  "currentMap": "first",
+  "mySongs": {},
+  "primaryMap": "map1",
+  "currentMap": "map1",
   "myItems": {
     "Super Potion": {
       "itemName": "Super Potion",

@@ -17,6 +17,7 @@ public class NPC extends Person {
 	private Movement myMovement;
 	private Player myPlayer;
 	private NPCResponseNode myResponseNode;
+	private int myMovementType;
 
 	/**
 	 * Instantiates a new npc.
@@ -46,24 +47,24 @@ public class NPC extends Person {
 				"engine.gridobject.person.Movement" + movementType, this,
 				player);
 
-		// CHANGE THIS
 		myResponseNode = null;
 	}
 
 	@SuppressWarnings("unchecked")
 	public NPC(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
-				.toArray(new String[12]), "name", Constants.SPEED,
+				.toArray(new String[12]), (String) list
+				.get(Constants.NAME_CONST), Constants.SPEED,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
 		myDialogue = new ArrayList<String>();
-		// myPlayer = player;
-		/*
-		 * myMovement = (Movement) Reflection.createInstance(
-		 * "engine.gridobject.person.Movement" + movementType, this, player);
-		 */
-
-		// CHANGE THIS
+		myPlayer = (Player) list.get(Constants.NPC_PLAYER_CONST);
+		System.out.println(list.size());
+		myMovement = (Movement) Reflection.createInstance(
+				"engine.gridobject.person.Movement"
+						+ (int) ((Double) list.get(Constants.NPC_MOVEMENT_CONST))
+								.intValue(), this,
+				list.get(Constants.NPC_PLAYER_CONST));
 		myResponseNode = null;
 	}
 

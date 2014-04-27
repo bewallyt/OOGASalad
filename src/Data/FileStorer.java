@@ -11,7 +11,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import authoring.WorldData;
+import authoring.gameObjects.WorldData;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -3,6 +3,7 @@ package engine.gridobject.person;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import engine.battle.Attack;
 import engine.dialogue.AbstractManager;
@@ -129,8 +130,17 @@ public abstract class Person extends GridObject {
 	public void addWeapon(Weapon weapon){
 		myWeapons.add(weapon);
 		myCurrentWeapon=myWeapons.get(0);
-		
-		
+	}
+
+	public void removeWeapon(Weapon weapon){
+		myWeapons.remove(weapon);
+		myCurrentWeapon=myWeapons.get(0);
+	}
+
+	public void addAllWeapons(Map<String, Weapon> weaponTypes, String[] weaponArr) {
+		for(int i = 0; i < weaponArr.length; i++){
+			addWeapon(weaponTypes.get(weaponArr[i]));
+		}
 	}
 
 	public List<Weapon> getWeaponList(){

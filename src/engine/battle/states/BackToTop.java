@@ -7,7 +7,6 @@ public class BackToTop implements BattleState{
 	@Override
 	public void doState(BattleManager manager) {
 		manager.backToTopOfBattle();
-		
 	}
 
 }
