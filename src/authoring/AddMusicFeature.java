@@ -103,7 +103,7 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 		String name = model.get(availableMusic.getSelectedIndex());
-		JOptionPane.showConfirmDialog(null, "Would you like to make " + name + "the song for this map?", "Confirm", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, "Would you like to make " + name + " the song for this map?", "Confirm", JOptionPane.OK_OPTION);
 		MapData cm = FeatureManager.getWorldData().getCurrentMap();
 		cm.addSong(name);
 	}
