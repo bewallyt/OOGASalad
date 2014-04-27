@@ -5,9 +5,9 @@ import java.util.List;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import authoring.GridObjectData;
-import authoring.MapData;
-import authoring.TileData;
+import authoring.gameObjects.GridObjectData;
+import authoring.gameObjects.MapData;
+import authoring.gameObjects.TileData;
 
 /**
  * Class used to parse an instance of MapData into the GridObjects and Tile

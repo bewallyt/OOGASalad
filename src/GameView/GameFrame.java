@@ -11,9 +11,9 @@ import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
-import authoring.MapData;
-import authoring.PlayerData;
-import authoring.WorldData;
+import authoring.gameObjects.MapData;
+import authoring.gameObjects.PlayerData;
+import authoring.gameObjects.WorldData;
 import Data.DataManager;
 import util.Constants;
 
