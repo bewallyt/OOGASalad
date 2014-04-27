@@ -72,7 +72,7 @@ public class WorldData {
 	public String getPrimaryMap() {
 		return primaryMap;
 	}
-	protected Map<String,Weapon> getMyWeapons(){
+	public Map<String,Weapon> getMyWeapons(){
 		return myWeapons;
 	}
 

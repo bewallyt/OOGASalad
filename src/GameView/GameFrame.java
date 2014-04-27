@@ -14,8 +14,10 @@ import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 import engine.main.RPGEngine;
+import engine.item.Weapon;
 import authoring.MapData;
 import authoring.PlayerData;
+//import authoring.Weapon;
 import authoring.WorldData;
 import Data.DataManager;
 import util.Constants;
@@ -33,6 +35,7 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
+	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -90,6 +93,11 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
+//		Map<String,Weapon> weapons = myWorldData.getMyWeapons();
+//		myWeapons = myWorldData.getMyWeapons();
+		
+		
+
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
 			MapDataParser parser = new MapDataParser(map, myPlayer);
@@ -164,6 +172,19 @@ public class GameFrame extends RPGEngine {
 				world.setTileImage(j, i, list.get(n));
 				n++;
 			}
+		}
+	}
+	
+	private Map<String, Weapon> makeWeapons() {
+		for(String wep : myWorldData.getMyWeapons().keySet()){
+			System.out.println(wep);
+			myWeapons.put(wep, new Weapon(
+					myWorldData.getMyWeapons().get(wep).getMyName(),
+					myWorldData.getMyWeapons().get(wep).getMyImage(),
+					myWorldData.getMyWeapons().get(wep).getMySpeed(),
+					myWorldData.getMyWeapons().get(wep).getMyDamage(),
+					myWorldData.getMyWeapons().get(wep).getMyAttacks()
+					));
 		}
 	}
 	
