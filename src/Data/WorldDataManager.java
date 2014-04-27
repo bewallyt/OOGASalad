@@ -57,8 +57,8 @@ public class WorldDataManager {
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j< cols; j++) {
 					Tile t = tileMatrix[i][j];
-					//String s = t.getBackgroundImageName();
-				//	md.getTileData(i, j).setImageName(s);
+					String s = t.getBackgroundImageName();
+					md.getTileData(i, j).setImageName(s);
 				}
 			}
 			Player p = w.getPlayer();
