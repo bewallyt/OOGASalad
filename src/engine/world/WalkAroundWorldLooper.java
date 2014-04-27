@@ -12,7 +12,6 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.state.DialogueState;
 import engine.state.ExitState;
-import engine.state.LoadState;
 import engine.state.SaveState;
 import engine.state.WalkAroundState;
 
@@ -72,7 +71,6 @@ public class WalkAroundWorldLooper extends GameLooper {
 			    /// save world data 
 			}
 		} else if(myWorld.getPlayer().getState() instanceof ExitState){
-			System.out.println("WalkAroundWorlLoop in ExitState");
 			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
 			titleScreen.setBackground("PokemonBackground.png");
 			titleScreen.setMusic("/music/PokemonIntro.wav");
