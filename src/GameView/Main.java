@@ -1,4 +1,4 @@
-package main;
+package GameView;
 
 import engine.gridobject.person.Player;
 import engine.main.RPGEngine;
@@ -15,8 +15,18 @@ public class Main extends RPGEngine {
 			e.printStackTrace();
 		}
 	}
+	
+//	public void startEngine() {
+//		Main engine = new Main();
+//		engine.initializeGame();
+//		try {
+//			engine.doGameLoop();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
-	private void makeTitleScreen() {
+	public void makeTitleScreen() {
 
 		Player playerDummy = new Player();
 		TitleWorld titleScreen = new TitleWorld(1000, 1000, playerDummy);

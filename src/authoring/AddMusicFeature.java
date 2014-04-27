@@ -56,11 +56,13 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		JTextField name = new JTextField(10);
 		JPanel panel = new JPanel();
 		panel.add(name);
-		int result = JOptionPane.showOptionDialog(null, panel, "Name Your Song", JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+		int result = JOptionPane.showOptionDialog(null, panel, "Name Your Song",
+                JOptionPane.CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
 		if(result == JOptionPane.OK_OPTION){
 			if(name.getText().equals("")){
-				JOptionPane.showMessageDialog(null, "Complete required fields.", "Error Message", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Complete required fields.", "Error Message",
+                        JOptionPane.ERROR_MESSAGE);
 				musicUploader();
 			}
 		}
@@ -82,7 +84,8 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 				FeatureManager.getWorldData().saveSong(fileName, savedFile);
 				model.addElement(fileName);
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
 				chooseMusic(fileName);
 			}
 		}		
@@ -103,7 +106,8 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 		String name = model.get(availableMusic.getSelectedIndex());
-		JOptionPane.showConfirmDialog(null, "Would you like to make " + name + " the song for this map?", "Confirm", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, "Would you like to make " + name + " the song for this map?",
+                "Confirm", JOptionPane.OK_OPTION);
 		MapData cm = FeatureManager.getWorldData().getCurrentMap();
 		cm.addSong(name);
 	}

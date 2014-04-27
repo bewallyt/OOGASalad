@@ -13,17 +13,17 @@ import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.menu.InteractionMatrix7x1;
+import engine.menu.InteractionMatrix5x1;
 import engine.menu.nodes.MenuNode;
 
 public class MenuManager implements InteractionBox {
 
-	private InteractionMatrix7x1 mySelections;
+	private InteractionMatrix5x1 mySelections;
 	private String[] names;
 	private Player myPlayer;
 
 	public MenuManager(Player p) {
-		mySelections = new InteractionMatrix7x1();
+		mySelections = new InteractionMatrix5x1();
 		myPlayer = p;
 	}
 
@@ -40,8 +40,7 @@ public class MenuManager implements InteractionBox {
 	}
 
 	private void setNames() {
-		names = new String[] { "Pokedex", "Pokemon", "Bag", "Name", "Save",
-				"Options", "Exit" };
+		names = new String[] {"Pokemon", "Bag", "Name", "Save", "Exit" };
 	}
 
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width,
@@ -63,9 +62,9 @@ public class MenuManager implements InteractionBox {
 		}
 
 		g2d.setColor(Color.white);
-		Image img = new ScaledImage(200, height + 50, "ImageFiles/startmenu.png")
+		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
 				.scaleImage();
-		g2d.drawImage(img, width - 200, 0, null);
+		g2d.drawImage(img, width - 170, 0, null);
 		g2d.setColor(Color.black);
 
 		drawSelector(g2d, xSize, ySize, width, height);
@@ -92,8 +91,8 @@ public class MenuManager implements InteractionBox {
 			int height) {
 
 		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
-		Image img = new ScaledImage(200, 45, "ImageFiles/redrectangle.png").scaleImage();
-		g2d.drawImage(img, width - 200, 7 + 40 * selectedOptionLoc[1], null);
+		Image img = new ScaledImage(170, 55, "ImageFiles/redrectangle.png").scaleImage();
+		g2d.drawImage(img, width - 170, 48 * selectedOptionLoc[1], null);
 
 	}
 
