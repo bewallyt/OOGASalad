@@ -75,7 +75,8 @@ public class GridViewerFeature extends Feature{
 			return name;
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Must name map. Please try again.", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
 			return mapNamer();
 		}
 	}
@@ -89,13 +90,15 @@ public class GridViewerFeature extends Feature{
 		mapSizer.add(new JLabel("Columns: (>15)"));
 		mapSizer.add(colEntry);
 
-		int result = JOptionPane.showConfirmDialog(null, mapSizer, "Please enter the size of your map", JOptionPane.OK_CANCEL_OPTION);
+		int result = JOptionPane.showConfirmDialog(null, mapSizer, "Please enter the size of your map",
+                JOptionPane.OK_CANCEL_OPTION);
 		if(result == JOptionPane.OK_OPTION){
 			row = Integer.parseInt(rowEntry.getText());
 			col = Integer.parseInt(colEntry.getText());
 
 			if(row < 15 || col < 15){
-				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Number of rows or columns was not at least 15", "Map Sizing Error",
+                        JOptionPane.ERROR_MESSAGE);
 				mapSize(s);
 				return;
 			}

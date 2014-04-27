@@ -69,8 +69,6 @@ public class GameSelectState extends AbstractState {
 	public void load(String loadFile) {
 //		DataManager dm = new DataManager();
 //		WorldData loadedData = dm.loadWorldDataFromFile(loadFile + ".json");
-		GameFrame gm = new GameFrame();
-		gm.initialize(loadFile);
 	}
 
 }

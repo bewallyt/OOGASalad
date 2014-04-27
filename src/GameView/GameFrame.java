@@ -11,6 +11,7 @@ import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.world.WalkAroundWorld;
+import engine.world.World;
 import engine.main.RPGEngine;
 import authoring.MapData;
 import authoring.PlayerData;
@@ -30,12 +31,13 @@ public class GameFrame extends RPGEngine {
 	private WorldData myWorldData;
 	private DataManager myData;
 	private Player myPlayer;
+	private WalkAroundWorld outsideWorld;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
 	public GameFrame() {
 		myData = new DataManager();
-		initializeGame();
+		//initializeGame();
 	}
 
 	/**
@@ -50,7 +52,7 @@ public class GameFrame extends RPGEngine {
 
 		myWorldData = myData.getWorldData(fileName);
 		initMusicTest();
-		setInit(true);
+		//setInit(true);
 		createWorlds();
 		setDoors();
 	}
@@ -102,9 +104,13 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if (myWorldData.getPrimaryMap().equals(mapName))
-				setWorld(currWorld); // this is only called for the initial
+			if (myWorldData.getPrimaryMap().equals(mapName)){
+				outsideWorld = currWorld;
+				System.out.println(outsideWorld + " within loop");
+			}
+				//setWorld(currWorld); // this is only called for the initial
 			// world
+				
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
@@ -159,5 +165,11 @@ public class GameFrame extends RPGEngine {
 				n++;
 			}
 		}
+	}
+	
+	public WalkAroundWorld getInitialWorld(){
+		System.out.println(outsideWorld + " within getInitial");
+		return outsideWorld;
+		
 	}
 }

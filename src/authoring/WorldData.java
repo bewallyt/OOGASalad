@@ -17,16 +17,18 @@ public class WorldData {
 	private Map<String, File> mySongs;
 	private String primaryMap;
 	private String currentMap;
-	private Map<String,Item> myItems;
-	private Map<String,Weapon> myWeapons;
-
+    private Map<String,Item> myItems;
+    private Map<String,Weapon> myWeapons;
+    private String[] arenaLabels;
+	
 	public WorldData(){
 		currentMap = null;
 		myLevels = new HashMap<String, MapData>();
 		myImages = new HashMap<String, File>();
 		mySongs = new HashMap<String, File>();
-		myWeapons = new HashMap<String, Weapon>();
-		myItems = new HashMap<String, Item>();
+        myWeapons = new HashMap<String, Weapon>();
+        myItems = new HashMap<String, Item>();
+        arenaLabels = null;
 	}
 
 	protected void addLevel(String s, MapData md) {
@@ -37,12 +39,15 @@ public class WorldData {
 		return myLevels.get(currentMap);
 
 	}
-	protected String getCurrentMapName(){
-		return currentMap;
-	}
-	public File getImage(String fileName) {
-		return myImages.get(fileName);
-	}
+
+    public String[] getArenaLabels(){return arenaLabels;}
+    protected String getCurrentMapName(){
+        return currentMap;
+    }
+    public File getImage(String fileName) {
+        return myImages.get(fileName);
+    }
+
 	protected Map<String, File> getImages() {
 		return myImages;
 	}
@@ -71,12 +76,12 @@ public class WorldData {
 		return myWeapons;
 	}
 
-	protected void saveBarrier(BarrierData barrier){
-		myLevels.get(currentMap).saveBarrier(barrier);
-	}
-	protected void saveDoor(DoorData door){
-		myLevels.get(currentMap).saveDoor(door);
-	}
+    protected void saveBarrier(BarrierData barrier){
+    	myLevels.get(currentMap).saveBarrier(barrier);
+    }
+    protected void saveDoor(DoorData door){
+    	myLevels.get(currentMap).saveDoor(door);
+    }
 	protected void saveEncounter(EncounterData myEncounter) {
 		myLevels.get(currentMap).saveEncounter(myEncounter);
 	}
@@ -102,14 +107,16 @@ public class WorldData {
 		myWeapons.put(n,wp);
 	}
 
-	protected void setCurrentMap(String s){
-		currentMap = s;
-	}
-	public void setMap(String map){
-		currentMap=map;
-	}
-	protected void setPrimaryMap(String s){
-		primaryMap = s;
-	}
+
+    protected void setArenaLabels(String[] al){ arenaLabels=al;}
+    protected void setCurrentMap(String s){
+        currentMap = s;
+    }
+    public void setMap(String map){
+        currentMap=map;
+    }
+    protected void setPrimaryMap(String s){
+        primaryMap = s;
+    }
 
 }

@@ -25,7 +25,7 @@ public class TileImageEditor extends ImageEditor {
 		super();
 		myWindow = new JFrame("Tile Image Editor");
 		myWindow.setLayout(new BorderLayout());
-		myWindow.setBounds(620, 0, 360, 360);
+		myWindow.setBounds(900, 0, 360, 360);
 		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
 
 		myWindow.setVisible(true);

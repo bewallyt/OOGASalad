@@ -11,7 +11,7 @@ public class PrimaryMapChooserFeature extends Feature{
 	private JButton myButton;
 	
 	public PrimaryMapChooserFeature() {
-		myButton = new JButton("Make this Primary Map");
+		myButton = new JButton("Set As Primary Map");
 		myButton.addActionListener(new MapChooserListener());
 		myComponents.put(myButton, BorderLayout.SOUTH);
 	}
