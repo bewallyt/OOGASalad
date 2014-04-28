@@ -27,6 +27,7 @@ public class Constants {
     public static final String SPRITEPATH="PlayerImages/";
     public static final String PLAYERASHPATH = "PlayerImages/Ash/";
     public static final String TILEIMAGEPATH = "TileImage/";
+	public static final String[] BATTLE_LABELS = new String[]{"Attack","Pokemon","Bag","Run"};
     public static final String[] ANIMIMAGES = {				
     	"PlayerUp0.png",
 		"PlayerUp1.png",
@@ -70,14 +71,16 @@ public class Constants {
     public static final int NPC_MOVEMENT_CONST = 5;
     public static final int WEAPONS_CONST = 5;
     public static final int WEP_LENGTH_CONST = 6;
+    public static final int ENEMY_ALL_WEPS = 10;
 
     public static final int TO_X_CONST = 3;
     public static final int TO_Y_CONST = 4;
     public static final int TO_MAP_CONST = 5;
 
-    public static final int ROOT_CONST = 3;
+    public static final int RESPONSE_ROOT_CONST = 4;
     
     public static final int NPC_PLAYER_CONST = 6;
+    public static final int NPC_ITEMS_CONST = 7;
     public static final int ENEMY_PLAYER_CONST = 8;
 
     

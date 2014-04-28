@@ -1,15 +1,15 @@
 package authoring;
 
-import authoring.gameObjects.NPCResponseNode;
+import authoring.gameObjects.NPCResponseNodeData;
 
-public class UserQueryNode {
+public class UserQueryNodeData {
 	private String myString;
-	private NPCResponseNode myChild;
+	private NPCResponseNodeData myChild;
 	private String myItem;
-	public UserQueryNode(String s){
+	public UserQueryNodeData(String s){
 		myString = s;
 	}
-	public UserQueryNode(){
+	public UserQueryNodeData(){
 		
 	}
 	public void setString(String s){
@@ -18,7 +18,7 @@ public class UserQueryNode {
 	public void setItem(String s){
 		myItem = s;
 	}
-	public void setChild(NPCResponseNode n){
+	public void setChild(NPCResponseNodeData n){
 		myChild = n;
 	}
 	
@@ -28,7 +28,7 @@ public class UserQueryNode {
 	public String getItem(){
 		return myItem;
 	}
-	public NPCResponseNode getChild(){
+	public NPCResponseNodeData getChild(){
 		return myChild;
 	}
 }

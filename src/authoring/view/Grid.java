@@ -13,7 +13,7 @@ import Data.ImageFile;
 import Data.ImageManager;
 
 /**
- * 
+ * Class that contains information relavent to every Grid in the authoring environment
  * @author Richard Cao
  *
  */
@@ -53,9 +53,18 @@ public class Grid extends JPanel{
 		drawGrid();
 	}
 
+	/**
+	 * @param x Row of the tile 
+	 * @param y Column of the tile
+	 * @return Returns the Tile at the specified (x,y) location
+	 */
 	public TilePanel getTilePanel(int x, int y){
 		return world[x][y];
 	}
+	
+	/**
+	 * Creates the array of Tiles on the authoring view
+	 */
 	private void mapMaker(){
 		world = new TilePanel[myNumRows][myNumCols];
 
@@ -66,6 +75,9 @@ public class Grid extends JPanel{
 		}
 	}
 
+	/**
+	 * Repaints the tiles within this Grid
+	 */
 	public void tileRepaint(){
 		for(int row = 0; row < world.length; row++)
 			for(int col = 0; col < world.length; col++){
@@ -75,6 +87,9 @@ public class Grid extends JPanel{
 			}
 	}
 
+	/**
+	 * Creates all of the popup menus used in authoring (listed in popupMenuItems)
+	 */
 	private void popupMenuMaker(){
 		popup = new JPopupMenu();
 		for(int i = 0; i < popupMenuItems.length; i++){
@@ -86,14 +101,23 @@ public class Grid extends JPanel{
 		}
 	}
 
+	/**
+	 * Displays a given popup menu
+	 */
 	private void showPopupMenu(MouseEvent e){
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	}
 
+	/**
+	 * Displays the image menu
+	 */
 	public void showImageMenu(){
-		imageEditor.setVisible(true);
+		imageEditor.setVisibility(true);
 	}
 
+	/**
+	 * Draws the grid of Tiles
+	 */
 	public void drawGrid(){
 		GridBagConstraints gbc = new GridBagConstraints();
 		for (int row = 0; row < myNumRows; row++) {

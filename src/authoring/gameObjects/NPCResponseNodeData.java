@@ -3,24 +3,24 @@ package authoring.gameObjects;
 import java.util.ArrayList;
 import java.util.List;
 
-import authoring.UserQueryNode;
+import authoring.UserQueryNodeData;
 
-public class NPCResponseNode {
+public class NPCResponseNodeData {
 	private String myString;
-	private List<UserQueryNode> myChildren;
+	private List<UserQueryNodeData> myChildren;
 	private String myItem;
-	public NPCResponseNode(String s){
+	public NPCResponseNodeData(String s){
 		myString = s;
-		myChildren = new ArrayList<UserQueryNode>();
+		myChildren = new ArrayList<UserQueryNodeData>();
 	}
 	public void setString(String s){
 		myString = s;
 	}
-	public void addChild(UserQueryNode n){
+	public void addChild(UserQueryNodeData n){
 		myChildren.add(n);
 	}
-	public void removeChild(UserQueryNode n){
-		for(UserQueryNode nn: myChildren){
+	public void removeChild(UserQueryNodeData n){
+		for(UserQueryNodeData nn: myChildren){
 			if(n==nn)
 				myChildren.remove(nn);
 		}
@@ -33,7 +33,7 @@ public class NPCResponseNode {
 	public String getString(){
 		return myString;
 	}
-	public List<UserQueryNode> getChildren(){
+	public List<UserQueryNodeData> getChildren(){
 		return myChildren;
 	}
 	public String getItem(){

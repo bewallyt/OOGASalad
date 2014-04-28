@@ -7,10 +7,10 @@ import authoring.SpriteImageChooser;
 import util.Constants;
 
 public class NPCData extends GridObjectData{
-	private NPCResponseNode myRoot;
+	private NPCResponseNodeData myRoot;
 	private String[] myImages;
 	
-	public NPCData(int x, int y, int width, int height, String image, NPCResponseNode root) {
+	public NPCData(int x, int y, int width, int height, String image, NPCResponseNodeData root) {
 		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
 		init();
@@ -20,7 +20,7 @@ public class NPCData extends GridObjectData{
 		setWidth(width);
 	}
 	
-	public NPCResponseNode getDialogue(){
+	public NPCResponseNodeData getDialogue(){
 		return myRoot;
 	}
 	
