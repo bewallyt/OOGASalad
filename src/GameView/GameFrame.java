@@ -34,6 +34,7 @@ public class GameFrame extends RPGEngine {
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
 	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
+	private Map<String,ItemData> myItemData = new HashMap<String, ItemData>();
 	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 
@@ -90,7 +91,7 @@ public class GameFrame extends RPGEngine {
 
 	private void createWorlds() {
 		
-		myItems = myWorldData.getMyItems();
+		myItems = makeItems();
 		myWeapons = makeWeapons();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
@@ -161,7 +162,7 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-
+	
 	private HashMap<String, Weapon> makeWeapons() {
 		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
 		myWeaponData = myWorldData.getMyWeapons();
@@ -170,10 +171,20 @@ public class GameFrame extends RPGEngine {
 			Weapon currWeapon = currWeaponData.makeWeapon();
 			wepRet.put(wep, currWeapon);
 		}
-//		System.out.println("wepDamage "+wepRet.get("Ice Sword").getDamage().getValue());
 		return wepRet;
 	}
 
+	private HashMap<String, ItemData> makeItems() {
+		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
+		myItemData = myWorldData.getMyItems();
+		for(String item : myItemData.keySet()){
+			ItemData currItemData = myItemData.get(item);
+			itemRet.put(item, currItemData);
+		}
+		return itemRet;
+	}
+
+	
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
