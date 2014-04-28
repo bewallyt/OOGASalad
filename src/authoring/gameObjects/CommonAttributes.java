@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * @ Davis Treybig
- * */
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -23,7 +18,13 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @SuppressWarnings("ALL")
+/**
+ * Abstract class that allows easier creation of the GUI windows typical in an RPG authoring environment
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public abstract class CommonAttributes {
     protected String name;
     protected String image;

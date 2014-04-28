@@ -31,7 +31,6 @@ public class ShopKeeper extends NPC {
 				player);
 		myItemSet=itemSet;
 		makeDialogue();
-
 	}
 	
 	public ShopKeeper(List<Object> list) {
