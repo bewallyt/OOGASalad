@@ -120,7 +120,7 @@ public class WorldDataManager {
 		List<Item> pItems = p.getItems();
 		String [] pItemNames = getItemNames(pItems);	
 
-		PlayerData playerData = new PlayerData(p.getStartX()/Constants.TILE_SIZE, p.getStartY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItemNames);
+		PlayerData playerData = new PlayerData(p.getX()/Constants.TILE_SIZE, p.getY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItemNames);
 		playerData.setImages(pAnimImages);
 		playerData.setMyMoney(p.getMoney());
 		playerData.setMyExperience(p.getExperience());
