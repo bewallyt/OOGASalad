@@ -61,7 +61,7 @@ public class Constants {
     public static final String NPC = "engine.gridobject.person.NPC";
     public static final String ENEMY = "engine.gridobject.person.Enemy";
     public static final String HEALER = "engine.gridobject.person.Healer";
-    public static final String SHOPKEEPER = "engine.gridobject.person.Shopkeeper";
+    public static final String SHOPKEEPER = "engine.gridobject.person.ShopKeeper";
     
     public static final int WIDTH_CONST = 0;
     public static final int HEIGHT_CONST = 1;
