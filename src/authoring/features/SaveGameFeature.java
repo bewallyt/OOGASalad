@@ -9,6 +9,11 @@ import javax.swing.JTextField;
 
 import authoring.SaveGameWindow;
 
+/**
+ * Class that creates the Save Game Button and its action listener
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class SaveGameFeature extends Feature {
 	private JButton mySaveButton;
 	public SaveGameFeature(){
