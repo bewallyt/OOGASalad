@@ -2,6 +2,7 @@ package engine.main;
 
 import engine.gridobject.person.Reflection;
 import engine.world.ArenaWorld;
+import engine.world.ArenaWorldLooper;
 import engine.world.Canvas;
 import engine.world.GameLooper;
 import engine.world.WalkAroundWorld;
@@ -44,7 +45,11 @@ public abstract class RPGEngine{
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
 		String classname = myCurrentWorld.getClass().getName();
-		myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
+		System.out.println("classname: "+classname);
+		if(classname.equals("engine.world.ArenaWorld"))
+			myGameLooper = new ArenaWorldLooper(myCurrentWorld);
+		else
+			myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
 		
 	}
 

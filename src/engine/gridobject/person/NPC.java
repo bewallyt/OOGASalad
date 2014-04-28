@@ -60,7 +60,7 @@ public class NPC extends Person {
 	public NPC(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list
-				.get(Constants.NAME_CONST), Constants.SPEED,
+				.get(Constants.NAME_CONST), 1,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
 
@@ -80,6 +80,13 @@ public class NPC extends Person {
 		myResponseNode = n;
 	}
 
+	/**
+	 * Builds the response tree.
+	 *
+	 * @param n the node
+	 * @param items the items
+	 * @return the NPC response node
+	 */
 	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
 		Item myItem = (Item) Reflection.createInstance("engine.item."

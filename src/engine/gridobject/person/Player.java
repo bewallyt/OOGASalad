@@ -1,11 +1,14 @@
 package engine.gridobject.person;
 
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import util.Constants;
 import engine.gridobject.Door;
 import engine.item.Item;
+import engine.item.Weapon;
 import engine.state.AbstractState;
 import engine.state.WalkAroundState;
 import engine.world.SurroundingChecker;
@@ -26,11 +29,30 @@ public class Player extends Person {
 	private int myExperience;
 	private Random myRandom = new Random();
 
+	/**
+	 * Instantiates a new player.
+	 *
+	 * @param animImages the anim images
+	 * @param name the name
+	 * @param speed the speed
+	 * @param items the items
+	 * @param weps the weapons
+	 */
+
+	public Player(String[] animImages, String name, double speed, String[] items, String[] weps, HashMap<String, Weapon> allWeapons) {
+		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
+		myState = new WalkAroundState(this);
+		myExperience=0;
+		
+		addAllWeapons(allWeapons, weps);
+
+	}
+	
 	public Player(String[] animImages, String name, double speed, String[] items, String[] weps) {
 		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
 		myState = new WalkAroundState(this);
-		myExperience=MIN_EXPERIENCE;
-	}
+
+		myExperience=MIN_EXPERIENCE;	}
 	
 	public Player(){
 		super();
@@ -78,6 +100,12 @@ public class Player extends Person {
 		return mySurroundingChecker;
 	}
 
+	/**
+	 * Checks for item.
+	 *
+	 * @param myItemName the item name
+	 * @return true, if the item exists
+	 */
 	public boolean hasItem(String myItemName) {
 		if (myItemName != null) {
 			for (Item i : super.getItems()) {
@@ -87,6 +115,12 @@ public class Player extends Person {
 		}
 		return false;
 	}
+	
+	/**
+	 * Increase experience.
+	 *
+	 * @param increase the increase
+	 */
 	public void increaseExperience(int increase){
 		myExperience+=increase;
 		if(myExperience<MIN_EXPERIENCE)myExperience=0;
@@ -95,6 +129,9 @@ public class Player extends Person {
 		}
 	}
 
+	/**
+	 * Level up.
+	 */
 	private void levelUp() {
 		getStatsMap().get(Constants.LEVEL).changeValue(1);
 		getStatsMap().get(Constants.DAMAGE).changeValue(myRandom.nextInt(3));

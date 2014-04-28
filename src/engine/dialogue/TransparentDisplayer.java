@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+/**
+ * A displayer that does nothing. Implementing the Null Object pattern
+ *
+ */
 public class TransparentDisplayer implements InteractionBox {
 
 	@Override

@@ -8,6 +8,11 @@ public class CollisionMatrix {
 	private List<GridObject> myGridObjectList;
 	private CollisionHandler[][] myCollisionMatrix;
 
+	/**
+	 * Instantiates a new collision matrix.
+	 *
+	 * @param gridObjectList the grid object list
+	 */
 	public CollisionMatrix(List<GridObject> gridObjectList) {
 		myGridObjectList = gridObjectList;
 		myCollisionMatrix = makeCollisionMatrix();

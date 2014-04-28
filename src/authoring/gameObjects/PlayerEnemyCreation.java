@@ -310,7 +310,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     	else if (three.isSelected()){
     		return 3;
     	}
-    	return 1;
+    	return 3;
     }
     /**
      * Makes the corresponding Player based on user-input
