@@ -42,7 +42,7 @@ public class Enemy extends NPC {
 	public Enemy(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list
-				.get(Constants.NAME_CONST), Constants.SPEED,
+				.get(Constants.NAME_CONST), 1,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.ENEMY_MOVEMENT_CONST)).intValue(),

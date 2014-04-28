@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * @ Davis Treybig
- * */
-
 import javax.swing.*;
 
 import authoring.SpringUtilities;
@@ -16,7 +11,11 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
 
-
+/**
+ * Creation class for players and enemies. Handles the GUI creation window
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 @SuppressWarnings("ALL")
 public class PlayerEnemyCreation extends CommonAttributes implements ActionListener {
 
@@ -27,7 +26,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private JCheckBox one;
     private JCheckBox two;
     private JCheckBox three;
-    private Object movement;
+    private ButtonModel movement;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
@@ -66,6 +65,9 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         }
     }
 
+    /**
+     * Creates the GUI creation window
+     */
     public void creationPanel(){
     	JTabbedPane pane = new JTabbedPane();
         String weaponItemTab = "Weapon/Items";
@@ -284,6 +286,9 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
 		}
     	
     }
+    /**
+     * Makes the corresponding random enemy based on user-input
+     */
     private void makeRandomEnemy() {
         RandomEnemy madeRandomEnemy = new RandomEnemy(0,0,
                 editor.getSelectedImage().getDescription(),name,attributeValues,weaponNames,0,
@@ -291,23 +296,35 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         FeatureManager.getWorldData().saveRandomEnemy(madeRandomEnemy);
         FeatureManager.getWorldData().getMap((String)worldList.getSelectedItem()).saveRandomEnemy(madeRandomEnemy);
     }
-
+    /**
+     * Gets the movement type from the check boxes
+     * @return Integer representing the movement type
+     */
+    private int getMovementType(){
+    	if(one.isSelected()){
+    		return 1;
+    	}
+    	else if (two.isSelected()){
+    		return 2;
+    	}
+    	else if (three.isSelected()){
+    		return 3;
+    	}
+    	return 3;
+    }
+    /**
+     * Makes the corresponding Player based on user-input
+     */
     private void makePlayer() {
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);
         FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());	
         FeatureManager.getWorldData().savePlayer(madePlayer);
     }
-
+    /**
+     * Makes the corresponding regular enemy based on user-input
+     */
     private void makeEnemy() {
-        int move;
-        if(movement.equals(one)){
-            move=1;
-        } else if(movement.equals(two)){
-            move=2;
-        } else{
-            move=3;
-        }
-        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,move,
+        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         madeEnemy.init();
     }

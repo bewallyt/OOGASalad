@@ -7,7 +7,7 @@ import javax.swing.*;
 import Data.ImageFile;
 
 /**
- * 
+ * Class that displays all usable TileImages so that the user can place them on Tiles in the authoring view
  * @author Richard Cao
  * @author Davis Treybig
  * 
@@ -27,6 +27,9 @@ public class TileImageEditor extends ImageEditor {
 		myWindow.setVisible(true);
 	}
 
+	/**
+	 * Adds all currently existing images to the TileImageEditor
+	 */
 	@Override
 	public void addExistingImages() {
 		List<ImageFile> imageList=m.getSavedImageMap();

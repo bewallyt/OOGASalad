@@ -2,6 +2,7 @@ package engine.battle;
 
 import java.util.Random;
 
+import util.Constants;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Person;
 import engine.gridobject.person.Player;
@@ -39,23 +40,23 @@ public class BattleCalculator {
 	}
 
 	private int calcSpeed(Person person, Weapon weapon, Attack attack){
-		return (person.getStatsMap().get("speed").getValue()+weapon.getSpeed().getValue()+attack.getSpeed().getValue());
+		return (person.getStatsMap().get(Constants.SPEED).getValue()+weapon.getSpeed().getValue()+attack.getSpeed().getValue());
 	}
 
 	public void attack(Person attacker, Person victim, Weapon weapon, Attack attack){
-		int level = attacker.getStatsMap().get("level").getValue();
-		int playerDamage = attacker.getStatsMap().get("damage").getValue();
+		int level = attacker.getStatsMap().get(Constants.LEVEL).getValue();
+		int playerDamage = attacker.getStatsMap().get(Constants.DAMAGE).getValue();
 		int weaponDamage = weapon.getDamage().getValue();
 		int attackDamage = attack.getDamage().getValue();
-		int defense = victim.getStatsMap().get("defense").getValue();
+		int defense = victim.getStatsMap().get(Constants.DEFENSE).getValue();
 		int random = 30 + (int)(Math.random() * ((25 - 30) + 1));
 		int total = (((((2*level+2)*playerDamage*(weaponDamage+attackDamage)/defense))+2)/random);
 		if(attackDamage!=0)
-			victim.getStatsMap().get("health").changeValue(-total);
+			victim.getStatsMap().get(Constants.HEALTH).changeValue(-total);
 		if(attack.getEffect()!=null){
 			attack.getEffect().doEffect(attacker,victim);	
 		}
-		System.out.println(myPlayer.getStatsMap().get("health").getValue());
+		System.out.println(myPlayer.getStatsMap().get(Constants.HEALTH).getValue());
 
 	}
 	private boolean checkDropWeaponStatus(){
@@ -71,7 +72,7 @@ public class BattleCalculator {
 	}
 
 	public boolean enemyIsDead(){
-		if(myEnemy.getStatsMap().get("health").getValue()<=0){
+		if(myEnemy.getStatsMap().get(Constants.HEALTH).getValue()<=0){
 
 			dropWeapon = checkDropWeaponStatus();
 			if (dropWeapon && myEnemy.isRandom()) {
@@ -83,7 +84,7 @@ public class BattleCalculator {
 		return false;
 	}
 	public boolean playerIsDead(){
-		if(myPlayer.getStatsMap().get("health").getValue()<=0){
+		if(myPlayer.getStatsMap().get(Constants.HEALTH).getValue()<=0){
 			return true;
 		}
 		return false;

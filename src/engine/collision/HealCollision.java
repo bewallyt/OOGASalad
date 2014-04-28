@@ -1,5 +1,6 @@
 package engine.collision;
 
+import util.Constants;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 
@@ -12,7 +13,7 @@ public class HealCollision extends CollisionHandler {
 	@Override
 	public void doCollision() {
 		if(myObj1 instanceof Player){
-			myObj1.getStatsMap().get("health").setToMax();
+			myObj1.getStatsMap().get(Constants.HEALTH).setToMax();
 		}
 
 	}

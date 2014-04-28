@@ -8,7 +8,7 @@ public class ArenaWorldLooper extends GameLooper {
 
 	ArenaWorld myWorld;
 	BattleManager myBattleManager;
-	public ArenaWorldLooper(ArenaWorld currentWorld) {
+	public ArenaWorldLooper(World currentWorld) {
 		super(currentWorld);
 		//myWorld.getEnemy().setWasBattled();
 		myWorld = (ArenaWorld) getWorld();
@@ -20,7 +20,6 @@ public class ArenaWorldLooper extends GameLooper {
 
 	@Override
 	public World doLoop() {
-		System.out.println(myBattleManager.getCurrentState());
 		myWorld.setPlayerImage(myBattleManager.getCurrentPlayerBattleImage());
 		myWorld.setEnemyImage(myBattleManager.getCurrentEnemyBattleImage());
 		if(myBattleManager.getCurrentState().equals("ExitWon")){

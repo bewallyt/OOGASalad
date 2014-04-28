@@ -2,6 +2,7 @@ package engine.battle;
 
 import java.awt.Image;
 
+import util.Constants;
 import engine.Statistic;
 import engine.dialogue.MatrixNode;
 import engine.gridobject.person.Person;
@@ -15,17 +16,16 @@ public class Attack implements MatrixNode,BattleExecutable {
 	
 	public Attack(String name){
 		myName=name;
-		mySpeed = new Statistic("Speed", Weapon.DEFAULT_SPEED,Weapon.DEFAULT_MAX);
-		myDamage = new Statistic("Damage",Weapon.DEFAULT_DAMAGE,Weapon.DEFAULT_MAX);
 	}
-	
+
+
 	public Attack(String name, int damage, int speed, String selected, int value, Boolean affects){
 		myName = name;
-		mySpeed = new Statistic("Speed", speed, Weapon.DEFAULT_MAX);
-		myDamage = new Statistic("Damage", damage, Weapon.DEFAULT_MAX);
+		mySpeed = new Statistic("speed", speed, Weapon.DEFAULT_MAX);
+		myDamage = new Statistic("damage", damage, Weapon.DEFAULT_MAX);
 		setEffect(selected, affects, value);
 	}
-	
+
 	public Statistic getDamage(){
 		return myDamage;
 	}
@@ -38,10 +38,10 @@ public class Attack implements MatrixNode,BattleExecutable {
 		myEffect = new Effect(statistic, affectsSelf, change);
 	}
 	public void setDamage(int value, int max){
-		myDamage = new Statistic("damage",value, max);
+		myDamage = new Statistic(Constants.DAMAGE,value, max);
 	}
 	public void setSpeed(int value, int max){
-		mySpeed = new Statistic("speed",value, max);
+		mySpeed = new Statistic(Constants.SPEED,value, max);
 	}
 	public Effect getEffect(){
 		return myEffect;

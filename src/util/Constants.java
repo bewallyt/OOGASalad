@@ -12,6 +12,7 @@ package util;
 public class Constants {
 	// player
 	public static final int CANVASWIDTH = 500, CANVASHEIGHT = 500;
+	public static final int COLLISION_OFFSET=2;
 	public static final int TILE_SIZE = 40;
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
@@ -19,7 +20,7 @@ public class Constants {
 		
     // engine
 	public static final int DEF_TIL = 1;
-	public static final int SPEED = 1;
+	//public static final int SPEED = 1;
 	public static final int DEF_MAX_STAT = 100;
     public static final String IMAGEPATH = "engine/images/";
     public static final String GRIDOBJECTPATH = "gridobject/";
@@ -88,5 +89,12 @@ public class Constants {
     
     // util
     public final static int BUFFER_SIZE = 12800000;
+	public static final String DAMAGE = "damage";
+	public static final String SPEED = "speed";
+	public static final String HEALTH = "health";
+	public static final String LEVEL = "level";
+	public static final String DEFENSE = "defense";
+	public static final int BATTLE_IMAGE_SIZE = 150;
+	
 
 }

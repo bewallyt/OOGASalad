@@ -1,6 +1,6 @@
 package engine;
 
-public class Statistic implements Listable {
+public class Statistic {
 
 	String myName;
 	int myValue;
@@ -32,17 +32,7 @@ public class Statistic implements Listable {
 		return myMaxValue;
 	}
 	
-	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-
-	}
 	public void setToMax(){
 		myValue=myMaxValue;
 	}
-
-	//	@Override
-	//	public abstract void display(); // write a method that will display it in a
-	//									// list fashion
-
 }
