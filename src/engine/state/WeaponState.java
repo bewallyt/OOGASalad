@@ -2,7 +2,7 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import engine.Control;
+import util.Constants;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
 
@@ -30,13 +30,13 @@ public class WeaponState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP) {
+		if (e.getKeyCode() == Constants.UP) {
 		}
-		if (e.getKeyCode() == Control.DOWN) {
+		if (e.getKeyCode() == Constants.DOWN) {
 		}
-		if (e.getKeyCode() == Control.A || e.getKeyCode() == Control.ENTER) {
+		if (e.getKeyCode() == Constants.A || e.getKeyCode() == Constants.ENTER) {
 		}
-		if (e.getKeyCode() == Control.SPACE || e.getKeyCode() == Control.ESC) {
+		if (e.getKeyCode() == Constants.SPACE || e.getKeyCode() == Constants.ESC) {
 			myPlayer.setState(new MenuState(myPlayer, myMenuManager));
 			myPlayer.setInteractionBox(myMenuManager);
 		}

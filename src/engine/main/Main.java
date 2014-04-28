@@ -5,7 +5,7 @@ import java.util.List;
 
 import util.Constants;
 import Data.FileStorer;
-import authoring.WorldData;
+import authoring.gameObjects.WorldData;
 //import authoring.gameObjects.WorldData;
 import engine.Statistic;
 import engine.battle.Attack;
@@ -21,6 +21,7 @@ import engine.gridobject.person.Healer;
 import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
 import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
 import engine.world.WalkAroundWorld;

@@ -41,6 +41,18 @@ public class Constants {
 		"PlayerLeft2.png",
 };
     
+	public static final int UP = 38;
+	public static final int DOWN = 40;
+	public static final int LEFT = 37;
+	public static final int RIGHT = 39;
+	public static final int A = 65;
+	public static final int B = 66;
+	public static final int SPACE = 32;
+	public static final int ESC = 27;
+	public static final int ENTER = 10;
+	public static final int SHIFT = 16;
+	public static final int BACKSPACE = 8;
+    
     // authoring
     public static final String BARRIER = "engine.gridobject.Barrier";
     public static final String DOOR = "engine.gridobject.Door";
