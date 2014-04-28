@@ -2,6 +2,12 @@ package Data;
 
 import java.io.File;
 
+/**
+ * Abstract class that enables easy creation of classes to handle the loading of storing of various
+ * media types into the project filesystem. 
+ * @author Davis Treybig
+ *
+ */
 public abstract class AbstractFileManager {
 	public static final String SRC="src/";
 	protected String[] VALID_FILE_EXTENSIONS;

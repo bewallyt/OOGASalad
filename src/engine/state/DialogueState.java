@@ -1,6 +1,7 @@
 package engine.state;
 
 import java.awt.event.KeyEvent;
+import util.Constants;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,25 +28,25 @@ public class DialogueState extends AbstractState {
 	@Override
 	public void keyPressed(KeyEvent e) {
 	//	if (pressedKeys.size() == 0) {
-			if (e.getKeyCode() == Control.UP){
+			if (e.getKeyCode() == Constants.UP){
 				myConversationManager.moveUp();
 			}
-			if (e.getKeyCode() == Control.DOWN){
+			if (e.getKeyCode() == Constants.DOWN){
 				myConversationManager.moveDown();
 			}
-			if (e.getKeyCode() == Control.RIGHT){
+			if (e.getKeyCode() == Constants.RIGHT){
 				myConversationManager.moveRight();
 
 			}
-			if (e.getKeyCode() == Control.LEFT){
+			if (e.getKeyCode() == Constants.LEFT){
 				myConversationManager.moveLeft();
 			}		
-			if (e.getKeyCode() == Control.A) {
+			if (e.getKeyCode() == Constants.A) {
 				myConversationManager.getNextText();
 				pressedKeys.add(e.getKeyCode());
 			}
 			
-			if (e.getKeyCode() == Control.ESC) {
+			if (e.getKeyCode() == Constants.ESC || e.getKeyCode() == Constants.B) {
 				myConversationManager.getPlayer().setState(new WalkAroundState(myConversationManager.getPlayer()));
 				myConversationManager.getPlayer().getDialogueDisplayControl().setInteractionBox(new TransparentDisplayer());
 				//pressedKeys.add(e.getKeyCode());
@@ -56,7 +57,7 @@ public class DialogueState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.A) {
+		if (e.getKeyCode() == Constants.A) {
 			myConversationManager.getPlayer().setAClick(false);
 		//	pressedKeys.remove(e.getKeyCode());
 		}

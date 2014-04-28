@@ -15,7 +15,7 @@ public class SaveManager extends MenuManager implements InteractionBox {
 	private final static String SAVE_FINISHED = "Save Complete!";
 
 	public SaveManager(Player p) {
-		super(p, null);
+		super(p, null, null);
 		myPlayer = p;
 	}
 

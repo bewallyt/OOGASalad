@@ -3,6 +3,7 @@ package engine;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import engine.gridobject.GridObject;
@@ -14,17 +15,7 @@ public class Control implements KeyListener{
 	
 	private World myWorld;
 	private Canvas  myCanvas;
-	public static int UP = 38;
-	public static int DOWN = 40;
-	public static int LEFT = 37;
-	public static int RIGHT = 39;
-	public static int A = 65;
-	public static int B = 66;
-	public static int SPACE = 32;
-	public static int ESC = 27;
-	public static int ENTER = 10;
-	public static int SHIFT = 16;
-	public static int BACKSPACE = 8;
+	private ResourceBundle myResources;
 	Set<Integer> pressedKeys = new HashSet<Integer>();
 
 	

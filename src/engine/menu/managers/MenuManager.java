@@ -23,9 +23,9 @@ public class MenuManager implements InteractionBox {
 	private String[] names;
 	private Player myPlayer;
 
-	public MenuManager(Player p, String[] menuItems) {
+	public MenuManager(Player p, String[] menuItems, MenuInteractionMatrix mim) {
 		names = menuItems;
-		mySelections = new MenuInteractionMatrix(1, 5);
+		mySelections = mim;
 		myPlayer = p;
 	}
 
@@ -45,7 +45,7 @@ public class MenuManager implements InteractionBox {
 			int height) {
 
 		paintMenu(g2d, height, width);
-		drawSelector(g2d, 170, 55, width, height, 48);
+		drawSelector(g2d, xSize, 0, 170, 55, 48, mySelections);
 	}
 
 	public void createMenuNodes() {
@@ -64,13 +64,13 @@ public class MenuManager implements InteractionBox {
 
 	}
 
-	private void drawSelector(Graphics2D g2d, int xPos, int yPos, int width,
-			int height, int scale) {
+	protected void drawSelector(Graphics2D g2d, int xPos, int yPos, int width,
+			int height, int scale, MenuInteractionMatrix myMatrix) {
 
-		int[] selectedOptionLoc = mySelections.getSelectedNodeLocation();
-		Image img = new ScaledImage(xPos, yPos, "ImageFiles/redrectangle.png")
+		int[] selectedOptionLoc = myMatrix.getSelectedNodeLocation();
+		Image img = new ScaledImage(width, height, "ImageFiles/redrectangle.png")
 				.scaleImage();
-		g2d.drawImage(img, width - 170, scale * selectedOptionLoc[1], null);
+		g2d.drawImage(img, xPos - 170, yPos + scale * selectedOptionLoc[1], null);
 
 	}
 
