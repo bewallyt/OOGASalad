@@ -241,5 +241,9 @@ public class WorldData {
 	 */
     public void saveEnemy(EnemyData enemy) {myLevels.get(currentMap).saveEnemy(enemy);;}
 
+	public void saveShopkeeper(ShopkeeperData myShopkeeper) {
+		myLevels.get(currentMap).saveShopkeeper(myShopkeeper);
+	}
+
 
 }
