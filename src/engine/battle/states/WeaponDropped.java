@@ -9,7 +9,6 @@ public class WeaponDropped implements BattleState {
 		manager.setCurrentTextToBeDisplayed("You have defeated " + manager.getEnemy().toString() + " and he dropped his " + manager.getLabels()[1]);
 		manager.setDidDrop();
 		manager.setCurrentState("BattleSpoils");
-
 	}
 
 }

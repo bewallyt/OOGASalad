@@ -6,6 +6,7 @@ import util.Constants;
 import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
+import engine.menu.MenuInteractionMatrix;
 import engine.menu.managers.MenuManager;
 
 public class WalkAroundState extends AbstractState {
@@ -36,9 +37,10 @@ public class WalkAroundState extends AbstractState {
 					.checkSurroundings(myPlayer).get(0);
 			if (surrounding != null) {
 				surrounding.doAction();
-				if(surrounding.getPickupable()!=null){
+				if (surrounding.getPickupable() != null) {
 					(surrounding.getPickupable()).pickUp(myPlayer);
-					((Barrier) surrounding).displayAlertBox(myPlayer, surrounding.getPickupable());
+					((Barrier) surrounding).displayAlertBox(myPlayer,
+							surrounding.getPickupable());
 					surrounding.setPickupable(null);
 				}
 			}
@@ -53,8 +55,10 @@ public class WalkAroundState extends AbstractState {
 			myPlayer.setDX(0);
 		if (e.getKeyCode() == Constants.A)
 			myPlayer.setAClick(false);
+
 		if (e.getKeyCode() == Constants.SPACE) {
-			MenuManager mm = new MenuManager(myPlayer, new String[] {"Weapon", "Bag", "Name", "Save", "Exit"});
+			MenuManager mm = new MenuManager(myPlayer, new String[] { "Weapon",
+					"Bag", "Name", "Save", "Exit" }, new MenuInteractionMatrix(1, 5));
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
 			myPlayer.setInteractionBox(mm);

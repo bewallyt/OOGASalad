@@ -67,6 +67,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 			SaveState saveState = (SaveState) myWorld.getPlayer().getState();
 			if (saveState.isSavingState()) {
 				saveState.setSavingState(false);
+
 				saveWorld(saveState.getSaveFileName());			
 			}
 		} else if(myWorld.getPlayer().getState() instanceof ExitState){
@@ -85,6 +86,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 		return null;
 	}
 
+
 	private void checkCollisions(CollisionMatrix cm) {
 		for (int i = 0; i < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); i++) {
 			for (int j = 0; j < ((WalkAroundWorld) getWorld()).getGridObjectList().size(); j++) {
@@ -98,8 +100,11 @@ public class WalkAroundWorldLooper extends GameLooper {
 		}
 	}
 
+
+
 	private void saveWorld(String filename) {
 		WorldDataManager wdManager = new WorldDataManager();
 		wdManager.saveWorld(myWorld, filename);
 	}
 }
+
