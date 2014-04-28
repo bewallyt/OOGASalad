@@ -6,7 +6,7 @@ import util.Constants;
 
 /**
  * Returns the information relevant to a given tile in the authoring environment
- * @author Davis Treybig
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class TileData {

@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
 
+import util.PokemonFont;
 import util.Reflection;
 import engine.dialogue.InteractionBox;
 import engine.gridobject.GridObject;
@@ -75,26 +76,12 @@ public class MenuManager implements InteractionBox {
 	}
 
 	protected void paintMenu(Graphics g2d, int height, int width) {
-		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
-		Font font = null;
-
-		try {
-			try {
-				font = Font.createFont(Font.TRUETYPE_FONT, is);
-			} catch (FontFormatException e) {
-				e.printStackTrace();
-			}
-			Font sizedFont = font.deriveFont(16f);
-			g2d.setFont(sizedFont);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		g2d.setColor(Color.white);
+		
+		PokemonFont.setFont(g2d, 16f);
+		
 		Image img = new ScaledImage(170, height, "ImageFiles/startmenu.png")
 				.scaleImage();
 		g2d.drawImage(img, width - 170, 0, null);
-		g2d.setColor(Color.black);
 
 	}
 

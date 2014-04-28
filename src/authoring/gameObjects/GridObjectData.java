@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import authoring.SpriteImageChooser;
-import authoring.features.FeatureManager;
 
 import util.Constants;
 
@@ -18,8 +17,8 @@ public class GridObjectData {
 
 	private int myX;
 	private int myY;
-	private List<ItemData> itemList=new ArrayList<ItemData>();
 	private String myID;
+	private NPCResponseNodeData myDialogue;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
 	protected String[] createSpriteImages(String image){
@@ -74,13 +73,14 @@ public class GridObjectData {
 		myID = id;
 		myX = x;
 		myY = y;
+		myDialogue = root;
 		
 		myArguments.add(width);
 		myArguments.add(height);
 		
 		myArguments.add(createSpriteImages("Ash"));
 
-		// myArguments.add(createSpriteImages(image));
+		//myArguments.add(createSpriteImages(image));
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType
@@ -89,11 +89,11 @@ public class GridObjectData {
     // Base empty constructor
     public GridObjectData() {
     }
-
+    /*
     public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
-	
+	*/
 	public String getID() {
 		return myID;
 	}
@@ -106,6 +106,9 @@ public class GridObjectData {
 	}
 	public int getY(){
 		return myY;
+	}
+	public NPCResponseNodeData getDialogue(){
+		return myDialogue;
 	}
 	public int getWidth(){
 		return width;

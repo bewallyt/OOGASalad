@@ -2,6 +2,12 @@ package engine.dialogue;
 
 import engine.gridobject.person.Player;
 
+/**
+ * This is the other part of our conversation design. These nodes handle the different options that the 
+ * Player can select if prompted to do so. These nodes can also be item seeking, meaning that the node is 
+ * automatically taken in the conversation tree if the Player has a special keyItem that the NPC is seeking.
+ *
+ */
 public class UserQueryNode implements MatrixNode {
 
 		private Player myPlayer;

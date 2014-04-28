@@ -60,6 +60,7 @@ public class Constants {
     public static final String DOOR = "engine.gridobject.Door";
     public static final String NPC = "engine.gridobject.person.NPC";
     public static final String ENEMY = "engine.gridobject.person.Enemy";
+    public static final String HEALER = "engine.gridobject.person.Healer";
     
     public static final int WIDTH_CONST = 0;
     public static final int HEIGHT_CONST = 1;
@@ -68,7 +69,7 @@ public class Constants {
     public static final int NAME_CONST = 3;
     public static final int VALUES_CONST = 4;
     public static final int ENEMY_MOVEMENT_CONST = 7;
-    public static final int NPC_MOVEMENT_CONST = 5;
+    public static final int NPC_MOVEMENT_CONST = 4;
     public static final int WEAPONS_CONST = 5;
     public static final int WEP_LENGTH_CONST = 6;
     public static final int ENEMY_ALL_WEPS = 10;
@@ -77,7 +78,7 @@ public class Constants {
     public static final int TO_Y_CONST = 4;
     public static final int TO_MAP_CONST = 5;
 
-    public static final int RESPONSE_ROOT_CONST = 4;
+    public static final int RESPONSE_ROOT_CONST = 5;
     
     public static final int NPC_PLAYER_CONST = 6;
     public static final int NPC_ITEMS_CONST = 7;
