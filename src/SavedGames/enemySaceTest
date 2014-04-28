@@ -93,10 +93,19 @@
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
               {
-                "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                "myValues": {
+                  "Damage": 5,
+                  "Speed": 5,
+                  "Defense": 5,
+                  "Health": 5,
+                  "Level": 5
                 },
+                "myWeapons": [
+                  null,
+                  null
+                ],
+                "myName": "newItem",
+                "myMovement": 2,
                 "myImages": [
                   "PlayerImages/Ash/PlayerDown1.png",
                   "PlayerImages/Ash/PlayerDown2.png",
@@ -107,12 +116,14 @@
                   "PlayerImages/Ash/PlayerUp1.png",
                   "PlayerImages/Ash/PlayerUp2.png"
                 ],
+                "myMoney": 100,
+                "myExperience": 50,
                 "width": 1,
                 "height": 1,
                 "myX": 2,
                 "myY": 2,
                 "itemList": [],
-                "myID": "engine.gridobject.person.NPC",
+                "myID": "engine.gridobject.person.Enemy",
                 "myArguments": [
                   1,
                   1,
@@ -126,12 +137,20 @@
                     "PlayerImages/Ash/PlayerUp1.png",
                     "PlayerImages/Ash/PlayerUp2.png"
                   ],
-                  "DEFAULT_NAME",
+                  "newItem",
                   {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
+                    "Damage": 5,
+                    "Speed": 5,
+                    "Defense": 5,
+                    "Health": 5,
+                    "Level": 5
                   },
-                  1
+                  [
+                    null,
+                    null
+                  ],
+                  2,
+                  2
                 ]
               }
             ]
@@ -220,50 +239,7 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
-                },
-                "myImages": [
-                  "PlayerImages/Ash/PlayerDown1.png",
-                  "PlayerImages/Ash/PlayerDown2.png",
-                  "PlayerImages/Ash/PlayerLeft1.png",
-                  "PlayerImages/Ash/PlayerLeft2.png",
-                  "PlayerImages/Ash/PlayerRight1.png",
-                  "PlayerImages/Ash/PlayerRight2.png",
-                  "PlayerImages/Ash/PlayerUp1.png",
-                  "PlayerImages/Ash/PlayerUp2.png"
-                ],
-                "width": 1,
-                "height": 1,
-                "myX": 2,
-                "myY": 2,
-                "itemList": [],
-                "myID": "engine.gridobject.person.NPC",
-                "myArguments": [
-                  1,
-                  1,
-                  [
-                    "PlayerImages/Ash/PlayerDown1.png",
-                    "PlayerImages/Ash/PlayerDown2.png",
-                    "PlayerImages/Ash/PlayerLeft1.png",
-                    "PlayerImages/Ash/PlayerLeft2.png",
-                    "PlayerImages/Ash/PlayerRight1.png",
-                    "PlayerImages/Ash/PlayerRight2.png",
-                    "PlayerImages/Ash/PlayerUp1.png",
-                    "PlayerImages/Ash/PlayerUp2.png"
-                  ],
-                  "DEFAULT_NAME",
-                  {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
-                  },
-                  1
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
