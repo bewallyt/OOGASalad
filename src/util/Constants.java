@@ -90,11 +90,11 @@ public class Constants {
     
     // util
     public final static int BUFFER_SIZE = 12800000;
-	public static final String DAMAGE = "damage";
-	public static final String SPEED = "speed";
-	public static final String HEALTH = "health";
-	public static final String LEVEL = "level";
-	public static final String DEFENSE = "defense";
+	public static final String DAMAGE = "Damage";
+	public static final String SPEED = "Speed";
+	public static final String HEALTH = "Health";
+	public static final String LEVEL = "Level";
+	public static final String DEFENSE = "Defense";
 	public static final int BATTLE_IMAGE_SIZE = 150;
 	
 

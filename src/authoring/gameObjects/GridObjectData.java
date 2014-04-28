@@ -6,6 +6,7 @@ import java.util.Map;
 
 import authoring.SpriteImageChooser;
 
+import authoring.features.FeatureManager;
 import util.Constants;
 
 public class GridObjectData {
@@ -77,10 +78,7 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
-		
-		myArguments.add(createSpriteImages("Ash"));
-
-		//myArguments.add(createSpriteImages(image));
+		myArguments.add(createSpriteImages(image));
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType
@@ -89,11 +87,11 @@ public class GridObjectData {
     // Base empty constructor
     public GridObjectData() {
     }
-    /*
+
     public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
-	*/
+
 	public String getID() {
 		return myID;
 	}
