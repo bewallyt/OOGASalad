@@ -7,6 +7,11 @@ import engine.gridobject.GridObject;
 import engine.item.Item;
 import engine.gridobject.person.*;
 
+/**
+ * One class that is crucial to our conversation design. This NPCResponse node is responsible for the text that 
+ * is said by an NPC. It is also responsible for giving an item (if chosen to do so) to the Player.
+ *
+ */
 public class NPCResponseNode {
 
 	private String myDialogue;
@@ -46,11 +51,6 @@ public class NPCResponseNode {
 	}
 	
 	public Item getItem() {
-		// just gets first item in list for now
-//		if (!((NPC) myNPC).getItems().isEmpty()) {
-//			return ((NPC) myNPC).getItems().get(0);
-//		}
-//		return null;
 		
 		if (myItem != null) {
 			return myItem;
