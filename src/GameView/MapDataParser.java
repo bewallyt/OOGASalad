@@ -9,7 +9,6 @@ import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import authoring.gameObjects.GridObjectData;
 import authoring.gameObjects.MapData;
-import authoring.gameObjects.NPCData;
 import authoring.gameObjects.NPCResponseNodeData;
 import authoring.gameObjects.TileData;
 import authoring.gameObjects.ItemData;

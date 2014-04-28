@@ -1,6 +1,6 @@
 {
   "myLevels": {
-    "map1": {
+    "map": {
       "playerData": {
         "myItems": [
           null
@@ -134,77 +134,7 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "myRoot": {
-                  "myString": "hello",
-                  "myChildren": [
-                    {
-                      "myString": "what up",
-                      "myChild": {
-                        "myString": "kasjdflksdj",
-                        "myChildren": []
-                      }
-                    }
-                  ]
-                },
-                "myImages": [
-                  "PlayerImages/Ash/PlayerDown1.png",
-                  "PlayerImages/Ash/PlayerDown2.png",
-                  "PlayerImages/Ash/PlayerLeft1.png",
-                  "PlayerImages/Ash/PlayerLeft2.png",
-                  "PlayerImages/Ash/PlayerRight1.png",
-                  "PlayerImages/Ash/PlayerRight2.png",
-                  "PlayerImages/Ash/PlayerUp1.png",
-                  "PlayerImages/Ash/PlayerUp2.png"
-                ],
-                "width": 1,
-                "height": 1,
-                "myX": 2,
-                "myY": 2,
-                "myID": "engine.gridobject.person.NPC",
-                "myDialogue": {
-                  "myString": "hello",
-                  "myChildren": [
-                    {
-                      "myString": "what up",
-                      "myChild": {
-                        "myString": "kasjdflksdj",
-                        "myChildren": []
-                      }
-                    }
-                  ]
-                },
-                "myArguments": [
-                  1,
-                  1,
-                  [
-                    "PlayerImages/Ash/PlayerDown1.png",
-                    "PlayerImages/Ash/PlayerDown2.png",
-                    "PlayerImages/Ash/PlayerLeft1.png",
-                    "PlayerImages/Ash/PlayerLeft2.png",
-                    "PlayerImages/Ash/PlayerRight1.png",
-                    "PlayerImages/Ash/PlayerRight2.png",
-                    "PlayerImages/Ash/PlayerUp1.png",
-                    "PlayerImages/Ash/PlayerUp2.png"
-                  ],
-                  "DEFAULT_NAME",
-                  {
-                    "myString": "hello",
-                    "myChildren": [
-                      {
-                        "myString": "what up",
-                        "myChild": {
-                          "myString": "kasjdflksdj",
-                          "myChildren": []
-                        }
-                      }
-                    ]
-                  },
-                  1
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -273,69 +203,27 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "hello",
-                  "myChildren": [
-                    {
-                      "myString": "what up",
-                      "myChild": {
-                        "myString": "kasjdflksdj",
-                        "myChildren": []
-                      }
-                    }
-                  ]
+                  "myString": "Initial NPC Response",
+                  "myChildren": []
                 },
-                "myImages": [
-                  "PlayerImages/Ash/PlayerDown1.png",
-                  "PlayerImages/Ash/PlayerDown2.png",
-                  "PlayerImages/Ash/PlayerLeft1.png",
-                  "PlayerImages/Ash/PlayerLeft2.png",
-                  "PlayerImages/Ash/PlayerRight1.png",
-                  "PlayerImages/Ash/PlayerRight2.png",
-                  "PlayerImages/Ash/PlayerUp1.png",
-                  "PlayerImages/Ash/PlayerUp2.png"
-                ],
+                "myImages": [],
                 "width": 1,
                 "height": 1,
                 "myX": 2,
                 "myY": 2,
                 "myID": "engine.gridobject.person.NPC",
                 "myDialogue": {
-                  "myString": "hello",
-                  "myChildren": [
-                    {
-                      "myString": "what up",
-                      "myChild": {
-                        "myString": "kasjdflksdj",
-                        "myChildren": []
-                      }
-                    }
-                  ]
+                  "myString": "Initial NPC Response",
+                  "myChildren": []
                 },
                 "myArguments": [
                   1,
                   1,
-                  [
-                    "PlayerImages/Ash/PlayerDown1.png",
-                    "PlayerImages/Ash/PlayerDown2.png",
-                    "PlayerImages/Ash/PlayerLeft1.png",
-                    "PlayerImages/Ash/PlayerLeft2.png",
-                    "PlayerImages/Ash/PlayerRight1.png",
-                    "PlayerImages/Ash/PlayerRight2.png",
-                    "PlayerImages/Ash/PlayerUp1.png",
-                    "PlayerImages/Ash/PlayerUp2.png"
-                  ],
+                  [],
                   "DEFAULT_NAME",
                   {
-                    "myString": "hello",
-                    "myChildren": [
-                      {
-                        "myString": "what up",
-                        "myChild": {
-                          "myString": "kasjdflksdj",
-                          "myChildren": []
-                        }
-                      }
-                    ]
+                    "myString": "Initial NPC Response",
+                    "myChildren": []
                   },
                   1
                 ]
@@ -1142,8 +1030,8 @@
   },
   "myImages": {},
   "mySongs": {},
-  "primaryMap": "map1",
-  "currentMap": "map1",
+  "primaryMap": "map",
+  "currentMap": "map",
   "myItems": {
     "Super Potion": {
       "itemName": "Super Potion",

@@ -81,10 +81,12 @@ public class NPC extends Person {
 
 	/**
 	 * Builds the response tree.
-	 *
-	 * @param n the node
-	 * @param items the items
-	 * @return the NPC response node
+	 * 
+	 * @param n
+	 *            head NPCResponseNodeData
+	 * @param items
+	 *            map of item names to itemdata
+	 * @return the root of the created NPC response node
 	 */
 	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
