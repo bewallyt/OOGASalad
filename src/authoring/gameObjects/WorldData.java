@@ -235,6 +235,11 @@ public class WorldData {
     public void setPrimaryMap(String s){
         primaryMap = s;
     }
+    /**
+	 * Saves an enemy to the current map
+	 * @param enemy EnemyData to be saved
+	 */
+    public void saveEnemy(EnemyData enemy) {myLevels.get(currentMap).saveEnemy(enemy);;}
 
 
 }
