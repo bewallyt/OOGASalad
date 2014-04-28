@@ -47,6 +47,12 @@ public class EnemyData extends GridObjectData {
     public void setWeapons(String[] weps) {
     	myWeapons = weps;
     }
+    public void setMyMoney(int mon) {
+    	myMoney = mon;
+    }
+    public void setMyExperience(int exp) {
+    	myExperience = exp;
+    }
 }
 
 
