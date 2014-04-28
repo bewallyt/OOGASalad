@@ -2,14 +2,14 @@ package authoring;
 
 import authoring.gameObjects.NPCResponseNodeData;
 
-public class UserQueryNode {
+public class UserQueryNodeData {
 	private String myString;
 	private NPCResponseNodeData myChild;
 	private String myItem;
-	public UserQueryNode(String s){
+	public UserQueryNodeData(String s){
 		myString = s;
 	}
-	public UserQueryNode(){
+	public UserQueryNodeData(){
 		
 	}
 	public void setString(String s){

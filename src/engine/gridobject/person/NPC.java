@@ -10,8 +10,10 @@ import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.TransparentDisplayer;
+import engine.dialogue.UserQueryNode;
 import engine.item.Item;
 import engine.state.DialogueState;
+import authoring.UserQueryNodeData;
 import authoring.gameObjects.ItemData;
 import authoring.gameObjects.NPCResponseNodeData;
 
@@ -69,7 +71,7 @@ public class NPC extends Person {
 						+ (int) ((Double) list
 								.get(Constants.NPC_MOVEMENT_CONST)).intValue(),
 				this, myPlayer);
-		myResponseNode = parseResponse(
+		myResponseNode = buildResponseTree(
 				(NPCResponseNodeData) list.get(Constants.RESPONSE_ROOT_CONST),
 				(Map<String, ItemData>) list.get(Constants.NPC_ITEMS_CONST));
 	}
@@ -78,12 +80,18 @@ public class NPC extends Person {
 		myResponseNode = n;
 	}
 
-	public NPCResponseNode parseResponse(NPCResponseNodeData n,
+	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
-		//Item myItem = new Item(items.get(n.getItem()).getItemImage(),items.get(n.getItem()).getItemName());
-		//myResponseNode = new NPCResponseNode(n.getString(), items.get(n.getItem()));
-		
-		return null;
+		Item myItem = (Item) Reflection.createInstance("engine.item."
+				+ items.get(n.getItem()).getMyIdentity());
+		NPCResponseNode head = new NPCResponseNode(n.getString(), myItem);
+		if (n.getChildren() != null) {
+			for (UserQueryNodeData u : n.getChildren()) {
+				NPCResponseNode child = buildResponseTree(u.getChild(), items);
+				head.addResponseNode(new UserQueryNode(myPlayer, u.getItem(), u.getString(), child));
+			}
+		}
+		return head;
 	}
 
 	public Player getPlayer() {
