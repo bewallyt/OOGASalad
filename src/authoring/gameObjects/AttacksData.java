@@ -1,7 +1,8 @@
 package authoring.gameObjects;
 
 /**
- * @ Pritam M.
+ * Class that holds data relevant to a created Attack
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  * */
 
 public class AttacksData {

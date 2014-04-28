@@ -1,9 +1,10 @@
 package authoring.features;
 
-/**
- * @ Pritam M.
- * */
 
+/**
+ * Class that handles the image uploading button and corresponding GUI window
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ */
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,7 +49,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 
     }
-	
+	/**
+	 * Gets and stores the uploaded image file
+	 */
 	private void chooseImage() throws IOException {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -64,6 +67,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 		
 	}
 
+	/**
+	 * Creates the GUI window for image uploading
+	 */
     private void imageFilePanel(){
         JRadioButton go = new JRadioButton("Grid Object");
         JRadioButton ti = new JRadioButton("Tile Image");
