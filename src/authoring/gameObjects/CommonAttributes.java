@@ -10,9 +10,13 @@ import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
 import authoring.SpringUtilities;
+import authoring.SpriteImageChooser;
 import authoring.features.FeatureManager;
 import authoring.view.GridObjectImageEditor;
 import authoring.view.TilePanel;
+
+
+
 
 
 import java.awt.*;
@@ -48,6 +52,12 @@ public abstract class CommonAttributes {
     protected DefaultListModel itemListModel;
     protected int x;
     protected int y;
+    protected SpriteImageChooser sprite=new SpriteImageChooser();
+    
+    protected JCheckBox one;
+    protected JCheckBox two;
+    protected JCheckBox three;
+    protected ButtonModel movement;
 
     public CommonAttributes(){
         weaponMap = new HashMap<String, WeaponData>();
@@ -55,7 +65,10 @@ public abstract class CommonAttributes {
         weaponListModel = new DefaultListModel();
         itemListModel = new DefaultListModel();
     }
-
+    protected JComboBox spriteField(){
+    	 JComboBox<String> playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
+         return playerEnemyImages;
+    }
     protected JPanel attributeFields(){
         attributeValues = new HashMap<String, Integer>();
         textValues = new HashMap<String, JTextField>();
