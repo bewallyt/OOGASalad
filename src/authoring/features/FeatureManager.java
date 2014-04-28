@@ -5,7 +5,7 @@ import java.util.List;
 import authoring.gameObjects.WeaponItemViewer;
 import authoring.gameObjects.WorldData;
 import authoring.view.TileImageEditor;
-import Data.FileStorer;
+import Data.GameStorer;
 
 /**
  * Class that manages the existing features in the project. 
@@ -17,7 +17,7 @@ public class FeatureManager {
 	public static WorldData myWorld = new WorldData();
     public static WeaponItemViewer weaponItemViewer = new WeaponItemViewer();
 	public static TileImageEditor tileEditor = new TileImageEditor();
-	public static FileStorer myDataManager = new FileStorer();
+	public static GameStorer myDataManager = new GameStorer();
 	public static void addFeature(Feature f){
 		myFeatures.add(f);
 	}
@@ -42,7 +42,7 @@ public class FeatureManager {
 	/**
 	 * Returns the FileStorer doing the game saving
 	 */
-	public static FileStorer getDataManager(){
+	public static GameStorer getDataManager(){
 		return myDataManager;
 	}
     public static WeaponItemViewer getWeaponItemViewer(){return weaponItemViewer;}

@@ -17,11 +17,11 @@ import authoring.gameObjects.WorldData;
 
 public class DataManager {
 	private Map<String, WorldData> myWorldDatas;
-	private FileStorer myFileStorer;
+	private GameStorer myFileStorer;
 	
 	public DataManager() {
 		myWorldDatas = new HashMap<String, WorldData>();
-		myFileStorer = new FileStorer();
+		myFileStorer = new GameStorer();
 		init();
 	}
 	

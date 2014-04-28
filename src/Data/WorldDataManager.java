@@ -23,7 +23,7 @@ import authoring.gameObjects.MapData;
 import authoring.gameObjects.PlayerData;
 import authoring.gameObjects.WorldData;
 
-/*
+/**
  * This class saves the state of a running game to a file. 
  * A game can be saved at multiple stages by invoking the 
  * 'Save' menu item. The game engine uses it own set of objects
@@ -32,6 +32,7 @@ import authoring.gameObjects.WorldData;
  * EnemyData etc and saves these to a file.
  * User can resume a game from any of the points he has saved
  * by loading the relevant file at runtime.
+ * @author Sanmay Jain
  */
 public class WorldDataManager {
 	public WorldDataManager() {}

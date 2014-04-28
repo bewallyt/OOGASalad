@@ -14,13 +14,13 @@ public class DataTester {
 	@Test
 	public void basicStoreLoadTest() throws Exception{
 		WorldData d=new WorldData();
-		FileStorer f=new FileStorer();
+		GameStorer f=new GameStorer();
 		f.storeWorldData("TestWorld2.txt", d);
 		WorldData d2=f.getWorldData("TestWorld2.txt");
 	}
 	@Test
 	public void fileListTest() throws Exception{
-		FileStorer f=new FileStorer();
+		GameStorer f=new GameStorer();
 		List<String> list=f.getSavedGameList();
 		if (!list.isEmpty()) {
 			//assertTrue(list.contains("default"));

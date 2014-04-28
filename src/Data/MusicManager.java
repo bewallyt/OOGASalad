@@ -62,14 +62,4 @@ public class MusicManager extends AbstractFileManager{
 		return new File(DEFAULT_MUSIC_FOLDER+songName);
 	}
 
-	public static void main(String[] args) throws IOException{
-		MusicManager m=new MusicManager();
-		//JFileChooser chooser=new JFileChooser();
-		//int returnVal=chooser.showOpenDialog(null);
-		//File f=chooser.getSelectedFile();
-		//m.storeMusicFile("testSong", f);
-		File fil=m.loadMusicFile("testSong");
-		System.out.println(fil.getAbsolutePath());
-	}
-
 }

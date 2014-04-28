@@ -22,12 +22,12 @@ import com.google.gson.GsonBuilder;
  * @author Davis Treybig
  *
  */
-public class FileStorer {
+public class GameStorer {
 	public static final String DEFAULT_SRC_FILE="src/";
 	public static final String DEFAULT_SAVED_GAME_PACKAGE="SavedGames/";
 	private String savedGamesPath;
 	
-	public FileStorer() {
+	public GameStorer() {
 		String path =DEFAULT_SRC_FILE+DEFAULT_SAVED_GAME_PACKAGE; 
 		savedGamesPath = path.replaceAll("\\\\", "/");	
 		File theDir = new File(savedGamesPath);
@@ -110,7 +110,7 @@ public class FileStorer {
 		return new FileLister().getFileList(savedGamesPath);
 	}
 	public static void main(String[] args){
-		FileStorer f=new FileStorer();
+		GameStorer f=new GameStorer();
 		f.writeFile("test.txt", "Hi");
 	}
 	
