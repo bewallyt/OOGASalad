@@ -14,7 +14,11 @@ import javax.swing.*;
 import authoring.SpringUtilities;
 import authoring.features.FeatureManager;
 
-
+/**
+ * Class that handles the GUI window and creation of encounters
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class EncounterCreation extends CommonAttributes{
 
     private  JComboBox playerImages;
@@ -84,9 +88,7 @@ public class EncounterCreation extends CommonAttributes{
 			editor.dispose();
 		}
     }
-    private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
+   
 	
     private void makeEncounterable(){
     	EncounterData myEncounter = new EncounterData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 

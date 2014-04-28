@@ -8,7 +8,12 @@ import authoring.SpriteImageChooser;
 
 import authoring.features.FeatureManager;
 import util.Constants;
-
+/**
+ * Generic class that handles information relevant to all grid objects. 
+ * All grid objects extend this class
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class GridObjectData {
 
 	protected String myImage;
@@ -20,6 +25,9 @@ public class GridObjectData {
 	private int myY;
 	private String myID;
 	private NPCResponseNodeData myDialogue;
+	/**
+	 * List of Objects used so the Player group can utilize reflection in creating GridObjects
+	 */
 	private List<Object> myArguments = new ArrayList<Object>();
 
 	protected String[] createSpriteImages(String image){

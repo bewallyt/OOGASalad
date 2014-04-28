@@ -57,7 +57,7 @@ public class Enemy extends NPC {
 		isRandom = false;
 		
 		// will probably have to set doBattleOnSight() as default
-//		doBattleOnSight();
+		doBattleOnSight();
 		
 		// battle response
 		setResponseNode(new NPCResponseNode("Let's Battle!", null));

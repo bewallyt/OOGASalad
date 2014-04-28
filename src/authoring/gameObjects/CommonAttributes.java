@@ -14,6 +14,7 @@ import authoring.view.TilePanel;
 
 
 
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,10 +67,16 @@ public abstract class CommonAttributes {
         weaponListModel = new DefaultListModel();
         itemListModel = new DefaultListModel();
     }
+    /**
+     * Gets the sprite image options currently available
+     */
     protected JComboBox spriteField(){
     	 JComboBox<String> playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
          return playerEnemyImages;
     }
+    /**
+     * Creates a basic attribute field GUI Panel
+     */
     protected JPanel attributeFields(){
         attributeValues = new HashMap<String, Integer>();
         textValues = new HashMap<String, JTextField>();
@@ -90,7 +97,9 @@ public abstract class CommonAttributes {
 
         return attributePanel;
     }
-
+    /**
+     * Creates a basic name/image field GUI Panel
+     */
     protected JPanel nameImageFields(){
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
@@ -121,7 +130,9 @@ public abstract class CommonAttributes {
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
     }
-
+    /**
+     * Creates a basic location JPanel
+     */
     protected JPanel locationFields(){
         JPanel locationPanel = new JPanel(new SpringLayout());
         JLabel xcoordinate = new JLabel("X");
@@ -138,6 +149,9 @@ public abstract class CommonAttributes {
         return locationPanel;
     }
 
+    /**
+     * Creates a basic size field Panel
+     */
     protected JPanel sizeFields(){
         JPanel sizePanel = new JPanel(new SpringLayout());
         JLabel widthLabel=new JLabel("Width");
@@ -153,7 +167,9 @@ public abstract class CommonAttributes {
         SpringUtilities.makeCompactGrid(sizePanel,2,2,5,5,5,5);
         return sizePanel;
     }
-
+    /**
+     * Adds currently available weapons and items to their corresponding variables
+     */
     public void iterateWeaponsAndItems(){
         weaponMap = FeatureManager.getWorldData().getMyWeapons();
         itemMap = FeatureManager.getWorldData().getMyItems();
@@ -177,7 +193,13 @@ public abstract class CommonAttributes {
         }
 
     }
-
+    /**
+	 * Parses the integer value from a String
+	 * @param s String to be parsed
+	 */
+	protected int getIntValue(String s){
+		return Integer.parseInt(s);
+	}
     protected String[] getWorldArray(){
 		Map<String, MapData> maps=FeatureManager.getWorldData().getMaps();
 		String[] mapArray=new String[maps.keySet().size()];
