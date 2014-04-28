@@ -11,7 +11,7 @@
           "Level": 5
         },
         "myWeapons": [],
-        "myName": "peter",
+        "myName": "newItem",
         "myMovement": 0,
         "myImages": [
           "PlayerImages/Ash/PlayerDown1.png",
@@ -43,7 +43,7 @@
             "PlayerImages/Ash/PlayerUp1.png",
             "PlayerImages/Ash/PlayerUp2.png"
           ],
-          "peter",
+          "newItem",
           {
             "Damage": 5,
             "Speed": 5,
@@ -258,7 +258,32 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              {
+                "myItems": [],
+                "width": 1,
+                "height": 1,
+                "myX": 3,
+                "myY": 3,
+                "myID": "engine.gridobject.person.ShopKeeper",
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ],
+                  "DEFAULT_NAME",
+                  []
+                ]
+              }
+            ]
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -324,21 +349,7 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "myItems": [],
-                "width": 1,
-                "height": 1,
-                "myX": 4,
-                "myY": 4,
-                "myID": "engine.gridobject.person.ShopKeeper",
-                "myArguments": [
-                  1,
-                  1,
-                  "Ash"
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",

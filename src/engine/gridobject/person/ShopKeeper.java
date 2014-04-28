@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import authoring.gameObjects.ItemData;
-
 import util.Constants;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
@@ -44,6 +43,7 @@ public class ShopKeeper extends NPC {
 		makeDialogue();
 	}
 
+	@SuppressWarnings("unchecked")
 	public ShopKeeper(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list
