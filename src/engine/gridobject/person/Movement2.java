@@ -4,7 +4,6 @@ public class Movement2 extends Movement{
 
 	public Movement2(NPC npc, Player player) {
 		super(npc, player);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

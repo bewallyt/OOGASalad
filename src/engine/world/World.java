@@ -24,9 +24,6 @@ public abstract class World {
 	private TextDisplayer myTextDisplayer;
 	private Music myMusic;
 
-
-
-
 	/**
 	 * Instantiates a new World.
 	 *
