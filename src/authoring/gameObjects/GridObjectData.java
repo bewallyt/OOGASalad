@@ -85,20 +85,6 @@ public class GridObjectData {
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType
 	}
-	// HealerData
-	public GridObjectData(int x, int y, int width, int height, String image, int movement, String id) {
-		myID = id;
-		myX = x;
-		myY = y;
-		
-		myArguments.add(width);
-		myArguments.add(height);
-		
-		//myArguments.add(createSpriteImages("Ash"));
-		myArguments.add(createSpriteImages(image));
-		myArguments.add("DEFAULT_NAME");
-		myArguments.add((int) 1); // default movement type until given movementType
-	}
 
     // Base empty constructor
     public GridObjectData() {
