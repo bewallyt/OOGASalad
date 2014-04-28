@@ -53,6 +53,11 @@ public class MusicManager extends AbstractFileManager{
 		return null;
 	}
 	
+	/**
+	 * Loads the music file with the given name. 
+	 * @param songName Name of the song to be loaded
+	 * @return File of the given image
+	 */
 	public File loadMusicFile(String songName){
 		return new File(DEFAULT_MUSIC_FOLDER+songName);
 	}

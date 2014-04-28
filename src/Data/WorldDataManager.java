@@ -96,43 +96,14 @@ public class WorldDataManager {
 				}
 				
 			}
-			
-			Player p = w.getPlayer();
-			int pX = p.getX();
-			int pY = p.getY();
-			String pImageName = "";
-			String pName = "player1";
-			
-			String[] pAnimImages = p.getAnimImages();
-			
-			Map<String,Integer> attributeValues = new HashMap<String,Integer>();
-			for (String key : p.getStatsMap().keySet()) {
-				attributeValues.put(key,  p.getStatsMap().get(key).getValue());
-			}
-						
-			List<Weapon> pWeaponNames = p.getWeaponList();
-			String [] pWeps = new String[pWeaponNames.size()];
-			int wCounter = 0;
-			for (Weapon wep : pWeaponNames) {
-				String wepName = wep.toString();
-				pWeps[wCounter] = wepName;
-				wCounter++;
-			}
-			List<Item> pItemNames = p.getItems();
-			String [] pItems = new String[pItemNames.size()];
-			int iCounter = 0;
-			for (Item item : pItemNames) {
-				String itemName = item.toString();
-				pItems[iCounter] = itemName;
-				iCounter++;
-			}
 
-			PlayerData playerData = new PlayerData(p.getStartX()/Constants.TILE_SIZE, p.getStartY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItems);
-			playerData.setImages(pAnimImages);
+			PlayerData playerData = transformPlayer(w);
 			md.savePlayer(playerData);
+			
 			worldData.addLevel(mapName, md);
 			worldData.setMap(mapName);
 			worldData.setPrimaryMap(mapName);
+			
 			DataManager dm = new DataManager();
 			dm.setWorldData(fileName, worldData);
 			dm.saveWorldDataToFile(fileName);
@@ -140,5 +111,48 @@ public class WorldDataManager {
 		}
 	}
 	
+	private PlayerData transformPlayer(World w) {
+		Player p = w.getPlayer();
+		String pImageName = p.getImageFile();
+		String pName = p.toString();		
+		
+		String[] pAnimImages = p.getAnimImages();		
+		Map<String,Integer> attributeValues = new HashMap<String,Integer>();
+		for (String key : p.getStatsMap().keySet()) {
+			attributeValues.put(key,  p.getStatsMap().get(key).getValue());
+		}
+					
+		List<Weapon> pWeapons = p.getWeaponList();
+		String[] pWeps = getWeaponNames(pWeapons);
+		
+		List<Item> pItems = p.getItems();
+		String [] pItemNames = getItemNames(pItems);	
 
+		PlayerData playerData = new PlayerData(p.getStartX()/Constants.TILE_SIZE, p.getStartY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItemNames);
+		playerData.setImages(pAnimImages);
+		
+		return playerData;
+	}
+	
+	private String[] getWeaponNames(List<Weapon> weapons) {
+		String [] wepNames = new String[weapons.size()];
+		int counter = 0;
+		for (Weapon wep : weapons) {
+			String wepName = wep.toString();
+			wepNames[counter] = wepName;
+			counter++;
+		}
+		return wepNames;		
+	}
+	
+	private String[] getItemNames(List<Item> items) {
+		String [] itemNames = new String[items.size()];
+		int counter = 0;
+		for (Item item : items) {
+			String itemName = item.toString();
+			itemNames[counter] = itemName;
+			counter++;
+		}
+		return itemNames;		
+	}	
 }

@@ -2,9 +2,10 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import engine.Control;
+import util.Constants;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
+
 
 public class SaveState extends AbstractState {
 
@@ -35,21 +36,21 @@ public class SaveState extends AbstractState {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (saveFile == null) {
-			if (e.getKeyCode() == Control.ESC) {
+			if (e.getKeyCode() == Constants.ESC) {
 				myPlayer.setState(new MenuState(myPlayer, myMenuManager));
 				myPlayer.setInteractionBox(myMenuManager);
 
-			} else if (e.getKeyCode() != Control.ENTER
-					&& e.getKeyCode() != Control.SHIFT
-					&& e.getKeyCode() != Control.BACKSPACE) {
+			} else if (e.getKeyCode() != Constants.ENTER
+					&& e.getKeyCode() != Constants.SHIFT
+					&& e.getKeyCode() != Constants.BACKSPACE) {
 				buffer.append(e.getKeyChar());
 				displayString = new String(buffer.toString());
 
-			} else if (e.getKeyCode() == Control.ENTER && buffer.length() != 0) {
+			} else if (e.getKeyCode() == Constants.ENTER && buffer.length() != 0) {
 				saveFile = buffer.toString();
 				save(saveFile);
 
-			} else if (e.getKeyCode() == Control.BACKSPACE
+			} else if (e.getKeyCode() == Constants.BACKSPACE
 					&& buffer.length() != 0) {
 				buffer.deleteCharAt(buffer.length() - 1);
 				displayString = new String(buffer.toString());

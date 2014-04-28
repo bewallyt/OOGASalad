@@ -6,6 +6,7 @@ import java.io.File;
 import GameView.TitleManager;
 import engine.Control;
 import engine.gridobject.person.Player;
+import util.Constants;
 
 public class GameSelectState extends AbstractState {
 
@@ -34,22 +35,22 @@ public class GameSelectState extends AbstractState {
 		}
 		
 		if (loadFile == null) {
-			if (e.getKeyCode() == Control.ESC) {
+			if (e.getKeyCode() == Constants.ESC) {
 				myPlayer.setState(new TitleState(myPlayer, myTM));
 				myTM.toggleStartPressed();
 
-			} else if (e.getKeyCode() != Control.ENTER
-					&& e.getKeyCode() != Control.SHIFT
-					&& e.getKeyCode() != Control.BACKSPACE) {
+			} else if (e.getKeyCode() != Constants.ENTER
+					&& e.getKeyCode() != Constants.SHIFT
+					&& e.getKeyCode() != Constants.BACKSPACE) {
 				buffer.append(e.getKeyChar());
 				displayString = new String(buffer.toString());
 
-			} else if (e.getKeyCode() == Control.ENTER && buffer.length() != 0) {
+			} else if (e.getKeyCode() == Constants.ENTER && buffer.length() != 0) {
 				loadFile = buffer.toString();
 				load(loadFile);
 				
 
-			} else if (e.getKeyCode() == Control.BACKSPACE
+			} else if (e.getKeyCode() == Constants.BACKSPACE
 					&& buffer.length() != 0) {
 				buffer.deleteCharAt(buffer.length() - 1);
 				displayString = new String(buffer.toString());

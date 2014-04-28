@@ -2,18 +2,21 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
-import engine.Control;
+import util.Constants;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
+import engine.menu.managers.WeaponManager;
 
 public class WeaponState extends AbstractState {
 	
 	private MenuManager myMenuManager;
+	private WeaponManager myWeaponManager;
 	private Player myPlayer;
 	
-	public WeaponState(Player p, MenuManager mm){
+	public WeaponState(Player p, MenuManager mm, WeaponManager wm){
 		myPlayer = p;
 		myMenuManager = mm;
+		myWeaponManager = wm;
 	}
 
 	@Override
@@ -30,13 +33,17 @@ public class WeaponState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP) {
+
+		if (e.getKeyCode() == Constants.UP) {
+			myWeaponManager.moveCursorUp();
 		}
-		if (e.getKeyCode() == Control.DOWN) {
+		if (e.getKeyCode() == Constants.DOWN) {
+			myWeaponManager.moveCursorDown();
 		}
-		if (e.getKeyCode() == Control.A || e.getKeyCode() == Control.ENTER) {
+		if (e.getKeyCode() == Constants.A || e.getKeyCode() == Constants.ENTER) {
+			myWeaponManager.select();
 		}
-		if (e.getKeyCode() == Control.SPACE || e.getKeyCode() == Control.ESC) {
+		if (e.getKeyCode() == Constants.SPACE || e.getKeyCode() == Constants.ESC) {
 			myPlayer.setState(new MenuState(myPlayer, myMenuManager));
 			myPlayer.setInteractionBox(myMenuManager);
 		}

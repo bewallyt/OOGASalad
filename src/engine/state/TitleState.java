@@ -30,7 +30,7 @@ public class TitleState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() < 100) {
+		if (e.getKeyCode() < 150) {
 			myTM.toggleStartPressed();
 			myPlayer.setState(new GameSelectState(myTM, myPlayer));
 		}

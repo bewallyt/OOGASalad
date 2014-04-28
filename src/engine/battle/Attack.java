@@ -43,6 +43,11 @@ public class Attack implements MatrixNode,BattleExecutable {
 			return myEffect.toString();
 		return "";
 	}
+	public String getDataEffectMessage(){
+		if(myEffect!=null)
+			return myEffect.toStringData();
+		return "";
+	}
 
 	@Override
 	public String toString() {
