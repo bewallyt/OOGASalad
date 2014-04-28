@@ -2,6 +2,7 @@ package engine.dialogue;
 
 import engine.state.WalkAroundState;
 
+
 public class ListeningState implements ConversationState{
 
 	public ListeningState() {}

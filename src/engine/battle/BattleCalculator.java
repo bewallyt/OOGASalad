@@ -14,12 +14,24 @@ public class BattleCalculator {
 	private BattleAI myBattleAI;
 	private boolean dropWeapon = false;
 
+	/**
+	 * Instantiates a new battle calculator.
+	 *
+	 * @param player the player
+	 * @param enemy the enemy
+	 */
 	public BattleCalculator(Player player, Enemy enemy){
 		myPlayer=player;
 		myBattleAI=new BattleAI(enemy);
 		myEnemy = enemy;
 	}
 
+	/**
+	 * Gets the attackers in order. 
+	 *
+	 * @param attack the attack
+	 * @return the attackers in order. 0=first attacker 1=second attacker
+	 */
 	public Person[] getAttackersInOrder(Attack attack){
 		BattleAI battleAI = new BattleAI(myEnemy);
 		Weapon enemyWeapon = battleAI.chooseWeapon();
@@ -43,6 +55,14 @@ public class BattleCalculator {
 		return (person.getStatsMap().get(Constants.SPEED).getValue()+weapon.getSpeed().getValue()+attack.getSpeed().getValue());
 	}
 
+	/**
+	 * Attack.
+	 *
+	 * @param attacker the attacker
+	 * @param victim the victim
+	 * @param weapon the weapon
+	 * @param attack the attack
+	 */
 	public void attack(Person attacker, Person victim, Weapon weapon, Attack attack){
 		int level = attacker.getStatsMap().get(Constants.LEVEL).getValue();
 		int playerDamage = attacker.getStatsMap().get(Constants.DAMAGE).getValue();
@@ -71,6 +91,11 @@ public class BattleCalculator {
 		return dropWeapon;
 	}
 
+	/**
+	 * Enemy is dead.
+	 *
+	 * @return true, if enemy is dead
+	 */
 	public boolean enemyIsDead(){
 		if(myEnemy.getStatsMap().get(Constants.HEALTH).getValue()<=0){
 
@@ -83,6 +108,12 @@ public class BattleCalculator {
 		}
 		return false;
 	}
+	
+	/**
+	 * Player is dead.
+	 *
+	 * @return true, if player is dead
+	 */
 	public boolean playerIsDead(){
 		if(myPlayer.getStatsMap().get(Constants.HEALTH).getValue()<=0){
 			return true;
@@ -90,6 +121,11 @@ public class BattleCalculator {
 		return false;
 	}
 	
+	/**
+	 * Weapon dropped.
+	 *
+	 * @return true, if the weapon was dropped
+	 */
 	public boolean weaponDropped(){
 		if(dropWeapon){
 			return true;

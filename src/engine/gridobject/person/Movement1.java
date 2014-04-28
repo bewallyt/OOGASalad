@@ -4,6 +4,12 @@ import engine.state.WalkAroundState;
 
 public class Movement1 extends Movement{
 
+	/**
+	 * Instantiates a new back and forth movement.
+	 *
+	 * @param npc the npc
+	 * @param player the player
+	 */
 	public Movement1(NPC npc, Player player) {
 		super(npc, player);
 

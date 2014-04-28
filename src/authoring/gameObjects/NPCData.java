@@ -18,7 +18,6 @@ public class NPCData extends GridObjectData{
 	public NPCData(int x, int y, int width, int height, String image, NPCResponseNodeData root) {
 		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
-		init();
 		SpriteImageChooser imageChoose=new SpriteImageChooser();
 		myImages=imageChoose.getSpriteImages("Ash");
 		setHeight(height);
