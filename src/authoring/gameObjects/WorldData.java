@@ -112,43 +112,88 @@ public class WorldData {
 	public List<RandomEnemy> getMyRandomEnemies(){
 		return myLevels.get(currentMap).getMyRandomEnemies();
 	}
+	/**
+	 * Gets the current player data
+	 */
 	public PlayerData getPlayData() {
 		return myLevels.get(currentMap).getPlayData();
 	}
+	/**
+	 * Returns the current primary map
+	 */
 	public String getPrimaryMap() {
 		return primaryMap;
 	}
+	/**
+	 * Gets the weapons currently saved
+	 * @return Mapping of weapon names to their WeaponData
+	 */
 	public Map<String,WeaponData> getMyWeapons(){
 		return myWeapons;
 	}
 
+	/**
+	 * Saves a barrier
+	 * @param barrier BarrierData to be saved
+	 */
     protected void saveBarrier(BarrierData barrier){
     	myLevels.get(currentMap).saveBarrier(barrier);
     }
+    /**
+     * Saves a healer
+     * @param myHealer HealerData to be saved
+     */
 	public void saveHealer(HealerData myHealer) {
 		myLevels.get(currentMap).saveHealer(myHealer);
 	}
+	/**
+	 * Saves a door
+	 * @param door DoorData to be saved
+	 */
     protected void saveDoor(DoorData door){
     	myLevels.get(currentMap).saveDoor(door);
     }
+    /**
+     * Saves an encounter
+     * @param myEncounter EncounterData to be saved
+     */
 	protected void saveEncounter(EncounterData myEncounter) {
 		myLevels.get(currentMap).saveEncounter(myEncounter);
 	}
+	/**
+	 * Saves an image
+	 * @param s String name of image
+	 * @param f File of image
+	 */
 	protected void saveImage(String s, File f) {
 		myImages.put(s, f);
 	}
+	/**
+	 * Saves a song
+	 * @param s Name of song
+	 * @param f File of song
+	 */
 	public void saveSong(String s, File f) {
 		mySongs.put(s, f);
 	}
+	/**
+	 * Saves an item
+	 * @param n Name of item
+	 * @param it ItemData to be saved
+	 */
 	public void saveItem(String n, ItemData it){
 		myItems.put(n,it);
 	}
+	/**
+	 * Saves an NPC
+	 * @param myNPC NPCData to be saved
+	 */
 	protected void saveNPC(NPCData myNPC) {
 		myLevels.get(currentMap).saveNPC(myNPC);
 	}
 	/**
-	 * 
-	 * @param player
+	 * Saves the player
+	 * @param player PlayerData to be saved
 	 */
 	protected void savePlayer(PlayerData player) {
 		myLevels.get(currentMap).savePlayer(player);

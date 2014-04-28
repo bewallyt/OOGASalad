@@ -6,6 +6,11 @@ import authoring.SpriteImageChooser;
 
 import util.Constants;
 
+/**
+ * Class that holds all data for a given NPC
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class NPCData extends GridObjectData{
 	private NPCResponseNodeData myRoot;
 	private String[] myImages;
@@ -19,11 +24,15 @@ public class NPCData extends GridObjectData{
 		setHeight(height);
 		setWidth(width);
 	}
-	
+	/**
+	 * Returns the NPCResponseData of this NPC
+	 */
 	public NPCResponseNodeData getDialogue(){
 		return myRoot;
 	}
-	
+	/**
+	 * Returns the images of this NPC
+	 */
 	public String[] getImages(){
 		return myImages;
 	}
