@@ -7,7 +7,7 @@ public class PlayerDead implements BattleState{
 	@Override
 	public void doState(BattleManager manager) {
 		manager.setCurrentTextToBeDisplayed("You have been defeated!");
-		manager.setCurrentState("BattleLost");
+		manager.setCurrentState("BattlePunishments");
 	}
 
 }

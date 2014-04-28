@@ -207,7 +207,7 @@ public class Main extends RPGEngine {
 		player.addStatistic(new Statistic("defense",10,100));
 		enemy.setBattleImage("ImageFiles/rival.png");
 		enemy.addStatistic(new Statistic("health",50,100));
-		enemy.addStatistic(new Statistic("damage",10,100));
+		enemy.addStatistic(new Statistic("damage",100,100));
 		enemy.addStatistic(new Statistic("speed",100,100));
 		enemy.addStatistic(new Statistic("level",10,100));
 		enemy.addStatistic(new Statistic("defense",10,100));
