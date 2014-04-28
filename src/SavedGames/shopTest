@@ -1039,7 +1039,7 @@
         "Level": 5
       },
       "myPrice": 10,
-      "myIdentity": "StatBuffer"
+      "myIdentity": "KeyItem"
     }
   },
   "myWeapons": {}
