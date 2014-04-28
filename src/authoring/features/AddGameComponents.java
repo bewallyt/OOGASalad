@@ -92,8 +92,8 @@ public class AddGameComponents extends Feature implements ActionListener {
         iSwordAttack.add(iceSlash);
         WeaponData fireSword = new WeaponData("Fire Sword","FSword",10,10,fSwordAttack);
         WeaponData iceSword = new WeaponData("Ice Sword","ISword",15,15,iSwordAttack);
-        FeatureManager.getWorldData().saveWeapons("Fire Sword",fireSword);
-        FeatureManager.getWorldData().saveWeapons("Ice Sword",iceSword);
+        FeatureManager.getWorldData().saveWeapon("Fire Sword",fireSword);
+        FeatureManager.getWorldData().saveWeapon("Ice Sword",iceSword);
 
         HashMap<String,Integer> potionValues = new HashMap<String, Integer>();
         String[] valueLabels = {"Speed","Damage","Defense","Health","Level"};

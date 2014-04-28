@@ -27,7 +27,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private JCheckBox one;
     private JCheckBox two;
     private JCheckBox three;
-    private Object movement;
+    private ButtonModel movement;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
@@ -292,6 +292,18 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         FeatureManager.getWorldData().getMap((String)worldList.getSelectedItem()).saveRandomEnemy(madeRandomEnemy);
     }
 
+    private int getMovementType(){
+    	if(one.isSelected()){
+    		return 1;
+    	}
+    	else if (two.isSelected()){
+    		return 2;
+    	}
+    	else if (three.isSelected()){
+    		return 3;
+    	}
+    	return 1;
+    }
     private void makePlayer() {
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);
         FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());	
@@ -299,15 +311,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     }
 
     private void makeEnemy() {
-        int move;
-        if(movement.equals(one)){
-            move=1;
-        } else if(movement.equals(two)){
-            move=2;
-        } else{
-            move=3;
-        }
-        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,move,
+        EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         madeEnemy.init();
     }

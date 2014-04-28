@@ -248,7 +248,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private void makeWeapon() {
         WeaponData madeWeapon = new WeaponData(name,editor.getSelectedImage().getDescription(),speed,damage,
                 weaponAttacks);
-        FeatureManager.getWorldData().saveWeapons(name,madeWeapon);
+        FeatureManager.getWorldData().saveWeapon(name,madeWeapon);
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
 
     }

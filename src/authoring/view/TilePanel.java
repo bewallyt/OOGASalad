@@ -83,7 +83,9 @@ public class TilePanel extends JLayeredPane{
 		this.repaint();
 	}
 
-	
+	/**
+	 * Adds the images of the given GridObjects on this tile to the tile
+	 */
 	public void update(){
 		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
 		for(GridObjectData g : myGridObjects){
