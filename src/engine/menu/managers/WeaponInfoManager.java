@@ -35,38 +35,38 @@ public class WeaponInfoManager implements InteractionBox {
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int xOffset,
 			int yOffset) {
 		paintInfoBox(g2d, "ImageFiles/PokemonBox.png", -50, -50, 600, 600);
-		paintWeaponImage(g2d, myWeaponImage, 30, 30);
-		displayWeaponName(g2d, myWeaponName, 150, 55);
-		displayWeaponStats(g2d, myWeaponStats, 155, 95);
+		paintFeatureImage(g2d, myWeaponImage, 30, 30);
+		displayFeatureName(g2d, myWeaponName, 150, 55);
+		displayFeatureStats(g2d, myWeaponStats, 155, 95);
 		displayAttacks(g2d, 30, 160);
 
 	}
 
-	private void paintInfoBox(Graphics g2d, String imgPath, int x, int y,
+	protected void paintInfoBox(Graphics g2d, String imgPath, int x, int y,
 			int width, int height) {
 		Image img = new ScaledImage(width, height, imgPath).scaleImage();
 		g2d.drawImage(img, x, y, null);
 	}
 
-	private void paintWeaponImage(Graphics g2d, Image weaponImage, int x, int y) {
-		Image scaledWeaponImage = weaponImage.getScaledInstance(100, 100,
+	protected void paintFeatureImage(Graphics g2d, Image FeatureImage, int x, int y) {
+		Image scaledFeatureImage = FeatureImage.getScaledInstance(100, 100,
 				Image.SCALE_SMOOTH);
-		g2d.drawImage(scaledWeaponImage, x, y, null);
+		g2d.drawImage(scaledFeatureImage, x, y, null);
 	}
 
-	private void displayWeaponName(Graphics g2d, String weaponName, int x, int y) {
+	protected void displayFeatureName(Graphics g2d, String FeatureName, int x, int y) {
 		PokemonFont.setFont(g2d, 32f);
-		g2d.drawString(weaponName, x, y);
+		g2d.drawString(FeatureName, x, y);
 	}
 
-	private void displayWeaponStats(Graphics g2d, List<Integer> weaponStats,
+	private void displayFeatureStats(Graphics g2d, List<Integer> FeatureStats,
 			int x, int y) {
 		PokemonFont.setFont(g2d, 16f);
-		String damageRatio = "Damage: " + Integer.toString(weaponStats.get(0))
-				+ "/" + Integer.toString(weaponStats.get(1));
+		String damageRatio = "Damage: " + Integer.toString(FeatureStats.get(0))
+				+ "/" + Integer.toString(FeatureStats.get(1));
 		g2d.drawString(damageRatio, x, y);
-		String speedRatio = "Speed:  " + Integer.toString(weaponStats.get(2))
-				+ "/" + Integer.toString(weaponStats.get(3));
+		String speedRatio = "Speed:  " + Integer.toString(FeatureStats.get(2))
+				+ "/" + Integer.toString(FeatureStats.get(3));
 
 		g2d.drawString(speedRatio, x, y + 30);
 	}
