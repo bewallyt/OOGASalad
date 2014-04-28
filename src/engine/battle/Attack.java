@@ -22,7 +22,7 @@ public class Attack implements MatrixNode,BattleExecutable {
 	public Attack(String name){
 		myName=name;
 	}
-	
+
 
 	/**
 	 * Instantiates a new attack.
@@ -40,7 +40,6 @@ public class Attack implements MatrixNode,BattleExecutable {
 		myDamage = new Statistic("damage", damage, Weapon.DEFAULT_MAX);
 		setEffect(selected, affects, value);
 	}
-	
 
 	public Statistic getDamage(){
 		return myDamage;
