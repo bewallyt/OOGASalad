@@ -79,6 +79,9 @@ public class WorldData {
     protected void saveBarrier(BarrierData barrier){
     	myLevels.get(currentMap).saveBarrier(barrier);
     }
+	public void saveHealer(HealerData myHealer) {
+		myLevels.get(currentMap).saveHealer(myHealer);
+	}
     protected void saveDoor(DoorData door){
     	myLevels.get(currentMap).saveDoor(door);
     }
@@ -118,5 +121,6 @@ public class WorldData {
     public void setPrimaryMap(String s){
         primaryMap = s;
     }
+
 
 }
