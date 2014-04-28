@@ -8,9 +8,13 @@ import javax.swing.*;
 
 import authoring.features.Feature;
 
+/**
+ * Class that manages the various panels and frames in the authoring environment
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class AuthoringView {
 	public static final String MENU_BAR = "menu bar";
-	
 	private static JFrame myFrame;
 	private Map<String, JComponent> myPanels;
 	private List<Feature> myFeatures;

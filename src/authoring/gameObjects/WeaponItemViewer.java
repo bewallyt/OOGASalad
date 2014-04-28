@@ -1,8 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * */
 
 import javax.swing.*;
 
@@ -15,6 +12,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
+
+/**
+ * JFrame that allows you to look at the current weapons and items that have been created
+ * @author Pritam M.
+ *
+ */
 @SuppressWarnings("ALL")
 public class WeaponItemViewer extends CommonAttributes{
 
