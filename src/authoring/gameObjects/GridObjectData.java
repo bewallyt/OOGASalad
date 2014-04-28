@@ -78,9 +78,9 @@ public class GridObjectData {
 		myArguments.add(width);
 		myArguments.add(height);
 		
-		//myArguments.add(createSpriteImages("Ash"));
+		myArguments.add(createSpriteImages("Ash"));
 
-		myArguments.add(createSpriteImages(image));
+		//myArguments.add(createSpriteImages(image));
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType

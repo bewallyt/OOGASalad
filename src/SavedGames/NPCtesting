@@ -203,27 +203,69 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "asdf",
+                  "myChildren": [
+                    {
+                      "myString": "qwevad",
+                      "myChild": {
+                        "myString": "zxcvzxcva",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
-                "myImages": [],
+                "myImages": [
+                  "PlayerImages/Ash/PlayerDown1.png",
+                  "PlayerImages/Ash/PlayerDown2.png",
+                  "PlayerImages/Ash/PlayerLeft1.png",
+                  "PlayerImages/Ash/PlayerLeft2.png",
+                  "PlayerImages/Ash/PlayerRight1.png",
+                  "PlayerImages/Ash/PlayerRight2.png",
+                  "PlayerImages/Ash/PlayerUp1.png",
+                  "PlayerImages/Ash/PlayerUp2.png"
+                ],
                 "width": 1,
                 "height": 1,
                 "myX": 2,
                 "myY": 2,
                 "myID": "engine.gridobject.person.NPC",
                 "myDialogue": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "asdf",
+                  "myChildren": [
+                    {
+                      "myString": "qwevad",
+                      "myChild": {
+                        "myString": "zxcvzxcva",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myArguments": [
                   1,
                   1,
-                  [],
+                  [
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
+                  ],
                   "DEFAULT_NAME",
                   {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
+                    "myString": "asdf",
+                    "myChildren": [
+                      {
+                        "myString": "qwevad",
+                        "myChild": {
+                          "myString": "zxcvzxcva",
+                          "myChildren": []
+                        }
+                      }
+                    ]
                   },
                   1
                 ]
