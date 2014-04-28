@@ -27,6 +27,10 @@ public class ImageFile {
 	public String getName(){
 		return name;
 	}
+	/**
+	 * Changes the name of the image
+	 * @param s New name to be used
+	 */
 	public void changeName(String s){
 		name=s;
 	}
