@@ -145,7 +145,7 @@ public class Canvas extends JComponent{
 		g2d.setColor(Color.green);
 		g2d.draw(new Rectangle((int) (myWidth/REC_OFFSET),(int) (myHeight*BOTTOM_OFFSET+FILLREC_OFFSET), myWidth/5, IMAGE_OFFSET));
 		g2d.fill(new Rectangle((int) (myWidth/REC_OFFSET),(int) (myHeight*BOTTOM_OFFSET+FILLREC_OFFSET), (int) (myWidth/5*((float)world.getPlayer()
-					.getStatsMap().get(Constants.HEALTH).getValue()/world.getPlayer().getStatsMap().get("health").
+					.getStatsMap().get(Constants.HEALTH).getValue()/world.getPlayer().getStatsMap().get("Health").
 					getMaxValue())), IMAGE_OFFSET));
 		g2d.setColor(Color.black);
 

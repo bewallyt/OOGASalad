@@ -107,7 +107,9 @@ public class MapData {
 	 * Saves an NPC to the map
 	 * @param myNPC NPCData to be saved
 	 */
-	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);}
+	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);
+	System.out.println("NPC Added");}
+	
 	
 	/**
 	 * Saves an enemy to the map

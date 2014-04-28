@@ -20,13 +20,12 @@ import java.awt.event.*;
 public class PlayerEnemyCreation extends CommonAttributes implements ActionListener {
 
     private JComboBox<String> playerEnemyImages;
-    private String[] playerEnemyImageChoices = {"Ash","Zelda"};
     private String[] weaponNames;
     private String[] itemNames;
-    private JCheckBox one;
-    private JCheckBox two;
-    private JCheckBox three;
-    private ButtonModel movement;
+    //private JCheckBox one;
+    //private JCheckBox two;
+    //private JCheckBox three;
+    //private ButtonModel movement;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
@@ -99,7 +98,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
 
         worldList = new JComboBox(getWorldArray());
         worldList.setEnabled(false);
-        playerEnemyImages = new JComboBox<String>(playerEnemyImageChoices);
+        playerEnemyImages = spriteField();
         JPanel namePanel = nameImageFields();
         JPanel superNamePanel = new JPanel();
         superNamePanel.setLayout(new BoxLayout(superNamePanel,BoxLayout.PAGE_AXIS));
@@ -326,6 +325,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
+        FeatureManager.getWorldData().saveEnemy(madeEnemy);
         madeEnemy.init();
     }
 
