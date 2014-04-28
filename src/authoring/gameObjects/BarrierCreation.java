@@ -50,13 +50,7 @@ public class BarrierCreation extends CommonAttributes{
         combinedPanel.add(createBarrier);
         frame.add(combinedPanel);
 	}
-	/**
-	 * Returns the int value within a string 
-	 * @param s String to be parsed
-	 */
-	private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
+	
 	/**
 	 * Validates user input
 	 * @return boolean stating whether user input is valid or not

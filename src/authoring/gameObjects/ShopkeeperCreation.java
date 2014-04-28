@@ -22,6 +22,11 @@ import javax.swing.event.ListSelectionListener;
 import authoring.UserQueryNodeData;
 import authoring.features.FeatureManager;
 
+/**
+ * Handles the creation and GUI window of shopkeepers
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class ShopkeeperCreation extends CommonAttributes {
 	private JList myResponsesWrapper;
 	private List<String> myWares;
@@ -84,14 +89,7 @@ public class ShopkeeperCreation extends CommonAttributes {
 		}
     	
     }
-    /**
-     * Returns the int value within a string
-     * @param s String with the contained int value
-     * @return Int value contained in string
-     */
-    private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
+
     /**
      * Makes the corresponding NPC based on user input
      */

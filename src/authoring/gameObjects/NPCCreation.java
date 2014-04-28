@@ -104,14 +104,7 @@ public class NPCCreation extends CommonAttributes{
 		}
     	
     }
-    /**
-     * Returns the int value within a string
-     * @param s String with the contained int value
-     * @return Int value contained in string
-     */
-    private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
+
     /**
      * Makes the corresponding NPC based on user input
      */

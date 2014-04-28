@@ -1,11 +1,12 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * */
 
 import java.util.Map;
-
+/**
+ * Class that handles data relevant to items
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class ItemData {
 
     private String itemName;
