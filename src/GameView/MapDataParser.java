@@ -63,6 +63,7 @@ public class MapDataParser {
 //					if (data instanceof NPCData){
 					if(data.getID().equals("engine.gridobject.person.NPC")){
 						NPCResponseNodeData node = data.getDialogue();
+						data.getArguments().remove(4);
 						data.getArguments().add(node);
 					}
 					
