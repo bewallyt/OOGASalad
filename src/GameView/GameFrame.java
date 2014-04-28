@@ -128,7 +128,8 @@ public class GameFrame extends RPGEngine {
 		String[] items = myPlayerData.getMyItems();
 		String[] weapons = myPlayerData.getMyWeapons();
 
-		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons);
+		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons, makeWeapons());
+		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
 	}
 
 	/**

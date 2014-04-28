@@ -302,7 +302,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     	else if (three.isSelected()){
     		return 3;
     	}
-    	return 1;
+    	return 3;
     }
     private void makePlayer() {
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);

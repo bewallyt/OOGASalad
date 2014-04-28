@@ -55,7 +55,7 @@ public class MapDataParser {
 				TileData currTile = myMap.getTileData(i, j);
 				currData = currTile.getGridObjectDatas();
 
-				for (GridObjectData data : currData) {
+				for (GridObjectData data : currData) {					
 					GridObject gridobject = null;
 					data.getArguments().add(p);
 					data.getArguments().add(items);
