@@ -6,6 +6,7 @@ import engine.Control;
 import engine.gridobject.Barrier;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
+import engine.menu.MenuInteractionMatrix;
 import engine.menu.managers.MenuManager;
 
 public class WalkAroundState extends AbstractState {
@@ -56,7 +57,7 @@ public class WalkAroundState extends AbstractState {
 			myPlayer.setAClick(false);
 		if (e.getKeyCode() == Control.SPACE) {
 			MenuManager mm = new MenuManager(myPlayer, new String[] { "Weapon",
-					"Bag", "Name", "Save", "Exit" });
+					"Bag", "Name", "Save", "Exit" }, new MenuInteractionMatrix(1, 5));
 			mm.createMenuNodes();
 			myPlayer.setState(new MenuState(myPlayer, mm));
 			myPlayer.setInteractionBox(mm);

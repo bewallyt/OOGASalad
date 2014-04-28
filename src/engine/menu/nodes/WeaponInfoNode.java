@@ -4,16 +4,19 @@ import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
 import engine.menu.managers.WeaponInfoManager;
 import engine.menu.managers.WeaponManager;
+import engine.state.WeaponInfoState;
 
-public class WeaponMenuNode extends MenuNode {
+public class WeaponInfoNode extends MenuNode {
 	
 	private WeaponInfoManager myWIM;
 	private WeaponManager myWeaponManager;
 	private Player myPlayer;
+	private MenuManager myMenuManager;
 	
-	public WeaponMenuNode(Player p, WeaponManager wm){
+	public WeaponInfoNode(Player p, WeaponManager wm, MenuManager mm){
 		myPlayer = p;
 		myWeaponManager = wm;
+		myMenuManager = mm;
 		
 	}
 
@@ -32,7 +35,7 @@ public class WeaponMenuNode extends MenuNode {
 
 	@Override
 	public void changeState() {
-		// TODO Auto-generated method stub
+		myPlayer.setState(new WeaponInfoState(myPlayer, myWeaponManager, myMenuManager));
 
 	}
 
