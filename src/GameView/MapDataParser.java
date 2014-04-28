@@ -9,6 +9,8 @@ import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import authoring.gameObjects.GridObjectData;
 import authoring.gameObjects.MapData;
+import authoring.gameObjects.NPCData;
+import authoring.gameObjects.NPCResponseNodeData;
 import authoring.gameObjects.TileData;
 import authoring.gameObjects.ItemData;
 
@@ -57,6 +59,14 @@ public class MapDataParser {
 
 				for (GridObjectData data : currData) {
 					GridObject gridobject = null;
+					
+//					if (data instanceof NPCData){
+					if(data.getID().equals("engine.gridobject.person.NPC")){
+						NPCResponseNodeData node = data.getDialogue();
+						data.getArguments().add(node);
+					}
+					
+					
 					data.getArguments().add(p);
 					data.getArguments().add(items);
 					data.getArguments().add(weapons);

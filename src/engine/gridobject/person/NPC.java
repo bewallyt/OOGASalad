@@ -23,7 +23,6 @@ public class NPC extends Person {
 	private Movement myMovement;
 	private Player myPlayer;
 	private NPCResponseNode myResponseNode;
-	private int myMovementType;
 
 	/**
 	 * Instantiates a new npc.

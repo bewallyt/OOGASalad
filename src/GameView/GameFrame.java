@@ -177,9 +177,9 @@ public class GameFrame extends RPGEngine {
 	private HashMap<String, ItemData> makeItems() {
 		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
 		myItemData = myWorldData.getMyItems();
-		for(String item : myItemData.keySet()){
-			ItemData currItemData = myItemData.get(item);
-			itemRet.put(item, currItemData);
+		for(String itemdata : myItemData.keySet()){
+			ItemData currItemData = myItemData.get(itemdata);
+			itemRet.put(itemdata, currItemData);
 		}
 		return itemRet;
 	}
