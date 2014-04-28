@@ -55,12 +55,14 @@ public class Enemy extends NPC {
 		// need a map of all of the weapons
 		addAllWeapons((Map<String, Weapon>) list.get(Constants.ENEMY_ALL_WEPS), weapons);
 		isRandom = false;
+		
 		// will probably have to set doBattleOnSight() as default
 //		doBattleOnSight();
 		
 		// battle response
 		setResponseNode(new NPCResponseNode("Let's Battle!", null));
 		
+		// hard coded
 		changeMoney(50);
 		setExperience(100);
 		setBattleImage("ImageFiles/rival.png");

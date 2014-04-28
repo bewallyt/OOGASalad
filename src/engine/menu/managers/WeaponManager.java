@@ -1,33 +1,28 @@
 package engine.menu.managers;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-
 import engine.dialogue.InteractionBox;
-import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.item.Weapon;
 import engine.menu.MenuInteractionMatrix;
-import engine.menu.nodes.MenuNode;
+import engine.menu.nodes.WeaponInfoNode;
 
 public class WeaponManager extends MenuManager implements InteractionBox {
 
 	private Player myPlayer;
 	private MenuInteractionMatrix myMIM;
+	private MenuManager myMenuManager;
 
-	public WeaponManager(Player p) {
-		super(p, null);
+	public WeaponManager(Player p, MenuManager mm, MenuInteractionMatrix mim) {
+		super(p, null, mim);
 		myPlayer = p;
-		myMIM = new MenuInteractionMatrix(1, 2);
-		System.out.println(myMIM.getDimension()[1]);
+		myMIM = mim;
+		myMenuManager = mm;
 	}
 
 	@Override
@@ -37,7 +32,7 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 		paintMenu(g2d, height, width);
 		paintWeaponBox(g2d, "ImageFiles/PokemonBox.png", 17, 20, 300, 200);
 		paintWeaponData(g2d);
-		drawSelector(g2d, 100, 55, width, height, 48);
+		drawSelector(g2d, 198, 40, 280, 45, 44, myMIM);
 
 	}
 
@@ -82,27 +77,18 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 		}
 
 	}
-
-	public void moveCursorUp() {
-		myMIM.moveUp();
+	
+	protected void paintAllWeaponData(Graphics g2d, int height, int width){
+		paintMenu(g2d, height, width);
+		paintWeaponBox(g2d, "ImageFiles/PokemonBox.png", 17, 20, 300, 200);
+		paintWeaponData(g2d);
 	}
 
-	public void moveCursorDown() {
-		myMIM.moveDown();
-	}
-
-	public void select() {
-		((MenuNode) myMIM.getCurrentNode()).doAction();
-	}
-
-	private void drawSelector(Graphics2D g2d, int xPos, int yPos, int width,
-			int height, int scale) {
-
-		int[] selectedOptionLoc = myMIM.getSelectedNodeLocation();
-		Image img = new ScaledImage(xPos, yPos, "ImageFiles/redrectangle.png")
-				.scaleImage();
-		g2d.drawImage(img, width - 170, scale * selectedOptionLoc[1], null);
-
+	public void createWeaponInfoNodes() {
+		for (int i = 0; i < myPlayer.getWeaponList().size(); i++) {
+			myMIM.setNode(new WeaponInfoNode(myPlayer, this, myMenuManager, i), 0,
+					i);
+		}
 	}
 
 }
