@@ -14,12 +14,6 @@ public class Healer extends NPC {
 		this.setResponseNode(n);
 	}
 
-	//	public Healer(List<Object> list) {
-	//		super((String[]) list.get(1), (int) list.get(4), (int) list.get(2),
-	//				(int) list.get(3), (int) list.get(5), (Player) list.get(6));
-	//	}
-
-
 	@Override
 	public void doAction(){
 		doDialogue();

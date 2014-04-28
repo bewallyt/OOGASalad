@@ -21,6 +21,10 @@ import engine.images.ScaledImage;
 
 public class Canvas extends JComponent{
 
+	private static final int IMAGE_OFFSET = 10;
+	private static final int FILLREC_OFFSET = 58;
+	private static final double REC_OFFSET = 1.4;
+	private static final double BOTTOM_OFFSET = .45;
 	private JFrame myFrame;
 	private int myHeight;
 	private int myWidth;
@@ -104,7 +108,7 @@ public class Canvas extends JComponent{
 	private void paintArenaWorld(Graphics2D g2d) {
 		ArenaWorld world = (ArenaWorld) myWorld;
 		g2d.drawImage(world.getBackground().scaleImage(),0,0, null);
-		g2d.drawImage(world.getPlayerImage(), myWidth/10, (int) (myHeight*.45), null);
+		g2d.drawImage(world.getPlayerImage(), myWidth/IMAGE_OFFSET, (int) (myHeight*BOTTOM_OFFSET), null);
 		g2d.drawImage(world.getEnemyImage(), (int) (myWidth/1.7), myHeight/7, null);
 		
 		drawStatusBars(g2d, world);
@@ -119,27 +123,35 @@ public class Canvas extends JComponent{
 	}
 
 	private void drawStatusBars(Graphics2D g2d, ArenaWorld world) {
-		Image img = new ScaledImage((int) (myWidth/2.5), myHeight/10,Constants.IMAGEPATH+"status bar.png").scaleImage();
-		g2d.drawImage(img, (int) (myWidth/1.5-60), (int) (myHeight*.45+35), null);
+		Image img = new ScaledImage((int) (myWidth/2.5), myHeight/IMAGE_OFFSET,Constants.IMAGEPATH+"status bar.png").scaleImage();
+		drawTopImage(g2d, world, img);
+		
+		drawBottomImage(g2d, world, img);
+	}
+
+	private void drawBottomImage(Graphics2D g2d, ArenaWorld world, Image img) {
+		g2d.drawImage(img, (int) (myWidth/15), (int) (myHeight/8), null);
 		g2d.setColor(Color.green);
-		g2d.draw(new Rectangle((int) (myWidth/1.4),(int) (myHeight*.45+58), myWidth/5, 10));
-		g2d.fill(new Rectangle((int) (myWidth/1.4),(int) (myHeight*.45+58), (int) (myWidth/5*((float)world.getPlayer()
-					.getStatsMap().get("health").getValue()/world.getPlayer().getStatsMap().get("health").
-					getMaxValue())), 10));
+		g2d.draw(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, myWidth/5, IMAGE_OFFSET));
+		g2d.fill(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, (int) (myWidth/5*((float) world.getEnemy()
+					.getStatsMap().get(Constants.HEALTH).getValue()/world.getEnemy().getStatsMap().get(Constants.HEALTH)
+					.getMaxValue())), IMAGE_OFFSET));
+		g2d.setColor(Color.black);
+		g2d.drawString(world.getEnemy().toString() +"  lv " + world.getEnemy().getStatsMap().get(Constants.LEVEL).getValue(), myWidth/15+IMAGE_OFFSET, myHeight/8+20);
+	}
+
+	private void drawTopImage(Graphics2D g2d, ArenaWorld world, Image img) {
+		g2d.drawImage(img, (int) (myWidth/1.5-60), (int) (myHeight*BOTTOM_OFFSET+35), null);
+		g2d.setColor(Color.green);
+		g2d.draw(new Rectangle((int) (myWidth/REC_OFFSET),(int) (myHeight*BOTTOM_OFFSET+FILLREC_OFFSET), myWidth/5, IMAGE_OFFSET));
+		g2d.fill(new Rectangle((int) (myWidth/REC_OFFSET),(int) (myHeight*BOTTOM_OFFSET+FILLREC_OFFSET), (int) (myWidth/5*((float)world.getPlayer()
+					.getStatsMap().get(Constants.HEALTH).getValue()/world.getPlayer().getStatsMap().get("health").
+					getMaxValue())), IMAGE_OFFSET));
 		g2d.setColor(Color.black);
 
 		g2d.setFont(new Font(getFont().getFontName(),Font.BOLD,20));
 		g2d.drawString(world.getPlayer().toString()+"  lv " + 
-		world.getPlayer().getStatsMap().get("level").getValue(), (int)(myWidth/1.75), (int) (myHeight*.45+53));
-		
-		g2d.drawImage(img, (int) (myWidth/15), (int) (myHeight/8), null);
-		g2d.setColor(Color.green);
-		g2d.draw(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, myWidth/5, 10));
-		g2d.fill(new Rectangle((int) (myWidth/4)-7,myHeight/6+3, (int) (myWidth/5*((float) world.getEnemy()
-					.getStatsMap().get("health").getValue()/world.getEnemy().getStatsMap().get("health")
-					.getMaxValue())), 10));
-		g2d.setColor(Color.black);
-		g2d.drawString(world.getEnemy().toString() +"  lv " + world.getEnemy().getStatsMap().get("level").getValue(), myWidth/15+10, myHeight/8+20);
+		world.getPlayer().getStatsMap().get(Constants.LEVEL).getValue(), (int)(myWidth/1.75), (int) (myHeight*BOTTOM_OFFSET+53));
 	}
 	
 	
@@ -147,8 +159,6 @@ public class Canvas extends JComponent{
 	private void paintWalkAroundWorld(Graphics2D g2d) {
 	
 		WalkAroundWorld world = (WalkAroundWorld) myWorld;
-		
-		
 		for (int i = 0; i < world.getTileGridWidth(); i++) {
 			for (int j = 0; j < world.getTileGridHeight(); j++) {
 				if (myWorld.getPlayer()!=null && tileIsInView(world.getTileMatrix()[i][j], getCameraOffset()[0], getCameraOffset()[1]))
