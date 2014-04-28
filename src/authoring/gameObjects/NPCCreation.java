@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Jacob L.
- * @ Pritam M.
- * */
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -19,6 +14,11 @@ import javax.swing.event.ListSelectionListener;
 import authoring.UserQueryNodeData;
 import authoring.features.FeatureManager;
 
+/**
+ * Class that handles the creation of NPCs via a GUI window
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 @SuppressWarnings("ALL")
 public class NPCCreation extends CommonAttributes{
 
@@ -30,6 +30,9 @@ public class NPCCreation extends CommonAttributes{
 
     public NPCCreation(){}
 
+    /**
+     * Creates the GUI window to create NPCs
+     */
     public void creationPanel(){	
     	JTabbedPane pane = new JTabbedPane();
         String dialogueTab = "Dialogue";
@@ -94,9 +97,17 @@ public class NPCCreation extends CommonAttributes{
 		}
     	
     }
+    /**
+     * Returns the int value within a string
+     * @param s String with the contained int value
+     * @return Int value contained in string
+     */
     private int getIntValue(String s){
 		return Integer.parseInt(s);
 	}
+    /**
+     * Makes the corresponding NPC based on user input
+     */
     private void makeNPC(){
     	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
     			editor.getSelectedImage().getDescription(),myRoot);
@@ -104,6 +115,9 @@ public class NPCCreation extends CommonAttributes{
     			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
     }
+    /**
+     * Sets the NPC responses based on user input
+     */
 	private void setResponses(){
 		List<String> myResponses = new ArrayList<String>();
 		if(myCurrent.getItem()!=null){
@@ -121,9 +135,17 @@ public class NPCCreation extends CommonAttributes{
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
+	/**
+	 * Gets the NPCResponseNodeData of the current NPC
+	 * @return
+	 */
 	public NPCResponseNodeData getDialogue() {
 		return myRoot;
 	}
+	/**
+	 * Listener that handles user input for NPC responses
+	 *
+	 */
 	private class QueryListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(myCurrent.getChildren().size()<4){
@@ -137,6 +159,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles item responses
+	 *
+	 */
 	private class ItemResponseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
@@ -160,6 +186,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles NPC item giving
+	 *
+	 */
 	private class ItemGiveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
@@ -174,6 +204,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles moving up a NPC response tree
+	 *
+	 */
 	private class GoBackListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(myCurrent!=myRoot){
@@ -183,6 +217,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles NPC dialogue
+	 *
+	 */
 	private class DialogueClickAction implements ListSelectionListener{
 		public void valueChanged(ListSelectionEvent arg0) {
 			if(myResponsesWrapper.getSelectedValue()!=null){
