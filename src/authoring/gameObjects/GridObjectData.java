@@ -18,8 +18,8 @@ public class GridObjectData {
 
 	private int myX;
 	private int myY;
-	private List<ItemData> itemList=new ArrayList<ItemData>();
 	private String myID;
+	private NPCResponseNodeData myDialogue;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
 	protected String[] createSpriteImages(String image){
@@ -70,10 +70,11 @@ public class GridObjectData {
 	}
 	
 	// NPCData
-	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNode root, String id) {
+	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNodeData root, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
+		myDialogue = root;
 		
 		myArguments.add(width);
 		myArguments.add(height);
@@ -89,11 +90,11 @@ public class GridObjectData {
     // Base empty constructor
     public GridObjectData() {
     }
-
+    /*
     public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
-	
+	*/
 	public String getID() {
 		return myID;
 	}
@@ -106,6 +107,9 @@ public class GridObjectData {
 	}
 	public int getY(){
 		return myY;
+	}
+	public NPCResponseNodeData getDialogue(){
+		return myDialogue;
 	}
 	public int getWidth(){
 		return width;

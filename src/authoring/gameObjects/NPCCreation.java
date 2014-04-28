@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Jacob L.
- * @ Pritam M.
- * */
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -16,20 +11,28 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import authoring.UserQueryNode;
+import authoring.UserQueryNodeData;
 import authoring.features.FeatureManager;
 
+/**
+ * Class that handles the creation of NPCs via a GUI window
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 @SuppressWarnings("ALL")
 public class NPCCreation extends CommonAttributes{
 
 	private JList myResponsesWrapper;
-	private NPCResponseNode myRoot;
-	private List<NPCResponseNode> myPrev;
-	private NPCResponseNode myCurrent;
+	private NPCResponseNodeData myRoot;
+	private List<NPCResponseNodeData> myPrev;
+	private NPCResponseNodeData myCurrent;
 	private JOptionPane optionFrame;
 
     public NPCCreation(){}
 
+    /**
+     * Creates the GUI window to create NPCs
+     */
     public void creationPanel(){	
     	JTabbedPane pane = new JTabbedPane();
         String dialogueTab = "Dialogue";
@@ -44,8 +47,8 @@ public class NPCCreation extends CommonAttributes{
         combinedPanel.add(sizePanel);
         
         JPanel dialoguePanel = new JPanel();
-		myPrev = new ArrayList<NPCResponseNode>();
-		myRoot = new NPCResponseNode("Initial NPC Response");
+		myPrev = new ArrayList<NPCResponseNodeData>();
+		myRoot = new NPCResponseNodeData("Initial NPC Response");
 		myCurrent = myRoot;
 		myResponsesWrapper = new JList();
 		setResponses();
@@ -94,9 +97,17 @@ public class NPCCreation extends CommonAttributes{
 		}
     	
     }
+    /**
+     * Returns the int value within a string
+     * @param s String with the contained int value
+     * @return Int value contained in string
+     */
     private int getIntValue(String s){
 		return Integer.parseInt(s);
 	}
+    /**
+     * Makes the corresponding NPC based on user input
+     */
     private void makeNPC(){
     	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
     			editor.getSelectedImage().getDescription(),myRoot);
@@ -104,6 +115,9 @@ public class NPCCreation extends CommonAttributes{
     			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
     }
+    /**
+     * Sets the NPC responses based on user input
+     */
 	private void setResponses(){
 		List<String> myResponses = new ArrayList<String>();
 		if(myCurrent.getItem()!=null){
@@ -111,7 +125,7 @@ public class NPCCreation extends CommonAttributes{
 		}else{
 			myResponses.add(0,myCurrent.getString());
 		}
-		for(UserQueryNode q: myCurrent.getChildren()){
+		for(UserQueryNodeData q: myCurrent.getChildren()){
 			if(q.getString()!=null){
 				myResponses.add("   "+q.getString());
 			}
@@ -121,27 +135,39 @@ public class NPCCreation extends CommonAttributes{
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
-	public NPCResponseNode getDialogue() {
+	/**
+	 * Gets the NPCResponseNodeData of the current NPC
+	 * @return
+	 */
+	public NPCResponseNodeData getDialogue() {
 		return myRoot;
 	}
+	/**
+	 * Listener that handles user input for NPC responses
+	 *
+	 */
 	private class QueryListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(myCurrent.getChildren().size()<4){
 			optionFrame = new JOptionPane("Input Dialogue");
 			String s = optionFrame.showInputDialog("Enter User Response Option");
-			UserQueryNode uqn = new UserQueryNode(s);
+			UserQueryNodeData uqn = new UserQueryNodeData(s);
 			String ss = optionFrame.showInputDialog("Enter NPC Response to User Response");
-			uqn.setChild(new NPCResponseNode(ss));
+			uqn.setChild(new NPCResponseNodeData(ss));
 			myCurrent.addChild(uqn);
 			setResponses();
 			}
 		}
 	}
+	/**
+	 * Listener that handles item responses
+	 *
+	 */
 	private class ItemResponseListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
 			boolean alreadyItem=false;
-			for(UserQueryNode n: myCurrent.getChildren()){
+			for(UserQueryNodeData n: myCurrent.getChildren()){
 				if(n.getItem()!=null)
 					alreadyItem=true;
 			}
@@ -151,15 +177,19 @@ public class NPCCreation extends CommonAttributes{
 			String myItem = (String)JOptionPane.showInputDialog(null, "Select a User Item for NPC to react to",
 					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
 
-			UserQueryNode uqn = new UserQueryNode();
+			UserQueryNodeData uqn = new UserQueryNodeData();
 			uqn.setItem(myItem);
 			String ss = optionFrame.showInputDialog("Enter NPC Response");
-			uqn.setChild(new NPCResponseNode(ss));
+			uqn.setChild(new NPCResponseNodeData(ss));
 			myCurrent.addChild(uqn);
 			setResponses();
 			}
 		}
 	}
+	/**
+	 * Listener that handles NPC item giving
+	 *
+	 */
 	private class ItemGiveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
@@ -174,6 +204,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles moving up a NPC response tree
+	 *
+	 */
 	private class GoBackListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(myCurrent!=myRoot){
@@ -183,6 +217,10 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	/**
+	 * Listener that handles NPC dialogue
+	 *
+	 */
 	private class DialogueClickAction implements ListSelectionListener{
 		public void valueChanged(ListSelectionEvent arg0) {
 			if(myResponsesWrapper.getSelectedValue()!=null){

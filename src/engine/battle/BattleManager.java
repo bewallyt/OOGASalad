@@ -30,6 +30,14 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private boolean didDrop=false;
 	String[] myLabels;
 
+	/**
+	 * Instantiates a new battle manager.
+	 *
+	 * @param player the player
+	 * @param enemy the enemy
+	 * @param labels the labels for the battle. 4 must be included.
+	 * 0=attack 1=weapons 2=bag 3=run
+	 */
 	public BattleManager(Player player, Enemy enemy, String[] labels){
 		myPlayer = player;
 		myEnemy=enemy;	

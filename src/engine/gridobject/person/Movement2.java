@@ -2,9 +2,14 @@ package engine.gridobject.person;
 
 public class Movement2 extends Movement{
 
+	/**
+	 * Instantiates a new player approaching movement.
+	 *
+	 * @param npc the npc
+	 * @param player the player
+	 */
 	public Movement2(NPC npc, Player player) {
 		super(npc, player);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -40,8 +40,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 
 	private void setMenuControl(){
 
-		//		myWorld.setMenuDisplayer(new MenuManager());
-		//myWorld.getPlayer().setMenuControl(new MenuControl(myWorld));
+
 	}
 
 	@Override
@@ -76,13 +75,6 @@ public class WalkAroundWorldLooper extends GameLooper {
 			titleScreen.setMusic("/music/PokemonIntro.wav");
 			return titleScreen;
 		}
-		//			if(myWorld.getPlayer().getWeaponList().size()>2){
-		//				NPCResponseNode n = new NPCResponseNode(myWorld.getPlayer(), "You have too many items");
-		////				System.out.println("Item found alert");
-		//				AbstractManager conversation = new ConversationManager(myWorld.getPlayer(), myWorld.getPlayer(), n);
-		//				myWorld.getPlayer().setState(new DialogueState(conversation));
-		//				myWorld.getPlayer().setInteractionBox(conversation);
-		//			}
 		return null;
 	}
 
@@ -99,9 +91,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 			}
 		}
 	}
-
-
-
+	
 	private void saveWorld(String filename) {
 		WorldDataManager wdManager = new WorldDataManager();
 		wdManager.saveWorld(myWorld, filename);

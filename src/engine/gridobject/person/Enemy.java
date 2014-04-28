@@ -6,6 +6,8 @@ import java.util.Map;
 import util.Constants;
 import engine.ProximityChecker;
 import engine.battle.Attack;
+import engine.dialogue.NPCResponseNode;
+import engine.item.Weapon;
 import engine.world.ArenaWorld;
 
 
@@ -40,7 +42,7 @@ public class Enemy extends NPC {
 	public Enemy(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list
-				.get(Constants.NAME_CONST), Constants.SPEED,
+				.get(Constants.NAME_CONST), 1,
 				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue(),
 				(int) ((Double) list.get(Constants.ENEMY_MOVEMENT_CONST)).intValue(),
@@ -51,11 +53,19 @@ public class Enemy extends NPC {
 		
 		String[] weapons = (String[]) ((List<String>) list.get(Constants.WEAPONS_CONST)).toArray(new String[(int) ((Double) list.get(Constants.WEP_LENGTH_CONST)).intValue()]);
 		// need a map of all of the weapons
-//		addAllWeapons(null, weapons);
-		
+		addAllWeapons((Map<String, Weapon>) list.get(Constants.ENEMY_ALL_WEPS), weapons);
 		isRandom = false;
+		
 		// will probably have to set doBattleOnSight() as default
 //		doBattleOnSight();
+		
+		// battle response
+		setResponseNode(new NPCResponseNode("Let's Battle!", null));
+		
+		// hard coded
+		changeMoney(50);
+		setExperience(100);
+		setBattleImage("ImageFiles/rival.png");
 	}
 
 

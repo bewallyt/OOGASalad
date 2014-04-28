@@ -16,7 +16,7 @@
           null,
           null
         ],
-        "myName": "asdfqwer",
+        "myName": "newItem",
         "myMovement": 0,
         "myImages": [
           "PlayerImages/Ash/PlayerDown1.png",
@@ -39,8 +39,17 @@
         "myArguments": [
           1,
           1,
-          "gridobject/Ash",
-          "asdfqwer",
+          [
+            "PlayerImages/Ash/PlayerDown1.png",
+            "PlayerImages/Ash/PlayerDown2.png",
+            "PlayerImages/Ash/PlayerLeft1.png",
+            "PlayerImages/Ash/PlayerLeft2.png",
+            "PlayerImages/Ash/PlayerRight1.png",
+            "PlayerImages/Ash/PlayerRight2.png",
+            "PlayerImages/Ash/PlayerUp1.png",
+            "PlayerImages/Ash/PlayerUp2.png"
+          ],
+          "newItem",
           {
             "Damage": 5,
             "Speed": 5,
@@ -52,6 +61,7 @@
             null,
             null
           ],
+          2,
           0
         ]
       },
@@ -128,8 +138,16 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "Hi, my name is Brandon.",
+                  "myChildren": [
+                    {
+                      "myString": "what?",
+                      "myChild": {
+                        "myString": "I said Hi...",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myImages": [
                   "PlayerImages/Ash/PlayerDown1.png",
@@ -161,6 +179,18 @@
                     "PlayerImages/Ash/PlayerUp2.png"
                   ],
                   "DEFAULT_NAME",
+                  {
+                    "myString": "Hi, my name is Brandon.",
+                    "myChildren": [
+                      {
+                        "myString": "what?",
+                        "myChild": {
+                          "myString": "I said Hi...",
+                          "myChildren": []
+                        }
+                      }
+                    ]
+                  },
                   1
                 ]
               }
@@ -233,8 +263,16 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "Hi, my name is Brandon.",
+                  "myChildren": [
+                    {
+                      "myString": "what?",
+                      "myChild": {
+                        "myString": "I said Hi...",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myImages": [
                   "PlayerImages/Ash/PlayerDown1.png",
@@ -266,6 +304,18 @@
                     "PlayerImages/Ash/PlayerUp2.png"
                   ],
                   "DEFAULT_NAME",
+                  {
+                    "myString": "Hi, my name is Brandon.",
+                    "myChildren": [
+                      {
+                        "myString": "what?",
+                        "myChild": {
+                          "myString": "I said Hi...",
+                          "myChildren": []
+                        }
+                      }
+                    ]
+                  },
                   1
                 ]
               }
@@ -1083,7 +1133,9 @@
         "Defense": 12,
         "Level": 14,
         "Health": 13
-      }
+      },
+      "myPrice": 10,
+      "myIdentity": "StatBuffer"
     }
   },
   "myWeapons": {
@@ -1097,7 +1149,7 @@
           "myDamage": 10,
           "affectAttribute": "Speed",
           "affectValue": 10,
-          "affectWho": true
+          "affectPlayer": true
         }
       ],
       "mySpeed": 15,
@@ -1113,7 +1165,7 @@
           "myDamage": 10,
           "affectAttribute": "Damage",
           "affectValue": 10,
-          "affectWho": true
+          "affectPlayer": true
         }
       ],
       "mySpeed": 10,

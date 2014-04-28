@@ -2,6 +2,7 @@ package authoring.features;
 
 /**
  * @ Pritam M.
+ * @ Jacob L.
  * */
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import authoring.gameObjects.AttacksData;
 import authoring.gameObjects.BarrierCreation;
 import authoring.gameObjects.DoorCreation;
 import authoring.gameObjects.EncounterCreation;
+import authoring.gameObjects.HealerCreation;
 import authoring.gameObjects.ItemData;
 import authoring.gameObjects.ItemWeaponCreation;
 import authoring.gameObjects.LabelsCreation;
@@ -26,7 +28,7 @@ import java.util.HashMap;
 public class AddGameComponents extends Feature implements ActionListener {
 
     private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile",
-            "Arena Labels"};
+            "Arena Labels", "Healer"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
@@ -34,6 +36,7 @@ public class AddGameComponents extends Feature implements ActionListener {
     private NPCCreation npcCreation;
     private EncounterCreation encounterCreation;
     private LabelsCreation labelsCreation;
+    private HealerCreation healerCreation;
     private JFrame frame;
 
 
@@ -49,6 +52,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         npcCreation=new NPCCreation();
         encounterCreation = new EncounterCreation();
         labelsCreation = new LabelsCreation();
+        healerCreation = new HealerCreation();
 
     }
 
@@ -77,6 +81,9 @@ public class AddGameComponents extends Feature implements ActionListener {
         } else if("arenalabels".equals(e.getActionCommand())){
             labelsCreation.creationPanel();
             frame.dispose();
+        } else if("healer".equals(e.getActionCommand())){
+            healerCreation.creationPanel();
+            frame.dispose();
         }
         
     }
@@ -92,8 +99,8 @@ public class AddGameComponents extends Feature implements ActionListener {
         iSwordAttack.add(iceSlash);
         WeaponData fireSword = new WeaponData("Fire Sword","FSword",10,10,fSwordAttack);
         WeaponData iceSword = new WeaponData("Ice Sword","ISword",15,15,iSwordAttack);
-        FeatureManager.getWorldData().saveWeapons("Fire Sword",fireSword);
-        FeatureManager.getWorldData().saveWeapons("Ice Sword",iceSword);
+        FeatureManager.getWorldData().saveWeapon("Fire Sword",fireSword);
+        FeatureManager.getWorldData().saveWeapon("Ice Sword",iceSword);
 
         HashMap<String,Integer> potionValues = new HashMap<String, Integer>();
         String[] valueLabels = {"Speed","Damage","Defense","Health","Level"};

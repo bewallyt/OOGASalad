@@ -46,6 +46,15 @@ public abstract class Person extends GridObject {
 	private String myName;
 
 
+	/**
+	 * Instantiates a new person.
+	 *
+	 * @param animImages the anim images
+	 * @param name the name
+	 * @param speed the speed
+	 * @param numTilesWidth the num tiles width
+	 * @param numTilesHeight the num tiles height
+	 */
 	public Person(String[] animImages, String name, double speed, int numTilesWidth, int numTilesHeight) {
 		super(animImages, numTilesWidth, numTilesHeight);
 		mySpeed = speed;
@@ -138,7 +147,7 @@ public abstract class Person extends GridObject {
 	}
 
 	public void addAllWeapons(Map<String, Weapon> weaponTypes, String[] weaponArr) {
-		for(int i = 0; i < weaponArr.length; i++){
+		for(int i = 0; i < weaponArr.length-1; i++){
 			addWeapon(weaponTypes.get(weaponArr[i]));
 		}
 	}
@@ -184,6 +193,11 @@ public abstract class Person extends GridObject {
 		}
 	}
 	
+	/**
+	 * Use item.
+	 *
+	 * @param it the item
+	 */
 	public void useItem(Item it) {
 		it.useItem();
 		removeItem(it);
@@ -265,6 +279,12 @@ public abstract class Person extends GridObject {
 	public int getMoney(){
 		return myMoney;
 	}
+	
+	/**
+	 * Change money.
+	 *
+	 * @param amountToChange the amount to change
+	 */
 	public void changeMoney (int amountToChange){
 		myMoney+=amountToChange;
 		if(myMoney<0)myMoney=0;

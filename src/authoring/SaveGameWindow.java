@@ -8,7 +8,11 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 
-//import statements here
+/**
+ * Class that handles the creation of the "Save Game" Window
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class SaveGameWindow extends JFrame{
 
     private JTextField saveGameField;
@@ -22,7 +26,9 @@ public class SaveGameWindow extends JFrame{
         pack();
         setVisible(true);
     }
-
+    /**
+     * Builds the GUI
+     */
     private void buildPanel(){
         saveGameField = new JTextField(10);
         saveButton=new JButton("Save");
@@ -40,9 +46,16 @@ public class SaveGameWindow extends JFrame{
         panel2.add(saveGameField);
         panel3.add(saveButton);
  }
+    /**
+     * Validates user input
+     * @return
+     */
     private boolean validateText(){
     	return !saveGameField.getText().equals("");
     }
+    /**
+     * Action listener for the save Button that handles that actual storing of the game
+     */
     private class SaveButton implements ActionListener{
         public void actionPerformed(ActionEvent e){
         		if(validateText()){

@@ -10,20 +10,20 @@ public class Dialogue{
 	private String myDialogue ="";
 	private String myImageName;
 	private Image myImage;
-	
+
 	public Dialogue(String image, String dialogue) {
 
 		myImageName = image;
 		myDialogue = dialogue;
 	}
-	
+
 	public Image getImage(){
 		return myImage;
 	}
 	public void setDialogue(String str){
 		myDialogue = str;
 	}
-	
+
 	public String getDialogue(){
 		return myDialogue;
 	}

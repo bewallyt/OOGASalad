@@ -2,6 +2,7 @@ package engine.item;
 
 import java.awt.Image;
 
+import util.Constants;
 import engine.battle.BattleExecutable;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
@@ -24,7 +25,7 @@ public abstract class Item extends Pickupable implements BattleExecutable {
 	}
 	@Override
 	public Image getImage() {
-		return new ScaledImage(150,150,myImage).scaleImage();
+		return new ScaledImage(Constants.BATTLE_IMAGE_SIZE,Constants.BATTLE_IMAGE_SIZE,myImage).scaleImage();
 	}
 	
 	/**

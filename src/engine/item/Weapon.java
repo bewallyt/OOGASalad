@@ -54,10 +54,10 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 		return mySpeed;
 	}
 	public void setDamage(int value, int max){
-		myDamage = new Statistic("damage",value, max);
+		myDamage = new Statistic(Constants.DAMAGE,value, max);
 	}
 	public void setSpeed(int value, int max){
-		mySpeed = new Statistic("speed",value, max);
+		mySpeed = new Statistic(Constants.SPEED,value, max);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 
 	@Override
 	public Image getImage() {
-		return new ScaledImage(150,150,myImage).scaleImage();
+		return new ScaledImage(Constants.BATTLE_IMAGE_SIZE,Constants.BATTLE_IMAGE_SIZE,myImage).scaleImage();
 	}
 
 }

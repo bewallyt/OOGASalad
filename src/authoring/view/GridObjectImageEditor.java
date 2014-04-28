@@ -9,6 +9,12 @@ import javax.swing.event.ListSelectionListener;
 
 import Data.ImageFile;
 
+/**
+ * ImageEditor which handles the use of GridObjectImages. Allows the user to easily select from
+ * available gridObjectImages to use them for certain GridObjects
+ * @author Davis Treybig, Richard Cao
+ *
+ */
 public class GridObjectImageEditor extends ImageEditor {
 
 	public static final String IMAGE_TYPE="GridObject";
@@ -25,7 +31,7 @@ public class GridObjectImageEditor extends ImageEditor {
 		myWindow.getContentPane().add(scroll, BorderLayout.CENTER);
 		myWindow.setVisible(true);
 	}
-	public class IconListener implements ListSelectionListener {
+	private class IconListener implements ListSelectionListener {
 
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
@@ -36,12 +42,21 @@ public class GridObjectImageEditor extends ImageEditor {
 		}
 		
 	}
+	/**
+	 * @return Returns the currently selected image in the model
+	 */
 	public ImageIcon getSelectedImage(){
 		return currentIcon;
 	}
+	/**
+	 * Destroys the ImageEditor
+	 */
 	public void dispose(){
 		myWindow.dispose();
 	}
+	/**
+	 * Adds existing GridObjectImages to the model
+	 */
 	@Override
 	public void addExistingImages() {
 		List<ImageFile> imageList=m.getSavedImageMap();
