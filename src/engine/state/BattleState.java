@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 
 import engine.Control;
 import engine.battle.BattleManager;
+import util.Constants;
 
 public class BattleState extends AbstractState {
 	BattleManager myBattleManager;
@@ -21,20 +22,20 @@ public class BattleState extends AbstractState {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == Control.UP){
+		if (e.getKeyCode() == Constants.UP){
 			myBattleManager.moveUp();
 		}
-		if (e.getKeyCode() == Control.DOWN){
+		if (e.getKeyCode() == Constants.DOWN){
 			myBattleManager.moveDown();
 		}
-		if (e.getKeyCode() == Control.RIGHT){
+		if (e.getKeyCode() == Constants.RIGHT){
 			myBattleManager.moveRight();
 
 		}
-		if (e.getKeyCode() == Control.LEFT){
+		if (e.getKeyCode() == Constants.LEFT){
 			myBattleManager.moveLeft();
 		}		
-		if (e.getKeyCode() == Control.A) {
+		if (e.getKeyCode() == Constants.A) {
 			if(a==false){
 				a=true;
 				myBattleManager.getNextText();
@@ -45,7 +46,7 @@ public class BattleState extends AbstractState {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		a=false;
-		if (e.getKeyCode() == Control.A)
+		if (e.getKeyCode() == Constants.A)
 			myBattleManager.getPlayer().setAClick(false);
 	}
 

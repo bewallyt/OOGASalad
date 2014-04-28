@@ -13,6 +13,7 @@ import java.awt.*;
 
 /**
  * 
+ * Class that holds data contained within a grid in the authoring environment
  * @author Richard Cao
  *
  */
@@ -46,11 +47,16 @@ public class TilePanel extends JLayeredPane{
 
 	}
 
+	
 	@Override
 	public Dimension getPreferredSize() {
 		return myDimension;
 	}
 
+	/**
+	 * Sets the image on the tile
+	 * @param imageFile ImageIcon of the image to be used
+	 */
 	public void setTileImage(ImageIcon imageFile) {	
 		if(myTileLabel != null)
 			this.remove(myTileLabel);
@@ -63,6 +69,10 @@ public class TilePanel extends JLayeredPane{
 		saveImage(myTileImage.getDescription());
 	}
 
+	/**
+	 * Adds a gridObjectImage to the tile. 
+	 * @param imageFile ImageIcon to be placed for the GridObject
+	 */
 	public void addGridObjectImage(ImageIcon imageFile){
 		myGridObjectImage = imageFile;
 		myGridObjectLabel = new JLabel(myGridObjectImage);
@@ -73,6 +83,7 @@ public class TilePanel extends JLayeredPane{
 		this.repaint();
 	}
 
+	
 	public void update(){
 		List<GridObjectData> myGridObjects = myData.getGridObjectDatas();
 		for(GridObjectData g : myGridObjects){
@@ -86,14 +97,24 @@ public class TilePanel extends JLayeredPane{
 		}
 
 	}
+	/**
+	 * Saves the image currently stored on this Tile
+	 * @param s Name of image
+	 */
 	public void saveImage(String s){
 		myData.setImageName(s);
 		MapData md = FeatureManager.getWorldData().getCurrentMap();
 		md.addTileData(this.myRow, this.myCol, this.myData);
 	}
+	/**
+	 * @return Returns the row of this tile
+	 */
 	public int getRow(){
 		return myRow;
 	}
+	/**
+	 * @return Returns the column of this tile. 
+	 */
 	public int getCol(){
 		return myCol;
 	}
