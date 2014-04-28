@@ -84,7 +84,8 @@ public class Constants {
     public static final int NPC_PLAYER_CONST = 6;
     public static final int NPC_ITEMS_CONST = 7;
     public static final int ENEMY_PLAYER_CONST = 8;
-    public static final int SHOP_PLAYER_CONST = ;
+    public static final int SHOP_PLAYER_CONST = 5;
+    public static final int SHOP_ITEMS_CONST = 5;
 
     
     
