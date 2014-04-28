@@ -17,7 +17,7 @@ public class Constants {
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
 	public static final String SELECTGAMETEXT = "Select a Game";
-		
+
     // engine
 	public static final int DEF_TIL = 1;
 	//public static final int SPEED = 1;
@@ -61,6 +61,7 @@ public class Constants {
     public static final String NPC = "engine.gridobject.person.NPC";
     public static final String ENEMY = "engine.gridobject.person.Enemy";
     public static final String HEALER = "engine.gridobject.person.Healer";
+    public static final String SHOPKEEPER = "engine.gridobject.person.Shopkeeper";
     
     public static final int WIDTH_CONST = 0;
     public static final int HEIGHT_CONST = 1;
@@ -83,6 +84,8 @@ public class Constants {
     public static final int NPC_PLAYER_CONST = 6;
     public static final int NPC_ITEMS_CONST = 7;
     public static final int ENEMY_PLAYER_CONST = 8;
+    public static final int SHOP_PLAYER_CONST = 5;
+    public static final int SHOP_ITEMS_CONST = 5;
 
     
     
@@ -96,6 +99,6 @@ public class Constants {
 	public static final String LEVEL = "Level";
 	public static final String DEFENSE = "Defense";
 	public static final int BATTLE_IMAGE_SIZE = 150;
-	
+
 
 }

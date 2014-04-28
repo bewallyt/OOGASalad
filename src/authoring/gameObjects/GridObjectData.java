@@ -29,25 +29,25 @@ public class GridObjectData {
 	 * List of Objects used so the Player group can utilize reflection in creating GridObjects
 	 */
 	private List<Object> myArguments = new ArrayList<Object>();
-	
+
 	protected String[] createSpriteImages(String image){
-	    	SpriteImageChooser sprite=new SpriteImageChooser();
-			return sprite.getSpriteImages(image);
-	    }
+		SpriteImageChooser sprite=new SpriteImageChooser();
+		return sprite.getSpriteImages(image);
+	}
 	// BarrierData
 	public GridObjectData(int x, int y, int width, int height, String image, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
-		
+
 		myArguments.add(width);
 		myArguments.add(height);
 		myArguments.add(getGridObjectPathValue(image));
 	}
-	
+
 	// DoorData
 	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap,
-                          String id) {
+			String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -59,14 +59,14 @@ public class GridObjectData {
 		myArguments.add(toY);
 		myArguments.add(toMap);
 	}
-	
+
 	// EnemyData
 	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
-                          int movement, String id) {
+			int movement, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
-		
+
 		myArguments.add(width);
 		myArguments.add(height);
 		myArguments.add(createSpriteImages(image));
@@ -76,14 +76,14 @@ public class GridObjectData {
 		myArguments.add(weps.length);
 		myArguments.add(movement);
 	}
-	
+
 	// NPCData
 	public GridObjectData(int x, int y, int width, int height, String image, NPCResponseNodeData root, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
 		myDialogue = root;
-		
+
 		myArguments.add(width);
 		myArguments.add(height);
 		myArguments.add(createSpriteImages(image));
@@ -91,12 +91,26 @@ public class GridObjectData {
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType
 	}
+	
+	// ShopkeeperData
+	public GridObjectData(int x, int y, int width, int height, String image, List<String> items, String id) {
+		myID = id;
+		myX = x;
+		myY = y;
+		
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(createSpriteImages(image));
+		myArguments.add("DEFAULT_NAME");
+		myArguments.add(items);
+		// myArguments.add((int) 1); // default movement type until given movementType
+	}
 
-    // Base empty constructor
-    public GridObjectData() {
-    }
+	// Base empty constructor
+	public GridObjectData() {
+	}
 
-    public void init(){
+	public void init(){
 		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
 
@@ -128,11 +142,11 @@ public class GridObjectData {
 	protected void setWidth(int x){
 		width=x;
 	}
-	
+
 	public List<Object> getArguments(){
 		return myArguments;
 	}
-	
+
 	private boolean prependGridObjectPath(String s) {
 		boolean prepend = true;
 		if (s != null) {
@@ -142,7 +156,7 @@ public class GridObjectData {
 		} 
 		return prepend;
 	}
-	
+
 	private String getGridObjectPathValue(String s) {
 		if (prependGridObjectPath(s)) {
 			return Constants.GRIDOBJECTPATH+s;
