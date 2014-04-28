@@ -17,6 +17,7 @@ import authoring.gameObjects.ItemWeaponCreation;
 import authoring.gameObjects.LabelsCreation;
 import authoring.gameObjects.NPCCreation;
 import authoring.gameObjects.PlayerEnemyCreation;
+import authoring.gameObjects.ShopkeeperCreation;
 import authoring.gameObjects.WeaponData;
 
 import java.awt.*;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 public class AddGameComponents extends Feature implements ActionListener {
 
     private String[] buttonNames = {"Item/Weapon","Player/Enemy", "Door", "Barrier", "NPC", "EncounterTile",
-            "Arena Labels", "Healer"};
+            "Arena Labels", "Healer", "Shopkeeper"};
     private ItemWeaponCreation itemWeaponCreation;
     private PlayerEnemyCreation playerEnemyCreation;
     private DoorCreation doorCreation;
@@ -37,6 +38,7 @@ public class AddGameComponents extends Feature implements ActionListener {
     private EncounterCreation encounterCreation;
     private LabelsCreation labelsCreation;
     private HealerCreation healerCreation;
+    private ShopkeeperCreation shopkeeperCreation;
     private JFrame frame;
 
 
@@ -53,7 +55,7 @@ public class AddGameComponents extends Feature implements ActionListener {
         encounterCreation = new EncounterCreation();
         labelsCreation = new LabelsCreation();
         healerCreation = new HealerCreation();
-
+        shopkeeperCreation = new ShopkeeperCreation();
     }
 
     @Override
@@ -83,6 +85,9 @@ public class AddGameComponents extends Feature implements ActionListener {
             frame.dispose();
         } else if("healer".equals(e.getActionCommand())){
             healerCreation.creationPanel();
+            frame.dispose();
+        } else if("shopkeeper".equals(e.getActionCommand())){
+            shopkeeperCreation.creationPanel();
             frame.dispose();
         }
         
