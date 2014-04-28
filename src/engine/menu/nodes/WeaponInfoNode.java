@@ -58,7 +58,7 @@ public class WeaponInfoNode extends MenuNode {
 
 	}
 
-	public void getWeaponData() {
+	private void getWeaponData() {
 		Weapon currentWeapon = myPlayer.getWeaponList().get(myCount);
 		
 		attackDamageSpeed = new ArrayList<Integer>();

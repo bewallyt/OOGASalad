@@ -69,7 +69,6 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 
 			Image scaledWeaponImage = features.get(i).getImage()
 					.getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-			System.out.println("scaleWeaponImage: " + scaledWeaponImage);
 			paintFeatureImage(g2d, scaledWeaponImage, 37, 45 + i * 40 + 5
 					* emptySpace);
 			paintFeatureName(g2d, features.get(i).toString(), 80, 67 + i * 40 + 5
