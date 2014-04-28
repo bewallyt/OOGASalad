@@ -6,7 +6,7 @@ import Data.FileLister;
 /**
  * This class handles most of the Sprite image management for the front end, providing the String
  * arrays of images neccessary to create animated players and enemies
- * @author Davis Treybig
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class SpriteImageChooser {
@@ -42,11 +42,15 @@ public class SpriteImageChooser {
 	public String[] getSpriteOptions(){
 		return convertedFileList(PLAYER_IMAGE_FOLDER);
 	}
+	/**
+	 * Converts a string list to an array of strings
+	 * @param list List to be converted
+	 * @return String[] version of the list
+	 */
 	private String[] convertListToArray(List<String> list){
 		String[] array=new String[list.size()];
         int i=0;
         for(String s: list){
-//        	System.out.println(s);
         	array[i]=s;
         	i++;
         }
