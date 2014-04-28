@@ -8,6 +8,12 @@ import engine.gridobject.person.Person;
 
 public class BumpCollision extends CollisionHandler{
 
+	/**
+	 * Instantiates a new bump collision.
+	 *
+	 * @param obj1 the obj1
+	 * @param obj2 the obj2
+	 */
 	public BumpCollision(GridObject obj1, GridObject obj2) {
 		super(obj1, obj2);
 	}

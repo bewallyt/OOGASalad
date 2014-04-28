@@ -80,6 +80,13 @@ public class NPC extends Person {
 		myResponseNode = n;
 	}
 
+	/**
+	 * Builds the response tree.
+	 *
+	 * @param n the node
+	 * @param items the items
+	 * @return the NPC response node
+	 */
 	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
 		Item myItem = (Item) Reflection.createInstance("engine.item."

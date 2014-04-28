@@ -14,12 +14,27 @@ public class Attack implements MatrixNode,BattleExecutable {
 	private Statistic mySpeed;
 	private Effect myEffect;
 	
+	/**
+	 * Instantiates a new attack.
+	 *
+	 * @param name the name
+	 */
 	public Attack(String name){
 		myName=name;
 	}
 	
 
-	public Attack(String name, int damage, int speed, String selected, int value, Boolean affects){
+	/**
+	 * Instantiates a new attack.
+	 *
+	 * @param name the name
+	 * @param damage the damage
+	 * @param speed the speed
+	 * @param selected the selected
+	 * @param value the value
+	 * @param affects the affects
+	 */
+	public Attack(String name, int damage, int speed, String selected, int value, boolean affects){
 		myName = name;
 		mySpeed = new Statistic("speed", speed, Weapon.DEFAULT_MAX);
 		myDamage = new Statistic("damage", damage, Weapon.DEFAULT_MAX);
@@ -47,11 +62,23 @@ public class Attack implements MatrixNode,BattleExecutable {
 	public Effect getEffect(){
 		return myEffect;
 	}
+	
+	/**
+	 * Gets the effect message.
+	 *
+	 * @return the effect message
+	 */
 	public String getEffectMessage(){
 		if(myEffect!=null)
 			return myEffect.toString();
 		return "";
 	}
+	
+	/**
+	 * Gets the data effect message.
+	 *
+	 * @return the data effect message
+	 */
 	public String getDataEffectMessage(){
 		if(myEffect!=null)
 			return myEffect.toStringData();
