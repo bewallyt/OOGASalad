@@ -77,10 +77,16 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 		}
 
 	}
+	
+	protected void paintAllWeaponData(Graphics g2d, int height, int width){
+		paintMenu(g2d, height, width);
+		paintWeaponBox(g2d, "ImageFiles/PokemonBox.png", 17, 20, 300, 200);
+		paintWeaponData(g2d);
+	}
 
 	public void createWeaponInfoNodes() {
 		for (int i = 0; i < myPlayer.getWeaponList().size(); i++) {
-			myMIM.setNode(new WeaponInfoNode(myPlayer, this, myMenuManager), 0,
+			myMIM.setNode(new WeaponInfoNode(myPlayer, this, myMenuManager, i), 0,
 					i);
 		}
 	}
