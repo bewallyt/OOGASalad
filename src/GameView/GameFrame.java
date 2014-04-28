@@ -33,9 +33,9 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
-	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
-	private Map<String,ItemData> myItemData = new HashMap<String, ItemData>();
-	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
+	private Map<String, WeaponData> myWeaponData = new HashMap<String, WeaponData>();
+	private Map<String, ItemData> myItemData = new HashMap<String, ItemData>();
+	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
@@ -61,7 +61,7 @@ public class GameFrame extends RPGEngine {
 
 	/**
 	 * Loops through all maps and grid objects to set doors to their
-	 * corresponding map
+	 * corresponding map, also sets enemies to arena worlds
 	 */
 	private void setDoors() {
 		for (WalkAroundWorld map : myMaps.values()) {
@@ -73,7 +73,9 @@ public class GameFrame extends RPGEngine {
 							((Door) g)), i, map.getGridObjectList().size() - 1);
 				}
 				if (g instanceof Enemy) {
-					((Enemy) g).setWorld(new ArenaWorld("ImageFiles/battlebackground.png", 800, 800, myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS));
+					((Enemy) g).setWorld(new ArenaWorld(
+							"ImageFiles/battlebackground.png", 800, 800,
+							myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS));
 				}
 			}
 		}
@@ -90,20 +92,21 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-		
+
 		myItems = makeItems();
 		myWeapons = makeWeapons();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
-			MapDataParser parser = new MapDataParser(map, myPlayer, myWeapons, myItems);
+			MapDataParser parser = new MapDataParser(map, myPlayer, myWeapons,
+					myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
 
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
-					* Constants.TILE_SIZE, myPlayer,
+							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
 			if (myWorldData.getPrimaryMap().equals(mapName)) {
@@ -128,7 +131,8 @@ public class GameFrame extends RPGEngine {
 		String[] items = myPlayerData.getMyItems();
 		String[] weapons = myPlayerData.getMyWeapons();
 
-		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons, makeWeapons());
+		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items,
+				weapons, makeWeapons());
 		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
 	}
 
@@ -163,32 +167,36 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-	
+/**
+ * Uses WeaponData to create a HashMap mapping weapon names to the actual weapon
+ * @return HashMap of weapon name to weapon
+ */
 	private HashMap<String, Weapon> makeWeapons() {
 		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
 		myWeaponData = myWorldData.getMyWeapons();
-		for(String wep : myWeaponData.keySet()){
+		for (String wep : myWeaponData.keySet()) {
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
 			wepRet.put(wep, currWeapon);
 		}
 		return wepRet;
 	}
-
+/**
+ * Creates a copy of HashMap<String, ItemData>, used to avoid Gson LinkedTreeMap errors
+ * @return Copy of myItems from WorldData
+ */
 	private HashMap<String, ItemData> makeItems() {
 		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
 		myItemData = myWorldData.getMyItems();
-		for(String itemdata : myItemData.keySet()){
+		for (String itemdata : myItemData.keySet()) {
 			ItemData currItemData = myItemData.get(itemdata);
 			itemRet.put(itemdata, currItemData);
 		}
 		return itemRet;
 	}
 
-	
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
-
 	}
 }
