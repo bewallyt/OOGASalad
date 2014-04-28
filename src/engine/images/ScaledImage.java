@@ -42,10 +42,10 @@ public class ScaledImage {
 			} else {
 				File f = new File("./src/" + Constants.IMAGEPATH + myFile);
 				if (f.exists()) {
-					ii = new ImageIcon(this.getClass().getClassLoader()
-							.getResource(Constants.IMAGEPATH + myFile));
+					ii = new ImageIcon("./src/" + Constants.IMAGEPATH + myFile);
 				} else {
-					ii = new ImageIcon("/src/gridobject/" + myFile);
+					ii = new ImageIcon(this.getClass().getClassLoader()
+					.getResource(Constants.GRIDOBJECTPATH + myFile));
 				}
 			}
 
