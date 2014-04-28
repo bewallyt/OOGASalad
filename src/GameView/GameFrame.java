@@ -25,7 +25,7 @@ import util.Constants;
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.
  * 
- * @author Brandon, Peter
+ * @author Brandon Chao, Peter Yom
  * 
  */
 public class GameFrame extends RPGEngine {

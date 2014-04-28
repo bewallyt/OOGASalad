@@ -1,6 +1,7 @@
 package authoring.gameObjects;
 
 /**
+ * Class that handles the GUI window for the creation of barriers
  * @ Davis T.
  * @ Pritam M.
  * */
@@ -19,6 +20,9 @@ public class BarrierCreation extends CommonAttributes{
 	public BarrierCreation() {
 		
 	}
+	/**
+	 * Creates the overall GUI panel
+	 */
 	public void creationPanel(){
 		frame = new JFrame("Add Barrier:");
 		frame.setAlwaysOnTop(true);
@@ -27,7 +31,10 @@ public class BarrierCreation extends CommonAttributes{
 		frame.pack();
 		frame.setVisible(true);
 	}
-	public void assembleGUI(){
+	/**
+	 * Puts the GUI panel together
+	 */
+	private void assembleGUI(){
 
         JPanel namePanel = nameImageFields();
         JPanel locationPanel = locationFields();
@@ -43,10 +50,17 @@ public class BarrierCreation extends CommonAttributes{
         combinedPanel.add(createBarrier);
         frame.add(combinedPanel);
 	}
+	/**
+	 * Returns the int value within a string 
+	 * @param s String to be parsed
+	 */
 	private int getIntValue(String s){
 		return Integer.parseInt(s);
 	}
-	
+	/**
+	 * Validates user input
+	 * @return boolean stating whether user input is valid or not
+	 */
 	private boolean validateText(){
         return !xcoor.getText().equals("") && !ycoor.getText().equals("") && imagePanel.getComponents().length > 0;
     }

@@ -10,7 +10,7 @@ public class ShopkeeperData extends GridObjectData{
 
 	public ShopkeeperData(int x, int y, int width, int height, String image,
 			List<String> items) {
-		super(x, y, width, height, image, Constants.NPC);
+		super(x, y, width, height, image, Constants.SHOPKEEPER);
 		myItems = items;
 		SpriteImageChooser imageChoose = new SpriteImageChooser();
 		setHeight(height);

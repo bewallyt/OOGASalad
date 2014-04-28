@@ -1,68 +1,6 @@
 {
   "myLevels": {
     "first": {
-      "playerData": {
-        "myItems": [
-          null
-        ],
-        "myValues": {
-          "Damage": 5,
-          "Speed": 5,
-          "Defense": 5,
-          "Health": 5,
-          "Level": 5
-        },
-        "myWeapons": [
-          "Ice Sword"
-        ],
-        "myName": "player",
-        "myMovement": 0,
-        "myImages": [
-          "PlayerImages/Ash/PlayerDown1.png",
-          "PlayerImages/Ash/PlayerDown2.png",
-          "PlayerImages/Ash/PlayerLeft1.png",
-          "PlayerImages/Ash/PlayerLeft2.png",
-          "PlayerImages/Ash/PlayerRight1.png",
-          "PlayerImages/Ash/PlayerRight2.png",
-          "PlayerImages/Ash/PlayerUp1.png",
-          "PlayerImages/Ash/PlayerUp2.png"
-        ],
-        "myMoney": 0,
-        "myExperience": 0,
-        "width": 1,
-        "height": 1,
-        "myX": 2,
-        "myY": 2,
-        "itemList": [],
-        "myID": "engine.gridobject.person.Enemy",
-        "myArguments": [
-          1,
-          1,
-          [
-            "PlayerImages/Ash/PlayerDown1.png",
-            "PlayerImages/Ash/PlayerDown2.png",
-            "PlayerImages/Ash/PlayerLeft1.png",
-            "PlayerImages/Ash/PlayerLeft2.png",
-            "PlayerImages/Ash/PlayerRight1.png",
-            "PlayerImages/Ash/PlayerRight2.png",
-            "PlayerImages/Ash/PlayerUp1.png",
-            "PlayerImages/Ash/PlayerUp2.png"
-          ],
-          "player",
-          {
-            "Damage": 5,
-            "Speed": 5,
-            "Defense": 5,
-            "Health": 5,
-            "Level": 5
-          },
-          [
-            "Ice Sword"
-          ],
-          2,
-          0
-        ]
-      },
       "myTiles": [
         [
           {
@@ -142,43 +80,40 @@
                   "Health": 5,
                   "Level": 5
                 },
-                "myWeapons": [
-                  "Ice Sword"
-                ],
-                "myName": "enemy",
+                "myWeapons": [],
+                "myName": "newItem",
                 "myMovement": 1,
                 "myImages": [
-                  "PlayerImages/Zelda/down0.png",
-                  "PlayerImages/Zelda/down1.png",
-                  "PlayerImages/Zelda/left0.png",
-                  "PlayerImages/Zelda/left1.png",
-                  "PlayerImages/Zelda/right0.png",
-                  "PlayerImages/Zelda/right1.png",
-                  "PlayerImages/Zelda/up0.png",
-                  "PlayerImages/Zelda/up1.png"
+                  "PlayerImages/Ash/PlayerDown1.png",
+                  "PlayerImages/Ash/PlayerDown2.png",
+                  "PlayerImages/Ash/PlayerLeft1.png",
+                  "PlayerImages/Ash/PlayerLeft2.png",
+                  "PlayerImages/Ash/PlayerRight1.png",
+                  "PlayerImages/Ash/PlayerRight2.png",
+                  "PlayerImages/Ash/PlayerUp1.png",
+                  "PlayerImages/Ash/PlayerUp2.png"
                 ],
                 "myMoney": 100,
                 "myExperience": 50,
                 "width": 1,
                 "height": 1,
-                "myX": 5,
-                "myY": 5,
-                "itemList": [],
+                "myX": 2,
+                "myY": 2,
                 "myID": "engine.gridobject.person.Enemy",
                 "myArguments": [
                   1,
                   1,
                   [
-                    "PlayerImages/Zelda/down0.png",
-                    "PlayerImages/Zelda/down1.png",
-                    "PlayerImages/Zelda/left0.png",
-                    "PlayerImages/Zelda/left1.png",
-                    "PlayerImages/Zelda/right0.png",
-                    "PlayerImages/Zelda/right1.png",
-                    "PlayerImages/Zelda/up0.png",
-                    "PlayerImages/Zelda/up1.png"
+                    "PlayerImages/Ash/PlayerDown1.png",
+                    "PlayerImages/Ash/PlayerDown2.png",
+                    "PlayerImages/Ash/PlayerLeft1.png",
+                    "PlayerImages/Ash/PlayerLeft2.png",
+                    "PlayerImages/Ash/PlayerRight1.png",
+                    "PlayerImages/Ash/PlayerRight2.png",
+                    "PlayerImages/Ash/PlayerUp1.png",
+                    "PlayerImages/Ash/PlayerUp2.png"
                   ],
-                  "enemy",
+                  "newItem",
                   {
                     "Damage": 5,
                     "Speed": 5,
@@ -186,10 +121,8 @@
                     "Health": 5,
                     "Level": 5
                   },
-                  [
-                    "Ice Sword"
-                  ],
-                  2,
+                  [],
+                  0,
                   1
                 ]
               }
@@ -1061,55 +994,7 @@
   },
   "myImages": {},
   "mySongs": {},
-  "primaryMap": "first",
   "currentMap": "first",
-  "myItems": {
-    "Super Potion": {
-      "itemName": "Super Potion",
-      "itemImage": "Jar",
-      "myItemValues": {
-        "Damage": 11,
-        "Speed": 10,
-        "Defense": 12,
-        "Level": 14,
-        "Health": 13
-      },
-      "myPrice": 10,
-      "myIdentity": "StatBuffer"
-    }
-  },
-  "myWeapons": {
-    "Ice Sword": {
-      "myName": "Ice Sword",
-      "myImage": "engine/images/cabinets.jpg",
-      "myAttacks": [
-        {
-          "myName": "Ice Slash",
-          "mySpeed": 10,
-          "myDamage": 10,
-          "affectAttribute": "Speed",
-          "affectValue": 10,
-          "affectPlayer": true
-        }
-      ],
-      "mySpeed": 15,
-      "myDamage": 15
-    },
-    "Fire Sword": {
-      "myName": "Fire Sword",
-      "myImage": "engine/images/cabinets.jpg",
-      "myAttacks": [
-        {
-          "myName": "Fire Stab",
-          "mySpeed": 10,
-          "myDamage": 10,
-          "affectAttribute": "Damage",
-          "affectValue": 10,
-          "affectPlayer": true
-        }
-      ],
-      "mySpeed": 10,
-      "myDamage": 10
-    }
-  }
+  "myItems": {},
+  "myWeapons": {}
 }
