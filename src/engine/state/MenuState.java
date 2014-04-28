@@ -6,6 +6,7 @@ import engine.Control;
 import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.person.Player;
 import engine.menu.managers.MenuManager;
+import util.Constants;
 
 public class MenuState extends AbstractState {
 
@@ -33,16 +34,16 @@ public class MenuState extends AbstractState {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == Control.UP) {
+		if (e.getKeyCode() == Constants.UP) {
 			myMenu.moveCursorUp();
 		}
-		if (e.getKeyCode() == Control.DOWN) {
+		if (e.getKeyCode() == Constants.DOWN) {
 			myMenu.moveCursorDown();
 		}
-		if (e.getKeyCode() == Control.A || e.getKeyCode() == Control.ENTER) {
+		if (e.getKeyCode() == Constants.A || e.getKeyCode() == Constants.ENTER) {
 			myMenu.select();
 		}
-		if (e.getKeyCode() == Control.SPACE || e.getKeyCode() == Control.ESC) {
+		if (e.getKeyCode() == Constants.SPACE || e.getKeyCode() == Constants.ESC) {
 			myPlayer.setState(new WalkAroundState(myPlayer));
 			myPlayer.setInteractionBox(new TransparentDisplayer());
 		}

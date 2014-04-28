@@ -55,7 +55,9 @@ public class MapData {
     public void saveBarrier(BarrierData barrier){myTiles.get(barrier.getX()).get(barrier.getY()).addGridObjectData(barrier);}
     
     public void saveDoor(DoorData door){myTiles.get(door.getX()).get(door.getY()).addGridObjectData(door);}
-
+    
+	public void saveHealer(HealerData myHealer) {myTiles.get(myHealer.getX()).get(myHealer.getY()).addGridObjectData(myHealer);}
+	
 	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);}
 	
     public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);

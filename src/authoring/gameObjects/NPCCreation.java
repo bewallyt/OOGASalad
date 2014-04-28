@@ -16,16 +16,16 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import authoring.UserQueryNode;
+import authoring.UserQueryNodeData;
 import authoring.features.FeatureManager;
 
 @SuppressWarnings("ALL")
 public class NPCCreation extends CommonAttributes{
 
 	private JList myResponsesWrapper;
-	private NPCResponseNode myRoot;
-	private List<NPCResponseNode> myPrev;
-	private NPCResponseNode myCurrent;
+	private NPCResponseNodeData myRoot;
+	private List<NPCResponseNodeData> myPrev;
+	private NPCResponseNodeData myCurrent;
 	private JOptionPane optionFrame;
 
     public NPCCreation(){}
@@ -44,8 +44,8 @@ public class NPCCreation extends CommonAttributes{
         combinedPanel.add(sizePanel);
         
         JPanel dialoguePanel = new JPanel();
-		myPrev = new ArrayList<NPCResponseNode>();
-		myRoot = new NPCResponseNode("Initial NPC Response");
+		myPrev = new ArrayList<NPCResponseNodeData>();
+		myRoot = new NPCResponseNodeData("Initial NPC Response");
 		myCurrent = myRoot;
 		myResponsesWrapper = new JList();
 		setResponses();
@@ -111,7 +111,7 @@ public class NPCCreation extends CommonAttributes{
 		}else{
 			myResponses.add(0,myCurrent.getString());
 		}
-		for(UserQueryNode q: myCurrent.getChildren()){
+		for(UserQueryNodeData q: myCurrent.getChildren()){
 			if(q.getString()!=null){
 				myResponses.add("   "+q.getString());
 			}
@@ -121,7 +121,7 @@ public class NPCCreation extends CommonAttributes{
 		}
 		myResponsesWrapper.setListData(myResponses.toArray());
 	}
-	public NPCResponseNode getDialogue() {
+	public NPCResponseNodeData getDialogue() {
 		return myRoot;
 	}
 	private class QueryListener implements ActionListener{
@@ -129,9 +129,9 @@ public class NPCCreation extends CommonAttributes{
 			if(myCurrent.getChildren().size()<4){
 			optionFrame = new JOptionPane("Input Dialogue");
 			String s = optionFrame.showInputDialog("Enter User Response Option");
-			UserQueryNode uqn = new UserQueryNode(s);
+			UserQueryNodeData uqn = new UserQueryNodeData(s);
 			String ss = optionFrame.showInputDialog("Enter NPC Response to User Response");
-			uqn.setChild(new NPCResponseNode(ss));
+			uqn.setChild(new NPCResponseNodeData(ss));
 			myCurrent.addChild(uqn);
 			setResponses();
 			}
@@ -141,7 +141,7 @@ public class NPCCreation extends CommonAttributes{
 		public void actionPerformed(ActionEvent e) {
 
 			boolean alreadyItem=false;
-			for(UserQueryNode n: myCurrent.getChildren()){
+			for(UserQueryNodeData n: myCurrent.getChildren()){
 				if(n.getItem()!=null)
 					alreadyItem=true;
 			}
@@ -151,10 +151,10 @@ public class NPCCreation extends CommonAttributes{
 			String myItem = (String)JOptionPane.showInputDialog(null, "Select a User Item for NPC to react to",
 					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
 
-			UserQueryNode uqn = new UserQueryNode();
+			UserQueryNodeData uqn = new UserQueryNodeData();
 			uqn.setItem(myItem);
 			String ss = optionFrame.showInputDialog("Enter NPC Response");
-			uqn.setChild(new NPCResponseNode(ss));
+			uqn.setChild(new NPCResponseNodeData(ss));
 			myCurrent.addChild(uqn);
 			setResponses();
 			}
