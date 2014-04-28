@@ -22,6 +22,11 @@ import javax.swing.event.ListSelectionListener;
 import authoring.UserQueryNodeData;
 import authoring.gameObjects.NPCResponseNodeData;
 
+/**
+ * Class that handles the dialogue entering for NPCs
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class DialogueFeature extends Feature{
 	private JScrollPane myTextWindow;
 	private JList myResponsesWrapper;

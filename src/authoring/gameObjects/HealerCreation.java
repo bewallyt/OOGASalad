@@ -49,7 +49,6 @@ public class HealerCreation extends CommonAttributes{
 	
 	/**
 	 * Validates user input
-	 * @return
 	 */
 	private boolean validateText(){
         return !xcoor.getText().equals("") && !ycoor.getText().equals("") && imagePanel.getComponents().length > 0;
