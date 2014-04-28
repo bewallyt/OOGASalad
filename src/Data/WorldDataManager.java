@@ -47,52 +47,14 @@ public class WorldDataManager {
 			List<GridObject> gridObjectList = ((WalkAroundWorld) w).getGridObjectList();
 			for (GridObject g : gridObjectList) {
 				if (g instanceof Barrier) {
-					BarrierData barrierData = new BarrierData(g.getX()/Constants.TILE_SIZE,
-							g.getY()/Constants.TILE_SIZE,
-							g.getWidth()/Constants.TILE_SIZE,
-							g.getHeight()/Constants.TILE_SIZE,
-							g.getImageFile());
+					BarrierData barrierData = transformBarrier(g);
 					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(barrierData);
 				} else if (g instanceof Door) {			
-					DoorData doorData = new DoorData(g.getX()/Constants.TILE_SIZE, 
-							g.getY()/Constants.TILE_SIZE,
-							g.getWidth()/Constants.TILE_SIZE,
-							g.getHeight()/Constants.TILE_SIZE,
-							g.getImageFile(), 
-							g.getX()/Constants.TILE_SIZE,
-							g.getY()/Constants.TILE_SIZE,
-							((Door) g).getToMap()
-		                    );
+					DoorData doorData = transformDoor(g);
 					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(doorData);
 				} else if (g instanceof Enemy) {
-					// need to fix this when enemy authoring works
-//					Enemy e = (Enemy) g;
-//					
-//					Map<String,Integer> attributeValues1 = new HashMap<String,Integer>();
-//					for (String key : e.getStatsMap().keySet()) {
-//						attributeValues1.put(key,  e.getStatsMap().get(key).getValue());
-//					}
-//					
-//					List<Weapon> eWeaponNames = e.getWeaponList();
-//					String [] eWeps = new String[eWeaponNames.size()];
-//					int wCounter = 0;
-//					for (Weapon wep : eWeaponNames) {
-//						String wepName = wep.toString();
-//						eWeps[wCounter] = wepName;
-//						wCounter++;
-//					}
-//					
-//					EnemyData enemyData = new EnemyData(g.getX()/Constants.TILE_SIZE,
-//							g.getY()/Constants.TILE_SIZE,
-//							g.getImageFile(),
-//							g.toString(),
-//							attributeValues1,
-//							eWeps,
-//							1, // move check this
-//				            ((Enemy) g).getMoney(),
-//				            ((Enemy) g).getExperience());
-
-//					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(enemyData);
+				//	EnemyData enemyData = transformEnemy(g);
+				//	md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(enemyData);			
 				}
 				
 			}
@@ -130,6 +92,8 @@ public class WorldDataManager {
 
 		PlayerData playerData = new PlayerData(p.getStartX()/Constants.TILE_SIZE, p.getStartY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItemNames);
 		playerData.setImages(pAnimImages);
+		playerData.setMyMoney(p.getMoney());
+		playerData.setMyExperience(p.getExperience());
 		
 		return playerData;
 	}
@@ -155,4 +119,57 @@ public class WorldDataManager {
 		}
 		return itemNames;		
 	}	
+	
+	private BarrierData transformBarrier(GridObject g) {
+		BarrierData barrierData = new BarrierData(g.getX()/Constants.TILE_SIZE,
+				g.getY()/Constants.TILE_SIZE,
+				g.getWidth()/Constants.TILE_SIZE,
+				g.getHeight()/Constants.TILE_SIZE,
+				g.getImageFile());	
+		return barrierData;
+	}
+	
+	private DoorData transformDoor(GridObject g) {
+		DoorData doorData = new DoorData(g.getX()/Constants.TILE_SIZE, 
+				g.getY()/Constants.TILE_SIZE,
+				g.getWidth()/Constants.TILE_SIZE,
+				g.getHeight()/Constants.TILE_SIZE,
+				g.getImageFile(), 
+				g.getX()/Constants.TILE_SIZE,
+				g.getY()/Constants.TILE_SIZE,
+				((Door) g).getToMap()
+                );
+		return doorData;
+	}
+	
+	private EnemyData transformEnemy(GridObject g) {
+		Enemy e = (Enemy) g;
+		
+		String[] eAnimImages = e.getAnimImages();	
+		Map<String,Integer> attributeValues1 = new HashMap<String,Integer>();
+		for (String key : e.getStatsMap().keySet()) {
+			attributeValues1.put(key,  e.getStatsMap().get(key).getValue());
+		}
+		
+		List<Weapon> eWeapons = e.getWeaponList();
+		String[] eWeps = getWeaponNames(eWeapons);
+		
+//		List<Item> eItems = e.getItems();
+//		String [] eItemNames = getItemNames(eItems);			
+		
+		EnemyData enemyData = new EnemyData(g.getX()/Constants.TILE_SIZE,
+				g.getY()/Constants.TILE_SIZE,
+				g.getImageFile(),
+				g.toString(),
+				attributeValues1,
+				eWeps,
+				1, // move check this
+	            ((Enemy) g).getMoney(),
+	            ((Enemy) g).getExperience());
+		
+		enemyData.setImages(eAnimImages);
+		
+		return enemyData;
+		
+	}
 }
