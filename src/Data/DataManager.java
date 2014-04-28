@@ -12,6 +12,7 @@ import authoring.gameObjects.WorldData;
 /** 
  * Manages WorldData objects. Keeps a map of WorldData objects associated with
  * each WorldData file.
+ * @author Sanmay Jain
  */
 
 public class DataManager {

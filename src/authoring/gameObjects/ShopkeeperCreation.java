@@ -112,10 +112,16 @@ public class ShopkeeperCreation extends CommonAttributes {
 			if(myWares.size()<4){
 			List<String> myItems = new ArrayList<String>(FeatureManager.getWorldData().getMyItems().keySet());
 
+			try{
 			String myItem = (String)JOptionPane.showInputDialog(null, "Select an Item for NPC to sell",
 					"Item Selection", JOptionPane.QUESTION_MESSAGE, null, myItems.toArray(), myItems.toArray()[0]);
-			myWares.add(myItem);;
-			setResponses();
+				myWares.add(myItem);;
+				setResponses();
+			}
+			catch(Exception ex){
+				return;
+			}
+			
 			}
 		}
 	}
