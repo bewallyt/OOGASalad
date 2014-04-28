@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import authoring.SpringUtilities;
 import authoring.UserQueryNodeData;
 import authoring.features.FeatureManager;
 
@@ -27,6 +28,7 @@ public class NPCCreation extends CommonAttributes{
 	private List<NPCResponseNodeData> myPrev;
 	private NPCResponseNodeData myCurrent;
 	private JOptionPane optionFrame;
+	private JComboBox<String> NPCImage;
 
     public NPCCreation(){}
 
@@ -38,6 +40,11 @@ public class NPCCreation extends CommonAttributes{
         String dialogueTab = "Dialogue";
 
         JPanel namePanel = nameImageFields();
+        JPanel nameImagePanel=new JPanel();
+        NPCImage=spriteField();
+        nameImagePanel.add(namePanel);
+        nameImagePanel.add(NPCImage);
+        
 
         JPanel locationPanel = locationFields();
         JPanel sizePanel = sizeFields();
@@ -70,7 +77,7 @@ public class NPCCreation extends CommonAttributes{
 		dialoguePanel.add(newItemGiven);
 		dialoguePanel.add(myGoBack);
 
-        pane.add(nameTab,namePanel);
+        pane.add(nameTab,nameImagePanel);
         pane.add(locationTab,combinedPanel);
         pane.add(dialogueTab,dialoguePanel);
 
@@ -110,7 +117,7 @@ public class NPCCreation extends CommonAttributes{
      */
     private void makeNPC(){
     	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-    			editor.getSelectedImage().getDescription(),myRoot);
+    			(String) NPCImage.getSelectedItem(),myRoot);
     	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
     			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
