@@ -59,9 +59,9 @@ public class NPC extends Person {
 	public NPC(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list
-				.get(Constants.NAME_CONST), 1,
-				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(),
-				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
+				.get(Constants.NAME_CONST), 1, (int) ((Double) list
+				.get(Constants.WIDTH_CONST)).intValue(), (int) ((Double) list
+				.get(Constants.HEIGHT_CONST)).intValue());
 
 		myDialogue = new ArrayList<String>();
 		myPlayer = (Player) list.get(Constants.NPC_PLAYER_CONST);
@@ -81,13 +81,17 @@ public class NPC extends Person {
 
 	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
-		Item myItem = (Item) Reflection.createInstance("engine.item."
-				+ items.get(n.getItem()).getMyIdentity());
+		Item myItem = null;
+		if (n.getItem() != null) {
+			myItem = (Item) Reflection.createInstance("engine.item."
+					+ items.get(n.getItem()).getMyIdentity());
+		}
 		NPCResponseNode head = new NPCResponseNode(n.getString(), myItem);
 		if (n.getChildren() != null) {
 			for (UserQueryNodeData u : n.getChildren()) {
 				NPCResponseNode child = buildResponseTree(u.getChild(), items);
-				head.addResponseNode(new UserQueryNode(myPlayer, u.getItem(), u.getString(), child));
+				head.addResponseNode(new UserQueryNode(myPlayer, u.getItem(), u
+						.getString(), child));
 			}
 		}
 		return head;

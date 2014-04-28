@@ -137,8 +137,16 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "hello",
+                  "myChildren": [
+                    {
+                      "myString": "what up",
+                      "myChild": {
+                        "myString": "kasjdflksdj",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myImages": [
                   "PlayerImages/Ash/PlayerDown1.png",
@@ -156,8 +164,16 @@
                 "myY": 2,
                 "myID": "engine.gridobject.person.NPC",
                 "myDialogue": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "hello",
+                  "myChildren": [
+                    {
+                      "myString": "what up",
+                      "myChild": {
+                        "myString": "kasjdflksdj",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myArguments": [
                   1,
@@ -174,8 +190,16 @@
                   ],
                   "DEFAULT_NAME",
                   {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
+                    "myString": "hello",
+                    "myChildren": [
+                      {
+                        "myString": "what up",
+                        "myChild": {
+                          "myString": "kasjdflksdj",
+                          "myChildren": []
+                        }
+                      }
+                    ]
                   },
                   1
                 ]
@@ -249,8 +273,16 @@
             "myGridObjectDatas": [
               {
                 "myRoot": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "hello",
+                  "myChildren": [
+                    {
+                      "myString": "what up",
+                      "myChild": {
+                        "myString": "kasjdflksdj",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myImages": [
                   "PlayerImages/Ash/PlayerDown1.png",
@@ -268,8 +300,16 @@
                 "myY": 2,
                 "myID": "engine.gridobject.person.NPC",
                 "myDialogue": {
-                  "myString": "Initial NPC Response",
-                  "myChildren": []
+                  "myString": "hello",
+                  "myChildren": [
+                    {
+                      "myString": "what up",
+                      "myChild": {
+                        "myString": "kasjdflksdj",
+                        "myChildren": []
+                      }
+                    }
+                  ]
                 },
                 "myArguments": [
                   1,
@@ -286,8 +326,16 @@
                   ],
                   "DEFAULT_NAME",
                   {
-                    "myString": "Initial NPC Response",
-                    "myChildren": []
+                    "myString": "hello",
+                    "myChildren": [
+                      {
+                        "myString": "what up",
+                        "myChild": {
+                          "myString": "kasjdflksdj",
+                          "myChildren": []
+                        }
+                      }
+                    ]
                   },
                   1
                 ]
