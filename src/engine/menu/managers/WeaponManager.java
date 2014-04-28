@@ -1,6 +1,5 @@
 package engine.menu.managers;
 
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -11,6 +10,7 @@ import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.item.Weapon;
 import engine.menu.MenuInteractionMatrix;
+import engine.menu.nodes.WeaponInfoNode;
 
 public class WeaponManager extends MenuManager implements InteractionBox {
 
@@ -66,19 +66,20 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 			} else {
 				emptySpace = 0;
 			}
-
-			Image scaledWeaponImage = weapons.get(i).getImage()
-					.getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-			paintWeaponImage(g2d, scaledWeaponImage, 37, 45 + i * 40 + 5
-					* emptySpace);
-			paintWeaponName(g2d, weapons.get(i).toString(), 80, 67 + i * 40 + 5
-					* emptySpace);
+			if (weapons != null && weapons.get(i).getImage() != null) {
+				Image scaledWeaponImage = weapons.get(i).getImage()
+						.getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+				paintWeaponImage(g2d, scaledWeaponImage, 37, 45 + i * 40 + 5
+						* emptySpace);
+				paintWeaponName(g2d, weapons.get(i).toString(), 80, 67 + i * 40
+						+ 5 * emptySpace);
+			}
 
 		}
 
 	}
-	
-	protected void paintAllWeaponData(Graphics g2d, int height, int width){
+
+	protected void paintAllWeaponData(Graphics g2d, int height, int width) {
 		paintMenu(g2d, height, width);
 		paintWeaponBox(g2d, "ImageFiles/PokemonBox.png", 17, 20, 300, 200);
 		paintWeaponData(g2d);
@@ -86,8 +87,8 @@ public class WeaponManager extends MenuManager implements InteractionBox {
 
 	public void createWeaponInfoNodes() {
 		for (int i = 0; i < myPlayer.getWeaponList().size(); i++) {
-			myMIM.setNode(new WeaponInfoNode(myPlayer, this, myMenuManager, i), 0,
-					i);
+			myMIM.setNode(new WeaponInfoNode(myPlayer, this, myMenuManager, i),
+					0, i);
 		}
 	}
 
