@@ -38,6 +38,12 @@ public class ConversationManager extends AbstractManager implements InteractionB
 	private static final int SYMBOL_RADIUS = 10;
 	private ConversationState myCurrentState;
 
+	/**
+	 * Creates new manager
+	 * @param p Player
+	 * @param n a grid object
+	 * @param nrNode the first NPCResponse node to be used
+	 */
 	public ConversationManager(Player p, GridObject n, NPCResponseNode nrNode) {
 		super();
 		currentResponseNode = nrNode;

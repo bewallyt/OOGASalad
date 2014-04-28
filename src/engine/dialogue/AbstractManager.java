@@ -27,6 +27,10 @@ public abstract class AbstractManager implements InteractionBox{
 		myMatrix = new InteractionMatrix2x2();
 	}
 	
+	/**
+	 * This method handles the actual painting of whatever needs to be painted to the screen. This could be 
+	 * dialogue, options to select, or an alert.
+	 */
 	@Override
 	public void paintDisplay(Graphics2D g2d, int xSize, int ySize, int width, int height) {
 		InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
@@ -70,7 +74,7 @@ public abstract class AbstractManager implements InteractionBox{
 		}
 	}
 	
-	protected void printResponses(Graphics2D g2d, InteractionMatrix matrix, int xSize, int ySize, 
+	private void printResponses(Graphics2D g2d, InteractionMatrix matrix, int xSize, int ySize, 
 			int width, int height) {
 		int xCornerLoc = xSize/10;
 		int yCornerLoc = ySize/2 + 120;
@@ -122,25 +126,42 @@ public abstract class AbstractManager implements InteractionBox{
 		return myLines;
 	}
 
+	/**
+	 * moves selector up in the matrix
+	 */
 	public void moveUp() {
 		myMatrix.moveUp();
 		setCurrentNode();
 	}
 
+	/**
+	 * moves selector down in the matrix
+	 */
 	public void moveDown() {
 		myMatrix.moveDown();
 		setCurrentNode();
 	}
 
+	/**
+	 * moves selector left in the matrix
+	 */
 	public void moveLeft() {
 		myMatrix.moveLeft(); 
 		setCurrentNode();
 	}
 
+	/**
+	 * mmoves selector right in the matrix
+	 */
 	public void moveRight() {
 		myMatrix.moveRight();
 		setCurrentNode();
 	}
+	
+	/**
+	 * Provides access to the InteractionMatrix, which keeps track of the currently selected node and such.
+	 * @return the InteractionMatrix
+	 */
 	public InteractionMatrix getMatrix(){
 		return myMatrix;
 	}

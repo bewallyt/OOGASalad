@@ -8,7 +8,7 @@ public class ArenaWorldLooper extends GameLooper {
 
 	ArenaWorld myWorld;
 	BattleManager myBattleManager;
-	public ArenaWorldLooper(ArenaWorld currentWorld) {
+	public ArenaWorldLooper(World currentWorld) {
 		super(currentWorld);
 		//myWorld.getEnemy().setWasBattled();
 		myWorld = (ArenaWorld) getWorld();
