@@ -83,6 +83,20 @@ public class GridObjectData {
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given movementType
 	}
+	
+	// ShopkeeperData
+	public GridObjectData(int x, int y, int width, int height, String image, List<String> items, String id) {
+		myID = id;
+		myX = x;
+		myY = y;
+		
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(createSpriteImages(image));
+		myArguments.add("DEFAULT_NAME");
+		myArguments.add(items);
+		// myArguments.add((int) 1); // default movement type until given movementType
+	}
 
     // Base empty constructor
     public GridObjectData() {

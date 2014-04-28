@@ -29,7 +29,6 @@ public class ShopKeeper extends NPC {
 				player);
 		myItemSet=itemSet;
 		makeDialogue();
-
 	}
 
 	/**
