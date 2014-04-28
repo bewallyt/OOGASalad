@@ -11,6 +11,7 @@ import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
 import engine.item.Weapon;
 import engine.menu.MenuInteractionMatrix;
+import engine.menu.nodes.WeaponInfoNode;
 
 public class WeaponManager extends MenuManager implements InteractionBox {
 

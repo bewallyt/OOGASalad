@@ -82,6 +82,7 @@ public class Enemy extends NPC {
 
 	public ArenaWorld getWorld(){
 		battleInitiated=false;
+		wasTalked=false;
 		return myWorld;
 	}
 
@@ -94,6 +95,7 @@ public class Enemy extends NPC {
 
 	public boolean isBattle(){
 		battleInitiatedOnSight();
+		
 		return battleInitiated;
 	}
 
