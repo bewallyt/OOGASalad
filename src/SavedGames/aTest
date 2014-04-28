@@ -13,8 +13,7 @@
           "Level": 5
         },
         "myWeapons": [
-          null,
-          null
+          "Ice Sword"
         ],
         "myName": "player",
         "myMovement": 0,
@@ -58,8 +57,7 @@
             "Level": 5
           },
           [
-            null,
-            null
+            "Ice Sword"
           ],
           2,
           0
@@ -145,8 +143,7 @@
                   "Level": 5
                 },
                 "myWeapons": [
-                  null,
-                  null
+                  "Ice Sword"
                 ],
                 "myName": "enemy",
                 "myMovement": 1,
@@ -190,8 +187,7 @@
                     "Level": 5
                   },
                   [
-                    null,
-                    null
+                    "Ice Sword"
                   ],
                   2,
                   1
@@ -1085,7 +1081,7 @@
   "myWeapons": {
     "Ice Sword": {
       "myName": "Ice Sword",
-      "myImage": "ISword",
+      "myImage": "engine/images/cabinets.jpg",
       "myAttacks": [
         {
           "myName": "Ice Slash",
@@ -1101,7 +1097,7 @@
     },
     "Fire Sword": {
       "myName": "Fire Sword",
-      "myImage": "FSword",
+      "myImage": "engine/images/cabinets.jpg",
       "myAttacks": [
         {
           "myName": "Fire Stab",

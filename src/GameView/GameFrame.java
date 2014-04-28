@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
@@ -130,6 +131,12 @@ public class GameFrame extends RPGEngine {
 
 		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons, makeWeapons());
 		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
+		myPlayer.addStatistic(new Statistic("Health",100,100));
+		myPlayer.addStatistic(new Statistic("Damage",10,100));
+		myPlayer.addStatistic(new Statistic("Speed",10,100));
+		myPlayer.addStatistic(new Statistic("Level",10,100));
+		myPlayer.addStatistic(new Statistic("Defense",10,100));
+
 	}
 
 	/**
@@ -170,6 +177,8 @@ public class GameFrame extends RPGEngine {
 		for(String wep : myWeaponData.keySet()){
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
+    		System.out.println("attack " +currWeapon.getAttackList().size());
+
 			wepRet.put(wep, currWeapon);
 		}
 		return wepRet;
