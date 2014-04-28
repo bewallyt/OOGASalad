@@ -18,7 +18,6 @@ public class GridObjectData {
 
 	private int myX;
 	private int myY;
-	private List<ItemData> itemList=new ArrayList<ItemData>();
 	private String myID;
 	private List<Object> myArguments = new ArrayList<Object>();
 	
@@ -82,7 +81,7 @@ public class GridObjectData {
 
 		// myArguments.add(createSpriteImages(image));
 		myArguments.add("DEFAULT_NAME");
-		myArguments.add(root);
+		myArguments.add((NPCResponseNodeData) root);
 		myArguments.add((int) 1); // default movement type until given movementType
 	}
 
