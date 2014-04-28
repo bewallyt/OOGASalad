@@ -2,7 +2,9 @@
   "myLevels": {
     "asdf": {
       "playerData": {
-        "myItems": [],
+        "myItems": [
+          null
+        ],
         "myValues": {
           "Damage": 5,
           "Speed": 5,
@@ -11,7 +13,7 @@
           "Level": 5
         },
         "myWeapons": [],
-        "myName": "newItem",
+        "myName": "peter",
         "myMovement": 0,
         "myImages": [
           "PlayerImages/Ash/PlayerDown1.png",
@@ -27,8 +29,8 @@
         "myExperience": 0,
         "width": 1,
         "height": 1,
-        "myX": 2,
-        "myY": 2,
+        "myX": 3,
+        "myY": 3,
         "myID": "engine.gridobject.person.Enemy",
         "myArguments": [
           1,
@@ -43,7 +45,7 @@
             "PlayerImages/Ash/PlayerUp1.png",
             "PlayerImages/Ash/PlayerUp2.png"
           ],
-          "newItem",
+          "peter",
           {
             "Damage": 5,
             "Speed": 5,
@@ -192,7 +194,36 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              {
+                "myItems": [
+                  "thingy"
+                ],
+                "width": 1,
+                "height": 1,
+                "myX": 2,
+                "myY": 2,
+                "myID": "engine.gridobject.person.ShopKeeper",
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ],
+                  "DEFAULT_NAME",
+                  [
+                    "thingy"
+                  ]
+                ]
+              }
+            ]
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -258,32 +289,7 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "myItems": [],
-                "width": 1,
-                "height": 1,
-                "myX": 3,
-                "myY": 3,
-                "myID": "engine.gridobject.person.ShopKeeper",
-                "myArguments": [
-                  1,
-                  1,
-                  [
-                    "PlayerImages/Zelda/down0.png",
-                    "PlayerImages/Zelda/down1.png",
-                    "PlayerImages/Zelda/left0.png",
-                    "PlayerImages/Zelda/left1.png",
-                    "PlayerImages/Zelda/right0.png",
-                    "PlayerImages/Zelda/right1.png",
-                    "PlayerImages/Zelda/up0.png",
-                    "PlayerImages/Zelda/up1.png"
-                  ],
-                  "DEFAULT_NAME",
-                  []
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -1021,6 +1027,20 @@
   "mySongs": {},
   "primaryMap": "asdf",
   "currentMap": "asdf",
-  "myItems": {},
+  "myItems": {
+    "thingy": {
+      "itemName": "thingy",
+      "itemImage": "stone.png",
+      "myItemValues": {
+        "Damage": 5,
+        "Speed": 5,
+        "Defense": 5,
+        "Health": 5,
+        "Level": 5
+      },
+      "myPrice": 10,
+      "myIdentity": "StatBuffer"
+    }
+  },
   "myWeapons": {}
 }
