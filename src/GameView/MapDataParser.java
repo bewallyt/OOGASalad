@@ -17,7 +17,7 @@ import authoring.gameObjects.ItemData;
  * Class used to parse an instance of MapData into the GridObjects and Tile
  * images that MapData contains.
  * 
- * @author Brandon
+ * @author Brandon Chao, Peter Yom
  * 
  */
 public class MapDataParser {

@@ -1,8 +1,10 @@
 package engine.gridobject.person;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import util.Constants;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
 import engine.item.Item;
@@ -30,6 +32,18 @@ public class ShopKeeper extends NPC {
 		myItemSet=itemSet;
 		makeDialogue();
 
+	}
+	
+	public ShopKeeper(List<Object> list) {
+		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST)).toArray(new String[12]),
+				(String) list.get(Constants.NAME_CONST),
+				1, 
+				(int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(), 
+				(int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue(), 
+				1, 
+				(Player) list.get(Constants.SHOP_PLAYER_CONST));
+		myItemSet=itemSet;
+		makeDialogue();
 	}
 
 	/**
