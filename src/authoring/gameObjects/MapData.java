@@ -128,6 +128,9 @@ public class MapData {
 	public void saveEncounter(EncounterData myEncounter) {
 		myTiles.get(myEncounter.getX()).get(myEncounter.getY()).addGridObjectData(myEncounter);
 	}
+	public void saveShopkeeper(ShopkeeperData myShopkeeper) {
+		myTiles.get(myShopkeeper.getX()).get(myShopkeeper.getY()).addGridObjectData(myShopkeeper);
+	}
 	/**
 	 * Adds a song to the map
 	 * @param s Name of the song

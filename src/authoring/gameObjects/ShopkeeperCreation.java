@@ -78,7 +78,7 @@ public class ShopkeeperCreation extends CommonAttributes {
 			name = itemName.getText();
             x = Integer.parseInt(xcoor.getText());
             y = Integer.parseInt(ycoor.getText());
-            makeNPC();
+            makeShopkeeper();
 			frame.dispose();
 			editor.dispose();
 		}
@@ -95,12 +95,12 @@ public class ShopkeeperCreation extends CommonAttributes {
     /**
      * Makes the corresponding NPC based on user input
      */
-    private void makeNPC(){
-    	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-    			editor.getSelectedImage().getDescription(),myRoot);
+    private void makeShopkeeper(){
+    	ShopkeeperData myShopkeeper = new ShopkeeperData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
+    			editor.getSelectedImage().getDescription(),myWares);
     	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
     			, editor.getSelectedImage());
-    	FeatureManager.getWorldData().saveNPC(myNPC);
+    	FeatureManager.getWorldData().saveShopkeeper(myShopkeeper);
     }
     /**
      * Sets the NPC responses based on user input
