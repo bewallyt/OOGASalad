@@ -22,10 +22,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private JComboBox<String> playerEnemyImages;
     private String[] weaponNames;
     private String[] itemNames;
-    //private JCheckBox one;
-    //private JCheckBox two;
-    //private JCheckBox three;
-    //private ButtonModel movement;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;

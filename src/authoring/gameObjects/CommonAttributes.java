@@ -103,7 +103,7 @@ public abstract class CommonAttributes {
     protected JPanel nameImageFields(){
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
-        itemName = new JTextField("newItem",15);
+        itemName = new JTextField("Name",15);
         namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
@@ -129,6 +129,34 @@ public abstract class CommonAttributes {
 		editor=new GridObjectImageEditor(imagePanel);
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
+    }
+    protected JPanel nameField(){
+    	 JLabel nameLabel = new JLabel("Name");
+    	 itemName = new JTextField("Name",15);
+         JPanel name= new JPanel(){
+             public Dimension getPreferredSize() {
+                 Dimension size = super.getPreferredSize();
+                 size.width += 200;
+                 return size;
+             }
+         };
+         name.setLayout(new SpringLayout());
+         name.add(nameLabel);
+         nameLabel.setLabelFor(itemName);
+         return name;
+    }
+    protected JPanel imageField(){
+    	 JLabel imageLabel = new JLabel("Image");
+    	 JPanel panel=new JPanel();
+    	 panel.add(imageLabel);
+    	 imageLabel.setLabelFor(imagePanel);
+    	 Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+         imagePanel = new TilePanel(1,1);
+         imagePanel.setBorder(defaultBorder);
+         imagePanel.setToolTipText("Image here is only used for Random Enemies.");
+         panel.add(imagePanel);
+         editor=new GridObjectImageEditor(imagePanel);
+         return panel;
     }
     /**
      * Creates a basic location JPanel
