@@ -25,7 +25,7 @@ public class RunGameFeature extends Feature implements ActionListener {
     }
 
     public void runGame(){
-        mainGame.startEngine();
+        //mainGame.startEngine();
      
     }
 

@@ -6,8 +6,14 @@ import java.util.Map;
 
 import authoring.SpriteImageChooser;
 
+import authoring.features.FeatureManager;
 import util.Constants;
-
+/**
+ * Generic class that handles information relevant to all grid objects. 
+ * All grid objects extend this class
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie, Peter Yom, Brandon Chao
+ *
+ */
 public class GridObjectData {
 
 	protected String myImage;
@@ -19,16 +25,18 @@ public class GridObjectData {
 	private int myY;
 	private String myID;
 	private NPCResponseNodeData myDialogue;
+	/**
+	 * List of Objects used so the Player group can utilize reflection in creating GridObjects
+	 */
 	private List<Object> myArguments = new ArrayList<Object>();
 
-	protected String[] createSpriteImages(String image) {
-		SpriteImageChooser sprite = new SpriteImageChooser();
+	protected String[] createSpriteImages(String image){
+		SpriteImageChooser sprite=new SpriteImageChooser();
 		return sprite.getSpriteImages(image);
 	}
-
-	// BarrierData
-	public GridObjectData(int x, int y, int width, int height, String image,
-			String id) {
+	
+	// BarrierData and HealerData
+	public GridObjectData(int x, int y, int width, int height, String image, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -43,8 +51,8 @@ public class GridObjectData {
 	}
 
 	// DoorData
-	public GridObjectData(int x, int y, int width, int height, String image,
-			int toX, int toY, String toMap, String id) {
+	public GridObjectData(int x, int y, int width, int height,  String image, int toX, int toY, String toMap,
+			String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -58,9 +66,8 @@ public class GridObjectData {
 	}
 
 	// EnemyData
-	public GridObjectData(int x, int y, String image, String name,
-			Map<String, Integer> startVals, String[] weps, int movement,
-			String id) {
+	public GridObjectData(int x, int y, String image, String name, Map<String,Integer> startVals, String[] weps,
+			int movement, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -89,21 +96,36 @@ public class GridObjectData {
 		myArguments.add(createSpriteImages("Ash"));
 
 		// myArguments.add(createSpriteImages(image));
+
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
 		myArguments.add((int) 1); // default movement type until given
 									// movementType
 	}
-
+	
+	// ShopkeeperData
+	public GridObjectData(int x, int y, int width, int height, String image, List<String> items, String id) {
+		myID = id;
+		myX = x;
+		myY = y;
+		
+		myArguments.add(width);
+		myArguments.add(height);
+		myArguments.add(createSpriteImages("Zelda"));
+		myArguments.add("DEFAULT_NAME");
+		myArguments.add(items);
+		// myArguments.add((int) 1); // default movement type until given movementType
+	}
+	
 	// Base empty constructor
 	public GridObjectData() {
 	}
 
-	/*
-	 * public void init(){
-	 * FeatureManager.getWorldData().getCurrentMap().getTileData
-	 * (width,height).addGridObjectData(this); }
-	 */
+
+	public void init(){
+		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
+	}
+
 	public String getID() {
 		return myID;
 	}
@@ -140,7 +162,7 @@ public class GridObjectData {
 		width = x;
 	}
 
-	public List<Object> getArguments() {
+	public List<Object> getArguments(){
 		return myArguments;
 	}
 

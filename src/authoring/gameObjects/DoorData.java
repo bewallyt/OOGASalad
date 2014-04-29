@@ -4,6 +4,11 @@ import java.util.List;
 
 import util.Constants;
 
+/**
+ * Class that holds data relevant to a door object
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class DoorData extends GridObjectData {
 
 

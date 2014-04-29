@@ -28,6 +28,7 @@ public class Player extends Person {
 	private double originalSpeed;
 	private int myExperience;
 	private Random myRandom = new Random();
+	private String myName;
 
 	/**
 	 * Instantiates a new player.
@@ -43,6 +44,7 @@ public class Player extends Person {
 		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
 		myState = new WalkAroundState(this);
 		myExperience=0;
+		myName = name;
 		
 		addAllWeapons(allWeapons, weps);
 
@@ -141,6 +143,10 @@ public class Player extends Person {
 	}
 	public int getExperience(){
 		return myExperience;
+	}
+	
+	public String getName(){
+		return myName;
 	}
 
 }

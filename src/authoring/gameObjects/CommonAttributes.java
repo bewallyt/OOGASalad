@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * @ Davis Treybig
- * */
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -19,11 +14,18 @@ import authoring.view.TilePanel;
 
 
 
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @SuppressWarnings("ALL")
+/**
+ * Abstract class that allows easier creation of the GUI windows typical in an RPG authoring environment
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public abstract class CommonAttributes {
     protected String name;
     protected String image;
@@ -65,10 +67,16 @@ public abstract class CommonAttributes {
         weaponListModel = new DefaultListModel();
         itemListModel = new DefaultListModel();
     }
+    /**
+     * Gets the sprite image options currently available
+     */
     protected JComboBox spriteField(){
     	 JComboBox<String> playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
          return playerEnemyImages;
     }
+    /**
+     * Creates a basic attribute field GUI Panel
+     */
     protected JPanel attributeFields(){
         attributeValues = new HashMap<String, Integer>();
         textValues = new HashMap<String, JTextField>();
@@ -89,11 +97,13 @@ public abstract class CommonAttributes {
 
         return attributePanel;
     }
-
+    /**
+     * Creates a basic name/image field GUI Panel
+     */
     protected JPanel nameImageFields(){
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image");
-        itemName = new JTextField("newItem",15);
+        itemName = new JTextField("Name",15);
         namePanel = new JPanel(){
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
@@ -120,7 +130,37 @@ public abstract class CommonAttributes {
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
     }
-
+    protected JPanel nameField(){
+    	 JLabel nameLabel = new JLabel("Name");
+    	 itemName = new JTextField("Name",15);
+         JPanel name= new JPanel(){
+             public Dimension getPreferredSize() {
+                 Dimension size = super.getPreferredSize();
+                 size.width += 200;
+                 return size;
+             }
+         };
+         name.setLayout(new SpringLayout());
+         name.add(nameLabel);
+         nameLabel.setLabelFor(itemName);
+         return name;
+    }
+    protected JPanel imageField(){
+    	 JLabel imageLabel = new JLabel("Image");
+    	 JPanel panel=new JPanel();
+    	 panel.add(imageLabel);
+    	 imageLabel.setLabelFor(imagePanel);
+    	 Border defaultBorder = new MatteBorder(1, 1, 1, 1, Color.GRAY);
+         imagePanel = new TilePanel(1,1);
+         imagePanel.setBorder(defaultBorder);
+         imagePanel.setToolTipText("Image here is only used for Random Enemies.");
+         panel.add(imagePanel);
+         editor=new GridObjectImageEditor(imagePanel);
+         return panel;
+    }
+    /**
+     * Creates a basic location JPanel
+     */
     protected JPanel locationFields(){
         JPanel locationPanel = new JPanel(new SpringLayout());
         JLabel xcoordinate = new JLabel("X");
@@ -137,6 +177,9 @@ public abstract class CommonAttributes {
         return locationPanel;
     }
 
+    /**
+     * Creates a basic size field Panel
+     */
     protected JPanel sizeFields(){
         JPanel sizePanel = new JPanel(new SpringLayout());
         JLabel widthLabel=new JLabel("Width");
@@ -152,7 +195,9 @@ public abstract class CommonAttributes {
         SpringUtilities.makeCompactGrid(sizePanel,2,2,5,5,5,5);
         return sizePanel;
     }
-
+    /**
+     * Adds currently available weapons and items to their corresponding variables
+     */
     public void iterateWeaponsAndItems(){
         weaponMap = FeatureManager.getWorldData().getMyWeapons();
         itemMap = FeatureManager.getWorldData().getMyItems();
@@ -176,7 +221,13 @@ public abstract class CommonAttributes {
         }
 
     }
-
+    /**
+	 * Parses the integer value from a String
+	 * @param s String to be parsed
+	 */
+	protected int getIntValue(String s){
+		return Integer.parseInt(s);
+	}
     protected String[] getWorldArray(){
 		Map<String, MapData> maps=FeatureManager.getWorldData().getMaps();
 		String[] mapArray=new String[maps.keySet().size()];

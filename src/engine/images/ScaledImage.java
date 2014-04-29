@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -34,13 +35,18 @@ public class ScaledImage {
 					.getResource(myFile));
 		} catch (Exception e) {
 			int i = myFile.lastIndexOf('/');
-			if ((i != -1) && (i+1 < myFile.length())) {
-				String f = myFile.substring(i+1);
+			if ((i != -1) && (i + 1 < myFile.length())) {
+				String f = myFile.substring(i + 1);
 				ii = new ImageIcon(this.getClass().getClassLoader()
 						.getResource(Constants.IMAGEPATH + f));
 			} else {
-			ii = new ImageIcon(this.getClass().getClassLoader()
-					.getResource(Constants.IMAGEPATH + myFile));
+				File f = new File("./src/" + Constants.IMAGEPATH + myFile);
+				if (f.exists()) {
+					ii = new ImageIcon("./src/" + Constants.IMAGEPATH + myFile);
+				} else {
+					ii = new ImageIcon(this.getClass().getClassLoader()
+					.getResource(Constants.GRIDOBJECTPATH + myFile));
+				}
 			}
 
 		}

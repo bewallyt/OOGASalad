@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import util.Constants;
-import Data.FileStorer;
 import authoring.gameObjects.WorldData;
 //import authoring.gameObjects.WorldData;
 import engine.Statistic;
@@ -35,7 +34,7 @@ public class Main extends RPGEngine {
 //	private Player myPlayer;
 	private WorldData myWorldData;
 	// private DataManager myData;
-	private FileStorer myData;
+//	private FileStorer myData;
 	private Player myPlayer;
 
 

@@ -12,7 +12,7 @@ import java.util.*;
 import java.awt.*;
 
 /**
- * 
+ * Class the handles the GUI grid window which contains map tiles. 
  * @author Richard Cao
  *
  */
@@ -40,7 +40,6 @@ public class GridViewerFeature extends Feature{
 			g.tileRepaint();
 	}
 	public Grid getCurrentGrid(){
-		System.out.println(mapName);
 		return myGrids.get(mapName);
 		
 	}

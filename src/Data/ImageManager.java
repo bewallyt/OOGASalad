@@ -131,17 +131,4 @@ public class ImageManager extends AbstractFileManager {
 	private List<String> getSavedImageList(String path){
 		return new FileLister().getFileList(path);
 	}
-	public static void main(String[] args){
-		/*
-		ImageManager image=new ImageManager();
-		JFileChooser chooser=new JFileChooser();
-		FileNameExtensionFilter filter=new FileNameExtensionFilter("jpg", "JPG", "png", "PNG", "gif");
-		chooser.setFileFilter(filter);
-		int returnVal=chooser.showOpenDialog(null);
-		File f=chooser.getSelectedFile();
-		*/
-		ImageManager image=new ImageManager();
-		image.loadPlayerImage("PlayerDown0.png");
-			
-	}
 }

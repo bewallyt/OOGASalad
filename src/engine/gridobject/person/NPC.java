@@ -55,7 +55,6 @@ public class NPC extends Person {
 		myResponseNode = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public NPC(List<Object> list) {
 		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), (String) list

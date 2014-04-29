@@ -107,8 +107,7 @@ public class MapData {
 	 * Saves an NPC to the map
 	 * @param myNPC NPCData to be saved
 	 */
-	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);
-	System.out.println("NPC Added");}
+	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);}
 	
 	
 	/**
@@ -127,6 +126,9 @@ public class MapData {
      */
 	public void saveEncounter(EncounterData myEncounter) {
 		myTiles.get(myEncounter.getX()).get(myEncounter.getY()).addGridObjectData(myEncounter);
+	}
+	public void saveShopkeeper(ShopkeeperData myShopkeeper) {
+		myTiles.get(myShopkeeper.getX()).get(myShopkeeper.getY()).addGridObjectData(myShopkeeper);
 	}
 	/**
 	 * Adds a song to the map

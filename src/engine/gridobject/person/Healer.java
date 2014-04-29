@@ -3,7 +3,6 @@ package engine.gridobject.person;
 import java.util.List;
 
 import util.Constants;
-
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
 
@@ -30,6 +29,6 @@ public class Healer extends NPC {
 	@Override
 	public void doAction() {
 		doDialogue();
-		getPlayer().getStatsMap().get("health").setToMax();
+		getPlayer().getStatsMap().get(Constants.HEALTH).setToMax();
 	}
 }

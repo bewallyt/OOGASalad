@@ -10,10 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-/**
- * @ Pritam M.
- */
 
+
+
+/**
+ * Class that handles the creation and GUI window of arena labels
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class LabelsCreation extends CommonAttributes implements ActionListener {
 
     private String[] fieldLabels = {"Action","Armament","Container","Reaction"};

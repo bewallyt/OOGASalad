@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Davis T.
- * @ Pritam M.
- * */
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,7 +9,11 @@ import javax.swing.*;
 
 import authoring.SpringUtilities;
 import authoring.features.FeatureManager;
-
+/**
+ * Class that handles the creation of doors and their GUI window
+ * @author Davis Treybig
+ *
+ */
 public class DoorCreation extends CommonAttributes{
 
 	private JTextField toXField;
@@ -31,7 +30,10 @@ public class DoorCreation extends CommonAttributes{
 		frame.pack();
 		frame.setVisible(true);
 	}
-	public void assembleGUI(){
+	/**
+	 * Puts together the door GUI window
+	 */
+	private void assembleGUI(){
 
         JLabel toXLabel=new JLabel("New world X:");
         JLabel toYLabel=new JLabel("New world Y:");
@@ -70,6 +72,9 @@ public class DoorCreation extends CommonAttributes{
         createFieldList();
         
 	}
+	/**
+	 * Adds fields to the Field List
+	 */
 	private void createFieldList(){
         textFieldList.add(xcoor);
         textFieldList.add(ycoor);
@@ -79,10 +84,11 @@ public class DoorCreation extends CommonAttributes{
 		textFieldList.add(toYField);
 
 	}
-	private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
 	
+	/**
+	 * Validates the user input data
+	 * @param fieldList List of fields users have input data
+	 */
 	private boolean validateText(List<JTextField> fieldList){
 		for(JTextField field: fieldList){
 			if(field.getText().equals("")){
@@ -101,8 +107,6 @@ public class DoorCreation extends CommonAttributes{
 						editor.getSelectedImage());
 				DoorData myDoor=getDoor();
 				FeatureManager.getWorldData().saveDoor(myDoor);
-				System.out.println("X Data: "+getIntValue(xcoor.getText())+"    Y Data : "+
-                        getIntValue(ycoor.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			

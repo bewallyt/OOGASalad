@@ -22,10 +22,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private JComboBox<String> playerEnemyImages;
     private String[] weaponNames;
     private String[] itemNames;
-    //private JCheckBox one;
-    //private JCheckBox two;
-    //private JCheckBox three;
-    //private ButtonModel movement;
     private JRadioButton isRandomEnemy;
     private JRadioButton isEnemy;
     private ButtonGroup movementCheck;
@@ -325,7 +321,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
-        FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        //FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        madeEnemy.init();
     }
 
 

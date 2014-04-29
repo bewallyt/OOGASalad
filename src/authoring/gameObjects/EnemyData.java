@@ -7,7 +7,9 @@ import Data.FileLister;
 import util.Constants;
 
 /**
- * @ Pritam M.
+ * Class that handles the GUI window and creation of enemies and players
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
  */
 public class EnemyData extends GridObjectData {
 
