@@ -12,6 +12,7 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
+import engine.world.TitleWorld;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.gameObjects.ItemData;
@@ -60,32 +61,20 @@ public class GameFrame extends RPGEngine {
 		createWorlds();
 	}
 
-	/**
-	 * Loops through all maps and grid objects to set doors to their
-	 * corresponding map, also sets enemies to arena worlds
-	 */
-	private void setDoors() {
-		for (WalkAroundWorld map : myMaps.values()) {
-			for (int i = 0; i < map.getGridObjectList().size(); i++) {
-				GridObject g = map.getGridObjectList().get(i);
-				if (g instanceof Door) {
-					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
-					map.setCollisionHandler(new EnterCollision(myPlayer,
-							((Door) g)), i, map.getGridObjectList().size() - 1);
-				}
-				if (g instanceof Enemy) {
-					((Enemy) g).setWorld(new ArenaWorld(
-							"ImageFiles/battlebackground.png", 800, 800,
-							myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS));
-				}
-			}
-		}
-	}
-
 	@Override
 	public void initializeGame() {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 	}
+	
+	public void makeTitleScreen() {
+		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player());
+
+		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
+		setWorld(titleScreen);
+
+		titleScreen.setMusic(Constants.TITLE_MUSIC);
+	}
+
 
 	/**
 	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in
@@ -93,7 +82,6 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-
 		myItems = makeItems();
 		myWeapons = makeWeapons();
 
@@ -109,6 +97,8 @@ public class GameFrame extends RPGEngine {
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
+			
+//			currWorld.setMusic(myWorldData.getSong(mapName));
 
 			if (myWorldData.getPrimaryMap().equals(mapName)) {
 				outsideWorld = currWorld;
@@ -118,30 +108,25 @@ public class GameFrame extends RPGEngine {
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-		setDoors();
+		
+		setSpecialObjects();
 	}
 
 	/**
 	 * Creates the player based on PlayerData
 	 */
 	private void createPlayer() {
-
 		PlayerData myPlayerData = myWorldData.getPlayData();
+		String name = myPlayerData.getMyName();
 		String[] anim = myPlayerData.getImages();
-
 		String[] items = myPlayerData.getMyItems();
 		String[] weapons = myPlayerData.getMyWeapons();
 
-		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items,
-				weapons, makeWeapons());
+		myPlayer = new Player(anim, name, 2, items, weapons, makeWeapons());
+		
 		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
-		myPlayer.addStatistic(new Statistic("Health",100,100));
-		myPlayer.addStatistic(new Statistic("Damage",10,100));
-		myPlayer.addStatistic(new Statistic("Speed",10,100));
-		myPlayer.addStatistic(new Statistic("Level",10,100));
-		myPlayer.addStatistic(new Statistic("Defense",10,100));
+		myPlayer.addAllStatistics((Map<String, Double>) myPlayerData.getArguments().get(Constants.VALUES_CONST));
 		myPlayer.setBattleImage(myPlayerData.getImages()[6]);
-
 	}
 
 	/**
@@ -185,8 +170,6 @@ public class GameFrame extends RPGEngine {
 		for (String wep : myWeaponData.keySet()) {
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
-    		System.out.println("attack " +currWeapon.getAttackList().size());
-
 			wepRet.put(wep, currWeapon);
 		}
 		return wepRet;
@@ -204,6 +187,29 @@ public class GameFrame extends RPGEngine {
 		}
 		return itemRet;
 	}
+	
+	/**
+	 * Loops through all maps and grid objects to set doors to their
+	 * corresponding map, also sets enemies to arena worlds
+	 */
+	private void setSpecialObjects() {
+		for (WalkAroundWorld map : myMaps.values()) {
+			for (int i = 0; i < map.getGridObjectList().size(); i++) {
+				GridObject g = map.getGridObjectList().get(i);
+				if (g instanceof Door) {
+					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
+					map.setCollisionHandler(new EnterCollision(myPlayer,
+							((Door) g)), i, map.getGridObjectList().size() - 1);
+				}
+				if (g instanceof Enemy) {
+					ArenaWorld arenaWorld = new ArenaWorld("ImageFiles/battlebackground.png", 800, 800,myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS);
+					arenaWorld.setMusic("/music/pokeBattle.wav");
+					((Enemy) g).setWorld(arenaWorld);
+				}
+			}
+		}
+	}
+
 
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");

@@ -59,7 +59,6 @@ public class MapDataParser {
 				for (GridObjectData data : currData) {					
 					GridObject gridobject = null;
 					
-//					if (data instanceof NPCData){
 					if(data.getID().equals("engine.gridobject.person.NPC")){
 						NPCResponseNodeData node = data.getDialogue();
 						data.getArguments().remove(4);
@@ -71,8 +70,8 @@ public class MapDataParser {
 					data.getArguments().add(items);
 					data.getArguments().add(weapons);
 					
-//					System.out.println("data size "+ data.getArguments().size());
-
+					System.out.println(data.getID());
+					
 					try {
 						gridobject = (GridObject) Class.forName(data.getID())
 								.getConstructor(List.class)
@@ -91,4 +90,6 @@ public class MapDataParser {
 			}
 		}
 	}
+	
+	
 }

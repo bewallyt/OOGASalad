@@ -40,7 +40,6 @@ public class GridViewerFeature extends Feature{
 			g.tileRepaint();
 	}
 	public Grid getCurrentGrid(){
-		System.out.println(mapName);
 		return myGrids.get(mapName);
 		
 	}

@@ -73,8 +73,8 @@ public class BarrierCreation extends CommonAttributes{
 		}
 
 		private BarrierData getBarrier(){
-			System.out.println("xField"+xcoor.getText());
-			System.out.println("yField"+ycoor.getText());
+//			System.out.println("xField"+xcoor.getText());
+//			System.out.println("yField"+ycoor.getText());
 			return new BarrierData(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
                     getIntValue(widthField.getText()),
 					getIntValue(heightField.getText()),

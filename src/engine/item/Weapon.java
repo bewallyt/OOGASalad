@@ -32,7 +32,6 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 		setDamage(damage, Constants.DEF_MAX_STAT);
 		setSpeed(speed, Constants.DEF_MAX_STAT);
 		myAttacks = attacks;
-		System.out.println();
 		myImage=image;
 	}
 
@@ -68,7 +67,6 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 
 	@Override
 	public Image getImage() {
-		System.out.println("weapon image "+myImage);
 		return new ScaledImage(Constants.BATTLE_IMAGE_SIZE,Constants.BATTLE_IMAGE_SIZE,myImage).scaleImage();
 	}
 

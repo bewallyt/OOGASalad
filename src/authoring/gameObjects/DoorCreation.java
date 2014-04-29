@@ -107,8 +107,6 @@ public class DoorCreation extends CommonAttributes{
 						editor.getSelectedImage());
 				DoorData myDoor=getDoor();
 				FeatureManager.getWorldData().saveDoor(myDoor);
-				System.out.println("X Data: "+getIntValue(xcoor.getText())+"    Y Data : "+
-                        getIntValue(ycoor.getText()));
 				frame.dispose();
 				editor.dispose();
 			}			

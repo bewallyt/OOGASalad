@@ -69,8 +69,6 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	}
 
 	private void setAttackChildrenNodes(BattleSelectorNode node){
-		System.out.println("blahh");
-		System.out.println("player" + myPlayer.getCurrentWeapon());
 		for(BattleExecutable attack : myPlayer.getCurrentWeapon().getAttackList()){
 			setNextChild(node, attack);
 		}

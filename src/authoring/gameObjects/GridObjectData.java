@@ -11,7 +11,7 @@ import util.Constants;
 /**
  * Generic class that handles information relevant to all grid objects. 
  * All grid objects extend this class
- * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie, Peter Yom, Brandon Chao
  *
  */
 public class GridObjectData {
@@ -34,7 +34,8 @@ public class GridObjectData {
 		SpriteImageChooser sprite=new SpriteImageChooser();
 		return sprite.getSpriteImages(image);
 	}
-	// BarrierData
+	
+	// BarrierData and HealerData
 	public GridObjectData(int x, int y, int width, int height, String image, String id) {
 		myID = id;
 		myX = x;
@@ -105,7 +106,7 @@ public class GridObjectData {
 		myArguments.add(items);
 		// myArguments.add((int) 1); // default movement type until given movementType
 	}
-
+	
 	// Base empty constructor
 	public GridObjectData() {
 	}

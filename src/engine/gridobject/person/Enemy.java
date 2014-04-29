@@ -48,8 +48,7 @@ public class Enemy extends NPC {
 				(int) ((Double) list.get(Constants.ENEMY_MOVEMENT_CONST)).intValue(),
 				(Player) list.get(Constants.ENEMY_PLAYER_CONST));
 		
-		Map<String, Double> startVals = (Map<String, Double>) list.get(Constants.VALUES_CONST);
-		addAllStatistics(startVals);
+		addAllStatistics((Map<String, Double>) list.get(Constants.VALUES_CONST));
 		
 		String[] weapons = (String[]) ((List<String>) list.get(Constants.WEAPONS_CONST)).toArray(new String[(int) ((Double) list.get(Constants.WEP_LENGTH_CONST)).intValue()]);
 		// need a map of all of the weapons
