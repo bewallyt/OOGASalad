@@ -20,6 +20,8 @@ public class Constants {
 	public static final String SELECTGAMETEXT = "Select a Game";
 	public static final String TITLE_BACKGROUND = "PokemonBackground.png";
 	public static final String TITLE_MUSIC = "/music/PokemonIntro.wav";
+	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
+	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";
 
 	// engine
 	public static final int DEF_TIL = 1;

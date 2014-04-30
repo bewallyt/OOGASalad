@@ -78,7 +78,6 @@ public abstract class World {
 	public void setMusic(String musicFile){
 		URL mainURL = Main.class.getResource(musicFile);
 		myMusic= new Music(mainURL);
-		
 	}
 	public Music getMusic(){
 		return myMusic;
