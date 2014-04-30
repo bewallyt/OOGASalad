@@ -4,8 +4,6 @@ import java.awt.Image;
 import util.Reflection;
 import engine.battle.states.BattleState;
 import engine.dialogue.AbstractManager;
-import engine.dialogue.BattleExecutorNode;
-import engine.dialogue.BattleSelectorNode;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix2x2;
 import engine.gridobject.person.Enemy;

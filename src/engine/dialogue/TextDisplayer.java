@@ -10,6 +10,7 @@ import java.awt.Rectangle;
  * the InteractionBox interface.
  *
  */
+
 public class TextDisplayer {
 
 	InteractionBox myInteractionBox;
