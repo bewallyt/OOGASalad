@@ -87,19 +87,21 @@ public class GameFrame extends RPGEngine {
 					myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
-			gridObjectList.add(myPlayer);
+			
+			if(myWorldData.getPrimaryMap().equals(mapName))
+				gridObjectList.add(myPlayer);
 
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if(!map.getSong().equals(""))
-				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
+//			if(!map.getSong().equals(""))
+//				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
 
 			if (myWorldData.getPrimaryMap().equals(mapName))
 				outsideWorld = currWorld;
-
+			
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);

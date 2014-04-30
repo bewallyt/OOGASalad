@@ -70,8 +70,6 @@ public class MapDataParser {
 					data.getArguments().add(items);
 					data.getArguments().add(weapons);
 					
-					System.out.println(data.getID());
-					
 					try {
 						gridobject = (GridObject) Class.forName(data.getID())
 								.getConstructor(List.class)
