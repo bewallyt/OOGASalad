@@ -15,6 +15,7 @@ public class ShopkeeperData extends GridObjectData{
 		SpriteImageChooser imageChoose = new SpriteImageChooser();
 		setHeight(height);
 		setWidth(width);
+		myImage=image;
 	}
 
 	/**

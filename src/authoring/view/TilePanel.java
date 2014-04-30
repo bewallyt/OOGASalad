@@ -14,7 +14,7 @@ import java.awt.*;
 /**
  * 
  * Class that holds data contained within a grid in the authoring environment
- * @author Richard Cao
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class TilePanel extends JLayeredPane{

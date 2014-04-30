@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import util.Constants;
+import Data.WorldDataManager;
 import authoring.gameObjects.WorldData;
 //import authoring.gameObjects.WorldData;
 import engine.Statistic;
@@ -36,7 +37,7 @@ public class Main extends RPGEngine {
 	// private DataManager myData;
 //	private FileStorer myData;
 	private Player myPlayer;
-
+	WalkAroundWorld outsideWorld;
 
 	public static void main(String[] args) {
 		Main engine = new Main();
@@ -160,7 +161,7 @@ public class Main extends RPGEngine {
 
 
 
-		WalkAroundWorld outsideWorld = new WalkAroundWorld("outsideWorld", 1000, 1000, player, 40, gridObjectList);
+		outsideWorld = new WalkAroundWorld("outsideWorld", 1000, 1000, player, 40, gridObjectList);
 		setWorld(outsideWorld); // this is only called for the initial world
 		outsideWorld.addRandomEncounter(grassEnemy);
 		String[] labels = new String[]{"Attack","Pokemon","Bag","Run"};
@@ -289,5 +290,9 @@ public class Main extends RPGEngine {
 		//initMusicTest();
 		initializeCanvas(500, 500);
 		makeOutsideWorld();
+		WorldDataManager worldDataManager = new WorldDataManager(null);
+		outsideWorld.setWorldDataManager(worldDataManager);
 	}
+	
+	
 }

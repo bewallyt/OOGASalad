@@ -30,8 +30,10 @@ public class EnemyData extends GridObjectData {
         myWeapons = weps;
         myMovement = movement;
         myImages=createSpriteImages(image);
+        myImage=image;
         myMoney = money;
         myExperience = exp;
+        System.out.println(image);
     }
 
     public String getMyName(){return myName;}

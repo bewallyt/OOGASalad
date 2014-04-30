@@ -13,8 +13,8 @@ import Data.ImageFile;
 import Data.ImageManager;
 
 /**
- * Class that contains information relavent to every Grid in the authoring environment
- * @author Richard Cao
+ * Class that contains information relevant to every Grid in the authoring environment
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class Grid extends JPanel{

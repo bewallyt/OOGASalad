@@ -14,7 +14,7 @@ public class MapData {
 	private List<List<TileData>> myTiles;
 	private List<RandomEnemy> myRandomEnemies;
 	private List<EnemyData> enemyDatas;
-	private String mySong;
+	private String mySong = "";
 	
 	public MapData(int height, int width){
         myRandomEnemies = new ArrayList<RandomEnemy>();

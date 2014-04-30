@@ -93,7 +93,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 	}
 	
 	private void saveWorld(String filename) {
-		WorldDataManager wdManager = new WorldDataManager();
+		WorldDataManager wdManager = myWorld.getWorldDataManager();
 		wdManager.saveWorld(myWorld, filename);
 	}
 }

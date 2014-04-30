@@ -1,26 +1,45 @@
 package Data;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import util.Constants;
+import engine.Statistic;
+import engine.battle.Attack;
+import engine.battle.Effect;
+import engine.dialogue.NPCResponseNode;
+import engine.dialogue.UserQueryNode;
 import engine.gridobject.Barrier;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
+import engine.gridobject.person.Healer;
+import engine.gridobject.person.NPC;
 import engine.gridobject.person.Player;
+import engine.gridobject.person.ShopKeeper;
 import engine.item.Item;
+import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.Tile;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
+import authoring.UserQueryNodeData;
+import authoring.gameObjects.AttacksData;
 import authoring.gameObjects.BarrierData;
 import authoring.gameObjects.DoorData;
 import authoring.gameObjects.EnemyData;
+import authoring.gameObjects.HealerData;
+import authoring.gameObjects.ItemData;
 import authoring.gameObjects.MapData;
+import authoring.gameObjects.NPCData;
+import authoring.gameObjects.NPCResponseNodeData;
 import authoring.gameObjects.PlayerData;
+import authoring.gameObjects.ShopkeeperData;
+import authoring.gameObjects.WeaponData;
 import authoring.gameObjects.WorldData;
 
 /**
@@ -35,7 +54,14 @@ import authoring.gameObjects.WorldData;
  * @author Sanmay Jain
  */
 public class WorldDataManager {
-	public WorldDataManager() {}
+	WorldData myWorldData;
+	String myOrigFileName;
+	String myCurrentMapName;
+	DataManager myDM;
+	
+	public WorldDataManager(String loadFileName) {
+		myOrigFileName = loadFileName;
+	}
 		
 	/**
 	 * 
@@ -43,7 +69,8 @@ public class WorldDataManager {
 	 * @param fileName Name of file to save world
 	 */
 	public void saveWorld(World w, String fileName) {
-		WorldData worldData = new WorldData();		
+		myDM = new DataManager();
+		myWorldData = new WorldData();		
 		if (w instanceof WalkAroundWorld) {
 			String mapName = ((WalkAroundWorld) w).getID();
 		   
@@ -74,6 +101,15 @@ public class WorldDataManager {
 				} else if (g instanceof Enemy) {
 					EnemyData enemyData = transformEnemy(g);
 					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(enemyData);			
+				} else if (g instanceof ShopKeeper) {
+					ShopkeeperData shopkeeperData = transformShopkeeper(g);
+					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(shopkeeperData);			
+				} else if (g instanceof Healer) {
+					HealerData healerData = transformHealer(g);
+					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(healerData);			
+				} else if (g instanceof NPC) {
+					NPCData npcData = transformNPC(g);
+					md.getTileData(g.getX()/Constants.TILE_SIZE,g.getY()/Constants.TILE_SIZE).getGridObjectDatas().add(npcData);			
 				}
 				
 			}
@@ -82,15 +118,20 @@ public class WorldDataManager {
 			PlayerData playerData = transformPlayer(w);
 			md.savePlayer(playerData);
 			
-			// store map in world data
-			worldData.addLevel(mapName, md);
-			worldData.setMap(mapName);
-			worldData.setPrimaryMap(mapName);
+			// load other maps
+			loadOtherMaps();
 			
-			// finally save the file
-			DataManager dm = new DataManager();
-			dm.setWorldData(fileName, worldData);
-			dm.saveWorldDataToFile(fileName);
+			// store map in world data
+			myCurrentMapName = mapName;
+			myWorldData.addLevel(mapName, md);
+			myWorldData.setMap(mapName);
+			myWorldData.setPrimaryMap(mapName);
+			
+			
+			
+			// finally save the file			
+			myDM.setWorldData(fileName, myWorldData);
+			myDM.saveWorldDataToFile(fileName);
 			
 		}
 	}
@@ -117,6 +158,11 @@ public class WorldDataManager {
 					
 		List<Weapon> pWeapons = p.getWeaponList();
 		String[] pWeps = getWeaponNames(pWeapons);
+		
+		for (Weapon wep : p.getWeaponList()) {
+			WeaponData weaponData = transformWeapon(wep);
+			myWorldData.saveWeapon(weaponData.getMyName(), weaponData);
+		}
 		
 		List<Item> pItems = p.getItems();
 		String [] pItemNames = getItemNames(pItems);	
@@ -175,6 +221,26 @@ public class WorldDataManager {
 	
 	/**
 	 * 
+	 * @param items Item object list
+	 * @return Returns list of item names
+	 */
+	private List<String> getItemNamesList(Set<Item> items) {		
+		List<String> itemNames = new ArrayList<String>();
+		if (items == null) {
+			return itemNames;
+		}
+		for (Item item : items) {
+			if (item == null) {
+				continue;
+			}
+			String itemName = item.toString();
+			itemNames.add(itemName);
+		}
+		return itemNames;		
+	}	
+	
+	/**
+	 * 
 	 * @param g Engine GridObject object
 	 * @return Transforms engine Barrier to authoring BarrierData
 	 */
@@ -222,6 +288,11 @@ public class WorldDataManager {
 		List<Weapon> eWeapons = e.getWeaponList();
 		String[] eWeps = getWeaponNames(eWeapons);
 		
+		for (Weapon w : e.getWeaponList()) {
+			WeaponData weaponData = transformWeapon(w);
+			myWorldData.saveWeapon(weaponData.getMyName(), weaponData);
+		}
+		
 		// Authoring limitation - player and enemy sprites have to be 
 		// either Zelda or Ash
 	//	String img = g.getImageFile();
@@ -244,4 +315,226 @@ public class WorldDataManager {
 		return enemyData;
 		
 	}
+	
+	/**
+	 * 
+	 * @param w Engine world object
+	 * @return Transforms engine ShopKeeper to authoring shopkeeper
+	 */
+	private ShopkeeperData transformShopkeeper(GridObject g) {
+		ShopKeeper s = (ShopKeeper) g;
+		
+		String[] sAnimImages = s.getAnimImages();	
+		Map<String,Integer> attributeValues1 = new HashMap<String,Integer>();
+		for (String key : s.getStatsMap().keySet()) {
+			attributeValues1.put(key,  s.getStatsMap().get(key).getValue());
+		}
+		
+		Set<Item> items = s.getItemSet();
+		List<String> itemNames = getItemNamesList(items);
+		
+		// Authoring limitation - player and enemy sprites have to be 
+		// either Zelda or Ash
+	//	String img = g.getImageFile();
+		String img = "Zelda";
+		
+		ShopkeeperData shopkeeperData = new ShopkeeperData(g.getX()/Constants.TILE_SIZE,
+				g.getY()/Constants.TILE_SIZE,
+				g.getWidth()/Constants.TILE_SIZE,
+				g.getHeight()/Constants.TILE_SIZE,
+				img,
+				itemNames);
+		
+		for (Item i : items) {
+			ItemData itemData = transformItem(i);
+			myWorldData.saveItem(itemData.getItemName(), itemData);
+			
+		}		
+		
+		return shopkeeperData;
+		
+	}
+	
+	/**
+	 * 
+	 * @param item Transform Engine Item object
+	 * @return Transforms engine Item to authoring ItemData
+	 */
+	private ItemData transformItem(Item item) {
+		ItemData itemData = null;
+		if (item instanceof KeyItem ) {
+			itemData = new ItemData(item.toString(), item.getPrice(), "KeyItem");
+			itemData.setItemImage(item.getImageName());
+		} else if (item instanceof StatBuffer) {
+			StatBuffer stbuffer = (StatBuffer) item;
+			Statistic stats = stbuffer.getStatistic();
+			Map<String, Integer> values = new HashMap<String, Integer>();
+			if (stats != null) {			
+				values.put(stats.getName(), stats.getValue());
+			} else {
+			}
+			itemData = new ItemData(item.toString(),item.getImageName(), values, item.getPrice(), "StatBuffer");
+		} else {
+
+		}
+		return itemData;
+	}
+	
+	/**
+	 * 
+	 * @param weapon Transform Engine Weapon object
+	 * @return Transforms engine Weapon to authoring WeaponData
+	 */
+	private WeaponData transformWeapon(Weapon weapon) {
+		WeaponData weaponData = null;
+		
+		List<Attack> attackList = weapon.getAttackList();
+		List<AttacksData> attacksDataList = new ArrayList<AttacksData>();
+		for (Attack a : attackList) {
+			if (a == null) {
+				continue;
+			}
+			AttacksData attacksData = transformAttack(a);
+			if (attacksData != null) {
+				attacksDataList.add(attacksData);
+			}
+		}
+		
+		weaponData = new WeaponData(weapon.toString(), weapon.getImageName(), 
+				weapon.getSpeed().getValue(), weapon.getDamage().getValue(), attacksDataList);
+		return weaponData;
+	}
+	
+	/**
+	 * 
+	 * @param attack Transform Engine Attack object
+	 * @return Transforms engine Attack to authoring AttackData
+	 */
+	private AttacksData transformAttack(Attack attack) {
+		AttacksData attacksData = null;
+		if (attack == null) {
+			return attacksData;
+		}
+		String stats = "";
+		int changeAmount = 0;
+		boolean affectsSelf = false;
+		Effect effect = attack.getEffect();
+		if (effect != null) {
+			stats = effect.getEffectStatistic();
+			changeAmount = effect.getAmountToChange();
+			affectsSelf = effect.getAffectsSelf();
+		}
+		attacksData = new AttacksData(attack.toString(), attack.getSpeed().getValue(), attack.getDamage().getValue(),
+				stats, changeAmount, affectsSelf);
+		
+		return attacksData;
+	}
+	
+	/**
+	 * 
+	 * @param g Engine GridObject object
+	 * @return Transforms engine Healer to authoring HealerData
+	 */
+	private HealerData transformHealer(GridObject g) {
+		String img = "Zelda";
+		HealerData healerData = new HealerData(g.getX()/Constants.TILE_SIZE,
+				g.getY()/Constants.TILE_SIZE,
+				g.getWidth()/Constants.TILE_SIZE,
+				g.getHeight()/Constants.TILE_SIZE,
+				img);
+
+		return healerData;
+	}
+	
+	/**
+	 * 
+	 * @param g Engine GridObject object
+	 * @return Transforms engine NPC to authoring NPCData
+	 */
+	private NPCData transformNPC(GridObject g) {
+		NPC npc = (NPC) g;
+		String img = "Zelda";
+		NPCResponseNodeData npcResponseNodeData = transformNPCResponse(npc.getResponseNode());
+
+	    NPCData npcData = new NPCData(g.getX()/Constants.TILE_SIZE,
+	    		g.getY()/Constants.TILE_SIZE,
+				g.getWidth()/Constants.TILE_SIZE,
+				g.getHeight()/Constants.TILE_SIZE,
+				img,
+				npcResponseNodeData);
+		 
+		return npcData;
+	}
+	
+	/**
+	 * 
+	 * @param respNode Engine NPCResponseNode object
+	 * @return Transforms engine NPCResponseNodeData to authoring NPCResponseNodeData
+	 */
+	private NPCResponseNodeData transformNPCResponse(NPCResponseNode respNode) {
+		NPCResponseNodeData responseNodeData = null;
+		responseNodeData = new NPCResponseNodeData(respNode.getDialogue());
+		String item = null;
+		if (respNode.getItem() != null) {
+			item = respNode.getItem().toString();
+		}
+		responseNodeData.setItem(item);
+		List<UserQueryNode> usqNodesList = respNode.getUserQueryNodes();
+		for (UserQueryNode usqNode : usqNodesList) {
+			UserQueryNodeData usqNodeData = new UserQueryNodeData();
+			String itemName = null;
+			if (usqNode.hasItem()) {
+				itemName = usqNode.getItemName();
+			} 
+			usqNodeData.setItem(itemName);
+			usqNodeData.setString(usqNode.toString());
+			NPCResponseNode rNode = usqNode.getMyNPCResponseNode();
+			NPCResponseNodeData rNodeData = new NPCResponseNodeData(rNode.getDialogue());
+	        String itName = null;
+	        if (rNode.getItem() != null) {
+	        	itName = rNode.getItem().toString();
+	        }
+			rNodeData.setItem(itName);
+			List<UserQueryNode> usqNodesList1 = rNode.getUserQueryNodes();
+			for (UserQueryNode uNode : usqNodesList1) {
+				UserQueryNodeData uNodeData = new UserQueryNodeData();
+				String iName = null;
+				if (uNode.hasItem()) {
+					iName = uNode.getItemName();
+				} 
+				uNodeData.setItem(iName);	
+				uNodeData.setString(uNode.toString());
+				rNodeData.addChild(uNodeData);
+			}
+			usqNodeData.setChild(rNodeData);
+			responseNodeData.addChild(usqNodeData);
+		}				
+		return responseNodeData;
+	}
+	
+	/**
+	 * 
+	 * Load other maps from original world
+	 * 
+	 */
+	private void loadOtherMaps() {
+		if (myOrigFileName == null) {
+			return;
+		}
+		WorldData origWorldData = myDM.getWorldData(myOrigFileName);
+		if (origWorldData == null) {
+			return;
+		}
+		Map<String, MapData> levels = origWorldData.getMaps();
+		if ((levels == null) || (levels.size() < 2)) {
+			return;
+		}
+		for (String mapName : levels.keySet()) {
+			if (!mapName.equals(myCurrentMapName)) {
+				MapData mapData = origWorldData.getMap(mapName);
+				myWorldData.addLevel(mapName, mapData);
+			}
+		}
+	}
+	
 }

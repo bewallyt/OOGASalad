@@ -153,4 +153,8 @@ public class NPC extends Person {
 		myPlayer.setState(new DialogueState(conversation));
 		super.setInteractionBox(conversation);
 	}
+	
+	public NPCResponseNode getResponseNode() {
+		return myResponseNode;
+	}
 }

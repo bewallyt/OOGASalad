@@ -93,9 +93,9 @@ public class GridObjectData {
 		myArguments.add(width);
 		myArguments.add(height);
 
-		myArguments.add(createSpriteImages("Ash"));
+		//myArguments.add(createSpriteImages("Ash"));
 
-		// myArguments.add(createSpriteImages(image));
+		myArguments.add(createSpriteImages(image));
 
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
@@ -119,11 +119,6 @@ public class GridObjectData {
 	
 	// Base empty constructor
 	public GridObjectData() {
-	}
-
-
-	public void init(){
-		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
 	}
 
 	public String getID() {
@@ -176,6 +171,9 @@ public class GridObjectData {
 		return prepend;
 	}
 
+	public String getImage(){
+		return myImage;
+	}
 	private String getGridObjectPathValue(String s) {
 		if (prependGridObjectPath(s)) {
 			return Constants.GRIDOBJECTPATH + s;

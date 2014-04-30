@@ -13,7 +13,7 @@ import java.awt.*;
 
 /**
  * Class the handles the GUI grid window which contains map tiles. 
- * @author Richard Cao
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class GridViewerFeature extends Feature{
