@@ -37,7 +37,7 @@ public class Canvas extends JComponent{
 	public final static int CANVAS_SIZE = 500;
 
 	/**
-	 * Instantiates a new canvas.
+	 * Instantiates a new canvas. 
 	 *
 	 * @param numTileWidth the num tile width
 	 * @param numTileHeight the num tile height
@@ -72,10 +72,6 @@ public class Canvas extends JComponent{
 		myWorldHeight = myWorld.getPlayHeight();
 		myWorldWidth = myWorld.getPlayWidth();
 	}
-
-	//	public void setState(Control state){
-	//		myFrame.addKeyListener(state);
-	//	}
 
 	public int getHeight(){
 		return myHeight;
@@ -169,21 +165,17 @@ public class Canvas extends JComponent{
 		for(int i=0; i<world.getGridObjectList().size(); i++) {
 			if(isInView(world.getGridObjectList().get(i),getCameraOffset()[0],getCameraOffset()[1])){
 				world.getGridObjectList().get(i).paint(g2d,getCameraOffset()[0], getCameraOffset()[1]);
-				world.getGridObjectList().get(i).paintDialogue(g2d, myWidth, myHeight, getCameraOffset()[0], getCameraOffset()[1]);
 			}
 		}
 		
 		world.getTextDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
 												getCameraOffset()[1]);
-		
-//		world.getMenuDisplayer().paintDisplayer(g2d, myWidth, myHeight, getCameraOffset()[0], 
-//				getCameraOffset()[1]);
+
 	}
 
 	public int[] getCameraOffset(){
 		int offsetMaxX = myWorldWidth-myWidth;
 		int offsetMaxY = myWorldHeight-myHeight;
-		//		System.out.println(myWorld.getPlayer().getX());
 		int cameraX = myWorld.getPlayer().getX() - myWidth /2;
 		int cameraY = myWorld.getPlayer().getY() - myHeight /2;
 		if (cameraX > offsetMaxX)
