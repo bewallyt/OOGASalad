@@ -46,6 +46,8 @@ public class UserQueryNode implements MatrixNode {
 			return myNPCResponseNode;
 		}
 		
-		
+		public String getItemName() {
+			return myItemName;
+		}
 		
 }

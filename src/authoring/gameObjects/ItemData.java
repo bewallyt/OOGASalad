@@ -37,4 +37,6 @@ public class ItemData {
     public Map<String,Integer> getMyItemValues() { return myItemValues; }
     public String getMyIdentity(){return myIdentity;}
     public int getMyPrice(){return myPrice;}
+    
+    public void setItemImage(String imageName){itemImage = imageName;}
 }

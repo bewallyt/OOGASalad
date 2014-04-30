@@ -7,6 +7,7 @@ import java.util.Set;
 
 import authoring.gameObjects.ItemData;
 import util.Constants;
+import engine.Statistic;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
 import engine.item.Item;
@@ -61,9 +62,28 @@ public class ShopKeeper extends NPC {
 		Set<Item> itemset = new HashSet<Item>();
 		for (String s : list) {
 			ItemData i = map.get(s);
-			Item myItem = (Item) Reflection.createInstance(
-					"engine.item." + i.getMyIdentity(), i.getItemImage(),
-					i.getItemName());
+			Item myItem;
+			if (("KeyItem").equals(i.getMyIdentity())) {
+				myItem = (Item) Reflection.createInstance(
+						"engine.item." + i.getMyIdentity(), i.getItemImage(),
+						i.getItemName());
+			} else {
+				Map<String, Integer> valuesMap = i.getMyItemValues();
+				String key = "health";
+				Integer value = 10;
+				Statistic stats = null;
+				if ((valuesMap != null) && (valuesMap.size() > 0)) {
+					for (String k : valuesMap.keySet()) {
+						stats = new Statistic(k, valuesMap.get(k), 100);
+						break;
+					}
+				} else {
+					stats = new Statistic(key, value, 100);
+				}				
+				myItem = (Item) Reflection.createInstance(
+						"engine.item." + i.getMyIdentity(), i.getItemImage(),
+						i.getItemName(), stats, 10);
+			}
 			itemset.add(myItem);
 		}
 		return itemset;
@@ -85,6 +105,10 @@ public class ShopKeeper extends NPC {
 
 		}
 		this.setResponseNode(n);
+	}
+	
+	public Set<Item> getItemSet() {
+		return myItemSet;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import Data.WorldDataManager;
 import util.Music;
 import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
@@ -23,6 +24,7 @@ public abstract class World {
 	private int[] mySavedPlayerPosition;
 	private TextDisplayer myTextDisplayer;
 	private Music myMusic;
+	private WorldDataManager myWDM;
 
 	/**
 	 * Instantiates a new World.
@@ -81,6 +83,12 @@ public abstract class World {
 	}
 	public Music getMusic(){
 		return myMusic;
+	}
+	public WorldDataManager getWorldDataManager(){
+		return myWDM;
+	}
+	public void setWorldDataManager(WorldDataManager wdm) {
+		myWDM = wdm;   
 	}
 
 }
