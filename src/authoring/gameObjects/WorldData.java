@@ -121,7 +121,7 @@ public class WorldData {
 	 * Gets the current player data
 	 */
 	public PlayerData getPlayData() {
-		return myLevels.get(currentMap).getPlayData();
+		return playerData;
 	}
 	/**
 	 * Returns the current primary map
@@ -204,12 +204,7 @@ public class WorldData {
 		playerData=player;
 		//myLevels.get(currentMap).savePlayer(player);
 	}
-	/**
-	 * Gets the playerData
-	 */
-	public PlayerData getPlayer(){
-		return playerData;
-	}
+
 	/**
 	 * Saves a random enemy
 	 * @param re RandomEnemy to be saved
