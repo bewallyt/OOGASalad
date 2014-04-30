@@ -22,6 +22,7 @@ public class Constants {
 	public static final String TITLE_MUSIC = "/music/PokemonIntro.wav";
 	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
 	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";
+	public static final String PLAYER_IMAGE_FILE="src/PlayerImages/";
 
 	// engine
 	public static final int DEF_TIL = 1;
