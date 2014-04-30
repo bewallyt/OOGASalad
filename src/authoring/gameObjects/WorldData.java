@@ -21,6 +21,7 @@ public class WorldData {
     private Map<String,ItemData> myItems;
     private Map<String,WeaponData> myWeapons;
     private String[] arenaLabels;
+    private PlayerData playerData;
 	
 	public WorldData(){
 		currentMap = null;
@@ -200,7 +201,14 @@ public class WorldData {
 	 * @param player PlayerData to be saved
 	 */
 	protected void savePlayer(PlayerData player) {
-		myLevels.get(currentMap).savePlayer(player);
+		playerData=player;
+		//myLevels.get(currentMap).savePlayer(player);
+	}
+	/**
+	 * Gets the playerData
+	 */
+	public PlayerData getPlayer(){
+		return playerData;
 	}
 	/**
 	 * Saves a random enemy
