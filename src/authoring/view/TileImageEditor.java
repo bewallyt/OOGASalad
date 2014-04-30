@@ -8,8 +8,7 @@ import Data.ImageFile;
 
 /**
  * Class that displays all usable TileImages so that the user can place them on Tiles in the authoring view
- * @author Richard Cao
- * @author Davis Treybig
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  * 
  */
 public class TileImageEditor extends ImageEditor {
