@@ -94,8 +94,6 @@ public class GameFrame extends RPGEngine {
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			System.out.println(myWorldData.getSongString(""));
-			
 			if(!map.getSong().equals(""))
 				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
 
