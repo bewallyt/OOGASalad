@@ -3,8 +3,6 @@ package GameView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
@@ -35,8 +33,6 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
-	private Map<String, WeaponData> myWeaponData = new HashMap<String, WeaponData>();
-	private Map<String, ItemData> myItemData = new HashMap<String, ItemData>();
 	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 
@@ -57,6 +53,8 @@ public class GameFrame extends RPGEngine {
 	public void initialize(String fileName) {
 
 		myWorldData = myData.getWorldData(fileName);
+		myItems = makeItems();
+		myWeapons = makeWeapons();
 		createPlayer();
 		createWorlds();
 	}
@@ -82,8 +80,6 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-		myItems = makeItems();
-		myWeapons = makeWeapons();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
@@ -97,12 +93,12 @@ public class GameFrame extends RPGEngine {
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
-			
-//			currWorld.setMusic(myWorldData.getSong(mapName));
 
-			if (myWorldData.getPrimaryMap().equals(mapName)) {
+			if(!map.getSong().equals(""))
+				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
+
+			if (myWorldData.getPrimaryMap().equals(mapName))
 				outsideWorld = currWorld;
-			}
 
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
@@ -116,17 +112,12 @@ public class GameFrame extends RPGEngine {
 	 * Creates the player based on PlayerData
 	 */
 	private void createPlayer() {
-		PlayerData myPlayerData = myWorldData.getPlayData();
-		String name = myPlayerData.getMyName();
-		String[] anim = myPlayerData.getImages();
-		String[] items = myPlayerData.getMyItems();
-		String[] weapons = myPlayerData.getMyWeapons();
-
-		myPlayer = new Player(anim, name, 2, items, weapons, makeWeapons());
+		PlayerData pd = myWorldData.getPlayData();
+		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2, pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		
-		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
-		myPlayer.addAllStatistics((Map<String, Double>) myPlayerData.getArguments().get(Constants.VALUES_CONST));
-		myPlayer.setBattleImage(myPlayerData.getImages()[6]);
+		myPlayer.setPosition(pd.getX(), pd.getY());
+		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(Constants.VALUES_CONST));
+		myPlayer.setBattleImage(pd.getImages()[6]);
 	}
 
 	/**
@@ -166,7 +157,7 @@ public class GameFrame extends RPGEngine {
  */
 	private HashMap<String, Weapon> makeWeapons() {
 		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
-		myWeaponData = myWorldData.getMyWeapons();
+		Map<String, WeaponData> myWeaponData = myWorldData.getMyWeapons();
 		for (String wep : myWeaponData.keySet()) {
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
@@ -180,7 +171,8 @@ public class GameFrame extends RPGEngine {
  */
 	private HashMap<String, ItemData> makeItems() {
 		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
-		myItemData = myWorldData.getMyItems();
+		Map<String, ItemData> myItemData = myWorldData.getMyItems();
+
 		for (String itemdata : myItemData.keySet()) {
 			ItemData currItemData = myItemData.get(itemdata);
 			itemRet.put(itemdata, currItemData);
@@ -202,8 +194,8 @@ public class GameFrame extends RPGEngine {
 							((Door) g)), i, map.getGridObjectList().size() - 1);
 				}
 				if (g instanceof Enemy) {
-					ArenaWorld arenaWorld = new ArenaWorld("ImageFiles/battlebackground.png", 800, 800,myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS);
-					arenaWorld.setMusic("/music/pokeBattle.wav");
+					ArenaWorld arenaWorld = new ArenaWorld(Constants.BATTLE_BACKGROUND, 800, 800,myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS);
+					arenaWorld.setMusic(Constants.BATTLE_MUSIC);
 					((Enemy) g).setWorld(arenaWorld);
 				}
 			}
@@ -212,7 +204,6 @@ public class GameFrame extends RPGEngine {
 
 
 	public WalkAroundWorld getInitialWorld() {
-		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
 	}
 }

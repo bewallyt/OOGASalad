@@ -23,6 +23,7 @@ public class ItemData {
         myIdentity = identity;
     }
 
+    
     public ItemData(String name, int price, String identity){
         itemName = name;
         myPrice = price;
@@ -36,4 +37,6 @@ public class ItemData {
     public Map<String,Integer> getMyItemValues() { return myItemValues; }
     public String getMyIdentity(){return myIdentity;}
     public int getMyPrice(){return myPrice;}
+    
+    public void setItemImage(String imageName){itemImage = imageName;}
 }

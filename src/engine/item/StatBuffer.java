@@ -23,4 +23,8 @@ public class StatBuffer extends Item {
 		myStatistic.changeValue(amountToChange);
 		
 	}
+
+	public Statistic getStatistic() {
+		return myStatistic;
+	}
 }

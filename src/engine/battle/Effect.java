@@ -55,4 +55,16 @@ public class Effect {
 		}
 
 	}
+	
+	public String getEffectStatistic() {
+		return myStatistic;
+	}
+	
+	public boolean getAffectsSelf() {
+		return myAffectsSelf;
+	}
+	
+	public int getAmountToChange() {
+		return myAmountToChange;
+	}
 }

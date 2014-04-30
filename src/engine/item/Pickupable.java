@@ -26,5 +26,9 @@ public abstract class Pickupable {
 	 */
 	public abstract void pickUp(Player player);
 	
+	public String getImageName() {
+		return myImageName;
+	}
+	
 	
 }

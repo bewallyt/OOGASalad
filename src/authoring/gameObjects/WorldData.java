@@ -81,7 +81,11 @@ public class WorldData {
 	 * @return File of the song
 	 */
 	public File getSong(String fileName) {
-		return myImages.get(fileName);
+		return mySongs.get(fileName);
+	}
+	
+	public String getSongString(String fileName) {
+		return mySongs.get(fileName).getPath().replace("\\", "/").substring(3);		
 	}
 	/**
 	 * Returns the map with the specified name
