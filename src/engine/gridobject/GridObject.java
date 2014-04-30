@@ -128,7 +128,6 @@ public abstract class GridObject{
 	 * @param stat the statistic
 	 */
 	public void addStatistic(Statistic stat) {
-		System.out.println(myStatsMap);
 		myStatsMap.put(stat.getName(), stat);
 	}
 
@@ -145,7 +144,7 @@ public abstract class GridObject{
 	
 	public void addAllStatistics(Map<String, Double> startVals){
 		for(String stat : startVals.keySet()){
-			myStatsMap.put(stat, new Statistic(stat, startVals.get(stat).intValue(), Constants.DEF_MAX_STAT));
+			addStatistic(stat, startVals.get(stat).intValue(), Constants.DEF_MAX_STAT);
 		}
 	}
 

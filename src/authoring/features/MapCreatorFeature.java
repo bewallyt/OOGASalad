@@ -7,7 +7,7 @@ import javax.swing.*;
 
 
 /**
- * 
+ * Class that handles the naming and addition of a new map
  * @author Richard Cao
  *
  */

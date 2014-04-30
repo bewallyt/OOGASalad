@@ -7,7 +7,9 @@ import Data.FileLister;
 import util.Constants;
 
 /**
- * @ Pritam M.
+ * Class that handles the GUI window and creation of enemies and players
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
  */
 public class EnemyData extends GridObjectData {
 
@@ -46,6 +48,12 @@ public class EnemyData extends GridObjectData {
     public int getMyExperience(){return myExperience;}
     public void setWeapons(String[] weps) {
     	myWeapons = weps;
+    }
+    public void setMyMoney(int mon) {
+    	myMoney = mon;
+    }
+    public void setMyExperience(int exp) {
+    	myExperience = exp;
     }
 }
 

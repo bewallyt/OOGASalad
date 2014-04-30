@@ -1,10 +1,5 @@
 package authoring.gameObjects;
 
-/**
- * @ Pritam M.
- * @ Davis Treybig
- * */
-
 import javax.swing.*;
 
 import authoring.SpringUtilities;
@@ -16,6 +11,11 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
+/**
+ * Class that handles the creation and GUI window of Items and Weapons
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class ItemWeaponCreation extends CommonAttributes implements ActionListener, MouseListener {
 
     private int speed;

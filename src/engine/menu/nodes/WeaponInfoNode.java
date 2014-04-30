@@ -19,12 +19,13 @@ public class WeaponInfoNode extends MenuNode {
 	private Player myPlayer;
 	private MenuManager myMenuManager;
 	private int myCount;
-
+	
 	private Image weaponImage;
 	private String weaponName;
 	private List<Integer> weaponStats;
 	private List<Integer> attackDamageSpeed;
 	private List<String> attackNameEffect;
+	
 
 	public WeaponInfoNode(Player p, WeaponManager wm, MenuManager mm, int c) {
 		myPlayer = p;
@@ -32,21 +33,20 @@ public class WeaponInfoNode extends MenuNode {
 		myMenuManager = mm;
 		myCount = c;
 		weaponStats = new ArrayList<Integer>();
-		attackDamageSpeed = new ArrayList<Integer>();
-		attackNameEffect = new ArrayList<String>();
 
 	}
 
 	@Override
 	public void doAction() {
+		getWeaponData();
 		changeState();
 		changeWorld();
 	}
 
 	@Override
 	public void changeWorld() {
-		myWIM = new WeaponInfoManager(myPlayer, weaponImage, weaponName,
-				weaponStats, attackDamageSpeed, attackNameEffect);
+		myWIM = new WeaponInfoManager(myPlayer, weaponImage, weaponName, weaponStats);
+		myWIM.extractAttackStats(attackDamageSpeed, attackNameEffect);
 		myPlayer.setInteractionBox(myWIM);
 
 	}
@@ -58,8 +58,11 @@ public class WeaponInfoNode extends MenuNode {
 
 	}
 
-	public void getWeaponData() {
+	private void getWeaponData() {
 		Weapon currentWeapon = myPlayer.getWeaponList().get(myCount);
+		
+		attackDamageSpeed = new ArrayList<Integer>();
+		attackNameEffect = new ArrayList<String>();
 
 		// (1) Name and Image
 		weaponName = currentWeapon.toString();
@@ -72,7 +75,7 @@ public class WeaponInfoNode extends MenuNode {
 		// (3) Speed
 		int currentSpeed = currentWeapon.getSpeed().getValue();
 		int maxSpeed = currentWeapon.getSpeed().getMaxValue();
-
+		
 		weaponStats.add(currentDamage);
 		weaponStats.add(maxDamage);
 		weaponStats.add(currentSpeed);
@@ -80,12 +83,12 @@ public class WeaponInfoNode extends MenuNode {
 
 		// (4) Attacks
 		List<Attack> attacks = currentWeapon.getAttackList();
-
+		
 		for (int i = 0; i < attacks.size(); i++) {
-			String attackName = attacks.get(i).toString();
+			String attackName   = attacks.get(i).toString();
 			String attackEffect = attacks.get(i).getDataEffectMessage();
-			int attackDamage = attacks.get(i).getDamage().getValue();
-			int attackSpeed = attacks.get(i).getSpeed().getValue();
+			int attackDamage    = attacks.get(i).getDamage().getValue();
+			int attackSpeed     = attacks.get(i).getSpeed().getValue();
 			attackDamageSpeed.add(attackDamage);
 			attackDamageSpeed.add(attackSpeed);
 			attackNameEffect.add(attackName);

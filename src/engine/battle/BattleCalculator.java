@@ -76,7 +76,6 @@ public class BattleCalculator {
 		if(attack.getEffect()!=null){
 			attack.getEffect().doEffect(attacker,victim);	
 		}
-		System.out.println(myPlayer.getStatsMap().get(Constants.HEALTH).getValue());
 
 	}
 	private boolean checkDropWeaponStatus(){

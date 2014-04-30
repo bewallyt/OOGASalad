@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 
 import authoring.features.FeatureManager;
 
+/**
+ * Class that handles the creation and GUI window of healers
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *
+ */
 public class HealerCreation extends CommonAttributes{
 	public HealerCreation() {
 		
@@ -22,6 +27,9 @@ public class HealerCreation extends CommonAttributes{
 		frame.pack();
 		frame.setVisible(true);
 	}
+	/**
+	 * Creates the GUI window for the healer
+	 */
 	public void assembleGUI(){
 
         JPanel namePanel = nameImageFields();
@@ -38,10 +46,10 @@ public class HealerCreation extends CommonAttributes{
         combinedPanel.add(createBarrier);
         frame.add(combinedPanel);
 	}
-	private int getIntValue(String s){
-		return Integer.parseInt(s);
-	}
 	
+	/**
+	 * Validates user input
+	 */
 	private boolean validateText(){
         return !xcoor.getText().equals("") && !ycoor.getText().equals("") && imagePanel.getComponents().length > 0;
     }

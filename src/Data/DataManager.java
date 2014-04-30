@@ -12,15 +12,16 @@ import authoring.gameObjects.WorldData;
 /** 
  * Manages WorldData objects. Keeps a map of WorldData objects associated with
  * each WorldData file.
+ * @author Sanmay Jain
  */
 
 public class DataManager {
 	private Map<String, WorldData> myWorldDatas;
-	private FileStorer myFileStorer;
+	private GameStorer myFileStorer;
 	
 	public DataManager() {
 		myWorldDatas = new HashMap<String, WorldData>();
-		myFileStorer = new FileStorer();
+		myFileStorer = new GameStorer();
 		init();
 	}
 	

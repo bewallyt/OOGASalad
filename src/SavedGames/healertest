@@ -1,6 +1,69 @@
 {
   "myLevels": {
-    "first": {
+    "asdf": {
+      "playerData": {
+        "myItems": [
+          null
+        ],
+        "myValues": {
+          "Damage": 5,
+          "Speed": 5,
+          "Defense": 5,
+          "Health": 5,
+          "Level": 5
+        },
+        "myWeapons": [
+          null,
+          null
+        ],
+        "myName": "newItem",
+        "myMovement": 0,
+        "myImages": [
+          "PlayerImages/Ash/PlayerDown1.png",
+          "PlayerImages/Ash/PlayerDown2.png",
+          "PlayerImages/Ash/PlayerLeft1.png",
+          "PlayerImages/Ash/PlayerLeft2.png",
+          "PlayerImages/Ash/PlayerRight1.png",
+          "PlayerImages/Ash/PlayerRight2.png",
+          "PlayerImages/Ash/PlayerUp1.png",
+          "PlayerImages/Ash/PlayerUp2.png"
+        ],
+        "myMoney": 0,
+        "myExperience": 0,
+        "width": 1,
+        "height": 1,
+        "myX": 2,
+        "myY": 2,
+        "myID": "engine.gridobject.person.Enemy",
+        "myArguments": [
+          1,
+          1,
+          [
+            "PlayerImages/Ash/PlayerDown1.png",
+            "PlayerImages/Ash/PlayerDown2.png",
+            "PlayerImages/Ash/PlayerLeft1.png",
+            "PlayerImages/Ash/PlayerLeft2.png",
+            "PlayerImages/Ash/PlayerRight1.png",
+            "PlayerImages/Ash/PlayerRight2.png",
+            "PlayerImages/Ash/PlayerUp1.png",
+            "PlayerImages/Ash/PlayerUp2.png"
+          ],
+          "newItem",
+          {
+            "Damage": 5,
+            "Speed": 5,
+            "Defense": 5,
+            "Health": 5,
+            "Level": 5
+          },
+          [
+            null,
+            null
+          ],
+          2,
+          0
+        ]
+      },
       "myTiles": [
         [
           {
@@ -137,7 +200,29 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              {
+                "width": 1,
+                "height": 1,
+                "myX": 2,
+                "myY": 2,
+                "myID": "engine.gridobject.person.Healer",
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ]
+                ]
+              }
+            ]
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -189,72 +274,6 @@
           }
         ],
         [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          }
-        ],
-        [
-          {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
-          },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": []
@@ -271,19 +290,84 @@
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
               {
-                "width": 2,
-                "height": 2,
-                "myX": 4,
-                "myY": 4,
-                "itemList": [],
+                "width": 1,
+                "height": 1,
+                "myX": 3,
+                "myY": 3,
                 "myID": "engine.gridobject.Barrier",
                 "myArguments": [
-                  2,
-                  2,
-                  "gridobject/Mountain.gif"
+                  1,
+                  1,
+                  "gridobject/ballStatue.png"
                 ]
               }
             ]
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -952,8 +1036,9 @@
     }
   },
   "myImages": {},
-  "primaryMap": "first",
-  "currentMap": "first",
+  "mySongs": {},
+  "primaryMap": "asdf",
+  "currentMap": "asdf",
   "myItems": {
     "Super Potion": {
       "itemName": "Super Potion",
@@ -964,7 +1049,9 @@
         "Defense": 12,
         "Level": 14,
         "Health": 13
-      }
+      },
+      "myPrice": 10,
+      "myIdentity": "StatBuffer"
     }
   },
   "myWeapons": {
@@ -975,7 +1062,10 @@
         {
           "myName": "Ice Slash",
           "mySpeed": 10,
-          "myDamage": 10
+          "myDamage": 10,
+          "affectAttribute": "Speed",
+          "affectValue": 10,
+          "affectPlayer": true
         }
       ],
       "mySpeed": 15,
@@ -988,7 +1078,10 @@
         {
           "myName": "Fire Stab",
           "mySpeed": 10,
-          "myDamage": 10
+          "myDamage": 10,
+          "affectAttribute": "Damage",
+          "affectValue": 10,
+          "affectPlayer": true
         }
       ],
       "mySpeed": 10,

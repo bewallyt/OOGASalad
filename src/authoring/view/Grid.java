@@ -176,10 +176,6 @@ public class Grid extends JPanel{
 			}
 		}
 
-		public void mouseReleased(MouseEvent e) {
-
-		}
-
 		@Override
 		public void mouseDragged(MouseEvent e){
 			currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());

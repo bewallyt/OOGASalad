@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import util.Constants;
-import Data.FileStorer;
 import authoring.gameObjects.WorldData;
 //import authoring.gameObjects.WorldData;
 import engine.Statistic;
@@ -35,7 +34,7 @@ public class Main extends RPGEngine {
 //	private Player myPlayer;
 	private WorldData myWorldData;
 	// private DataManager myData;
-	private FileStorer myData;
+//	private FileStorer myData;
 	private Player myPlayer;
 
 
@@ -67,7 +66,7 @@ public class Main extends RPGEngine {
 		Attack attack = new Attack("flamethrower");
 		attack.setSpeed(10, 100);
 		attack.setDamage(10, 100);
-		attack.setEffect("health", true, 10);
+		attack.setEffect("Health", true, 10);
 		List<Attack> attackList = new ArrayList<Attack>();
 		attackList.add(attack);
 
@@ -107,7 +106,7 @@ public class Main extends RPGEngine {
 
 		bafm.setResponseNode(n);
 
-		StatBuffer potion = new StatBuffer("ImageFiles/cabinets.jpg", "potion", player.getStatsMap().get("health"), 10);
+		StatBuffer potion = new StatBuffer("ImageFiles/cabinets.jpg", "potion", player.getStatsMap().get("Health"), 10);
 		potion.setPrice(10);
 		Set<Item> itemSet = new HashSet<Item>();
 		itemSet.add(potion);
@@ -200,17 +199,17 @@ public class Main extends RPGEngine {
 				gridObjectList2.get(2)),0,2);
 		
 		player.setBattleImage("ImageFiles/PlayerRight0.png");
-		player.addStatistic(new Statistic("health",100,100));
-		player.addStatistic(new Statistic("damage",10,100));
-		player.addStatistic(new Statistic("speed",10,100));
-		player.addStatistic(new Statistic("level",10,100));
-		player.addStatistic(new Statistic("defense",10,100));
+		player.addStatistic(new Statistic("Health",100,100));
+		player.addStatistic(new Statistic("Damage",10,100));
+		player.addStatistic(new Statistic("Speed",10,100));
+		player.addStatistic(new Statistic("Level",10,100));
+		player.addStatistic(new Statistic("Defense",10,100));
 		enemy.setBattleImage("ImageFiles/rival.png");
-		enemy.addStatistic(new Statistic("health",50,100));
-		enemy.addStatistic(new Statistic("damage",10,100));
-		enemy.addStatistic(new Statistic("speed",100,100));
-		enemy.addStatistic(new Statistic("level",10,100));
-		enemy.addStatistic(new Statistic("defense",10,100));
+		enemy.addStatistic(new Statistic("Health",50,100));
+		enemy.addStatistic(new Statistic("Damage",10,100));
+		enemy.addStatistic(new Statistic("Speed",100,100));
+		enemy.addStatistic(new Statistic("Level",10,100));
+		enemy.addStatistic(new Statistic("Defense",10,100));
 		enemy.changeMoney(50);
 		enemy.setExperience(100);
 		enemy.getWorld().setMusic("/music/pokeBattle.wav");
@@ -219,11 +218,11 @@ public class Main extends RPGEngine {
 
 
 		grassEnemy.setBattleImage("ImageFiles/player.png");
-		grassEnemy.addStatistic(new Statistic("health",50,100));
-		grassEnemy.addStatistic(new Statistic("damage",10,100));
-		grassEnemy.addStatistic(new Statistic("speed",10,100));
-		grassEnemy.addStatistic(new Statistic("level",10,100));
-		grassEnemy.addStatistic(new Statistic("defense",10,100));
+		grassEnemy.addStatistic(new Statistic("Health",50,100));
+		grassEnemy.addStatistic(new Statistic("Damage",10,100));
+		grassEnemy.addStatistic(new Statistic("Speed",10,100));
+		grassEnemy.addStatistic(new Statistic("Level",10,100));
+		grassEnemy.addStatistic(new Statistic("Defense",10,100));
 		
 		
 

@@ -109,6 +109,7 @@ public class MapData {
 	 */
 	public void saveNPC(NPCData myNPC) {myTiles.get(myNPC.getX()).get(myNPC.getY()).addGridObjectData(myNPC);}
 	
+	
 	/**
 	 * Saves an enemy to the map
 	 * @param enemy EnemyData to be saved
@@ -125,6 +126,9 @@ public class MapData {
      */
 	public void saveEncounter(EncounterData myEncounter) {
 		myTiles.get(myEncounter.getX()).get(myEncounter.getY()).addGridObjectData(myEncounter);
+	}
+	public void saveShopkeeper(ShopkeeperData myShopkeeper) {
+		myTiles.get(myShopkeeper.getX()).get(myShopkeeper.getY()).addGridObjectData(myShopkeeper);
 	}
 	/**
 	 * Adds a song to the map

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
@@ -11,6 +12,7 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
+import engine.world.TitleWorld;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.gameObjects.ItemData;
@@ -24,7 +26,7 @@ import util.Constants;
 /**
  * The GameFrame class parses data from WorldData to initialize a new game.
  * 
- * @author Brandon, Peter
+ * @author Brandon Chao, Peter Yom
  * 
  */
 public class GameFrame extends RPGEngine {
@@ -33,9 +35,9 @@ public class GameFrame extends RPGEngine {
 	private DataManager myData;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
-	private Map<String,WeaponData> myWeaponData = new HashMap<String, WeaponData>();
-	private Map<String,ItemData> myItemData = new HashMap<String, ItemData>();
-	private Map<String,Weapon> myWeapons = new HashMap<String, Weapon>();
+	private Map<String, WeaponData> myWeaponData = new HashMap<String, WeaponData>();
+	private Map<String, ItemData> myItemData = new HashMap<String, ItemData>();
+	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
@@ -59,30 +61,20 @@ public class GameFrame extends RPGEngine {
 		createWorlds();
 	}
 
-	/**
-	 * Loops through all maps and grid objects to set doors to their
-	 * corresponding map
-	 */
-	private void setDoors() {
-		for (WalkAroundWorld map : myMaps.values()) {
-			for (int i = 0; i < map.getGridObjectList().size(); i++) {
-				GridObject g = map.getGridObjectList().get(i);
-				if (g instanceof Door) {
-					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
-					map.setCollisionHandler(new EnterCollision(myPlayer,
-							((Door) g)), i, map.getGridObjectList().size() - 1);
-				}
-				if (g instanceof Enemy) {
-					((Enemy) g).setWorld(new ArenaWorld("ImageFiles/battlebackground.png", 800, 800, myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS));
-				}
-			}
-		}
-	}
-
 	@Override
 	public void initializeGame() {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 	}
+	
+	public void makeTitleScreen() {
+		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player());
+
+		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
+		setWorld(titleScreen);
+
+		titleScreen.setMusic(Constants.TITLE_MUSIC);
+	}
+
 
 	/**
 	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in
@@ -90,21 +82,23 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	private void createWorlds() {
-		
 		myItems = makeItems();
 		myWeapons = makeWeapons();
 
 		for (String mapName : myWorldData.getMaps().keySet()) {
 			MapData map = myWorldData.getMap(mapName);
-			MapDataParser parser = new MapDataParser(map, myPlayer, myWeapons, myItems);
+			MapDataParser parser = new MapDataParser(map, myPlayer, myWeapons,
+					myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			gridObjectList.add(myPlayer);
 
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
-					* Constants.TILE_SIZE, myPlayer,
+							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
+			
+//			currWorld.setMusic(myWorldData.getSong(mapName));
 
 			if (myWorldData.getPrimaryMap().equals(mapName)) {
 				outsideWorld = currWorld;
@@ -114,22 +108,25 @@ public class GameFrame extends RPGEngine {
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-		setDoors();
+		
+		setSpecialObjects();
 	}
 
 	/**
 	 * Creates the player based on PlayerData
 	 */
 	private void createPlayer() {
-
 		PlayerData myPlayerData = myWorldData.getPlayData();
+		String name = myPlayerData.getMyName();
 		String[] anim = myPlayerData.getImages();
-
 		String[] items = myPlayerData.getMyItems();
 		String[] weapons = myPlayerData.getMyWeapons();
 
-		myPlayer = new Player(anim, myPlayerData.getMyName(), 2, items, weapons, makeWeapons());
+		myPlayer = new Player(anim, name, 2, items, weapons, makeWeapons());
+		
 		myPlayer.setPosition(myPlayerData.getX(), myPlayerData.getY());
+		myPlayer.addAllStatistics((Map<String, Double>) myPlayerData.getArguments().get(Constants.VALUES_CONST));
+		myPlayer.setBattleImage(myPlayerData.getImages()[6]);
 	}
 
 	/**
@@ -163,32 +160,59 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-	
+/**
+ * Uses WeaponData to create a HashMap mapping weapon names to the actual weapon
+ * @return HashMap of weapon name to weapon
+ */
 	private HashMap<String, Weapon> makeWeapons() {
 		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
 		myWeaponData = myWorldData.getMyWeapons();
-		for(String wep : myWeaponData.keySet()){
+		for (String wep : myWeaponData.keySet()) {
 			WeaponData currWeaponData = myWeaponData.get(wep);
 			Weapon currWeapon = currWeaponData.makeWeapon();
 			wepRet.put(wep, currWeapon);
 		}
 		return wepRet;
 	}
-
+/**
+ * Creates a copy of HashMap<String, ItemData>, used to avoid Gson LinkedTreeMap errors
+ * @return Copy of myItems from WorldData
+ */
 	private HashMap<String, ItemData> makeItems() {
 		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
 		myItemData = myWorldData.getMyItems();
-		for(String item : myItemData.keySet()){
-			ItemData currItemData = myItemData.get(item);
-			itemRet.put(item, currItemData);
+		for (String itemdata : myItemData.keySet()) {
+			ItemData currItemData = myItemData.get(itemdata);
+			itemRet.put(itemdata, currItemData);
 		}
 		return itemRet;
 	}
-
 	
+	/**
+	 * Loops through all maps and grid objects to set doors to their
+	 * corresponding map, also sets enemies to arena worlds
+	 */
+	private void setSpecialObjects() {
+		for (WalkAroundWorld map : myMaps.values()) {
+			for (int i = 0; i < map.getGridObjectList().size(); i++) {
+				GridObject g = map.getGridObjectList().get(i);
+				if (g instanceof Door) {
+					((Door) g).setWorld(myMaps.get(((Door) g).getToMap()));
+					map.setCollisionHandler(new EnterCollision(myPlayer,
+							((Door) g)), i, map.getGridObjectList().size() - 1);
+				}
+				if (g instanceof Enemy) {
+					ArenaWorld arenaWorld = new ArenaWorld("ImageFiles/battlebackground.png", 800, 800,myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS);
+					arenaWorld.setMusic("/music/pokeBattle.wav");
+					((Enemy) g).setWorld(arenaWorld);
+				}
+			}
+		}
+	}
+
+
 	public WalkAroundWorld getInitialWorld() {
 		outsideWorld.setMusic("/music/pokeTest.wav");
 		return outsideWorld;
-
 	}
 }

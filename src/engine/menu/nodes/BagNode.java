@@ -1,12 +1,16 @@
 package engine.menu.nodes;
 
 import engine.gridobject.person.Player;
+import engine.menu.MenuInteractionMatrix;
+import engine.menu.managers.BagManager;
 import engine.menu.managers.MenuManager;
+import engine.state.BagState;
 
 public class BagNode extends MenuNode {
 
 	private Player myPlayer;
 	private MenuManager myMenuManager;
+	private BagManager myBagManager;
 
 	public BagNode(Player p, MenuManager mm) {
 		myPlayer = p;
@@ -16,19 +20,23 @@ public class BagNode extends MenuNode {
 
 	@Override
 	public void doAction() {
-		// TODO Auto-generated method stub
+		changeWorld();
+		changeState();
 
 	}
 
 	@Override
 	public void changeWorld() {
-		// TODO Auto-generated method stub
+		myBagManager = new BagManager(myPlayer, myMenuManager,
+				new MenuInteractionMatrix(1, myPlayer.getItems().size()));
+		myPlayer.setInteractionBox(myBagManager);
 
 	}
 
 	@Override
 	public void changeState() {
-		// TODO Auto-generated method stub
+		myPlayer.setState(new BagState(myPlayer, myMenuManager,
+				myBagManager));
 
 	}
 

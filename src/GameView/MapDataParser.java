@@ -9,6 +9,7 @@ import engine.gridobject.person.Player;
 import engine.item.Weapon;
 import authoring.gameObjects.GridObjectData;
 import authoring.gameObjects.MapData;
+import authoring.gameObjects.NPCResponseNodeData;
 import authoring.gameObjects.TileData;
 import authoring.gameObjects.ItemData;
 
@@ -16,7 +17,7 @@ import authoring.gameObjects.ItemData;
  * Class used to parse an instance of MapData into the GridObjects and Tile
  * images that MapData contains.
  * 
- * @author Brandon
+ * @author Brandon Chao, Peter Yom
  * 
  */
 public class MapDataParser {
@@ -57,12 +58,20 @@ public class MapDataParser {
 
 				for (GridObjectData data : currData) {					
 					GridObject gridobject = null;
+					
+					if(data.getID().equals("engine.gridobject.person.NPC")){
+						NPCResponseNodeData node = data.getDialogue();
+						data.getArguments().remove(4);
+						data.getArguments().add(node);
+					}
+					
+					
 					data.getArguments().add(p);
 					data.getArguments().add(items);
 					data.getArguments().add(weapons);
 					
-//					System.out.println("data size "+ data.getArguments().size());
-
+					System.out.println(data.getID());
+					
 					try {
 						gridobject = (GridObject) Class.forName(data.getID())
 								.getConstructor(List.class)
@@ -81,4 +90,6 @@ public class MapDataParser {
 			}
 		}
 	}
+	
+	
 }

@@ -49,7 +49,7 @@ public class WeaponData {
     				getMyAttacks().get(i).getAffectPlayer());
     		retAttacks.add(currAttack);
     	}
-    	return null;
+    	return retAttacks;
     }
 
     /**

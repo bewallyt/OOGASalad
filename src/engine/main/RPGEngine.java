@@ -1,10 +1,13 @@
 package engine.main;
 
+import util.Constants;
+import engine.gridobject.person.Player;
 import engine.gridobject.person.Reflection;
 import engine.world.ArenaWorld;
 import engine.world.ArenaWorldLooper;
 import engine.world.Canvas;
 import engine.world.GameLooper;
+import engine.world.TitleWorld;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
@@ -35,6 +38,15 @@ public abstract class RPGEngine{
 		Canvas canvas = new Canvas(width, height);
 		myCanvas = canvas;
 	}
+	
+	public void makeTitleScreen() {
+		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player());
+
+		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
+		setWorld(titleScreen);
+
+		titleScreen.setMusic(Constants.TITLE_MUSIC);
+	}
 
 	/**
 	 * Sets the world passed in as the current world that will be painted.
@@ -45,7 +57,6 @@ public abstract class RPGEngine{
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
 		String classname = myCurrentWorld.getClass().getName();
-		System.out.println("classname: "+classname);
 		if(classname.equals("engine.world.ArenaWorld"))
 			myGameLooper = new ArenaWorldLooper(myCurrentWorld);
 		else
