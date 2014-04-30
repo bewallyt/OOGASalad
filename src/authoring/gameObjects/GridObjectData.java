@@ -121,11 +121,6 @@ public class GridObjectData {
 	public GridObjectData() {
 	}
 
-
-	public void init(){
-		FeatureManager.getWorldData().getCurrentMap().getTileData(width,height).addGridObjectData(this);
-	}
-
 	public String getID() {
 		return myID;
 	}

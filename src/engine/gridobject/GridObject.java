@@ -15,7 +15,6 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 
 import util.Constants;
-import engine.Dialogue;
 import engine.Statistic;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
@@ -39,7 +38,6 @@ public abstract class GridObject{
 	private int myNumTilesWidth;
 	private int myNumTilesHeight;
 	private List<String> myDialogueList;
-	private Dialogue myDialogue;
 	private boolean initiateBattle=false;
 	private Pickupable myPickupable;
 	
@@ -57,7 +55,6 @@ public abstract class GridObject{
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myImageName=image;
-		myDialogue=null;
 		myDialogueList=new ArrayList<String>();
 	}
 	
@@ -72,7 +69,6 @@ public abstract class GridObject{
 		myNumTilesWidth=numTilesWidth;
 		myNumTilesHeight = numTilesHeight;
 		myAnimImages=animImages;
-		myDialogue=null;
 		myDialogueList=new ArrayList<String>();
 		myImageName=animImages[2];
 	}
@@ -82,7 +78,6 @@ public abstract class GridObject{
 		myNumTilesHeight = numTilesHeight;
 		myAnimImagesPath = animImagesPath;
 		myAnimImages=getAnimImages();
-		myDialogue=null;
 		myDialogueList=new ArrayList<String>();
 		myImageName=myAnimImages[2];	
 	}
@@ -126,32 +121,6 @@ public abstract class GridObject{
 	public void paint(Graphics2D g, int xOff, int yOff) {
 		g.drawImage(myImage, myX-xOff, myY-yOff, null);
 	}
-	
-
-	public void paintDialogue(Graphics2D g, int xSize, int ySize, int xOffset, int yOffset) {
-		if(myDialogue!=null){
-			myDialogue.setSize((int) (xSize*.9), ySize/4);
-			g.drawImage(myDialogue.getImage(),(int) (xSize*.05),(int) (ySize-ySize/4-ySize*.1),null);
-			InputStream is = GridObject.class.getResourceAsStream("PokemonGB.ttf");
-			Font font=null;
-			try {
-				try {
-					font = Font.createFont(Font.TRUETYPE_FONT, is);
-				} catch (FontFormatException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Font sizedFont = font.deriveFont(16f);
-				g.setFont(sizedFont);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			g.drawString(myDialogue.getDialogue(), (int) (xSize*.1), (int) (ySize-ySize/4));
-		}
-	}
-
 
 	/**
 	 * Adds a statistic to the player's statsmap.
@@ -221,6 +190,7 @@ public abstract class GridObject{
 	public int getHeight() {
 		return myHeight;
 	}
+	
 	public void setPickupable(Pickupable pickupable){
 		myPickupable=pickupable;
 	}
