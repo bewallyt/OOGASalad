@@ -1,15 +1,30 @@
 package authoring.gameObjects;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import com.sun.org.apache.bcel.internal.Constants;
+
+import Data.FileLister;
 import authoring.SpringUtilities;
 import authoring.features.FeatureManager;
 
 
-import java.awt.*;
+
+
+
+
+
+
+
+import java.awt.FlowLayout;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Creation class for players and enemies. Handles the GUI creation window
@@ -314,6 +329,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);
         FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());	
         FeatureManager.getWorldData().savePlayer(madePlayer);
+        addImage();
     }
     /**
      * Makes the corresponding regular enemy based on user-input
@@ -322,8 +338,25 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        addImage();
         //madeEnemy.init();
     }
-
+    private void addImage(){
+    	FileLister f=new FileLister();
+    	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+image);
+    	String first=imageList.get(0);
+    	System.out.println(first);
+    	File img=new File(util.Constants.PLAYER_IMAGE_FILE+image+"/"+first);
+    	BufferedImage bimg=null;
+    	try {
+			bimg=ImageIO.read(img);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	ImageIcon icon=new ImageIcon(bimg);
+    	new GridObjectPainter(x, y, 1, 1, icon);
+    	
+    }
 
 }
