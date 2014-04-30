@@ -8,9 +8,9 @@ import javax.swing.*;
 
 
 /**
- * 
- * @author Richard Cao
  * Allows the user the set the map that is loaded on game startup
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ * 
  */
 public class PrimaryMapChooserFeature extends Feature{
 	
