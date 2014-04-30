@@ -33,6 +33,7 @@ public class EnemyData extends GridObjectData {
         myImage=image;
         myMoney = money;
         myExperience = exp;
+        System.out.println(image);
     }
 
     public String getMyName(){return myName;}

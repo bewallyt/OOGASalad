@@ -23,6 +23,7 @@ public class ItemData {
         myIdentity = identity;
     }
 
+    
     public ItemData(String name, int price, String identity){
         itemName = name;
         myPrice = price;
