@@ -321,8 +321,8 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     private void makeEnemy() {
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
-        //FeatureManager.getWorldData().saveEnemy(madeEnemy);
-        madeEnemy.init();
+        FeatureManager.getWorldData().saveEnemy(madeEnemy);
+        //madeEnemy.init();
     }
 
 

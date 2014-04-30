@@ -171,6 +171,9 @@ public class GridObjectData {
 		return prepend;
 	}
 
+	public String getImage(){
+		return myImage;
+	}
 	private String getGridObjectPathValue(String s) {
 		if (prependGridObjectPath(s)) {
 			return Constants.GRIDOBJECTPATH + s;
