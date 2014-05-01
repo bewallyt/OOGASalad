@@ -16,7 +16,7 @@ public class RunGameFeature extends Feature implements ActionListener {
 
     private GameView.Main mainGame;
 
-    public RunGameFeature(){
+    public RunGameFeature(){    
         BasicArrowButton playButton = new BasicArrowButton(SwingConstants.EAST);
         playButton.setActionCommand("play");
         playButton.addActionListener(this);

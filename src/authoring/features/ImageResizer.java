@@ -52,7 +52,7 @@ import Data.ImageManager;
 	 */
 	private void addToEditor(ImageFile imageFile) {
 		if(imageFile.getType().equalsIgnoreCase(FeatureManager.tileEditor.IMAGE_TYPE)){
-			FeatureManager.tileEditor.addImage(imageFile.getImage(), fileName);
+			FeatureManager.tileEditor.addImage(imageFile.getImage(), storedImage.getName());
 		}
 	}
 	
