@@ -92,7 +92,7 @@ public class NPC extends Person {
 		if (n.getItem() != null) {
 			ItemData id = items.get(n.getItem());
 			myItem = (Item) Reflection.createInstance("engine.item."
-					+ items.get(n.getItem()).getMyIdentity(), id.getItemImage(), id.getItemName());
+					+ items.get(n.getItem()).getMyIdentity());//, id.getItemImage(), id.getItemName());
 		}
 		NPCResponseNode head = new NPCResponseNode(n.getString(), myItem);
 		if (n.getChildren().size() != 0) {
