@@ -1,5 +1,7 @@
 package engine.battle;
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 import util.Reflection;
 import engine.battle.states.BattleState;
@@ -27,6 +29,7 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	private boolean ran=false;
 	private boolean didDrop=false;
 	String[] myLabels;
+	private Map<String, Integer> myOldStats = new HashMap<String, Integer>();
 
 	/**
 	 * Instantiates a new battle manager.
@@ -44,6 +47,12 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		initializeChildrenNodes();
 		myCurrentPlayerBattleImage=myPlayer.getBattleImage();
 		myCurrentEnemyBattleImage = myEnemy.getBattleImage();
+		saveOldStats(player);
+	}
+	private void saveOldStats(Player player) {
+		for(String stat: player.getStatsMap().keySet()){
+			myOldStats.put(stat, player.getStatsMap().get(stat).getValue());
+		}
 	}
 	private void initializeChildrenNodes() {
 		setAttackChildrenNodes(myAttackSelector);
@@ -163,6 +172,11 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 	}
 	public void setEnemyBattleImage(Image image){
 		myCurrentEnemyBattleImage=image;
+	}
+	public void resetStats(){
+		for(String stat: myOldStats.keySet()){
+			myPlayer.getStatsMap().get(stat).setValue(myOldStats.get(stat));
+		}
 	}
 	public void setToWeaponSelector(){
 		myCurrentBattleSelector=myWeaponSelector;

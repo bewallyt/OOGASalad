@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Random;
 
 import util.Constants;
+import engine.Statistic;
 import engine.gridobject.Door;
 import engine.item.Item;
 import engine.item.Weapon;
@@ -150,5 +151,8 @@ public class Player extends Person {
 	public String getName(){
 		return myName;
 	}
+
+
+	
 
 }

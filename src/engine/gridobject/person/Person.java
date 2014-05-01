@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import engine.Statistic;
 import engine.battle.Attack;
 import engine.dialogue.AbstractManager;
 import engine.dialogue.ConversationManager;
@@ -307,6 +308,9 @@ public abstract class Person extends GridObject {
 
 	public void setMyStartX(int i) {
 		myStartY = i;
+	}
+	public void setStatsMap(Map<String, Statistic> myOldStats) {
+		setMyStatsMap(myOldStats);
 	}
 	
 	

@@ -8,7 +8,7 @@ import engine.gridobject.person.Player;
 import engine.world.ArenaWorld;
 
 public class BattleCollision extends CollisionHandler{
-	private static final int BATTLE_POSSIBILITY = 300;
+	private static final int BATTLE_POSSIBILITY = 30;
 	private static final int BATTLE_CHANCE = 10;
 	Random myRandom = new Random();
 	int chance=0;

@@ -229,5 +229,9 @@ public abstract class GridObject{
 	public void setInteractionBox(InteractionBox box) {
 		myDialogueDisplayControl.setInteractionBox(box);
 	}
+
+	public void setMyStatsMap(Map<String,Statistic> myStatsMap) {
+		this.myStatsMap = myStatsMap;
+	}
 	
 }

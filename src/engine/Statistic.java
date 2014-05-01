@@ -19,6 +19,9 @@ public class Statistic {
 			myValue=myMaxValue;
 		}
 	}
+	public void setValue(int value){
+		myValue=value;
+	}
 
 	public int getValue() {
 		return myValue;

@@ -67,7 +67,7 @@ public class Attack implements MatrixNode,BattleExecutable {
 	 * @return the effect message
 	 */
 	public String getEffectMessage(){
-		if(myEffect!=null)
+		if(myEffect!=null && myEffect.getAmountToChange()!=0)
 			return myEffect.toString();
 		return "";
 	}
@@ -78,7 +78,7 @@ public class Attack implements MatrixNode,BattleExecutable {
 	 * @return the data effect message
 	 */
 	public String getDataEffectMessage(){
-		if(myEffect!=null)
+		if(myEffect!=null && myEffect.getAmountToChange()!=0)
 			return myEffect.toStringData();
 		return "";
 	}
