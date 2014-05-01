@@ -95,27 +95,6 @@ public class AddGameComponents extends Feature implements ActionListener {
 
     private void showCreationOptions() {
 
-        //some default weapons and items
-//        ArrayList<AttacksData> fSwordAttack = new ArrayList<AttacksData>();
-//        ArrayList<AttacksData> iSwordAttack = new ArrayList<AttacksData>();
-//        AttacksData fireStab = new AttacksData("Fire Stab",10,10,"Damage",10,true);
-//        AttacksData iceSlash = new AttacksData("Ice Slash",10,10,"Speed",10,true);
-//        fSwordAttack.add(fireStab);
-//        iSwordAttack.add(iceSlash);
-//        WeaponData fireSword = new WeaponData("Fire Sword","FSword",10,10,fSwordAttack);
-//        WeaponData iceSword = new WeaponData("Ice Sword","ISword",15,15,iSwordAttack);
-//        FeatureManager.getWorldData().saveWeapon("Fire Sword",fireSword);
-//        FeatureManager.getWorldData().saveWeapon("Ice Sword",iceSword);
-//
-//        HashMap<String,Integer> potionValues = new HashMap<String, Integer>();
-//        String[] valueLabels = {"Speed","Damage","Defense","Health","Level"};
-//        for(int j=0; j<valueLabels.length; j++){
-//            potionValues.put(valueLabels[j],j+10);
-//        }
-//
-//        ItemData potion = new ItemData("Super Potion","Jar",potionValues,10,"StatBuffer");
-//        FeatureManager.getWorldData().saveItem("Super Potion",potion);
-
         FeatureManager.getWeaponItemViewer().iterateWeaponsAndItems();
         frame=new JFrame();
         frame.setLocationRelativeTo(null);
