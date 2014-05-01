@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 import util.Constants;
+import engine.Statistic;
 import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.TransparentDisplayer;
 import engine.dialogue.UserQueryNode;
 import engine.item.Item;
+import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.state.DialogueState;
 import authoring.UserQueryNodeData;
 import authoring.gameObjects.ItemData;
@@ -89,10 +92,28 @@ public class NPC extends Person {
 	public NPCResponseNode buildResponseTree(NPCResponseNodeData n,
 			Map<String, ItemData> items) {
 		Item myItem = null;
-		if (n.getItem() != null) {
-			ItemData id = items.get(n.getItem());
-			myItem = (Item) Reflection.createInstance("engine.item."
-					+ items.get(n.getItem()).getMyIdentity(), id.getItemImage(), id.getItemName());
+		String i = n.getItem();
+		if (i != null) {
+
+			ItemData id = items.get(i);
+			if (id.getMyIdentity().equals("KeyItem")) {
+				myItem = new KeyItem(id.getItemImage(), id.getItemName());
+			} else if (id.getMyIdentity().equals("StatBuffer")) {
+				Map<String, Integer> valuesMap = id.getMyItemValues();
+				String key = "health";
+				Integer value = 10;
+				Statistic stats = null;
+				if ((valuesMap != null) && (valuesMap.size() > 0)) {
+					for (String k : valuesMap.keySet()) {
+						stats = new Statistic(k, valuesMap.get(k), 100);
+						break;
+					}
+				} else {
+					stats = new Statistic(key, value, 100);
+				}
+				myItem = new StatBuffer(id.getItemImage(), id.getItemName(),
+						stats, 10);
+			}
 		}
 		NPCResponseNode head = new NPCResponseNode(n.getString(), myItem);
 		if (n.getChildren().size() != 0) {
@@ -154,7 +175,7 @@ public class NPC extends Person {
 		myPlayer.setState(new DialogueState(conversation));
 		super.setInteractionBox(conversation);
 	}
-	
+
 	public NPCResponseNode getResponseNode() {
 		return myResponseNode;
 	}
