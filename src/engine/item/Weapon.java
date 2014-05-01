@@ -70,4 +70,10 @@ public class Weapon extends Pickupable implements MatrixNode, BattleExecutable{
 		return new ScaledImage(Constants.BATTLE_IMAGE_SIZE,Constants.BATTLE_IMAGE_SIZE,myImage).scaleImage();
 	}
 
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

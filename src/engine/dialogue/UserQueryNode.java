@@ -49,5 +49,11 @@ public class UserQueryNode implements MatrixNode {
 		public String getItemName() {
 			return myItemName;
 		}
+
+		@Override
+		public String getGame() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 }

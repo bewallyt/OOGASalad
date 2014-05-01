@@ -28,4 +28,9 @@ public class ExitNode extends MenuNode{
 	public void changeState() {
 		myPlayer.setState(new ExitState());
 	}
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
