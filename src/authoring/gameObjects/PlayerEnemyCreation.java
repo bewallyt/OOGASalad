@@ -3,7 +3,6 @@ package authoring.gameObjects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import com.sun.org.apache.bcel.internal.Constants;
 
 import Data.FileLister;
 import authoring.SpringUtilities;

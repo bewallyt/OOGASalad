@@ -18,11 +18,12 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	private String[][] myGames = new String[2][2];
 	private String myGameString;
 
-	public GameChooserWorld(int playWidth, int playHeight, Player p, String chooseScreen) {
+	public GameChooserWorld(int playWidth, int playHeight, Player p,
+			String chooseScreen) {
 		super(playWidth, playHeight, p, chooseScreen);
 		myGames[0][0] = "Zelda";
-		myGames[0][1] = "Other";
-		myGames[1][0] = "Pokemon";
+		myGames[0][1] = "Pokemon";
+		myGames[1][0] = "Other";
 		myGames[1][1] = "FinalFantasy";
 		matrix2 = new InteractionMatrix2x2();
 
@@ -31,7 +32,6 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,
 			int yOffset) {
-		
 		drawSelector(g, 0, 0, 250, 250, 250);
 
 	}
@@ -40,18 +40,27 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			int height, int scale) {
 
 		int[] selectedOptionLoc = matrix2.getSelectedNodeLocation();
-		Image img = new ScaledImage(width, height,
-				"ImageFiles/Selector.png").scaleImage();
-		g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos + scale * selectedOptionLoc[1],
-				null);
+		if ((selectedOptionLoc[0] == 0) && (selectedOptionLoc[1] == 1)) {
+			//System.out.println(matrix2.getSelectedNodeLocation()[1]);
+			Image img = new ScaledImage(width + 2, height + 2,
+					"ImageFiles/WhiteSelector.png").scaleImage();
+			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
+					+ scale * selectedOptionLoc[1], null);
+
+		} else {
+			//System.out.println(matrix2.getSelectedNodeLocation()[1]);
+			Image img = new ScaledImage(width + 2, height + 2,
+					"ImageFiles/Selector.png").scaleImage();
+			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
+					+ scale * selectedOptionLoc[1], null);
+		}
 
 	}
 
 	public void createTitleNodes() {
 		for (int i = 0; i < 2; i++) {
-			for(int j = 0; j < 2; j++){
-			matrix2.setNode(
-					new GameChooserNode(myGames[i][j]), i, j);
+			for (int j = 0; j < 2; j++) {
+				matrix2.setNode(new GameChooserNode(myGames[i][j]), i, j);
 			}
 		}
 	}
@@ -61,25 +70,28 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void moveUp(){
+
+	public void moveUp() {
 		matrix2.moveUp();
 	}
-	public void moveDown(){
+
+	public void moveDown() {
 		matrix2.moveDown();
 	}
-	public void moveRight(){
+
+	public void moveRight() {
 		matrix2.moveRight();
 	}
-	public void moveLeft(){
+
+	public void moveLeft() {
 		matrix2.moveLeft();
 	}
-	
-	
-	public void setGameString(){
+
+	public void setGameString() {
 		myGameString = matrix2.getCurrentNode().getGame();
 	}
-	public String getGameString(){
+
+	public String getGameString() {
 		return myGameString;
 	}
 

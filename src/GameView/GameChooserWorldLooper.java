@@ -14,7 +14,8 @@ public class GameChooserWorldLooper extends GameLooper {
 
 	public GameChooserWorldLooper(GameChooserWorld currentWorld) {
 		super(currentWorld);
-
+		
+		System.out.println("ingamelooper");
 		myWorld = (GameChooserWorld) getWorld();
 
 		myWorld.getPlayer().setDialogueDisplayControl(
@@ -22,6 +23,7 @@ public class GameChooserWorldLooper extends GameLooper {
 		myWorld.getPlayer().setInteractionBox(myWorld);
 		myWorld.getPlayer().setState(
 				new GameChooserState(myWorld.getPlayer(), myWorld));
+		myWorld.createTitleNodes();
 
 		myGame = myWorld.getGameString();
 
@@ -34,7 +36,7 @@ public class GameChooserWorldLooper extends GameLooper {
 
 		if (myGame != null) {
 			return new TitleWorld(500, 500, myWorld.getPlayer(), myGame
-					+ "Title");
+					+ "Title.png");
 		}
 		return null;
 	}
