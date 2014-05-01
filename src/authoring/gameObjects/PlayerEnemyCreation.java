@@ -339,7 +339,6 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
     	FileLister f=new FileLister();
     	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+image);
     	String first=imageList.get(0);
-    	System.out.println(first);
     	File img=new File(util.Constants.PLAYER_IMAGE_FILE+image+"/"+first);
     	BufferedImage bimg=null;
     	try {

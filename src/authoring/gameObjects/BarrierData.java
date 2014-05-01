@@ -15,8 +15,6 @@ public class BarrierData extends GridObjectData{
 		super(x,y,width,height,image, Constants.BARRIER);
 		setHeight(height);
 		setWidth(width);
-		System.out.println("X:" +x);
-		System.out.println("Y" + y);
 	}
 
 }

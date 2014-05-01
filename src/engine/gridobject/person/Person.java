@@ -259,7 +259,6 @@ public abstract class Person extends GridObject {
 	@Override
 	public void setPosition(int x, int y){
 		super.setPosition(x, y);
-		System.out.println("x: "+x+" y: "+y);
 		myStartX=x; myStartY=y;
 	}
 	public void incrementY(double myDY) {

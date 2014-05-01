@@ -43,7 +43,6 @@ public class MusicManager extends AbstractFileManager{
 			parentFolderFile.mkdirs();
 			try{
 				Files.copy(source, newDirectory);
-				System.out.println("Tester");
 			}
 			catch(FileAlreadyExistsException e){
 				return null;
