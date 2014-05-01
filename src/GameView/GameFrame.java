@@ -66,16 +66,16 @@ public class GameFrame extends RPGEngine {
 	public void initializeGame() {
 		initializeCanvas(Constants.CANVASWIDTH, Constants.CANVASHEIGHT);
 	}
-	
+
 	public void makeTitleScreen() {
-		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player());
+		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH,
+				Constants.TITLEHEIGHT, new Player());
 
 		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
 		setWorld(titleScreen);
 
 		titleScreen.setMusic(Constants.TITLE_MUSIC);
 	}
-
 
 	/**
 	 * Creates the player, all of the WalkAroundWorlds, and the GridObjects in
@@ -90,25 +90,25 @@ public class GameFrame extends RPGEngine {
 					myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
-			
+
 			gridObjectList.add(myPlayer);
-			
+
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-			if(!map.getSong().equals(""))
+			if (!map.getSong().equals(""))
 				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
 
 			if (myWorldData.getPrimaryMap().equals(mapName))
 				outsideWorld = currWorld;
-			
+
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
 		}
-		
+
 		setSpecialObjects();
 	}
 
@@ -117,10 +117,12 @@ public class GameFrame extends RPGEngine {
 	 */
 	private void createPlayer() {
 		PlayerData pd = myWorldData.getPlayData();
-		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2, pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
+		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2,
+				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		setPlayerItems(pd);
-//		myPlayer.setPosition(pd.getX(), pd.getY());
-		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(Constants.VALUES_CONST));
+		// myPlayer.setPosition(pd.getX(), pd.getY());
+		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
+				Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
 	}
 
@@ -138,20 +140,25 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
-	private void setPlayerItems(PlayerData pd){
+	private void setPlayerItems(PlayerData pd) {
 		String[] items = pd.getMyItems();
 		List<Item> itemList = new ArrayList<Item>();
-		for (String i: items){
-			ItemData id = myItems.get(i);
-			if (id.getMyIdentity().equals("KeyItem")){
-				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
+		if (pd.getMyItems() != null) {
+			for (String i : items) {
+				if(i!=null){
+				ItemData id = myItems.get(i);
+				if (id.getMyIdentity().equals("KeyItem")) {
+					itemList.add(new KeyItem(id.getItemImage(), id
+							.getItemName()));
+				} else if (id.getMyIdentity().equals("StatBuffer")) {
+
+				}
+				}
 			}
-			else if (id.getMyIdentity().equals("StatBuffer")){
-				
-			}
-		}		
+		}
 		myPlayer.setMyItems(itemList);
 	}
+
 	/**
 	 * Set the images for the tiles in a world
 	 * 
@@ -169,10 +176,13 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
-/**
- * Uses WeaponData to create a HashMap mapping weapon names to the actual weapon
- * @return HashMap of weapon name to weapon
- */
+
+	/**
+	 * Uses WeaponData to create a HashMap mapping weapon names to the actual
+	 * weapon
+	 * 
+	 * @return HashMap of weapon name to weapon
+	 */
 	private HashMap<String, Weapon> makeWeapons() {
 		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
 		Map<String, WeaponData> myWeaponData = myWorldData.getMyWeapons();
@@ -183,10 +193,13 @@ public class GameFrame extends RPGEngine {
 		}
 		return wepRet;
 	}
-/**
- * Creates a copy of HashMap<String, ItemData>, used to avoid Gson LinkedTreeMap errors
- * @return Copy of myItems from WorldData
- */
+
+	/**
+	 * Creates a copy of HashMap<String, ItemData>, used to avoid Gson
+	 * LinkedTreeMap errors
+	 * 
+	 * @return Copy of myItems from WorldData
+	 */
 	private HashMap<String, ItemData> makeItems() {
 		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
 		Map<String, ItemData> myItemData = myWorldData.getMyItems();
@@ -197,7 +210,7 @@ public class GameFrame extends RPGEngine {
 		}
 		return itemRet;
 	}
-	
+
 	/**
 	 * Loops through all maps and grid objects to set doors to their
 	 * corresponding map, also sets enemies to arena worlds
@@ -212,14 +225,15 @@ public class GameFrame extends RPGEngine {
 							((Door) g)), i, map.getGridObjectList().size() - 1);
 				}
 				if (g instanceof Enemy) {
-					ArenaWorld arenaWorld = new ArenaWorld(Constants.BATTLE_BACKGROUND, 800, 800,myPlayer, (Enemy) g, map, Constants.BATTLE_LABELS);
+					ArenaWorld arenaWorld = new ArenaWorld(
+							Constants.BATTLE_BACKGROUND, 800, 800, myPlayer,
+							(Enemy) g, map, Constants.BATTLE_LABELS);
 					arenaWorld.setMusic(Constants.BATTLE_MUSIC);
 					((Enemy) g).setWorld(arenaWorld);
 				}
 			}
 		}
 	}
-
 
 	public WalkAroundWorld getInitialWorld() {
 		return outsideWorld;
