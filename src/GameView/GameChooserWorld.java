@@ -21,6 +21,7 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	private String myGameString;
 	private int increase;
 	private boolean isExpanding = false;
+	private boolean dontPaint = false;
 
 	public GameChooserWorld(int playWidth, int playHeight, Player p,
 			String chooseScreen) {
@@ -37,23 +38,27 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,
 			int yOffset) {
-		if (isExpanding) {
-			increase += 2;
-		}
-		PokemonFont.setFont(g, 16f);
-		if (!isExpanding) {
-			drawSelector(g, 0, 0, 250, 250, 250);
-		} else if (increase < 250) {
+		if (!dontPaint) {
+			if (isExpanding) {
+				increase += 2;
+			}
+			PokemonFont.setFont(g, 16f);
+			if (!isExpanding) {
+				drawSelector(g, 0, 0, 250, 250, 250);
+			} else if (increase <= 250) {
 
-			expandImage(g, "ImageFiles/" + matrix2.getCurrentNode().getGame()
-					+ "Title.png", matrix2.getSelectedNodeLocation()[1],
-					matrix2.getSelectedNodeLocation()[0]);
-
-		} else {
-			setBackround("ImageFiles/" + matrix2.getCurrentNode().getGame()
-					+ "Title.png");
-			setGameString();
-
+				expandImage(g, "ImageFiles/"
+						+ matrix2.getCurrentNode().getGame() + "Title.png",
+						matrix2.getSelectedNodeLocation()[1],
+						matrix2.getSelectedNodeLocation()[0]);
+				if (increase == 250) {
+					dontPaint = true;
+					 setBackround("ImageFiles/" +
+					 matrix2.getCurrentNode().getGame()
+					 + "Title.png");
+					setGameString();
+				}
+			}
 		}
 	}
 
@@ -65,7 +70,8 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/WhiteSelector.png").scaleImage();
 			g2d.setColor(changeColor());
-			g2d.drawString(Constants.CHOOSE_GAME, selectedOptionLoc[0] * 250 + 45,
+			g2d.drawString(Constants.CHOOSE_GAME,
+					selectedOptionLoc[0] * 250 + 45,
 					selectedOptionLoc[1] * 250 + 130);
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
 					+ scale * selectedOptionLoc[1], null);
@@ -74,7 +80,8 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/Selector.png").scaleImage();
 			g2d.setColor(changeColor());
-			g2d.drawString(Constants.CHOOSE_GAME, selectedOptionLoc[0] * 250 + 45,
+			g2d.drawString(Constants.CHOOSE_GAME,
+					selectedOptionLoc[0] * 250 + 45,
 					selectedOptionLoc[1] * 250 + 130);
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
 					+ scale * selectedOptionLoc[1], null);
@@ -133,7 +140,7 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 
 	public void setGameString() {
 		isExpanding = true;
-		if (increase > 250) {
+		if (increase >= 250) {
 			myGameString = matrix2.getCurrentNode().getGame();
 		}
 	}
@@ -144,26 +151,22 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
 			g2d.drawImage(img, 0, 250 - increase, null);
-		}
-		else if ((xPos == 0) && (yPos == 1)) {
+		} else if ((xPos == 0) && (yPos == 1)) {
 			// Pokemon
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
 			g2d.drawImage(img, 250 - increase, 0, null);
-		}		
-		else if ((xPos == 1) && (yPos == 1)) {
+		} else if ((xPos == 1) && (yPos == 1)) {
 			// Final Fantasy
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
 			g2d.drawImage(img, 250 - increase, 250 - increase, null);
-		}
-		else if ((xPos == 0) && (yPos == 0)) {
+		} else if ((xPos == 0) && (yPos == 0)) {
 			// Final Fantasy
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
 			g2d.drawImage(img, 0, 0, null);
 		}
-		
 
 	}
 
