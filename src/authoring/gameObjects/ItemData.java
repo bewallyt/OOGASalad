@@ -31,6 +31,8 @@ public class ItemData {
         myItemValues = values;
         myPrice = price;
         myIdentity = identity;
+        statToBuff=stats;
+        amountToChange=amount;
     }
     
     public ItemData(String name, int price, String identity){
@@ -46,6 +48,11 @@ public class ItemData {
     public Map<String,Integer> getMyItemValues() { return myItemValues; }
     public String getMyIdentity(){return myIdentity;}
     public int getMyPrice(){return myPrice;}
-    
+    public String getStatToChange(){
+    	return statToBuff;
+    }
+    public int getAmountToChange(){
+    	return amountToChange;
+    }
     public void setItemImage(String imageName){itemImage = imageName;}
 }
