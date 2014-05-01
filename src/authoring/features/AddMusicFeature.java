@@ -62,7 +62,6 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		for(String s: files){
 			model.addElement(s);
 			FeatureManager.getWorldData().saveSong(s, new File(m.DEFAULT_MUSIC_FOLDER+s));
-			System.out.println(m.DEFAULT_MUSIC_FOLDER+s);
 		}
 		
 	}

@@ -269,7 +269,6 @@ public abstract class CommonAttributes {
     	FileLister f=new FileLister();
     	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+imageString);
     	String first=imageList.get(0);
-    	System.out.println(first);
     	File img=new File(util.Constants.PLAYER_IMAGE_FILE+imageString+"/"+first);
     	BufferedImage bimg=null;
     	try {
