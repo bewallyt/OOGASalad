@@ -3744,7 +3744,9 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              
+            ]
           },
           {
             "myImageName": "TileImage/flatstone.png",
@@ -4315,7 +4317,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/flatstone.png",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -4717,6 +4719,97 @@
                       {
                         "myChild": {
                           "myString": "You got a pokeball! You are a pokemon champion! Continue to explore the pokeuniverse.",
+                          "myChildren": []
+                        },
+                        "myItem": "PokeBall"
+                      }
+                    ]
+                  },
+                  3
+                ]
+              },
+              {
+                "myRoot": {
+                  "myString": "Get me a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myString": "Sure thang",
+                      "myChild": {
+                        "myString": "Come back when you have it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore the poke universe",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myImages": [
+                  "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy.png",
+                  "PlayerImages/Swimmer/Swimmer.png"
+                ],
+                "myMovement": 3,
+                "width": 1,
+                "height": 1,
+                "myX": 13,
+                "myY": 10,
+                "myID": "engine.gridobject.person.NPC",
+                "myDialogue": {
+                  "myString": "Get me a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myString": "Sure thang",
+                      "myChild": {
+                        "myString": "Come back when you have it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore the poke universe",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy.png",
+                    "PlayerImages/Swimmer/Swimmer.png"
+                  ],
+                  "DEFAULT_NAME",
+                  {
+                    "myString": "Get me a pokeball to become a pokemon master!",
+                    "myChildren": [
+                      {
+                        "myString": "Sure thang",
+                        "myChild": {
+                          "myString": "Come back when you have it!",
+                          "myChildren": []
+                        }
+                      },
+                      {
+                        "myChild": {
+                          "myString": "Congratulations you found it! You are a pokemon master. Continue to explore the poke universe",
                           "myChildren": []
                         },
                         "myItem": "PokeBall"

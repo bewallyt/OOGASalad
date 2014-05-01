@@ -3744,7 +3744,97 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [{
+                "myRoot": {
+                  "myString": "Bring me a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myString": "Sure thang.",
+                      "myChild": {
+                        "myString": "Ok go get it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myImages": [
+                  "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy.png",
+                  "PlayerImages/Swimmer/Swimmer.png"
+                ],
+                "myMovement": 3,
+                "width": 1,
+                "height": 1,
+                "myX": 2,
+                "myY": 10,
+                "myID": "engine.gridobject.person.NPC",
+                "myDialogue": {
+                  "myString": "Bring me a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myString": "Sure thang.",
+                      "myChild": {
+                        "myString": "Ok go get it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy.png",
+                    "PlayerImages/Swimmer/Swimmer.png"
+                  ],
+                  "DEFAULT_NAME",
+                  {
+                    "myString": "Bring me a pokeball to become a pokemon master!",
+                    "myChildren": [
+                      {
+                        "myString": "Sure thang.",
+                        "myChild": {
+                          "myString": "Ok go get it!",
+                          "myChildren": []
+                        }
+                      },
+                      {
+                        "myChild": {
+                          "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
+                          "myChildren": []
+                        },
+                        "myItem": "PokeBall"
+                      }
+                    ]
+                  },
+                  3
+                ]
+              }]
           },
           {
             "myImageName": "TileImage/flatstone.png",
@@ -4655,7 +4745,7 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": [ leeputhere]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/flatstone.png",
