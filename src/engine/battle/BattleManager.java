@@ -65,10 +65,6 @@ public class BattleManager extends AbstractManager implements InteractionBox{
 		if(myEnemy.isRandom())getMatrix().setNode(myRunSelector, 1, 1);
 		myCurrentBattleSelector=(BattleSelectorNode) getMatrix().getCurrentNode();
 	}
-	
-	public void goBackNode(){
-		getMatrix().setNode(myBagSelector, 1, 0);
-	}
 
 	private void setAttackChildrenNodes(BattleSelectorNode node){
 		for(BattleExecutable attack : myPlayer.getCurrentWeapon().getAttackList()){

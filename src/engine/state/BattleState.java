@@ -49,7 +49,7 @@ public class BattleState extends AbstractState {
 		if (e.getKeyCode() == Constants.A)
 			myBattleManager.getPlayer().setAClick(false);
 		if (e.getKeyCode() == Constants.ESC)
-			myBattleManager.goBackNode();
+			myBattleManager.backToTopOfBattle();
 	}
 
 
