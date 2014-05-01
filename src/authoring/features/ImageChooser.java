@@ -58,10 +58,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 				"JPG, PNG, GIF", "jpg","gif","png");
 		chooser.setFileFilter(filter);
 		int returnVal = chooser.showOpenDialog(null);
-		if(returnVal == JFileChooser.APPROVE_OPTION){
+		/*if(returnVal == JFileChooser.APPROVE_OPTION){
 			System.out.println("You chose to open this file: " +
 					chooser.getSelectedFile().getAbsolutePath());
-		}
+		}*/
 		File imageFile = chooser.getSelectedFile();
 		myImResizer.storeImage(fileName, imageFile, identifier);
 		
