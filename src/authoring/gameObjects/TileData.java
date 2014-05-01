@@ -51,6 +51,10 @@ public class TileData {
 	protected void addGridObjectData(GridObjectData gd){
 		myGridObjectDatas.add(gd);
 	}
+	
+	public void clearGridObjects(){
+		myGridObjectDatas = new ArrayList<GridObjectData>();
+	}
 
 	private boolean prependTileImagePath(String s) {
 		boolean prepend = true;

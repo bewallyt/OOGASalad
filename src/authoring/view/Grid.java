@@ -23,7 +23,7 @@ public class Grid extends JPanel{
 	private TileImageEditor imageEditor;
 	private WeaponItemViewer weaponItemViewer;
 	private TilePanel currentPanel;
-	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates", "Weapon/Item Viewer"};
+	private String[] popupMenuItems = {"Tile Image Editor", "Coordinates", "Weapon/Item Viewer", "Clear Tile"};
 	private JMenuItem myCoordinates;
 	private Border defaultBorder;
 	private Border selectBorder;
@@ -139,6 +139,8 @@ public class Grid extends JPanel{
 				showImageMenu();
 			} else if("Weapon/Item Viewer".equals(e.getActionCommand())){
 				showWIViewer();
+			} else if("Clear Tile".equals(e.getActionCommand())){
+				currentPanel.clearTile();
 			}
 		}
 	}
@@ -179,7 +181,10 @@ public class Grid extends JPanel{
 		@Override
 		public void mouseDragged(MouseEvent e){
 			currentPanel=(TilePanel) panel.getComponentAt(getMousePosition());
-			placeImage(currentPanel);
+			if(SwingUtilities.isLeftMouseButton(e))
+				placeImage(currentPanel);
+			else
+				currentPanel.clearTile();
 		}
 
 		private void placeImage(TilePanel currentPanel){

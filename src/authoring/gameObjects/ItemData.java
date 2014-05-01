@@ -31,7 +31,7 @@ public class ItemData {
     }
 
     public String getItemName(){
-            return itemName;
+    	return itemName;
     }
     public String getItemImage() {return itemImage; }
     public Map<String,Integer> getMyItemValues() { return myItemValues; }

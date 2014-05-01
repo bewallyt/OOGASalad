@@ -7,6 +7,9 @@ package authoring.gameObjects;
  * */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,7 +53,24 @@ public class BarrierCreation extends CommonAttributes{
         combinedPanel.add(createBarrier);
         frame.add(combinedPanel);
 	}
-	
+	private List<Integer> getIntegerList(String s){
+		List<Integer> list=new ArrayList<Integer>();
+		String[] options=s.split(":");
+		int b;
+		if(options.length>1){
+			b=getIntValue(options[1]);
+			int a=getIntValue(options[0]);
+			while(a<=b){
+				list.add(a);
+				a++;
+			}
+			
+		}
+		else{
+			list.add(getIntValue(options[0]));
+		}
+		return list;
+	}
 	/**
 	 * Validates user input
 	 * @return boolean stating whether user input is valid or not
@@ -61,21 +81,26 @@ public class BarrierCreation extends CommonAttributes{
 	private class createBarrierListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			BarrierData myBarrier=getBarrier();
-			if(validateText()){
-				FeatureManager.getWorldData().saveBarrier(myBarrier);
-				new GridObjectPainter(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
-                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
-                        editor.getSelectedImage());
-				frame.dispose();
-				editor.dispose();
-			}			
+			for(int x: getIntegerList(xcoor.getText())){
+				for(int y: getIntegerList(ycoor.getText())){
+					BarrierData myBarrier=getBarrier(x, y);
+					if(validateText()){
+						FeatureManager.getWorldData().saveBarrier(myBarrier);
+						new GridObjectPainter(x, y,
+		                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
+		                        editor.getSelectedImage());
+						frame.dispose();
+						editor.dispose();
+					}			
+				}
+			}
+			
 		}
 
-		private BarrierData getBarrier(){
+		private BarrierData getBarrier(int x, int y){
 //			System.out.println("xField"+xcoor.getText());
 //			System.out.println("yField"+ycoor.getText());
-			return new BarrierData(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
+			return new BarrierData(x, y,
                     getIntValue(widthField.getText()),
 					getIntValue(heightField.getText()),
 					editor.getSelectedImage().getDescription());
