@@ -14,6 +14,8 @@ public class ItemData {
     private Map<String,Integer> myItemValues;
     private int myPrice;
     private String myIdentity;
+    private int amountToChange;
+    private String statToBuff;
 
     public ItemData(String name, String image, Map<String,Integer> values, int price, String identity){
         itemName = name;
@@ -23,6 +25,13 @@ public class ItemData {
         myIdentity = identity;
     }
 
+    public ItemData(String name, String image, Map<String,Integer> values, int price, String identity, int amount, String stats){
+        itemName = name;
+        itemImage = image;
+        myItemValues = values;
+        myPrice = price;
+        myIdentity = identity;
+    }
     
     public ItemData(String name, int price, String identity){
         itemName = name;
