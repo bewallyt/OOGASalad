@@ -269,26 +269,7 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "myItems": [],
-                "myImage": "FatBoy.png",
-                "width": 1,
-                "height": 1,
-                "myX": 4,
-                "myY": 4,
-                "myID": "engine.gridobject.person.ShopKeeper",
-                "myArguments": [
-                  1,
-                  1,
-                  [
-                    "FatBoy.png"
-                  ],
-                  "DEFAULT_NAME",
-                  []
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -958,13 +939,64 @@
     }
   },
   "myImages": {},
-  "mySongs": {},
+  "mySongs": {
+    "test.wav": {
+      "path": "src\\Music\\test.wav"
+    },
+    "youmewav.wav": {
+      "path": "src\\Music\\youmewav.wav"
+    },
+    "pokeCenter.wav": {
+      "path": "src\\Music\\pokeCenter.wav"
+    },
+    "flumelorde.wav": {
+      "path": "src\\Music\\flumelorde.wav"
+    },
+    "flume.wav": {
+      "path": "src\\Music\\flume.wav"
+    },
+    "disconnected.wav": {
+      "path": "src\\Music\\disconnected.wav"
+    },
+    "PokemonIntro.wav": {
+      "path": "src\\Music\\PokemonIntro.wav"
+    },
+    "fms.wav": {
+      "path": "src\\Music\\fms.wav"
+    },
+    "pokeBattle.wav": {
+      "path": "src\\Music\\pokeBattle.wav"
+    },
+    "youme.wav": {
+      "path": "src\\Music\\youme.wav"
+    },
+    "pokeTest.wav": {
+      "path": "src\\Music\\pokeTest.wav"
+    }
+  },
   "primaryMap": "asdf",
   "currentMap": "asdf",
-  "myItems": {},
+  "myItems": {
+    "rock": {
+      "itemName": "rock",
+      "itemImage": "Mountain.gif",
+      "myItemValues": {
+        "Damage": 5,
+        "Speed": 5,
+        "Defense": 5,
+        "Health": 5,
+        "Level": 5
+      },
+      "myPrice": 10,
+      "myIdentity": "StatBuffer",
+      "amountToChange": 0
+    }
+  },
   "myWeapons": {},
   "playerData": {
-    "myItems": [],
+    "myItems": [
+      "rock"
+    ],
     "myValues": {
       "Damage": 5,
       "Speed": 5,

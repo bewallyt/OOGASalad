@@ -1,28 +1,21 @@
 package GameView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
-import engine.item.Item;
-import engine.item.KeyItem;
-import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
-import engine.world.TitleWorld;
 import engine.world.WalkAroundWorld;
 import engine.main.RPGEngine;
 import authoring.gameObjects.ItemData;
 import authoring.gameObjects.MapData;
 import authoring.gameObjects.PlayerData;
-import authoring.gameObjects.WeaponData;
 import authoring.gameObjects.WorldData;
 import Data.DataManager;
 import Data.WorldDataManager;
@@ -38,6 +31,7 @@ public class GameFrame extends RPGEngine {
 
 	private WorldData myWorldData;
 	private DataManager myData;
+	private Creator myCreator;
 	private Player myPlayer;
 	private WalkAroundWorld outsideWorld;
 	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
@@ -62,12 +56,13 @@ public class GameFrame extends RPGEngine {
 	 */
 
 	public void initialize(String fileName) {
-
 		myWorldData = myData.getWorldData(fileName);
-		myItems = makeItems();
-		myWeapons = makeWeapons();
+		myCreator = new Creator(myWorldData);
+		myItems = myCreator.makeItems();
+		myWeapons = myCreator.makeWeapons();
 		loadFileName = fileName;
-		createPlayer();
+		myPlayer = myCreator.createPlayer();
+		setStarts();
 		createWorlds();
 	}
 
@@ -120,21 +115,10 @@ public class GameFrame extends RPGEngine {
 		setSpecialObjects();
 	}
 
-	/**
-	 * Creates the player based on PlayerData
-	 */
-	private void createPlayer() {
-		PlayerData pd = myWorldData.getPlayData();
-		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2,
-				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
-		setPlayerItems(pd);
-
+	private void setStarts(){
+		PlayerData pd = myCreator.getPlayerData();
 		xStart = pd.getX();
 		yStart = pd.getY();
-
-		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
-				Constants.VALUES_CONST));
-		myPlayer.setBattleImage(pd.getImages()[6]);
 	}
 
 	/**
@@ -150,37 +134,6 @@ public class GameFrame extends RPGEngine {
 			System.out.println(g.getImageFile()+" "+g.getX()+" "+g.getY());
 			world.setTileObject(g, g.getX(), g.getY());
 		}
-	}
-
-	private void setPlayerItems(PlayerData pd) {
-		String[] items = pd.getMyItems();
-		List<Item> itemList = new ArrayList<Item>();
-		for (String i : items) {
-			if (i != null) {
-
-				ItemData id = myItems.get(i);
-				if (id.getMyIdentity().equals("KeyItem")) {
-					itemList.add(new KeyItem(id.getItemImage(), id
-							.getItemName()));
-				} else if (id.getMyIdentity().equals("StatBuffer")) {
-					Map<String, Integer> valuesMap = id.getMyItemValues();
-					String key = "health";
-					Integer value = 10;
-					Statistic stats = null;
-					if ((valuesMap != null) && (valuesMap.size() > 0)) {
-						for (String k : valuesMap.keySet()) {
-							stats = new Statistic(k, valuesMap.get(k), 100);
-							break;
-						}
-					} else {
-						stats = new Statistic(key, value, 100);
-					}
-					itemList.add(new StatBuffer(id.getItemImage(), id
-							.getItemName(), stats, 10));
-				}
-			}
-		}
-		myPlayer.setMyItems(itemList);
 	}
 
 	/**
@@ -199,40 +152,6 @@ public class GameFrame extends RPGEngine {
 				n++;
 			}
 		}
-	}
-
-	/**
-	 * Uses WeaponData to create a HashMap mapping weapon names to the actual
-	 * weapon
-	 * 
-	 * @return HashMap of weapon name to weapon
-	 */
-	private HashMap<String, Weapon> makeWeapons() {
-		HashMap<String, Weapon> wepRet = new HashMap<String, Weapon>();
-		Map<String, WeaponData> myWeaponData = myWorldData.getMyWeapons();
-		for (String wep : myWeaponData.keySet()) {
-			WeaponData currWeaponData = myWeaponData.get(wep);
-			Weapon currWeapon = currWeaponData.makeWeapon();
-			wepRet.put(wep, currWeapon);
-		}
-		return wepRet;
-	}
-
-	/**
-	 * Creates a copy of HashMap<String, ItemData>, used to avoid Gson
-	 * LinkedTreeMap errors
-	 * 
-	 * @return Copy of myItems from WorldData
-	 */
-	private HashMap<String, ItemData> makeItems() {
-		HashMap<String, ItemData> itemRet = new HashMap<String, ItemData>();
-		Map<String, ItemData> myItemData = myWorldData.getMyItems();
-
-		for (String itemdata : myItemData.keySet()) {
-			ItemData currItemData = myItemData.get(itemdata);
-			itemRet.put(itemdata, currItemData);
-		}
-		return itemRet;
 	}
 
 	/**
