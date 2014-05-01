@@ -43,7 +43,7 @@ public class GameFrame extends RPGEngine {
 	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 	private WorldDataManager myWorldDataManager;
-    private String loadFileName;
+	private String loadFileName;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -150,39 +150,29 @@ public class GameFrame extends RPGEngine {
 	private void setPlayerItems(PlayerData pd) {
 		String[] items = pd.getMyItems();
 		List<Item> itemList = new ArrayList<Item>();
-<<<<<<< HEAD
-		if (pd.getMyItems() != null) {
-			for (String i : items) {
-				if(i!=null){
+		for (String i : items) {
+			if (i != null) {
+
 				ItemData id = myItems.get(i);
 				if (id.getMyIdentity().equals("KeyItem")) {
 					itemList.add(new KeyItem(id.getItemImage(), id
 							.getItemName()));
 				} else if (id.getMyIdentity().equals("StatBuffer")) {
-
-				}
-				}
-=======
-		for (String i : items) {
-			ItemData id = myItems.get(i);
-			if (id.getMyIdentity().equals("KeyItem")) {
-				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
-			} else if (id.getMyIdentity().equals("StatBuffer")) {
-				Map<String, Integer> valuesMap = id.getMyItemValues();
-				String key = "health";
-				Integer value = 10;
-				Statistic stats = null;
-				if ((valuesMap != null) && (valuesMap.size() > 0)) {
-					for (String k : valuesMap.keySet()) {
-						stats = new Statistic(k, valuesMap.get(k), 100);
-						break;
+					Map<String, Integer> valuesMap = id.getMyItemValues();
+					String key = "health";
+					Integer value = 10;
+					Statistic stats = null;
+					if ((valuesMap != null) && (valuesMap.size() > 0)) {
+						for (String k : valuesMap.keySet()) {
+							stats = new Statistic(k, valuesMap.get(k), 100);
+							break;
+						}
+					} else {
+						stats = new Statistic(key, value, 100);
 					}
-				} else {
-					stats = new Statistic(key, value, 100);
+					itemList.add(new StatBuffer(id.getItemImage(), id
+							.getItemName(), stats, 10));
 				}
-				itemList.add(new StatBuffer(id.getItemImage(),
-						id.getItemName(), stats, 10));
->>>>>>> 1f5d124a8656ac47ffe2430bb81cdc5f2681879d
 			}
 		}
 		myPlayer.setMyItems(itemList);
@@ -266,7 +256,7 @@ public class GameFrame extends RPGEngine {
 
 	public WalkAroundWorld getInitialWorld() {
 		myWorldDataManager = new WorldDataManager(loadFileName);
-        outsideWorld.setWorldDataManager(myWorldDataManager);
+		outsideWorld.setWorldDataManager(myWorldDataManager);
 		return outsideWorld;
 	}
 }
