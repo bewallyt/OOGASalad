@@ -2,6 +2,7 @@ package engine.state;
 
 import java.awt.event.KeyEvent;
 
+import util.Constants;
 import GameView.TitleManager;
 import engine.gridobject.person.Player;
 
@@ -30,7 +31,10 @@ public class TitleState extends AbstractState {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() < 150) {
+		if(e.getKeyCode() == Constants.ESC){
+			myPlayer.setState(new ExitState());
+		}
+		else if (e.getKeyCode() < 150) {
 			myTM.toggleStartPressed();
 			myPlayer.setState(new GameSelectState(myTM, myPlayer));
 		}

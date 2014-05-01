@@ -10,12 +10,10 @@ import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix2x2;
 import engine.gridobject.person.Player;
 import engine.images.ScaledImage;
-import engine.menu.MenuInteractionMatrix;
 import engine.world.TitleWorld;
 
 public class GameChooserWorld extends TitleWorld implements InteractionBox {
 
-	private Image myBackground;
 	private int colorMod = 0;
 	private InteractionMatrix2x2 matrix2;
 	private String[][] myGames = new String[2][2];
@@ -144,14 +142,27 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			// Other
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
-			g2d.drawImage(img, 0, 500 - 2 * increase, null);
+			g2d.drawImage(img, 0, 250 - increase, null);
 		}
-		if ((xPos == 0) && (yPos == 1)) {
+		else if ((xPos == 0) && (yPos == 1)) {
 			// Pokemon
 			Image img = new ScaledImage(250 + increase, 250 + increase,
 					imageFile).scaleImage();
 			g2d.drawImage(img, 250 - increase, 0, null);
+		}		
+		else if ((xPos == 1) && (yPos == 1)) {
+			// Final Fantasy
+			Image img = new ScaledImage(250 + increase, 250 + increase,
+					imageFile).scaleImage();
+			g2d.drawImage(img, 250 - increase, 250 - increase, null);
 		}
+		else if ((xPos == 0) && (yPos == 0)) {
+			// Final Fantasy
+			Image img = new ScaledImage(250 + increase, 250 + increase,
+					imageFile).scaleImage();
+			g2d.drawImage(img, 0, 0, null);
+		}
+		
 
 	}
 
