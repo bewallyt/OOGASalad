@@ -35,9 +35,12 @@ public class Creator {
 			if (i != null) {
 
 				ItemData id = myItems.get(i);
+				Item it;
 				if (id.getMyIdentity().equals("KeyItem")) {
-					itemList.add(new KeyItem(id.getItemImage(), id
-							.getItemName()));
+					KeyItem ki = new KeyItem(id.getItemImage(), id
+							.getItemName());
+					ki.setPrice(id.getMyPrice());
+					itemList.add(ki);
 				} else if (id.getMyIdentity().equals("StatBuffer")) {
 					Map<String, Integer> valuesMap = id.getMyItemValues();
 					String key = "health";
@@ -51,9 +54,11 @@ public class Creator {
 					} else {
 						stats = new Statistic(key, value, 100);
 					}
-					itemList.add(new StatBuffer(id.getItemImage(), id
-							.getItemName(), stats, 10));
-				}
+					StatBuffer sb = new StatBuffer(id.getItemImage(), id
+							.getItemName(), stats, 10);
+					sb.setPrice(id.getMyPrice());
+					itemList.add(sb);
+				}				
 			}
 		}
 		return itemList;
@@ -74,6 +79,7 @@ public class Creator {
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
 				Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
+		myPlayer.changeMoney(pd.getMyMoney());
 		return myPlayer;
 	}
 	

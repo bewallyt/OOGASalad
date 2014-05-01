@@ -83,6 +83,7 @@ public class ShopKeeper extends NPC {
 						"engine.item." + i.getMyIdentity(), i.getItemImage(),
 						i.getItemName(), stats, 10);
 			}
+			myItem.setPrice(i.getMyPrice());
 			itemset.add(myItem);
 		}
 		return itemset;
