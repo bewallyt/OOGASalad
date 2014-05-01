@@ -300,16 +300,27 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
                 for(int i=0; i<weaponAttacks.size(); i++){
                     if(weaponAttacks.get(i).getMyName().equals(clicked)){
                         JPanel editPanel = new JPanel();
+                        editPanel.setLayout(new SpringLayout());
                         JTextField name = new JTextField(clicked,10);
                         JTextField speed = new JTextField(String.valueOf(weaponAttacks.get(i).getMySpeed()),5);
                         JTextField damage = new JTextField(String.valueOf(weaponAttacks.get(i).getMyDamage()),5);
                         JComboBox affects = new JComboBox(attributes);
                         JTextField amount = new JTextField(String.valueOf(weaponAttacks.get(i).getAffectValue()),5);
                         JCheckBox affectsWho = new JCheckBox("Player");
+                        JLabel n = new JLabel("Name");
+                        JLabel s = new JLabel(attributes[0]);
+                        JLabel d = new JLabel(attributes[1]);
+                        JLabel a = new JLabel("Affects What?");
+                        JLabel am = new JLabel("Affects Who?");
+                        editPanel.add(n);
                         editPanel.add(name);
+                        editPanel.add(s);
                         editPanel.add(speed);
+                        editPanel.add(d);
                         editPanel.add(damage);
+                        editPanel.add(a);
                         editPanel.add(affects);
+                        editPanel.add(am);
                         editPanel.add(amount);
                         editPanel.add(affectsWho);
                         int edit = JOptionPane.showOptionDialog(null, editPanel, "Edit Attack",
