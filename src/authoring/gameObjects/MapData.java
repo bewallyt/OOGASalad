@@ -114,7 +114,9 @@ public class MapData {
 	 * Saves an enemy to the map
 	 * @param enemy EnemyData to be saved
 	 */
-    public void saveEnemy(EnemyData enemy) {enemyDatas.add(enemy);}
+    public void saveEnemy(EnemyData enemy) {
+    	myTiles.get(enemy.getX()).get(enemy.getY()).addGridObjectData(enemy);
+    }
     /**
      * Returns a list of enemies on the Map
      * @return List of EnemyData

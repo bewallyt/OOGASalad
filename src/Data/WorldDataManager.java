@@ -461,7 +461,7 @@ public class WorldDataManager {
 				g.getWidth()/Constants.TILE_SIZE,
 				g.getHeight()/Constants.TILE_SIZE,
 				img,
-				npcResponseNodeData);
+				npcResponseNodeData, 1);
 		 
 		return npcData;
 	}
