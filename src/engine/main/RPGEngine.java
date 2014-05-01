@@ -1,13 +1,13 @@
 package engine.main;
 
-import java.awt.event.KeyEvent;
-
-import engine.Control;
-import engine.collision.CollisionMatrix;
-import engine.gridobject.GridObject;
+import util.Constants;
 import engine.gridobject.person.Player;
+import engine.gridobject.person.Reflection;
 import engine.world.ArenaWorld;
+import engine.world.ArenaWorldLooper;
 import engine.world.Canvas;
+import engine.world.GameLooper;
+import engine.world.TitleWorld;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
 
@@ -15,36 +15,19 @@ import engine.world.World;
  * The Abstract Class RPGEngine. Extend to create a new RPG game! Main method must be added to subclasses
  */
 public abstract class RPGEngine{
-	
-	/** The my canvas. */
 	private Canvas myCanvas;
-	
-	/** The my current world. */
 	private World myCurrentWorld;
-	
-	private CollisionMatrix myCollisionMatrix;;
-	
+	private GameLooper myGameLooper;
+	private World myPreviousWorld;
+	private Boolean isInitialized = false;
+
+
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
 	 */
 	public abstract void initializeGame();
-	
-	/**
-	 * Adds a grid object to the specified tile.
-	 *
-	 * @param gridObject the grid object
-	 * @param xTile the x coordinate of the tile
-	 * @param yTile the y coordinate of the tile
-	 */
-	public void addGridObject(GridObject gridObject, int xTile, int yTile){
-		myCurrentWorld.setTileObject(gridObject, xTile, yTile);
-		myCollisionMatrix = new CollisionMatrix(myCurrentWorld.getGridObjectList());
-	}
-	/**
-	 * Run. Called by the main game loop. This method is called at every frame
-	 */
-	public abstract void run();
-	
+
+
 	/**
 	 * Initialize canvas.
 	 *
@@ -56,64 +39,107 @@ public abstract class RPGEngine{
 		myCanvas = canvas;
 	}
 	
+	public void makeTitleScreen() {
+		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player());
 
-	
+		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
+		setWorld(titleScreen);
+
+		titleScreen.setMusic(Constants.TITLE_MUSIC);
+	}
+
 	/**
-	 * Adds a new walkaroundworld.
+	 * Sets the world passed in as the current world that will be painted.
 	 *
-	 * @param tileSize the tile size
+	 * @param world the world to be set as current world
 	 */
-	public void addNewWalkAroundWorld(int tileSize, String background){
-		World world = new WalkAroundWorld(tileSize, background);
-		world.setDimensions(myCanvas.getWidth(), myCanvas.getHeight());
-		int x = myCanvas.getWidth();
+	public void setWorld(World world){
 		myCanvas.setWorld(world);
 		myCurrentWorld = world;
-		myCollisionMatrix=null;
-	}
-	
-	/**
-	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
-	 * Calls run()
-	 *
-	 * @param world the world
-	 * @param cm the CollisionMatrix
-	 * @throws InterruptedException the interrupted exception
-	 */
-	public void doGameLoop() throws InterruptedException {
-		while (true) {
-			myCanvas.repaint();
-			checkCollisions(myCollisionMatrix);
-			for (GridObject go : myCurrentWorld.getGridObjectList()) {
-				go.move();
-			}
-			run();
-			Thread.sleep(10);
-		}
+		String classname = myCurrentWorld.getClass().getName();
+		if(classname.equals("engine.world.ArenaWorld"))
+			myGameLooper = new ArenaWorldLooper(myCurrentWorld);
+		else
+			myGameLooper = (GameLooper) Reflection.createInstance(classname+"Looper", myCurrentWorld);
 		
 	}
 
 	/**
-	 * Check collisions. Called by doGameLoop
-	 *
-	 * @param world the world
-	 * @param cm the cm
+	 *  Will change the displayed world to the world sent in as a parameter. If the player has
+	 *  previously been in the world, will load the saved position. If not, supply x and y
+	 * @param world
+	 * @param x X location of the player at spawn time (pixels)
+	 * @param y Y location of the player at spawn time (pixels)
 	 */
-	private void checkCollisions(CollisionMatrix cm) {
-		for (int i = 0; i < myCurrentWorld.getGridObjectList().size(); i++) {
-			for (int j = 0; j < myCurrentWorld.getGridObjectList().size(); j++) {
-				if (myCurrentWorld.getGridObjectList().get(i).getBounds().intersects(
-						myCurrentWorld.getGridObjectList().get(j).getBounds())) {
-					cm.getMatrix()[i][j].doCollision();
-				}
-			}
+	public void changeWorld(World world) {
+		myCurrentWorld.savePlayerPosition();
+		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().stop();
+		myPreviousWorld=myCurrentWorld;
+		setWorld(world);
+		if(myCurrentWorld.getSavedPlayerPosition()!=null){
+			setSavedPosition();
+		}
+		else{
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
+					myCurrentWorld.getPlayer().getStartY());
+		}
+		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().start();
+	}
+
+	/**
+	 * Sets the Player's position and facing based on the saved position.
+	 */
+	private void setSavedPosition() {
+		myCurrentWorld.getPlayer().setFacing(myCurrentWorld.getSavedPlayerPosition()[2]);
+		if(myCurrentWorld.getPlayer().getFacing()==2) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]+20);
+		else if(myCurrentWorld.getPlayer().getFacing()==0) myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]-20);
+		else{
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getSavedPlayerPosition()[0], myCurrentWorld.getSavedPlayerPosition()[1]);
 		}
 	}
 	
-	public World getCurrentWorld(){
-		return myCurrentWorld;
+	public void setInit(Boolean bool) {
+		isInitialized = bool;
 	}
 	
 
-	
+	/**
+	 * Do game loop. Called every frame. Repaints the world, moves all GridObjects, and checks collisions. 
+	 * 
+	 *
+	 * @throws InterruptedException the interrupted exception
+	 */
+	public void doGameLoop() throws InterruptedException {
+		if(myCurrentWorld.getMusic()!=null){
+			myCurrentWorld.getMusic().start();
+		}
+		while (isInitialized) {
+			myCanvas.repaint();
+			World newWorld = myGameLooper.doLoop();
+			if(newWorld!=null){
+				changeWorld(newWorld);
+				
+			}
+			Thread.sleep(10);
+		}
+	}
+
+
+	/**
+	 * Gets the current world.
+	 *
+	 * @return the current world
+	 */
+	public World getCurrentWorld(){
+		return myCurrentWorld;
+	}
+
+	/**
+	 * Paints the same background on every tile.
+	 *
+	 * @param background the background
+	 */
+	public void paintConstantBackground(String background){
+		((WalkAroundWorld) myCurrentWorld).paintFullBackround(background);
+	}
 }

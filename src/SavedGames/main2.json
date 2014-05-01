@@ -1,0 +1,2968 @@
+{
+  "myLevels": {
+    "outsideWorld": {
+      "playerData": {
+        "myItems": [],
+        "myValues": {
+          "Damage": 10,
+          "Speed": 10,
+          "Defense": 10,
+          "Health": 100,
+          "Level": 10
+        },
+        "myWeapons": [
+          "charmander",
+          "sword"
+        ],
+        "myName": "Player",
+        "myMovement": 0,
+        "myImages": [
+          "ImageFiles/PlayerDown1.png",
+          "ImageFiles/PlayerDown2.png",
+          "ImageFiles/PlayerLeft1.png",
+          "ImageFiles/PlayerLeft2.png",
+          "ImageFiles/PlayerRight1.png",
+          "ImageFiles/PlayerRight2.png",
+          "ImageFiles/PlayerUp1.png",
+          "ImageFiles/PlayerUp2.png"
+        ],
+        "myMoney": 100,
+        "myExperience": 0,
+        "myImage": "Ash",
+        "width": 1,
+        "height": 1,
+        "myX": 4,
+        "myY": 12,
+        "myID": "engine.gridobject.person.Enemy",
+        "myArguments": [
+          1,
+          1,
+          [
+            "PlayerImages/Ash/PlayerDown1.png",
+            "PlayerImages/Ash/PlayerDown2.png",
+            "PlayerImages/Ash/PlayerLeft1.png",
+            "PlayerImages/Ash/PlayerLeft2.png",
+            "PlayerImages/Ash/PlayerRight1.png",
+            "PlayerImages/Ash/PlayerRight2.png",
+            "PlayerImages/Ash/PlayerUp1.png",
+            "PlayerImages/Ash/PlayerUp2.png"
+          ],
+          "Player",
+          {
+            "Damage": 10,
+            "Speed": 10,
+            "Defense": 10,
+            "Health": 100,
+            "Level": 10
+          },
+          [
+            "charmander",
+            "sword"
+          ],
+          2,
+          0
+        ]
+      },
+      "myTiles": [
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "width": 1,
+                "height": 1,
+                "myX": 1,
+                "myY": 12,
+                "myID": "engine.gridobject.Barrier",
+                "myArguments": [
+                  1,
+                  1,
+                  "gridobject/ImageFiles/zeldasword.png"
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "width": 4,
+                "height": 4,
+                "myX": 2,
+                "myY": 2,
+                "myID": "engine.gridobject.Barrier",
+                "myArguments": [
+                  4,
+                  4,
+                  "gridobject/ImageFiles/pokecenter.png"
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "toX": 4,
+                "toY": 5,
+                "width": 1,
+                "height": 1,
+                "myX": 4,
+                "myY": 5,
+                "myID": "engine.gridobject.Door",
+                "myArguments": [
+                  1,
+                  1,
+                  "gridobject/ImageFiles/cabinets.jpg",
+                  4,
+                  5,
+                  null
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "myValues": {
+                  "Damage": 10,
+                  "Speed": 100,
+                  "Defense": 10,
+                  "Health": 50,
+                  "Level": 10
+                },
+                "myWeapons": [
+                  "wp"
+                ],
+                "myName": "enemy",
+                "myMovement": 1,
+                "myImages": [
+                  "ImageFiles/PlayerDown1.png",
+                  "ImageFiles/PlayerDown2.png",
+                  "ImageFiles/PlayerLeft1.png",
+                  "ImageFiles/PlayerLeft2.png",
+                  "ImageFiles/PlayerRight1.png",
+                  "ImageFiles/PlayerRight2.png",
+                  "ImageFiles/PlayerUp1.png",
+                  "ImageFiles/PlayerUp2.png"
+                ],
+                "myMoney": 50,
+                "myExperience": 100,
+                "myImage": "Zelda",
+                "width": 1,
+                "height": 1,
+                "myX": 8,
+                "myY": 8,
+                "myID": "engine.gridobject.person.Enemy",
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ],
+                  "enemy",
+                  {
+                    "Damage": 10,
+                    "Speed": 100,
+                    "Defense": 10,
+                    "Health": 50,
+                    "Level": 10
+                  },
+                  [
+                    "wp"
+                  ],
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "myRoot": {
+                  "myString": "I can\u0027t seem to find my sword :(",
+                  "myChildren": [
+                    {
+                      "myString": "I\u0027ll help!",
+                      "myChild": {
+                        "myString": "Let me know when you find it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myString": "Sorry to hear...",
+                      "myChild": {
+                        "myString": "Yeah it sucks",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myString": "Nice",
+                      "myChild": {
+                        "myString": "Thats not nice...",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "You found it! Thanks",
+                        "myChildren": []
+                      }
+                    }
+                  ]
+                },
+                "myImages": [
+                  "PlayerImages/Zelda/down0.png",
+                  "PlayerImages/Zelda/down1.png",
+                  "PlayerImages/Zelda/left0.png",
+                  "PlayerImages/Zelda/left1.png",
+                  "PlayerImages/Zelda/right0.png",
+                  "PlayerImages/Zelda/right1.png",
+                  "PlayerImages/Zelda/up0.png",
+                  "PlayerImages/Zelda/up1.png"
+                ],
+                "width": 1,
+                "height": 1,
+                "myX": 8,
+                "myY": 13,
+                "myID": "engine.gridobject.person.NPC",
+                "myDialogue": {
+                  "myString": "I can\u0027t seem to find my sword :(",
+                  "myChildren": [
+                    {
+                      "myString": "I\u0027ll help!",
+                      "myChild": {
+                        "myString": "Let me know when you find it!",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myString": "Sorry to hear...",
+                      "myChild": {
+                        "myString": "Yeah it sucks",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myString": "Nice",
+                      "myChild": {
+                        "myString": "Thats not nice...",
+                        "myChildren": []
+                      }
+                    },
+                    {
+                      "myChild": {
+                        "myString": "You found it! Thanks",
+                        "myChildren": []
+                      }
+                    }
+                  ]
+                },
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ],
+                  "DEFAULT_NAME",
+                  {
+                    "myString": "I can\u0027t seem to find my sword :(",
+                    "myChildren": [
+                      {
+                        "myString": "I\u0027ll help!",
+                        "myChild": {
+                          "myString": "Let me know when you find it!",
+                          "myChildren": []
+                        }
+                      },
+                      {
+                        "myString": "Sorry to hear...",
+                        "myChild": {
+                          "myString": "Yeah it sucks",
+                          "myChildren": []
+                        }
+                      },
+                      {
+                        "myString": "Nice",
+                        "myChild": {
+                          "myString": "Thats not nice...",
+                          "myChildren": []
+                        }
+                      },
+                      {
+                        "myChild": {
+                          "myString": "You found it! Thanks",
+                          "myChildren": []
+                        }
+                      }
+                    ]
+                  },
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "toX": 12,
+                "toY": 12,
+                "width": 1,
+                "height": 1,
+                "myX": 12,
+                "myY": 12,
+                "myID": "engine.gridobject.Door",
+                "myArguments": [
+                  1,
+                  1,
+                  "gridobject/ImageFiles/grassback.jpg",
+                  12,
+                  12,
+                  null
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": [
+              {
+                "myItems": [
+                  "potion"
+                ],
+                "myImage": "Zelda",
+                "width": 1,
+                "height": 1,
+                "myX": 15,
+                "myY": 15,
+                "myID": "engine.gridobject.person.ShopKeeper",
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Zelda/down0.png",
+                    "PlayerImages/Zelda/down1.png",
+                    "PlayerImages/Zelda/left0.png",
+                    "PlayerImages/Zelda/left1.png",
+                    "PlayerImages/Zelda/right0.png",
+                    "PlayerImages/Zelda/right1.png",
+                    "PlayerImages/Zelda/up0.png",
+                    "PlayerImages/Zelda/up1.png"
+                  ],
+                  "DEFAULT_NAME",
+                  [
+                    "potion"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ],
+        [
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          },
+          {
+            "myImageName": "TileImage/ImageFiles/grassSmall.png",
+            "myGridObjectDatas": []
+          }
+        ]
+      ],
+      "myRandomEnemies": [],
+      "enemyDatas": [],
+      "mySong": ""
+    }
+  },
+  "myImages": {},
+  "mySongs": {},
+  "primaryMap": "outsideWorld",
+  "currentMap": "outsideWorld",
+  "myItems": {
+    "potion": {
+      "itemName": "potion",
+      "itemImage": "ImageFiles/cabinets.jpg",
+      "myItemValues": {},
+      "myPrice": 10,
+      "myIdentity": "StatBuffer"
+    }
+  },
+  "myWeapons": {
+    "charmander": {
+      "myName": "charmander",
+      "myImage": "ImageFiles/Charmander.png",
+      "myAttacks": [
+        {
+          "myName": "flamethrower",
+          "mySpeed": 10,
+          "myDamage": 10,
+          "affectAttribute": "Health",
+          "affectValue": 10,
+          "affectPlayer": true
+        }
+      ],
+      "mySpeed": 10,
+      "myDamage": 10
+    },
+    "wp": {
+      "myName": "wp",
+      "myImage": "ImageFiles/cabinets.jpg",
+      "myAttacks": [
+        {
+          "myName": "enemyattack",
+          "mySpeed": 10,
+          "myDamage": 10,
+          "affectAttribute": "",
+          "affectValue": 0,
+          "affectPlayer": false
+        }
+      ],
+      "mySpeed": 10,
+      "myDamage": 10
+    },
+    "sword": {
+      "myName": "sword",
+      "myImage": "ImageFiles/zeldasword.png",
+      "myAttacks": [
+        {
+          "myName": "flamethrower",
+          "mySpeed": 10,
+          "myDamage": 10,
+          "affectAttribute": "Health",
+          "affectValue": 10,
+          "affectPlayer": true
+        }
+      ],
+      "mySpeed": 20,
+      "myDamage": 20
+    }
+  }
+}

@@ -1,32 +1,30 @@
 package engine.world;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import engine.Control;
+import Data.WorldDataManager;
+import util.Music;
+import engine.collision.CollisionHandler;
 import engine.collision.CollisionMatrix;
+import engine.dialogue.InteractionBox;
+import engine.dialogue.TextDisplayer;
+import engine.dialogue.TransparentDisplayer;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
-import engine.images.ScaledImage;
+import engine.main.Main;
 
 public abstract class World {
-	private int myNumTileWidth;
-	private int myNumTileHeight;
-	private int myTileSize;
-	private Tile[][] myTileMatrix;
-	private List<GridObject> myGridObjectList;
-	private String myBackground;
+
+
+	private Player myPlayer;
+	private int myPlayWidth;
+	private int myPlayHeight;
+	private int[] mySavedPlayerPosition;
+	private TextDisplayer myTextDisplayer;
+	private Music myMusic;
+	private WorldDataManager myWDM;
 
 	/**
 	 * Instantiates a new World.
@@ -35,90 +33,62 @@ public abstract class World {
 	 * @param numTileHeight the num tile height
 	 * @param tileSize the tile size
 	 */
-	public World(int tileSize, String background) {
-		System.out.println("width " + tileSize);
-		myTileSize=tileSize;
-		myGridObjectList = new ArrayList<GridObject>();
-		myBackground = background;
-//		Image myBackground = new ScaledImage(width, height,myBackground).scaleImage();
-	}
-	
-
-	
-	public void setDimensions(int width, int height){
-		myNumTileWidth = width/myTileSize;
-		myNumTileHeight = height/myTileSize;
-		makeTileMatrix();
-	}
-	
-	public int getTileSize(){
-		return myTileSize;
-	}
-	
-	public int getTileGridHeight() {
-		return myNumTileHeight;
-	}
-	
-	public int getTileGridWidth() {
-		return myNumTileWidth;
-	}
-	
-	public String getBackgroundString() {
-		return myBackground;
+	public World(int playWidth, int playHeight, Player p) {
+		myPlayer = p;
+		myPlayWidth=playWidth;
+		myPlayHeight=playHeight;
+		myTextDisplayer = new TextDisplayer(new TransparentDisplayer());
 	}
 
-	/**
-	 * Make empty matrix of tiles.
-	 * 
-	 * @return the tile matrix
-	 */
-	public Tile[][] makeTileMatrix() {
-		System.out.println(myNumTileWidth + " " + myNumTileHeight);
-		Tile[][] tileMatrix = new Tile[myNumTileWidth][myNumTileHeight];
-		for (int i = 0; i < myNumTileWidth; i++) {
-			for (int j = 0; j < myNumTileHeight; j++) {
-				tileMatrix[i][j] = new Tile(myTileSize,i*myTileSize,j*myTileSize);
-			}
+	public int getPlayWidth() {
+		return myPlayWidth;
+	}
+
+
+	public int getPlayHeight() {
+		return myPlayHeight;
+
+	}
+	
+	public Player getPlayer(){
+		return myPlayer;
+	}
+	public void savePlayerPosition(){
+		mySavedPlayerPosition = new int[] {getPlayer().getX(),getPlayer().getY(),reverseFacing()};
+	}
+	
+	public int[] getSavedPlayerPosition(){
+		return mySavedPlayerPosition;
+	}
+	private int reverseFacing(){
+		if(getPlayer().getFacing()==1)return 3;
+		else{
+			return Math.abs(getPlayer().getFacing()-2);
 		}
-		
-		myTileMatrix = tileMatrix;
-		
-		return tileMatrix;
 	}
-
-	public List<GridObject> getGridObjectList(){
-		return myGridObjectList;
+	/**
+	 * This method will place an InteractionBox into the TextDisplayer (container for the goods).
+	 * This TextDisplayer will then be painted in every cycle.
+	 * @param b InteractionBox to put into the TextDisplayer
+	 */
+	public void setTextDisplayer(InteractionBox b) {
+		myTextDisplayer.setInteractionBox(b);
 	}
-	
-	public void setTileObject(GridObject obj, int xTile, int yTile) {
-		myTileMatrix[xTile][yTile].setTileObject(obj);
-		myGridObjectList.add(obj);
+	public TextDisplayer getTextDisplayer() {
+		return myTextDisplayer;
 	}
-
-
-
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		Graphics2D g2d = (Graphics2D) g;
-//		setOpaque(false);
-//		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-//				RenderingHints.VALUE_ANTIALIAS_ON);
-//		
-//		int height = myNumTileHeight * myTileSize;
-//		int width = myNumTileWidth * myTileSize;
-//		Image background = new ScaledImage(width, height,myBackground).scaleImage();
-//		g2d.drawImage(background, 0, 0,null);
-//		
-//		for(int i=0; i<myGridObjectList.size(); i++){
-//			myGridObjectList.get(i).paint(g2d);
-//		}
-//	}
-
-	
-	
-	public void setViewSize(){
-		
+	public void setMusic(String musicFile){
+		URL mainURL = Main.class.getResource(musicFile);
+		myMusic= new Music(mainURL);
+	}
+	public Music getMusic(){
+		return myMusic;
+	}
+	public WorldDataManager getWorldDataManager(){
+		return myWDM;
+	}
+	public void setWorldDataManager(WorldDataManager wdm) {
+		myWDM = wdm;   
 	}
 
 }

@@ -2,6 +2,9 @@ package engine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashSet;
+import java.util.ResourceBundle;
+import java.util.Set;
 
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
@@ -9,44 +12,44 @@ import engine.world.Canvas;
 import engine.world.World;
 
 public class Control implements KeyListener{
+	
 	private World myWorld;
 	private Canvas  myCanvas;
-	public static int UP = 38;
-	public static int DOWN = 40;
-	public static int LEFT = 37;
-	public static int RIGHT = 39;
-	public static int A = 65;
+	private ResourceBundle myResources;
+	Set<Integer> pressedKeys = new HashSet<Integer>();
+
 	
-	public Control (Canvas c, World world){
+	public Control(Canvas c, World world){
 		myWorld = world;
 		myCanvas = c;
 	}
 	
+	public World getWorld() {
+		return myWorld;
+	}
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		for (GridObject gridObject : myWorld.getGridObjectList()){
-			if (gridObject instanceof Player){
-				((Player) gridObject).keyPressed(e);
-			}
-		}
-		
-		
+	public Canvas getCanvas() {
+		return myCanvas;
 	}
+	
+	public void keyPressed(KeyEvent e){
+		if(pressedKeys.size() == 0) {
+			myWorld.getPlayer().keyPressed(e);
+			pressedKeys.add(e.getKeyCode());
+		}
+	}
+				
+	
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		for (GridObject gridObject : myWorld.getGridObjectList()){
-			if (gridObject instanceof Player){
-				((Player) gridObject).keyReleased(e);
-			}
-		}
-		
+	public void keyReleased(KeyEvent e) {		
+		myWorld.getPlayer().keyReleased(e);
+		pressedKeys.remove(e.getKeyCode());
 	}
+		
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-	
 		
 	}
 

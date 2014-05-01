@@ -1,46 +1,38 @@
 package engine.collision;
 
+import util.Constants;
+import engine.ProximityChecker;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.RuleFollower;
+import engine.gridobject.person.Person;
 
 public class BumpCollision extends CollisionHandler{
 
+	/**
+	 * Instantiates a new bump collision.
+	 *
+	 * @param obj1 the obj1
+	 * @param obj2 the obj2
+	 */
 	public BumpCollision(GridObject obj1, GridObject obj2) {
 		super(obj1, obj2);
 	}
 
 	@Override
 	public void doCollision() {		
-		if(myObj1 instanceof RuleFollower){
-			if(isOnLeft()==2 && (isOnBottom()<-2 && isOnTop()>2)){
-				((RuleFollower) myObj1).setMaxX((int)myObj2.getBounds().getMinX()-myObj1.getSize()[0]);
+		if(myObj1 instanceof Person){
+			if(ProximityChecker.isLeftProximity(myObj1, myObj2)==Constants.COLLISION_OFFSET){
+				((Person) myObj1).setMaxX((int)myObj2.getBounds().getMinX()-myObj1.getSize()[0]);
 			}
-			if(isOnRight()==-2 && (isOnBottom()<-2 && isOnTop()>2) ){
-				((RuleFollower) myObj1).setMinX((int)myObj2.getBounds().getMaxX()-myObj1.getSize()[0]);
+			if(ProximityChecker.isRightProximity(myObj1, myObj2)==-Constants.COLLISION_OFFSET ){
+				((Person) myObj1).setMinX((int)myObj2.getBounds().getMaxX()-myObj1.getSize()[0]);
 			}
-			if(isOnBottom()==-2 && isOnRight()<-2 && isOnLeft()>2){
-				((RuleFollower) myObj1).setMinY((int)myObj2.getBounds().getMaxY());
+			if(ProximityChecker.isBottomProximity(myObj1, myObj2)==-Constants.COLLISION_OFFSET){
+				((Person) myObj1).setMinY((int)myObj2.getBounds().getMaxY());
 			}
-			if(isOnTop()==2 && isOnRight()<-2 && isOnLeft()>2){
-				((RuleFollower) myObj1).setMaxY((int)myObj2.getBounds().getMinY());
+			if(ProximityChecker.isTopProximity(myObj1, myObj2)==Constants.COLLISION_OFFSET){
+				((Person) myObj1).setMaxY((int)myObj2.getBounds().getMinY());
 			}
 		}
-	}
-
-	public double isOnLeft(){
-		return myObj1.getBounds().getMaxX()-myObj2.getBounds().getMinX();
-	}
-
-	public double isOnRight(){
-		return myObj1.getBounds().getMinX()-myObj2.getBounds().getMaxX();
-	}
-
-	public double isOnBottom(){
-		return myObj1.getBounds().getMinY()-myObj2.getBounds().getMaxY();
-	}
-
-	public double isOnTop(){
-		return myObj1.getBounds().getMaxY()-myObj2.getBounds().getMinY();
 	}
 }

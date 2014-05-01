@@ -1,19 +1,23 @@
 package engine;
 
-public class Statistic implements Listable {
+public class Statistic {
 
 	String myName;
 	int myValue;
 	int myMaxValue;
 
-	public Statistic(String name, int maxValue, int value) {
+	public Statistic(String name, int value, int maxValue) {
 		myName = name;
 		myValue = value;
-		myMaxValue = maxValue;
+		myMaxValue=maxValue;
 	}
 
 	public void changeValue(int amountToChange) {
-		myValue += amountToChange;
+		if(myValue+amountToChange<=myMaxValue)
+			myValue += amountToChange;
+		else{
+			myValue=myMaxValue;
+		}
 	}
 
 	public int getValue() {
@@ -24,14 +28,11 @@ public class Statistic implements Listable {
 		return myName;
 	}
 	
-	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-
+	public int getMaxValue(){
+		return myMaxValue;
 	}
-
-	//	@Override
-	//	public abstract void display(); // write a method that will display it in a
-	//									// list fashion
-
+	
+	public void setToMax(){
+		myValue=myMaxValue;
+	}
 }
