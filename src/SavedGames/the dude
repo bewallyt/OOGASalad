@@ -1169,7 +1169,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "pokeCenter": {
       "myTiles": [
@@ -2292,7 +2292,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "myHouse": {
       "myTiles": [
@@ -2310,7 +2310,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/flatstone.png",
+            "myImageName": "TileImage/Rock2.png",
             "myGridObjectDatas": []
           },
           {
@@ -3565,7 +3565,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "Oak\u0027s house": {
       "myTiles": [
@@ -4315,7 +4315,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/flatstone.png",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -4655,7 +4655,9 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": [ leeputhere]
+            "myGridObjectDatas": [
+              
+            ]
           },
           {
             "myImageName": "TileImage/flatstone.png",
@@ -4813,7 +4815,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "Pokemon": {
       "myTiles": [
@@ -6355,7 +6357,24 @@
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
             "myGridObjectDatas": [
-           
+              {
+                "toX": 11,
+                "toY": 14,
+                "toMap": "Pokemon",
+                "width": 1,
+                "height": 1,
+                "myX": 7,
+                "myY": 15,
+                "myID": "engine.gridobject.Door",
+                "myArguments": [
+                  1,
+                  1,
+                  "gridobject/Door2.png",
+                  11,
+                  14,
+                  "Pokemon"
+                ]
+              }
             ]
           },
           {
@@ -7049,7 +7068,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -7219,7 +7238,7 @@
             "myGridObjectDatas": [
               {
                 "toX": 7,
-                "toY": 14,
+                "toY": 15,
                 "toMap": "Oak\u0027s house",
                 "width": 1,
                 "height": 1,
@@ -7231,7 +7250,7 @@
                   1,
                   "gridobject/Door2.png",
                   7,
-                  14,
+                  15,
                   "Oak\u0027s house"
                 ]
               }
@@ -7270,7 +7289,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -7472,7 +7491,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -7721,7 +7740,7 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/DirtPathUp.png",
             "myGridObjectDatas": []
           },
           {
@@ -7883,47 +7902,47 @@
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
-            "myImageName": "TileImage/DefaultTileImage.jpg",
+            "myImageName": "TileImage/dirtpathnormal.png",
             "myGridObjectDatas": []
           },
           {
@@ -9426,7 +9445,7 @@
                   null,
                   null
                 ],
-                "myName": "Enemy",
+                "myName": "Name",
                 "myMovement": 1,
                 "myImages": [
                   "PlayerImages/King/KingDown1.png",
@@ -9459,12 +9478,12 @@
                     "PlayerImages/King/KingUp1.png",
                     "PlayerImages/King/KingUp2.png"
                   ],
-                  "Enemy",
+                  "Name",
                   {
                     "Damage": 5,
                     "Speed": 5,
                     "Defense": 5,
-                    "Health": 100,
+                    "Health": 5,
                     "Level": 5
                   },
                   [
@@ -15325,7 +15344,7 @@
             "Damage": 5,
             "Speed": 5,
             "Defense": 5,
-            "Health": 50,
+            "Health": 5,
             "Level": 6
           },
           "myWeapons": [
@@ -15334,7 +15353,7 @@
             null,
             null
           ],
-          "myName": "RandomEnemy",
+          "myName": "Name",
           "myMovement": 0,
           "myImages": [],
           "myMoney": 30,
@@ -15354,7 +15373,7 @@
               "Damage": 5,
               "Speed": 5,
               "Defense": 5,
-              "Health": 75,
+              "Health": 5,
               "Level": 6
             },
             [
@@ -15372,7 +15391,7 @@
             "Damage": 5,
             "Speed": 5,
             "Defense": 5,
-            "Health": 40,
+            "Health": 5,
             "Level": 6
           },
           "myWeapons": [
@@ -15381,7 +15400,7 @@
             null,
             null
           ],
-          "myName": "RandomEnemy2",
+          "myName": "Name",
           "myMovement": 0,
           "myImages": [],
           "myMoney": 30,
@@ -15401,7 +15420,7 @@
               "Damage": 5,
               "Speed": 5,
               "Defense": 5,
-              "Health": 70,
+              "Health": 5,
               "Level": 6
             },
             [
@@ -15428,7 +15447,7 @@
             null,
             null
           ],
-          "myName": "Enemy",
+          "myName": "Name",
           "myMovement": 0,
           "myImages": [],
           "myMoney": 100,
@@ -15448,7 +15467,7 @@
               "Damage": 5,
               "Speed": 5,
               "Defense": 5,
-              "Health": 100,
+              "Health": 5,
               "Level": 8
             },
             [
@@ -15466,7 +15485,7 @@
             "Damage": 5,
             "Speed": 5,
             "Defense": 5,
-            "Health": 100,
+            "Health": 5,
             "Level": 8
           },
           "myWeapons": [
@@ -15475,7 +15494,7 @@
             null,
             null
           ],
-          "myName": "RandomEnemy3",
+          "myName": "Name",
           "myMovement": 0,
           "myImages": [],
           "myMoney": 100,
@@ -15495,7 +15514,7 @@
               "Damage": 5,
               "Speed": 5,
               "Defense": 5,
-              "Health": 50,
+              "Health": 5,
               "Level": 8
             },
             [
@@ -15510,7 +15529,7 @@
         }
       ],
       "enemyDatas": [],
-      "mySong": "pokeTest.wav"
+      "mySong": ""
     },
     "myRoom": {
       "myTiles": [
@@ -16618,7 +16637,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     }
   },
   "myImages": {},
@@ -16673,7 +16692,7 @@
     }
   },
   "primaryMap": "myRoom",
-  "currentMap": "myHouse",
+  "currentMap": "Oak\u0027s house",
   "myItems": {
     "PokeBall": {
       "itemName": "PokeBall",
@@ -16731,7 +16750,7 @@
           "mySpeed": 2,
           "myDamage": 2,
           "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectValue": 5,
           "affectPlayer": false
         },
         {
@@ -16739,7 +16758,7 @@
           "mySpeed": 5,
           "myDamage": 5,
           "affectAttribute": "Damage",
-          "affectValue": 1,
+          "affectValue": 5,
           "affectPlayer": true
         },
         {
@@ -16747,7 +16766,7 @@
           "mySpeed": 5,
           "myDamage": 0,
           "affectAttribute": "Defense",
-          "affectValue": 3,
+          "affectValue": 5,
           "affectPlayer": true
         }
       ],
@@ -16761,9 +16780,9 @@
         {
           "myName": "Basic",
           "mySpeed": 2,
-          "myDamage": 10,
+          "myDamage": 2,
           "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectValue": 5,
           "affectPlayer": false
         },
         {
@@ -16777,9 +16796,9 @@
         {
           "myName": "Thunder",
           "mySpeed": 5,
-          "myDamage": 10,
-          "affectAttribute": "Health",
-          "affectValue": 0,
+          "myDamage": 5,
+          "affectAttribute": "Damage",
+          "affectValue": -5,
           "affectPlayer": false
         }
       ],
@@ -16795,23 +16814,23 @@
           "mySpeed": 2,
           "myDamage": 2,
           "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectValue": 5,
           "affectPlayer": false
         },
         {
           "myName": "Karate Chop",
           "mySpeed": 5,
           "myDamage": 5,
-          "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectAttribute": "Damage",
+          "affectValue": 5,
           "affectPlayer": true
         },
         {
           "myName": "Seismic Toss",
           "mySpeed": 5,
           "myDamage": 10,
-          "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectAttribute": "Damage",
+          "affectValue": 5,
           "affectPlayer": true
         }
       ],
@@ -16827,15 +16846,15 @@
           "mySpeed": 2,
           "myDamage": 2,
           "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectValue": 5,
           "affectPlayer": false
         },
         {
           "myName": "Scratch",
           "mySpeed": 5,
           "myDamage": 5,
-          "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectAttribute": "Damage",
+          "affectValue": -5,
           "affectPlayer": false
         },
         {
@@ -16859,15 +16878,15 @@
           "mySpeed": 2,
           "myDamage": 2,
           "affectAttribute": "Health",
-          "affectValue": 0,
+          "affectValue": 5,
           "affectPlayer": false
         },
         {
           "myName": "Tackle",
           "mySpeed": 5,
-          "myDamage": 10,
-          "affectAttribute": "Health",
-          "affectValue": 0,
+          "myDamage": 5,
+          "affectAttribute": "Damage",
+          "affectValue": 5,
           "affectPlayer": true
         },
         {
@@ -16875,7 +16894,7 @@
           "mySpeed": 5,
           "myDamage": 0,
           "affectAttribute": "Speed",
-          "affectValue": -5,
+          "affectValue": 5,
           "affectPlayer": false
         }
       ],
@@ -16886,10 +16905,10 @@
   "playerData": {
     "myItems": [],
     "myValues": {
-      "Damage": 10,
+      "Damage": 5,
       "Speed": 5,
       "Defense": 5,
-      "Health": 100,
+      "Health": 5,
       "Level": 10
     },
     "myWeapons": [
@@ -16934,7 +16953,7 @@
         "Damage": 5,
         "Speed": 5,
         "Defense": 5,
-        "Health": 100,
+        "Health": 5,
         "Level": 10
       },
       [
