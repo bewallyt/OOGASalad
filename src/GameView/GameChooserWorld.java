@@ -1,6 +1,7 @@
 package GameView;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
@@ -18,6 +19,8 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	private InteractionMatrix2x2 matrix2;
 	private String[][] myGames = new String[2][2];
 	private String myGameString;
+	private int increase;
+	private boolean isExpanding = false;
 
 	public GameChooserWorld(int playWidth, int playHeight, Player p,
 			String chooseScreen) {
@@ -27,15 +30,31 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 		myGames[0][1] = Constants.TITLE_3;
 		myGames[1][1] = Constants.TITLE_4;
 		matrix2 = new InteractionMatrix2x2();
+		increase = 0;
 
 	}
 
 	@Override
 	public void paintDisplay(Graphics2D g, int xSize, int ySize, int xOffset,
 			int yOffset) {
+		if (isExpanding) {
+			increase += 2;
+		}
 		PokemonFont.setFont(g, 16f);
-		drawSelector(g, 0, 0, 250, 250, 250);
+		if (!isExpanding) {
+			drawSelector(g, 0, 0, 250, 250, 250);
+		} else if (increase < 250) {
 
+			expandImage(g, "ImageFiles/" + matrix2.getCurrentNode().getGame()
+					+ "Title.png", matrix2.getSelectedNodeLocation()[1],
+					matrix2.getSelectedNodeLocation()[0]);
+
+		} else {
+			setBackround("ImageFiles/" + matrix2.getCurrentNode().getGame()
+					+ "Title.png");
+			setGameString();
+
+		}
 	}
 
 	private void drawSelector(Graphics2D g2d, int xPos, int yPos, int width,
@@ -85,28 +104,54 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 
 	@Override
 	public void getNextText() {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void moveUp() {
-		matrix2.moveUp();
+		if (isExpanding == false) {
+			matrix2.moveUp();
+		}
 	}
 
 	public void moveDown() {
-		matrix2.moveDown();
+		if (isExpanding == false) {
+			matrix2.moveDown();
+		}
 	}
 
 	public void moveRight() {
-		matrix2.moveRight();
+		if (isExpanding == false) {
+			matrix2.moveRight();
+		}
 	}
 
 	public void moveLeft() {
-		matrix2.moveLeft();
+		if (isExpanding == false) {
+			matrix2.moveLeft();
+		}
 	}
 
 	public void setGameString() {
-		myGameString = matrix2.getCurrentNode().getGame();
+		isExpanding = true;
+		if (increase > 250) {
+			myGameString = matrix2.getCurrentNode().getGame();
+		}
+	}
+
+	private void expandImage(Graphics g2d, String imageFile, int xPos, int yPos) {
+		if ((xPos == 1) && (yPos == 0)) {
+			// Other
+			Image img = new ScaledImage(250 + increase, 250 + increase,
+					imageFile).scaleImage();
+			g2d.drawImage(img, 0, 500 - 2 * increase, null);
+		}
+		if ((xPos == 0) && (yPos == 1)) {
+			// Pokemon
+			Image img = new ScaledImage(250 + increase, 250 + increase,
+					imageFile).scaleImage();
+			g2d.drawImage(img, 250 - increase, 0, null);
+		}
+
 	}
 
 	public String getGameString() {

@@ -21,6 +21,9 @@ public class TitleWorld extends World {
 		
 	}
 
+	public void setBackround(String game){
+		myBackground = new ScaledImage(myWidth, myHeight, game).scaleImage();
+	}
 	
 	public Image getBackground(){
 		return myBackground;

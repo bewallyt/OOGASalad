@@ -18,7 +18,7 @@ import authoring.gameObjects.MapData;
 import authoring.gameObjects.PlayerData;
 import authoring.gameObjects.WorldData;
 import Data.DataManager;
-import Data.WorldDataManager;
+import Data.world.WorldDataManager;
 import util.Constants;
 
 /**
