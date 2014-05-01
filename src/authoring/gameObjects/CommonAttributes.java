@@ -163,8 +163,8 @@ public abstract class CommonAttributes {
      */
     protected JPanel locationFields(){
         JPanel locationPanel = new JPanel(new SpringLayout());
-        JLabel xcoordinate = new JLabel("X");
-        JLabel ycoordinate = new JLabel("Y");
+        JLabel xcoordinate = new JLabel("Y");
+        JLabel ycoordinate = new JLabel("X");
         xcoor = new JTextField("2",5);
         ycoor = new JTextField("2",5);
         locationPanel.add(ycoordinate);
