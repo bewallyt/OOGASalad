@@ -6,25 +6,18 @@ package authoring.features;
  * */
 
 import javax.swing.*;
-
-import authoring.gameObjects.AttacksData;
 import authoring.gameObjects.BarrierCreation;
 import authoring.gameObjects.DoorCreation;
 import authoring.gameObjects.EncounterCreation;
 import authoring.gameObjects.HealerCreation;
-import authoring.gameObjects.ItemData;
 import authoring.gameObjects.ItemWeaponCreation;
 import authoring.gameObjects.LabelsCreation;
 import authoring.gameObjects.NPCCreation;
 import authoring.gameObjects.PlayerEnemyCreation;
 import authoring.gameObjects.ShopkeeperCreation;
-import authoring.gameObjects.WeaponData;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AddGameComponents extends Feature implements ActionListener {
 

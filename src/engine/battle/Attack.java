@@ -5,7 +5,6 @@ import java.awt.Image;
 import util.Constants;
 import engine.Statistic;
 import engine.dialogue.MatrixNode;
-import engine.gridobject.person.Person;
 import engine.item.Weapon;
 
 public class Attack implements MatrixNode,BattleExecutable {
