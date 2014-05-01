@@ -113,10 +113,6 @@ public class WorldDataManager {
 				}
 				
 			}
-
-			// store player data
-			PlayerData playerData = transformPlayer(w);
-			md.savePlayer(playerData);
 			
 			// load other maps
 			loadOtherMaps();
@@ -125,15 +121,17 @@ public class WorldDataManager {
 			myCurrentMapName = mapName;
 			myWorldData.addLevel(mapName, md);
 			myWorldData.setMap(mapName);
-			myWorldData.setPrimaryMap(mapName);
-			
-			
-			
-			// finally save the file			
-			myDM.setWorldData(fileName, myWorldData);
-			myDM.saveWorldDataToFile(fileName);
+			myWorldData.setPrimaryMap(mapName);			
 			
 		}
+		
+		// store player data
+		PlayerData playerData = transformPlayer(w);
+		myWorldData.savePlayer(playerData);
+				
+		// finally save the file			
+		myDM.setWorldData(fileName, myWorldData);
+		myDM.saveWorldDataToFile(fileName);
 	}
 	
 	/**
@@ -144,10 +142,8 @@ public class WorldDataManager {
 	private PlayerData transformPlayer(World w) {
 		Player p = w.getPlayer();
 		
-		// Authoring limitation - player and enemy sprites have to be 
-		// either Zelda or Ash
-	//	String pImageName = p.getImageFile();
-		String pImageName = "Ash";
+		String pImageName = p.getImageFile();
+		String spriteName = getSpriteName(pImageName);
 		String pName = p.toString();		
 		
 		String[] pAnimImages = p.getAnimImages();		
@@ -167,7 +163,7 @@ public class WorldDataManager {
 		List<Item> pItems = p.getItems();
 		String [] pItemNames = getItemNames(pItems);	
 
-		PlayerData playerData = new PlayerData(p.getX()/Constants.TILE_SIZE, p.getY()/Constants.TILE_SIZE, pImageName, pName, attributeValues, pWeps, pItemNames);
+		PlayerData playerData = new PlayerData(p.getX()/Constants.TILE_SIZE, p.getY()/Constants.TILE_SIZE, spriteName, pName, attributeValues, pWeps, pItemNames);
 		playerData.setImages(pAnimImages);
 		playerData.setMyMoney(p.getMoney());
 		playerData.setMyExperience(p.getExperience());
@@ -293,14 +289,11 @@ public class WorldDataManager {
 			myWorldData.saveWeapon(weaponData.getMyName(), weaponData);
 		}
 		
-		// Authoring limitation - player and enemy sprites have to be 
-		// either Zelda or Ash
-	//	String img = g.getImageFile();
-		String img = "Zelda";
+		String spriteName = getSpriteName(g.getImageFile());
 		
 		EnemyData enemyData = new EnemyData(g.getX()/Constants.TILE_SIZE,
 				g.getY()/Constants.TILE_SIZE,
-				img,
+				spriteName,
 				g.toString(),
 				attributeValues1,
 				eWeps,
@@ -333,16 +326,13 @@ public class WorldDataManager {
 		Set<Item> items = s.getItemSet();
 		List<String> itemNames = getItemNamesList(items);
 		
-		// Authoring limitation - player and enemy sprites have to be 
-		// either Zelda or Ash
-	//	String img = g.getImageFile();
-		String img = "Zelda";
+		String spriteName = getSpriteName(g.getImageFile());
 		
 		ShopkeeperData shopkeeperData = new ShopkeeperData(g.getX()/Constants.TILE_SIZE,
 				g.getY()/Constants.TILE_SIZE,
 				g.getWidth()/Constants.TILE_SIZE,
 				g.getHeight()/Constants.TILE_SIZE,
-				img,
+				spriteName,
 				itemNames);
 		
 		for (Item i : items) {
@@ -436,12 +426,12 @@ public class WorldDataManager {
 	 * @return Transforms engine Healer to authoring HealerData
 	 */
 	private HealerData transformHealer(GridObject g) {
-		String img = "Zelda";
+		String spriteName = getSpriteName(g.getImageFile());
 		HealerData healerData = new HealerData(g.getX()/Constants.TILE_SIZE,
 				g.getY()/Constants.TILE_SIZE,
 				g.getWidth()/Constants.TILE_SIZE,
 				g.getHeight()/Constants.TILE_SIZE,
-				img);
+				spriteName);
 
 		return healerData;
 	}
@@ -453,14 +443,14 @@ public class WorldDataManager {
 	 */
 	private NPCData transformNPC(GridObject g) {
 		NPC npc = (NPC) g;
-		String img = "Zelda";
+		String spriteName = getSpriteName(g.getImageFile());
 		NPCResponseNodeData npcResponseNodeData = transformNPCResponse(npc.getResponseNode());
 
 	    NPCData npcData = new NPCData(g.getX()/Constants.TILE_SIZE,
 	    		g.getY()/Constants.TILE_SIZE,
 				g.getWidth()/Constants.TILE_SIZE,
 				g.getHeight()/Constants.TILE_SIZE,
-				img,
+				spriteName,
 				npcResponseNodeData, 1);
 		 
 		return npcData;
@@ -536,5 +526,34 @@ public class WorldDataManager {
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 * @param imagePath location of images
+	 * @return Returns sprite associated with image path
+	 */
+	private String getSpriteName(String imagePath) {
+		System.out.println("imagePath : " + imagePath);
+		String spriteName = "Zelda";
+		String prefix = "PlayerImages/";
+		if (imagePath == null) {
+			return spriteName;
+		} 
+		if (imagePath.startsWith(prefix)) {
+			int index = imagePath.indexOf('/');
+			if (index != -1) {
+				if (imagePath.length() > index+1) {
+					String temp1 = imagePath.substring(index+1);	
+					int lastIndex = temp1.lastIndexOf('/');
+					System.out.println("lastIndex : " + lastIndex);
+					if (lastIndex != -1) {
+						String temp2 = temp1.substring(0, lastIndex);
+						spriteName = temp2;
+					}
+				}
+			}			
+		}
+		return spriteName;
+	}	
 	
 }
