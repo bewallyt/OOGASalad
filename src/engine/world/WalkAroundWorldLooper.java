@@ -1,19 +1,11 @@
 package engine.world;
 
-import com.sun.org.apache.xml.internal.security.utils.Constants;
-
 import Data.WorldDataManager;
 import engine.collision.CollisionMatrix;
-import engine.dialogue.AbstractManager;
-import engine.dialogue.ConversationManager;
 import engine.dialogue.DialogueDisplayControl;
-import engine.dialogue.NPCResponseNode;
-import engine.dialogue.NotificationManager;
 import engine.gridobject.Door;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
-import engine.gridobject.person.Player;
-import engine.state.DialogueState;
 import engine.state.ExitState;
 import engine.state.SaveState;
 import engine.state.WalkAroundState;

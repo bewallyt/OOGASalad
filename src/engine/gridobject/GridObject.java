@@ -1,27 +1,18 @@
 package engine.gridobject;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.swing.ImageIcon;
-
 import util.Constants;
 import engine.Statistic;
 import engine.dialogue.DialogueDisplayControl;
 import engine.dialogue.InteractionBox;
 import engine.images.ScaledImage;
-import engine.item.Item;
 import engine.item.Pickupable;
-import engine.item.Weapon;
 
 public abstract class GridObject{
 
