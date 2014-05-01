@@ -1,5 +1,6 @@
 package GameView;
 
+import util.Constants;
 import GameView.GameChooserWorld;
 import engine.dialogue.DialogueDisplayControl;
 import engine.state.GameChooserState;
@@ -14,8 +15,7 @@ public class GameChooserWorldLooper extends GameLooper {
 
 	public GameChooserWorldLooper(GameChooserWorld currentWorld) {
 		super(currentWorld);
-		
-		System.out.println("ingamelooper");
+
 		myWorld = (GameChooserWorld) getWorld();
 
 		myWorld.getPlayer().setDialogueDisplayControl(
@@ -35,8 +35,14 @@ public class GameChooserWorldLooper extends GameLooper {
 		myGame = myWorld.getGameString();
 
 		if (myGame != null) {
-			return new TitleWorld(500, 500, myWorld.getPlayer(), myGame
-					+ "Title.png");
+			TitleWorld title = new TitleWorld(500, 500, myWorld.getPlayer(),
+					myGame + "Title.png");
+			if (myGame == "Pokemon") {
+				title.setMusic(Constants.POKEMON_MUSIC);
+			} else {
+				title.setMusic(Constants.OTHER_MUSIC);
+			}
+			return title;
 		}
 		return null;
 	}

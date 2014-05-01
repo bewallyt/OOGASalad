@@ -26,7 +26,9 @@ public class Constants {
 	public static final String TITLE10_BACKGROUND = "PokemonBackground.png";
 	public static final String TITLE11_BACKGROUND = "PokemonBackground.png";
 	public static final String GAME_CHOOSER_BACKGROUND = "TitleScreen.png";
-	public static final String TITLE_MUSIC = "/music/PokemonIntro.wav";
+	public static final String TITLE_MUSIC = "/music/youme.wav";
+	public static final String POKEMON_MUSIC = "/music/PokemonIntro.wav";
+	public static final String OTHER_MUSIC = "/music/disconnected.wav";
 	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
 	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";
 	public static final String PLAYER_IMAGE_FILE="src/PlayerImages/";
@@ -113,6 +115,7 @@ public class Constants {
 	public static final String LEVEL = "Level";
 	public static final String DEFENSE = "Defense";
 	public static final int BATTLE_IMAGE_SIZE = 150;
+	public static final String TITLE_BACKGROUND = "TitleScreen.png";
 
 
 }

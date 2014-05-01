@@ -30,7 +30,6 @@ public class GameChooserState extends AbstractState {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == Constants.UP) {
-			System.out.println("button pressed");
 			myGCW.moveUp();
 		}
 		if (e.getKeyCode() == Constants.DOWN) {
