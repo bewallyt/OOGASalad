@@ -82,6 +82,7 @@ public abstract class AbstractManager implements InteractionBox{
 			for (int j = 0; j < matrix.getDimension()[1]; j++) {
 				MatrixNode qn = (MatrixNode) matrix.getNode(j, i);
 				if(qn!=null && qn.toString()!=null) {
+					int x = 5;
 					printOption(g2d, qn.toString(), xSize, ySize, width, height, i, j);
 //					g2d.drawString(qn.toString(), (int) (xCornerLoc + j*(xSize*5/10)), 
 //													(int)(yCornerLoc + i*(height*3/10)));

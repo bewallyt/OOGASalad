@@ -48,7 +48,7 @@ public class ListeningState implements ConversationState{
 				if(cm.getCurrentNPCResponseNode().getUserQueryNodes().size()>count)
 					cm.getMatrix().setNode(cm.getCurrentNPCResponseNode().getUserQueryNodes().get(count), j, i);
 				else{
-					cm.getMatrix().setNode(null, i, j);
+					cm.getMatrix().setNode(null, j, i);
 				}
 				count++;
 			}

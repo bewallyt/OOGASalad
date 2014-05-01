@@ -45,11 +45,13 @@ public class Player extends Person {
 		myState = new WalkAroundState(this);
 		myExperience=0;
 		myName = name;
-		
+		setMyStartX(9);
+		setMyStartY(9);
 		addAllWeapons(allWeapons, weps);
 
 	}
 	
+
 	public Player(String[] animImages, String name, double speed, String[] items, String[] weps) {
 		super(animImages, name, speed, DEFAULT_PLAYER_WIDTH, DEFAULT_PLAYER_HEIGHT);
 		myState = new WalkAroundState(this);
