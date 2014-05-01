@@ -84,7 +84,7 @@ public class GridObjectData {
 
 	// NPCData
 	public GridObjectData(int x, int y, int width, int height, String image,
-			NPCResponseNodeData root, String id) {
+			NPCResponseNodeData root, int movement, String id) {
 		myID = id;
 		myX = x;
 		myY = y;
@@ -99,7 +99,7 @@ public class GridObjectData {
 
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(root);
-		myArguments.add((int) 1); // default movement type until given
+		myArguments.add(movement); // default movement type until given
 									// movementType
 	}
 	
