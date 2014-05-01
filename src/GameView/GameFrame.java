@@ -100,7 +100,7 @@ public class GameFrame extends RPGEngine {
 			List<String> TileImageList = parser.getTileImageList();
 
 			gridObjectList.add(myPlayer);
-
+			
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,

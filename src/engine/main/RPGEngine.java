@@ -82,7 +82,7 @@ public abstract class RPGEngine{
 		}
 		else{
 			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
-					myCurrentWorld.getPlayer().getStartY());
+					myCurrentWorld.getPlayer().getStartY());			
 		}
 		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().start();
 	}

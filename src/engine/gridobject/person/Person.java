@@ -64,6 +64,7 @@ public abstract class Person extends GridObject {
 		currentImageFile=getAnimImages()[myFacing];
 		myMoney=0;
 		myName=name;
+
 	}
 	
 	public Person(){
@@ -301,6 +302,13 @@ public abstract class Person extends GridObject {
 		return myName;
 	}
 	
+	public void setMyStartY(int i) {
+		myStartX = i;
+	}
+
+	public void setMyStartX(int i) {
+		myStartY = i;
+	}
 	
 	
 }
