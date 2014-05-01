@@ -2115,7 +2115,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": ""
+      "mySong": "Dungeon.wav"
     },
     "IceWorld": {
       "myTiles": [
@@ -8265,7 +8265,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": ""
+      "mySong": "Ike_resolution.wav"
     },
     "ChaosRealm": {
       "myTiles": [
@@ -9672,7 +9672,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": ""
+      "mySong": "Ike_resolution.wav"
     },
     "Castle": {
       "myTiles": [
@@ -11767,11 +11767,53 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": ""
+      "mySong": "Victory_is_near.wav"
     }
   },
   "myImages": {},
-  "mySongs": {},
+  "mySongs": {
+    "Ike_resolution.wav": {
+      "path": "src\\Music\\Ike_resolution.wav"
+    },
+    "Dungeon.wav": {
+      "path": "src\\Music\\Dungeon.wav"
+    },
+    "Victory_is_near.wav": {
+      "path": "src\\Music\\Victory_is_near.wav"
+    },
+    "test.wav": {
+      "path": "src\\Music\\test.wav"
+    },
+    "youmewav.wav": {
+      "path": "src\\Music\\youmewav.wav"
+    },
+    "pokeCenter.wav": {
+      "path": "src\\Music\\pokeCenter.wav"
+    },
+    "flumelorde.wav": {
+      "path": "src\\Music\\flumelorde.wav"
+    },
+    "flume.wav": {
+      "path": "src\\Music\\flume.wav"
+    },
+    "disconnected.wav": {
+      "path": "src\\Music\\disconnected.wav"
+    },
+    "PokemonIntro.wav": {
+      "path": "src\\Music\\PokemonIntro.wav"
+    },
+    "fms.wav": {
+      "path": "src\\Music\\fms.wav"
+    },
+    "pokeBattle.wav": {
+      "path": "src\\Music\\pokeBattle.wav"
+    },
+    "youme.wav": {
+      "path": "src\\Music\\youme.wav"
+    },
+    "pokeTest.wav": {
+      "path": "src\\Music\\pokeTest.wav"
+    }},
   "primaryMap": "Castle",
   "currentMap": "ChaosRealm",
   "myItems": {
