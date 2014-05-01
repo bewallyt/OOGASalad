@@ -353,7 +353,7 @@ public class WorldDataManager {
 	private ItemData transformItem(Item item) {
 		ItemData itemData = null;
 		if (item instanceof KeyItem ) {
-			itemData = new ItemData(item.toString(), item.getPrice(), "KeyItem");
+			itemData = new ItemData(item.toString(), item.getImageName(), item.getPrice(), "KeyItem");
 			itemData.setItemImage(item.getImageName());
 		} else if (item instanceof StatBuffer) {
 			StatBuffer stbuffer = (StatBuffer) item;
