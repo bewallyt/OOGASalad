@@ -1,6 +1,7 @@
 package engine.world;
 
 import util.Constants;
+
 import Data.WorldDataManager;
 import GameView.GameChooserWorld;
 import engine.collision.CollisionMatrix;
@@ -53,7 +54,11 @@ public class WalkAroundWorldLooper extends GameLooper {
 			for (GridObject go : (myWorld.getGridObjectList())) {
 				go.move();
 				Door d = myWorld.getPlayer().isDoorEntered();
-				if (d != null) {
+
+				if(d!=null){
+					if (d.getWorld().getSavedPlayerPosition() == null) {
+						d.getWorld().setPlayerPositionFromDoor(d.getToX()*40, d.getToY()*40);
+					}
 					return d.getWorld();
 				}
 				if (go instanceof Enemy) {

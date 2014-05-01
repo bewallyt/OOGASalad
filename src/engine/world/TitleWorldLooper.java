@@ -1,8 +1,10 @@
 package engine.world;
 
+import util.Constants;
 import GameView.GameFrame;
 import GameView.TitleManager;
 import engine.dialogue.DialogueDisplayControl;
+import engine.gridobject.person.Player;
 import engine.state.TitleState;
 
 public class TitleWorldLooper extends GameLooper {
@@ -37,6 +39,9 @@ public class TitleWorldLooper extends GameLooper {
 			
 			GameFrame gm = new GameFrame();
 			gm.initialize(myTM.getLoadFile());
+			World firstWorld = gm.getInitialWorld();
+			Player p = firstWorld.getPlayer();
+			p.setPosition(gm.getXStart()*Constants.TILE_SIZE, gm.getYStart()*Constants.TILE_SIZE);
 			return gm.getInitialWorld();
 			
 		}

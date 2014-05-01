@@ -14,23 +14,19 @@ import java.awt.event.ActionListener;
  */
 public class RunGameFeature extends Feature implements ActionListener {
 
-    private Main mainGame;
+    private GameView.Main mainGame;
 
-    public RunGameFeature(){
-        mainGame = new Main();
+    public RunGameFeature(){    
         BasicArrowButton playButton = new BasicArrowButton(SwingConstants.EAST);
         playButton.setActionCommand("play");
         playButton.addActionListener(this);
         myComponents.put(playButton, BorderLayout.NORTH);
     }
 
-    public void runGame(){
-        //mainGame.startEngine();
-     
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        runGame();
+        mainGame=new GameView.Main();
+        mainGame.main(null);
     }
 }

@@ -200,7 +200,7 @@ public class WorldData {
 	 * Saves the player
 	 * @param player PlayerData to be saved
 	 */
-	protected void savePlayer(PlayerData player) {
+	public void savePlayer(PlayerData player) {
 		playerData=player;
 		//myLevels.get(currentMap).savePlayer(player);
 	}

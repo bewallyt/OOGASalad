@@ -30,7 +30,6 @@ public class SpriteImageChooser {
 		String[] temp = convertedFileList(PLAYER_IMAGE_FOLDER+sprite);
 		for(int i = 0; i < temp.length; i++){
 			temp[i]="PlayerImages/"+sprite+"/"+temp[i];
-			System.out.println(temp[i]);
 		}
 		
 		return temp;

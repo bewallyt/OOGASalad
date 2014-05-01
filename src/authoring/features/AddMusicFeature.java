@@ -5,13 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import authoring.gameObjects.MapData;
-
+import Data.FileLister;
 import Data.MusicManager;
 
 /**
@@ -30,7 +32,7 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 	private JScrollPane listContainer;
 	private MusicManager m;
 
-	public AddMusicFeature() {
+	public AddMusicFeature() {		
 		musicButton = new JButton("Add Music");
 		musicButton.setActionCommand("addmusic");
 		musicButton.addActionListener(this);
@@ -38,6 +40,7 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		uploadButton = new JButton("Upload New Song");
 		uploadButton.addActionListener(this);
 		model = new DefaultListModel<String>();
+		addExisting();
 		availableMusic = new JList<String>(model);
 		availableMusic.addListSelectionListener(this);
 		availableMusic.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -53,7 +56,16 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		myWindow.pack();
 
 	}
-
+	private void addExisting(){
+		FileLister f=new FileLister();
+		List<String> files=f.getFileList(m.DEFAULT_MUSIC_FOLDER);
+		for(String s: files){
+			model.addElement(s);
+			FeatureManager.getWorldData().saveSong(s, new File(m.DEFAULT_MUSIC_FOLDER+s));
+			System.out.println(m.DEFAULT_MUSIC_FOLDER+s);
+		}
+		
+	}
 	private void musicUploader(){
 		JTextField name = new JTextField(10);
 		JPanel panel = new JPanel();
@@ -83,9 +95,9 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 			songFile = chooser.getSelectedFile();
 
 			try {
-				File savedFile = m.storeMusicFile(fileName, songFile);
-				FeatureManager.getWorldData().saveSong(fileName, savedFile);
-				model.addElement(fileName);
+				File savedFile = m.storeMusicFile(fileName+m.DEFAULT_MUSIC_EXTENSION, songFile);
+				FeatureManager.getWorldData().saveSong(fileName+m.DEFAULT_MUSIC_EXTENSION, savedFile);
+				model.addElement(fileName+m.DEFAULT_MUSIC_EXTENSION);
 				myWindow.pack();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!",

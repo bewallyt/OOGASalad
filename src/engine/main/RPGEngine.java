@@ -2,9 +2,9 @@ package engine.main;
 
 import GameView.GameChooserWorld;
 import util.Constants;
+import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.gridobject.person.Reflection;
-import engine.world.ArenaWorld;
 import engine.world.ArenaWorldLooper;
 import engine.world.Canvas;
 import engine.world.GameLooper;
@@ -22,6 +22,7 @@ public abstract class RPGEngine {
 	private GameLooper myGameLooper;
 	private World myPreviousWorld;
 	private Boolean isInitialized = false;
+	private Door myLastDoor;
 
 	/**
 	 * Initialize game. Call initializeCanvas. Must be called by main method
@@ -87,12 +88,13 @@ public abstract class RPGEngine {
 		setWorld(world);
 		if (myCurrentWorld.getSavedPlayerPosition() != null) {
 			setSavedPosition();
-		} else {
-			myCurrentWorld.getPlayer().setPosition(
-					myCurrentWorld.getPlayer().getStartX(),
-					myCurrentWorld.getPlayer().getStartY());
+
 		}
-		if (myCurrentWorld.getMusic() != null)
+		else{
+			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
+					myCurrentWorld.getPlayer().getStartY());			
+		}
+		if(myCurrentWorld.getMusic()!=null)
 			myCurrentWorld.getMusic().start();
 	}
 

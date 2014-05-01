@@ -26,6 +26,7 @@ public class DoorCreation extends CommonAttributes{
 		frame = new JFrame("Add Door:");
 		frame.setAlwaysOnTop(true);
 		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		assembleGUI();
 		frame.pack();
 		frame.setVisible(true);
@@ -90,12 +91,15 @@ public class DoorCreation extends CommonAttributes{
 	 * @param fieldList List of fields users have input data
 	 */
 	private boolean validateText(List<JTextField> fieldList){
+		/*
 		for(JTextField field: fieldList){
 			if(field.getText().equals("")){
 				return false;
 			}
 		}
+		*/
 		return true;
+		
 	}
 	private class createDoorListener implements ActionListener{
 		@Override

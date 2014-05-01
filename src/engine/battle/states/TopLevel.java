@@ -8,7 +8,6 @@ public class TopLevel implements BattleState{
 
 	@Override
 	public void doState(BattleManager manager) {
-		System.out.println(manager.getCurrentBattleSelector());
 		if(manager.getCurrentBattleSelector().getChildren().size()>0){
 			int count=0;
 

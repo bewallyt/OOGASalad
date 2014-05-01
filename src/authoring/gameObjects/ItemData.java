@@ -35,10 +35,11 @@ public class ItemData {
         amountToChange=amount;
     }
     
-    public ItemData(String name, int price, String identity){
+    public ItemData(String name, String image, int price, String identity){
         itemName = name;
         myPrice = price;
         myIdentity = identity;
+        itemImage=image;
     }
 
     public String getItemName(){

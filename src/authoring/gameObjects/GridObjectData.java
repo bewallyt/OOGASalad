@@ -44,7 +44,7 @@ public class GridObjectData {
 		myArguments.add(width);
 		myArguments.add(height);
 		if (id.equals("engine.gridobject.person.Healer")) {
-			myArguments.add(createSpriteImages("Zelda"));
+			myArguments.add(createSpriteImages(image));
 		} else {
 			myArguments.add(getGridObjectPathValue(image));
 		}

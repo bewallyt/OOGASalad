@@ -1,9 +1,11 @@
 package authoring.gameObjects;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+import Data.FileLister;
 import authoring.SpringUtilities;
 import authoring.SpriteImageChooser;
 import authoring.features.FeatureManager;
@@ -15,8 +17,14 @@ import authoring.view.TilePanel;
 
 
 
+
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -60,6 +68,7 @@ public abstract class CommonAttributes {
     protected JCheckBox two;
     protected JCheckBox three;
     protected ButtonModel movement;
+    protected JComboBox<String> playerEnemyImages;
 
     public CommonAttributes(){
         weaponMap = new HashMap<String, WeaponData>();
@@ -71,7 +80,7 @@ public abstract class CommonAttributes {
      * Gets the sprite image options currently available
      */
     protected JComboBox spriteField(){
-    	 JComboBox<String> playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
+    	 playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
          return playerEnemyImages;
     }
     /**
@@ -101,8 +110,9 @@ public abstract class CommonAttributes {
      * Creates a basic name/image field GUI Panel
      */
     protected JPanel nameImageFields(){
+    	/*
         JLabel nameLabel = new JLabel("Name");
-        JLabel imageLabel = new JLabel("Image");
+        JLabel imageLabel = new JLabel("Image (for non-animated object)");
         itemName = new JTextField("Name",15);
         namePanel = new JPanel(){
             public Dimension getPreferredSize() {
@@ -129,6 +139,17 @@ public abstract class CommonAttributes {
 		editor=new GridObjectImageEditor(imagePanel);
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
+        */
+    	
+    	JPanel one=nameField();
+    	JPanel two=imageField();
+    	JPanel combined=new JPanel();
+    	combined.setLayout(new SpringLayout());
+    	combined.add(one);
+    	combined.add(two);  	
+    	SpringUtilities.makeCompactGrid(combined, 2, 1, 6, 6, 6, 6);
+    	return combined;
+    	
     }
     protected JPanel nameField(){
     	 JLabel nameLabel = new JLabel("Name");
@@ -143,10 +164,12 @@ public abstract class CommonAttributes {
          name.setLayout(new SpringLayout());
          name.add(nameLabel);
          nameLabel.setLabelFor(itemName);
+         name.add(itemName);
+         SpringUtilities.makeCompactGrid(name, 1, 2, 6, 6, 6, 6);
          return name;
     }
     protected JPanel imageField(){
-    	 JLabel imageLabel = new JLabel("Image");
+    	 JLabel imageLabel = new JLabel("Image (for non-animated objects)");
     	 JPanel panel=new JPanel();
     	 panel.add(imageLabel);
     	 imageLabel.setLabelFor(imagePanel);
@@ -163,8 +186,8 @@ public abstract class CommonAttributes {
      */
     protected JPanel locationFields(){
         JPanel locationPanel = new JPanel(new SpringLayout());
-        JLabel xcoordinate = new JLabel("X");
-        JLabel ycoordinate = new JLabel("Y");
+        JLabel xcoordinate = new JLabel("Y");
+        JLabel ycoordinate = new JLabel("X");
         xcoor = new JTextField("2",5);
         ycoor = new JTextField("2",5);
         locationPanel.add(ycoordinate);
@@ -239,4 +262,24 @@ public abstract class CommonAttributes {
 		return mapArray;
 	}
 
+    /**
+     * Adds a image to be shown on the map for animated objects
+     */
+    protected void addImage(int xVal, int yVal, String imageString){
+    	FileLister f=new FileLister();
+    	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+imageString);
+    	String first=imageList.get(0);
+    	System.out.println(first);
+    	File img=new File(util.Constants.PLAYER_IMAGE_FILE+imageString+"/"+first);
+    	BufferedImage bimg=null;
+    	try {
+			bimg=ImageIO.read(img);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	ImageIcon icon=new ImageIcon(bimg);
+    	new GridObjectPainter(xVal, yVal, 1, 1, icon); 	
+    }
+    
 }

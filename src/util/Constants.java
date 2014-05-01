@@ -15,6 +15,9 @@ public class Constants {
 	public static final int TITLEWIDTH = 1000, TITLEHEIGHT = 1000;
 	public static final int COLLISION_OFFSET=2;
 	public static final int TILE_SIZE = 40;
+	public static final int INIT_X = 9;
+	public static final int INIT_Y = 9;
+	
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
 	public static final String SELECTGAMETEXT = "Select a Game";

@@ -22,7 +22,7 @@ public class Healer extends NPC {
 		this((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
 				.toArray(new String[12]), "Healer", 1, (int) ((Double) list
 				.get(Constants.WIDTH_CONST)).intValue(), (int) ((Double) list
-				.get(Constants.HEIGHT_CONST)).intValue(), 1, (Player) list
+				.get(Constants.HEIGHT_CONST)).intValue(), 3, (Player) list
 				.get(Constants.HEALER_PLAYER_CONST));
 	}
 

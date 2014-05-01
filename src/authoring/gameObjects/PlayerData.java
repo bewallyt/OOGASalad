@@ -15,7 +15,6 @@ public class PlayerData extends EnemyData{
         super(x,y,image,name,startVals,weps, 0,0,0);
         myItems = its;
         myImage=image;
-        System.out.println(image);
 
     }
    /**
