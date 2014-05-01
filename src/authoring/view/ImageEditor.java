@@ -8,7 +8,7 @@ import Data.ImageManager;
  * Abstract class used to create image editors for Tiles and GridObjects. Allows one 
  * to easily add multiple images in a grid format to a JFrame so that those images may be clicked
  * and used. 
- * @author Davis Treybig, Richard Cao
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public abstract class ImageEditor {

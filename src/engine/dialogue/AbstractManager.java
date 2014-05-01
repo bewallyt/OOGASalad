@@ -23,7 +23,7 @@ public abstract class AbstractManager implements InteractionBox{
 	private static final int OPTION_CHARS_PER_LINE = 10;
 	private InteractionMatrix2x2 myMatrix;
 
-	public AbstractManager(){
+	public AbstractManager() {
 		myMatrix = new InteractionMatrix2x2();
 	}
 	

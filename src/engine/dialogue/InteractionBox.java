@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
  * that the canvas has.
  *
  */
+
 public interface InteractionBox {
 
 	/**

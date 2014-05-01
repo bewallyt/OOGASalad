@@ -79,7 +79,7 @@ public class GridObjectPainter {
 		BufferedImage bi = new BufferedImage(
 			    image.getIconWidth(),
 			    image.getIconHeight(),
-			    BufferedImage.TYPE_INT_RGB);
+			    BufferedImage.TYPE_INT_ARGB);
 			Graphics g = bi.createGraphics();
 			image.paintIcon(null, g, 0,0);
 			g.dispose();
