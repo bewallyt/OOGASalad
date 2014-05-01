@@ -4,13 +4,14 @@ import java.util.List;
 
 import util.Constants;
 import engine.gridobject.person.Player;
+import engine.world.WalkAroundWorld;
 import engine.world.World;
 
 public class Door extends GridObject{
-	private World myBuildingWorld;
+	private WalkAroundWorld myBuildingWorld;
 	private String toMap;
-	private int toX;
-	private int toY;
+	public int toX;
+	public int toY;
 	/**
 	 * @param image file
 	 * @param numTilesWidth the width in tiles
@@ -47,7 +48,7 @@ public class Door extends GridObject{
 	 *
 	 * @param world the new world
 	 */
-	public void setWorld(World world){
+	public void setWorld(WalkAroundWorld world){
 		myBuildingWorld = world;
 	}
 	
@@ -59,7 +60,7 @@ public class Door extends GridObject{
 	 *
 	 * @return the world
 	 */
-	public World getWorld(){
+	public WalkAroundWorld getWorld(){
 		return myBuildingWorld;
 	}
 

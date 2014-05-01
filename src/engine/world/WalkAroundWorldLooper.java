@@ -51,8 +51,12 @@ public class WalkAroundWorldLooper extends GameLooper {
 				go.move();
 				Door d = myWorld.getPlayer().isDoorEntered();
 				if(d!=null){
-					System.out.println("change world");
-//					d.setPlayer(myWorld.getPlayer());
+					System.out.println();
+					int myxloc = myWorld.getPlayer().getX();
+					int myyloc = myWorld.getPlayer().getY();
+					int dx = d.toX;
+					int dy = d.toY;
+					d.getWorld().setTileObject(myWorld.getPlayer(), d.toX, d.toY);
 					return d.getWorld();
 				}
 				if(go instanceof Enemy){
