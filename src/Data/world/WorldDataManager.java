@@ -1,4 +1,4 @@
-package Data;
+package Data.world;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +27,7 @@ import engine.item.Weapon;
 import engine.world.Tile;
 import engine.world.WalkAroundWorld;
 import engine.world.World;
+import Data.DataManager;
 import authoring.UserQueryNodeData;
 import authoring.gameObjects.AttacksData;
 import authoring.gameObjects.BarrierData;

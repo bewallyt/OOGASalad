@@ -1,6 +1,6 @@
 package engine.world;
 
-import Data.WorldDataManager;
+import Data.world.WorldDataManager;
 import GameView.GameChooserWorld;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.DialogueDisplayControl;

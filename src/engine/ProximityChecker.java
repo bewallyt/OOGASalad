@@ -2,7 +2,6 @@ package engine;
 
 import util.Constants;
 import engine.gridobject.GridObject;
-import engine.gridobject.person.Person;
 
 public class ProximityChecker {
 

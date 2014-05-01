@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import util.Constants;
 import util.PokemonFont;
 import engine.dialogue.InteractionBox;
 import engine.dialogue.InteractionMatrix2x2;
@@ -24,10 +25,10 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 	public GameChooserWorld(int playWidth, int playHeight, Player p,
 			String chooseScreen) {
 		super(playWidth, playHeight, p, chooseScreen);
-		myGames[0][0] = "Zelda";
-		myGames[1][0] = "Pokemon";
-		myGames[0][1] = "Other";
-		myGames[1][1] = "FinalFantasy";
+		myGames[0][0] = Constants.TITLE_1;
+		myGames[1][0] = Constants.TITLE_2;
+		myGames[0][1] = Constants.TITLE_3;
+		myGames[1][1] = Constants.TITLE_4;
 		matrix2 = new InteractionMatrix2x2();
 		increase = 0;
 
@@ -64,7 +65,7 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/WhiteSelector.png").scaleImage();
 			g2d.setColor(changeColor());
-			g2d.drawString("Choose Game", selectedOptionLoc[0] * 250 + 45,
+			g2d.drawString(Constants.CHOOSE_GAME, selectedOptionLoc[0] * 250 + 45,
 					selectedOptionLoc[1] * 250 + 130);
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
 					+ scale * selectedOptionLoc[1], null);
@@ -73,7 +74,7 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/Selector.png").scaleImage();
 			g2d.setColor(changeColor());
-			g2d.drawString("Choose Game", selectedOptionLoc[0] * 250 + 45,
+			g2d.drawString(Constants.CHOOSE_GAME, selectedOptionLoc[0] * 250 + 45,
 					selectedOptionLoc[1] * 250 + 130);
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
 					+ scale * selectedOptionLoc[1], null);

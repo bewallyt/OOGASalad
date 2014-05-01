@@ -18,7 +18,6 @@ public class Constants {
 	public static final int INIT_X = 9;
 	public static final int INIT_Y = 9;
 	
-
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
 	public static final String SELECTGAMETEXT = "Select a Game";
 	public static final String TITLE00_BACKGROUND = "PokemonBackground.png";
@@ -32,10 +31,15 @@ public class Constants {
 	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
 	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";
 	public static final String PLAYER_IMAGE_FILE="src/PlayerImages/";
+	
+	public static final String TITLE_1 = "Zelda";
+	public static final String TITLE_2 = "Pokemon";
+	public static final String TITLE_3 = "Other";
+	public static final String TITLE_4 = "FinalFantasy";
+	public static final String CHOOSE_GAME = "Choose Game";
 
 	// engine
 	public static final int DEF_TIL = 1;
-	//public static final int SPEED = 1;
 	public static final int DEF_MAX_STAT = 100;
 	public static final String IMAGEPATH = "engine/images/";
 	public static final String GRIDOBJECTPATH = "gridobject/";
