@@ -1,36 +1,11 @@
 {
   "myLevels": {
-    "1111": {
+    "1234": {
       "myTiles": [
         [
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": [
-              {
-                "width": 14,
-                "height": 14,
-                "myX": 0,
-                "myY": 0,
-                "myID": "engine.gridobject.Barrier",
-                "myArguments": [
-                  14,
-                  14,
-                  "gridobject/Duvall.png"
-                ]
-              },
-              {
-                "width": 15,
-                "height": 15,
-                "myX": 0,
-                "myY": 0,
-                "myID": "engine.gridobject.Barrier",
-                "myArguments": [
-                  15,
-                  15,
-                  "gridobject/Duvall.png"
-                ]
-              }
-            ]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -96,7 +71,20 @@
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [
+              {
+                "width": 14,
+                "height": 14,
+                "myX": 1,
+                "myY": 1,
+                "myID": "engine.gridobject.Barrier",
+                "myArguments": [
+                  14,
+                  14,
+                  "gridobject/Duvall.png"
+                ]
+              }
+            ]
           },
           {
             "myImageName": "TileImage/DefaultTileImage.jpg",
@@ -965,7 +953,64 @@
   },
   "myImages": {},
   "mySongs": {},
-  "currentMap": "1111",
+  "primaryMap": "1234",
+  "currentMap": "1234",
   "myItems": {},
-  "myWeapons": {}
+  "myWeapons": {},
+  "playerData": {
+    "myItems": [],
+    "myValues": {
+      "Damage": 5,
+      "Speed": 5,
+      "Defense": 5,
+      "Health": 5,
+      "Level": 5
+    },
+    "myWeapons": [],
+    "myName": "mainchar",
+    "myMovement": 0,
+    "myImages": [
+      "PlayerImages/Ash/PlayerDown1.png",
+      "PlayerImages/Ash/PlayerDown2.png",
+      "PlayerImages/Ash/PlayerLeft1.png",
+      "PlayerImages/Ash/PlayerLeft2.png",
+      "PlayerImages/Ash/PlayerRight1.png",
+      "PlayerImages/Ash/PlayerRight2.png",
+      "PlayerImages/Ash/PlayerUp1.png",
+      "PlayerImages/Ash/PlayerUp2.png"
+    ],
+    "myMoney": 0,
+    "myExperience": 0,
+    "myImage": "Ash",
+    "width": 1,
+    "height": 1,
+    "myX": 0,
+    "myY": 0,
+    "myID": "engine.gridobject.person.Enemy",
+    "myArguments": [
+      1,
+      1,
+      [
+        "PlayerImages/Ash/PlayerDown1.png",
+        "PlayerImages/Ash/PlayerDown2.png",
+        "PlayerImages/Ash/PlayerLeft1.png",
+        "PlayerImages/Ash/PlayerLeft2.png",
+        "PlayerImages/Ash/PlayerRight1.png",
+        "PlayerImages/Ash/PlayerRight2.png",
+        "PlayerImages/Ash/PlayerUp1.png",
+        "PlayerImages/Ash/PlayerUp2.png"
+      ],
+      "mainchar",
+      {
+        "Damage": 5,
+        "Speed": 5,
+        "Defense": 5,
+        "Health": 5,
+        "Level": 5
+      },
+      [],
+      0,
+      0
+    ]
+  }
 }
