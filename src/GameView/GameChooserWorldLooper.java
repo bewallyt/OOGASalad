@@ -39,6 +39,10 @@ public class GameChooserWorldLooper extends GameLooper {
 					myGame + "Title.png");
 			if (myGame == "Pokemon") {
 				title.setMusic(Constants.POKEMON_MUSIC);
+			} else if (myGame == "FinalFantasy") {
+				title.setMusic(Constants.FF_MUSIC);
+			} else if (myGame == "Zelda") {
+				title.setMusic(Constants.ZELDA_MUSIC);
 			} else {
 				title.setMusic(Constants.OTHER_MUSIC);
 			}

@@ -28,6 +28,8 @@ public class Constants {
 	public static final String TITLE_MUSIC = "/music/youme.wav";
 	public static final String POKEMON_MUSIC = "/music/PokemonIntro.wav";
 	public static final String OTHER_MUSIC = "/music/disconnected.wav";
+	public static final String ZELDA_MUSIC = "/music/zelda.wav";
+	public static final String FF_MUSIC = "/music/finalfantasy.wav";
 	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
 	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";
 	public static final String PLAYER_IMAGE_FILE="src/PlayerImages/";
