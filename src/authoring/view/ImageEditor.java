@@ -38,6 +38,7 @@ public abstract class ImageEditor {
 	 */
 	public void addImage(Image m, String s){	
 		ImageIcon x = new ImageIcon(m, s);
+		System.out.println(s);
 		model.addElement(x);
 	}
 	
