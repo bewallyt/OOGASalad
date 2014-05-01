@@ -79,7 +79,6 @@ public class MapDataParser {
 					}
 
 					if (gridobject != null) {
-						System.out.println(gridobject.getImageFile()+" "+i+" "+j);
 						gridobject.setPosition(i, j);
 						myGridObjectList.add(gridobject);
 					}

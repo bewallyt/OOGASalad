@@ -147,7 +147,6 @@ public class GameFrame extends RPGEngine {
 	 */
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
-			System.out.println(g.getImageFile()+" "+g.getX()+" "+g.getY());
 			world.setTileObject(g, g.getX(), g.getY());
 		}
 	}
