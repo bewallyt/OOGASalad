@@ -150,20 +150,8 @@ public class GameFrame extends RPGEngine {
 	private void setPlayerItems(PlayerData pd) {
 		String[] items = pd.getMyItems();
 		List<Item> itemList = new ArrayList<Item>();
-<<<<<<< HEAD
-		if (pd.getMyItems() != null) {
-			for (String i : items) {
-				if(i!=null){
-				ItemData id = myItems.get(i);
-				if (id.getMyIdentity().equals("KeyItem")) {
-					itemList.add(new KeyItem(id.getItemImage(), id
-							.getItemName()));
-				} else if (id.getMyIdentity().equals("StatBuffer")) {
-
-				}
-				}
-=======
 		for (String i : items) {
+			if(i!=null){
 			ItemData id = myItems.get(i);
 			if (id.getMyIdentity().equals("KeyItem")) {
 				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
@@ -182,7 +170,7 @@ public class GameFrame extends RPGEngine {
 				}
 				itemList.add(new StatBuffer(id.getItemImage(),
 						id.getItemName(), stats, 10));
->>>>>>> 1f5d124a8656ac47ffe2430bb81cdc5f2681879d
+			}
 			}
 		}
 		myPlayer.setMyItems(itemList);
