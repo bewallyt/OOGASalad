@@ -1,6 +1,6 @@
-package engine.dialogue;
+package engine.battle;
 
-import engine.battle.BattleExecutable;
+import engine.dialogue.MatrixNode;
 
 public class BattleExecutorNode implements MatrixNode{
 

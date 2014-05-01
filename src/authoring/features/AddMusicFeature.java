@@ -15,10 +15,10 @@ import authoring.gameObjects.MapData;
 import Data.MusicManager;
 
 /**
- * 
- * @author Richard Cao
- *	Class that allows the user to upload music and choose which maps
+ * Class that allows the user to upload music and choose which maps
  *	will play what song when the player is on that map
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
+ *	
  */
 public class AddMusicFeature extends Feature implements ActionListener, ListSelectionListener{
 

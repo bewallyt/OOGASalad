@@ -8,7 +8,7 @@ import javax.swing.*;
 
 /**
  * Class that handles the naming and addition of a new map
- * @author Richard Cao
+ * @author Pritam M, Richard Cao, Davis Treybig, Jacob Lettie
  *
  */
 public class MapCreatorFeature extends Feature {

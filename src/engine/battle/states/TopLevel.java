@@ -1,7 +1,7 @@
 package engine.battle.states;
 
+import engine.battle.BattleExecutorNode;
 import engine.battle.BattleManager;
-import engine.dialogue.BattleExecutorNode;
 
 public class TopLevel implements BattleState{
 

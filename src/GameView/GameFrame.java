@@ -90,8 +90,9 @@ public class GameFrame extends RPGEngine {
 					myItems);
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
+			
 			gridObjectList.add(myPlayer);
-
+			
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
@@ -102,7 +103,7 @@ public class GameFrame extends RPGEngine {
 
 			if (myWorldData.getPrimaryMap().equals(mapName))
 				outsideWorld = currWorld;
-
+			
 			setTileImages(currWorld, TileImageList);
 			setGridObjects(currWorld, gridObjectList);
 			myMaps.put(mapName, currWorld);
@@ -127,8 +128,8 @@ public class GameFrame extends RPGEngine {
 			else if (id.getMyIdentity().equals("StatBuffer")){
 				
 			}
-		}
-		myPlayer.setPosition(pd.getX(), pd.getY());
+		}		
+//		myPlayer.setPosition(pd.getX(), pd.getY());
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
 	}
