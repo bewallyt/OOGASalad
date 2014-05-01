@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import engine.Statistic;
 import engine.collision.EnterCollision;
 import engine.gridobject.GridObject;
 import engine.gridobject.Door;
@@ -11,6 +13,7 @@ import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
 import engine.item.Item;
 import engine.item.KeyItem;
+import engine.item.StatBuffer;
 import engine.item.Weapon;
 import engine.world.ArenaWorld;
 import engine.world.TitleWorld;
@@ -22,6 +25,7 @@ import authoring.gameObjects.PlayerData;
 import authoring.gameObjects.WeaponData;
 import authoring.gameObjects.WorldData;
 import Data.DataManager;
+import Data.WorldDataManager;
 import util.Constants;
 
 /**
@@ -38,6 +42,8 @@ public class GameFrame extends RPGEngine {
 	private WalkAroundWorld outsideWorld;
 	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
+	private WorldDataManager myWorldDataManager;
+    private String loadFileName;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -58,6 +64,7 @@ public class GameFrame extends RPGEngine {
 		myWorldData = myData.getWorldData(fileName);
 		myItems = makeItems();
 		myWeapons = makeWeapons();
+		loadFileName = fileName;
 		createPlayer();
 		createWorlds();
 	}
@@ -143,6 +150,7 @@ public class GameFrame extends RPGEngine {
 	private void setPlayerItems(PlayerData pd) {
 		String[] items = pd.getMyItems();
 		List<Item> itemList = new ArrayList<Item>();
+<<<<<<< HEAD
 		if (pd.getMyItems() != null) {
 			for (String i : items) {
 				if(i!=null){
@@ -154,6 +162,27 @@ public class GameFrame extends RPGEngine {
 
 				}
 				}
+=======
+		for (String i : items) {
+			ItemData id = myItems.get(i);
+			if (id.getMyIdentity().equals("KeyItem")) {
+				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
+			} else if (id.getMyIdentity().equals("StatBuffer")) {
+				Map<String, Integer> valuesMap = id.getMyItemValues();
+				String key = "health";
+				Integer value = 10;
+				Statistic stats = null;
+				if ((valuesMap != null) && (valuesMap.size() > 0)) {
+					for (String k : valuesMap.keySet()) {
+						stats = new Statistic(k, valuesMap.get(k), 100);
+						break;
+					}
+				} else {
+					stats = new Statistic(key, value, 100);
+				}
+				itemList.add(new StatBuffer(id.getItemImage(),
+						id.getItemName(), stats, 10));
+>>>>>>> 1f5d124a8656ac47ffe2430bb81cdc5f2681879d
 			}
 		}
 		myPlayer.setMyItems(itemList);
@@ -236,6 +265,8 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public WalkAroundWorld getInitialWorld() {
+		myWorldDataManager = new WorldDataManager(loadFileName);
+        outsideWorld.setWorldDataManager(myWorldDataManager);
 		return outsideWorld;
 	}
 }
