@@ -95,7 +95,7 @@ public class NPC extends Person {
 					+ items.get(n.getItem()).getMyIdentity(), id.getItemImage(), id.getItemName());
 		}
 		NPCResponseNode head = new NPCResponseNode(n.getString(), myItem);
-		if (n.getChildren() != null) {
+		if (n.getChildren().size() != 0) {
 			for (UserQueryNodeData u : n.getChildren()) {
 				NPCResponseNode child = buildResponseTree(u.getChild(), items);
 				head.addResponseNode(new UserQueryNode(myPlayer, u.getItem(), u
