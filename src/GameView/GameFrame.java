@@ -76,10 +76,9 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public void makeTitleScreen() {
-		TitleWorld titleScreen = new TitleWorld(Constants.TITLEWIDTH,
-				Constants.TITLEHEIGHT, new Player());
+		GameChooserWorld titleScreen = new GameChooserWorld(Constants.TITLEWIDTH,
+				Constants.TITLEHEIGHT, new Player(), Constants.TITLE_BACKGROUND);
 
-		titleScreen.setBackground(Constants.TITLE_BACKGROUND);
 		setWorld(titleScreen);
 
 		titleScreen.setMusic(Constants.TITLE_MUSIC);

@@ -30,6 +30,12 @@ public class BattleSelectorNode implements MatrixNode{
 	public List<BattleExecutorNode> getChildren(){
 		return myChildren;
 	}
+
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

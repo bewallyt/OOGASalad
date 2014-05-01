@@ -19,4 +19,10 @@ public class BattleExecutorNode implements MatrixNode{
 	public String toString() {
 		return (myExecutable).toString();
 	}
+
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

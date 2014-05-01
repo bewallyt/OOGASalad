@@ -1,5 +1,8 @@
 package engine.dialogue;
 
+import engine.menu.nodes.MenuNode;
+import engine.world.TitleWorld;
+
 /**
  * This is a class that takes MatrixNodes and organizes them in such a way that
  * a user can "select" different options. The idea is that this can be used for any sort of
@@ -15,10 +18,14 @@ public abstract class InteractionMatrix {
 	protected int myYDimension;
 	
 	protected MatrixNode[][] myNodes;
+	protected TitleWorld[][] myTitleWorldNodes;
+	protected String myGame;
 	
 	public void setNode(MatrixNode mNode, int x, int y) {
 		myNodes[x][y] = mNode;
 	}
+	
+	
 	
 	/**
 	 * Allows access to the currently highlighted/selected option in the menu

@@ -18,7 +18,11 @@ public class Constants {
 
 	public static final String SAVEDGAMESPATH = "/src/SavedGames";
 	public static final String SELECTGAMETEXT = "Select a Game";
-	public static final String TITLE_BACKGROUND = "PokemonBackground.png";
+	public static final String TITLE00_BACKGROUND = "PokemonBackground.png";
+	public static final String TITLE01_BACKGROUND = "PokemonBackground.png";
+	public static final String TITLE10_BACKGROUND = "PokemonBackground.png";
+	public static final String TITLE11_BACKGROUND = "PokemonBackground.png";
+	public static final String GAME_CHOOSER_BACKGROUND = "TitleScreen.png";
 	public static final String TITLE_MUSIC = "/music/PokemonIntro.wav";
 	public static final String BATTLE_BACKGROUND = "ImageFiles/battlebackground.png";
 	public static final String BATTLE_MUSIC = "/music/pokeBattle.wav";

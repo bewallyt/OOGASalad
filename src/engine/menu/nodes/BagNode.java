@@ -40,4 +40,10 @@ public class BagNode extends MenuNode {
 
 	}
 
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

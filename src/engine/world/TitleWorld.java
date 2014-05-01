@@ -12,22 +12,19 @@ public class TitleWorld extends World {
 	private int myWidth = 500;
 	private int myHeight = 500;
 	private Image myBackground;
+	private String myGame;
 
-	public TitleWorld(int playWidth, int playHeight, Player p) {		
+	public TitleWorld(int playWidth, int playHeight, Player p, String g) {		
 		super(playWidth, playHeight, p);
+		myGame = g;
+		myBackground = new ScaledImage(myWidth, myHeight, myGame).scaleImage();
 		
 	}
 
-
-	public void setBackground(String imageFile) {
-		myBackground = new ScaledImage(myWidth, myHeight, imageFile).scaleImage();
-	}
-	
-	public void paint(Graphics2D g) {
-		g.drawImage(myBackground, 0, 0, null);
-	}
 	
 	public Image getBackground(){
 		return myBackground;
 	}
+	
+	
 }

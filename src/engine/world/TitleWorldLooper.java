@@ -14,6 +14,9 @@ public class TitleWorldLooper extends GameLooper {
 
 	public TitleWorldLooper(TitleWorld currentWorld) {
 		super(currentWorld);
+		
+		
+		
 		myWorld = (TitleWorld) getWorld();
 		myTM = new TitleManager(myWorld.getPlayer());
 		myWorld.getPlayer().setDialogueDisplayControl(

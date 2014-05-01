@@ -35,5 +35,10 @@ public class SaveNode extends MenuNode {
 		myPlayer.setState(new SaveState(myPlayer, myMenuManager));
 		
 	}
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -41,4 +41,10 @@ public class WeaponNode extends MenuNode {
 
 	}
 
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

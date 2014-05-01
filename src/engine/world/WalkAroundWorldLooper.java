@@ -70,8 +70,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 				saveWorld(saveState.getSaveFileName());			
 			}
 		} else if(myWorld.getPlayer().getState() instanceof ExitState){
-			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer());
-			titleScreen.setBackground("PokemonBackground.png");
+			TitleWorld titleScreen = new TitleWorld(1000, 1000, getWorld().getPlayer(), "PokemonBackground.png");
 			titleScreen.setMusic("/music/PokemonIntro.wav");
 			return titleScreen;
 		}
