@@ -129,7 +129,6 @@ public class GameFrame extends RPGEngine {
 		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2,
 				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		setPlayerItems(pd);
-//		myPlayer.setPosition(pd.getX(), pd.getY());
 		
 		xStart = pd.getX();
 		yStart = pd.getY();
@@ -149,6 +148,7 @@ public class GameFrame extends RPGEngine {
 	 */
 	private void setGridObjects(WalkAroundWorld world, List<GridObject> list) {
 		for (GridObject g : list) {
+			System.out.println(g.getImageFile()+" "+g.getX()+" "+g.getY());
 			world.setTileObject(g, g.getX(), g.getY());
 		}
 	}
