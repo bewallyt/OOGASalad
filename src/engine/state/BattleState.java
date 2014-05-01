@@ -48,6 +48,8 @@ public class BattleState extends AbstractState {
 		a=false;
 		if (e.getKeyCode() == Constants.A)
 			myBattleManager.getPlayer().setAClick(false);
+		if (e.getKeyCode() == Constants.ESC)
+			myBattleManager.backToTopOfBattle();
 	}
 
 

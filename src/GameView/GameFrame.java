@@ -26,6 +26,7 @@ import authoring.gameObjects.PlayerData;
 import authoring.gameObjects.WeaponData;
 import authoring.gameObjects.WorldData;
 import Data.DataManager;
+import Data.WorldDataManager;
 import util.Constants;
 
 /**
@@ -42,6 +43,8 @@ public class GameFrame extends RPGEngine {
 	private WalkAroundWorld outsideWorld;
 	private Map<String, Weapon> myWeapons = new HashMap<String, Weapon>();
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
+	private WorldDataManager myWorldDataManager;
+    private String loadFileName;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -62,6 +65,7 @@ public class GameFrame extends RPGEngine {
 		myWorldData = myData.getWorldData(fileName);
 		myItems = makeItems();
 		myWeapons = makeWeapons();
+		loadFileName = fileName;
 		createPlayer();
 		createWorlds();
 	}
@@ -249,6 +253,8 @@ public class GameFrame extends RPGEngine {
 	}
 
 	public WalkAroundWorld getInitialWorld() {
+		myWorldDataManager = new WorldDataManager(loadFileName);
+        outsideWorld.setWorldDataManager(myWorldDataManager);
 		return outsideWorld;
 	}
 }

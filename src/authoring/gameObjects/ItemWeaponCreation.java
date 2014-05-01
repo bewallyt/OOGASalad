@@ -31,6 +31,7 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private JTextField priceField;
     private JComboBox attributeBox;
     private JTextField howMuch;
+    private JCheckBox Statbox;
 
     public ItemWeaponCreation(){
     }
@@ -156,11 +157,11 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         JPanel buffTab=new JPanel();
         buffTab.setLayout(new SpringLayout());
         attributeBox=new JComboBox(attributes);
-        JLabel isBuffer=new JLabel("If this is a statbuffer...");
+        Statbox=new JCheckBox("Is this a statbuffer?");
         JLabel attributeBuffField=new JLabel("What stat to buff");
         JLabel howMuchLabel=new JLabel("How much to buff?");
         howMuch=new JTextField();
-        buffTab.add(isBuffer);
+        buffTab.add(Statbox);
         buffTab.add(attributeBuffField);
         buffTab.add(attributeBox);
         buffTab.add(howMuchLabel);
@@ -275,8 +276,15 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private void makeAndSaveItem() {
         ItemData madeItem;
         if(!isObjectiveItem.isSelected()){
-            madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues,
-                    Integer.parseInt(priceField.getText()),"StatBuffer");
+        	if(Statbox.isSelected()){
+        		madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues,
+                        Integer.parseInt(priceField.getText()),"StatBuffer", 
+                        Integer.parseInt(howMuch.getText()), (String)attributeBox.getSelectedItem());
+        	}
+        	else{
+        		madeItem = new ItemData(name,editor.getSelectedImage().getDescription(),attributeValues,
+                        Integer.parseInt(priceField.getText()),"StatBuffer");
+        	}
         } else{
             madeItem = new ItemData(name,Integer.parseInt(priceField.getText()),"KeyItem");
         }

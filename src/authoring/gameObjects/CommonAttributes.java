@@ -163,14 +163,14 @@ public abstract class CommonAttributes {
      */
     protected JPanel locationFields(){
         JPanel locationPanel = new JPanel(new SpringLayout());
-        JLabel xcoordinate = new JLabel("X");
-        JLabel ycoordinate = new JLabel("Y");
+        JLabel xcoordinate = new JLabel("Y");
+        JLabel ycoordinate = new JLabel("X");
         xcoor = new JTextField("2",5);
         ycoor = new JTextField("2",5);
-        locationPanel.add(xcoordinate);
+        locationPanel.add(ycoordinate);
         xcoordinate.setLabelFor(xcoor);
         locationPanel.add(xcoor);
-        locationPanel.add(ycoordinate);
+        locationPanel.add(xcoordinate);
         ycoordinate.setLabelFor(ycoor);
         locationPanel.add(ycoor);
         SpringUtilities.makeCompactGrid(locationPanel,2,2,6,6,6,6);
