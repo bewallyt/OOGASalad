@@ -88,16 +88,15 @@ public class GameFrame extends RPGEngine {
 			List<GridObject> gridObjectList = parser.getGridObjectList();
 			List<String> TileImageList = parser.getTileImageList();
 			
-			if(myWorldData.getPrimaryMap().equals(mapName))
-				gridObjectList.add(myPlayer);
-
+			gridObjectList.add(myPlayer);
+			
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
 					Constants.TILE_SIZE, gridObjectList);
 
-//			if(!map.getSong().equals(""))
-//				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
+			if(!map.getSong().equals(""))
+				currWorld.setMusic(myWorldData.getSongString(map.getSong()));
 
 			if (myWorldData.getPrimaryMap().equals(mapName))
 				outsideWorld = currWorld;
@@ -117,7 +116,7 @@ public class GameFrame extends RPGEngine {
 		PlayerData pd = myWorldData.getPlayData();
 		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2, pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		
-		myPlayer.setPosition(pd.getX(), pd.getY());
+//		myPlayer.setPosition(pd.getX(), pd.getY());
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
 	}
