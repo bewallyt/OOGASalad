@@ -1,5 +1,6 @@
 package Data.world;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,16 +14,21 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.ShopKeeper;
 import engine.item.Item;
 
+/**
+ * @author Sanmay Jain
+ */
 public class ShopkeeperTransformer  implements Transformer {
 	ShopKeeper myShopkeeper;
 	ShopkeeperData myShopkeeperData;
 	WorldUtil myWorldUtil;
-	WorldData myWorldData;
+	List<ItemData> myItemDataList;
+
 	
 	public ShopkeeperTransformer(GridObject g) {
 		myShopkeeper = (ShopKeeper) g;
 		myShopkeeperData = null;
 		myWorldUtil = new WorldUtil();
+		myItemDataList = new ArrayList<ItemData>();
 	}
 	
 	@Override
@@ -34,7 +40,9 @@ public class ShopkeeperTransformer  implements Transformer {
 		}
 		
 		Set<Item> items =  myShopkeeper.getItemSet();
+	
 		List<String> itemNames = myWorldUtil.getItemNamesList(items);
+		System.out.println(itemNames);
 		
 		String spriteName = myWorldUtil.getSpriteName( myShopkeeper.getImageFile());
 		
@@ -45,15 +53,26 @@ public class ShopkeeperTransformer  implements Transformer {
 				spriteName,
 				itemNames);
 		
+		
 		for (Item i : items) {
+			if (i == null) {
+				continue;
+			}
 			ItemTransformer itemTrans = new ItemTransformer(i);
 			itemTrans.transform();
 			ItemData itemData = itemTrans.getTransformedData();
-			myWorldData.saveItem(itemData.getItemName(), itemData);			
+			if (itemData != null) {			
+				myItemDataList.add(itemData);
+			}
 		}				
 	}
 	
+	
 	public ShopkeeperData getTransformedData() {
 		return myShopkeeperData;
+	}
+	
+	public List<ItemData> getItemDataList() {
+		return myItemDataList;
 	}
 }

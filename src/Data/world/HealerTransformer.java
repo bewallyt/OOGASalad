@@ -7,6 +7,9 @@ import authoring.gameObjects.WorldData;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Healer;
 
+/**
+ * @author Sanmay Jain
+ */
 public class HealerTransformer implements Transformer {
 	Healer myHealer;
 	HealerData myHealerData;

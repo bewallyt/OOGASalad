@@ -6996,7 +6996,7 @@
                   "PlayerImages/Swimmer/Swimmer.png"
                 ],
                 "myMoney": 100,
-                "myExperience": 50,
+                "myExperience": 0,
                 "myImage": "Swimmer",
                 "width": 1,
                 "height": 1,
@@ -8386,7 +8386,7 @@
       "Pikachu",
       null
     ],
-    "myName": "mainchar",
+    "myName": "Richard",
     "myMovement": 0,
     "myImages": [
       "PlayerImages/Ash/PlayerDown1.png",
@@ -8398,7 +8398,7 @@
       "PlayerImages/Ash/PlayerUp1.png",
       "PlayerImages/Ash/PlayerUp2.png"
     ],
-    "myMoney": 0,
+    "myMoney": 100,
     "myExperience": 0,
     "myImage": "Ash",
     "width": 1,
@@ -8419,7 +8419,7 @@
         "PlayerImages/Ash/PlayerUp1.png",
         "PlayerImages/Ash/PlayerUp2.png"
       ],
-      "mainchar",
+      "Richard",
       {
         "Damage": 5,
         "Speed": 5,

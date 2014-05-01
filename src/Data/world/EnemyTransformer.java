@@ -1,5 +1,6 @@
 package Data.world;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,16 +13,19 @@ import engine.gridobject.GridObject;
 import engine.gridobject.person.Enemy;
 import engine.item.Weapon;
 
+/**
+ * @author Sanmay Jain
+ */
 public class EnemyTransformer implements Transformer {
 	Enemy myEnemy;
 	EnemyData myEnemyData;
 	WorldUtil myWorldUtil;
-	WorldData myWorldData;
+	List<WeaponData> myWeaponDataList;
 
-	public EnemyTransformer(GridObject g, WorldData w) {
+	public EnemyTransformer(GridObject g) {
 		myEnemy = (Enemy) g;
 		myWorldUtil = new WorldUtil();
-		myWorldData = w;
+		myWeaponDataList = new ArrayList<WeaponData>();
 	}
 
 	@Override
@@ -39,7 +43,9 @@ public class EnemyTransformer implements Transformer {
 			WeaponTransformer wt = new WeaponTransformer(w);
 			wt.transform();
 			WeaponData weaponData = wt.getTransformedData();
-			myWorldData.saveWeapon(weaponData.getMyName(), weaponData);
+			if (weaponData != null) {
+				myWeaponDataList.add(weaponData);
+			}
 		}
 		
 		String spriteName = myWorldUtil.getSpriteName(myEnemy.getImageFile());
@@ -50,7 +56,7 @@ public class EnemyTransformer implements Transformer {
 				myEnemy.toString(),
 				attributeValues1,
 				eWeps,
-				1, 
+				3, 
 	            myEnemy.getMoney(),
 	            myEnemy.getExperience());
 		
@@ -62,5 +68,9 @@ public class EnemyTransformer implements Transformer {
 	
 	public EnemyData getTransformedData() {
 		return myEnemyData;
+	}
+	
+	public List<WeaponData> getWeaponDataList() {
+		return myWeaponDataList;
 	}
 }

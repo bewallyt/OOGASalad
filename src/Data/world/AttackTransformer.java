@@ -4,6 +4,9 @@ import authoring.gameObjects.AttacksData;
 import engine.battle.Attack;
 import engine.battle.Effect;
 
+/**
+ * @author Sanmay Jain
+ */
 public class AttackTransformer implements Transformer {
 	Attack myAttack;
 	AttacksData myAttacksData;

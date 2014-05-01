@@ -8,6 +8,9 @@ import authoring.gameObjects.WorldData;
 import engine.dialogue.NPCResponseNode;
 import engine.dialogue.UserQueryNode;
 
+/**
+ * @author Sanmay Jain
+ */
 public class NPCResponseNodeTransformer implements Transformer {
 	NPCResponseNode myNPCResponseNode;
 	NPCResponseNodeData myNPCResponseNodeData;

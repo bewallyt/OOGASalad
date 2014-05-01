@@ -7,6 +7,9 @@ import authoring.gameObjects.WorldData;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.NPC;
 
+/**
+ * @author Sanmay Jain
+ */
 public class NPCTransformer implements Transformer {
 	NPC myNPC;
 	NPCData myNPCData;
@@ -31,7 +34,7 @@ public class NPCTransformer implements Transformer {
 	    		myNPC.getWidth()/Constants.TILE_SIZE,
 	    		myNPC.getHeight()/Constants.TILE_SIZE,
 				spriteName,
-				npcResponseNodeData, 1);
+				npcResponseNodeData, 3);
 		
 	}
 	
