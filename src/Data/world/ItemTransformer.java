@@ -9,6 +9,9 @@ import engine.item.Item;
 import engine.item.KeyItem;
 import engine.item.StatBuffer;
 
+/**
+ * @author Sanmay Jain
+ */
 public class ItemTransformer implements Transformer {
 	Item myItem;
 	ItemData myItemData;

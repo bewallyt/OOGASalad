@@ -8,6 +8,9 @@ import authoring.gameObjects.WeaponData;
 import engine.battle.Attack;
 import engine.item.Weapon;
 
+/**
+ * @author Sanmay Jain
+ */
 public class WeaponTransformer implements Transformer {
 	Weapon myWeapon;
 	WeaponData myWeaponData;
@@ -32,6 +35,10 @@ public class WeaponTransformer implements Transformer {
 				attacksDataList.add(attacksData);
 			}
 		}
+		
+		myWeaponData = new WeaponData(myWeapon.toString(), myWeapon.getImageName(),
+				myWeapon.getSpeed().getValue(), myWeapon.getDamage().getValue(),
+				attacksDataList);
 	}
 	
 	public WeaponData getTransformedData() {

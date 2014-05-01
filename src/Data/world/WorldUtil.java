@@ -7,6 +7,9 @@ import java.util.Set;
 import engine.item.Item;
 import engine.item.Weapon;
 
+/**
+ * @author Sanmay Jain
+ */
 public class WorldUtil {
 	public WorldUtil() {
 		
