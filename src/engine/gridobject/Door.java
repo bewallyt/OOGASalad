@@ -9,6 +9,8 @@ import engine.world.World;
 public class Door extends GridObject{
 	private World myBuildingWorld;
 	private String toMap;
+	private int toX;
+	private int toY;
 	/**
 	 * @param image file
 	 * @param numTilesWidth the width in tiles
@@ -21,6 +23,14 @@ public class Door extends GridObject{
 	public Door(List<Object> list){
 		super((String) list.get(Constants.IMAGE_CONST), (int) ((Double) list.get(Constants.WIDTH_CONST)).intValue(), (int) ((Double) list.get(Constants.HEIGHT_CONST)).intValue());
 		toMap = (String) list.get(Constants.TO_MAP_CONST);
+		toX = (int) ((Double) list.get(3)).intValue();
+		toY = (int) ((Double) list.get(4)).intValue();
+	}
+	
+	public void setPlayer(Player player) {
+		System.out.print("toX: "+toX);
+		System.out.println(" toY: "+toY);
+		player.setPosition(toX, toY);
 	}
 	
 	/**
