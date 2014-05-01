@@ -28,8 +28,6 @@ public class Door extends GridObject{
 	}
 	
 	public void setPlayer(Player player) {
-		System.out.print("toX: "+toX);
-		System.out.println(" toY: "+toY);
 		player.setPosition(toX, toY);
 	}
 	

@@ -25,7 +25,6 @@ public class NPCData extends GridObjectData {
 		myImages = imageChoose.getSpriteImages(image);
 		setHeight(height);
 		setWidth(width);
-		System.out.println(image);
 		myMovement=movement;
 	}
 

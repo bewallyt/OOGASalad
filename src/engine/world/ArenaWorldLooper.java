@@ -26,7 +26,6 @@ public class ArenaWorldLooper extends GameLooper {
 		myWorld.setEnemyImage(myBattleManager.getCurrentEnemyBattleImage());
 		if(myBattleManager.getCurrentState().equals("ExitWon")){
 			myBattleManager.setCurrentState("TopLevel");
-			System.out.println("go back");
 			if(myWorld.getEnemy().isRandom()){
 				myWorld.getEnemy().getStatsMap().get(Constants.HEALTH).setToMax();
 			}

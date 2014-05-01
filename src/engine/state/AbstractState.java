@@ -8,7 +8,6 @@ import engine.dialogue.InteractionMatrix;
 public abstract class AbstractState implements KeyListener {
 
 	public AbstractState() {
-		System.out.println("new state");
 	}
 
 	@Override

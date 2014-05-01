@@ -533,7 +533,6 @@ public class WorldDataManager {
 	 * @return Returns sprite associated with image path
 	 */
 	private String getSpriteName(String imagePath) {
-		System.out.println("imagePath : " + imagePath);
 		String spriteName = "Zelda";
 		String prefix = "PlayerImages/";
 		if (imagePath == null) {
@@ -545,7 +544,6 @@ public class WorldDataManager {
 				if (imagePath.length() > index+1) {
 					String temp1 = imagePath.substring(index+1);	
 					int lastIndex = temp1.lastIndexOf('/');
-					System.out.println("lastIndex : " + lastIndex);
 					if (lastIndex != -1) {
 						String temp2 = temp1.substring(0, lastIndex);
 						spriteName = temp2;
