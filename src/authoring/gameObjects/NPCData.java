@@ -15,9 +15,10 @@ import util.Constants;
 public class NPCData extends GridObjectData {
 	private NPCResponseNodeData myRoot;
 	private String[] myImages;
+	private int myMovement;
 
 	public NPCData(int x, int y, int width, int height, String image,
-			NPCResponseNodeData root) {
+			NPCResponseNodeData root, int movement) {
 		super(x, y, width, height, image, root, Constants.NPC);
 		myRoot = root;
 		SpriteImageChooser imageChoose = new SpriteImageChooser();
@@ -25,6 +26,7 @@ public class NPCData extends GridObjectData {
 		setHeight(height);
 		setWidth(width);
 		System.out.println(image);
+		myMovement=movement;
 	}
 
 	/**
@@ -32,6 +34,12 @@ public class NPCData extends GridObjectData {
 	 */
 	public NPCResponseNodeData getDialogue() {
 		return myRoot;
+	}
+	/**
+	 * Returns movement type
+	 */
+	public int getMovement(){
+		return myMovement;
 	}
 
 	/**

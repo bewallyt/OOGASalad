@@ -8,15 +8,6 @@ import com.sun.org.apache.bcel.internal.Constants;
 import Data.FileLister;
 import authoring.SpringUtilities;
 import authoring.features.FeatureManager;
-
-
-
-
-
-
-
-
-
 import java.awt.FlowLayout;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -341,6 +332,9 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         addImage();
         //madeEnemy.init();
     }
+    /**
+     * Adds a image to be shown on the map for player and enemy
+     */
     private void addImage(){
     	FileLister f=new FileLister();
     	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+image);
@@ -355,8 +349,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
 			e.printStackTrace();
 		}
     	ImageIcon icon=new ImageIcon(bimg);
-    	new GridObjectPainter(x, y, 1, 1, icon);
-    	
+    	new GridObjectPainter(x, y, 1, 1, icon); 	
     }
 
 }

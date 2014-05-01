@@ -29,6 +29,7 @@ public class NPCCreation extends CommonAttributes{
 	private NPCResponseNodeData myCurrent;
 	private JOptionPane optionFrame;
 	private JComboBox<String> NPCImage;
+	private ButtonGroup movementCheck;
 
     public NPCCreation(){}
 
@@ -44,6 +45,22 @@ public class NPCCreation extends CommonAttributes{
         NPCImage=spriteField();
         nameImagePanel.add(namePanel);
         nameImagePanel.add(NPCImage);
+        
+        JPanel movementPanel = new JPanel();
+        movementCheck = new ButtonGroup();
+        one = new JCheckBox("1: Side-Side");
+        two = new JCheckBox("2: Player Follow");
+        three = new JCheckBox("3: Stand-Still");
+        one.setEnabled(true);
+        two.setEnabled(true);
+        three.setEnabled(true);
+        movementCheck.add(one);
+        movementCheck.add(two);
+        movementCheck.add(three);
+        movementPanel.add(one);
+        movementPanel.add(two);
+        movementPanel.add(three);
+        nameImagePanel.add(movementPanel);
         
 
         JPanel locationPanel = locationFields();
@@ -110,7 +127,7 @@ public class NPCCreation extends CommonAttributes{
      */
     private void makeNPC(){
     	NPCData myNPC = new NPCData(x,y,getIntValue(widthField.getText()), getIntValue(heightField.getText()), 
-    			(String) NPCImage.getSelectedItem(),myRoot);
+    			(String) NPCImage.getSelectedItem(),myRoot, getMovementType());
     	new GridObjectPainter(x, y, getIntValue(widthField.getText()), getIntValue(heightField.getText())
     			, editor.getSelectedImage());
     	FeatureManager.getWorldData().saveNPC(myNPC);
@@ -241,4 +258,20 @@ public class NPCCreation extends CommonAttributes{
 			}
 		}
 	}
+	 /**
+     * Gets the movement type from the check boxes
+     * @return Integer representing the movement type
+     */
+    private int getMovementType(){
+    	if(one.isSelected()){
+    		return 1;
+    	}
+    	else if (two.isSelected()){
+    		return 2;
+    	}
+    	else if (three.isSelected()){
+    		return 3;
+    	}
+    	return 3;
+    }
 }
