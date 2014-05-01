@@ -45,7 +45,6 @@ public abstract class RPGEngine {
 		GameChooserWorld titleScreen = new GameChooserWorld(
 				Constants.TITLEWIDTH, Constants.TITLEHEIGHT, new Player(),
 				Constants.GAME_CHOOSER_BACKGROUND);
-		//titleScreen.createTitleNodes();
 		setWorld(titleScreen);
 
 		titleScreen.setMusic(Constants.TITLE_MUSIC);

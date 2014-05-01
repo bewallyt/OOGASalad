@@ -41,14 +41,12 @@ public class GameChooserWorld extends TitleWorld implements InteractionBox {
 
 		int[] selectedOptionLoc = matrix2.getSelectedNodeLocation();
 		if ((selectedOptionLoc[0] == 0) && (selectedOptionLoc[1] == 1)) {
-			//System.out.println(matrix2.getSelectedNodeLocation()[1]);
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/WhiteSelector.png").scaleImage();
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos
 					+ scale * selectedOptionLoc[1], null);
 
 		} else {
-			//System.out.println(matrix2.getSelectedNodeLocation()[1]);
 			Image img = new ScaledImage(width + 2, height + 2,
 					"ImageFiles/Selector.png").scaleImage();
 			g2d.drawImage(img, xPos + scale * selectedOptionLoc[0], yPos

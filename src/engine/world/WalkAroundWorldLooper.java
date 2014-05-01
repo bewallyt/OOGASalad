@@ -76,8 +76,6 @@ public class WalkAroundWorldLooper extends GameLooper {
 		} else if (myWorld.getPlayer().getState() instanceof ExitState) {
 			GameChooserWorld titleScreen = new GameChooserWorld(1000, 1000,
 					getWorld().getPlayer(), "TitleScreen.png");
-//			getWorld().getPlayer().setState(
-//					new GameChooserState(getWorld().getPlayer(), titleScreen));
 			titleScreen.setMusic("/music/PokemonIntro.wav");
 			return titleScreen;
 		}
