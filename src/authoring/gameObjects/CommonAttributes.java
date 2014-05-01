@@ -101,7 +101,7 @@ public abstract class CommonAttributes {
      * Creates a basic name/image field GUI Panel
      */
     protected JPanel nameImageFields(){
-    	
+    	/*
         JLabel nameLabel = new JLabel("Name");
         JLabel imageLabel = new JLabel("Image (for non-animated object)");
         itemName = new JTextField("Name",15);
@@ -130,17 +130,17 @@ public abstract class CommonAttributes {
 		editor=new GridObjectImageEditor(imagePanel);
         SpringUtilities.makeCompactGrid(namePanel,2,2,6,6,6,6);
         return namePanel;
-        
-    	/*
+        */
+    	
     	JPanel one=nameField();
     	JPanel two=imageField();
     	JPanel combined=new JPanel();
     	combined.setLayout(new SpringLayout());
     	combined.add(one);
     	combined.add(two);  	
-    	SpringUtilities.makeCompactGrid(combined, 2, 2, 6, 6, 6, 6);
+    	SpringUtilities.makeCompactGrid(combined, 2, 1, 6, 6, 6, 6);
     	return combined;
-    	*/
+    	
     }
     protected JPanel nameField(){
     	 JLabel nameLabel = new JLabel("Name");
@@ -155,10 +155,12 @@ public abstract class CommonAttributes {
          name.setLayout(new SpringLayout());
          name.add(nameLabel);
          nameLabel.setLabelFor(itemName);
+         name.add(itemName);
+         SpringUtilities.makeCompactGrid(name, 1, 2, 6, 6, 6, 6);
          return name;
     }
     protected JPanel imageField(){
-    	 JLabel imageLabel = new JLabel("Image");
+    	 JLabel imageLabel = new JLabel("Image (for non-animated objects)");
     	 JPanel panel=new JPanel();
     	 panel.add(imageLabel);
     	 imageLabel.setLabelFor(imagePanel);
