@@ -1,5 +1,7 @@
 package engine.world;
 
+import com.sun.org.apache.xml.internal.security.utils.Constants;
+
 import Data.WorldDataManager;
 import engine.collision.CollisionMatrix;
 import engine.dialogue.AbstractManager;
@@ -52,7 +54,8 @@ public class WalkAroundWorldLooper extends GameLooper {
 				Door d = myWorld.getPlayer().isDoorEntered();
 				if(d!=null){
 					System.out.println("change world");
-//					d.setPlayer(myWorld.getPlayer());
+					d.getWorld().setPlayerPositionFromDoor(d.getX()*40, d.getY()*40);
+				//d.getWorld().getPlayer().setPosition(d.getX()*40, d.getY()*40);
 					return d.getWorld();
 				}
 				if(go instanceof Enemy){

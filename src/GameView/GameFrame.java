@@ -124,7 +124,8 @@ public class GameFrame extends RPGEngine {
 		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2,
 				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		setPlayerItems(pd);
-		// myPlayer.setPosition(pd.getX(), pd.getY());
+//		myPlayer.setPosition(pd.getX(), pd.getY());
+		
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
 				Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);

@@ -33,6 +33,15 @@ public class Door extends GridObject{
 		player.setPosition(toX, toY);
 	}
 	
+	public int getX() {
+		return toX;
+	}
+
+	public int getY() {
+		return toY;
+	}
+
+	
 	/**
 	 * is the player at the door
 	 * @param player
