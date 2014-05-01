@@ -82,7 +82,15 @@ public class TilePanel extends JLayeredPane{
 		this.revalidate();
 		this.repaint();
 	}
-
+	
+	public void clearTile(){
+		if(myGridObjectLabel != null){
+			this.remove(myGridObjectLabel);
+			myData.clearGridObjects();
+			this.revalidate();
+			this.repaint();
+		}
+	}
 	/**
 	 * Adds the images of the given GridObjects on this tile to the tile
 	 */
