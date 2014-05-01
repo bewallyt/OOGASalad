@@ -11,7 +11,6 @@ import engine.gridobject.GridObject;
 import engine.gridobject.Door;
 import engine.gridobject.person.Enemy;
 import engine.gridobject.person.Player;
-import engine.gridobject.person.Reflection;
 import engine.item.Item;
 import engine.item.KeyItem;
 import engine.item.StatBuffer;

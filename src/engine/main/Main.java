@@ -102,7 +102,7 @@ public class Main extends RPGEngine {
 		n.addResponseNode(q0);
 		n.addResponseNode(q1);
 		n.addResponseNode(q2);
-		n.addResponseNode(q3);
+		//n.addResponseNode(q3);
 
 
 		bafm.setResponseNode(n);
