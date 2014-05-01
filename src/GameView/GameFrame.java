@@ -118,17 +118,7 @@ public class GameFrame extends RPGEngine {
 	private void createPlayer() {
 		PlayerData pd = myWorldData.getPlayData();
 		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2, pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
-		String[] items = pd.getMyItems();
-		List<Item> itemList = new ArrayList<Item>();
-		for (String i: items){
-			ItemData id = myItems.get(i);
-			if (id.getMyIdentity().equals("KeyItem")){
-				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
-			}
-			else if (id.getMyIdentity().equals("StatBuffer")){
-				
-			}
-		}		
+		setPlayerItems(pd);
 //		myPlayer.setPosition(pd.getX(), pd.getY());
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
@@ -148,6 +138,20 @@ public class GameFrame extends RPGEngine {
 		}
 	}
 
+	private void setPlayerItems(PlayerData pd){
+		String[] items = pd.getMyItems();
+		List<Item> itemList = new ArrayList<Item>();
+		for (String i: items){
+			ItemData id = myItems.get(i);
+			if (id.getMyIdentity().equals("KeyItem")){
+				itemList.add(new KeyItem(id.getItemImage(), id.getItemName()));
+			}
+			else if (id.getMyIdentity().equals("StatBuffer")){
+				
+			}
+		}		
+		myPlayer.setMyItems(itemList);
+	}
 	/**
 	 * Set the images for the tiles in a world
 	 * 
