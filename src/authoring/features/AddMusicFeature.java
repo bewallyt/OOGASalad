@@ -61,7 +61,10 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 		List<String> files=f.getFileList(m.DEFAULT_MUSIC_FOLDER);
 		for(String s: files){
 			model.addElement(s);
+			FeatureManager.getWorldData().saveSong(s, new File(m.DEFAULT_MUSIC_FOLDER+s));
+			System.out.println(m.DEFAULT_MUSIC_FOLDER+s);
 		}
+		
 	}
 	private void musicUploader(){
 		JTextField name = new JTextField(10);
@@ -92,9 +95,9 @@ public class AddMusicFeature extends Feature implements ActionListener, ListSele
 			songFile = chooser.getSelectedFile();
 
 			try {
-				File savedFile = m.storeMusicFile(fileName, songFile);
-				FeatureManager.getWorldData().saveSong(fileName, savedFile);
-				model.addElement(fileName);
+				File savedFile = m.storeMusicFile(fileName+m.DEFAULT_MUSIC_EXTENSION, songFile);
+				FeatureManager.getWorldData().saveSong(fileName+m.DEFAULT_MUSIC_EXTENSION, savedFile);
+				model.addElement(fileName+m.DEFAULT_MUSIC_EXTENSION);
 				myWindow.pack();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "File failed to load, try again", "Error!",
