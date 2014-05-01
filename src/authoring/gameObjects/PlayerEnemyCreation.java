@@ -320,7 +320,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         PlayerData madePlayer = new PlayerData(x,y,image,name,attributeValues,weaponNames,itemNames);
         FeatureManager.getWorldData().setPrimaryMap(FeatureManager.getWorldData().getCurrentMapName());	
         FeatureManager.getWorldData().savePlayer(madePlayer);
-        addImage();
+        addImage(x, y, image);
     }
     /**
      * Makes the corresponding regular enemy based on user-input
@@ -329,8 +329,7 @@ public class PlayerEnemyCreation extends CommonAttributes implements ActionListe
         EnemyData madeEnemy = new EnemyData(x,y,image,name,attributeValues,weaponNames,getMovementType(),
                 Integer.parseInt(mon.getText()),Integer.parseInt(exp.getText()));
         FeatureManager.getWorldData().saveEnemy(madeEnemy);
-        addImage();
-        //madeEnemy.init();
+        addImage(x, y, image);
     }
     /**
      * Adds a image to be shown on the map for player and enemy

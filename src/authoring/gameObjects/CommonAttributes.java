@@ -1,9 +1,11 @@
 package authoring.gameObjects;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+import Data.FileLister;
 import authoring.SpringUtilities;
 import authoring.SpriteImageChooser;
 import authoring.features.FeatureManager;
@@ -15,8 +17,14 @@ import authoring.view.TilePanel;
 
 
 
+
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -60,6 +68,7 @@ public abstract class CommonAttributes {
     protected JCheckBox two;
     protected JCheckBox three;
     protected ButtonModel movement;
+    protected JComboBox<String> playerEnemyImages;
 
     public CommonAttributes(){
         weaponMap = new HashMap<String, WeaponData>();
@@ -71,7 +80,7 @@ public abstract class CommonAttributes {
      * Gets the sprite image options currently available
      */
     protected JComboBox spriteField(){
-    	 JComboBox<String> playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
+    	 playerEnemyImages = new JComboBox<String>(sprite.getSpriteOptions());
          return playerEnemyImages;
     }
     /**
@@ -253,4 +262,24 @@ public abstract class CommonAttributes {
 		return mapArray;
 	}
 
+    /**
+     * Adds a image to be shown on the map for animated objects
+     */
+    protected void addImage(int xVal, int yVal, String imageString){
+    	FileLister f=new FileLister();
+    	List<String> imageList=f.getFileList(util.Constants.PLAYER_IMAGE_FILE+imageString);
+    	String first=imageList.get(0);
+    	System.out.println(first);
+    	File img=new File(util.Constants.PLAYER_IMAGE_FILE+imageString+"/"+first);
+    	BufferedImage bimg=null;
+    	try {
+			bimg=ImageIO.read(img);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	ImageIcon icon=new ImageIcon(bimg);
+    	new GridObjectPainter(xVal, yVal, 1, 1, icon); 	
+    }
+    
 }
