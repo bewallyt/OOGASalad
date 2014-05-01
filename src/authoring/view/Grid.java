@@ -153,7 +153,7 @@ public class Grid extends JPanel{
 	public class SelectedCellListener extends MouseAdapter{
 		public void mouseClicked(MouseEvent e) {
 			if(e.getButton() == MouseEvent.BUTTON3){
-				myCoordinates.setText("Coordinates: " + currentPanel.getRow() + ", " + currentPanel.getCol());
+				myCoordinates.setText("Coordinates: " + currentPanel.getCol() + ", " + currentPanel.getRow());
 				showPopupMenu(e);
 			}
 

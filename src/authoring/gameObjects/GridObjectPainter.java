@@ -26,8 +26,8 @@ public class GridObjectPainter {
 		
 		ImageIcon[] images=splitImage(height, width, image);
 		int i=0;
-		for(int r=x; r<(x+height); r++){
-			for(int c=y; c<(y+width); c++){
+		for(int r=y; r<(y+height); r++){
+			for(int c=x; c<(x+width); c++){
 				TilePanel panel=grid.getTilePanel(r, c);
 				panel.addGridObjectImage(images[i]);
 				panel.revalidate();
