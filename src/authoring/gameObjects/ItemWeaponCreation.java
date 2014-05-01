@@ -29,6 +29,8 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
     private JCheckBox isItem;
     private JFrame frame;
     private JTextField priceField;
+    private JComboBox attributeBox;
+    private JTextField howMuch;
 
     public ItemWeaponCreation(){
     }
@@ -150,11 +152,28 @@ public class ItemWeaponCreation extends CommonAttributes implements ActionListen
         priceLabel.setLabelFor(priceField);
         pricePanel.add(priceField);
         SpringUtilities.makeCompactGrid(pricePanel,1,2,6,6,6,6);
-
+        
+        JPanel buffTab=new JPanel();
+        buffTab.setLayout(new SpringLayout());
+        attributeBox=new JComboBox(attributes);
+        JLabel isBuffer=new JLabel("If this is a statbuffer...");
+        JLabel attributeBuffField=new JLabel("What stat to buff");
+        JLabel howMuchLabel=new JLabel("How much to buff?");
+        howMuch=new JTextField();
+        buffTab.add(isBuffer);
+        buffTab.add(attributeBuffField);
+        buffTab.add(attributeBox);
+        buffTab.add(howMuchLabel);
+        buffTab.add(howMuch);
+        SpringUtilities.makeCompactGrid(buffTab, 5, 1, 6, 6, 6, 6);
+        
+        
+        
         pane.addTab(nameTab, combinedPanel);
         pane.addTab(attributeTab, attributePanel);
         pane.addTab(attackTab, attackPanel);
         pane.add(priceTab,pricePanel);
+        pane.add("Stat buffer", buffTab);
 
         
         frame=new JFrame("New Item/Weapon");
