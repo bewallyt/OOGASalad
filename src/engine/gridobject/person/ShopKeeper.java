@@ -99,9 +99,11 @@ public class ShopKeeper extends NPC {
 		for (Item item : myItemSet) {
 			NPCResponseNode n0 = new NPCResponseNode("You purchased a "
 					+ item.toString(), item);
+			getPlayer().changeMoney(item.getPrice());
 			UserQueryNode q0 = new UserQueryNode(getPlayer(), null,
 					item.toString(), n0);
 			n.addResponseNode(q0);
+			
 
 		}
 		this.setResponseNode(n);
