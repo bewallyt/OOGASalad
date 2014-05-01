@@ -71,7 +71,6 @@ public class NPC extends Person {
 		myResponseNode = buildResponseTree(
 				(NPCResponseNodeData) list.get(Constants.RESPONSE_ROOT_CONST),
 				(Map<String, ItemData>) list.get(Constants.NPC_ITEMS_CONST));
-		System.out.println(myResponseNode);
 	}
 
 	public void setResponseNode(NPCResponseNode n) {
