@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -32,14 +33,14 @@ public class HealerCreation extends CommonAttributes{
 	 */
 	public void assembleGUI(){
 
-        JPanel namePanel = nameImageFields();
         JPanel locationPanel = locationFields();
         JPanel sizePanel = sizeFields();
         JPanel combinedPanel = new JPanel();
         combinedPanel.setLayout(new BoxLayout(combinedPanel,BoxLayout.PAGE_AXIS));
-        combinedPanel.add(namePanel);
+        combinedPanel.add(nameField());
         combinedPanel.add(locationPanel);
         combinedPanel.add(sizePanel);
+        combinedPanel.add(spriteField());
         
         JButton createBarrier=new JButton("Create Healer");
         createBarrier.addActionListener(new createHealerListener());
@@ -51,7 +52,7 @@ public class HealerCreation extends CommonAttributes{
 	 * Validates user input
 	 */
 	private boolean validateText(){
-        return !xcoor.getText().equals("") && !ycoor.getText().equals("") && imagePanel.getComponents().length > 0;
+        return !xcoor.getText().equals("") && !ycoor.getText().equals("");
     }
 	private class createHealerListener implements ActionListener{
 		@Override
@@ -59,11 +60,8 @@ public class HealerCreation extends CommonAttributes{
 			HealerData myHealer=getHealer();
 			if(validateText()){
 				FeatureManager.getWorldData().saveHealer(myHealer);
-				new GridObjectPainter(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
-                        getIntValue(widthField.getText()), getIntValue(heightField.getText()),
-                        editor.getSelectedImage());
+				addImage(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()), (String) playerEnemyImages.getSelectedItem());
 				frame.dispose();
-				editor.dispose();
 			}			
 		}
 
@@ -71,7 +69,8 @@ public class HealerCreation extends CommonAttributes{
 			return new HealerData(getIntValue(xcoor.getText()), getIntValue(ycoor.getText()),
                     getIntValue(widthField.getText()),
 					getIntValue(heightField.getText()),
-					editor.getSelectedImage().getDescription());
+					(String) playerEnemyImages.getSelectedItem());
+			
 		}
 	}
 }
