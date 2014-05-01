@@ -46,11 +46,10 @@ public class ShopKeeper extends NPC {
 
 	@SuppressWarnings("unchecked")
 	public ShopKeeper(List<Object> list) {
-		super((String[]) ((List<String>) list.get(Constants.IMAGE_CONST))
-				.toArray(new String[12]), (String) list
+		super(new String[]{"gridobject/FatBoy.png", "gridobject/FatBoy.png", "gridobject/FatBoy.png", "gridobject/FatBoy.png"}, (String) list
 				.get(Constants.NAME_CONST), 1, (int) ((Double) list
 				.get(Constants.WIDTH_CONST)).intValue(), (int) ((Double) list
-				.get(Constants.HEIGHT_CONST)).intValue(), 1, (Player) list
+				.get(Constants.HEIGHT_CONST)).intValue(), 3, (Player) list
 				.get(Constants.SHOP_PLAYER_CONST));
 		myItemSet = makeItemSet(
 				(List<String>) list.get(Constants.SHOP_ITEMS_CONST),

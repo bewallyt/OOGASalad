@@ -111,10 +111,14 @@ public class GridObjectData {
 		
 		myArguments.add(width);
 		myArguments.add(height);
-		myArguments.add(createSpriteImages("Zelda"));
+		myArguments.add(tempArr(image));
 		myArguments.add("DEFAULT_NAME");
 		myArguments.add(items);
-		// myArguments.add((int) 1); // default movement type until given movementType
+	}
+	
+	private String[] tempArr(String image){
+		String[] ret = {image};
+		return ret;
 	}
 	
 	// Base empty constructor
