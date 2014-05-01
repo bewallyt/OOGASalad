@@ -1169,7 +1169,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "pokeCenter": {
       "myTiles": [
@@ -2292,7 +2292,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "myHouse": {
       "myTiles": [
@@ -3565,7 +3565,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "Oak\u0027s house": {
       "myTiles": [
@@ -3744,97 +3744,7 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": [{
-                "myRoot": {
-                  "myString": "Bring me a pokeball to become a pokemon master!",
-                  "myChildren": [
-                    {
-                      "myString": "Sure thang.",
-                      "myChild": {
-                        "myString": "Ok go get it!",
-                        "myChildren": []
-                      }
-                    },
-                    {
-                      "myChild": {
-                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
-                        "myChildren": []
-                      },
-                      "myItem": "PokeBall"
-                    }
-                  ]
-                },
-                "myImages": [
-                  "PlayerImages/Swimmer/Swimmer - Copy (2).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy (3).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy (4).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy (5).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy (6).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy (7).png",
-                  "PlayerImages/Swimmer/Swimmer - Copy.png",
-                  "PlayerImages/Swimmer/Swimmer.png"
-                ],
-                "myMovement": 3,
-                "width": 1,
-                "height": 1,
-                "myX": 2,
-                "myY": 10,
-                "myID": "engine.gridobject.person.NPC",
-                "myDialogue": {
-                  "myString": "Bring me a pokeball to become a pokemon master!",
-                  "myChildren": [
-                    {
-                      "myString": "Sure thang.",
-                      "myChild": {
-                        "myString": "Ok go get it!",
-                        "myChildren": []
-                      }
-                    },
-                    {
-                      "myChild": {
-                        "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
-                        "myChildren": []
-                      },
-                      "myItem": "PokeBall"
-                    }
-                  ]
-                },
-                "myArguments": [
-                  1,
-                  1,
-                  [
-                    "PlayerImages/Swimmer/Swimmer - Copy (2).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy (3).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy (4).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy (5).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy (6).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy (7).png",
-                    "PlayerImages/Swimmer/Swimmer - Copy.png",
-                    "PlayerImages/Swimmer/Swimmer.png"
-                  ],
-                  "DEFAULT_NAME",
-                  {
-                    "myString": "Bring me a pokeball to become a pokemon master!",
-                    "myChildren": [
-                      {
-                        "myString": "Sure thang.",
-                        "myChild": {
-                          "myString": "Ok go get it!",
-                          "myChildren": []
-                        }
-                      },
-                      {
-                        "myChild": {
-                          "myString": "Congratulations you found it! You are a pokemon master. Continue to explore.",
-                          "myChildren": []
-                        },
-                        "myItem": "PokeBall"
-                      }
-                    ]
-                  },
-                  3
-                ]
-              }]
+            "myGridObjectDatas": []
           },
           {
             "myImageName": "TileImage/flatstone.png",
@@ -4745,7 +4655,76 @@
           },
           {
             "myImageName": "TileImage/flatstone.png",
-            "myGridObjectDatas": []
+            "myGridObjectDatas": [ {
+                "myRoot": {
+                  "myString": "Bring me back a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myChild": {
+                        "myString": "You got a pokeball! You are a pokemon champion! Continue to explore the pokeuniverse.",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myImages": [
+                  "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                  "PlayerImages/Swimmer/Swimmer - Copy.png",
+                  "PlayerImages/Swimmer/Swimmer.png"
+                ],
+                "myMovement": 3,
+                "width": 1,
+                "height": 1,
+                "myX": 13,
+                "myY": 10,
+                "myID": "engine.gridobject.person.NPC",
+                "myDialogue": {
+                  "myString": "Bring me back a pokeball to become a pokemon master!",
+                  "myChildren": [
+                    {
+                      "myChild": {
+                        "myString": "You got a pokeball! You are a pokemon champion! Continue to explore the pokeuniverse.",
+                        "myChildren": []
+                      },
+                      "myItem": "PokeBall"
+                    }
+                  ]
+                },
+                "myArguments": [
+                  1,
+                  1,
+                  [
+                    "PlayerImages/Swimmer/Swimmer - Copy (2).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (3).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (4).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (5).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (6).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy (7).png",
+                    "PlayerImages/Swimmer/Swimmer - Copy.png",
+                    "PlayerImages/Swimmer/Swimmer.png"
+                  ],
+                  "DEFAULT_NAME",
+                  {
+                    "myString": "Bring me back a pokeball to become a pokemon master!",
+                    "myChildren": [
+                      {
+                        "myChild": {
+                          "myString": "You got a pokeball! You are a pokemon champion! Continue to explore the pokeuniverse.",
+                          "myChildren": []
+                        },
+                        "myItem": "PokeBall"
+                      }
+                    ]
+                  },
+                  3
+                ]
+              }]
           },
           {
             "myImageName": "TileImage/flatstone.png",
@@ -4903,7 +4882,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     },
     "Pokemon": {
       "myTiles": [
@@ -15600,7 +15579,7 @@
         }
       ],
       "enemyDatas": [],
-      "mySong": "pokeTest.wav"
+      "mySong": ""
     },
     "myRoom": {
       "myTiles": [
@@ -16708,7 +16687,7 @@
       ],
       "myRandomEnemies": [],
       "enemyDatas": [],
-      "mySong": "pokeCenter.wav"
+      "mySong": ""
     }
   },
   "myImages": {},
@@ -16867,7 +16846,7 @@
         {
           "myName": "Thunder",
           "mySpeed": 5,
-          "myDamage": 40,
+          "myDamage": 10,
           "affectAttribute": "Health",
           "affectValue": 0,
           "affectPlayer": false
