@@ -1,9 +1,9 @@
 package engine.main;
 
 import util.Constants;
+import engine.gridobject.Door;
 import engine.gridobject.person.Player;
 import engine.gridobject.person.Reflection;
-import engine.world.ArenaWorld;
 import engine.world.ArenaWorldLooper;
 import engine.world.Canvas;
 import engine.world.GameLooper;
@@ -20,6 +20,7 @@ public abstract class RPGEngine{
 	private GameLooper myGameLooper;
 	private World myPreviousWorld;
 	private Boolean isInitialized = false;
+	private Door myLastDoor;
 
 
 	/**
@@ -81,7 +82,7 @@ public abstract class RPGEngine{
 		}
 		else{
 			myCurrentWorld.getPlayer().setPosition(myCurrentWorld.getPlayer().getStartX(), 
-					myCurrentWorld.getPlayer().getStartY());
+					myCurrentWorld.getPlayer().getStartY());			
 		}
 		if(myCurrentWorld.getMusic()!=null)myCurrentWorld.getMusic().start();
 	}

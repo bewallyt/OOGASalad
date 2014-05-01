@@ -57,6 +57,10 @@ public abstract class World {
 		mySavedPlayerPosition = new int[] {getPlayer().getX(),getPlayer().getY(),reverseFacing()};
 	}
 	
+	public void setPlayerPositionFromDoor(int x, int y) {
+		mySavedPlayerPosition = new int[] {x, y, reverseFacing()};
+	}
+	
 	public int[] getSavedPlayerPosition(){
 		return mySavedPlayerPosition;
 	}

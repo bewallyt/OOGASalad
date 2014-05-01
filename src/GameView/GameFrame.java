@@ -44,6 +44,8 @@ public class GameFrame extends RPGEngine {
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 	private WorldDataManager myWorldDataManager;
 	private String loadFileName;
+	private int xStart;
+	private int yStart;;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -99,7 +101,7 @@ public class GameFrame extends RPGEngine {
 			List<String> TileImageList = parser.getTileImageList();
 
 			gridObjectList.add(myPlayer);
-
+			
 			WalkAroundWorld currWorld = new WalkAroundWorld(mapName,
 					map.getMapLength() * Constants.TILE_SIZE, map.getMapWidth()
 							* Constants.TILE_SIZE, myPlayer,
@@ -127,7 +129,11 @@ public class GameFrame extends RPGEngine {
 		myPlayer = new Player(pd.getImages(), pd.getMyName(), 2,
 				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		setPlayerItems(pd);
-		// myPlayer.setPosition(pd.getX(), pd.getY());
+//		myPlayer.setPosition(pd.getX(), pd.getY());
+		
+		xStart = pd.getX();
+		yStart = pd.getY();
+		
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
 				Constants.VALUES_CONST));
 		myPlayer.setBattleImage(pd.getImages()[6]);
@@ -253,7 +259,15 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
+	
+	public int getXStart() {
+		return xStart;
+	}
 
+	public int getYStart() {
+		return yStart;
+	}
+	
 	public WalkAroundWorld getInitialWorld() {
 		myWorldDataManager = new WorldDataManager(loadFileName);
 		outsideWorld.setWorldDataManager(myWorldDataManager);
