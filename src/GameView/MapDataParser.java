@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import util.Constants;
 import engine.gridobject.GridObject;
 import engine.gridobject.person.Player;
 import engine.item.Weapon;
@@ -59,12 +60,11 @@ public class MapDataParser {
 				for (GridObjectData data : currData) {					
 					GridObject gridobject = null;
 					
-					if(data.getID().equals("engine.gridobject.person.NPC")){
+					if(data.getID().equals(Constants.NPC)){
 						NPCResponseNodeData node = data.getDialogue();
 						data.getArguments().remove(4);
 						data.getArguments().add(node);
 					}
-					
 					
 					data.getArguments().add(p);
 					data.getArguments().add(items);
@@ -79,6 +79,7 @@ public class MapDataParser {
 					}
 
 					if (gridobject != null) {
+						System.out.println(gridobject.getImageFile()+" "+i+" "+j);
 						gridobject.setPosition(i, j);
 						myGridObjectList.add(gridobject);
 					}

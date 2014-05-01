@@ -54,7 +54,7 @@ public class WalkAroundWorldLooper extends GameLooper {
 				Door d = myWorld.getPlayer().isDoorEntered();
 				if(d!=null){
 					if (d.getWorld().getSavedPlayerPosition() == null) {
-						d.getWorld().setPlayerPositionFromDoor(d.getX()*40, d.getY()*40);
+						d.getWorld().setPlayerPositionFromDoor(d.getToX()*40, d.getToY()*40);
 					}
 					return d.getWorld();
 				}

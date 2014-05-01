@@ -31,11 +31,11 @@ public class Door extends GridObject{
 		player.setPosition(toX, toY);
 	}
 	
-	public int getX() {
+	public int getToX() {
 		return toX;
 	}
 
-	public int getY() {
+	public int getToY() {
 		return toY;
 	}
 
