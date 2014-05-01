@@ -38,7 +38,7 @@ public class TitleWorldLooper extends GameLooper {
 			gm.initialize(myTM.getLoadFile());
 			World firstWorld = gm.getInitialWorld();
 			Player p = firstWorld.getPlayer();
-			p.setPosition(Constants.INIT_X*Constants.TILE_SIZE, Constants.INIT_Y*Constants.TILE_SIZE);
+			p.setPosition(gm.getXStart()*Constants.TILE_SIZE, gm.getYStart()*Constants.TILE_SIZE);
 			return gm.getInitialWorld();
 			
 		}

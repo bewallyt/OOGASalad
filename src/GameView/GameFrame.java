@@ -44,6 +44,8 @@ public class GameFrame extends RPGEngine {
 	private Map<String, ItemData> myItems = new HashMap<String, ItemData>();
 	private WorldDataManager myWorldDataManager;
 	private String loadFileName;
+	private int xStart;
+	private int yStart;;
 
 	private Map<String, WalkAroundWorld> myMaps = new HashMap<String, WalkAroundWorld>();
 
@@ -128,6 +130,9 @@ public class GameFrame extends RPGEngine {
 				pd.getMyWeapons(), pd.getMyWeapons(), makeWeapons());
 		setPlayerItems(pd);
 //		myPlayer.setPosition(pd.getX(), pd.getY());
+		
+		xStart = pd.getX();
+		yStart = pd.getY();
 		
 		myPlayer.addAllStatistics((Map<String, Double>) pd.getArguments().get(
 				Constants.VALUES_CONST));
@@ -254,7 +259,15 @@ public class GameFrame extends RPGEngine {
 			}
 		}
 	}
+	
+	public int getXStart() {
+		return xStart;
+	}
 
+	public int getYStart() {
+		return yStart;
+	}
+	
 	public WalkAroundWorld getInitialWorld() {
 		myWorldDataManager = new WorldDataManager(loadFileName);
 		outsideWorld.setWorldDataManager(myWorldDataManager);

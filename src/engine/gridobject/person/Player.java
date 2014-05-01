@@ -29,8 +29,6 @@ public class Player extends Person {
 	private int myExperience;
 	private Random myRandom = new Random();
 	private String myName;
-	private int START_X;
-	private int START_Y;
 
 	/**
 	 * Instantiates a new player.
