@@ -16867,7 +16867,7 @@
         {
           "myName": "Thunder",
           "mySpeed": 5,
-          "myDamage": 10,
+          "myDamage": 40,
           "affectAttribute": "Health",
           "affectValue": 0,
           "affectPlayer": false
