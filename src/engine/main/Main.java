@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import util.Constants;
-import Data.WorldDataManager;
+import Data.world.WorldDataManager;
 import authoring.gameObjects.WorldData;
 //import authoring.gameObjects.WorldData;
 import engine.Statistic;
