@@ -1,5 +1,7 @@
 package engine.dialogue;
 
+import engine.world.TitleWorld;
+
 public class InteractionMatrix2x2 extends InteractionMatrix {
 
 	public InteractionMatrix2x2() {
@@ -8,6 +10,7 @@ public class InteractionMatrix2x2 extends InteractionMatrix {
 		myNodes = new MatrixNode[2][2];
 		myXDimension = 2;
 		myYDimension = 2;
+		
 	}
 	
 	public void moveUp() {
@@ -40,5 +43,9 @@ public class InteractionMatrix2x2 extends InteractionMatrix {
 	}
 	public void resetMatrixPosition(){
 		selectedNodeX=0; selectedNodeY=0;
+	}
+	
+	public String getGame(){
+		return myNodes[selectedNodeX][selectedNodeY].getGame();
 	}
 }

@@ -94,6 +94,13 @@ public class Attack implements MatrixNode,BattleExecutable {
 		//no image
 		return null;
 	}
+
+
+	@Override
+	public String getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

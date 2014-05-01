@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import GameView.GameChooserWorld;
 import util.Constants;
 //import engine.AbstractGameState;
 import engine.Control;
@@ -98,6 +99,7 @@ public class Canvas extends JComponent{
 		else if (myWorld instanceof TitleWorld){
 			paintTitleWorld(g2d);
 		}
+
 
 	}
 

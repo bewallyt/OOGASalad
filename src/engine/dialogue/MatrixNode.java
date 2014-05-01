@@ -7,4 +7,6 @@ public interface MatrixNode {
 
 	String toString();
 
+	String getGame();
+
 }
