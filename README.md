@@ -1,29 +1,12 @@
-oogasalad_Team2
-===============
+<h2>OOGASalad</h2>
+
+<h3>Overview</h3>
 Read the design document for a complete overview of this project.
 
-Project was completed by a 11 person team.
+This project consists of a game authoring environment and a game engine. The authoring environment allows the creation of custom 2D RPG games. These games are then saved to JSON formatted files, which can then be run on our game engine.
 
-Team Members:
+Team Members: Davis Treybig, Parker Hegstrom, Sanmay Jain, Jacob Lettie, Lee Weisberger, Richard Cao, Peter Yom, Brandon Chao, Benson Tran, Pritam Mathivanan
 
-Davis Treybig
 
-Chad Coviel
 
-Parker Hegstrom
 
-Sanmay Jain
-
-Jacob Lettie
-
-Lee Weisberger
-
-Richard Cao
-
-Peter Yom
-
-Brandon Chao
-
-Benson Tran
-
-Pritam Mathivanan
